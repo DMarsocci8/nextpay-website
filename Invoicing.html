@@ -1,0 +1,349 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Online Payments, Invoicing & Recurring Billing — NextPay</title>
+<link rel="stylesheet" href="css/nextpay.css">
+<style>
+.thero{background:var(--navy);color:#fff;position:relative;overflow:hidden}
+.thero::after{content:"";position:absolute;right:-140px;top:-140px;width:560px;height:560px;border-radius:50%;background:radial-gradient(circle,rgba(20,161,140,.22),transparent 70%)}
+.thero .wrap{position:relative;z-index:2}
+.thero-crumb{display:flex;gap:8px;align-items:center;font-size:14px;color:#9fb1c2;padding:20px 0 0}
+.thero-crumb a:hover{color:#fff}.thero-crumb .sep{opacity:.5}
+.thero-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:48px;align-items:center;padding:40px 0 72px}
+.thero h1{font-size:clamp(28px,4vw,48px);line-height:1.08;margin:16px 0 0;color:#fff;white-space:nowrap}
+.thero h1 em{color:var(--teal-bright);font-style:normal}
+.thero .lead{color:#c4d0db;margin-top:18px;max-width:540px}
+.thero-cta{display:flex;gap:13px;flex-wrap:wrap;margin-top:28px}
+.thero-media{position:relative;display:grid;place-items:center}
+.thero-media image-slot{width:100%;height:470px;background:#fff;border-radius:22px}
+.brandstrip{display:flex;gap:12px;flex-wrap:wrap;margin-top:30px}
+.brandstrip .bchip{display:flex;align-items:center;justify-content:center;background:#fff;border-radius:12px;padding:0 18px;height:50px;min-width:78px;transition:.18s ease;box-shadow:0 1px 2px rgba(0,0,0,.18)}
+.brandstrip .bchip img{height:24px;width:auto;max-width:104px;display:block}
+.brandstrip .bchip:hover{transform:translateY(-3px);box-shadow:0 12px 26px rgba(0,0,0,.28);outline:2px solid var(--teal-bright);outline-offset:0}
+
+.brandnav{position:sticky;top:78px;z-index:40;background:rgba(255,255,255,.95);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+.brandnav .wrap{display:flex;gap:8px;align-items:center;padding:12px 28px;overflow:auto}
+.brandnav .bn-label{font-weight:800;font-size:13px;text-transform:uppercase;letter-spacing:.08em;color:var(--teal-dark);background:var(--bg-soft);padding:9px 16px;border-radius:999px;margin-right:8px;white-space:nowrap}
+.brandnav a{white-space:nowrap;padding:9px 16px;border-radius:999px;font-weight:700;font-size:14px;color:var(--slate)}
+.brandnav a:hover,.brandnav a.on{background:var(--bg-soft);color:var(--teal-dark)}
+
+.bsec{padding:66px 0;border-bottom:1px solid var(--line)}
+.bsec:nth-child(even){background:var(--bg-soft)}
+.bhead{display:flex;align-items:flex-end;justify-content:space-between;gap:24px;margin-bottom:30px;flex-wrap:wrap}
+.bhead .bh-left{display:flex;flex-direction:column;gap:12px;max-width:660px}
+.bhead .blogo{height:46px;display:flex;align-items:center}
+.bhead .blogo img{height:100%;width:auto}
+.brandlogo.cardbrand-img{height:17px;width:auto;max-width:118px;align-self:flex-start;display:block;margin-bottom:4px}
+.bhead .bname{font-size:clamp(26px,3vw,34px);font-weight:800;letter-spacing:-.02em}
+.bhead p{color:var(--slate);font-size:16px}
+.bhead .bestfor{display:flex;gap:7px;flex-wrap:wrap}
+.tgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+.tgrid.cols4{grid-template-columns:repeat(4,1fr)}
+
+.dualsec{padding:72px 0;border-top:1px solid var(--line)}
+.dual-wrap{display:grid;grid-template-columns:1fr 1.1fr;gap:46px;align-items:center}
+.dual-copy h2{font-size:clamp(26px,3vw,36px);margin-top:4px}
+.dual-copy p{color:var(--slate);font-size:16.5px;line-height:1.62;margin:14px 0 22px}
+.dual-cards{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+.dual-note{margin-top:22px;background:var(--bg-soft);border-left:4px solid var(--teal);border-radius:0 12px 12px 0;padding:16px 20px}
+.dual-note b{color:var(--ink);font-size:15px}
+.dual-note p{color:var(--slate);font-size:14px;line-height:1.55;margin:5px 0 0}
+.dual-note p b{color:var(--teal-dark)}
+.dual-card{position:relative;background:#fff;border:1px solid var(--line);border-radius:16px;padding:24px;box-shadow:var(--shadow-sm)}
+.dual-card.ach{border-color:var(--teal);box-shadow:0 0 0 1.5px var(--teal),var(--shadow)}
+.dual-card .dc-tag{position:absolute;top:-11px;left:24px;background:var(--teal);color:#fff;font-size:11px;font-weight:800;text-transform:uppercase;letter-spacing:.06em;padding:4px 11px;border-radius:999px}
+.dual-card .dc-ic{width:46px;height:46px;border-radius:12px;display:grid;place-items:center;margin-bottom:14px}
+.dual-card.ach .dc-ic{background:rgba(20,161,140,.12);color:var(--teal-dark)}
+.dual-card.card .dc-ic{background:var(--bg-soft-2);color:var(--slate)}
+.dual-card .dc-ic svg{width:23px;height:23px}
+.dual-card h4{font-size:14.5px;color:var(--slate);font-weight:700}
+.dual-card .dc-big{font-size:21px;font-weight:800;letter-spacing:-.01em;margin:4px 0 8px;color:var(--ink)}
+.dual-card.ach .dc-big{color:var(--teal-dark)}
+.dual-card p{font-size:13.5px;color:var(--slate);line-height:1.5}
+@media(max-width:900px){.dual-wrap{grid-template-columns:1fr;gap:30px}}
+@media(max-width:560px){.dual-cards{grid-template-columns:1fr}}
+.sec-head{max-width:720px;margin:0 auto 40px;text-align:center}
+.sec-head h2{font-size:clamp(28px,3.4vw,40px)}
+.sec-head p{margin-top:14px;color:var(--slate);font-size:18px}
+
+.tband{background:linear-gradient(120deg,var(--navy),var(--navy-3));color:#fff;border-radius:26px;padding:52px;text-align:center;position:relative;overflow:hidden;margin:64px 0}
+.tband::after{content:"";position:absolute;left:-80px;bottom:-120px;width:420px;height:420px;border-radius:50%;background:radial-gradient(circle,rgba(20,161,140,.25),transparent 70%)}
+.tband h2{font-size:clamp(26px,3.2vw,38px);position:relative;z-index:2}
+.tband p{color:#c4d0db;margin:12px auto 0;max-width:560px;font-size:17px;position:relative;z-index:2}
+.tband .thero-cta{justify-content:center;position:relative;z-index:2}
+
+@media(max-width:1000px){
+  .thero-grid{grid-template-columns:1fr;gap:28px;padding:30px 0 54px}
+  .thero-media image-slot{height:280px}
+  .tgrid,.tgrid.cols4{grid-template-columns:repeat(2,1fr)}
+}
+@media(max-width:680px){ .tgrid,.tgrid.cols4{grid-template-columns:1fr} .bsec{padding:48px 0} }
+.bchip .bchip-txt{font-weight:800;font-size:13.5px;color:var(--navy);white-space:nowrap}
+
+/* Field Work profile */
+.fw-spot{display:grid;grid-template-columns:1.4fr .6fr;gap:30px;align-items:start}
+.fw-flow{display:grid;grid-template-columns:repeat(5,1fr);background:#fff;border:1px solid var(--line);border-radius:16px;overflow:hidden;box-shadow:var(--shadow-sm)}
+.fw-step{padding:18px 17px;border-right:1px solid var(--line)}
+.fw-step:last-child{border-right:0}
+.fw-step .fw-num{width:26px;height:26px;border-radius:50%;background:var(--teal);color:#fff;font-weight:800;font-size:13px;display:grid;place-items:center;margin-bottom:11px}
+.fw-step b{display:block;font-size:15px;color:var(--ink);letter-spacing:-.01em;margin-bottom:4px}
+.fw-step span{font-size:12.5px;color:var(--slate);line-height:1.42;display:block}
+.fw-feats{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:18px}
+.fw-feat{display:flex;gap:13px;background:#fff;border:1px solid var(--line);border-radius:14px;padding:17px}
+.fw-feat .fw-ic{flex:none;width:40px;height:40px;border-radius:11px;background:rgba(20,161,140,.12);color:var(--teal-dark);display:grid;place-items:center}
+.fw-feat .fw-ic svg{width:21px;height:21px}
+.fw-feat h4{font-size:14.5px;color:var(--ink);margin:0 0 3px;letter-spacing:-.01em}
+.fw-feat p{font-size:13px;color:var(--slate);line-height:1.5;margin:0}
+@media(max-width:980px){.fw-spot{grid-template-columns:1fr;gap:24px}}
+@media(max-width:680px){.fw-flow{grid-template-columns:1fr 1fr}.fw-step{border-bottom:1px solid var(--line)}.fw-feats{grid-template-columns:1fr}}
+
+/* online payments gateways strip */
+.gw-logos{display:grid;grid-template-columns:repeat(6,1fr);gap:14px}
+.gw-logos a{display:flex;align-items:center;justify-content:center;background:#fff;border:1px solid var(--line);border-radius:14px;padding:20px 14px;box-shadow:var(--shadow-sm);transition:.18s ease}
+.gw-logos a:hover{transform:translateY(-3px);box-shadow:var(--shadow);border-color:var(--teal)}
+.gw-logos img{height:26px;width:auto;max-width:112px;display:block}
+@media(max-width:900px){.gw-logos{grid-template-columns:repeat(3,1fr)}}
+@media(max-width:560px){.gw-logos{grid-template-columns:repeat(2,1fr)}}
+
+/* recurring billing area */
+.recur-wrap{display:grid;grid-template-columns:1fr 1fr;gap:46px;align-items:center}
+.recur-wrap .recur-img image-slot{display:block;width:100%;height:480px;background:#fff;border-radius:18px;box-shadow:var(--shadow);border:1px solid var(--line)}
+.recur-copy h2{font-size:clamp(26px,3vw,36px);margin-top:4px}
+.recur-copy p{color:var(--slate);font-size:16.5px;line-height:1.62;margin:14px 0 20px}
+.recur-list{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:13px}
+.recur-list li{display:flex;gap:12px;align-items:flex-start;font-size:15.5px;color:var(--ink);line-height:1.45}
+.recur-list li svg{width:22px;height:22px;flex:none;color:var(--teal);margin-top:1px}
+.recur-list li b{font-weight:700}
+@media(max-width:900px){.recur-wrap{grid-template-columns:1fr;gap:30px}.recur-wrap .recur-img image-slot{height:380px}}
+
+/* dual pricing invoice image */
+.dual-invoice image-slot{display:block;width:100%;height:430px;background:#fff;border-radius:16px;box-shadow:var(--shadow);border:1px solid var(--line)}
+@media(max-width:900px){.dual-invoice image-slot{height:300px}}
+
+#online-payments .pcard .pimg image-slot{width:62%;height:55%}
+</style>
+<script>
+function npLogoFail(img){var b=img.getAttribute('data-brand');if(img.classList.contains('hdr')){img.parentElement.outerHTML='<div class="bname">'+b+'</div>';}else{img.outerHTML='<span class="pbrand">'+b+'</span>';}}
+window.addEventListener('load',function(){document.querySelectorAll('img.brandlogo').forEach(function(im){if(im.complete&&im.naturalWidth===0)npLogoFail(im);});});
+</script>
+</head>
+<body data-page="inv">
+
+<div id="np-nav"></div>
+
+<!-- HERO -->
+<header class="thero" data-screen-label="Invoicing hero">
+  <div class="wrap">
+    <div class="thero-crumb"><a href="index.html">Home</a><span class="sep">/</span><a href="Accept Payments.html">Solutions</a><span class="sep">/</span><span style="color:#fff">Online Payments, Invoicing & Recurring Billing</span></div>
+    <div class="thero-grid">
+      <div>
+        <span class="tag tag-teal">Accept Payments · Online Payments, Invoicing & Recurring Billing</span>
+        <h1>Get paid faster with<br><em>smart invoicing.</em></h1>
+        <p class="lead">Take payments online, send invoices and automate recurring billing — all from one gateway. Most of our gateways double as full invoicing and subscription tools, so your online, invoiced and recurring payments settle to a single NextPay account. Compare them and pick the right fit.</p>
+        <div class="thero-cta">
+          <a class="btn btn-primary" href="quiz.html" target="_blank" rel="noopener">Take the Quiz <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+          <a class="btn btn-ghost" href="#all">Browse all tools</a>
+        </div>
+        <div class="brandstrip">
+          <a href="Valor Gateway.html" class="bchip" title="Valor"><img src="assets/logos/valor.png" alt="Valor"></a>
+          <a href="FluidPay Gateway.html" class="bchip" title="FluidPay"><img src="assets/logos/fluidpay.png" alt="FluidPay"></a>
+          <a href="iPOSPays Gateway.html" class="bchip" title="iPOSPays"><img src="assets/logos/ipospays.png" alt="iPOSPays"></a>
+          <a href="Authorize.net Gateway.html" class="bchip" title="Authorize.net"><img src="assets/logos/authnet-tight.png" alt="Authorize.net" style="height:20px"></a>
+          <a href="NMI Gateway.html" class="bchip" title="NMI"><img src="assets/logos/nmi.png" alt="NMI"></a>
+          <a href="Credit Card Terminals.html#swipesimple" class="bchip" title="SwipeSimple"><img src="assets/logos/swipesimple.png" alt="SwipeSimple"></a>
+          <a href="Luqra Gateway.html" class="bchip" title="Luqra"><img src="assets/logos/luqra.png" alt="Luqra"></a>
+        </div>
+      </div>
+      <div class="thero-media">
+        <image-slot id="inv-hero" src="assets/invoicing/hero-billing.jpg" shape="rounded" radius="22" fit="contain" placeholder="Drop a photo of a business owner invoicing"></image-slot>
+      </div>
+    </div>
+  </div>
+</header>
+
+<div class="brandnav" id="all">
+  <div class="wrap">
+    <span class="bn-label">On this page</span>
+    <a href="#online-payments" class="on">Gateways</a>
+    <a href="#recurring">Recurring Billing</a>
+    <a href="#compare-help">Compare</a>
+  </div>
+</div>
+
+<section class="bsec" id="online-payments">
+  <div class="wrap">
+    <div class="bhead">
+      <div class="bh-left">
+        <span class="eyebrow">Online Payments · Invoicing · Recurring Billing</span>
+        <div class="bname" style="font-size:clamp(24px,2.8vw,34px)">The gateways that run your invoicing</div>
+        <p>Our payment gateways don't just take card payments online — they send invoices, generate pay-by-link, store cards in a vault and bill subscriptions on autopilot. Pick the one that fits, and your online, invoiced and recurring payments all settle to one NextPay account.</p>
+        <div class="bestfor"><span class="tag tag-teal">Invoicing</span><span class="tag tag-teal">Recurring billing</span><span class="tag">Pay links</span><span class="tag">Virtual terminal</span></div>
+      </div>
+      <a class="link-teal" href="Online Gateways.html" target="_blank" rel="noopener">See all gateways &amp; pricing <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+    </div>
+    <div class="tgrid">
+      <article class="pcard" id="inv-fluidpay">
+        <div class="pimg"><span class="tag tag-teal pbadge">★ Recommended</span><image-slot id="x-inv-fluidpay" src="assets/logos/fluidpay.png" fit="contain" radius="0" placeholder="FluidPay"></image-slot></div>
+        <div class="pbody">
+          <img class="brandlogo cardbrand-img" src="assets/logos/fluidpay.png" alt="FluidPay"><h3>FluidPay</h3>
+          <p class="pdesc">Recurring billing, hosted pay pages and a mobile virtual terminal — send a pay-by-link or bill subscriptions on autopilot.</p>
+          <div class="pspecs"><span class="tag">Invoicing</span><span class="tag">Recurring</span><span class="tag">Pay links</span><span class="tag">Vault</span></div>
+          <div class="pprice"><b>$10</b> <span>/mo + 5¢</span></div>
+          <div class="pcta"><div class="pcta-row"><a class="btn btn-primary btn-sm" href="FluidPay Gateway.html" target="_blank" rel="noopener">Learn more</a><a class="btn btn-outline btn-sm" href="Online Gateways.html#gw-fluidpay" target="_blank" rel="noopener">See pricing</a></div>
+            <button class="btn btn-compare btn-sm btn-block" data-compare="x-inv-fluidpay"><span class="cmp-label">Add to compare</span></button></div>
+        </div>
+      </article>
+      <article class="pcard" id="inv-ipospays">
+        <div class="pimg"><image-slot id="x-inv-ipospays" src="assets/logos/ipospays.png" fit="contain" radius="0" placeholder="iPOSPays"></image-slot></div>
+        <div class="pbody">
+          <img class="brandlogo cardbrand-img" src="assets/logos/ipospays.png" alt="iPOSPays"><h3>iPOSPays</h3>
+          <p class="pdesc">Virtual terminal, invoicing and pay links with dual pricing — plus iPOS S.A.F.E tokens for repeat billing.</p>
+          <div class="pspecs"><span class="tag">Invoicing</span><span class="tag">Pay links</span><span class="tag">Recurring</span><span class="tag">Dual pricing</span></div>
+          <div class="pprice"><b>$6.95</b> <span>/mo + 5¢</span></div>
+          <div class="pcta"><div class="pcta-row"><a class="btn btn-primary btn-sm" href="iPOSPays Gateway.html" target="_blank" rel="noopener">Learn more</a><a class="btn btn-outline btn-sm" href="Online Gateways.html#gw-ipospays" target="_blank" rel="noopener">See pricing</a></div>
+            <button class="btn btn-compare btn-sm btn-block" data-compare="x-inv-ipospays"><span class="cmp-label">Add to compare</span></button></div>
+        </div>
+      </article>
+      <article class="pcard" id="inv-valor">
+        <div class="pimg"><image-slot id="x-inv-valor" src="assets/logos/valor.png" fit="contain" radius="0" placeholder="Valor"></image-slot></div>
+        <div class="pbody">
+          <img class="brandlogo cardbrand-img" src="assets/logos/valor.png" alt="Valor"><h3>Valor</h3>
+          <p class="pdesc">Key in sales, send PayNow links and schedule recurring billing — with The Vault for stored cards.</p>
+          <div class="pspecs"><span class="tag">PayNow links</span><span class="tag">Recurring</span><span class="tag">Virtual terminal</span><span class="tag">Dual pricing</span></div>
+          <div class="pprice"><b>$10</b> <span>/mo + 5¢</span></div>
+          <div class="pcta"><div class="pcta-row"><a class="btn btn-primary btn-sm" href="Valor Gateway.html" target="_blank" rel="noopener">Learn more</a><a class="btn btn-outline btn-sm" href="Online Gateways.html#gw-valor" target="_blank" rel="noopener">See pricing</a></div>
+            <button class="btn btn-compare btn-sm btn-block" data-compare="x-inv-valor"><span class="cmp-label">Add to compare</span></button></div>
+        </div>
+      </article>
+      <article class="pcard" id="inv-authnet">
+        <div class="pimg"><image-slot id="x-inv-authnet" src="assets/logos/authnet-tight.png" fit="contain" radius="0" placeholder="Authorize.net"></image-slot></div>
+        <div class="pbody">
+          <img class="brandlogo cardbrand-img" src="assets/logos/authnet-tight.png" alt="Authorize.net" style="height:20px;max-width:150px"><h3>Authorize.net</h3>
+          <p class="pdesc">Email branded invoices, run Automated Recurring Billing and sync straight to QuickBooks.</p>
+          <div class="pspecs"><span class="tag">Invoicing</span><span class="tag">Recurring (ARB)</span><span class="tag">Virtual terminal</span><span class="tag">QuickBooks</span></div>
+          <div class="pprice"><b>$12</b> <span>/mo + 5¢</span></div>
+          <div class="pcta"><div class="pcta-row"><a class="btn btn-primary btn-sm" href="Authorize.net Gateway.html" target="_blank" rel="noopener">Learn more</a><a class="btn btn-outline btn-sm" href="Online Gateways.html#gw-authnet" target="_blank" rel="noopener">See pricing</a></div>
+            <button class="btn btn-compare btn-sm btn-block" data-compare="x-inv-authnet"><span class="cmp-label">Add to compare</span></button></div>
+        </div>
+      </article>
+      <article class="pcard" id="inv-nmi">
+        <div class="pimg"><image-slot id="x-inv-nmi" src="assets/logos/nmi.png" fit="contain" radius="0" placeholder="NMI"></image-slot></div>
+        <div class="pbody">
+          <img class="brandlogo cardbrand-img" src="assets/logos/nmi.png" alt="NMI"><h3>NMI</h3>
+          <p class="pdesc">Electronic invoicing, Customer Vault tokenization and recurring billing with an automatic card updater.</p>
+          <div class="pspecs"><span class="tag">Invoicing</span><span class="tag">Recurring</span><span class="tag">Vault</span><span class="tag">Virtual terminal</span></div>
+          <div class="pprice"><b>$10</b> <span>/mo + 5¢</span></div>
+          <div class="pcta"><div class="pcta-row"><a class="btn btn-primary btn-sm" href="NMI Gateway.html" target="_blank" rel="noopener">Learn more</a><a class="btn btn-outline btn-sm" href="Online Gateways.html#gw-nmi" target="_blank" rel="noopener">See pricing</a></div>
+            <button class="btn btn-compare btn-sm btn-block" data-compare="x-inv-nmi"><span class="cmp-label">Add to compare</span></button></div>
+        </div>
+      </article>
+      <article class="pcard" id="inv-swipesimple">
+        <div class="pimg"><image-slot id="x-inv-swipesimple" src="assets/logos/swipesimple.png" fit="contain" radius="0" placeholder="SwipeSimple"></image-slot></div>
+        <div class="pbody">
+          <img class="brandlogo cardbrand-img" src="assets/logos/swipesimple.png" alt="SwipeSimple"><h3>SwipeSimple</h3>
+          <p class="pdesc">Send invoices and Text-to-Pay links with ACH dual pricing to wipe out processing fees — and sync straight to QuickBooks.</p>
+          <div class="pspecs"><span class="tag">Invoicing</span><span class="tag">ACH dual pricing</span><span class="tag">Text-to-Pay</span><span class="tag">QuickBooks</span></div>
+          <div class="pprice"><b>From $25</b> <span>/mo</span></div>
+          <div class="pcta"><div class="pcta-row"><a class="btn btn-primary btn-sm" href="Credit Card Terminals.html#swipesimple" target="_blank" rel="noopener">Learn more</a><a class="btn btn-outline btn-sm" href="Credit Card Terminals.html#swipesimple" target="_blank" rel="noopener">See pricing</a></div>
+            <button class="btn btn-compare btn-sm btn-block" data-compare="x-inv-swipesimple"><span class="cmp-label">Add to compare</span></button></div>
+        </div>
+      </article>
+      <article class="pcard" id="inv-luqra">
+        <div class="pimg"><image-slot id="x-inv-luqra" src="assets/logos/luqra.png" fit="contain" radius="0" placeholder="Luqra"></image-slot></div>
+        <div class="pbody">
+          <img class="brandlogo cardbrand-img" src="assets/logos/luqra.png" alt="Luqra"><h3>Luqra</h3>
+          <p class="pdesc">Fast-funding online checkout with recurring billing — built for e-commerce and subscription sellers.</p>
+          <div class="pspecs"><span class="tag">Online checkout</span><span class="tag">Recurring</span><span class="tag">Fast funding</span></div>
+          <div class="pprice"><b>2.3%</b> <span>+ 20¢ as low as</span></div>
+          <div class="pcta"><div class="pcta-row"><a class="btn btn-primary btn-sm" href="Luqra Gateway.html" target="_blank" rel="noopener">Learn more</a><a class="btn btn-outline btn-sm" href="Online Gateways.html#gw-luqra" target="_blank" rel="noopener">See pricing</a></div>
+            <button class="btn btn-compare btn-sm btn-block" data-compare="x-inv-luqra"><span class="cmp-label">Add to compare</span></button></div>
+        </div>
+      </article>
+      
+    </div>
+  </div>
+</section>
+
+<!-- RECURRING BILLING -->
+<section class="bsec" id="recurring">
+  <div class="wrap">
+    <div class="recur-wrap">
+      <div class="recur-img"><image-slot id="x-recurring" src="assets/invoicing/recurring-billing.jpg" fit="contain" radius="18" placeholder="Automated recurring billing"></image-slot></div>
+      <div class="recur-copy">
+        <span class="eyebrow">Recurring Billing</span>
+        <h2>Set it. Forget it. We&rsquo;ve got it.</h2>
+        <p>Charge subscriptions, memberships, retainers and payment plans on autopilot. You pick the frequency, amount and payment method &mdash; we handle every cycle and keep stored cards current so payments don&rsquo;t fail.</p>
+        <ul class="recur-list">
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M20 6 9 17l-5-5"/></svg><span><b>You set it up</b> &mdash; choose frequency, amount and payment method.</span></li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M20 6 9 17l-5-5"/></svg><span><b>We handle the rest</b> &mdash; payments process automatically on schedule.</span></li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M20 6 9 17l-5-5"/></svg><span><b>Secure &amp; reliable</b> &mdash; funds settle straight to your NextPay account.</span></li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M20 6 9 17l-5-5"/></svg><span><b>Cut declines</b> &mdash; automatic card updater keeps subscriptions running.</span></li>
+        </ul>
+        <a class="btn btn-primary" href="quiz.html" target="_blank" rel="noopener" style="margin-top:24px">Set up recurring billing <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- COMPARE HELP + CTA -->
+<section class="dualsec">
+  <div class="wrap">
+    <div class="dual-wrap">
+      <div class="dual-copy">
+        <span class="eyebrow">Smart pricing on every invoice</span>
+        <h2>Offer dual pricing on your invoices</h2>
+        <p>Give customers a choice when they pay — and protect your margin either way. Pay by bank transfer (ACH) and the processing fee is bypassed. Choose to pay by card, and the fee is passed to the customer. You collect the full invoice amount, every time.</p>
+        <a class="btn btn-primary" href="Fee Programs.html" target="_blank" rel="noopener">How dual pricing works <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+        <div class="dual-note">
+          <b>How the card price works</b>
+          <p>Dual pricing is its own program — not interchange or flat-rate. When a customer chooses to pay by card, the card price is higher to cover the fee, typically <b>3–4%</b> depending on your card mix and volume. If you see a lot of AMEX or other higher-fee cards and you're not on the full 4%, a small amount of processing cost can still apply. Your specialist will set the rate that fits your mix.</p>
+        </div>
+      </div>
+      <div class="dual-invoice"><image-slot id="x-dual-invoice" src="assets/invoicing/invoice-dual-pricing.jpg" fit="contain" radius="16" placeholder="Dual pricing invoice"></image-slot></div>
+    </div>
+  </div>
+</section>
+
+<!-- COMPARE HELP + CTA -->
+<section class="section" id="compare-help">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="eyebrow">Compare any invoicing tools</span>
+      <h2>Line them up side by side</h2>
+      <p>Tap <b>Add to compare</b> on any option above (up to 4) and we'll build a side-by-side spec table — features, pricing, integrations, and what each is best for.</p>
+    </div>
+    <div class="tband">
+      <span class="eyebrow" style="color:var(--teal-bright)">Still deciding?</span>
+      <h2>Answer 10 quick questions, get your invoicing setup</h2>
+      <p>The quiz matches your industry, volume, and setup to the right fit and the best rate — then a human helps you get running.</p>
+      <div class="thero-cta">
+        <a class="btn btn-primary" href="quiz.html" target="_blank" rel="noopener">Take the Quiz
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+        <a class="btn btn-ghost" href="#">Get a quote</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="ssec" data-backlink style="padding:6px 0 60px"><div class="wrap"><a class="link-teal" href="Accept Payments.html" style="display:inline-flex;align-items:center;gap:7px;font-weight:700"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" style="transform:rotate(180deg)"><path d="M5 12h14M13 6l6 6-6 6"/></svg>Back to Accept Payments</a></div></section>
+<div id="np-footer"></div>
+
+<!-- PRODUCT REGISTRY -->
+<script>
+window.NP_PRODUCTS = {"x-inv-fluidpay":{"name":"FluidPay","brand":"FluidPay","slot":"x-inv-fluidpay","href":"#inv-fluidpay","specs":{"Brand":"FluidPay","Best for":"Recurring & online","Type":"Gateway","Features":"Invoicing, Recurring, Pay links, Vault","Pricing":"$10/mo + 5¢","Highlight":"★ Recommended"}},"x-inv-ipospays":{"name":"iPOSPays","brand":"iPOSPays","slot":"x-inv-ipospays","href":"#inv-ipospays","specs":{"Brand":"iPOSPays","Best for":"Dual pricing","Type":"Gateway","Features":"Invoicing, Pay links, Recurring, Dual pricing","Pricing":"$6.95/mo + 5¢","Highlight":"Terminal-linked"}},"x-inv-valor":{"name":"Valor","brand":"Valor","slot":"x-inv-valor","href":"#inv-valor","specs":{"Brand":"Valor","Best for":"Online + in person","Type":"Gateway","Features":"PayNow links, Recurring, Virtual terminal, Dual pricing","Pricing":"$10/mo + 5¢","Highlight":"The Vault"}},"x-inv-authnet":{"name":"Authorize.net","brand":"Authorize.net","slot":"x-inv-authnet","href":"#inv-authnet","specs":{"Brand":"Authorize.net","Best for":"Universal","Type":"Gateway","Features":"Invoicing, Recurring (ARB), Virtual terminal, QuickBooks","Pricing":"$12/mo + 5¢","Highlight":"QuickBooks sync"}},"x-inv-nmi":{"name":"NMI","brand":"NMI","slot":"x-inv-nmi","href":"#inv-nmi","specs":{"Brand":"NMI","Best for":"Modular","Type":"Gateway","Features":"Invoicing, Recurring, Vault, Virtual terminal","Pricing":"$10/mo + 5¢","Highlight":"Card updater"}},"x-inv-luqra":{"name":"Luqra","brand":"Luqra","slot":"x-inv-luqra","href":"#inv-luqra","specs":{"Brand":"Luqra","Best for":"E-commerce","Type":"Gateway","Features":"Online checkout, Recurring, Fast funding","Pricing":"As low as 2.3% + 20¢","Highlight":"Fast funding"}},"x-inv-swipesimple":{"name":"SwipeSimple","brand":"SwipeSimple","slot":"x-inv-swipesimple","href":"#inv-swipesimple","specs":{"Brand":"SwipeSimple","Best for":"Invoicing & mobile","Type":"Payments app","Features":"Invoicing, ACH dual pricing, Text-to-Pay, QuickBooks","Pricing":"From $25/mo","Highlight":"Eliminates processing fees"}}};
+</script>
+<script src="js/nav.js"></script>
+<script src="js/image-slot.js"></script>
+<script src="js/nextpay.js"></script>
+<script>
+(function(){
+  const links=[...document.querySelectorAll('.brandnav a')];
+  const map=links.map(a=>({a,el:document.querySelector(a.getAttribute('href'))})).filter(x=>x.el);
+  function upd(){let cur=map[0];for(const m of map){if(m.el.getBoundingClientRect().top<160)cur=m;}links.forEach(a=>a.classList.remove('on'));if(cur)cur.a.classList.add('on');}
+  document.addEventListener('scroll',upd,{passive:true});upd();
+})();
+</script>
+</body>
+</html>

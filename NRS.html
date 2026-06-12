@@ -1,0 +1,151 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>NRS POS — Retail, Convenience & Bodega — NextPay</title>
+<link rel="stylesheet" href="css/nextpay.css">
+<link rel="stylesheet" href="css/solution.css">
+<style>
+.n-logo-hero{height:30px;width:auto;margin-bottom:18px;background:#fff;border-radius:8px;padding:8px 12px}
+.n-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;max-width:880px;margin:0 auto}
+.n-stat{background:#fff;border:1px solid var(--line);border-radius:16px;box-shadow:var(--shadow-sm);padding:26px;text-align:center}
+.n-stat .n{font-size:34px;font-weight:800;letter-spacing:-.02em;color:var(--teal-dark);line-height:1}
+.n-stat .l{font-size:13.5px;color:var(--slate);font-weight:600;margin-top:8px;line-height:1.35}
+.n-bundle{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;max-width:1000px;margin:0 auto}
+.n-chip{display:flex;align-items:center;gap:10px;background:#fff;border:1px solid var(--line);border-radius:12px;padding:14px 16px;font-weight:700;font-size:14.5px;box-shadow:var(--shadow-sm)}
+.n-chip .nd{width:9px;height:9px;border-radius:50%;background:var(--teal);flex:none}
+.n-two{display:grid;grid-template-columns:1fr 1fr;gap:22px;max-width:1000px;margin:0 auto}
+.n-plan{background:#fff;border:1px solid var(--line);border-radius:18px;box-shadow:var(--shadow-sm);padding:28px}
+.n-plan.feat{border:1.5px solid var(--teal);box-shadow:0 0 0 1px var(--teal),var(--shadow)}
+.n-plan h4{font-size:20px}
+.n-plan .pp{font-size:15px;color:var(--slate);margin:6px 0 14px}
+.n-plan ul{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:10px}
+.n-plan li{display:flex;gap:10px;align-items:flex-start;font-size:14.5px;color:var(--ink)}
+.n-plan li svg{width:18px;height:18px;flex:none;margin-top:1px;color:var(--teal)}
+@media(max-width:1000px){.n-stats,.n-bundle{grid-template-columns:1fr 1fr}.n-two{grid-template-columns:1fr}}
+</style>
+</head>
+<body data-page="nrs">
+<div id="np-nav"></div>
+
+<header class="shero" data-screen-label="NRS hero">
+  <div class="wrap">
+    <div class="shero-crumb"><a href="index.html">Home</a><span class="sep">/</span><a href="POS Systems.html">POS Systems</a><span class="sep">/</span><span style="color:#fff">NRS POS</span></div>
+    <div class="shero-grid">
+      <div>
+        <img class="n-logo-hero" src="assets/logos/nrs.png" alt="NRS — National Retail Solutions">
+        <span class="tag tag-teal">Convenience · Bodega · Tobacco &amp; Vape</span>
+        <h1>The register built for<br><em>independent retail.</em></h1>
+        <p class="lead">NRS POS is purpose-built for convenience stores, bodegas, liquor, and tobacco shops — fast checkout, age verification, deep inventory, a free loyalty program, and a free card reader with NRS Pay processing.</p>
+        <div class="shero-cta">
+          <a class="btn btn-primary" href="POS Systems.html#nrs">See pricing
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+          <a class="btn btn-ghost" href="quiz.html" target="_blank" rel="noopener">Take the Quiz</a>
+        </div>
+        <div class="shero-chips">
+          <span class="shero-chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg>Age verification</span>
+          <span class="shero-chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg>Free card reader</span>
+          <span class="shero-chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg>Tobacco scan data</span>
+        </div>
+      </div>
+      <div class="shero-media"><image-slot id="nrs-hero" src="assets/industries/convenience.png" shape="rounded" radius="24" fit="cover" placeholder="Drop an NRS / convenience store photo"></image-slot></div>
+    </div>
+  </div>
+</header>
+
+<!-- STATS -->
+<section class="ssec">
+  <div class="wrap">
+    <div class="n-stats">
+      <div class="n-stat"><div class="n">35,000+</div><div class="l">POS systems in stores nationwide</div></div>
+      <div class="n-stat"><div class="n">3.4M+</div><div class="l">BOSS Club loyalty customers</div></div>
+      <div class="n-stat"><div class="n">135M+</div><div class="l">transactions processed monthly</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- WHAT'S IN THE BUNDLE -->
+<section class="ssec ssec-soft">
+  <div class="wrap">
+    <div class="sec-head"><span class="eyebrow">Everything in the box</span><h2>A complete retail bundle</h2>
+      <p>One all-in-one register with the hardware an independent store actually needs.</p></div>
+    <div class="n-bundle">
+      <div class="n-chip"><span class="nd"></span>15&Prime; Retailer Touchscreen</div>
+      <div class="n-chip"><span class="nd"></span>Customer-Facing Screen</div>
+      <div class="n-chip"><span class="nd"></span>Barcode / ID Scanner</div>
+      <div class="n-chip"><span class="nd"></span>Thermal Receipt Printer</div>
+      <div class="n-chip"><span class="nd"></span>Heavy-Duty Cash Drawer</div>
+      <div class="n-chip"><span class="nd"></span>Free Card Reader (PAX A35)*</div>
+    </div>
+    <p class="center muted" style="font-size:12.5px;margin-top:14px">*Card reader provided free with NRS Pay credit card processing signup.</p>
+  </div>
+</section>
+
+<!-- FEATURES -->
+<section class="ssec">
+  <div class="wrap">
+    <div class="sec-head"><span class="eyebrow">Why retailers choose NRS</span><h2>Built for the counter, run from anywhere</h2></div>
+    <div class="sfeat">
+      <div class="fc"><div class="fic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M9.5 9.5a2.5 2.5 0 015 0c0 2-2.5 2-2.5 4M12 17h.01"/></svg></div><h4>Age verification</h4><p>Built-in License ID scanning for tobacco, vape, and liquor — no relying on cashiers to check IDs.</p></div>
+      <div class="fc"><div class="fic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 7l9-4 9 4v10l-9 4-9-4z"/><path d="M3 7l9 4 9-4M12 11v10"/></svg></div><h4>Inventory &amp; pricebook</h4><p>Track inventory, manage your pricebook, and get low-stock alerts with pre-programmed UPCs.</p></div>
+      <div class="fc"><div class="fic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="6" y="3" width="12" height="18" rx="2"/><path d="M11 18h2"/></svg></div><h4>Run it from anywhere</h4><p>The free 'My NRS Store' app and Merchant Portal let you track sales and adjust pricing 24/7.</p></div>
+      <div class="fc"><div class="fic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2l2.4 5 5.6.6-4 4 1 5.4L12 19l-5 3 1-5.4-4-4 5.6-.6z"/></svg></div><h4>Free loyalty (BOSS Club)</h4><p>Points and "Buy X, Get 1 Free" club programs that lift customer visits and spending 18–30%.</p></div>
+      <div class="fc"><div class="fic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 11l3 3L22 4M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11"/></svg></div><h4>Tobacco scan data</h4><p>Earn monthly buydowns and rewards from tobacco manufacturers based on your sales volume.</p></div>
+      <div class="fc"><div class="fic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg></div><h4>24/7 support</h4><p>Round-the-clock online help center (CampNRS) plus a live support team when you need it.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- PROCESSING PLANS -->
+<section class="ssec ssec-soft" id="pricing">
+  <div class="wrap">
+    <div class="sec-head"><span class="eyebrow">NRS Pay processing</span><h2>Two simple ways to process</h2>
+      <p>Accept credit, debit, EBT, and contactless — with a free card reader and fast funding.</p></div>
+    <div class="n-two">
+      <div class="n-plan">
+        <h4>Clean Rate</h4>
+        <p class="pp">A straightforward rate per transaction with no hidden fees.</p>
+        <ul>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg>2.49% + 10¢ per transaction</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg>$10/mo statement minimum</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg>Free EMV card reader</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg>No long-term contract lock-in</li>
+        </ul>
+      </div>
+      <div class="n-plan feat">
+        <h4>Cash Discount</h4>
+        <p class="pp">Pass the card fee to customers who pay by card — keep more of every sale.</p>
+        <ul>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg>$0 per-transaction processing</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg>$49.95/mo flat fee</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg>Monthly fee waived over $18k/mo volume</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg>Compliant signage included</li>
+        </ul>
+      </div>
+    </div>
+    <p class="center muted" style="font-size:12.5px;margin-top:18px">Add-ons: EBT Unlimited ($49.95/mo), eWIC, rapid same-day funding, and optional terminal assurance. NRS Pay contract required; terms subject to change.</p>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="ssec">
+  <div class="wrap">
+    <div class="sband">
+      <span class="eyebrow" style="color:var(--teal-bright)">Set up NRS with NextPay</span>
+      <h2>Get the register your store deserves</h2>
+      <p>We'll get NRS set up with the right processing plan for your volume — clean rate or cash discount — and a real person helps you launch.</p>
+      <div class="shero-cta">
+        <a class="btn btn-primary" href="quiz.html" target="_blank" rel="noopener">Take the Quiz
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+        <a class="btn btn-ghost" href="Statement Upload.html" target="_blank" rel="noopener">Free rate review</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div id="np-footer"></div>
+<script src="js/nav.js"></script>
+<script src="js/image-slot.js"></script>
+</body>
+</html>

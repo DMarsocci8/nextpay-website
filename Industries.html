@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Industries — NextPay</title>
+<link rel="stylesheet" href="css/nextpay.css"><link rel="stylesheet" href="css/solution.css">
+<style>
+.ind-groups{display:grid;grid-template-columns:repeat(2,1fr);gap:24px;max-width:1040px;margin:0 auto}
+.ind-group{background:#fff;border:1px solid var(--line);border-radius:18px;box-shadow:var(--shadow-sm);padding:26px 28px;scroll-margin-top:100px}
+.ind-group .ig-banner{display:block;width:100%;height:120px;border-radius:12px;overflow:hidden;margin-bottom:16px;background:var(--bg-soft)}
+.ind-group .ig-banner image-slot{width:100%;height:120px;display:block}
+.ind-group h3{font-size:13px;font-weight:800;text-transform:uppercase;letter-spacing:.07em;color:var(--teal-dark);margin-bottom:6px}
+.ind-group .ig-intro{font-size:14px;color:var(--slate);line-height:1.5;margin-bottom:14px}
+.ind-group a{display:block;padding:9px 12px;border-radius:10px;font-size:15.5px;font-weight:600;color:var(--ink);line-height:1.3}
+.ind-group a:hover{background:var(--bg-soft);color:var(--teal-dark)}
+.ind-note{max-width:760px;margin:36px auto 0;background:linear-gradient(120deg,var(--navy),var(--navy-3));color:#fff;border-radius:18px;padding:30px 34px;text-align:center}
+.ind-note h3{font-size:21px;margin-bottom:8px}
+.ind-note p{color:#c4d0db;font-size:15.5px;line-height:1.55;max-width:560px;margin:0 auto 18px}
+@media(max-width:760px){.ind-groups{grid-template-columns:1fr}}
+</style></head>
+<body data-page="industries-index">
+<div id="np-nav"></div>
+<header class="shero" data-screen-label="Industries hero"><div class="wrap">
+<div class="shero-crumb"><a href="index.html">Home</a><span class="sep">/</span><span style="color:#fff">Industries</span></div>
+<div class="shero-grid"><div>
+<span class="tag tag-teal">Industries</span>
+<h1>Built for your<br><em>line of work.</em></h1><p class="lead">We tune the hardware, software, and rate to how your industry actually runs. Find yours below — or if you don't see it, we'll still help.</p>
+<div class="shero-cta"><a class="btn btn-primary" href="quiz.html" target="_blank" rel="noopener">Take the Quiz <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a><a class="btn btn-ghost" href="#all">Browse industries</a></div>
+<div class="shero-chips"><span class="shero-chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg>Retail</span><span class="shero-chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg>Services</span><span class="shero-chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg>Food &amp; Beverage</span><span class="shero-chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg>Healthcare</span></div>
+</div><div class="shero-media"><image-slot id="ind-index-hero" src="assets/lifestyle/store-interior.jpg" shape="rounded" radius="24" fit="cover" placeholder="Drop an industries photo"></image-slot></div>
+</div></div></header>
+<section class="ssec" id="all"><div class="wrap">
+<div class="sec-head"><span class="eyebrow">All industries</span><h2>Find your business type</h2></div>
+<div class="ind-groups">
+  <div class="ind-group" id="retail"><div class="ig-banner"><image-slot id="ig-retail" src="assets/industries/retail.png" fit="cover" radius="12" placeholder="Retail"></image-slot></div><h3>Retail</h3><p class="ig-intro">From boutiques to liquor stores, retail runs on fast checkout, accurate inventory, and payments that keep lines moving. Find where your store starts.</p>
+    <a href="Boutique and Clothing.html">Boutique &amp; Clothing</a>
+    <a href="Convenience and Grocery.html">Convenience &amp; Grocery</a>
+    <a href="Liquor Stores.html">Liquor Stores</a>
+    <a href="Jewelry Stores.html">Jewelry Stores</a>
+    <a href="Specialty Retail.html">Specialty Retail</a>
+  </div>
+  <div class="ind-group" id="services"><div class="ig-banner"><image-slot id="ig-services" src="assets/industries/services.png" fit="cover" radius="12" placeholder="Services"></image-slot></div><h3>Services</h3><p class="ig-intro">Appointment-based and on-site service businesses need deposits, tap-to-pay in the field, and recurring billing. Pick your service type.</p>
+    <a href="Auto Repair and Automotive.html">Auto Repair &amp; Automotive</a>
+    <a href="Salons and Spas.html">Salons &amp; Spas</a>
+    <a href="Home Services.html">Home Services</a>
+    <a href="Fitness and Gyms.html">Fitness &amp; Gyms</a>
+    <a href="Professional Services.html">Professional Services</a>
+    <a href="Cleaning Services.html">Cleaning Services</a>
+  </div>
+  <div class="ind-group" id="food-beverage"><div class="ig-banner"><image-slot id="ig-food" src="assets/industries/pizzeria.png" fit="cover" radius="12" placeholder="Food &amp; Beverage"></image-slot></div><h3>Food &amp; Beverage</h3><p class="ig-intro">Restaurants, bars, and cafes need tableside ordering, tips, coursing, and speed at the rush. Choose your food &amp; beverage concept.</p>
+    <a href="Fine Dining.html">Restaurants</a>
+    <a href="Pizzerias.html">Pizzerias</a>
+    <a href="Food Trucks.html">Food Trucks</a>
+    <a href="Bars and Nightclubs.html">Bars &amp; Nightclubs</a>
+    <a href="QSR Cafes and Coffee Shops.html">QSR, Cafes &amp; Coffee Shops</a>
+    <a href="Bakeries Delis and Markets.html">Bakeries, Delis &amp; Markets</a>
+  </div>
+  <div class="ind-group" id="healthcare"><div class="ig-banner"><image-slot id="ig-health" src="assets/industries/health.png" fit="cover" radius="12" placeholder="Healthcare"></image-slot></div><h3>Healthcare &amp; Medical</h3><p class="ig-intro">Practices need patient-friendly billing, payment plans, and text-to-pay for both in-office and remote collection. Choose your specialty.</p>
+    <a href="Vision Care.html">Vision Care</a>
+    <a href="Dental.html">Dental</a>
+    <a href="Chiropractic and PT.html">Chiropractic &amp; PT</a>
+    <a href="Dermatology.html">Dermatology</a>
+    <a href="Mental Health.html">Mental Health</a>
+    <a href="Wellness Centers.html">Wellness Centers</a>
+  </div>
+</div>
+<div class="ind-note">
+  <h3>Don't see your business type?</h3>
+  <p>High-risk or specialty vertical, or something not listed here? Reach out — we'll see how we, or one of our partners, can help you get set up.</p>
+  <div class="shero-cta" style="justify-content:center"><a class="btn btn-primary" href="Contact.html">Contact us <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a><a class="btn btn-ghost" href="High Risk and Specialty.html">High Risk &amp; Specialty</a></div>
+</div>
+</div></section>
+<div id="np-footer"></div>
+<script src="js/nav.js"></script><script src="js/image-slot.js"></script>
+</body></html>

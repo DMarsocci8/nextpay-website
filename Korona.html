@@ -1,0 +1,177 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Korona POS — Retail, Convenience & Ticketing — NextPay</title>
+<link rel="stylesheet" href="css/nextpay.css">
+<link rel="stylesheet" href="css/solution.css">
+<style>
+.k-logo-hero{height:34px;width:auto;margin-bottom:18px;background:#fff;border-radius:8px;padding:6px 10px}
+.k-stats{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;max-width:1000px;margin:0 auto}
+.k-stat{background:#fff;border:1px solid var(--line);border-radius:16px;box-shadow:var(--shadow-sm);padding:26px;text-align:center}
+.k-stat .n{font-size:34px;font-weight:800;letter-spacing:-.02em;color:var(--teal-dark);line-height:1}
+.k-stat .l{font-size:13.5px;color:var(--slate);font-weight:600;margin-top:8px;line-height:1.35}
+.k-ind{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;max-width:1040px;margin:0 auto}
+.k-chip{display:flex;align-items:center;gap:10px;background:#fff;border:1px solid var(--line);border-radius:12px;padding:14px 16px;font-weight:700;font-size:14.5px;box-shadow:var(--shadow-sm)}
+.k-chip .kd{width:9px;height:9px;border-radius:50%;background:var(--teal);flex:none}
+.plan-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;max-width:1000px;margin:0 auto}
+.plan{background:#fff;border:1px solid var(--line);border-radius:16px;box-shadow:var(--shadow-sm);padding:28px;display:flex;flex-direction:column}
+.plan.feat{border:1.5px solid var(--teal);box-shadow:0 0 0 1px var(--teal),var(--shadow)}
+.plan h4{font-size:19px}
+.plan .plan-price{font-size:36px;font-weight:800;letter-spacing:-.02em;color:var(--ink);margin:8px 0 4px}
+.plan .plan-price span{font-size:14px;font-weight:600;color:var(--slate)}
+.plan>p{font-size:13.5px;color:var(--slate);line-height:1.5;margin-bottom:14px}
+.plan ul{list-style:none;margin:0 0 18px;padding:0;display:flex;flex-direction:column;gap:8px;flex:1}
+.plan li{display:flex;gap:9px;align-items:flex-start;font-size:13.5px;color:var(--ink)}
+.plan li svg{width:17px;height:17px;flex:none;margin-top:1px;color:var(--teal)}
+.plan .btn{width:100%;justify-content:center}
+@media(max-width:1000px){.k-stats,.k-ind{grid-template-columns:1fr 1fr}.plan-grid{grid-template-columns:1fr}}
+</style>
+</head>
+<body data-page="korona">
+<div id="np-nav"></div>
+
+<header class="shero" data-screen-label="Korona hero">
+  <div class="wrap">
+    <div class="shero-crumb"><a href="index.html">Home</a><span class="sep">/</span><a href="POS Systems.html">POS Systems</a><span class="sep">/</span><span style="color:#fff">Korona POS</span></div>
+    <div class="shero-grid">
+      <div>
+        <img class="k-logo-hero" src="assets/logos/korona.png" alt="Korona POS">
+        <span class="tag tag-teal">Retail · Convenience · Ticketing</span>
+        <h1>The POS that<br><em>bends to your business.</em></h1>
+        <p class="lead">Korona POS is a cloud retail platform built for high-volume and specialty businesses — convenience, liquor, smoke &amp; vape, grocery, wineries, QSR, and ticketed venues. No contracts, and packed with deep inventory and reporting.</p>
+        <div class="shero-cta">
+          <a class="btn btn-primary" href="POS Systems.html#korona">See pricing
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+          <a class="btn btn-ghost" href="quiz.html" target="_blank" rel="noopener">Take the Quiz</a>
+        </div>
+        <div class="shero-chips">
+          <span class="shero-chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg>No contracts</span>
+          <span class="shero-chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg>24/7 in-house support</span>
+        </div>
+      </div>
+      <div class="shero-media"><image-slot id="korona-hero" src="assets/industries/convenience.png" shape="rounded" radius="24" fit="cover" placeholder="Drop a Korona / retail photo"></image-slot></div>
+    </div>
+  </div>
+</header>
+
+<!-- STATS -->
+<section class="ssec">
+  <div class="wrap">
+    <div class="k-stats">
+      <div class="k-stat"><div class="n">$59</div><div class="l">per register / month to start</div></div>
+      <div class="k-stat"><div class="n">0</div><div class="l">contracts — cancel anytime</div></div>
+      <div class="k-stat"><div class="n">24/7</div><div class="l">in-house US support</div></div>
+      <div class="k-stat"><div class="n">4.7★</div><div class="l">average rating on G2 &amp; Capterra</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- WHY -->
+<section class="ssec ssec-soft">
+  <div class="wrap">
+    <div class="sec-head"><span class="eyebrow">Why merchants choose Korona</span><h2>Flexible, fair, and built for volume</h2></div>
+    <div class="sfeat">
+      <div class="fc"><div class="fic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 13l4 4L19 7"/><circle cx="12" cy="12" r="9"/></svg></div><h4>Transparent processing</h4><p>Powered by NextPay processing — we match or beat your current rate, with dual pricing available for zero card fees.</p></div>
+      <div class="fc"><div class="fic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 3h7l5 5v13H7z"/><path d="M14 3v5h5"/></svg></div><h4>No contracts, no hidden fees</h4><p>Flat month-to-month pricing with a money-back guarantee. Cancel anytime, no penalties.</p></div>
+      <div class="fc"><div class="fic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 7l9-4 9 4v10l-9 4-9-4z"/><path d="M3 7l9 4 9-4M12 11v10"/></svg></div><h4>Deep inventory</h4><p>Stock counts, automatic ordering, supplier interfaces, barcode automation, and ABC analysis built in.</p></div>
+      <div class="fc"><div class="fic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M9.5 9.5a2.5 2.5 0 015 0c0 2-2.5 2-2.5 4M12 17h.01"/></svg></div><h4>Age verification</h4><p>Built-in ID checks for liquor, smoke, vape, and other age-restricted retail — stay compliant at the register.</p></div>
+      <div class="fc"><div class="fic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 10l9-6 9 6M5 10v9M19 10v9M9 10v9M15 10v9M3 20h18"/></svg></div><h4>Multi-location &amp; franchise</h4><p>Manage many stores, per-store pricing, and franchise networks from one cloud dashboard.</p></div>
+      <div class="fc"><div class="fic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 3v18h18"/><path d="M7 14l3-3 3 3 5-6"/></svg></div><h4>Reporting &amp; loss prevention</h4><p>Real-time KPIs, slow/top-seller reports, and loss-prevention tools to protect your margin.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- INDUSTRIES -->
+<section class="ssec">
+  <div class="wrap">
+    <div class="sec-head"><span class="eyebrow">Built for these businesses</span><h2>Specialty retail is Korona's home turf</h2></div>
+    <div class="k-ind">
+      <div class="k-chip"><span class="kd"></span>Convenience &amp; Grocery</div>
+      <div class="k-chip"><span class="kd"></span>Liquor Stores</div>
+      <div class="k-chip"><span class="kd"></span>Smoke &amp; Vape</div>
+      <div class="k-chip"><span class="kd"></span>Dispensary &amp; CBD</div>
+      <div class="k-chip"><span class="kd"></span>Wineries</div>
+      <div class="k-chip"><span class="kd"></span>QSR &amp; Cafes</div>
+      <div class="k-chip"><span class="kd"></span>Bakeries</div>
+      <div class="k-chip"><span class="kd"></span>Ticketing &amp; Venues</div>
+      <div class="k-chip"><span class="kd"></span>Museums</div>
+      <div class="k-chip"><span class="kd"></span>Amusement Parks</div>
+      <div class="k-chip"><span class="kd"></span>Franchises</div>
+      <div class="k-chip"><span class="kd"></span>Multi-Location Retail</div>
+    </div>
+  </div>
+</section>
+
+<!-- PRICING -->
+<section class="ssec ssec-soft" id="pricing">
+  <div class="wrap">
+    <div class="sec-head"><span class="eyebrow">Pricing</span><h2>Simple plans, priced per register</h2>
+      <p>Flat monthly rate, no contracts. Add modules à la carte as your needs grow.</p></div>
+    <div class="plan-grid">
+      <div class="plan">
+        <h4>Core</h4>
+        <div class="plan-price">$59<span>/mo per register</span></div>
+        <p>Everything to run the register and the basics of a modern retail business.</p>
+        <ul>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg>Core checkout &amp; product database</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg>KPI reports &amp; dashboard</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg>eCommerce, promotions &amp; gift cards</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg>Unlimited users &amp; sales</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg>24/7 support</li>
+        </ul>
+        <a class="btn btn-outline" href="POS Systems.html#korona">Get started</a>
+      </div>
+      <div class="plan feat">
+        <h4>Retail</h4>
+        <div class="plan-price">$79<span>/mo per register</span></div>
+        <p>Core plus the inventory and customer tools most retailers need.</p>
+        <ul>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg>Everything in Core</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg>Inventory counts &amp; stock management</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg>Barcode automations</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg>Supplier interface &amp; ordering</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg>Customer management</li>
+        </ul>
+        <a class="btn btn-primary" href="POS Systems.html#korona">Get started</a>
+      </div>
+      <div class="plan">
+        <h4>Plus</h4>
+        <div class="plan-price">$99<span>/mo per register</span></div>
+        <p>Advanced control for high-volume and multi-store operations.</p>
+        <ul>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg>Everything in Retail</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg>Advanced stock &amp; per-store pricing</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg>Custom ABC analysis</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg>Movement &amp; financial reports</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg>Accounting export</li>
+        </ul>
+        <a class="btn btn-outline" href="POS Systems.html#korona">Get started</a>
+      </div>
+    </div>
+    <p class="center muted" style="font-size:13.5px;margin-top:24px">Optional modules: KORONA Food (+$10/mo), Invoicing (+$10/mo), Ticketing (+$50/mo per gate), Franchise (+$30/mo), Integration (+$45/mo per token).</p>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="ssec">
+  <div class="wrap">
+    <div class="sband">
+      <span class="eyebrow" style="color:var(--teal-bright)">Run Korona on NextPay's best rate</span>
+      <h2>Get Korona set up the right way</h2>
+      <p>We'll pair Korona's flexible software with transparent processing — match or beat your current rate, and a real person helps you launch.</p>
+      <div class="shero-cta">
+        <a class="btn btn-primary" href="quiz.html" target="_blank" rel="noopener">Take the Quiz
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+        <a class="btn btn-ghost" href="Statement Upload.html" target="_blank" rel="noopener">Free rate review</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div id="np-footer"></div>
+<script src="js/nav.js"></script>
+<script src="js/image-slot.js"></script>
+</body>
+</html>

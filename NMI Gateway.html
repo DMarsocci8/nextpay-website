@@ -1,0 +1,145 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>NMI — The Modular Payment Gateway — NextPay</title>
+<link rel="stylesheet" href="css/nextpay.css">
+<link rel="stylesheet" href="css/solution.css">
+<style>
+.nmi-logo-hero{height:30px;width:auto;margin-bottom:18px;background:#fff;border-radius:8px;padding:8px 12px}
+.nmi-stats{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;max-width:1000px;margin:0 auto}
+.nmi-stat{background:#fff;border:1px solid var(--line);border-radius:16px;box-shadow:var(--shadow-sm);padding:26px;text-align:center}
+.nmi-stat .n{font-size:34px;font-weight:800;letter-spacing:-.02em;color:var(--teal-dark);line-height:1}
+.nmi-stat .l{font-size:13.5px;color:var(--slate);font-weight:600;margin-top:8px;line-height:1.35}
+.mod-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;max-width:1040px;margin:0 auto}
+.mod-chip{display:flex;align-items:center;gap:10px;background:#fff;border:1px solid var(--line);border-radius:12px;padding:14px 16px;font-weight:700;font-size:14px;box-shadow:var(--shadow-sm)}
+.mod-chip .kd{width:9px;height:9px;border-radius:50%;background:var(--teal);flex:none}
+.nmi-steps{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;max-width:1000px;margin:0 auto}
+.nmi-step{background:#fff;border:1px solid var(--line);border-radius:16px;box-shadow:var(--shadow-sm);padding:28px}
+.nmi-step .sn{width:38px;height:38px;border-radius:11px;background:var(--navy);color:#fff;display:grid;place-items:center;font-weight:800;font-size:16px;margin-bottom:14px}
+.nmi-step h4{font-size:18px;margin-bottom:6px}
+.nmi-step p{font-size:14px;color:var(--slate);line-height:1.5}
+@media(max-width:1000px){.nmi-stats,.mod-grid{grid-template-columns:1fr 1fr}.nmi-steps{grid-template-columns:1fr}}
+</style>
+</head>
+<body data-page="nmi-gateway">
+<div id="np-nav"></div>
+
+<header class="shero" data-screen-label="NMI Gateway hero">
+  <div class="wrap">
+    <div class="shero-crumb"><a href="index.html">Home</a><span class="sep">/</span><a href="Online Gateways.html">Online Payments</a><span class="sep">/</span><span style="color:#fff">NMI Gateway</span></div>
+    <div class="shero-grid">
+      <div>
+        <img class="nmi-logo-hero" src="assets/logos/nmi.png" alt="NMI">
+        <span class="tag tag-teal">Online Payments · Gateway</span>
+        <h1>The modular payment gateway,<br><em>built around how you sell.</em></h1>
+        <p class="lead">NMI is a flexible, widely-integrated gateway that lets you turn on only the pieces you need — online checkout, in-store, mobile and self-service — with tokenization, recurring billing, fraud tools and 200+ processor connections. Operating since 2001 and certified across the US, UK and EU.</p>
+        <div class="shero-cta">
+          <a class="btn btn-primary" href="Online Gateways.html#gw-nmi">See pricing
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+          <a class="btn btn-ghost" href="quiz.html" target="_blank" rel="noopener">Take the Quiz</a>
+        </div>
+        <div class="shero-chips">
+          <span class="shero-chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg>Omnichannel</span>
+          <span class="shero-chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg>200+ processors</span>
+        </div>
+      </div>
+      <div class="shero-media"><image-slot id="nmi-hero" src="assets/gateways/nmi-dashboard.png" shape="rounded" radius="24" fit="cover" placeholder="Drop an NMI dashboard image"></image-slot></div>
+    </div>
+  </div>
+</header>
+
+<!-- STATS -->
+<section class="ssec">
+  <div class="wrap">
+    <div class="nmi-stats">
+      <div class="nmi-stat"><div class="n">1.2M+</div><div class="l">active merchants</div></div>
+      <div class="nmi-stat"><div class="n">6.5B+</div><div class="l">transactions a year</div></div>
+      <div class="nmi-stat"><div class="n">200+</div><div class="l">payment processors</div></div>
+      <div class="nmi-stat"><div class="n">125+</div><div class="l">shopping-cart integrations</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- MODULAR -->
+<section class="ssec ssec-soft">
+  <div class="wrap">
+    <div class="sec-head"><span class="eyebrow">Modular by design</span><h2>Turn on only what you need</h2>
+      <p>NMI is built as building blocks. Start with the gateway and add modules as you grow — no rip-and-replace, no paying for features you don't use.</p></div>
+    <div class="nmi-steps">
+      <div class="nmi-step"><div class="sn">1</div><h4>Connect</h4><p>Plug into 200+ processors and 125+ shopping carts, or migrate from another gateway with the drop-in Gateway Emulator — no software rewrite.</p></div>
+      <div class="nmi-step"><div class="sn">2</div><h4>Compose</h4><p>Add the modules that fit: Customer Vault, recurring billing, invoicing, fraud screening, Level III data, and reporting — à la carte.</p></div>
+      <div class="nmi-step"><div class="sn">3</div><h4>Scale</h4><p>Manage multiple MIDs on one account, route transactions intelligently, and sell online, in-store, mobile and self-service from a single gateway.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- FEATURES -->
+<section class="ssec">
+  <div class="wrap">
+    <div class="sec-head"><span class="eyebrow">Everything in the box</span><h2>The modules that power NMI</h2></div>
+    <div class="sfeat">
+      <div class="fc"><div class="fic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.5 2.5 2.5 15.5 0 18M12 3c-2.5 2.5-2.5 15.5 0 18"/></svg></div><h4>Sell Everywhere</h4><p>Online, in-store, mobile and self-service — EMV and contactless from a single gateway.</p></div>
+      <div class="fc"><div class="fic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="10" width="16" height="11" rx="2"/><path d="M8 10V7a4 4 0 0 1 8 0v3"/></svg></div><h4>Customer Vault</h4><p>Tokenizes cardholder data so you can repeat transactions without ever storing card numbers.</p></div>
+      <div class="fc"><div class="fic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12a9 9 0 0 1 15-6.7L21 8"/><path d="M21 3v5h-5"/><path d="M21 12a9 9 0 0 1-15 6.7L3 16"/><path d="M3 21v-5h5"/></svg></div><h4>Recurring Billing</h4><p>Subscriptions and scheduled payments with the Automatic Card Updater to cut declines.</p></div>
+      <div class="fc"><div class="fic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 3h10a2 2 0 0 1 2 2v16l-3-2-2 2-2-2-2 2-2-2-2 2V5a2 2 0 0 1 2-2z"/><path d="M9 8h6M9 12h6"/></svg></div><h4>Electronic Invoicing</h4><p>Send an invoice in minutes and collect payment in one click, with reminders and tracking.</p></div>
+      <div class="fc"><div class="fic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 17l6-6 4 4 8-8"/><path d="M21 7v5h-5"/></svg></div><h4>Level III Advantage</h4><p>Auto-qualifies B2B and B2G transactions for lower Level II/III interchange rates.</p></div>
+      <div class="fc"><div class="fic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3 5 6v5c0 4.5 3 8 7 10 4-2 7-5.5 7-10V6z"/><path d="m9.5 12 2 2 3.5-4"/></svg></div><h4>Advanced Fraud Protection</h4><p>AI-driven, real-time risk screening with customizable rules and Payer Authentication.</p></div>
+      <div class="fc"><div class="fic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 7h11l-3-3M20 17H9l3 3"/></svg></div><h4>Gateway Emulator</h4><p>Migrate from another gateway without reworking software — drop-in API compatibility.</p></div>
+      <div class="fc"><div class="fic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="9" cy="8" r="3"/><path d="M3 20a6 6 0 0 1 12 0"/><path d="M16 5.5a3 3 0 0 1 0 5.5M19 20a6 6 0 0 0-3.5-5.4"/></svg></div><h4>Multi-MID &amp; Routing</h4><p>Manage multiple MIDs on one account with consolidated reporting and smart transaction routing.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- INTEGRATIONS -->
+<section class="ssec ssec-soft">
+  <div class="wrap">
+    <div class="sec-head"><span class="eyebrow">Connects to what you already use</span><h2>Built to plug in anywhere</h2></div>
+    <div class="mod-grid">
+      <div class="mod-chip"><span class="kd"></span>Hosted Payment Page</div>
+      <div class="mod-chip"><span class="kd"></span>Virtual Terminal</div>
+      <div class="mod-chip"><span class="kd"></span>Mobile SDKs</div>
+      <div class="mod-chip"><span class="kd"></span>QuickBooks</div>
+      <div class="mod-chip"><span class="kd"></span>125+ Shopping Carts</div>
+      <div class="mod-chip"><span class="kd"></span>ACH / eCheck</div>
+      <div class="mod-chip"><span class="kd"></span>Three-Step Redirect API</div>
+      <div class="mod-chip"><span class="kd"></span>White-Label for ISVs</div>
+    </div>
+  </div>
+</section>
+
+<!-- PRICING NOTE -->
+<section class="ssec">
+  <div class="wrap">
+    <div class="sec-head"><span class="eyebrow">Pricing through NextPay</span><h2>Simple gateway pricing, your processing matched</h2>
+      <p>Run NMI on your NextPay merchant account — one bill, one support line. We'll review your statement and match or beat your effective processing rate.</p></div>
+    <div class="nmi-stats" style="grid-template-columns:repeat(2,1fr);max-width:620px">
+      <div class="nmi-stat"><div class="n">$10<span style="font-size:15px;font-weight:600;color:var(--slate)">/mo</span></div><div class="l">gateway access</div></div>
+      <div class="nmi-stat"><div class="n">5¢<span style="font-size:15px;font-weight:600;color:var(--slate)"> /txn</span></div><div class="l">per transaction</div></div>
+    </div>
+    <p class="center muted" style="font-size:13.5px;margin-top:20px">Modules like Customer Vault, recurring billing and fraud may carry add-on fees — ask us for a tailored quote.</p>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="ssec">
+  <div class="wrap">
+    <div class="sband">
+      <span class="eyebrow" style="color:var(--teal-bright)">Run NMI on NextPay's best rate</span>
+      <h2>Build the gateway that fits your business</h2>
+      <p>We'll set up NMI with the right modules and transparent processing — match or beat your current rate, and a real person helps you launch.</p>
+      <div class="shero-cta">
+        <a class="btn btn-primary" href="quiz.html" target="_blank" rel="noopener">Take the Quiz
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+        <a class="btn btn-ghost" href="Statement Upload.html" target="_blank" rel="noopener">Free rate review</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div id="np-footer"></div>
+<script src="js/nav.js"></script>
+<script src="js/image-slot.js"></script>
+</body>
+</html>

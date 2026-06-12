@@ -1,0 +1,302 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Agent Portal — NextPay (internal)</title>
+<link rel="stylesheet" href="css/nextpay.css">
+<link rel="stylesheet" href="css/solution.css">
+<style>
+/* gate */
+.ag-gate{min-height:100vh;display:grid;place-items:center;background:var(--navy);padding:24px}
+.ag-card{background:#fff;border-radius:22px;box-shadow:var(--shadow-lg);padding:42px 40px;width:min(420px,94vw);text-align:center}
+.ag-card .mark{width:54px;height:54px;border-radius:15px;background:linear-gradient(135deg,var(--teal-bright),var(--teal-dark));display:grid;place-items:center;margin:0 auto 18px;color:#fff}
+.ag-card .mark svg{width:26px;height:26px}
+.ag-card h1{font-size:24px}
+.ag-card p{color:var(--slate);font-size:14.5px;margin-top:8px}
+.ag-card input[type=password]{width:100%;font-family:inherit;font-size:16px;padding:14px 16px;border:1.5px solid var(--line);border-radius:12px;margin-top:20px;text-align:center;letter-spacing:.1em}
+.ag-card input:focus{outline:none;border-color:var(--teal)}
+.ag-remember{display:flex;align-items:center;gap:8px;justify-content:center;margin-top:14px;font-size:13.5px;color:var(--slate)}
+.ag-remember input{width:16px;height:16px;accent-color:var(--teal)}
+.ag-err{display:none;color:#c2402e;font-size:13.5px;font-weight:600;margin-top:12px}
+.ag-card .btn{width:100%;justify-content:center;margin-top:18px}
+/* portal */
+#portal-root{display:none}
+.ap-top{background:var(--navy);color:#fff;position:sticky;top:0;z-index:50}
+.ap-top .wrap{display:flex;align-items:center;gap:18px;height:66px;max-width:1200px;margin:0 auto;padding:0 24px}
+.ap-top .brand{display:flex;align-items:center;gap:9px;font-weight:800;font-size:18px}
+.ap-top .brand b{color:var(--teal-bright)}
+.ap-top .badge{font-size:11px;font-weight:800;text-transform:uppercase;letter-spacing:.08em;background:rgba(31,194,166,.18);color:var(--teal-bright);padding:5px 11px;border-radius:999px}
+.ap-top .sp{flex:1}
+.ap-top a.site{color:#cdd8e2;font-size:14px;font-weight:600}.ap-top a.site:hover{color:#fff}
+.ap-top button#agent-logout{background:rgba(255,255,255,.1);color:#fff;border:0;border-radius:999px;padding:9px 16px;font-family:inherit;font-weight:700;font-size:13.5px;cursor:pointer}
+.ap-top button#agent-logout:hover{background:rgba(255,255,255,.18)}
+.ap-tabs{background:#fff;border-bottom:1px solid var(--line);position:sticky;top:66px;z-index:49}
+.ap-tabs .wrap{display:flex;gap:6px;max-width:1200px;margin:0 auto;padding:0 24px;overflow:auto}
+.ap-tab{padding:15px 18px;font-family:inherit;font-weight:700;font-size:14.5px;color:var(--slate);background:none;border:0;border-bottom:3px solid transparent;cursor:pointer;white-space:nowrap}
+.ap-tab:hover{color:var(--teal-dark)}
+.ap-tab.on{color:var(--navy);border-bottom-color:var(--teal)}
+.ap-wrap{max-width:1200px;margin:0 auto;padding:38px 24px 80px}
+.ap-pane{display:none}.ap-pane.on{display:block}
+.ap-h{font-size:26px;letter-spacing:-.02em;margin-bottom:6px}
+.ap-sub{color:var(--slate);font-size:15px;margin-bottom:26px}
+.ap-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.ap-grid.g2{grid-template-columns:repeat(2,1fr)}
+.ap-tile{background:#fff;border:1px solid var(--line);border-radius:16px;box-shadow:var(--shadow-sm);padding:24px;display:flex;flex-direction:column;gap:8px}
+.ap-tile h3{font-size:18px}
+.ap-tile p{font-size:13.5px;color:var(--slate);line-height:1.5;flex:1}
+.ap-tile .ic{width:46px;height:46px;border-radius:12px;background:rgba(20,161,140,.12);display:grid;place-items:center;color:var(--teal-dark);margin-bottom:6px}
+.ap-tile .ic svg{width:23px;height:23px}
+.ap-tile a.go{color:var(--teal-dark);font-weight:700;font-size:14px;display:inline-flex;align-items:center;gap:6px;margin-top:4px}
+.ap-tile a.go svg{width:14px;height:14px}
+/* tables */
+.ap-table{border:1px solid var(--line);border-radius:14px;overflow:hidden;background:#fff;box-shadow:var(--shadow-sm);margin-bottom:26px}
+.ap-table .cap{background:var(--navy);color:#fff;padding:14px 20px;font-weight:800;font-size:15px}
+.ap-tr{display:grid;grid-template-columns:1.6fr 1fr 1fr;gap:12px;padding:12px 20px;border-top:1px solid var(--line);font-size:14px;align-items:center}
+.ap-tr.h{background:var(--bg-soft);font-weight:800;font-size:11.5px;text-transform:uppercase;letter-spacing:.05em;color:var(--slate)}
+.ap-tr span:nth-child(2),.ap-tr span:nth-child(3){text-align:right;font-weight:700}
+.ap-tr em{display:block;font-style:normal;font-size:12px;color:var(--slate);font-weight:400}
+/* calculators */
+.calc{background:#fff;border:1px solid var(--line);border-radius:18px;box-shadow:var(--shadow-sm);padding:26px;margin-bottom:22px}
+.calc h3{font-size:19px;margin-bottom:4px}
+.calc .cd{font-size:13.5px;color:var(--slate);margin-bottom:18px}
+.calc-row{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.calc-field{display:flex;flex-direction:column;gap:6px;margin-bottom:14px}
+.calc-field label{font-size:13px;font-weight:700}
+.calc-field input{font-family:inherit;font-size:16px;padding:12px 14px;border:1.5px solid var(--line);border-radius:11px}
+.calc-field input:focus{outline:none;border-color:var(--teal)}
+.calc-out{display:flex;gap:14px;flex-wrap:wrap;margin-top:8px}
+.calc-stat{flex:1;min-width:150px;background:var(--bg-soft);border-radius:13px;padding:18px}
+.calc-stat.hi{background:rgba(20,161,140,.1);box-shadow:inset 0 0 0 1.5px var(--teal)}
+.calc-stat .k{font-size:12px;font-weight:700;color:var(--slate);text-transform:uppercase;letter-spacing:.04em}
+.calc-stat .v{font-size:26px;font-weight:800;letter-spacing:-.02em;color:var(--ink);margin-top:4px}
+.calc-stat.hi .v{color:var(--teal-dark)}
+.promo{background:linear-gradient(120deg,var(--navy),var(--navy-3));color:#fff;border-radius:16px;padding:24px 26px;margin-bottom:16px;position:relative;overflow:hidden}
+.promo .tag{position:absolute;top:16px;right:16px;background:var(--teal);color:#fff;font-size:11px;font-weight:800;text-transform:uppercase;letter-spacing:.06em;padding:5px 11px;border-radius:999px}
+.promo h3{color:#fff;font-size:20px}
+.promo p{color:#c4d0db;font-size:14px;margin-top:6px;max-width:640px}
+@media(max-width:900px){.ap-grid,.ap-grid.g2{grid-template-columns:1fr}.calc-row{grid-template-columns:1fr}.ap-tr{grid-template-columns:1fr 80px 80px;font-size:13px}}
+.ap-block{font-size:13px;font-weight:800;text-transform:uppercase;letter-spacing:.06em;color:var(--teal-dark);margin:32px 0 16px}
+.drivebar{display:flex;align-items:center;justify-content:space-between;gap:20px;background:linear-gradient(120deg,var(--navy),var(--navy-3));color:#fff;border-radius:16px;padding:22px 26px;margin-bottom:10px;text-decoration:none}
+.drivebar .db-l{display:flex;align-items:center;gap:16px}
+.drivebar .db-ic{width:46px;height:46px;border-radius:12px;background:rgba(31,194,166,.2);display:grid;place-items:center;color:var(--teal-bright);flex:none}
+.drivebar .db-ic svg{width:24px;height:24px}
+.drivebar b{font-size:17px;display:block}
+.drivebar small{font-size:13px;color:#c4d0db;display:block;margin-top:3px}
+.drivebar .db-go{display:inline-flex;align-items:center;gap:8px;background:var(--teal);color:#fff;font-weight:700;font-size:14.5px;padding:11px 18px;border-radius:999px;white-space:nowrap;flex:none}
+.drivebar .db-go svg{width:16px;height:16px}
+a.go[data-jump]{cursor:pointer}
+@media(max-width:680px){.drivebar{flex-direction:column;align-items:flex-start}}
+</style>
+</head>
+<body>
+
+<!-- GATE -->
+<div class="ag-gate" id="agent-gate">
+  <div class="ag-card">
+    <div class="mark"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V7a4 4 0 018 0v4"/></svg></div>
+    <h1>Agent Portal</h1>
+    <p>Internal sales resource. Enter the team passcode to continue.</p>
+    <form id="gate-form">
+      <input type="password" id="gate-pass" placeholder="Team passcode" autocomplete="off" autofocus>
+      <label class="ag-remember"><input type="checkbox" id="gate-remember">Remember me on this device</label>
+      <div class="ag-err" id="gate-err">Incorrect passcode — try again.</div>
+      <button class="btn btn-primary" type="submit">Enter Portal</button>
+    </form>
+    <p style="margin-top:18px;font-size:12px"><a class="link-teal" href="index.html">← Back to nextpaypos.com</a></p>
+  </div>
+</div>
+
+<!-- PORTAL -->
+<div id="portal-root">
+  <div class="ap-top">
+    <div class="wrap">
+      <span class="brand">Next<b>Pay</b></span><span class="badge">Agent Portal</span>
+      <span class="sp"></span>
+      <a class="site" href="index.html" target="_blank" rel="noopener">View site ↗</a>
+      <button id="agent-logout">Log out</button>
+    </div>
+  </div>
+  <div class="ap-tabs">
+    <div class="wrap">
+      <button class="ap-tab on" data-tab="pricing">Pricing</button>
+      <button class="ap-tab" data-tab="calc">Calculators</button>
+      <button class="ap-tab" data-tab="promos">Promotions</button>
+      <button class="ap-tab" data-tab="resources">Sales Resources</button>
+      <button class="ap-tab" data-tab="training">Training</button>
+    </div>
+  </div>
+
+  <div class="ap-wrap">
+
+    <!-- PRICING -->
+    <div class="ap-pane on" id="pane-pricing">
+      <h2 class="ap-h">Pricing &amp; rate sheets</h2>
+      <p class="ap-sub">Internal rack rates, SaaS tiers, and hardware costs for every product. Confidential — do not share full sheets with merchants.</p>
+      <div class="ap-grid">
+        <div class="ap-tile"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="5" y="3" width="14" height="18" rx="2"/><path d="M9 7h6M9 11h6"/></svg></div><h3>POS Systems</h3><p>Software tiers, hardware buy/placement, processing models for all 9 POS brands.</p><a class="go" href="Pricing.html#pos" target="_blank" rel="noopener">Open POS pricing <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></div>
+        <div class="ap-tile"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 10h18"/></svg></div><h3>Terminals</h3><p>PAX, Dejavoo, Valor, Clover, Square, SwipeSimple — buy/lease pricing.</p><a class="go" href="Pricing.html#terminals" target="_blank" rel="noopener">Open terminal pricing <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></div>
+        <div class="ap-tile"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 5L5 19"/><circle cx="7.5" cy="7.5" r="2"/><circle cx="16.5" cy="16.5" r="2"/></svg></div><h3>Processing models</h3><p>Dual pricing (3–4% card), interchange-plus, flat rate — and when to pitch each.</p><a class="go" href="Pricing.html#processing" target="_blank" rel="noopener">Open processing <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></div>
+      </div>
+
+      <div style="height:30px"></div>
+      <div class="ap-table">
+        <div class="cap">Square — SaaS tiers (per location)</div>
+        <div class="ap-tr h"><span>Plan</span><span>Price</span><span>Note</span></div>
+        <div class="ap-tr"><span>Free<em>POS, online site, invoicing, booking</em></span><span>$0/mo</span><span>30-day trial</span></div>
+        <div class="ap-tr"><span>Plus<em>Industry features, loyalty, marketing</em></span><span>$49/mo</span><span>Recommended</span></div>
+        <div class="ap-tr"><span>Premium<em>24/7 support, lowest fees, no GC load fee</em></span><span>$149/mo</span><span>$500k+ = custom</span></div>
+      </div>
+      <div class="ap-table">
+        <div class="cap">Square — implementation packages (one-time)</div>
+        <div class="ap-tr h"><span>Package</span><span>Cost</span><span>Go-live</span></div>
+        <div class="ap-tr"><span>Plus Package</span><span>$699</span><span>~5 days</span></div>
+        <div class="ap-tr"><span>Premium Implementation</span><span>$1,499</span><span>~10 days</span></div>
+        <div class="ap-tr"><span>Onsite Package</span><span>$2,199</span><span>~10 days</span></div>
+        <div class="ap-tr"><span>Payroll Impl. · Optimization Call · Migrations</span><span>$250 / $159 / $149</span><span>varies</span></div>
+      </div>
+      <p class="ap-sub" style="margin-top:4px">Full Square hardware &amp; accessory list lives on the <a class="link-teal" href="Square.html" target="_blank" rel="noopener">Square page</a>. Other brand sheets: <a class="link-teal" href="Korona.html" target="_blank" rel="noopener">Korona</a> · <a class="link-teal" href="NRS.html" target="_blank" rel="noopener">NRS</a> · <a class="link-teal" href="Chively.html" target="_blank" rel="noopener">Chively</a>.</p>
+    </div>
+
+    <!-- CALCULATORS -->
+    <div class="ap-pane" id="pane-calc">
+      <h2 class="ap-h">Calculators</h2>
+      <p class="ap-sub">Quick math for the pitch — savings, effective rate, and your commission.</p>
+
+      <div class="calc">
+        <h3>Dual pricing savings</h3>
+        <div class="cd">Show a merchant what they keep by moving card fees off their books.</div>
+        <div class="calc-row">
+          <div class="calc-field"><label>Monthly card volume ($)</label><input type="number" id="dp-vol" value="30000"></div>
+          <div class="calc-field"><label>Current effective rate (%)</label><input type="number" id="dp-rate" value="3.2" step="0.1"></div>
+        </div>
+        <div class="calc-out">
+          <div class="calc-stat"><div class="k">Paying now / mo</div><div class="v" id="dp-current">$0</div></div>
+          <div class="calc-stat hi"><div class="k">Saved / mo</div><div class="v" id="dp-saved">$0</div></div>
+          <div class="calc-stat hi"><div class="k">Saved / year</div><div class="v" id="dp-year">$0</div></div>
+        </div>
+        <input type="hidden" id="dp-fee" value="0">
+      </div>
+
+      <div class="calc">
+        <h3>Effective rate</h3>
+        <div class="cd">Read a statement: total fees ÷ total volume.</div>
+        <div class="calc-row">
+          <div class="calc-field"><label>Total monthly fees ($)</label><input type="number" id="er-fees" value="900"></div>
+          <div class="calc-field"><label>Total monthly card volume ($)</label><input type="number" id="er-vol" value="30000"></div>
+        </div>
+        <div class="calc-out"><div class="calc-stat hi"><div class="k">Effective rate</div><div class="v" id="er-rate">0%</div></div></div>
+      </div>
+
+      <div class="calc">
+        <h3>Agent commission / residual</h3>
+        <div class="cd">Estimate monthly residual on a deal. BPS = basis points of profit margin you keep.</div>
+        <div class="calc-row">
+          <div class="calc-field"><label>Merchant monthly volume ($)</label><input type="number" id="cm-vol" value="50000"></div>
+          <div class="calc-field"><label>Your margin (bps)</label><input type="number" id="cm-bps" value="40"></div>
+        </div>
+        <div class="calc-field" style="max-width:50%"><label>Your split (%)</label><input type="number" id="cm-split" value="50"></div>
+        <div class="calc-out">
+          <div class="calc-stat"><div class="k">Residual / mo</div><div class="v" id="cm-monthly">$0</div></div>
+          <div class="calc-stat hi"><div class="k">Residual / year</div><div class="v" id="cm-year">$0</div></div>
+        </div>
+      </div>
+
+      <div class="calc" style="border:1.5px solid var(--teal)">
+        <h3>Shift4 — Flat Rate Plus</h3>
+        <div class="cd">Match a merchant's current effective rate and show their savings on Shift4 Flat Rate Plus. Base transaction fee is 15¢. <b>Internal — do not share the full sheet with merchants.</b></div>
+        <div class="calc-row">
+          <div class="calc-field"><label>Total monthly volume ($)</label><input type="number" id="s4-vol" value="50000"></div>
+          <div class="calc-field"><label>Total monthly transactions</label><input type="number" id="s4-tx" value="1400"></div>
+        </div>
+        <div class="calc-row">
+          <div class="calc-field"><label>Current total fees / mo ($)</label><input type="number" id="s4-fees" value="1600"></div>
+          <div class="calc-field"><label>Current effective rate</label><input type="text" id="s4-cureff" readonly style="background:var(--bg-soft);font-weight:700"></div>
+        </div>
+        <div class="calc-row">
+          <div class="calc-field"><label>Shift4 Flat Rate Plus (%)</label><input type="number" id="s4-rate" value="2.49" step="0.01"></div>
+          <div class="calc-field"><label>Shift4 transaction fee ($)</label><input type="number" id="s4-tf" value="0.15" step="0.01"></div>
+        </div>
+        <div class="calc-out">
+          <div class="calc-stat"><div class="k">Shift4 fees / mo</div><div class="v" id="s4-fee">$0</div></div>
+          <div class="calc-stat"><div class="k">Shift4 effective</div><div class="v" id="s4-eff">0%</div></div>
+          <div class="calc-stat hi"><div class="k">Monthly savings</div><div class="v" id="s4-msave">$0</div></div>
+        </div>
+        <div class="calc-out" style="margin-top:12px">
+          <div class="calc-stat hi"><div class="k">Annual savings</div><div class="v" id="s4-ysave">$0</div></div>
+          <div class="calc-stat hi"><div class="k">3-year savings</div><div class="v" id="s4-3save">$0</div></div>
+        </div>
+        <p class="cd" id="s4-warn" style="margin:14px 0 0;color:#c2402e;font-weight:600;display:none">⚠ Shift4 effective rate is below the merchant's current rate — you're losing margin. Raise the flat rate or send the statement to your RM for review.</p>
+      </div>
+    </div>
+
+    <!-- PROMOTIONS -->
+    <div class="ap-pane" id="pane-promos">
+      <h2 class="ap-h">Current promotions</h2>
+      <p class="ap-sub">Active offers to close deals. Confirm eligibility before quoting.</p>
+      <div class="promo"><span class="tag">Active</span><h3>Free terminal placement</h3><p>$0 upfront on terminal placements with a processing agreement — pitch on every dual-pricing deal.</p></div>
+      <div class="promo"><span class="tag">Active</span><h3>Statement match-or-beat</h3><p>We'll match or beat any current effective rate. Lead with a free statement review.</p></div>
+      <div class="promo"><span class="tag">Shift4</span><h3>$29.99/mo Shift4 · no upfront</h3><p>Restaurant POS with 0% dual-pricing processing and lifetime warranty — strong F&amp;B opener.</p></div>
+      <div class="promo"><span class="tag">PAYS</span><h3>$999 POS station (was $1,200)</h3><p>All-inclusive dual-pricing POS promo pricing — limited-time hardware discount.</p></div>
+    </div>
+
+    <!-- RESOURCES -->
+    <div class="ap-pane" id="pane-resources">
+      <h2 class="ap-h">Sales resources</h2>
+      <p class="ap-sub">Tools and pages to use live with merchants.</p>
+      <div class="ap-grid">
+        <div class="ap-tile"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M9.5 9.5a2.5 2.5 0 015 0c0 2-2.5 2-2.5 4M12 17h.01"/></svg></div><h3>Product Quiz</h3><p>Walk a prospect through it live to land on the right recommendation.</p><a class="go" href="quiz.html" target="_blank" rel="noopener">Open quiz <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></div>
+        <div class="ap-tile"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 16V4M7 9l5-5 5 5"/><path d="M4 16v2a2 2 0 002 2h12a2 2 0 002-2v-2"/></svg></div><h3>Statement Upload</h3><p>Collect a statement for a rate review and savings analysis.</p><a class="go" href="Statement Upload.html" target="_blank" rel="noopener">Open form <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></div>
+        <div class="ap-tile"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2l2.4 5 5.6.6-4 4 1 5.4L12 19l-5 3 1-5.4-4-4 5.6-.6z"/></svg></div><h3>Merchant Rewards</h3><p>The rewards calculator and pitch for the rewards upsell.</p><a class="go" href="Merchant Rewards.html" target="_blank" rel="noopener">Open page <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></div>
+        <div class="ap-tile"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="5" y="3" width="14" height="18" rx="2"/></svg></div><h3>Brand pages</h3><p>Chively · Square · Korona · NRS · DejaPay Pro deep-dives.</p><a class="go" href="POS Systems.html" target="_blank" rel="noopener">All POS brands <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></div>
+        <div class="ap-tile"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 3h7l5 5v13H7z"/><path d="M14 3v5h5"/></svg></div><h3>Funding (NextFund)</h3><p>Working capital &amp; real-estate financing — apply link for prospects.</p><a class="go" href="Business Financing.html" target="_blank" rel="noopener">Open funding <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></div>
+        <div class="ap-tile"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19V5l8 4 8-4v14l-8 4z"/></svg></div><h3>Image &amp; asset guide</h3><p>What photos/logos we have and what's still needed.</p><a class="go" href="Image Guide.html" target="_blank" rel="noopener">Open guide <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></div>
+      </div>
+    </div>
+
+    <!-- TRAINING -->
+    <div class="ap-pane" id="pane-training">
+      <h2 class="ap-h">Training &amp; onboarding</h2>
+      <p class="ap-sub">Everything a new agent needs to ramp — work top to bottom. Read the in-site guides, then dive into the Drive for decks, scripts, and recordings.</p>
+
+      <a class="drivebar" href="https://drive.google.com/" target="_blank" rel="noopener">
+        <span class="db-l"><span class="db-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 7a2 2 0 012-2h4l2 2h8a2 2 0 012 2v8a2 2 0 01-2 2H5a2 2 0 01-2-2z"/></svg></span><span><b>Open the Training Drive</b><small>All decks, videos, scripts &amp; certification material — one shared Google Drive folder.</small></span></span>
+        <span class="db-go">Open Google Drive <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M7 17L17 7M17 7H9M17 7v8"/></svg></span>
+      </a>
+
+      <h3 class="ap-block">1 · Start here — the foundations</h3>
+      <div class="ap-grid">
+        <div class="ap-tile"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 6h16M4 12h16M4 18h10"/></svg></div><h3>Payments 101</h3><p>How processing works: interchange, assessments, and the markup you sell against.</p><a class="go" href="blog-lower-processing-fees.html" target="_blank" rel="noopener">Read <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></div>
+        <div class="ap-tile"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 5L5 19"/><circle cx="7.5" cy="7.5" r="2"/><circle cx="16.5" cy="16.5" r="2"/></svg></div><h3>Dual pricing 101</h3><p>The 3–4% card reality, AMEX/premium caveats, and how to explain it cleanly &amp; compliantly.</p><a class="go" href="blog-dual-pricing-explained.html" target="_blank" rel="noopener">Read <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></div>
+        <div class="ap-tile"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 3v18l2-1 2 1 2-1 2 1 2-1 2 1V3z"/><path d="M8 8h8M8 12h6"/></svg></div><h3>Reading a statement</h3><p>Find the effective rate, spot junk fees, and build the savings story that closes.</p><a class="go" href="blog-read-your-statement.html" target="_blank" rel="noopener">Read <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></div>
+      </div>
+
+      <h3 class="ap-block">2 · Know the products</h3>
+      <div class="ap-grid">
+        <div class="ap-tile"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="5" y="3" width="14" height="18" rx="2"/><path d="M9 7h6"/></svg></div><h3>Choosing the right POS</h3><p>Framework for matching a merchant's industry &amp; volume to the right system.</p><a class="go" href="blog-choosing-a-pos.html" target="_blank" rel="noopener">Read <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></div>
+        <div class="ap-tile"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="5" y="3" width="14" height="18" rx="2"/></svg></div><h3>Brand deep-dives</h3><p>Chively, Square, Korona, NRS, DejaPay Pro — features, pricing, who to pitch them to.</p><a class="go" href="POS Systems.html" target="_blank" rel="noopener">All brands <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></div>
+        <div class="ap-tile"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 3v18l2-1 2 1 2-1 2 1 2-1 2 1V3z"/></svg></div><h3>Industry playbooks</h3><p>What to recommend by vertical — F&amp;B, retail, services, healthcare, high-risk.</p><a class="go" href="Food Trucks.html" target="_blank" rel="noopener">See example <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></div>
+      </div>
+
+      <h3 class="ap-block">3 · Run the pitch</h3>
+      <div class="ap-grid">
+        <div class="ap-tile"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M9.5 9.5a2.5 2.5 0 015 0c0 2-2.5 2-2.5 4M12 17h.01"/></svg></div><h3>Live quiz walk-through</h3><p>Use the recommendation quiz on a call to land on the right product together.</p><a class="go" href="quiz.html" target="_blank" rel="noopener">Open quiz <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></div>
+        <div class="ap-tile"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 5L5 19"/><circle cx="7.5" cy="7.5" r="2"/><circle cx="16.5" cy="16.5" r="2"/></svg></div><h3>Savings &amp; commission math</h3><p>Use the Calculators tab live: savings for the merchant, residual for you.</p><a class="go" data-jump="calc">Go to calculators <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></div>
+        <div class="ap-tile"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 16V4M7 9l5-5 5 5"/><path d="M4 16v2a2 2 0 002 2h12a2 2 0 002-2v-2"/></svg></div><h3>Close: collect a statement</h3><p>The simplest next step — get a statement for a free rate review.</p><a class="go" href="Statement Upload.html" target="_blank" rel="noopener">Open form <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></div>
+      </div>
+
+      <h3 class="ap-block">Documents &amp; recordings (Google Drive)</h3>
+      <p class="ap-sub" style="margin-top:-14px">Paste any Drive "share" link in place of these — folders, PDFs, decks, or videos.</p>
+      <div class="ap-grid">
+        <a class="ap-tile" href="https://drive.google.com/" target="_blank" rel="noopener"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 7a2 2 0 012-2h4l2 2h8a2 2 0 012 2v8a2 2 0 01-2 2H5a2 2 0 01-2-2z"/></svg></div><h3>New-Agent Onboarding</h3><p>Day-1 checklist, systems access, and the 30-day ramp plan.</p><span class="go">Open in Drive <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M7 17L17 7M17 7H9M17 7v8"/></svg></span></a>
+        <a class="ap-tile" href="https://drive.google.com/" target="_blank" rel="noopener"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="5 3 19 12 5 21 5 3"/></svg></div><h3>Product Training Videos</h3><p>Recorded walkthroughs for each POS, terminal, and gateway.</p><span class="go">Watch <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M7 17L17 7M17 7H9M17 7v8"/></svg></span></a>
+        <a class="ap-tile" href="https://drive.google.com/" target="_blank" rel="noopener"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 6h16M4 12h16M4 18h10"/></svg></div><h3>Objection-Handling Scripts</h3><p>Word-for-word responses to the most common pushbacks.</p><span class="go">Open doc <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M7 17L17 7M17 7H9M17 7v8"/></svg></span></a>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<script src="js/agent.js"></script>
+</body>
+</html>

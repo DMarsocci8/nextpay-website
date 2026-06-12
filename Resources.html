@@ -1,0 +1,214 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Resources & Blog — NextPay</title>
+<link rel="stylesheet" href="css/nextpay.css">
+<link rel="stylesheet" href="css/solution.css">
+<style>
+/* featured post */
+.feat{display:grid;grid-template-columns:1.1fr .9fr;gap:0;border:1px solid var(--line);border-radius:var(--radius-lg);overflow:hidden;box-shadow:var(--shadow);background:#fff}
+.feat .feat-media{position:relative;min-height:360px;background:var(--bg-soft)}
+.feat .feat-media image-slot{width:100%;height:100%}
+.feat .feat-body{padding:42px 44px;display:flex;flex-direction:column;justify-content:center;gap:14px}
+.feat .feat-body h2{font-size:clamp(26px,3vw,36px);letter-spacing:-.02em;line-height:1.12}
+.feat .feat-body p{color:var(--slate);font-size:17px;line-height:1.6}
+.post-meta{display:flex;align-items:center;gap:12px;font-size:13px;color:var(--slate);font-weight:600}
+.post-meta .cat{color:var(--teal-dark);text-transform:uppercase;letter-spacing:.06em;font-weight:800}
+.post-meta .dot{width:4px;height:4px;border-radius:50%;background:var(--slate-2)}
+/* filter */
+.blogfilter{display:flex;gap:10px;flex-wrap:wrap;justify-content:center;margin-bottom:36px}
+.blogfilter button{font-family:inherit;font-weight:700;font-size:14px;padding:9px 18px;border-radius:999px;border:1px solid var(--line);background:#fff;color:var(--slate);cursor:pointer;transition:.15s}
+.blogfilter button:hover{border-color:var(--teal);color:var(--teal-dark)}
+.blogfilter button.on{background:var(--navy);color:#fff;border-color:var(--navy)}
+/* grid */
+.bloggrid{display:grid;grid-template-columns:repeat(3,1fr);gap:26px}
+.bpost{display:flex;flex-direction:column;background:#fff;border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;box-shadow:var(--shadow-sm);transition:.18s;color:inherit}
+.bpost:hover{box-shadow:var(--shadow);transform:translateY(-3px)}
+.bpost .bp-media{height:188px;background:var(--bg-soft);position:relative}
+.bpost .bp-media image-slot{width:100%;height:100%}
+.bpost .bp-body{padding:22px;display:flex;flex-direction:column;gap:10px;flex:1}
+.bpost h3{font-size:19px;line-height:1.25;letter-spacing:-.01em}
+.bpost p{font-size:14.5px;color:var(--slate);line-height:1.5;flex:1}
+.bpost .bp-read{display:inline-flex;align-items:center;gap:7px;color:var(--teal-dark);font-weight:700;font-size:14.5px;margin-top:4px}
+.bpost:hover .bp-read{gap:10px}
+.bpost .bp-read svg{width:15px;height:15px;transition:.16s}
+.bpost.hide{display:none}
+/* guides + newsletter */
+.guides{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+.guide{display:flex;gap:16px;align-items:flex-start;padding:26px;border:1px solid var(--line);border-radius:var(--radius);background:#fff;box-shadow:var(--shadow-sm);transition:.16s;color:inherit}
+.guide:hover{border-color:var(--teal);transform:translateY(-2px)}
+.guide .gic{width:46px;height:46px;border-radius:12px;background:rgba(20,161,140,.12);display:grid;place-items:center;color:var(--teal-dark);flex:none}
+.guide .gic svg{width:23px;height:23px}
+.guide h4{font-size:17px}.guide p{font-size:13.5px;color:var(--slate);line-height:1.45;margin-top:3px}
+.news{display:flex;flex-direction:column;align-items:center;text-align:center;gap:20px}
+.news-form{display:flex;gap:10px;width:100%;max-width:480px;margin:0 auto}
+.news-form input{flex:1;font-family:inherit;font-size:15px;padding:14px 16px;border-radius:999px;border:1.5px solid rgba(255,255,255,.25);background:rgba(255,255,255,.08);color:#fff}
+.news-form input::placeholder{color:#9fb1c2}
+.news-form input:focus{outline:none;border-color:var(--teal-bright)}
+@media(max-width:1000px){.feat{grid-template-columns:1fr}.feat .feat-media{min-height:240px}.bloggrid,.guides{grid-template-columns:1fr 1fr}}
+@media(max-width:640px){.bloggrid,.guides{grid-template-columns:1fr}}
+</style>
+</head>
+<body data-page="resources">
+<div id="np-nav"></div>
+
+<!-- HERO -->
+<header class="shero" data-screen-label="Resources hero">
+  <div class="wrap">
+    <div class="shero-crumb"><a href="index.html">Home</a><span class="sep">/</span><span style="color:#fff">Resources</span></div>
+    <div class="shero-grid">
+      <div>
+        <span class="tag tag-teal">Resources &amp; Blog</span>
+        <h1><span style="white-space:nowrap">Run a smarter business,</span><br><em>one read at a time.</em></h1>
+        <p class="lead">Plain-English guides on payments, pricing, POS, and growth — written for owners, not bankers. Learn how to lower your costs, choose the right hardware, and put more of every sale back in your pocket.</p>
+        <div class="shero-cta">
+          <a class="btn btn-primary" href="#blog">Read the blog
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+          <a class="btn btn-ghost" href="quiz.html" target="_blank" rel="noopener">Take the Quiz</a>
+        </div>
+      </div>
+      <div class="shero-media"><image-slot id="res-hero" src="assets/lifestyle/resources-reading.jpg" shape="rounded" radius="24" fit="cover" placeholder="Drop a resources / reading photo"></image-slot></div>
+    </div>
+  </div>
+</header>
+
+<!-- FEATURED -->
+<section class="ssec">
+  <div class="wrap">
+    <div class="sec-head"><span class="eyebrow">Featured</span><h2>Start here</h2></div>
+    <a class="feat" href="blog-lower-processing-fees.html">
+      <div class="feat-media"><image-slot id="feat-img" src="assets/lifestyle/paying-by-card.png" fit="cover" placeholder="Featured post image"></image-slot></div>
+      <div class="feat-body">
+        <div class="post-meta"><span class="cat">Pricing</span><span class="dot"></span><span>8 min read</span></div>
+        <h2>The owner's guide to lowering your credit card processing fees</h2>
+        <p>What your effective rate really means, how to read a statement, and the legitimate ways — fee programs, the right hardware, and honest pricing — to keep more of every sale.</p>
+        <span class="bp-read" style="color:var(--teal-dark);font-weight:700;display:inline-flex;align-items:center;gap:7px">Read the guide
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" width="16" height="16"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+      </div>
+    </a>
+  </div>
+</section>
+
+<!-- BLOG GRID -->
+<section class="ssec ssec-soft" id="blog">
+  <div class="wrap">
+    <div class="sec-head"><span class="eyebrow">The NextPay blog</span><h2>Guides, how-tos &amp; industry insight</h2></div>
+    <div class="blogfilter">
+      <button data-f="all" class="on">All</button>
+      <button data-f="pricing">Pricing &amp; Fees</button>
+      <button data-f="pos">POS &amp; Hardware</button>
+      <button data-f="industry">Industry Tips</button>
+      <button data-f="growth">Growth</button>
+    </div>
+    <div class="bloggrid">
+      <a class="bpost" data-cat="pricing" href="blog-dual-pricing-explained.html">
+        <div class="bp-media"><image-slot id="b1" src="assets/industries/convenience.png" fit="cover" placeholder="Post image"></image-slot></div>
+        <div class="bp-body"><div class="post-meta"><span class="cat">Pricing</span><span class="dot"></span><span>6 min</span></div>
+          <h3>Dual pricing vs. cash discount: what's the difference?</h3>
+          <p>Two popular ways to offset card fees — how each works, what's compliant, and which fits your counter.</p>
+          <span class="bp-read">Read more <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></div>
+      </a>
+      <a class="bpost" data-cat="pos" href="blog-choosing-a-pos.html">
+        <div class="bp-media"><image-slot id="b2" src="assets/industries/specialty-retail.png" fit="cover" placeholder="Post image"></image-slot></div>
+        <div class="bp-body"><div class="post-meta"><span class="cat">POS &amp; Hardware</span><span class="dot"></span><span>7 min</span></div>
+          <h3>How to choose the right POS system for your business</h3>
+          <p>Square, Clover, Shift4 and more — a no-jargon framework for picking the system that fits how you actually work.</p>
+          <span class="bp-read">Read more <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></div>
+      </a>
+      <a class="bpost" data-cat="pricing" href="blog-read-your-statement.html">
+        <div class="bp-media"><image-slot id="b3" src="assets/industries/professional.png" fit="cover" placeholder="Post image"></image-slot></div>
+        <div class="bp-body"><div class="post-meta"><span class="cat">Pricing</span><span class="dot"></span><span>5 min</span></div>
+          <h3>How to read your merchant statement (and spot junk fees)</h3>
+          <p>The line items that matter, the ones that don't, and the hidden fees worth questioning on your next statement.</p>
+          <span class="bp-read">Read more <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></div>
+      </a>
+      <a class="bpost" data-cat="industry" href="blog-restaurant-payments.html">
+        <div class="bp-media"><image-slot id="b4" src="assets/industries/fine-dining.png" fit="cover" placeholder="Post image"></image-slot></div>
+        <div class="bp-body"><div class="post-meta"><span class="cat">Industry Tips</span><span class="dot"></span><span>6 min</span></div>
+          <h3>Payments tips for restaurants &amp; food trucks</h3>
+          <p>Tableside, tips, offline mode, and online ordering — how fast-moving food businesses keep lines short.</p>
+          <span class="bp-read">Read more <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></div>
+      </a>
+      <a class="bpost" data-cat="growth" href="blog-chargebacks-101.html">
+        <div class="bp-media"><image-slot id="b5" src="assets/solutions/chargeback.jpg" fit="cover" placeholder="Post image"></image-slot></div>
+        <div class="bp-body"><div class="post-meta"><span class="cat">Growth</span><span class="dot"></span><span>5 min</span></div>
+          <h3>Chargebacks 101: how to fight (and prevent) them</h3>
+          <p>Why disputes happen, how to win the winnable ones, and the habits that keep chargebacks rare.</p>
+          <span class="bp-read">Read more <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></div>
+      </a>
+      <a class="bpost" data-cat="growth" href="blog-merchant-rewards-guide.html">
+        <div class="bp-media"><image-slot id="b6" src="assets/industries/boutique.jpg" fit="cover" placeholder="Post image"></image-slot></div>
+        <div class="bp-body"><div class="post-meta"><span class="cat">Growth</span><span class="dot"></span><span>4 min</span></div>
+          <h3>Turning processing into rewards: how merchant rewards work</h3>
+          <p>You've funded your customers' points for years. Here's how to finally earn on every dollar you process.</p>
+          <span class="bp-read">Read more <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- TOOLS / GUIDES -->
+<section class="ssec">
+  <div class="wrap">
+    <div class="sec-head"><span class="eyebrow">Tools &amp; quick help</span><h2>More than reading — get answers</h2></div>
+    <div class="guides">
+      <a class="guide" href="quiz.html" target="_blank" rel="noopener">
+        <div class="gic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M9.5 9.5a2.5 2.5 0 015 0c0 2-2.5 2-2.5 4M12 17h.01"/></svg></div>
+        <div><h4>Product Quiz</h4><p>Answer 10 questions, get a tailored hardware &amp; software recommendation.</p></div>
+      </a>
+      <a class="guide" href="Statement Upload.html" target="_blank" rel="noopener">
+        <div class="gic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 16V4M7 9l5-5 5 5"/><path d="M4 16v2a2 2 0 002 2h12a2 2 0 002-2v-2"/></svg></div>
+        <div><h4>Free Rate Review</h4><p>Upload a statement and we'll find your savings, line by line.</p></div>
+      </a>
+      <a class="guide" href="Merchant Rewards.html">
+        <div class="gic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2l2.4 5 5.6.6-4 4 1 5.4L12 19l-5 3 1-5.4-4-4 5.6-.6z"/></svg></div>
+        <div><h4>Rewards Calculator</h4><p>Estimate what you could earn back on the volume you already process.</p></div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- NEWSLETTER -->
+<section class="ssec">
+  <div class="wrap">
+    <div class="sband news">
+      <div class="rs-l" style="position:relative;z-index:2">
+        <span class="eyebrow" style="color:var(--teal-bright)">Stay in the loop</span>
+        <h2 style="color:#fff">Smarter business tips, once a month</h2>
+        <p style="color:#c4d0db;margin-top:8px">Practical guidance on payments, pricing, and growth.<br>No spam — unsubscribe anytime.</p>
+      </div>
+      <form class="news-form" id="newsform">
+        <input required type="email" name="email" placeholder="you@business.com">
+        <button class="btn btn-primary" type="submit">Subscribe</button>
+      </form>
+    </div>
+  </div>
+</section>
+
+<div id="np-footer"></div>
+<script src="js/nav.js"></script>
+<script src="js/image-slot.js"></script>
+<script>
+(function(){
+  var bar=document.querySelector('.blogfilter');
+  var posts=[].slice.call(document.querySelectorAll('.bpost'));
+  bar.addEventListener('click',function(e){
+    var btn=e.target.closest('button'); if(!btn) return;
+    bar.querySelectorAll('button').forEach(function(b){b.classList.remove('on')}); btn.classList.add('on');
+    var f=btn.getAttribute('data-f');
+    posts.forEach(function(p){ p.classList.toggle('hide', f!=='all' && p.getAttribute('data-cat')!==f); });
+  });
+  var nf=document.getElementById('newsform');
+  nf.addEventListener('submit',function(e){
+    e.preventDefault();
+    var fd=new FormData(nf); fd.append('_subject','New blog newsletter signup'); fd.append('_cc','payments@nextpaypos.com');
+    var btn=nf.querySelector('button'); btn.disabled=true; btn.textContent='Subscribing…';
+    function done(){ nf.innerHTML='<div style="color:#fff;font-weight:700;display:flex;align-items:center;gap:9px"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="#1FC2A6" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg>You\u2019re subscribed — thanks!</div>'; }
+    fetch('https://formsubmit.co/ajax/dom@nextpaypos.com',{method:'POST',headers:{Accept:'application/json'},body:fd}).then(function(r){return r.json();}).then(done).catch(done);
+  });
+})();
+</script>
+</body>
+</html>

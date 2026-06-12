@@ -1,0 +1,262 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Chively POS — Pricing & Processing — NextPay</title>
+<link rel="stylesheet" href="css/nextpay.css">
+<link rel="stylesheet" href="css/solution.css">
+<style>
+.cv-logo-hero{height:40px;width:auto;margin-bottom:18px;filter:brightness(0) invert(1)}
+/* pricing tiers */
+.cv-tiers{display:grid;grid-template-columns:1fr 1fr;gap:26px;max-width:920px;margin:0 auto}
+.cv-tier{border-radius:22px;padding:38px 36px;border:1px solid var(--line);background:#fff;display:flex;flex-direction:column;box-shadow:var(--shadow-sm)}
+.cv-tier.pop{background:var(--navy);border-color:var(--navy);color:#fff;box-shadow:var(--shadow-lg)}
+.cv-tier-head{display:flex;align-items:center;justify-content:space-between;gap:12px}
+.cv-tier h3{font-size:24px;letter-spacing:-.01em}
+.cv-tier.pop h3{color:#fff}
+.cv-pop-badge{font-size:12px;font-weight:800;text-transform:uppercase;letter-spacing:.06em;color:var(--teal-bright);border:1.5px solid rgba(31,194,166,.5);padding:6px 13px;border-radius:999px}
+.cv-price{display:flex;align-items:baseline;gap:4px;margin:20px 0 6px}
+.cv-price .amt{font-size:54px;font-weight:800;letter-spacing:-.03em;line-height:1;color:var(--ink)}
+.cv-tier.pop .cv-price .amt{color:#fff}
+.cv-price .per{font-size:18px;color:var(--slate);font-weight:600}
+.cv-tier.pop .cv-price .per{color:#9fb1c2}
+.cv-tier .blurb{font-size:15.5px;color:var(--slate);line-height:1.55;margin-bottom:22px;min-height:48px}
+.cv-tier.pop .blurb{color:#c4d0db}
+.cv-feats{list-style:none;margin:0 0 26px;padding:0;display:flex;flex-direction:column;gap:13px;flex:1}
+.cv-feats li{display:flex;gap:12px;align-items:flex-start;font-size:15.5px;line-height:1.45;color:var(--ink)}
+.cv-tier.pop .cv-feats li{color:#e7eef4}
+.cv-feats li svg{width:21px;height:21px;flex:none;margin-top:1px;color:var(--teal)}
+.cv-tier.pop .cv-feats li svg{color:var(--teal-bright)}
+.cv-feats li.plus{font-weight:800}
+.cv-tier .btn{width:100%;justify-content:center}
+/* processing */
+.cv-proc{display:grid;grid-template-columns:1.05fr .95fr;gap:48px;align-items:center}
+.cv-proc h2{font-size:clamp(28px,3.4vw,40px);line-height:1.1}
+.cv-proc h2 u{text-decoration-color:var(--teal);text-underline-offset:4px}
+.cv-proc .lead{margin:16px 0 22px}
+.cv-checks{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:13px}
+.cv-checks li{display:flex;gap:12px;align-items:flex-start;font-size:16px;font-weight:600;color:var(--ink)}
+.cv-checks li svg{width:21px;height:21px;flex:none;margin-top:1px;color:var(--teal)}
+.cv-rate-card{background:#fff;border:1px solid var(--line);border-radius:24px;box-shadow:var(--shadow);padding:44px 40px;text-align:center}
+.cv-rate-card .rl{font-size:21px;color:var(--slate);font-weight:600}
+.cv-rate-card .rate{display:flex;align-items:flex-start;justify-content:center;gap:10px;margin:14px 0 10px}
+.cv-rate-card .rate .big{font-size:72px;font-weight:800;letter-spacing:-.03em;line-height:.9;color:var(--teal-dark)}
+.cv-rate-card .rate .pct{font-size:30px;font-weight:800;color:var(--teal-dark);margin-top:6px}
+.cv-rate-card .rate .plus{font-size:34px;font-weight:700;color:var(--slate);margin-top:6px}
+.cv-rate-card .note{font-size:17px;font-style:italic;color:var(--ink);font-weight:600;margin-top:8px}
+.cv-callout{border-left:4px solid var(--teal);border-radius:0 12px 12px 0;padding:18px 22px;margin-top:22px}
+.cv-callout.soft{background:var(--bg-soft)}
+.cv-callout.lime{background:rgba(31,194,166,.1)}
+.cv-callout b{display:block;font-size:16px;color:var(--ink);margin-bottom:3px}
+.cv-callout p{font-size:14.5px;color:var(--slate);line-height:1.5;margin-bottom:8px}
+.cv-callout a{color:var(--teal-dark);font-weight:700;font-size:14.5px;display:inline-flex;align-items:center;gap:6px}
+.cv-callout a svg{width:14px;height:14px}
+@media(max-width:900px){.cv-tiers{grid-template-columns:1fr;max-width:480px}.cv-proc{grid-template-columns:1fr;gap:30px}}
+.cv-more{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;max-width:1000px;margin:0 auto}
+.cv-more-card{background:#fff;border:1px solid var(--line);border-radius:16px;box-shadow:var(--shadow-sm);padding:18px;text-align:center;transition:.16s}
+.cv-more-card:hover{box-shadow:var(--shadow);transform:translateY(-3px)}
+.cv-more-img{background:var(--bg-soft);border-radius:12px;height:120px;margin-bottom:14px}
+.cv-more-img image-slot{width:100%;height:100%}
+.cv-more-card h4{font-size:15.5px;line-height:1.25}
+.cv-more-card p{font-size:13px;color:var(--slate);line-height:1.45;margin-top:6px}
+@media(max-width:900px){.cv-more{grid-template-columns:1fr 1fr}}
+@media(max-width:560px){.cv-more{grid-template-columns:1fr}}
+.brandlogo.cardbrand-img{height:17px;width:auto;max-width:118px;align-self:flex-start;display:block;margin-bottom:4px}
+</style>
+</head>
+<body data-page="chively">
+<div id="np-nav"></div>
+
+<!-- HERO -->
+<header class="shero" data-screen-label="Chively hero">
+  <div class="wrap">
+    <div class="shero-crumb"><a href="index.html">Home</a><span class="sep">/</span><a href="POS Systems.html">POS Systems</a><span class="sep">/</span><span style="color:#fff">Chively</span></div>
+    <div class="shero-grid">
+      <div>
+        <img class="cv-logo-hero" src="assets/logos/chively-white.png" alt="Chively">
+        <span class="tag tag-teal">Our flagship POS</span>
+        <h1>The all-in-one POS,<br><em>priced with zero surprises.</em></h1>
+        <p class="lead">Chively is NextPay's house point-of-sale — built for food &amp; beverage and retail with offline mode, tableside ordering, smart tipping, and transparent processing. Simple monthly software, rates as low as 2.39% + 5¢, and $0-processing plans available.</p>
+        <div class="shero-cta">
+          <a class="btn btn-primary" href="#pricing">See pricing
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+          <a class="btn btn-ghost" href="quiz.html" target="_blank" rel="noopener">Take the Quiz</a>
+        </div>
+        <div class="shero-chips">
+          <span class="shero-chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg>No locked-in contracts</span>
+          <span class="shero-chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg>No hidden fees</span>
+          <span class="shero-chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg>$0-processing plans</span>
+        </div>
+      </div>
+      <div class="shero-media"><image-slot id="chively-hero" shape="rounded" radius="24" fit="cover" placeholder="Drop a Chively POS / restaurant photo"></image-slot></div>
+    </div>
+  </div>
+</header>
+
+<!-- SOFTWARE PRICING -->
+<section class="ssec" id="pricing">
+  <div class="wrap">
+    <div class="sec-head"><span class="eyebrow">Software pricing</span><h2>Simple monthly plans</h2>
+      <p>Pick the plan that fits how you run — upgrade anytime as you grow.</p></div>
+    <div class="cv-tiers">
+      <div class="cv-tier">
+        <div class="cv-tier-head"><h3>Lite</h3></div>
+        <div class="cv-price"><span class="amt">$29</span><span class="per">/ month</span></div>
+        <p class="blurb">All the core features needed to run your service.</p>
+        <ul class="cv-feats">
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg>Full Point-of-Sale (POS) software</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg>Counter service &amp; simple table flows</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg>Handheld &amp; tableside ordering</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg>Full menu &amp; modifier control</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg>Staff &amp; sales management</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg>Core reporting &amp; analytics</li>
+        </ul>
+        <a class="btn btn-outline" href="Contact.html" target="_blank" rel="noopener">Request a Demo</a>
+      </div>
+      <div class="cv-tier pop">
+        <div class="cv-tier-head"><h3>Complete</h3><span class="cv-pop-badge">Most popular</span></div>
+        <div class="cv-price"><span class="amt">$69</span><span class="per">/ month</span></div>
+        <p class="blurb">Enhanced features for growing businesses with advanced features &amp; reporting.</p>
+        <ul class="cv-feats">
+          <li class="plus"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg>Everything in Lite, plus:</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg>Kitchen Display System (KDS) &amp; dual-screen ready</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg>Third-party delivery integrations</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg>Gift cards &amp; loyalty programs</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg>Online ordering platform</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg>Advanced inventory reporting</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg>QR code ordering &amp; payment</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg>Multi-location functionality</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg>Multi-kitchen functionality</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg>SMS marketing features</li>
+        </ul>
+        <a class="btn btn-primary" href="Contact.html" target="_blank" rel="noopener">Request a Demo</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROCESSING -->
+<section class="ssec ssec-soft">
+  <div class="wrap">
+    <div class="cv-proc">
+      <div>
+        <span class="eyebrow">Payment processing</span>
+        <h2>Transparent payment processing with <u>zero</u> hidden fees.</h2>
+        <p class="lead">Most POS systems hook you with a teaser rate, then layer in extra charges later through fine print. Chively keeps everything simple with clear rates, no surprise hidden fees, and no locked-in contracts.</p>
+        <ul class="cv-checks">
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg>Works with all cards (including rewards and gift cards)</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg>No PCI fees, no monthly minimums, no surprises</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg>$0 credit card processing fee plans available</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg>Cancel anytime without penalty</li>
+        </ul>
+        <div class="cv-callout soft">
+          <b>Ask us about $0 processing plans</b>
+          <p>We offer cash discount and card surcharge plans.</p>
+          <a href="Fee Programs.html">Find out more <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+        </div>
+      </div>
+      <div>
+        <div class="cv-rate-card">
+          <div class="rl">Rates as low as</div>
+          <div class="rate"><span class="big">2.39</span><span class="pct">%</span><span class="plus">+5¢</span></div>
+          <div class="note">No price increases. Ever.</div>
+        </div>
+        <div class="cv-callout lime">
+          <b>Processing over $50K/month?</b>
+          <p>We offer custom volume pricing and can help you decide what's best for your restaurant.</p>
+          <a href="Contact.html" target="_blank" rel="noopener">Talk to us <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- HARDWARE -->
+<section class="ssec">
+  <div class="wrap">
+    <div class="sec-head"><span class="eyebrow">Chively hardware</span><h2>Three systems to run your floor</h2>
+      <p>Chively software runs on a handheld, a full POS station, and a kitchen display — all on match-or-beat processing. Add more hardware as you grow.</p></div>
+    <div class="tgrid" style="display:grid;grid-template-columns:repeat(3,1fr);gap:22px;max-width:1000px;margin:0 auto">
+      <article class="pcard" id="chively-handheld">
+        <div class="pimg"><span class="tag tag-teal pbadge">★ Recommended</span><image-slot id="cv-handheld" fit="contain" radius="0" placeholder="Chively Handheld POS"></image-slot></div>
+        <div class="pbody">
+          <img class="brandlogo cardbrand-img" data-brand="Chively" src="assets/logos/chively-white.png" style="filter:brightness(0)" alt="Chively"><h3>Chively Handheld POS</h3>
+          <p class="pdesc">Apron-pocket Android POS with offline mode, menus, modifiers and built-in tipping.</p>
+          <div class="pspecs"><span class="tag">Handheld</span><span class="tag">Offline mode</span><span class="tag">Tipping</span></div>
+          <div class="pprice"><b>Match-or-beat</b> <span>processing</span></div>
+          <div class="pcta"><div class="pcta-row"><a class="btn btn-primary btn-sm" href="#pricing">See pricing</a><a class="btn btn-outline btn-sm" href="Contact.html" target="_blank" rel="noopener">Request a demo</a></div></div>
+        </div>
+      </article>
+      <article class="pcard" id="chively-station">
+        <div class="pimg"><image-slot id="cv-station" fit="contain" radius="0" src="assets/pos/chively-d3-angled.png" placeholder="Chively POS Station"></image-slot></div>
+        <div class="pbody">
+          <img class="brandlogo cardbrand-img" data-brand="Chively" src="assets/logos/chively-white.png" style="filter:brightness(0)" alt="Chively"><h3>Chively POS Station</h3>
+          <p class="pdesc">Dual-screen countertop station with a customer-facing display for higher-volume floors.</p>
+          <div class="pspecs"><span class="tag">Dual-screen</span><span class="tag">Customer display</span><span class="tag">Countertop</span></div>
+          <div class="pprice"><b>Match-or-beat</b> <span>processing</span></div>
+          <div class="pcta"><div class="pcta-row"><a class="btn btn-primary btn-sm" href="#pricing">See pricing</a><a class="btn btn-outline btn-sm" href="Contact.html" target="_blank" rel="noopener">Request a demo</a></div></div>
+        </div>
+      </article>
+      <article class="pcard" id="chively-kds">
+        <div class="pimg"><image-slot id="cv-kds" fit="contain" radius="0" placeholder="Chively KDS"></image-slot></div>
+        <div class="pbody">
+          <img class="brandlogo cardbrand-img" data-brand="Chively" src="assets/logos/chively-white.png" style="filter:brightness(0)" alt="Chively"><h3>Chively KDS</h3>
+          <p class="pdesc">Kitchen Display System that fires orders straight to the line — clear tickets, faster service.</p>
+          <div class="pspecs"><span class="tag">Kitchen display</span><span class="tag">Heat-rated</span><span class="tag">Order routing</span></div>
+          <div class="pprice"><b>Included with</b> <span>Complete</span></div>
+          <div class="pcta"><div class="pcta-row"><a class="btn btn-primary btn-sm" href="#pricing">See pricing</a><a class="btn btn-outline btn-sm" href="Contact.html" target="_blank" rel="noopener">Request a demo</a></div></div>
+        </div>
+      </article>
+    </div>
+
+    <div class="sec-head" style="margin-top:64px;margin-bottom:30px"><span class="eyebrow">More hardware options</span><h2 style="font-size:clamp(24px,2.8vw,32px)">Everything else your counter needs</h2>
+      <p>Rugged, restaurant-grade accessories that pair with any Chively setup.</p></div>
+    <div class="cv-more">
+      <div class="cv-more-card">
+        <div class="cv-more-img"><image-slot id="cv-mobile" fit="contain" radius="0" placeholder="Mobile terminal"></image-slot></div>
+        <h4>Handheld &amp; Mobile Terminals</h4>
+        <p>Tough handhelds for fast ordering and secure payments under heavy daily use.</p>
+      </div>
+      <div class="cv-more-card">
+        <div class="cv-more-img"><image-slot id="cv-printer" fit="contain" radius="0" placeholder="Receipt printer"></image-slot></div>
+        <h4>Receipt, Ticket &amp; Label Printers</h4>
+        <p>Hardwearing printers built for continuous front- and back-of-house printing.</p>
+      </div>
+      <div class="cv-more-card">
+        <div class="cv-more-img"><image-slot id="cv-scanner" fit="contain" radius="0" placeholder="Barcode scanner"></image-slot></div>
+        <h4>Wireless Barcode Scanners</h4>
+        <p>Reliable scanners engineered for speed and accuracy in busy operations.</p>
+      </div>
+      <div class="cv-more-card">
+        <div class="cv-more-img"><image-slot id="cv-drawer" fit="contain" radius="0" placeholder="Cash drawer"></image-slot></div>
+        <h4>Cash Drawers</h4>
+        <p>Reinforced cash drawers for secure handling through long service days.</p>
+      </div>
+    </div>
+    <div class="center" style="margin-top:28px"><a class="btn btn-outline" href="Contact.html" target="_blank" rel="noopener">Ask about more hardware
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="ssec ssec-soft">
+  <div class="wrap">
+    <div class="sband">
+      <span class="eyebrow" style="color:var(--teal-bright)">See Chively in action</span>
+      <h2>Ready for a POS that's simple and honest?</h2>
+      <p>Book a quick demo and we'll show you Chively on your menu, confirm the right plan, and lock in your rate — no pressure, no contracts.</p>
+      <div class="shero-cta">
+        <a class="btn btn-primary" href="Contact.html" target="_blank" rel="noopener">Request a Demo
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+        <a class="btn btn-ghost" href="quiz.html" target="_blank" rel="noopener">Take the Quiz</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div id="np-footer"></div>
+<script src="js/nav.js"></script>
+<script src="js/image-slot.js"></script>
+</body>
+</html>

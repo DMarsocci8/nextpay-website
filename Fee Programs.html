@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Zero Fee Programs — NextPay</title>
+<link rel="stylesheet" href="css/nextpay.css"><link rel="stylesheet" href="css/solution.css">
+<style>
+.zfp-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+.zfp-card{display:flex;flex-direction:column;background:#fff;border:1px solid var(--line);border-radius:18px;box-shadow:var(--shadow-sm);padding:28px}
+.zfp-card.feat{border:1.5px solid var(--teal);box-shadow:0 0 0 1px var(--teal),var(--shadow)}
+.zfp-tag{align-self:flex-start;font-size:12px;font-weight:800;text-transform:uppercase;letter-spacing:.06em;color:var(--teal-dark);background:rgba(20,161,140,.12);padding:5px 12px;border-radius:999px;margin-bottom:14px}
+.zfp-card h3{font-size:20px;letter-spacing:-.01em;margin-bottom:8px}
+.zfp-card>p{font-size:14.5px;color:var(--slate);line-height:1.55;margin-bottom:18px}
+.zfp-ex{background:var(--bg-soft);border-radius:12px;padding:16px 18px;margin-top:auto}
+.zfp-row{display:flex;justify-content:space-between;align-items:center;font-size:14.5px;color:var(--ink);padding:6px 0}
+.zfp-row span{color:var(--slate)}
+.zfp-row b{font-variant-numeric:tabular-nums;font-weight:700}
+.zfp-net{border-top:1px dashed var(--line);margin-top:4px;padding-top:10px}
+.zfp-net span{color:var(--ink);font-weight:700}
+.zfp-net b{color:var(--teal-dark);font-size:17px}
+.zfp-note{font-size:12.5px;color:var(--slate-2);line-height:1.5;margin-top:12px}
+.zfp-steps{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;max-width:1000px;margin:0 auto 44px}
+.zfp-step{text-align:center}
+.zfp-step .zn{width:42px;height:42px;border-radius:12px;background:var(--navy);color:#fff;display:grid;place-items:center;font-weight:800;margin:0 auto 12px}
+.zfp-step b{display:block;font-size:15px;margin-bottom:4px}
+.zfp-step span{font-size:13px;color:var(--slate);line-height:1.45}
+@media(max-width:900px){.zfp-grid{grid-template-columns:1fr}.zfp-steps{grid-template-columns:1fr 1fr;gap:24px}}
+</style></head>
+<body data-page="fees">
+<div id="np-nav"></div>
+<header class="shero" data-screen-label="Fee Programs hero"><div class="wrap">
+<div class="shero-crumb"><a href="index.html">Home</a><span class="sep">/</span><a href="Run Your Business.html">Run Your Business</a><span class="sep">/</span><span style="color:#fff">Zero Fee Programs</span></div>
+<div class="shero-grid"><div>
+<span class="tag tag-teal">Run Your Business · Zero Fee Programs</span>
+<h1>Get to zero processing fees —<br><em>compliantly.</em></h1><p class="lead">Dual pricing, cash discount, and surcharge programs that can wipe out your card processing costs — set up the compliant way, with the signage and receipts to back it.</p>
+<div class="shero-cta"><a class="btn btn-primary" href="#contact">See if it fits <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a><a class="btn btn-ghost" href="#features">Compare programs</a></div>
+<div class="shero-chips"><span class="shero-chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg>Cash discount</span><span class="shero-chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg>Dual pricing</span><span class="shero-chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg>Surcharging</span></div>
+</div><div class="shero-media"><image-slot id="fees-hero" shape="rounded" radius="24" fit="cover" placeholder="Drop a checkout / signage photo" src="assets/lifestyle/fee-programs-hero.png"></image-slot></div>
+</div></div></header>
+<section class="ssec" id="features"><div class="wrap"><div class="sec-head"><span class="eyebrow">Zero Fee Programs</span><h2>Keep more of every sale</h2></div>
+<div class="sfeat"><div class="fc"><div class="fic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="6" width="20" height="12" rx="2"/><circle cx="12" cy="12" r="3"/></svg></div><h4>Cash Discount</h4><p>Reward cash-paying customers and offset card costs automatically.</p></div>
+      <div class="fc"><div class="fic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 5L5 19"/><circle cx="7.5" cy="7.5" r="2"/><circle cx="16.5" cy="16.5" r="2"/></svg></div><h4>Dual Pricing</h4><p>Show a cash price and a card price so customers choose with eyes open.</p></div>
+      <div class="fc"><div class="fic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 3v18l2-1 2 1 2-1 2 1 2-1 2 1V3l-2 1-2-1-2 1-2-1-2 1z"/><path d="M8 8h8M8 12h8"/></svg></div><h4>Surcharging</h4><p>Apply a compliant surcharge to credit transactions where allowed.</p></div>
+      <div class="fc"><div class="fic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 3h7l5 5v13H7z"/><path d="M14 3v5h5"/></svg></div><h4>Compliant Signage</h4><p>We provide the required signage and disclosures, done right.</p></div>
+      <div class="fc"><div class="fic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="5" y="3" width="14" height="18" rx="2"/><path d="M9 7h6M9 11h6"/><circle cx="12" cy="16" r="1.5"/></svg></div><h4>Works on Every Terminal</h4><p>Built into PAX, Dejavoo, Valor, Clover, and more.</p></div>
+      <div class="fc"><div class="fic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3l8 3v6c0 5-3.5 8-8 9-4.5-1-8-4-8-9V6z"/><path d="M9 12l2 2 4-4"/></svg></div><h4>Stays Compliant</h4><p>Card-brand and state rules handled so you stay on the right side.</p></div></div></div></section>
+<section class="ssec ssec-soft" id="how"><div class="wrap">
+<div class="sec-head"><span class="eyebrow">How it works</span><h2>Three ways to get to zero</h2><p>Every program offsets your card fees a little differently. Here’s how each one works on a <b>$100 sale</b> at an example ~3.5% processing cost — your specialist sets the exact rate for your card mix.</p></div>
+<div class="zfp-steps">
+<div class="zfp-step"><div class="zn">1</div><b>We review</b><span>Your volume, average ticket and state rules.</span></div>
+<div class="zfp-step"><div class="zn">2</div><b>We configure</b><span>Your terminal applies the program automatically at checkout.</span></div>
+<div class="zfp-step"><div class="zn">3</div><b>We post signage</b><span>Compliant signs &amp; receipt disclosures, done for you.</span></div>
+<div class="zfp-step"><div class="zn">4</div><b>You keep more</b><span>Card fees are offset — often down to $0.</span></div>
+</div>
+<div class="zfp-grid">
+  <div class="zfp-card feat">
+    <span class="zfp-tag">Dual Pricing</span>
+    <h3>Two prices, customer chooses</h3>
+    <p>Every item shows a <b>cash price</b> and a slightly higher <b>card price</b> side by side. Whichever way they pay, you net the cash price.</p>
+    <div class="zfp-ex">
+      <div class="zfp-row"><span>Cash price (shelf)</span><b>$100.00</b></div>
+      <div class="zfp-row"><span>Card price (shown)</span><b>$103.50</b></div>
+      <div class="zfp-row zfp-net"><span>You keep either way</span><b>$100.00</b></div>
+    </div>
+    <p class="zfp-note">Most popular &amp; clearest for customers. The card price covers the ~3.5% fee, so processing nets to $0.</p>
+  </div>
+  <div class="zfp-card">
+    <span class="zfp-tag">Cash Discount</span>
+    <h3>One posted price, cash saves</h3>
+    <p>You post the <b>card price</b> everywhere, then give a <b>discount for paying cash</b> at the register. Card payers fund the processing.</p>
+    <div class="zfp-ex">
+      <div class="zfp-row"><span>Posted price</span><b>$103.50</b></div>
+      <div class="zfp-row"><span>Cash discount</span><b>−$3.50</b></div>
+      <div class="zfp-row zfp-net"><span>Cash customer pays</span><b>$100.00</b></div>
+    </div>
+    <p class="zfp-note">Simple single-price signage. The posted price already absorbs the fee, so card sales cost you nothing.</p>
+  </div>
+  <div class="zfp-card">
+    <span class="zfp-tag">Surcharge</span>
+    <h3>A small fee on credit only</h3>
+    <p>Add a compliant <b>surcharge to credit cards</b> (never debit), capped to card-brand and state limits. Debit and cash pay the base price.</p>
+    <div class="zfp-ex">
+      <div class="zfp-row"><span>Base price</span><b>$100.00</b></div>
+      <div class="zfp-row"><span>Credit surcharge (3%)</span><b>+$3.00</b></div>
+      <div class="zfp-row zfp-net"><span>Credit customer pays</span><b>$103.00</b></div>
+    </div>
+    <p class="zfp-note">Debit cards can’t be surcharged, so debit &amp; cash stay at $100. We keep you within the legal caps.</p>
+  </div>
+</div>
+</div></section>
+
+<section class="ssec"><div class="wrap"><div class="ssplit"><div><span class="eyebrow">More margin</span><h2 style="font-size:clamp(26px,3vw,38px)">A few points back on every transaction adds up</h2><p class="lead" style="margin-top:14px">For many merchants a fee program effectively eliminates processing costs — our specialists set it up the compliant way.</p></div><div class="schecks"><ul><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg>Offset most or all card fees</li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg>Clear, compliant signage</li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg>Transparent receipts</li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg>Works on every terminal</li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg>Set up by specialists</li></ul></div></div></div></section>
+<section class="ssec" id="contact"><div class="wrap"><div class="sform-wrap"><div><span class="eyebrow">Find your fit</span><h2 style="font-size:clamp(28px,3.2vw,40px)">See which program fits</h2><p class="lead">Tell us your volume and average ticket and we’ll recommend the right fee program.</p><div class="sband" style="margin-top:28px;padding:34px"><h2 style="font-size:24px">Pair with rewards</h2><p>A fee program is what makes Merchant Rewards effectively free.</p><div class="shero-cta"><a class="btn btn-primary" href="quiz.html" target="_blank" rel="noopener">Take the Quiz <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></div></div></div>
+<form class="sform" data-subject="New Zero Fee Programs inquiry"><h3>See if a fee program fits</h3><p class="sf-sub">We’ll reach out within one business day.</p>
+<div class="sf-row"><div class="sf-field"><label>Full name</label><input required name="name" placeholder="Jordan Rivera"></div><div class="sf-field"><label>Business</label><input required name="business" placeholder="Rivera Group"></div>
+<div class="sf-field"><label>Email</label><input required type="email" name="email" placeholder="you@business.com"></div><div class="sf-field"><label>Phone</label><input required type="tel" name="phone" placeholder="(555) 123-4567"></div>
+<div class="sf-field full"><label>What do you need?</label><textarea name="message" rows="3" placeholder="Tell us a bit about your business…"></textarea></div></div>
+<button class="btn btn-primary btn-block" type="submit" style="margin-top:18px">Contact us <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button></form>
+</div></div></section>
+<section class="ssec" data-backlink style="padding:6px 0 60px"><div class="wrap"><a class="link-teal" href="Run Your Business.html" style="display:inline-flex;align-items:center;gap:7px;font-weight:700"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" style="transform:rotate(180deg)"><path d="M5 12h14M13 6l6 6-6 6"/></svg>Back to Run Your Business</a></div></section>
+<div id="np-footer"></div>
+<script src="js/nav.js"></script><script src="js/image-slot.js"></script>
+<script>document.querySelectorAll("form.sform").forEach(function(f){f.addEventListener("submit",function(e){e.preventDefault();var fd=new FormData(f);var nm=(fd.get("name")||"there").split(" ")[0];fd.append("_subject",f.getAttribute("data-subject"));fd.append("_cc","payments@nextpaypos.com,alexander@nextpaypos.com");fd.append("_template","table");var b=f.querySelector("button[type=submit]");if(b){b.disabled=true;b.textContent="Sending…";}function done(){f.innerHTML='<div style="text-align:center;padding:18px 6px"><div style="width:64px;height:64px;border-radius:50%;background:rgba(20,161,140,.12);display:grid;place-items:center;color:var(--teal-dark);margin:0 auto 16px"><svg viewBox="0 0 24 24" width="34" height="34" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 13l4 4L19 7"/></svg></div><h3>Thanks, '+nm+' — we\u2019ll be in touch.</h3><p class="sf-sub" style="font-size:15px;margin-top:10px">A NextPay specialist will reach out within one business day.</p></div>';}fetch("https://formsubmit.co/ajax/dom@nextpaypos.com",{method:"POST",headers:{Accept:"application/json"},body:fd}).then(function(r){return r.json();}).then(done).catch(done);});});</script>
+</body></html>

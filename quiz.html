@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Take the Quiz — NextPay</title>
+<link rel="stylesheet" href="css/nextpay.css">
+<style>
+.qpage{background:var(--bg-soft);min-height:calc(100vh - 78px)}
+.qtop{background:var(--navy);color:#fff;position:relative;overflow:hidden;padding:48px 0 96px}
+.qtop::after{content:"";position:absolute;right:-120px;top:-120px;width:480px;height:480px;border-radius:50%;background:radial-gradient(circle,rgba(20,161,140,.22),transparent 70%)}
+.qtop .wrap{position:relative;z-index:2;text-align:center}
+.qtop .eyebrow{justify-content:center;color:var(--teal-bright)}
+.qtop h1{font-size:clamp(30px,4vw,46px);color:#fff;margin-top:8px}
+.qtop p{color:#c4d0db;margin:14px auto 0;max-width:520px;font-size:18px}
+.qhold{max-width:760px;margin:-64px auto 80px;padding:0 24px;position:relative;z-index:3}
+
+/* question card */
+.quiz-card{background:#fff;border:1px solid var(--line);border-radius:24px;box-shadow:var(--shadow-lg);padding:36px 40px 30px}
+.quiz-prog{margin-bottom:24px}
+.quiz-prog-l{font-size:13px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:var(--teal-dark);margin-bottom:9px}
+.quiz-prog-bar{height:7px;border-radius:999px;background:var(--bg-soft-2);overflow:hidden}
+.quiz-prog-bar i{display:block;height:100%;background:var(--teal);border-radius:999px;transition:width .35s cubic-bezier(.2,.8,.2,1)}
+.quiz-q{font-size:clamp(24px,3vw,32px);letter-spacing:-.02em}
+.quiz-sub{color:var(--slate);font-size:16px;margin-top:10px}
+.quiz-opts{display:grid;grid-template-columns:1fr;gap:12px;margin-top:24px}
+.quiz-opts.two{grid-template-columns:1fr 1fr}
+.quiz-opt{display:flex;gap:14px;align-items:flex-start;text-align:left;background:#fff;border:1.5px solid var(--line);border-radius:15px;padding:16px 18px;cursor:pointer;transition:.15s;font-family:inherit}
+.quiz-opt:hover{border-color:var(--teal);transform:translateY(-2px);box-shadow:var(--shadow-sm)}
+.quiz-opt.on{border-color:var(--teal);background:rgba(20,161,140,.06);box-shadow:inset 0 0 0 1px var(--teal)}
+.qo-tick{flex:none;width:26px;height:26px;border-radius:50%;border:2px solid var(--line);display:grid;place-items:center;color:#fff;transition:.15s;margin-top:1px}
+.qo-tick svg{width:15px;height:15px;opacity:0;transition:.15s}
+.quiz-opt.on .qo-tick{background:var(--teal);border-color:var(--teal)}
+.quiz-opt.on .qo-tick svg{opacity:1}
+.qo-body{display:flex;flex-direction:column;gap:3px}
+.qo-body b{font-size:16.5px;font-weight:700;color:var(--ink)}
+.qo-body span{font-size:13.5px;color:var(--slate);line-height:1.45}
+.quiz-nav{display:flex;align-items:center;justify-content:space-between;margin-top:26px}
+.quiz-hint{font-size:14px;color:var(--slate-2);font-weight:600}
+
+/* results */
+.quiz-results{background:#fff;border:1px solid var(--line);border-radius:24px;box-shadow:var(--shadow-lg);padding:40px}
+.quiz-res-head{text-align:center;margin-bottom:30px}
+.quiz-res-head h2{font-size:clamp(25px,3vw,34px);margin-top:6px}
+.quiz-res-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+.quiz-rcard{display:flex;flex-direction:column;gap:8px;border:1.5px solid var(--line);border-radius:16px;padding:22px;position:relative;background:#fff;transition:.16s}
+.quiz-rcard:hover{transform:translateY(-3px);box-shadow:var(--shadow)}
+.quiz-rcard.top{border-color:var(--teal);box-shadow:0 0 0 1px var(--teal)}
+.quiz-rcard .rc-ribbon{font-size:12px;font-weight:800;letter-spacing:.06em;text-transform:uppercase;color:var(--teal-dark)}
+.quiz-rcard .rc-role{font-size:12px;font-weight:800;letter-spacing:.06em;text-transform:uppercase;color:var(--slate-2)}
+.quiz-rcard h3{font-size:21px}
+.quiz-rcard p{font-size:14.5px;color:var(--slate);line-height:1.5;flex:1}
+.rc-foot{display:flex;align-items:center;justify-content:space-between;margin-top:6px}
+.rc-price{font-size:13.5px;font-weight:700;color:var(--ink)}
+.rc-go{display:inline-flex;align-items:center;gap:6px;color:var(--teal-dark);font-weight:700;font-size:14px}
+.rc-go svg{width:15px;height:15px}
+.quiz-note{display:flex;gap:12px;align-items:flex-start;background:rgba(20,161,140,.08);border:1px solid rgba(20,161,140,.25);border-radius:14px;padding:16px 18px;margin-top:18px;font-size:14.5px;line-height:1.5}
+.quiz-note svg{width:20px;height:20px;color:var(--teal);flex:none;margin-top:1px}
+.quiz-res-sub{font-size:13px;text-transform:uppercase;letter-spacing:.1em;color:var(--slate);margin:30px 0 14px;font-weight:800}
+.quiz-svc-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.quiz-svc{border:1px solid var(--line);border-radius:13px;padding:16px 18px;display:flex;flex-direction:column;gap:4px;transition:.15s;color:inherit}
+.quiz-svc:hover{border-color:var(--teal);transform:translateY(-2px);box-shadow:var(--shadow-sm)}
+.quiz-svc b{font-size:15.5px}.quiz-svc span{font-size:13.5px;color:var(--slate);line-height:1.45}
+.svc-go{display:inline-flex;align-items:center;gap:6px;color:var(--teal-dark);font-weight:700;font-size:13.5px;margin-top:6px}
+.svc-go svg{width:14px;height:14px}
+.quiz-res-cta{display:flex;gap:12px;flex-wrap:wrap;justify-content:center;margin-top:32px;padding-top:26px;border-top:1px solid var(--line)}
+.btn-ghost-dark{background:transparent;color:var(--slate);box-shadow:inset 0 0 0 1.5px var(--line)}
+.btn-ghost-dark:hover{color:var(--ink);box-shadow:inset 0 0 0 1.5px var(--slate-2)}
+
+@media(max-width:680px){
+  .quiz-card{padding:26px 20px}
+  .quiz-opts.two,.quiz-res-grid,.quiz-svc-grid{grid-template-columns:1fr}
+  .qhold{margin-top:-48px}
+}
+</style>
+</head>
+<body data-page="quiz">
+<div id="np-nav"></div>
+<div class="qpage">
+  <header class="qtop">
+    <div class="wrap">
+      <span class="eyebrow">Take the Quiz</span>
+      <h1>Find your perfect setup in 2 minutes</h1>
+      <p>Answer a few questions about your business and we'll match you to the right POS, terminal, gateway, and rate — then a human helps you get running.</p>
+    </div>
+  </header>
+  <div class="qhold">
+    <div id="quiz"></div>
+  </div>
+</div>
+<div id="np-footer"></div>
+
+<script src="js/nav.js"></script>
+<script src="js/quiz.js"></script>
+</body>
+</html>

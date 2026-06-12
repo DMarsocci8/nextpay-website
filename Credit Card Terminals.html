@@ -1,0 +1,783 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Credit Card Terminals — NextPay</title>
+<link rel="stylesheet" href="css/nextpay.css">
+<style>
+.thero{background:var(--navy);color:#fff;position:relative;overflow:hidden}
+.thero::after{content:"";position:absolute;right:-140px;top:-140px;width:560px;height:560px;border-radius:50%;background:radial-gradient(circle,rgba(20,161,140,.22),transparent 70%)}
+.thero .wrap{position:relative;z-index:2}
+.thero-crumb{display:flex;gap:8px;align-items:center;font-size:14px;color:#9fb1c2;padding:20px 0 0}
+.thero-crumb a:hover{color:#fff}.thero-crumb .sep{opacity:.5}
+.thero-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:48px;align-items:center;padding:40px 0 72px}
+.thero h1{font-size:clamp(28px,4vw,48px);line-height:1.08;margin:16px 0 0;color:#fff;white-space:nowrap}
+.thero h1 .nb{white-space:nowrap}
+.thero h1 em{color:var(--teal-bright);font-style:normal}
+.thero .lead{color:#c4d0db;margin-top:18px;max-width:540px}
+.thero-cta{display:flex;gap:13px;flex-wrap:wrap;margin-top:28px}
+.thero-media{position:relative;display:grid;place-items:center}
+.thero-media image-slot{width:100%;height:380px;background:#eef3f5;border-radius:22px}
+.brandstrip{display:flex;gap:12px;flex-wrap:wrap;justify-content:center;max-width:490px;margin-top:30px}
+.brandstrip a[title="Ingenico"] img{height:30px;max-width:120px}
+.brandstrip .bchip{display:flex;align-items:center;justify-content:center;background:#fff;border-radius:12px;padding:0 18px;height:50px;min-width:78px;transition:.18s ease;box-shadow:0 1px 2px rgba(0,0,0,.18)}
+.brandstrip .bchip img{height:24px;width:auto;max-width:104px;display:block}
+.brandstrip .bchip:hover{transform:translateY(-3px);box-shadow:0 12px 26px rgba(0,0,0,.28);outline:2px solid var(--teal-bright);outline-offset:0}
+
+.brandnav{position:sticky;top:78px;z-index:40;background:rgba(255,255,255,.95);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+.brandnav .wrap{display:flex;gap:8px;align-items:center;padding:12px 28px;overflow:auto}
+.brandnav .bn-label{font-weight:800;font-size:13px;text-transform:uppercase;letter-spacing:.08em;color:var(--teal-dark);background:var(--bg-soft);padding:9px 16px;border-radius:999px;margin-right:8px;white-space:nowrap}
+.brandnav a{white-space:nowrap;padding:9px 16px;border-radius:999px;font-weight:700;font-size:14px;color:var(--slate)}
+.brandnav a:hover,.brandnav a.on{background:var(--bg-soft);color:var(--teal-dark)}
+
+.bsec{padding:66px 0;border-bottom:1px solid var(--line);scroll-margin-top:132px}
+.bsec:nth-child(even){background:var(--bg-soft)}
+.bhead{display:flex;align-items:flex-end;justify-content:space-between;gap:24px;margin-bottom:30px;flex-wrap:wrap}
+.bhead .bh-left{display:flex;flex-direction:column;gap:12px;max-width:660px}
+.bhead .blogo{height:46px;display:flex;align-items:center}
+.bhead .blogo img{height:100%;width:auto}
+.brandlogo.cardbrand-img{height:17px;width:auto;max-width:118px;align-self:flex-start;display:block;margin-bottom:4px}
+.bhead .bname{font-size:clamp(26px,3vw,34px);font-weight:800;letter-spacing:-.02em}
+.bhead p{color:var(--slate);font-size:16px}
+.bhead .bestfor{display:flex;gap:7px;flex-wrap:wrap}
+.tgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+.tgrid.cols4{grid-template-columns:repeat(4,1fr)}
+
+.sec-head{max-width:720px;margin:0 auto 40px;text-align:center}
+.sec-head h2{font-size:clamp(28px,3.4vw,40px)}
+.sec-head p{margin-top:14px;color:var(--slate);font-size:18px}
+
+.tband{background:linear-gradient(120deg,var(--navy),var(--navy-3));color:#fff;border-radius:26px;padding:52px;text-align:center;position:relative;overflow:hidden;margin:64px 0}
+.tband::after{content:"";position:absolute;left:-80px;bottom:-120px;width:420px;height:420px;border-radius:50%;background:radial-gradient(circle,rgba(20,161,140,.25),transparent 70%)}
+.tband h2{font-size:clamp(26px,3.2vw,38px);position:relative;z-index:2}
+.tband p{color:#c4d0db;margin:12px auto 0;max-width:560px;font-size:17px;position:relative;z-index:2}
+.tband .thero-cta{justify-content:center;position:relative;z-index:2}
+
+@media(max-width:1000px){
+  .thero-grid{grid-template-columns:1fr;gap:28px;padding:30px 0 54px}
+  .thero-media image-slot{height:280px}
+  .tgrid,.tgrid.cols4{grid-template-columns:repeat(2,1fr)}
+}
+@media(max-width:680px){ .tgrid,.tgrid.cols4{grid-template-columns:1fr} .bsec{padding:48px 0} }
+.tgrid .more-card{display:none}
+.tgrid.expanded .more-card{display:flex}
+.showmore{display:inline-flex;align-items:center;gap:9px;margin:22px auto 0;padding:12px 24px;border-radius:999px;border:1.5px solid var(--line);background:#fff;color:var(--navy);font-family:inherit;font-weight:700;font-size:15px;cursor:pointer;transition:.16s}
+.showmore:hover{border-color:var(--teal);color:var(--teal-dark)}
+.showmore svg{width:16px;height:16px;transition:.2s}
+.showmore.open svg{transform:rotate(180deg)}
+.bsec .wrap{display:flex;flex-direction:column}
+.bsec .showmore{align-self:center}
+.notfound{background:linear-gradient(180deg,rgba(20,161,140,.07),rgba(20,161,140,.04));border:1px solid rgba(20,161,140,.28);border-radius:20px;padding:34px 30px;display:flex;flex-direction:column;align-items:center;text-align:center;gap:14px;max-width:680px;margin:0 auto}
+.notfound .nf-ic{width:48px;height:48px;border-radius:14px;background:rgba(20,161,140,.14);display:grid;place-items:center;color:var(--teal-dark)}
+.notfound .nf-ic svg{width:24px;height:24px}
+.notfound b{color:var(--ink);font-size:19px;display:block}
+.notfound>div{font-size:15.5px;color:var(--slate);max-width:520px;line-height:1.55}
+</style>
+<script>
+function npLogoFail(img){var b=img.getAttribute('data-brand');if(img.classList.contains('hdr')){img.parentElement.outerHTML='<div class="bname">'+b+'</div>';}else{img.outerHTML='<span class="pbrand">'+b+'</span>';}}
+window.addEventListener('load',function(){document.querySelectorAll('img.brandlogo').forEach(function(im){if(im.complete&&im.naturalWidth===0)npLogoFail(im);});});
+</script>
+</head>
+<body data-page="terminals">
+
+<div id="np-nav"></div>
+
+<!-- HERO -->
+<header class="thero" data-screen-label="Terminals hero">
+  <div class="wrap">
+    <div class="thero-crumb"><a href="index.html">Home</a><span class="sep">/</span><a href="Accept Payments.html">Solutions</a><span class="sep">/</span><span style="color:#fff">Credit Card Terminals</span></div>
+    <div class="thero-grid">
+      <div>
+        <span class="tag tag-teal">Accept Payments · Terminals</span>
+        <h1><span class="nb">The right card terminal,</span><br><em>matched to how you sell.</em></h1>
+        <p class="lead">Countertop, wireless, handheld, or pocket reader — from PAX, Dejavoo, Clover, Square, Valor, and SwipeSimple. Compare devices side by side, see what each is best for, and we'll get you the best rate to run them.</p>
+        <div class="thero-cta">
+          <a class="btn btn-primary" href="quiz.html" target="_blank" rel="noopener">Take the Quiz
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+          <a class="btn btn-ghost" href="#all">Browse all terminals</a>
+        </div>
+        <div class="brandstrip">
+          <a href="#pax" class="bchip" title="PAX"><img src="assets/logos/pax.svg" alt="PAX"></a>
+          <a href="#dejavoo" class="bchip" title="Dejavoo"><img src="assets/logos/dejavoo.png" alt="Dejavoo"></a>
+          <a href="#clover" class="bchip" title="Clover"><img src="assets/logos/clover.png" alt="Clover"></a>
+          <a href="#square" class="bchip" title="Square"><img src="assets/logos/square.svg" alt="Square"></a>
+          <a href="#valor" class="bchip" title="Valor"><img src="assets/logos/valor.png" alt="Valor"></a>
+          <a href="#swipesimple" class="bchip" title="SwipeSimple"><img src="assets/logos/swipesimple.png" alt="SwipeSimple"></a>
+          <a href="#ingenico" class="bchip" title="Ingenico"><img src="assets/logos/ingenico.png" alt="Ingenico"></a>
+        </div>
+      </div>
+      <div class="thero-media">
+        <image-slot id="term-hero" src="assets/lifestyle/terminals-hero.png" shape="rounded" radius="22" fit="cover" placeholder="Drop a photo of a customer paying by card"></image-slot>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- BRAND NAV -->
+<div class="brandnav" id="all">
+  <div class="wrap">
+    <span class="bn-label">Shop by brand</span>
+    <a href="#pax" class="on">PAX</a>
+    <a href="#dejavoo">Dejavoo</a>
+    <a href="#clover">Clover</a>
+    <a href="#square">Square</a>
+    <a href="#valor">Valor</a>
+    <a href="#swipesimple">SwipeSimple</a>
+    <a href="#ingenico">Ingenico</a>
+    <a href="#compare-help" onclick="event.preventDefault();NPCompare.requestOpen();">Compare</a>
+  </div>
+</div>
+
+<!-- PAX -->
+<section class="bsec" id="pax">
+  <div class="wrap">
+    <div class="bhead">
+      <div class="bh-left">
+        <div class="blogo"><img class="brandlogo hdr" data-brand="PAX" src="assets/logos/pax.svg" alt="PAX" onerror="npLogoFail(this)"></div>
+        <p>Android smart terminals with 4G LTE, Wi-Fi, long battery, and built-in printers. The dependable all-arounder — our top terminal pick for retail, services, and field/home-services teams.</p>
+        <div class="bestfor"><span class="tag tag-teal">Retail</span><span class="tag tag-teal">Services</span><span class="tag tag-teal">Home Services</span><span class="tag">Mobile / 4G</span></div>
+      </div>
+      <div class="bquiz"><span>Not sure which PAX?</span><a class="btn btn-primary btn-sm" href="quiz.html" target="_blank" rel="noopener">Take the quiz <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a><a class="link-teal" href="PAX Terminals.html" target="_blank" rel="noopener" style="margin-top:10px;display:inline-flex;align-items:center;gap:6px;font-weight:700">Learn more about PAX <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></div>
+    </div>
+    <div class="tgrid">
+      <article class="pcard" id="pax-a920">
+        <div class="pimg"><span class="tag tag-navy pbadge">Most popular</span><image-slot id="t-pax-a920" fit="contain" radius="0" src="assets/terminals/pax-a920.jpeg" placeholder="PAX A920"></image-slot></div>
+        <div class="pbody">
+          <img class="brandlogo cardbrand-img" data-brand="PAX" src="assets/logos/pax.svg" alt="PAX" onerror="npLogoFail(this)"><h3>PAX A920 Pro</h3>
+          <p class="pdesc">All-in-one Android handheld with built-in printer, all-day battery, and 4G + Wi-Fi. Tap, dip, or swipe anywhere.</p>
+          <div class="pspecs"><span class="tag">Printer</span><span class="tag">4G LTE</span><span class="tag">All-day battery</span></div>
+          <div class="pprice"><b>$400</b> <span>· terminal price</span></div>
+          <div class="pcta"><div class="pcta-row"><a class="btn btn-primary btn-sm" href="#pax-a920">See pricing</a><a class="btn btn-outline btn-sm" href="#pax-a920">Learn more</a></div>
+            <button class="btn btn-compare btn-sm btn-block" data-compare="t-pax-a920"><span class="cmp-label">Add to compare</span></button></div>
+        </div>
+      </article>
+      <article class="pcard" id="pax-a77">
+        <div class="pimg"><image-slot id="t-pax-a77" fit="contain" radius="0" src="https://www.pax.us/wp-content/uploads/2023/02/HP-MobilePOS-A77-4X.png" placeholder="PAX A77"></image-slot></div>
+        <div class="pbody">
+          <img class="brandlogo cardbrand-img" data-brand="PAX" src="assets/logos/pax.svg" alt="PAX" onerror="npLogoFail(this)"><h3>PAX A77</h3>
+          <p class="pdesc">Compact mobile POS — pocketable, no printer. Great for line-busting and on-the-go acceptance.</p>
+          <div class="pspecs"><span class="tag">Pocket-sized</span><span class="tag">4G + Wi-Fi</span><span class="tag">Contactless</span></div>
+          <div class="pprice"><b>Match or beat</b> <span>current rate</span></div>
+          <div class="pcta"><div class="pcta-row"><a class="btn btn-primary btn-sm" href="#pax-a77">See pricing</a><a class="btn btn-outline btn-sm" href="#pax-a77">Learn more</a></div>
+            <button class="btn btn-compare btn-sm btn-block" data-compare="t-pax-a77"><span class="cmp-label">Add to compare</span></button></div>
+        </div>
+      </article>
+      <article class="pcard" id="pax-a800">
+        <div class="pimg"><image-slot id="t-pax-a800" fit="contain" radius="0" src="https://www.pax.us/wp-content/uploads/2023/03/A800-1.png" placeholder="PAX A800"></image-slot></div>
+        <div class="pbody">
+          <img class="brandlogo cardbrand-img" data-brand="PAX" src="assets/logos/pax.svg" alt="PAX" onerror="npLogoFail(this)"><h3>PAX A800</h3>
+          <p class="pdesc">Countertop Android terminal with built-in printer — a fast, dependable front-desk device.</p>
+          <div class="pspecs"><span class="tag">Countertop</span><span class="tag">Printer</span><span class="tag">4G + Wi-Fi</span></div>
+          <div class="pprice"><b>Match or beat</b> <span>current rate</span></div>
+          <div class="pcta"><div class="pcta-row"><a class="btn btn-primary btn-sm" href="#pax-a800">See pricing</a><a class="btn btn-outline btn-sm" href="#pax-a800">Learn more</a></div>
+            <button class="btn btn-compare btn-sm btn-block" data-compare="t-pax-a800"><span class="cmp-label">Add to compare</span></button></div>
+        </div>
+      </article>
+      <article class="pcard more-card" id="pax-a35">
+        <div class="pimg"><image-slot id="t-pax-a35" fit="contain" radius="0" src="assets/terminals/pax-a35.jpeg" placeholder="PAX A35"></image-slot></div>
+        <div class="pbody">
+          <span class="pbrand">PAX</span><h3>PAX A35 PIN Pad</h3>
+          <p class="pdesc">Compact customer-facing PIN pad with a touchscreen and contactless — pairs with a POS or register for secure debit and EMV.</p>
+          <div class="pspecs"><span class="tag">PIN pad</span><span class="tag">Contactless</span><span class="tag">Customer-facing</span></div>
+          <div class="pprice"><b>$305</b> <span>· PIN pad</span></div>
+          <div class="pcta"><div class="pcta-row"><a class="btn btn-primary btn-sm" href="#pax-a35">See pricing</a><a class="btn btn-outline btn-sm" href="#pax-a35">Learn more</a></div>
+            <button class="btn btn-compare btn-sm btn-block" data-compare="t-pax-a35"><span class="cmp-label">Add to compare</span></button></div>
+        </div>
+      </article>
+      <article class="pcard more-card" id="pax-q25">
+        <div class="pimg"><image-slot id="t-pax-q25" fit="contain" radius="0" src="https://www.pax.us/wp-content/uploads/2025/07/payment-device-pax-Q25.webp" placeholder="PAX Q25 PIN pad"></image-slot></div>
+        <div class="pbody">
+          <span class="pbrand">PAX</span><h3>PAX Q25 PIN Pad</h3>
+          <p class="pdesc">Countertop PIN pad for secure debit, EBT and contactless — pairs with a POS or register at the checkout lane.</p>
+          <div class="pspecs"><span class="tag">PIN pad</span><span class="tag">Debit</span><span class="tag">EBT</span><span class="tag">Contactless</span></div>
+          <div class="pprice"><b>$252</b> <span>· PIN pad</span></div>
+          <div class="pcta"><div class="pcta-row"><a class="btn btn-primary btn-sm" href="#pax-q25">See pricing</a><a class="btn btn-outline btn-sm" href="#pax-q25">Learn more</a></div>
+            <button class="btn btn-compare btn-sm btn-block" data-compare="t-pax-q25"><span class="cmp-label">Add to compare</span></button></div>
+        </div>
+      </article>
+      <article class="pcard more-card" id="pax-a80">
+        <div class="pimg"><image-slot id="t-pax-a80" fit="contain" radius="0" src="assets/terminals/pax-a80-white.png" placeholder="PAX A80"></image-slot></div>
+        <div class="pbody">
+          <span class="pbrand">PAX</span><h3>PAX A80</h3>
+          <p class="pdesc">Countertop Android terminal with built-in printer and fast connectivity — a dependable corded front-desk device.</p>
+          <div class="pspecs"><span class="tag">Countertop</span><span class="tag">Printer</span><span class="tag">Wi-Fi + Ethernet</span></div>
+          <div class="pprice"><b>$270</b> <span>· terminal</span></div>
+          <div class="pcta"><div class="pcta-row"><a class="btn btn-primary btn-sm" href="#pax-a80">See pricing</a><a class="btn btn-outline btn-sm" href="#pax-a80">Learn more</a></div>
+            <button class="btn btn-compare btn-sm btn-block" data-compare="t-pax-a80"><span class="cmp-label">Add to compare</span></button></div>
+        </div>
+      </article>
+    </div>
+    <button class="showmore" type="button" data-brand="PAX" data-label="PAX terminals">Show more PAX terminals <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg></button>
+  </div>
+</section>
+
+<!-- DEJAVOO -->
+<section class="bsec" id="dejavoo">
+  <div class="wrap">
+    <div class="bhead">
+      <div class="bh-left">
+        <div class="blogo"><img src="assets/logos/dejavoo.png" alt="Dejavoo"></div>
+        <p>Countertop and wireless terminals with tip prompting, dual pricing, PIN debit, and EBT built in. Our top terminal pick for food &amp; beverage and healthcare front desks.</p>
+        <div class="bestfor"><span class="tag tag-teal">Food &amp; Beverage</span><span class="tag tag-teal">Healthcare</span><span class="tag">Dual pricing</span><span class="tag">Tip prompting</span></div>
+      </div>
+      <div class="bquiz"><span>Not sure which Dejavoo?</span><a class="btn btn-primary btn-sm" href="quiz.html" target="_blank" rel="noopener">Take the quiz <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a><a class="link-teal" href="Dejavoo Terminals.html" target="_blank" rel="noopener" style="margin-top:10px;display:inline-flex;align-items:center;gap:6px;font-weight:700">Learn more about Dejavoo <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></div>
+    </div>
+    <div class="tgrid cols4">
+      <article class="pcard" id="dejavoo-qd1">
+        <div class="pimg"><image-slot id="t-dej-qd1" fit="contain" radius="0" src="assets/terminals/dejavoo-qd1.jpeg" placeholder="Dejavoo QD1"></image-slot></div>
+        <div class="pbody">
+          <img class="brandlogo cardbrand-img" data-brand="Dejavoo" src="assets/logos/dejavoo.png" alt="Dejavoo" onerror="npLogoFail(this)"><h3>QD1</h3>
+          <p class="pdesc">Entry wireless Android handheld with printer — efficient everyday card acceptance.</p>
+          <div class="pspecs"><span class="tag">Handheld</span><span class="tag">Printer</span><span class="tag">Wireless</span><span class="tag">Contactless</span></div>
+          <div class="pprice"><b>Match or beat</b> <span>current rate</span></div>
+          <div class="pcta"><div class="pcta-row"><a class="btn btn-primary btn-sm" href="#dejavoo-qd1">See pricing</a><a class="btn btn-outline btn-sm" href="#dejavoo-qd1">Learn more</a></div>
+            <button class="btn btn-compare btn-sm btn-block" data-compare="t-dej-qd1"><span class="cmp-label">Add to compare</span></button></div>
+        </div>
+      </article>
+      <article class="pcard" id="dejavoo-qd2">
+        <div class="pimg"><image-slot id="t-dej-qd2" fit="contain" radius="0" src="assets/terminals/dejavoo-qd2.webp" placeholder="Dejavoo QD2"></image-slot></div>
+        <div class="pbody">
+          <img class="brandlogo cardbrand-img" data-brand="Dejavoo" src="assets/logos/dejavoo.png" alt="Dejavoo" onerror="npLogoFail(this)"><h3>QD2 Handheld</h3>
+          <p class="pdesc">Lightweight wireless Android terminal with printer — efficient everyday card acceptance.</p>
+          <div class="pspecs"><span class="tag">Handheld</span><span class="tag">Printer</span><span class="tag">Wireless</span><span class="tag">EBT</span><span class="tag">Cash discount</span></div>
+          <div class="pprice"><b>$438</b> <span>· terminal · +$6.25/mo on iPOSPays</span></div>
+          <div class="pcta"><div class="pcta-row"><a class="btn btn-primary btn-sm" href="#dejavoo-qd2">See pricing</a><a class="btn btn-outline btn-sm" href="#dejavoo-qd2">Learn more</a></div>
+            <button class="btn btn-compare btn-sm btn-block" data-compare="t-dej-qd2"><span class="cmp-label">Add to compare</span></button></div>
+        </div>
+      </article>
+      <article class="pcard" id="dejavoo-qd3">
+        <div class="pimg"><image-slot id="t-dej-qd3" fit="contain" radius="0" src="assets/terminals/dejavoo-qd3.png" placeholder="Dejavoo QD3"></image-slot></div>
+        <div class="pbody">
+          <img class="brandlogo cardbrand-img" data-brand="Dejavoo" src="assets/logos/dejavoo.png" alt="Dejavoo" onerror="npLogoFail(this)"><h3>QD3</h3>
+          <p class="pdesc">Mid-size Android handheld with printer — tip prompts and dual pricing for counter and tableside service.</p>
+          <div class="pspecs"><span class="tag">Handheld</span><span class="tag">Printer</span><span class="tag">Wireless</span><span class="tag">Tip prompt</span><span class="tag">Cash discount</span></div>
+          <div class="pprice"><b>$245</b> <span>· terminal · +$6.25/mo on iPOSPays</span></div>
+          <div class="pcta"><div class="pcta-row"><a class="btn btn-primary btn-sm" href="#dejavoo-qd3">See pricing</a><a class="btn btn-outline btn-sm" href="#dejavoo-qd3">Learn more</a></div>
+            <button class="btn btn-compare btn-sm btn-block" data-compare="t-dej-qd3"><span class="cmp-label">Add to compare</span></button></div>
+        </div>
+      </article>
+      <article class="pcard" id="dejavoo-qd4">
+        <div class="pimg"><image-slot id="t-dej-qd4" fit="contain" radius="0" src="assets/terminals/dejavoo-qd4-duo.webp" placeholder="Dejavoo QD4"></image-slot></div>
+        <div class="pbody">
+          <img class="brandlogo cardbrand-img" data-brand="Dejavoo" src="assets/logos/dejavoo.png" alt="Dejavoo" onerror="npLogoFail(this)"><h3>QD4 Handheld</h3>
+          <p class="pdesc">Android handheld + charging base with printer. Tip prompts and dual pricing for table and counter.</p>
+          <div class="pspecs"><span class="tag">Handheld</span><span class="tag">Printer</span><span class="tag">Wireless</span><span class="tag">Tip prompt</span><span class="tag">Cash discount</span></div>
+          <div class="pprice"><b>$271</b> <span>· terminal · +$6.25/mo on iPOSPays</span></div>
+          <div class="pcta"><div class="pcta-row"><a class="btn btn-primary btn-sm" href="#dejavoo-qd4">See pricing</a><a class="btn btn-outline btn-sm" href="#dejavoo-qd4">Learn more</a></div>
+            <button class="btn btn-compare btn-sm btn-block" data-compare="t-dej-qd4"><span class="cmp-label">Add to compare</span></button></div>
+        </div>
+      </article>
+      <article class="pcard more-card" id="dejavoo-qd4w">
+        <div class="pimg"><image-slot id="t-dej-qd4w" fit="contain" radius="0" src="assets/terminals/dejavoo-qd4-wired.jpeg" placeholder="Dejavoo QD4 Countertop"></image-slot></div>
+        <div class="pbody">
+          <img class="brandlogo cardbrand-img" data-brand="Dejavoo" src="assets/logos/dejavoo.png" alt="Dejavoo" onerror="npLogoFail(this)"><h3>QD4 Countertop</h3>
+          <p class="pdesc">The QD4 in a wired countertop configuration for fixed front-desk checkout.</p>
+          <div class="pspecs"><span class="tag">Countertop</span><span class="tag">Printer</span><span class="tag">PIN debit</span></div>
+          <div class="pprice"><b>$271</b> <span>· terminal · +$6.25/mo on iPOSPays</span></div>
+          <div class="pcta"><div class="pcta-row"><a class="btn btn-primary btn-sm" href="#dejavoo-qd4w">See pricing</a><a class="btn btn-outline btn-sm" href="#dejavoo-qd4w">Learn more</a></div>
+            <button class="btn btn-compare btn-sm btn-block" data-compare="t-dej-qd4w"><span class="cmp-label">Add to compare</span></button></div>
+        </div>
+      </article>
+      <article class="pcard more-card" id="dejavoo-qd5">
+        <div class="pimg"><image-slot id="t-dej-qd5" fit="contain" radius="0" src="assets/terminals/dejavoo-qd5.jpeg" placeholder="Dejavoo QD5"></image-slot></div>
+        <div class="pbody">
+          <img class="brandlogo cardbrand-img" data-brand="Dejavoo" src="assets/logos/dejavoo.png" alt="Dejavoo" onerror="npLogoFail(this)"><h3>QD5 Handheld</h3>
+          <p class="pdesc">Larger-screen Android handheld with printer — premium QD-line device for busy service.</p>
+          <div class="pspecs"><span class="tag">Handheld</span><span class="tag">Big screen</span><span class="tag">Printer</span><span class="tag">PIN debit</span><span class="tag">Cash discount</span></div>
+          <div class="pprice"><b>$245</b> <span>· terminal · +$6.25/mo on iPOSPays</span></div>
+          <div class="pcta"><div class="pcta-row"><a class="btn btn-primary btn-sm" href="#dejavoo-qd5">See pricing</a><a class="btn btn-outline btn-sm" href="#dejavoo-qd5">Learn more</a></div>
+            <button class="btn btn-compare btn-sm btn-block" data-compare="t-dej-qd5"><span class="cmp-label">Add to compare</span></button></div>
+        </div>
+      </article>
+      <article class="pcard more-card" id="dejavoo-p1">
+        <div class="pimg"><image-slot id="t-dej-p1" fit="contain" radius="0" src="assets/terminals/dejavoo-p1.jpg" placeholder="Dejavoo P1"></image-slot></div>
+        <div class="pbody">
+          <img class="brandlogo cardbrand-img" data-brand="Dejavoo" src="assets/logos/dejavoo.png" alt="Dejavoo" onerror="npLogoFail(this)"><h3>P1</h3>
+          <p class="pdesc">Sleek countertop/handheld with PIN debit and EBT — ideal front-desk device, pairs with LQpay.</p>
+          <div class="pspecs"><span class="tag">Countertop</span><span class="tag">PIN debit</span><span class="tag">EBT</span><span class="tag">Cash discount</span></div>
+          <div class="pprice"><b>$225</b> <span>· terminal · +$6.25/mo on iPOSPays</span></div>
+          <div class="pcta"><div class="pcta-row"><a class="btn btn-primary btn-sm" href="#dejavoo-p1">See pricing</a><a class="btn btn-outline btn-sm" href="#dejavoo-p1">Learn more</a></div>
+            <button class="btn btn-compare btn-sm btn-block" data-compare="t-dej-p1"><span class="cmp-label">Add to compare</span></button></div>
+        </div>
+      </article>
+      <article class="pcard more-card" id="dejavoo-p5">
+        <div class="pimg"><image-slot id="t-dej-p5" fit="contain" radius="0" src="assets/terminals/dejavoo-p5-white.png" placeholder="Dejavoo P5"></image-slot></div>
+        <div class="pbody">
+          <img class="brandlogo cardbrand-img" data-brand="Dejavoo" src="assets/logos/dejavoo.png" alt="Dejavoo" onerror="npLogoFail(this)"><h3>P5</h3>
+          <p class="pdesc">P-line countertop/handheld with PIN debit and EBT — a sleek, capable device that pairs with LQpay.</p>
+          <div class="pspecs"><span class="tag">Handheld</span><span class="tag">PIN debit</span><span class="tag">EBT</span><span class="tag">Cash discount</span></div>
+          <div class="pprice"><b>$215</b> <span>· terminal · +$6.25/mo on iPOSPays</span></div>
+          <div class="pcta"><div class="pcta-row"><a class="btn btn-primary btn-sm" href="#dejavoo-p5">See pricing</a><a class="btn btn-outline btn-sm" href="#dejavoo-p5">Learn more</a></div>
+            <button class="btn btn-compare btn-sm btn-block" data-compare="t-dej-p5"><span class="cmp-label">Add to compare</span></button></div>
+        </div>
+      </article>
+      <article class="pcard more-card" id="dejavoo-z6">
+        <div class="pimg"><image-slot id="t-dej-z6" fit="contain" radius="0" src="https://dejavoo.io/wp-content/uploads/elementor/thumbs/Dejavoo_Z6_Cable_v4-rcc8p37qqmfv90157rocppy77drkyoud7lixqcw6uw.webp" placeholder="Dejavoo Z6"></image-slot></div>
+        <div class="pbody">
+          <img class="brandlogo cardbrand-img" data-brand="Dejavoo" src="assets/logos/dejavoo.png" alt="Dejavoo" onerror="npLogoFail(this)"><h3>Z6</h3>
+          <p class="pdesc">Compact countertop terminal with printer — a space-saving option for smaller counters needing dependable acceptance.</p>
+          <div class="pspecs"><span class="tag">Countertop</span><span class="tag">Printer</span><span class="tag">Compact</span></div>
+          <div class="pprice"><b>$215</b> <span>· terminal</span></div>
+          <div class="pcta"><div class="pcta-row"><a class="btn btn-primary btn-sm" href="#dejavoo-z6">See pricing</a><a class="btn btn-outline btn-sm" href="#dejavoo-z6">Learn more</a></div>
+            <button class="btn btn-compare btn-sm btn-block" data-compare="t-dej-z6"><span class="cmp-label">Add to compare</span></button></div>
+        </div>
+      </article>
+      <article class="pcard more-card" id="dejavoo-z8">
+        <div class="pimg"><image-slot id="t-dej-z8" fit="contain" radius="0" src="https://dejavoo.io/wp-content/uploads/elementor/thumbs/Dejavoo_Z8_DJV-Screen-rca3k7ieb57z2qsft1zzuckfjc8ia1hxu4vef35kus.webp" placeholder="Dejavoo Z8"></image-slot></div>
+        <div class="pbody">
+          <img class="brandlogo cardbrand-img" data-brand="Dejavoo" src="assets/logos/dejavoo.png" alt="Dejavoo" onerror="npLogoFail(this)"><h3>Z8</h3>
+          <p class="pdesc">Classic countertop terminal with built-in printer — reliable, no-fuss card acceptance for the front desk.</p>
+          <div class="pspecs"><span class="tag">Countertop</span><span class="tag">Printer</span><span class="tag">PIN debit</span></div>
+          <div class="pprice"><b>$219</b> <span>· terminal</span></div>
+          <div class="pcta"><div class="pcta-row"><a class="btn btn-primary btn-sm" href="#dejavoo-z8">See pricing</a><a class="btn btn-outline btn-sm" href="#dejavoo-z8">Learn more</a></div>
+            <button class="btn btn-compare btn-sm btn-block" data-compare="t-dej-z8"><span class="cmp-label">Add to compare</span></button></div>
+        </div>
+      </article>
+      <article class="pcard more-card" id="dejavoo-z9">
+        <div class="pimg"><image-slot id="t-dej-z9" fit="contain" radius="0" src="https://dejavoo.io/wp-content/uploads/2025/09/Dejavoo_Z9_DJV-Screen-300x300.webp" placeholder="Dejavoo Z9 WiFi"></image-slot></div>
+        <div class="pbody">
+          <img class="brandlogo cardbrand-img" data-brand="Dejavoo" src="assets/logos/dejavoo.png" alt="Dejavoo" onerror="npLogoFail(this)"><h3>Z9 WiFi</h3>
+          <p class="pdesc">Wireless countertop terminal with Wi-Fi connectivity and a built-in printer — flexible placement without cables.</p>
+          <div class="pspecs"><span class="tag">Handheld</span><span class="tag">Wireless</span><span class="tag">Wi-Fi</span><span class="tag">Printer</span></div>
+          <div class="pprice"><b>$400</b> <span>· terminal</span></div>
+          <div class="pcta"><div class="pcta-row"><a class="btn btn-primary btn-sm" href="#dejavoo-z9">See pricing</a><a class="btn btn-outline btn-sm" href="#dejavoo-z9">Learn more</a></div>
+            <button class="btn btn-compare btn-sm btn-block" data-compare="t-dej-z9"><span class="cmp-label">Add to compare</span></button></div>
+        </div>
+      </article>
+      <article class="pcard more-card" id="dejavoo-z11">
+        <div class="pimg"><image-slot id="t-dej-z11" fit="contain" radius="0" src="https://dejavoo.io/wp-content/uploads/2025/09/Dejavoo_Z11_DJV-Screen-300x300.webp" placeholder="Dejavoo Z11"></image-slot></div>
+        <div class="pbody">
+          <img class="brandlogo cardbrand-img" data-brand="Dejavoo" src="assets/logos/dejavoo.png" alt="Dejavoo" onerror="npLogoFail(this)"><h3>Z11</h3>
+          <p class="pdesc">Dual-display countertop terminal with a fast thermal printer — a premium front-desk device with PIN debit and EBT.</p>
+          <div class="pspecs"><span class="tag">Countertop</span><span class="tag">Dual display</span><span class="tag">Printer</span><span class="tag">PIN debit</span></div>
+          <div class="pprice"><b>$271</b> <span>· terminal</span></div>
+          <div class="pcta"><div class="pcta-row"><a class="btn btn-primary btn-sm" href="#dejavoo-z11">See pricing</a><a class="btn btn-outline btn-sm" href="#dejavoo-z11">Learn more</a></div>
+            <button class="btn btn-compare btn-sm btn-block" data-compare="t-dej-z11"><span class="cmp-label">Add to compare</span></button></div>
+        </div>
+      </article>
+    </div>
+    <button class="showmore" type="button" data-brand="Dejavoo" data-label="Dejavoo terminals">Show more Dejavoo terminals <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg></button>
+  </div>
+</section>
+
+<!-- CLOVER -->
+<section class="bsec" id="clover">
+  <div class="wrap">
+    <div class="bhead">
+      <div class="bh-left">
+        <div class="blogo"><img class="brandlogo hdr" data-brand="Clover" src="assets/logos/clover.png" alt="Clover" onerror="npLogoFail(this)"></div>
+        <p>Portable handhelds and countertop devices with built-in printers — the natural terminal add-on when Clover is your POS, with a 500+ app marketplace behind it.</p>
+        <div class="bestfor"><span class="tag tag-teal">Clover POS add-on</span><span class="tag">Retail</span><span class="tag">Food &amp; Beverage</span></div>
+      </div>
+      <div class="bquiz"><span>Not sure which Clover?</span><a class="btn btn-primary btn-sm" href="quiz.html" target="_blank" rel="noopener">Take the quiz <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a><a class="link-teal" href="Clover.html" target="_blank" rel="noopener" style="margin-top:10px;display:inline-flex;align-items:center;gap:6px;font-weight:700">Learn more about Clover <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></div>
+    </div>
+    <div class="tgrid">
+      <article class="pcard" id="clover-flex">
+        <div class="pimg"><span class="tag tag-navy pbadge">Handheld</span><image-slot id="t-clover-flex" fit="contain" radius="0" src="assets/terminals/clover-flex.webp" placeholder="Clover Flex"></image-slot></div>
+        <div class="pbody">
+          <img class="brandlogo cardbrand-img" data-brand="Clover" src="assets/logos/clover.png" alt="Clover" onerror="npLogoFail(this)"><h3>Clover Flex</h3>
+          <p class="pdesc">Pocket-sized handheld with printer, barcode scanner, and contactless — take payments anywhere in store.</p>
+          <div class="pspecs"><span class="tag">Printer</span><span class="tag">Scanner</span><span class="tag">Contactless</span></div>
+          <div class="pprice"><b>$758</b> <span>· or $20/mo placement</span></div>
+          <div class="pcta"><div class="pcta-row"><a class="btn btn-primary btn-sm" href="#clover-flex">See pricing</a><a class="btn btn-outline btn-sm" href="#clover-flex">Learn more</a></div>
+            <button class="btn btn-compare btn-sm btn-block" data-compare="t-clover-flex"><span class="cmp-label">Add to compare</span></button></div>
+        </div>
+      </article>
+      <article class="pcard" id="clover-mini">
+        <div class="pimg"><image-slot id="t-clover-mini" fit="contain" radius="0" src="assets/terminals/clover-mini.png" placeholder="Clover Mini"></image-slot></div>
+        <div class="pbody">
+          <img class="brandlogo cardbrand-img" data-brand="Clover" src="assets/logos/clover.png" alt="Clover" onerror="npLogoFail(this)"><h3>Clover Mini</h3>
+          <p class="pdesc">Compact countertop POS terminal — full touchscreen checkout with printer in a small footprint.</p>
+          <div class="pspecs"><span class="tag">Countertop</span><span class="tag">Printer</span><span class="tag">Touchscreen</span></div>
+          <div class="pprice"><b>$937</b> <span>· or $25/mo placement</span></div>
+          <div class="pcta"><div class="pcta-row"><a class="btn btn-primary btn-sm" href="#clover-mini">See pricing</a><a class="btn btn-outline btn-sm" href="#clover-mini">Learn more</a></div>
+            <button class="btn btn-compare btn-sm btn-block" data-compare="t-clover-mini"><span class="cmp-label">Add to compare</span></button></div>
+        </div>
+      </article>
+      <article class="pcard" id="clover-go">
+        <div class="pimg"><image-slot id="t-clover-go" fit="contain" radius="0" src="assets/terminals/clover-go.png" placeholder="Clover Go"></image-slot></div>
+        <div class="pbody">
+          <img class="brandlogo cardbrand-img" data-brand="Clover" src="assets/logos/clover.png" alt="Clover" onerror="npLogoFail(this)"><h3>Clover Go</h3>
+          <p class="pdesc">Bluetooth tap/dip/swipe reader that pairs with your phone — the most portable way to accept cards.</p>
+          <div class="pspecs"><span class="tag">Mobile reader</span><span class="tag">Bluetooth</span><span class="tag">Tap &amp; dip</span></div>
+          <div class="pprice"><b>$449</b> <span>· or $18/mo placement</span></div>
+          <div class="pcta"><div class="pcta-row"><a class="btn btn-primary btn-sm" href="#clover-go">See pricing</a><a class="btn btn-outline btn-sm" href="#clover-go">Learn more</a></div>
+            <button class="btn btn-compare btn-sm btn-block" data-compare="t-clover-go"><span class="cmp-label">Add to compare</span></button></div>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- SQUARE -->
+<section class="bsec" id="square">
+  <div class="wrap">
+    <div class="bhead">
+      <div class="bh-left">
+        <div class="blogo"><img class="brandlogo hdr" data-brand="Square" src="assets/logos/square.svg" alt="Square" onerror="npLogoFail(this)"></div>
+        <p>Simple, familiar hardware that pairs with the Square ecosystem — from a pocket reader to an all-in-one terminal with a built-in printer.</p>
+        <div class="bestfor"><span class="tag tag-teal">Square ecosystem</span><span class="tag">Simple setup</span><span class="tag">Retail &amp; F&amp;B</span></div>
+      </div>
+      <div class="bquiz"><span>Not sure which Square?</span><a class="btn btn-primary btn-sm" href="quiz.html" target="_blank" rel="noopener">Take the quiz <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a><a class="link-teal" href="Square Features.html" target="_blank" rel="noopener" style="margin-top:10px;display:inline-flex;align-items:center;gap:6px;font-weight:700">Learn more about Square <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></div>
+    </div>
+    <div class="tgrid">
+      <article class="pcard" id="square-reader">
+        <div class="pimg"><span class="tag pbadge">Mobile reader</span><image-slot id="t-sq-reader" fit="contain" radius="0" src="assets/terminals/square-reader.avif" placeholder="Square Reader"></image-slot></div>
+        <div class="pbody">
+          <img class="brandlogo cardbrand-img" data-brand="Square" src="assets/logos/square.svg" alt="Square" onerror="npLogoFail(this)"><h3>Square Reader</h3>
+          <p class="pdesc">Contactless + chip reader for tap and dip — connects to your phone or tablet for on-the-go sales.</p>
+          <div class="pspecs"><span class="tag">Contactless</span><span class="tag">Chip</span><span class="tag">Bluetooth</span></div>
+          <div class="pprice"><b>$59</b> <span>or $21/mo · 12 mo</span></div>
+          <div class="pcta"><div class="pcta-row"><a class="btn btn-primary btn-sm" href="#square-reader">See pricing</a><a class="btn btn-outline btn-sm" href="#square-reader">Learn more</a></div>
+            <button class="btn btn-compare btn-sm btn-block" data-compare="t-sq-reader"><span class="cmp-label">Add to compare</span></button></div>
+        </div>
+      </article>
+      <article class="pcard" id="square-terminal">
+        <div class="pimg"><image-slot id="t-sq-terminal" fit="contain" radius="0" src="assets/terminals/square-terminal.png" placeholder="Square Terminal"></image-slot></div>
+        <div class="pbody">
+          <img class="brandlogo cardbrand-img" data-brand="Square" src="assets/logos/square.svg" alt="Square" onerror="npLogoFail(this)"><h3>Square Terminal</h3>
+          <p class="pdesc">All-in-one standalone terminal with a built-in printer and touchscreen — a clean front-desk option.</p>
+          <div class="pspecs"><span class="tag">Printer</span><span class="tag">Touchscreen</span><span class="tag">All-in-one</span></div>
+          <div class="pprice"><b>$299</b> <span>or $27/mo · 12 mo</span></div>
+          <div class="pcta"><div class="pcta-row"><a class="btn btn-primary btn-sm" href="#square-terminal">See pricing</a><a class="btn btn-outline btn-sm" href="#square-terminal">Learn more</a></div>
+            <button class="btn btn-compare btn-sm btn-block" data-compare="t-sq-terminal"><span class="cmp-label">Add to compare</span></button></div>
+        </div>
+      </article>
+      <article class="pcard" id="square-handheld">
+        <div class="pimg"><image-slot id="t-sq-handheld" fit="contain" radius="0" src="assets/terminals/square-handheld.png" placeholder="Square Handheld"></image-slot></div>
+        <div class="pbody">
+          <img class="brandlogo cardbrand-img" data-brand="Square" src="assets/logos/square.svg" alt="Square" onerror="npLogoFail(this)"><h3>Square Handheld</h3>
+          <p class="pdesc">Lightweight handheld terminal for tableside and mobile checkout within the Square app.</p>
+          <div class="pspecs"><span class="tag">Handheld</span><span class="tag">Wi-Fi</span><span class="tag">Square app</span></div>
+          <div class="pprice"><b>$399</b> <span>or $39/mo · 12 mo</span></div>
+          <div class="pcta"><div class="pcta-row"><a class="btn btn-primary btn-sm" href="#square-handheld">See pricing</a><a class="btn btn-outline btn-sm" href="#square-handheld">Learn more</a></div>
+            <button class="btn btn-compare btn-sm btn-block" data-compare="t-sq-handheld"><span class="cmp-label">Add to compare</span></button></div>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- VALOR -->
+<section class="bsec" id="valor">
+  <div class="wrap">
+    <div class="bhead">
+      <div class="bh-left">
+        <div class="blogo"><img class="brandlogo hdr" data-brand="Valor PayTech" src="assets/logos/valor.png" alt="Valor PayTech" onerror="npLogoFail(this)"></div>
+        <p>Next-gen terminals with dual pricing built in, SMS marketing, and multi-MID support — strong for fee-offset programs and high-risk processing.</p>
+        <div class="bestfor"><span class="tag tag-teal">Dual pricing</span><span class="tag tag-teal">High-risk</span><span class="tag">Multi-MID</span><span class="tag">SMS marketing</span></div>
+      </div>
+      <div class="bquiz"><span>Not sure which Valor?</span><a class="btn btn-primary btn-sm" href="quiz.html" target="_blank" rel="noopener">Take the quiz <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a><a class="link-teal" href="Valor Terminals.html" target="_blank" rel="noopener" style="margin-top:10px;display:inline-flex;align-items:center;gap:6px;font-weight:700">Learn more about Valor <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></div>
+    </div>
+    <div class="tgrid">
+      <article class="pcard" id="valor-vl550">
+        <div class="pimg"><span class="tag pbadge">Countertop+</span><image-slot id="t-valor-vl550" fit="contain" radius="0" src="assets/terminals/valor-vl550.webp" placeholder="Valor VL550"></image-slot></div>
+        <div class="pbody">
+          <img class="brandlogo cardbrand-img" data-brand="Valor" src="assets/logos/valor.png" alt="Valor" onerror="npLogoFail(this)"><h3>Valor VL550</h3>
+          <p class="pdesc">4G + Wi-Fi terminal with printer and contactless — dual pricing on by default for fee offset.</p>
+          <div class="pspecs"><span class="tag">Printer</span><span class="tag">4G + Wi-Fi</span><span class="tag">Dual pricing</span><span class="tag">Cash discount</span></div>
+          <div class="pprice"><b>Buy outright</b> <span>or lease monthly · no upfront</span></div>
+          <div class="pcta"><div class="pcta-row"><a class="btn btn-primary btn-sm" href="#valor-vl550">See pricing</a><a class="btn btn-outline btn-sm" href="#valor-vl550">Learn more</a></div>
+            <button class="btn btn-compare btn-sm btn-block" data-compare="t-valor-vl550"><span class="cmp-label">Add to compare</span></button></div>
+        </div>
+      </article>
+      <article class="pcard" id="valor-vp550">
+        <div class="pimg"><image-slot id="t-valor-vp550" fit="contain" radius="0" src="assets/terminals/valor-vp550.webp" placeholder="Valor VP550"></image-slot></div>
+        <div class="pbody">
+          <img class="brandlogo cardbrand-img" data-brand="Valor" src="assets/logos/valor.png" alt="Valor" onerror="npLogoFail(this)"><h3>Valor VP550</h3>
+          <p class="pdesc">Portable terminal with Go-Green SMS receipts and PayNow links — flexible counter or handheld use.</p>
+          <div class="pspecs"><span class="tag">Portable</span><span class="tag">SMS receipts</span><span class="tag">PayNow links</span><span class="tag">Cash discount</span></div>
+          <div class="pprice"><b>$315</b> <span>· terminal · +$5/mo</span></div>
+          <div class="pcta"><div class="pcta-row"><a class="btn btn-primary btn-sm" href="#valor-vp550">See pricing</a><a class="btn btn-outline btn-sm" href="#valor-vp550">Learn more</a></div>
+            <button class="btn btn-compare btn-sm btn-block" data-compare="t-valor-vp550"><span class="cmp-label">Add to compare</span></button></div>
+        </div>
+      </article>
+      <article class="pcard" id="valor-vp550e">
+        <div class="pimg"><image-slot id="t-valor-vp550e" fit="contain" radius="0" src="assets/terminals/valor-vp550e.webp" placeholder="Valor VP550E"></image-slot></div>
+        <div class="pbody">
+          <img class="brandlogo cardbrand-img" data-brand="Valor" src="assets/logos/valor.png" alt="Valor" onerror="npLogoFail(this)"><h3>Valor VP550E</h3>
+          <p class="pdesc">Wireless handheld with all-day battery — fully mobile dual-pricing acceptance with multi-MID.</p>
+          <div class="pspecs"><span class="tag">Wireless</span><span class="tag">Battery</span><span class="tag">Multi-MID</span><span class="tag">Cash discount</span></div>
+          <div class="pprice"><b>Buy outright</b> <span>or lease monthly · no upfront</span></div>
+          <div class="pcta"><div class="pcta-row"><a class="btn btn-primary btn-sm" href="#valor-vp550e">See pricing</a><a class="btn btn-outline btn-sm" href="#valor-vp550e">Learn more</a></div>
+            <button class="btn btn-compare btn-sm btn-block" data-compare="t-valor-vp550e"><span class="cmp-label">Add to compare</span></button></div>
+        </div>
+      </article>
+      <article class="pcard more-card" id="valor-vp800">
+        <div class="pimg"><span class="tag tag-teal pbadge">★ Flagship</span><image-slot id="t-valor-vp800" fit="contain" radius="0" src="https://valorpaytech.com/wp-content/uploads/2024/07/VP800-vp.png" placeholder="Valor VP800"></image-slot></div>
+        <div class="pbody">
+          <img class="brandlogo cardbrand-img" data-brand="Valor" src="assets/logos/valor.png" alt="Valor" onerror="npLogoFail(this)"><h3>Valor VP800</h3>
+          <p class="pdesc">Future-proof Android smart terminal — large HD touchscreen, built-in printer, scanner and a Multi-Comm connectivity hub.</p>
+          <div class="pspecs"><span class="tag">Android</span><span class="tag">Touchscreen</span><span class="tag">Printer</span><span class="tag">Multi-Comm</span></div>
+          <div class="pprice"><b>$575</b> <span>· terminal · +$5/mo</span></div>
+          <div class="pcta"><div class="pcta-row"><a class="btn btn-primary btn-sm" href="#valor-vp800">See pricing</a><a class="btn btn-outline btn-sm" href="#valor-vp800">Learn more</a></div>
+            <button class="btn btn-compare btn-sm btn-block" data-compare="t-valor-vp800"><span class="cmp-label">Add to compare</span></button></div>
+        </div>
+      </article>
+      <article class="pcard more-card" id="valor-vp550c">
+        <div class="pimg"><image-slot id="t-valor-vp550c" fit="contain" radius="0" src="https://valorpaytech.com/wp-content/uploads/2024/07/VP550C-POS-Device-Mega-Menu.png" placeholder="Valor VP550C"></image-slot></div>
+        <div class="pbody">
+          <img class="brandlogo cardbrand-img" data-brand="Valor" src="assets/logos/valor.png" alt="Valor" onerror="npLogoFail(this)"><h3>Valor VP550C</h3>
+          <p class="pdesc">Cloud-ready countertop Next-Gen POS — syncs menu and inventory in real time through Valor Connect.</p>
+          <div class="pspecs"><span class="tag">Countertop</span><span class="tag">Cloud sync</span><span class="tag">Valor Connect</span><span class="tag">Dual pricing</span></div>
+          <div class="pprice"><b>Buy outright</b> <span>or lease monthly · no upfront</span></div>
+          <div class="pcta"><div class="pcta-row"><a class="btn btn-primary btn-sm" href="#valor-vp550c">See pricing</a><a class="btn btn-outline btn-sm" href="#valor-vp550c">Learn more</a></div>
+            <button class="btn btn-compare btn-sm btn-block" data-compare="t-valor-vp550c"><span class="cmp-label">Add to compare</span></button></div>
+        </div>
+      </article>
+      <article class="pcard more-card" id="valor-vl550c">
+        <div class="pimg"><image-slot id="t-valor-vl550c" fit="contain" radius="0" src="https://valorpaytech.com/wp-content/uploads/2024/07/VL550-vp.png" placeholder="Valor VL550C"></image-slot></div>
+        <div class="pbody">
+          <img class="brandlogo cardbrand-img" data-brand="Valor" src="assets/logos/valor.png" alt="Valor" onerror="npLogoFail(this)"><h3>Valor VL550C</h3>
+          <p class="pdesc">Connected build of the VL550 countertop terminal — adds cloud sync for menu, inventory and Valor Connect.</p>
+          <div class="pspecs"><span class="tag">Countertop</span><span class="tag">Printer</span><span class="tag">Cloud sync</span><span class="tag">Dual pricing</span></div>
+          <div class="pprice"><b>Buy outright</b> <span>or lease monthly · no upfront</span></div>
+          <div class="pcta"><div class="pcta-row"><a class="btn btn-primary btn-sm" href="#valor-vl550c">See pricing</a><a class="btn btn-outline btn-sm" href="#valor-vl550c">Learn more</a></div>
+            <button class="btn btn-compare btn-sm btn-block" data-compare="t-valor-vl550c"><span class="cmp-label">Add to compare</span></button></div>
+        </div>
+      </article>
+      <article class="pcard more-card" id="valor-vp100">
+        <div class="pimg"><image-slot id="t-valor-vp100" fit="contain" radius="0" src="https://valorpaytech.com/wp-content/uploads/2024/11/VP100-POS-Device-Mega-Menu.png" placeholder="Valor VP100"></image-slot></div>
+        <div class="pbody">
+          <img class="brandlogo cardbrand-img" data-brand="Valor" src="assets/logos/valor.png" alt="Valor" onerror="npLogoFail(this)"><h3>Valor VP100</h3>
+          <p class="pdesc">Compact countertop terminal with Engage My Customer marketing built in — tap, dip and swipe for small counters.</p>
+          <div class="pspecs"><span class="tag">Countertop</span><span class="tag">Contactless</span><span class="tag">Engage My Customer</span></div>
+          <div class="pprice"><b>$210</b> <span>· terminal · +$5/mo</span></div>
+          <div class="pcta"><div class="pcta-row"><a class="btn btn-primary btn-sm" href="#valor-vp100">See pricing</a><a class="btn btn-outline btn-sm" href="#valor-vp100">Learn more</a></div>
+            <button class="btn btn-compare btn-sm btn-block" data-compare="t-valor-vp100"><span class="cmp-label">Add to compare</span></button></div>
+        </div>
+      </article>
+      <article class="pcard more-card" id="valor-vl110">
+        <div class="pimg"><image-slot id="t-valor-vl110" fit="contain" radius="0" src="https://valorpaytech.com/wp-content/uploads/2024/11/VL110-POS-Device-Mega-Menu.png" placeholder="Valor VL110"></image-slot></div>
+        <div class="pbody">
+          <img class="brandlogo cardbrand-img" data-brand="Valor" src="assets/logos/valor.png" alt="Valor" onerror="npLogoFail(this)"><h3>Valor VL110</h3>
+          <p class="pdesc">Wireless, startup-friendly terminal — portable 4G/Wi-Fi acceptance with dual pricing for pop-ups and mobile counters.</p>
+          <div class="pspecs"><span class="tag">Wireless</span><span class="tag">4G + Wi-Fi</span><span class="tag">Portable</span><span class="tag">Dual pricing</span></div>
+          <div class="pprice"><b>$290</b> <span>· terminal · +$5/mo</span></div>
+          <div class="pcta"><div class="pcta-row"><a class="btn btn-primary btn-sm" href="#valor-vl110">See pricing</a><a class="btn btn-outline btn-sm" href="#valor-vl110">Learn more</a></div>
+            <button class="btn btn-compare btn-sm btn-block" data-compare="t-valor-vl110"><span class="cmp-label">Add to compare</span></button></div>
+        </div>
+      </article>
+      <article class="pcard more-card" id="valor-vp300">
+        <div class="pimg"><image-slot id="t-valor-vp300" fit="contain" radius="0" src="https://valorpaytech.com/wp-content/uploads/2024/11/VP300-POS-Device-Mega-Menu.png" placeholder="Valor VP300 Pin Pad"></image-slot></div>
+        <div class="pbody">
+          <img class="brandlogo cardbrand-img" data-brand="Valor" src="assets/logos/valor.png" alt="Valor" onerror="npLogoFail(this)"><h3>Valor VP300 Pin Pad</h3>
+          <p class="pdesc">Countertop PIN pad for fast debit, EBT and contactless at retail checkout lanes — pairs with a Valor POS.</p>
+          <div class="pspecs"><span class="tag">PIN pad</span><span class="tag">Debit</span><span class="tag">EBT</span><span class="tag">Contactless</span></div>
+          <div class="pprice"><b>$180</b> <span>· PIN pad · +$5/mo</span></div>
+          <div class="pcta"><div class="pcta-row"><a class="btn btn-primary btn-sm" href="#valor-vp300">See pricing</a><a class="btn btn-outline btn-sm" href="#valor-vp300">Learn more</a></div>
+            <button class="btn btn-compare btn-sm btn-block" data-compare="t-valor-vp300"><span class="cmp-label">Add to compare</span></button></div>
+        </div>
+      </article>
+      <article class="pcard more-card" id="valor-rckt">
+        <div class="pimg"><image-slot id="t-valor-rckt" fit="contain" radius="0" src="https://valorpaytech.com/wp-content/uploads/2024/07/RCKT-vp.png" placeholder="Valor RCKT Mobile"></image-slot></div>
+        <div class="pbody">
+          <img class="brandlogo cardbrand-img" data-brand="Valor" src="assets/logos/valor.png" alt="Valor" onerror="npLogoFail(this)"><h3>Valor RCKT Mobile</h3>
+          <p class="pdesc">Pocket mobile reader paired with the ValorPay app — accept tap, dip and swipe anywhere, with dual pricing.</p>
+          <div class="pspecs"><span class="tag">Mobile</span><span class="tag">ValorPay app</span><span class="tag">Dual pricing</span></div>
+          <div class="pprice"><b>Buy outright</b> <span>or lease monthly · no upfront</span></div>
+          <div class="pcta"><div class="pcta-row"><a class="btn btn-primary btn-sm" href="#valor-rckt">See pricing</a><a class="btn btn-outline btn-sm" href="#valor-rckt">Learn more</a></div>
+            <button class="btn btn-compare btn-sm btn-block" data-compare="t-valor-rckt"><span class="cmp-label">Add to compare</span></button></div>
+        </div>
+      </article>
+      <article class="pcard more-card" id="valor-vl100">
+        <div class="pimg"><image-slot id="t-valor-vl100" fit="contain" radius="0" src="https://valorpaytech.com/wp-content/uploads/2024/07/VL100-vp.png" placeholder="Valor VL100"></image-slot></div>
+        <div class="pbody">
+          <img class="brandlogo cardbrand-img" data-brand="Valor" src="assets/logos/valor.png" alt="Valor" onerror="npLogoFail(this)"><h3>Valor VL100</h3>
+          <p class="pdesc">Companion PIN pad that adds secure debit and EBT to a paired Valor terminal.</p>
+          <div class="pspecs"><span class="tag">PIN pad</span><span class="tag">Debit</span><span class="tag">EBT</span></div>
+          <div class="pprice"><b>Buy outright</b> <span>or lease monthly · no upfront</span></div>
+          <div class="pcta"><div class="pcta-row"><a class="btn btn-primary btn-sm" href="#valor-vl100">See pricing</a><a class="btn btn-outline btn-sm" href="#valor-vl100">Learn more</a></div>
+            <button class="btn btn-compare btn-sm btn-block" data-compare="t-valor-vl100"><span class="cmp-label">Add to compare</span></button></div>
+        </div>
+      </article>
+      <article class="pcard more-card" id="valor-vt">
+        <div class="pimg"><span class="tag pbadge">Software</span><image-slot id="t-valor-vt" fit="contain" radius="0" src="assets/gateways/valor-vt-dashboard.png" placeholder="Valor Virtual Terminal"></image-slot></div>
+        <div class="pbody">
+          <img class="brandlogo cardbrand-img" data-brand="Valor" src="assets/logos/valor.png" alt="Valor" onerror="npLogoFail(this)"><h3>Valor Virtual Terminal</h3>
+          <p class="pdesc">Browser-based terminal — key in sales, send email/SMS pay links, run recurring billing, or push a sale to a paired device with Valor Connect. No hardware required.</p>
+          <div class="pspecs"><span class="tag">Software</span><span class="tag">Pay links</span><span class="tag">Recurring</span><span class="tag">Valor Connect</span></div>
+          <div class="pprice"><b>Included</b> <span>with a Valor account</span></div>
+          <div class="pcta"><div class="pcta-row"><a class="btn btn-primary btn-sm" href="#valor-vt">See pricing</a><a class="btn btn-outline btn-sm" href="#valor-vt">Learn more</a></div>
+            <button class="btn btn-compare btn-sm btn-block" data-compare="t-valor-vt"><span class="cmp-label">Add to compare</span></button></div>
+        </div>
+      </article>
+    </div>
+    <button class="showmore" type="button" data-label="Valor terminals">Show more Valor terminals <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg></button>
+  </div>
+</section>
+
+<!-- SWIPESIMPLE -->
+<section class="bsec" id="swipesimple">
+  <div class="wrap">
+    <div class="bhead">
+      <div class="bh-left">
+        <div class="blogo"><img class="brandlogo hdr" data-brand="SwipeSimple" src="assets/logos/swipesimple.png" alt="SwipeSimple" onerror="npLogoFail(this)"></div>
+        <p>Mobile-first card reader and app with Text-to-Pay, invoicing, and virtual terminal — perfect for services and field sales on any phone or tablet.</p>
+        <div class="bestfor"><span class="tag tag-teal">Mobile / field</span><span class="tag tag-teal">Services</span><span class="tag">Text-to-Pay</span></div>
+      </div>
+      <div class="bquiz"><span>Not sure which SwipeSimple?</span><a class="btn btn-primary btn-sm" href="quiz.html" target="_blank" rel="noopener">Take the quiz <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a><a class="link-teal" href="SwipeSimple.html" target="_blank" rel="noopener" style="margin-top:10px;display:inline-flex;align-items:center;gap:6px;font-weight:700">Learn more about SwipeSimple <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></div>
+    </div>
+    <div class="tgrid">
+      <article class="pcard" id="swipesimple-reader">
+        <div class="pimg"><span class="tag pbadge">Mobile reader</span><image-slot id="t-ss-reader" fit="contain" radius="0" src="assets/terminals/swipesimple-b250.png" placeholder="SwipeSimple B350"></image-slot></div>
+        <div class="pbody">
+          <img class="brandlogo cardbrand-img" data-brand="SwipeSimple" src="assets/logos/swipesimple.png" alt="SwipeSimple" onerror="npLogoFail(this)"><h3>SwipeSimple B350</h3>
+          <p class="pdesc">Bluetooth tap/dip B350 reader paired with the SwipeSimple app — accept cards, send Text-to-Pay links, invoice.</p>
+          <div class="pspecs"><span class="tag">Contactless</span><span class="tag">Bluetooth</span><span class="tag">Text-to-Pay</span></div>
+          <div class="pprice"><b>$132</b> <span>· from $25/mo software</span></div>
+          <div class="pcta"><div class="pcta-row"><a class="btn btn-primary btn-sm" href="#swipesimple-reader">See pricing</a><a class="btn btn-outline btn-sm" href="#swipesimple-reader">Learn more</a></div>
+            <button class="btn btn-compare btn-sm btn-block" data-compare="t-ss-reader"><span class="cmp-label">Add to compare</span></button></div>
+        </div>
+      </article>
+      <article class="pcard" id="swipesimple-tap">
+        <div class="pimg"><span class="tag tag-navy pbadge">Bring your own device</span><image-slot id="t-ss-tap" fit="contain" radius="0" src="assets/terminals/swipesimple-tap-white.png" placeholder="Tap to Pay on iPhone"></image-slot></div>
+        <div class="pbody">
+          <img class="brandlogo cardbrand-img" data-brand="SwipeSimple" src="assets/logos/swipesimple.png" alt="SwipeSimple" onerror="npLogoFail(this)"><h3>Tap to Pay on iPhone</h3>
+          <p class="pdesc">Accept contactless payments right on your iPhone — tap cards, Apple Pay, and digital wallets. No extra hardware, just the SwipeSimple app.</p>
+          <div class="pspecs"><span class="tag">Bring your own device</span><span class="tag">Contactless</span><span class="tag">Apple Pay &amp; wallets</span></div>
+          <div class="pprice"><b>From $25</b> <span>/mo · iPhone only</span></div>
+          <div class="pcta"><div class="pcta-row"><a class="btn btn-primary btn-sm" href="#swipesimple-tap">See pricing</a><a class="btn btn-outline btn-sm" href="#swipesimple-tap">Learn more</a></div>
+            <button class="btn btn-compare btn-sm btn-block" data-compare="t-ss-tap"><span class="cmp-label">Add to compare</span></button></div>
+        </div>
+      </article>
+      <article class="pcard" id="swipesimple-terminal">
+        <div class="pimg"><span class="tag pbadge">All-in-one terminal</span><image-slot id="t-ss-terminal" fit="contain" radius="0" src="assets/terminals/swipesimple-a80-white.png" placeholder="SwipeSimple Terminal"></image-slot></div>
+        <div class="pbody">
+          <img class="brandlogo cardbrand-img" data-brand="SwipeSimple" src="assets/logos/swipesimple.png" alt="SwipeSimple" onerror="npLogoFail(this)"><h3>SwipeSimple Terminal</h3>
+          <p class="pdesc">An all-in-one Android smart terminal with a built-in PIN pad and receipt printer — powered by SwipeSimple with Text-to-Pay and tipping.</p>
+          <div class="pspecs"><span class="tag">Printer</span><span class="tag">PIN pad</span><span class="tag">4G + Wi-Fi</span></div>
+          <div class="pprice"><b>From $25</b> <span>/mo</span></div>
+          <div class="pcta"><div class="pcta-row"><a class="btn btn-primary btn-sm" href="#swipesimple-terminal">See pricing</a><a class="btn btn-outline btn-sm" href="#swipesimple-terminal">Learn more</a></div>
+            <button class="btn btn-compare btn-sm btn-block" data-compare="t-ss-terminal"><span class="cmp-label">Add to compare</span></button></div>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- INGENICO -->
+<section class="bsec" id="ingenico">
+  <div class="wrap">
+    <div class="bhead">
+      <div class="bh-left">
+        <div class="blogo"><img class="brandlogo hdr" data-brand="Ingenico" src="assets/logos/ingenico.png" alt="Ingenico" onerror="npLogoFail(this)"></div>
+        <p>Trusted countertop terminals from a global payments leader — rugged, PCI-certified devices with built-in printers and full chip, swipe and contactless acceptance for the front desk.</p>
+        <div class="bestfor"><span class="tag tag-teal">Retail</span><span class="tag tag-teal">Front desk</span><span class="tag">Countertop</span></div>
+      </div>
+      <div class="bquiz"><span>Not sure which Ingenico?</span><a class="btn btn-primary btn-sm" href="quiz.html" target="_blank" rel="noopener">Take the quiz <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a><a class="link-teal" href="Ingenico Terminals.html" target="_blank" rel="noopener" style="margin-top:10px;display:inline-flex;align-items:center;gap:6px;font-weight:700">Learn more about Ingenico <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></div>
+    </div>
+    <div class="tgrid">
+      <article class="pcard" id="ingenico-desk3500">
+        <div class="pimg"><span class="tag pbadge">Color touchscreen</span><image-slot id="t-ing-desk3500" fit="contain" radius="0" src="assets/terminals/ingenico-desk3500.png" placeholder="Ingenico Desk 3500"></image-slot></div>
+        <div class="pbody">
+          <img class="brandlogo cardbrand-img" data-brand="Ingenico" src="assets/logos/ingenico.png" alt="Ingenico" onerror="npLogoFail(this)"><h3>Ingenico Desk 3500</h3>
+          <p class="pdesc">Premium countertop terminal with a bright color touchscreen and fast contactless — built for high-volume retail and hospitality.</p>
+          <div class="pspecs"><span class="tag">Countertop</span><span class="tag">Color touchscreen</span><span class="tag">Printer</span><span class="tag">Contactless</span></div>
+          <div class="pprice"><b>$237</b> <span>· terminal</span></div>
+          <div class="pcta"><div class="pcta-row"><a class="btn btn-primary btn-sm" href="#ingenico-desk3500">See pricing</a><a class="btn btn-outline btn-sm" href="#ingenico-desk3500">Learn more</a></div>
+            <button class="btn btn-compare btn-sm btn-block" data-compare="t-ing-desk3500"><span class="cmp-label">Add to compare</span></button></div>
+        </div>
+      </article>
+      <article class="pcard" id="ingenico-desk1500">
+        <div class="pimg"><image-slot id="t-ing-desk1500" fit="contain" radius="0" src="assets/terminals/ingenico-desk1500.png" placeholder="Ingenico Desk 1500"></image-slot></div>
+        <div class="pbody">
+          <img class="brandlogo cardbrand-img" data-brand="Ingenico" src="assets/logos/ingenico.png" alt="Ingenico" onerror="npLogoFail(this)"><h3>Ingenico Desk 1500</h3>
+          <p class="pdesc">Reliable everyday countertop terminal — chip, swipe and contactless with a built-in printer for dependable front-desk checkout.</p>
+          <div class="pspecs"><span class="tag">Countertop</span><span class="tag">Printer</span><span class="tag">Contactless</span><span class="tag">PIN debit</span></div>
+          <div class="pprice"><b>$199</b> <span>· terminal</span></div>
+          <div class="pcta"><div class="pcta-row"><a class="btn btn-primary btn-sm" href="#ingenico-desk1500">See pricing</a><a class="btn btn-outline btn-sm" href="#ingenico-desk1500">Learn more</a></div>
+            <button class="btn btn-compare btn-sm btn-block" data-compare="t-ing-desk1500"><span class="cmp-label">Add to compare</span></button></div>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="ssec" style="padding:28px 0 0"><div class="wrap"><div class="notfound"><div class="nf-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4-4"/></svg></div><div><b>Don’t see what you’re looking for?</b>We carry far more than we can list here — tell us what you need and we can likely get it.</div><a class="btn btn-primary" href="Contact.html" target="_blank" rel="noopener">Ask us about it</a></div></div></section>
+
+<!-- COMPARE HELP + CTA -->
+<section class="section" id="compare-help">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="eyebrow">Compare any terminals</span>
+      <h2>Line them up side by side</h2>
+      <p>Tap <b>Add to compare</b> on any device above (up to 4) and we'll build a side-by-side spec table — connectivity, printer, battery, and what each is best for.</p>
+    </div>
+    <div class="tband">
+      <span class="eyebrow" style="color:var(--teal-bright)">Still deciding?</span>
+      <h2>Answer 10 quick questions, get your terminal</h2>
+      <p>The quiz matches your industry, volume, and setup to the right device and the best rate — then a human helps you get running.</p>
+      <div class="thero-cta">
+        <a class="btn btn-primary" href="quiz.html" target="_blank" rel="noopener">Take the Quiz
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+        <a class="btn btn-ghost" href="#">Get a quote</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="ssec" data-backlink style="padding:6px 0 60px"><div class="wrap"><a class="link-teal" href="Accept Payments.html" style="display:inline-flex;align-items:center;gap:7px;font-weight:700"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" style="transform:rotate(180deg)"><path d="M5 12h14M13 6l6 6-6 6"/></svg>Back to Accept Payments</a></div></section>
+<div id="np-footer"></div>
+
+<!-- PRODUCT REGISTRY -->
+<script>
+window.NP_PRODUCTS = {
+  't-pax-a920':{name:'PAX A920 Pro',brand:'PAX',slot:'t-pax-a920',href:'#pax-a920',specs:{Price:'$400 · terminal',Brand:'PAX','Best for':'Retail, services, mobile','Form factor':'Android handheld',Connectivity:'4G LTE + Wi-Fi',Printer:'Built-in',Battery:'All-day',Payments:'Tap, chip, swipe',Highlight:'Best all-around'}},
+  't-pax-q25':{name:'PAX Q25 PIN Pad',brand:'PAX',slot:'t-pax-q25',href:'#pax-q25',specs:{Price:'$252 · PIN pad',Brand:'PAX','Best for':'Checkout lanes','Form factor':'Countertop PIN pad',Connectivity:'Paired',Printer:'No',Battery:'No',Payments:'Debit, EBT, contactless',Highlight:'Secure PIN debit'}},
+  't-dej-qd3':{name:'Dejavoo QD3',brand:'Dejavoo',slot:'t-dej-qd3',href:'#dejavoo-qd3',specs:{Price:'$245 · +$6.25/mo iPOSPays',Brand:'Dejavoo','Best for':'Counter & tableside','Form factor':'Wireless handheld',Connectivity:'4G + Wi-Fi',Printer:'Built-in',Battery:'All-day',Payments:'Tap, chip, swipe',Highlight:'Tips + dual pricing'}},
+  't-dej-z11':{name:'Dejavoo Z11',brand:'Dejavoo',slot:'t-dej-z11',href:'#dejavoo-z11',specs:{Price:'$271 · terminal',Brand:'Dejavoo','Best for':'Premium front desk','Form factor':'Dual-display countertop',Connectivity:'Ethernet + Wi-Fi',Printer:'Built-in',Battery:'No',Payments:'Tap, chip, swipe',Highlight:'Dual display'}},
+  't-dej-z8':{name:'Dejavoo Z8',brand:'Dejavoo',slot:'t-dej-z8',href:'#dejavoo-z8',specs:{Price:'$219 · terminal',Brand:'Dejavoo','Best for':'Front desk','Form factor':'Countertop',Connectivity:'Ethernet + Wi-Fi',Printer:'Built-in',Battery:'No',Payments:'Tap, chip, swipe',Highlight:'Classic countertop'}},
+  't-dej-z6':{name:'Dejavoo Z6',brand:'Dejavoo',slot:'t-dej-z6',href:'#dejavoo-z6',specs:{Price:'$215 · terminal',Brand:'Dejavoo','Best for':'Small counters','Form factor':'Compact countertop',Connectivity:'Ethernet + Wi-Fi',Printer:'Built-in',Battery:'No',Payments:'Tap, chip, swipe',Highlight:'Space-saving'}},
+  't-pax-a80':{name:'PAX A80',brand:'PAX',slot:'t-pax-a80',href:'#pax-a80',specs:{Price:'$270 · terminal',Brand:'PAX','Best for':'Countertop checkout','Form factor':'Countertop',Connectivity:'Wi-Fi + Ethernet',Printer:'Built-in',Battery:'No',Payments:'Tap, chip, swipe',Highlight:'Corded front desk'}},
+  't-dej-p5':{name:'Dejavoo P5',brand:'Dejavoo',slot:'t-dej-p5',href:'#dejavoo-p5',specs:{Price:'$215 · +$6.25/mo iPOSPays',Brand:'Dejavoo','Best for':'Front desk','Form factor':'Countertop / handheld',Connectivity:'4G + Wi-Fi',Printer:'Built-in',Battery:'All-day',Payments:'Tap, chip, swipe',Highlight:'Sleek P-line'}},
+  't-dej-z9':{name:'Dejavoo Z9 WiFi',brand:'Dejavoo',slot:'t-dej-z9',href:'#dejavoo-z9',specs:{Price:'$400 · terminal',Brand:'Dejavoo','Best for':'Flexible placement','Form factor':'Wireless countertop',Connectivity:'Wi-Fi',Printer:'Built-in',Battery:'Yes',Payments:'Tap, chip, swipe',Highlight:'Cable-free'}},
+  't-pax-a77':{name:'PAX A77',brand:'PAX',slot:'t-pax-a77',href:'#pax-a77',specs:{Brand:'PAX','Best for':'Line-busting / mobile','Form factor':'Compact mobile POS',Connectivity:'4G + Wi-Fi',Printer:'None',Battery:'All-day',Payments:'Tap, chip, swipe',Highlight:'Pocket-sized'}},
+  't-dej-qd4':{name:'Dejavoo QD4',brand:'Dejavoo',slot:'t-dej-qd4',href:'#dejavoo-qd4',specs:{Price:'$271 · +$6.25/mo iPOSPays',Brand:'Dejavoo','Best for':'Food & beverage','Form factor':'Handheld + base',Connectivity:'4G + Wi-Fi',Printer:'Built-in',Battery:'All-day',Payments:'Tap, chip, swipe',Highlight:'Tip prompt + dual pricing'}},
+  't-dej-qd5':{name:'Dejavoo QD5',brand:'Dejavoo',slot:'t-dej-qd5',href:'#dejavoo-qd5',specs:{Price:'$245 · +$6.25/mo iPOSPays',Brand:'Dejavoo','Best for':'Busy service','Form factor':'Large handheld',Connectivity:'4G + Wi-Fi',Printer:'Built-in',Battery:'All-day',Payments:'Tap, chip, swipe, PIN debit',Highlight:'Premium QD screen'}},
+  't-dej-qd2':{name:'Dejavoo QD2',brand:'Dejavoo',slot:'t-dej-qd2',href:'#dejavoo-qd2',specs:{Price:'$438 · +$6.25/mo iPOSPays',Brand:'Dejavoo','Best for':'Everyday acceptance','Form factor':'Wireless handheld',Connectivity:'4G + Wi-Fi',Printer:'Built-in',Battery:'All-day',Payments:'Tap, chip, swipe, EBT',Highlight:'Lightweight'}},
+  't-dej-p1':{name:'Dejavoo P1',brand:'Dejavoo',slot:'t-dej-p1',href:'#dejavoo-p1',specs:{Price:'$225 · +$6.25/mo iPOSPays',Brand:'Dejavoo','Best for':'Healthcare / front desk','Form factor':'Countertop / handheld',Connectivity:'Wi-Fi + 4G',Printer:'Built-in',Battery:'Optional',Payments:'Tap, chip, PIN debit, EBT',Highlight:'Pairs with LQpay'}},
+  't-clover-flex':{name:'Clover Flex',brand:'Clover',slot:'t-clover-flex',href:'#clover-flex',specs:{Brand:'Clover','Best for':'Clover POS add-on','Form factor':'Handheld',Connectivity:'4G + Wi-Fi',Printer:'Built-in',Battery:'All-day',Payments:'Tap, chip, swipe',Highlight:'Barcode scanner'}},
+  't-clover-mini':{name:'Clover Mini',brand:'Clover',slot:'t-clover-mini',href:'#clover-mini',specs:{Brand:'Clover','Best for':'Countertop checkout','Form factor':'Countertop',Connectivity:'Wi-Fi + Ethernet',Printer:'Built-in',Battery:'No',Payments:'Tap, chip, swipe',Highlight:'Compact full POS'}},
+  't-clover-go':{name:'Clover Go',brand:'Clover',slot:'t-clover-go',href:'#clover-go',specs:{Brand:'Clover','Best for':'Most portable','Form factor':'Mobile reader',Connectivity:'Bluetooth',Printer:'No',Battery:'All-day',Payments:'Tap, chip, swipe',Highlight:'Pairs with phone'}},
+  't-sq-reader':{name:'Square Reader',brand:'Square',slot:'t-sq-reader',href:'#square-reader',specs:{Brand:'Square','Best for':'On-the-go','Form factor':'Mobile reader',Connectivity:'Bluetooth',Printer:'No',Battery:'All-day',Payments:'Tap, chip',Pricing:'$59 or $21/mo (12mo)',Highlight:'Most affordable'}},
+  't-sq-terminal':{name:'Square Terminal',brand:'Square',slot:'t-sq-terminal',href:'#square-terminal',specs:{Brand:'Square','Best for':'Front desk','Form factor':'All-in-one',Connectivity:'Wi-Fi + Ethernet',Printer:'Built-in',Battery:'All-day',Payments:'Tap, chip, swipe',Pricing:'$299 or $27/mo (12mo)',Highlight:'Standalone + printer'}},
+  't-sq-handheld':{name:'Square Handheld',brand:'Square',slot:'t-sq-handheld',href:'#square-handheld',specs:{Brand:'Square','Best for':'Tableside','Form factor':'Handheld',Connectivity:'Wi-Fi',Printer:'No',Battery:'All-day',Payments:'Tap, chip',Pricing:'$399 or $39/mo (12mo)',Highlight:'Lightweight'}},
+  't-valor-vl550':{name:'Valor VL550',brand:'Valor',slot:'t-valor-vl550',href:'#valor-vl550',specs:{Brand:'Valor','Best for':'Dual pricing','Form factor':'Countertop / portable',Connectivity:'4G + Wi-Fi',Printer:'Built-in',Battery:'Optional',Payments:'Tap, chip, swipe',Highlight:'Dual pricing on by default'}},
+  't-valor-vp550':{name:'Valor VP550',brand:'Valor',slot:'t-valor-vp550',href:'#valor-vp550',specs:{Price:'$315 · +$5/mo',Brand:'Valor','Best for':'Flexible counter/mobile','Form factor':'Portable',Connectivity:'4G + Wi-Fi',Printer:'Built-in',Battery:'All-day',Payments:'Tap, chip, swipe',Highlight:'SMS receipts + PayNow'}},
+  't-valor-vp550e':{name:'Valor VP550E',brand:'Valor',slot:'t-valor-vp550e',href:'#valor-vp550e',specs:{Brand:'Valor','Best for':'Fully mobile','Form factor':'Wireless handheld',Connectivity:'4G + Wi-Fi',Printer:'Built-in',Battery:'All-day',Payments:'Tap, chip, swipe',Highlight:'Multi-MID'}},
+  't-valor-vp800':{name:'Valor VP800',brand:'Valor',slot:'t-valor-vp800',href:'#valor-vp800',specs:{Price:'$575 · +$5/mo',Brand:'Valor','Best for':'Flagship all-in-one','Form factor':'Android smart terminal',Connectivity:'4G + Wi-Fi + Multi-Comm',Printer:'Built-in',Battery:'Yes',Payments:'Tap, chip, swipe, QR',Highlight:'Future-proof flagship'}},
+  't-valor-vp550c':{name:'Valor VP550C',brand:'Valor',slot:'t-valor-vp550c',href:'#valor-vp550c',specs:{Brand:'Valor','Best for':'Cloud countertop','Form factor':'Countertop Next-Gen POS',Connectivity:'4G + Wi-Fi',Printer:'Built-in',Battery:'No',Payments:'Tap, chip, swipe',Highlight:'Menu & inventory sync'}},
+  't-valor-vl550c':{name:'Valor VL550C',brand:'Valor',slot:'t-valor-vl550c',href:'#valor-vl550c',specs:{Brand:'Valor','Best for':'Connected countertop','Form factor':'Countertop',Connectivity:'4G + Wi-Fi',Printer:'Built-in',Battery:'No',Payments:'Tap, chip, swipe',Highlight:'Cloud-synced VL550'}},
+  't-valor-vp100':{name:'Valor VP100',brand:'Valor',slot:'t-valor-vp100',href:'#valor-vp100',specs:{Price:'$210 · +$5/mo',Brand:'Valor','Best for':'Compact counters','Form factor':'Countertop',Connectivity:'4G + Wi-Fi',Printer:'Optional',Battery:'No',Payments:'Tap, chip, swipe',Highlight:'Engage My Customer'}},
+  't-valor-vl110':{name:'Valor VL110',brand:'Valor',slot:'t-valor-vl110',href:'#valor-vl110',specs:{Price:'$290 · +$5/mo',Brand:'Valor','Best for':'Pop-ups & mobile','Form factor':'Wireless portable',Connectivity:'4G + Wi-Fi',Printer:'Built-in',Battery:'Yes',Payments:'Tap, chip, swipe',Highlight:'Startup-friendly'}},
+  't-valor-vp300':{name:'Valor VP300 Pin Pad',brand:'Valor',slot:'t-valor-vp300',href:'#valor-vp300',specs:{Price:'$180 · PIN pad · +$5/mo',Brand:'Valor','Best for':'Checkout lanes','Form factor':'Countertop PIN pad',Connectivity:'Paired',Printer:'No',Battery:'No',Payments:'Debit, EBT, contactless',Highlight:'Fast PIN debit'}},
+  't-valor-vt':{name:'Valor Virtual Terminal',brand:'Valor',slot:'t-valor-vt',href:'#valor-vt',specs:{Brand:'Valor','Best for':'Card-not-present','Form factor':'Software (browser)',Connectivity:'Cloud',Printer:'N/A',Battery:'N/A',Payments:'Key-in, pay links, recurring',Highlight:'No hardware required'}},
+  't-pax-a800':{name:'PAX A800',brand:'PAX',slot:'t-pax-a800',href:'#pax-a800',specs:{Brand:'PAX','Best for':'Countertop checkout','Form factor':'Countertop',Connectivity:'4G + Wi-Fi',Printer:'Built-in',Battery:'No',Payments:'Tap, chip, swipe',Highlight:'Front-desk workhorse'}},
+  't-dej-qd1':{name:'Dejavoo QD1',brand:'Dejavoo',slot:'t-dej-qd1',href:'#dejavoo-qd1',specs:{Brand:'Dejavoo','Best for':'Everyday acceptance','Form factor':'Wireless handheld',Connectivity:'4G + Wi-Fi',Printer:'Built-in',Battery:'All-day',Payments:'Tap, chip, swipe',Highlight:'Entry handheld'}},
+  't-dej-qd4w':{name:'Dejavoo QD4 Countertop',brand:'Dejavoo',slot:'t-dej-qd4w',href:'#dejavoo-qd4w',specs:{Price:'$271 · +$6.25/mo iPOSPays',Brand:'Dejavoo','Best for':'Fixed front desk','Form factor':'Countertop (wired)',Connectivity:'Ethernet + Wi-Fi',Printer:'Built-in',Battery:'No',Payments:'Tap, chip, swipe, PIN',Highlight:'Wired QD4'}},
+  't-valor-rckt':{name:'Valor RCKT',brand:'Valor',slot:'t-valor-rckt',href:'#valor-rckt',specs:{Brand:'Valor','Best for':'Fully mobile','Form factor':'Mobile PIN-pad reader',Connectivity:'4G + Wi-Fi',Printer:'No',Battery:'All-day',Payments:'Tap, chip, swipe',Highlight:'Dual pricing'}},
+  't-valor-vl100':{name:'Valor VL100',brand:'Valor',slot:'t-valor-vl100',href:'#valor-vl100',specs:{Brand:'Valor','Best for':'Debit companion','Form factor':'PIN pad','Connectivity:':'Paired','Printer':'No',Battery:'N/A',Payments:'PIN debit, EBT',Highlight:'Adds debit + EBT'}},
+  't-pax-a35':{name:'PAX A35 PIN Pad',brand:'PAX',slot:'t-pax-a35',href:'#pax-a35',specs:{Price:'$305 · PIN pad',Brand:'PAX','Best for':'Customer-facing debit / EMV','Form factor':'PIN pad',Connectivity:'Pairs with POS',Printer:'No',Battery:'N/A',Payments:'Tap, chip, PIN debit',Highlight:'Compact customer-facing'}},
+  't-ss-reader':{name:'SwipeSimple B350',brand:'SwipeSimple',slot:'t-ss-reader',href:'#swipesimple-reader',specs:{Price:'$132 · from $25/mo software',Brand:'SwipeSimple','Best for':'Mobile / field','Form factor':'Mobile reader',Connectivity:'Bluetooth',Printer:'No',Battery:'All-day',Payments:'Tap, chip',Highlight:'Text-to-Pay + invoicing'}},
+  't-ss-tap':{name:'Tap to Pay on iPhone',brand:'SwipeSimple',slot:'t-ss-tap',href:'#swipesimple-tap',specs:{Brand:'SwipeSimple','Best for':'No-hardware / on the go','Form factor':'iPhone (no reader)',Connectivity:'Built-in NFC',Printer:'No',Battery:'Uses iPhone',Payments:'Tap cards, Apple Pay, wallets',Highlight:'No additional hardware'}},
+  't-ss-terminal':{name:'SwipeSimple Terminal',brand:'SwipeSimple',slot:'t-ss-terminal',href:'#swipesimple-terminal',specs:{Brand:'SwipeSimple','Best for':'Countertop + mobile','Form factor':'Android smart terminal',Connectivity:'4G + Wi-Fi',Printer:'Built-in',Battery:'All-day',Payments:'Tap, chip, swipe, PIN',Highlight:'All-in-one with printer'}},
+  't-ing-desk3500':{name:'Ingenico Desk 3500',brand:'Ingenico',slot:'t-ing-desk3500',href:'#ingenico-desk3500',specs:{Price:'$237 · terminal',Brand:'Ingenico','Best for':'High-volume retail & hospitality','Form factor':'Countertop',Connectivity:'Ethernet + dial',Printer:'Built-in',Battery:'No',Payments:'Tap, chip, swipe',Highlight:'Color touchscreen'}},
+  't-ing-desk1500':{name:'Ingenico Desk 1500',brand:'Ingenico',slot:'t-ing-desk1500',href:'#ingenico-desk1500',specs:{Price:'$199 · terminal',Brand:'Ingenico','Best for':'Everyday front desk','Form factor':'Countertop',Connectivity:'Ethernet + dial',Printer:'Built-in',Battery:'No',Payments:'Tap, chip, swipe, PIN',Highlight:'Dependable countertop'}}
+};
+</script>
+<script src="js/nav.js"></script>
+<script src="js/image-slot.js"></script>
+<script src="js/nextpay.js"></script>
+<script>
+(function(){
+  const links=[...document.querySelectorAll('.brandnav a')];
+  const map=links.map(a=>({a,el:document.querySelector(a.getAttribute('href'))})).filter(x=>x.el);
+  function upd(){let cur=map[0];for(const m of map){if(m.el.getBoundingClientRect().top<160)cur=m;}links.forEach(a=>a.classList.remove('on'));if(cur)cur.a.classList.add('on');}
+  document.addEventListener('scroll',upd,{passive:true});upd();
+})();
+</script>
+<script>document.querySelectorAll(".showmore").forEach(function(btn){var lbl=btn.getAttribute("data-label")||"terminals";btn.addEventListener("click",function(){var grid=btn.previousElementSibling;while(grid&&!grid.classList.contains("tgrid"))grid=grid.previousElementSibling;if(!grid)return;var open=grid.classList.toggle("expanded");btn.classList.toggle("open",open);btn.firstChild.textContent=(open?"Show fewer "+lbl+" ":"Show more "+lbl+" ");});});</script>
+</body>
+</html>

@@ -1,0 +1,134 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>FluidPay — The Cloud-Native Payment Gateway — NextPay</title>
+<link rel="stylesheet" href="css/nextpay.css">
+<link rel="stylesheet" href="css/solution.css">
+<style>
+.sfeat .fc.fc-hl{border:1.5px solid var(--teal);box-shadow:0 0 0 1px var(--teal),var(--shadow);background:linear-gradient(180deg,rgba(20,161,140,.06),#fff)}
+.fp-logo-hero{height:30px;width:auto;margin-bottom:18px;background:#fff;border-radius:8px;padding:8px 12px}
+.fp-stats{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;max-width:1000px;margin:0 auto}
+.fp-stat{background:#fff;border:1px solid var(--line);border-radius:16px;box-shadow:var(--shadow-sm);padding:26px;text-align:center}
+.fp-stat .n{font-size:34px;font-weight:800;letter-spacing:-.02em;color:var(--teal-dark);line-height:1}
+.fp-stat .l{font-size:13.5px;color:var(--slate);font-weight:600;margin-top:8px;line-height:1.35}
+.fp-mod{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;max-width:1040px;margin:0 auto}
+.fp-chip{display:flex;align-items:center;gap:10px;background:#fff;border:1px solid var(--line);border-radius:12px;padding:14px 16px;font-weight:700;font-size:14px;box-shadow:var(--shadow-sm)}
+.fp-chip .kd{width:9px;height:9px;border-radius:50%;background:var(--teal);flex:none}
+.fp-steps{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;max-width:1000px;margin:0 auto}
+.fp-step{background:#fff;border:1px solid var(--line);border-radius:16px;box-shadow:var(--shadow-sm);padding:28px}
+.fp-step .sn{width:38px;height:38px;border-radius:11px;background:var(--navy);color:#fff;display:grid;place-items:center;font-weight:800;font-size:16px;margin-bottom:14px}
+.fp-step h4{font-size:18px;margin-bottom:6px}
+.fp-step p{font-size:14px;color:var(--slate);line-height:1.5}
+@media(max-width:1000px){.fp-stats,.fp-mod{grid-template-columns:1fr 1fr}.fp-steps{grid-template-columns:1fr}}
+</style>
+</head>
+<body data-page="fluidpay-gateway">
+<div id="np-nav"></div>
+
+<header class="shero" data-screen-label="FluidPay Gateway hero">
+  <div class="wrap">
+    <div class="shero-crumb"><a href="index.html">Home</a><span class="sep">/</span><a href="Online Gateways.html">Online Payments</a><span class="sep">/</span><span style="color:#fff">FluidPay</span></div>
+    <div class="shero-grid">
+      <div>
+        <img class="fp-logo-hero" src="assets/logos/fluidpay.png" alt="FluidPay">
+        <span class="tag tag-teal">Online Payments · Gateway</span>
+        <h1>The cloud-native gateway,<br><em>built API-first.</em></h1>
+        <p class="lead">FluidPay is a modern, cloud-native payment gateway built for speed and flexibility — a developer-friendly REST API, AI fraud detection, tokenization, recurring billing, dual pricing and a mobile virtual terminal. Great for software platforms, ISVs and subscription businesses.</p>
+        <div class="shero-cta">
+          <a class="btn btn-primary" href="Online Gateways.html#gw-fluidpay">See pricing
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+          <a class="btn btn-ghost" href="quiz.html" target="_blank" rel="noopener">Take the Quiz</a>
+        </div>
+        <div class="shero-chips">
+          <span class="shero-chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg>Modern REST API</span>
+          <span class="shero-chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg>Dual pricing</span>
+        </div>
+      </div>
+      <div class="shero-media"><image-slot id="fluidpay-hero" src="assets/gateways/fluidpay-transactions.png" shape="rounded" radius="24" fit="contain" placeholder="Drop a FluidPay dashboard image"></image-slot></div>
+    </div>
+  </div>
+</header>
+
+<!-- WHY -->
+<section class="ssec">
+  <div class="wrap">
+    <div class="sec-head"><span class="eyebrow">Why merchants &amp; developers choose FluidPay</span><h2>Modern payments infrastructure</h2>
+      <p>Built from the ground up in the cloud — fast to integrate, easy to scale, and flexible enough to power your own products.</p></div>
+    <div class="fp-steps">
+      <div class="fp-step"><div class="sn">1</div><h4>Integrate</h4><p>A clean, well-documented REST API and SDKs get you live fast — plus hosted payment pages to stay out of PCI scope.</p></div>
+      <div class="fp-step"><div class="sn">2</div><h4>Protect</h4><p>AI-driven fraud scoring and tokenization keep transactions safe and cardholder data off your servers.</p></div>
+      <div class="fp-step"><div class="sn">3</div><h4>Grow</h4><p>Recurring billing, Level 2/3 B2B data, dual pricing and a mobile virtual terminal scale with your business.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- FEATURES -->
+<section class="ssec ssec-soft">
+  <div class="wrap">
+    <div class="sec-head"><span class="eyebrow">What's inside</span><h2>The tools that power FluidPay</h2></div>
+    <div class="sfeat">
+      <div class="fc"><div class="fic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M8 6 3 12l5 6M16 6l5 6-5 6"/></svg></div><h4>Modern REST API</h4><p>Developer-first, well-documented API and SDKs for fast, flexible integrations.</p></div>
+      <div class="fc"><div class="fic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3 5 6v5c0 4.5 3 8 7 10 4-2 7-5.5 7-10V6z"/><path d="m9.5 12 2 2 3.5-4"/></svg></div><h4>AI Fraud Detection</h4><p>Machine-learning risk scoring flags suspicious transactions in real time.</p></div>
+      <div class="fc"><div class="fic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12a9 9 0 0 1 15-6.7L21 8"/><path d="M21 3v5h-5"/><path d="M21 12a9 9 0 0 1-15 6.7L3 16"/><path d="M3 21v-5h5"/></svg></div><h4>Recurring Billing</h4><p>Flexible subscriptions and scheduled payments with tokenized card-on-file.</p></div>
+      <div class="fc"><div class="fic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 17l6-6 4 4 8-8"/><path d="M21 7v5h-5"/></svg></div><h4>Level 2/3 Data</h4><p>Qualifies B2B and B2G payments for lower interchange on commercial cards.</p></div>
+      <div class="fc"><div class="fic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="10" width="16" height="11" rx="2"/><path d="M8 10V7a4 4 0 0 1 8 0v3"/></svg></div><h4>Tokenization &amp; Vault</h4><p>Securely stores cards as tokens so customer data never touches your servers.</p></div>
+      <div class="fc"><div class="fic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="14" rx="2"/><path d="M3 9h18M8 18v3h8v-3"/></svg></div><h4>Hosted Payment Pages</h4><p>Drop-in, brandable checkout pages keep you out of PCI scope.</p></div>
+      <div class="fc"><div class="fic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="7" y="2" width="10" height="20" rx="2"/><path d="M11 18h2"/></svg></div><h4>Mobile Virtual Terminal</h4><p>Take payments from a phone or tablet — key-in, swipe or send a pay link.</p></div>
+      <div class="fc fc-hl"><div class="fic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="6" width="18" height="13" rx="2"/><path d="M3 10h18M7 15h4"/></svg></div><h4>ACH &amp; Dual Pricing</h4><p>Bank-debit ACH plus compliant surcharge and dual-pricing support built in.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- INTEGRATIONS -->
+<section class="ssec">
+  <div class="wrap">
+    <div class="sec-head"><span class="eyebrow">Build on it</span><h2>Flexible by design</h2></div>
+    <div class="fp-mod">
+      <div class="fp-chip"><span class="kd"></span>REST API &amp; SDKs</div>
+      <div class="fp-chip"><span class="kd"></span>Hosted Payment Page</div>
+      <div class="fp-chip"><span class="kd"></span>Virtual Terminal</div>
+      <div class="fp-chip"><span class="kd"></span>Tokenization Vault</div>
+      <div class="fp-chip"><span class="kd"></span>Recurring Billing</div>
+      <div class="fp-chip"><span class="kd"></span>ACH / eCheck</div>
+      <div class="fp-chip"><span class="kd"></span>Dual Pricing &amp; Surcharge</div>
+      <div class="fp-chip"><span class="kd"></span>White-Label for ISOs</div>
+    </div>
+  </div>
+</section>
+
+<!-- PRICING -->
+<section class="ssec ssec-soft" id="pricing">
+  <div class="wrap">
+    <div class="sec-head"><span class="eyebrow">Pricing through NextPay</span><h2>Simple gateway pricing, your processing matched</h2>
+      <p>Run FluidPay on your NextPay merchant account — one bill, one support line. We'll review your statement and match or beat your effective processing rate.</p></div>
+    <div class="fp-stats" style="grid-template-columns:repeat(2,1fr);max-width:620px">
+      <div class="fp-stat"><div class="n">$10<span style="font-size:15px;font-weight:600;color:var(--slate)">/mo</span></div><div class="l">gateway access</div></div>
+      <div class="fp-stat"><div class="n">5¢<span style="font-size:15px;font-weight:600;color:var(--slate)"> /txn</span></div><div class="l">per transaction</div></div>
+    </div>
+    <p class="center muted" style="font-size:13.5px;margin-top:20px">Add-on modules like tokenization, recurring billing and fraud may carry extra fees — ask us for a tailored quote.</p>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="ssec">
+  <div class="wrap">
+    <div class="sband">
+      <span class="eyebrow" style="color:var(--teal-bright)">Run FluidPay on NextPay's best rate</span>
+      <h2>Modern payments, set up right</h2>
+      <p>We'll connect FluidPay to your stack and pair it with transparent processing — match or beat your current rate, and a real person helps you launch.</p>
+      <div class="shero-cta">
+        <a class="btn btn-primary" href="quiz.html" target="_blank" rel="noopener">Take the Quiz
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+        <a class="btn btn-ghost" href="Statement Upload.html" target="_blank" rel="noopener">Free rate review</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div id="np-footer"></div>
+<script src="js/nav.js"></script>
+<script src="js/image-slot.js"></script>
+</body>
+</html>

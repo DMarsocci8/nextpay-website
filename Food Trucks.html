@@ -1,0 +1,556 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Food Trucks POS &amp; Payment Processing — NextPay</title>
+<meta name="description" content="NextPay matches Food Trucks businesses to the right POS, terminals, and gateway — brand-agnostic hardware, match-or-beat pricing, and a dedicated specialist.">
+<link rel="stylesheet" href="css/nextpay.css">
+<style>
+/* ---- page-specific ---- */
+.hero{background:var(--navy);color:#fff;position:relative;overflow:hidden}
+.hero::after{content:"";position:absolute;right:-120px;top:-120px;width:520px;height:520px;border-radius:50%;background:radial-gradient(circle,rgba(20,161,140,.22),transparent 70%);pointer-events:none}
+.hero .wrap{position:relative;z-index:2}
+.hero-crumb{display:flex;gap:8px;align-items:center;font-size:14px;color:#9fb1c2;padding:20px 0 0}
+.hero-crumb a:hover{color:#fff}.hero-crumb .sep{opacity:.5}
+.hero-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:48px;align-items:center;padding:46px 0 78px}
+.hero h1{font-size:clamp(38px,5vw,60px);line-height:1.02;margin:18px 0 0;color:#fff}
+.hero h1 em{color:var(--teal-bright);font-style:normal}
+.hero .lead{color:#c4d0db;margin-top:20px;max-width:540px}
+.hero-cta{display:flex;gap:13px;flex-wrap:wrap;margin-top:30px}
+.hero-chips{display:flex;gap:10px;flex-wrap:wrap;margin-top:30px}
+.hero-chip{display:inline-flex;align-items:center;gap:8px;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.14);border-radius:999px;padding:9px 15px;font-size:13.5px;font-weight:600;color:#dbe5ee}
+.hero-chip svg{width:15px;height:15px;color:var(--teal-bright)}
+.hero-media{position:relative}
+.hero-media image-slot{width:100%;height:420px;box-shadow:var(--shadow-lg);background:#e9eff2;border-radius:22px}
+.hero-media .floatcard{position:absolute;left:-22px;bottom:-22px;background:#fff;color:var(--ink);border-radius:16px;box-shadow:var(--shadow-lg);padding:14px 18px;display:flex;align-items:center;gap:13px;max-width:260px}
+.hero-media .floatcard .fc-ic{width:42px;height:42px;border-radius:11px;background:rgba(20,161,140,.13);display:grid;place-items:center;color:var(--teal-dark);flex:none}
+.hero-media .floatcard b{font-size:14.5px;display:block}
+.hero-media .floatcard span{font-size:12.5px;color:var(--slate)}
+
+.sec-head{max-width:720px;margin:0 auto 46px;text-align:center}
+.sec-head h2{font-size:clamp(28px,3.4vw,40px)}
+.sec-head p{margin-top:14px;color:var(--slate);font-size:18px}
+
+.recblock{margin-top:30px}
+.rec-althead{display:flex;align-items:baseline;justify-content:space-between;margin:30px 0 16px;flex-wrap:wrap;gap:10px}
+.rec-althead h4{font-size:17px;color:var(--slate);font-weight:700;text-transform:uppercase;letter-spacing:.06em}
+.alt-row{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+#img-inv-swipesimple{max-width:240px;height:150px;margin:0 auto}
+
+.stickystack{position:sticky;top:78px;z-index:40;background:rgba(243,247,248,.92);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+.stickystack .wrap{display:flex;gap:8px;align-items:center;padding:12px 28px;overflow:auto}
+.stickystack a{white-space:nowrap;padding:9px 16px;border-radius:999px;font-weight:700;font-size:14px;color:var(--slate)}
+.stickystack a:hover,.stickystack a.on{background:#fff;color:var(--teal-dark);box-shadow:var(--shadow-sm)}
+.stickystack .sslabel{font-weight:800;font-size:13px;text-transform:uppercase;letter-spacing:.08em;color:var(--ink);margin-right:6px}
+
+/* static at-a-glance table */
+.glance{border:1px solid var(--line);border-radius:var(--radius-lg);overflow:hidden;box-shadow:var(--shadow-sm);background:#fff}
+.glance table{border-collapse:collapse;width:100%}
+.glance th,.glance td{padding:16px 18px;text-align:left;font-size:14.5px;border-bottom:1px solid var(--line)}
+.glance thead th{background:var(--navy);color:#fff;font-size:13px;letter-spacing:.04em;font-weight:700;vertical-align:bottom}
+.glance thead th.best{background:var(--teal-dark)}
+.glance tbody th{font-weight:700;color:var(--slate);background:var(--bg-soft);width:200px}
+.glance td.best{background:rgba(20,161,140,.06);font-weight:600}
+.glance .gpill{font-size:11.5px;font-weight:800;text-transform:uppercase;letter-spacing:.06em;background:#fff;color:var(--teal-dark);padding:3px 9px;border-radius:999px;display:inline-block;margin-bottom:6px}
+
+/* cta band */
+.cta-band{background:linear-gradient(120deg,var(--navy),var(--navy-3));color:#fff;border-radius:26px;padding:56px;text-align:center;position:relative;overflow:hidden}
+.cta-band::after{content:"";position:absolute;left:-80px;bottom:-120px;width:420px;height:420px;border-radius:50%;background:radial-gradient(circle,rgba(20,161,140,.25),transparent 70%)}
+.cta-band h2{font-size:clamp(28px,3.4vw,42px);position:relative;z-index:2}
+.cta-band p{color:#c4d0db;margin:14px auto 0;max-width:540px;font-size:18px;position:relative;z-index:2}
+.cta-band .hero-cta{justify-content:center;position:relative;z-index:2}
+
+/* industries grid */
+.ind-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+.ind-card{position:relative;border-radius:var(--radius);overflow:hidden;border:1px solid var(--line);background:#fff;box-shadow:var(--shadow-sm);transition:.18s}
+.ind-card:hover{transform:translateY(-3px);box-shadow:var(--shadow)}
+.ind-card image-slot{width:100%;height:120px}
+.ind-card .ic-b{padding:14px 16px;font-weight:700;display:flex;align-items:center;justify-content:space-between}
+.ind-card.on{outline:2.5px solid var(--teal);outline-offset:-2px}
+.ind-card .ic-b .now{font-size:11px;font-weight:800;color:var(--teal-dark);text-transform:uppercase;letter-spacing:.05em}
+
+@media(max-width:1000px){
+  .hero-grid{grid-template-columns:1fr;gap:30px;padding:34px 0 60px}
+  .hero-media image-slot{height:300px}
+  .alt-row{grid-template-columns:1fr}
+  .ind-grid{grid-template-columns:repeat(2,1fr)}
+  .cta-band{padding:40px 24px}
+}
+</style>
+</head>
+<body>
+
+<!-- ============ NAV ============ -->
+<nav class="nav">
+  <div class="nav-inner">
+    <a class="nav-logo" href="index.html"><img src="assets/logos/nextpay.png" alt="NextPay Business Solutions"></a>
+    <div class="nav-links">
+      <div class="nav-drop">
+        <button class="nav-item">Solutions
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg>
+        </button>
+        <div class="mega mega-sol">
+          <div class="mcol">
+            <h5>Accept Payments</h5>
+            <a class="mega-link" href="POS Systems.html"><b>POS Systems</b><span>Clover, Shift4Dine, Square &amp; more</span></a>
+            <a class="mega-link" href="Credit Card Terminals.html"><b>Credit Card Terminals</b><span>PAX, Dejavoo, SwipeSimple &amp; more</span></a>
+            <a class="mega-link" href="Online Gateways.html"><b>Online Payments</b><span>Website, payment link &amp; gateway</span></a>
+            <a class="mega-link" href="Invoicing.html"><b>Invoicing &amp; Recurring Billing</b><span>Subscriptions, reminders &amp; QuickBooks</span></a>
+            <a class="mega-link" href="#"><b>Integrations</b><span>QuickBooks, FieldPulse, CRMs &amp; more</span></a>
+          </div>
+          <div class="mcol">
+            <h5>Run Your Business</h5>
+            <a class="mega-link" href="#"><b>Payroll &amp; Workers Comp</b><span>Pay your team, stay covered</span></a>
+            <a class="mega-link" href="#"><b>HR &amp; Compliance</b><span>HR tools for growing teams</span></a>
+            <a class="mega-link" href="#"><b>Fee Programs</b><span>Cash discount &amp; dual pricing</span></a>
+            <a class="mega-link" href="#"><b>Chargeback Protection</b><span>Dispute management</span></a>
+          </div>
+          <div class="mcol">
+            <h5>Grow Your Business</h5>
+            <a class="mega-link" href="#"><b>Client Automation Outreach</b><span>LinkedIn, email &amp; SMS outreach</span></a>
+            <a class="mega-link" href="#"><b>Business Financing</b><span>Working capital &amp; cash advances</span></a>
+            <a class="mega-link" href="#"><b>Business Brokerage</b><span>Buy, sell, or get a valuation</span></a>
+            <a class="mega-link" href="#"><b>Merchant Rewards</b><span>Earn points on every dollar processed</span></a>
+          </div>
+        </div>
+      </div>
+      <div class="nav-drop ind-drop">
+        <button class="nav-item">Industries
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg>
+        </button>
+        <div class="mega mega-ind">
+          <div class="ind-cols">
+            <div class="ind-col">
+              <div class="ind-cat"><image-slot id="indcat-retail" radius="12" placeholder="Retail photo"></image-slot><span class="ind-cat-lbl">Retail</span></div>
+              <a class="ind-item" href="#">Boutique &amp; Clothing</a>
+              <a class="ind-item" href="#">Convenience &amp; Grocery</a>
+              <a class="ind-item" href="#">Liquor Stores</a>
+              <a class="ind-item" href="#">Jewelry Stores</a>
+              <a class="ind-item" href="#">Specialty Retail</a>
+            </div>
+            <div class="ind-col">
+              <div class="ind-cat"><image-slot id="indcat-services" radius="12" placeholder="Services photo"></image-slot><span class="ind-cat-lbl">Services</span></div>
+              <a class="ind-item" href="#">Auto Repair &amp; Automotive</a>
+              <a class="ind-item" href="#">Salons &amp; Spas</a>
+              <a class="ind-item" href="#">Home Services</a>
+              <a class="ind-item" href="#">Fitness &amp; Gyms</a>
+              <a class="ind-item" href="#">Professional Services</a>
+              <a class="ind-item" href="#">Cleaning Services</a>
+            </div>
+            <div class="ind-col">
+              <div class="ind-cat"><image-slot id="indcat-food" radius="12" placeholder="Food & beverage photo"></image-slot><span class="ind-cat-lbl">Food &amp; Beverage</span></div>
+              <a class="ind-item" href="#">Fine Dining</a>
+              <a class="ind-item" href="#">Pizzerias</a>
+              <a class="ind-item" href="Food Trucks.html">Food Trucks</a>
+              <a class="ind-item" href="#">Bars &amp; Nightclubs</a>
+              <a class="ind-item" href="#">QSR, Cafes &amp; Coffee Shops</a>
+              <a class="ind-item" href="#">Bakeries, Delis &amp; Markets</a>
+            </div>
+            <div class="ind-col">
+              <div class="ind-cat"><image-slot id="indcat-health" radius="12" placeholder="Healthcare photo"></image-slot><span class="ind-cat-lbl">Healthcare &amp; Medical</span></div>
+              <a class="ind-item" href="#">Vision Care</a>
+              <a class="ind-item" href="#">Dental</a>
+              <a class="ind-item" href="#">Chiropractic &amp; PT</a>
+              <a class="ind-item" href="#">Dermatology</a>
+              <a class="ind-item" href="#">Mental Health</a>
+              <a class="ind-item" href="#">Wellness Centers</a>
+            </div>
+          </div>
+          <div class="mega-foot">
+            <a class="link-teal" href="#">View All Industries
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+            <span class="hr">High Risk &amp; Specialty</span>
+          </div>
+        </div>
+      </div>
+      <a href="#">Pricing</a>
+      <a href="#">Why NextPay</a>
+      <a href="#">Resources</a>
+    </div>
+    <div class="nav-right">
+      <a class="contact" href="#">Contact</a>
+      <a class="nav-cta" href="#">Take the Quiz
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+      </a>
+    </div>
+  </div>
+</nav>
+
+<!-- ============ HERO ============ -->
+<header class="hero">
+  <div class="wrap">
+    <div class="hero-crumb"><a href="index.html">Home</a><span class="sep">/</span><a href="#">Industries</a><span class="sep">/</span><span style="color:#fff">Food Trucks</span></div>
+    <div class="hero-grid">
+      <div>
+        <span class="tag tag-teal">Industries · Food Trucks</span>
+        <h1>Payments that move<br><em>as fast as your truck.</em></h1>
+        <p class="lead">A mobile-first stack built for the curb: tap-to-pay in seconds, tips that print, and an offline mode that keeps the line moving even when the signal drops. Here's exactly what we recommend for food trucks — and how it stacks up.</p>
+        <div class="hero-cta">
+          <a class="btn btn-primary" href="#stack">See the recommended stack
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+          </a>
+          <a class="btn btn-ghost" href="#">Take the Quiz</a>
+        </div>
+        <div class="hero-chips">
+          <span class="hero-chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg>Works offline</span>
+          <span class="hero-chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg>Tap, chip &amp; QR</span>
+          <span class="hero-chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg>Tip-ready</span>
+          <span class="hero-chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg>Setup in days</span>
+        </div>
+      </div>
+      <div class="hero-media">
+        <image-slot id="ft-hero" src="assets/lifestyle/food-truck.png" shape="rounded" radius="22" fit="cover" placeholder="Drop a food-truck lifestyle photo"></image-slot>
+        <div class="floatcard">
+          <div class="fc-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 9V5a2 2 0 012-2h10a2 2 0 012 2v4"/><rect x="3" y="9" width="18" height="8" rx="2"/><path d="M7 21h10"/></svg></div>
+          <div><b>Avg. checkout: 9 sec</b><span>Tap-to-pay on PAX A920 with offline queue</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- sticky stack nav -->
+<div class="stickystack">
+  <div class="wrap">
+    <span class="sslabel">Your stack</span>
+    <a href="#stack-pos" class="on">POS System</a>
+    <a href="#stack-terminal">Card Terminal</a>
+    <a href="#stack-invoicing">Invoicing</a>
+    <a href="#glance">Compare all</a>
+  </div>
+</div>
+
+<!-- ============ WHY FOOD TRUCKS ARE DIFFERENT ============ -->
+<section class="section" style="background:var(--bg-soft)">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="eyebrow">Why food trucks are different</span>
+      <h2>Four constraints a curbside business lives with</h2>
+      <p>We tuned the recommendations below around the realities of running a kitchen on wheels.</p>
+    </div>
+    <div class="grid g-4">
+      <div class="need">
+        <div class="nico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 17l4-8 4 4 3-6 4 10"/><circle cx="6" cy="20" r="1.5"/><circle cx="18" cy="20" r="1.5"/></svg></div>
+        <h4>Mobile &amp; outdoor</h4>
+        <p>Hardware has to be handheld, battery-powered, and tough enough for service in the sun, rain, and a moving truck.</p>
+      </div>
+      <div class="need">
+        <div class="nico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12.5a10 10 0 0114 0M8.5 16a5 5 0 017 0M12 19.5h.01"/><path d="M3 3l18 18" stroke-width="2"/></svg></div>
+        <h4>Spotty connectivity</h4>
+        <p>Festival fields and food-truck parks have weak signal. You need offline mode that queues sales and syncs later.</p>
+      </div>
+      <div class="need">
+        <div class="nico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v20M7 6h7a3 3 0 010 6H7m0 0h8"/></svg></div>
+        <h4>Fast lines &amp; tips</h4>
+        <p>A 20-minute lunch rush means checkout in seconds with a clean tip prompt that actually lifts your average ticket.</p>
+      </div>
+      <div class="need">
+        <div class="nico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M9.5 9.5a2.5 2.5 0 015 0c0 2-2.5 2-2.5 4M12 17h.01"/></svg></div>
+        <h4>Thin margins</h4>
+        <p>Every basis point matters. Flat, transparent processing — and we'll match or beat your current rate.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ RECOMMENDED STACK ============ -->
+<section class="section" id="stack">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="eyebrow">Your recommended NextPay stack</span>
+      <h2>Built for the curb, ready in days</h2>
+      <p>One recommended pick per category — chosen for food trucks — with real alternatives you can line up and compare.</p>
+    </div>
+
+    <!-- POS -->
+    <div class="recblock" id="stack-pos">
+      <div class="rec">
+        <div class="rec-media">
+          <span class="rec-ribbon">★ Recommended POS</span>
+          <image-slot id="img-pos-shift4" src="assets/pos/shift4-handheld.png" fit="contain" radius="0" placeholder="Shift4 Dine"></image-slot>
+        </div>
+        <div class="rec-body">
+          <span class="pbrand" style="color:var(--teal-dark);font-weight:800;text-transform:uppercase;font-size:12.5px">Shift4 · Restaurant POS</span>
+          <h3>Shift4 Dine</h3>
+          <p class="muted" style="font-size:15.5px">A restaurant-grade handheld built for food service — pay-at-table, commission-free online ordering and QR pay, on a device made for the window and the line.</p>
+          <ul class="why">
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg> <span><b>Pay-at-table handheld</b> — take orders and payment right at the window.</span></li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg> <span><b>Commission-free online ordering</b> and QR pay built in.</span></li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg> <span><b>Match-or-beat pricing</b> and a dedicated account manager from day one.</span></li>
+          </ul>
+          <div class="rec-cta">
+            <a class="btn btn-primary" href="POS Systems.html#shift4" target="_blank" rel="noopener">See pricing</a>
+            <a class="btn btn-outline" href="Shift4 Dine.html" target="_blank" rel="noopener">Learn more</a>
+            <button class="btn btn-compare" data-compare="ft-pos-shift4"><span class="cmp-label">Add to compare</span></button>
+            <a class="link-teal" href="#" style="align-self:center">Get a quote
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+          </div>
+        </div>
+      </div>
+
+      <div class="rec-althead">
+        <h4>Other POS options for food trucks</h4>
+        <a class="link-teal" href="POS Systems.html">See all POS systems
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+      </div>
+      <div class="alt-row">
+        <article class="pcard">
+          <div class="pimg"><span class="tag pbadge">Simple & familiar</span><image-slot id="img-pos-square" src="assets/pos/square-mobile-kit.png" fit="contain" radius="0" placeholder="Drop Square Mobile POS photo"></image-slot></div>
+          <div class="pbody">
+            <span class="pbrand">Square</span>
+            <h3>Square Mobile POS</h3>
+            <p class="pdesc">Easy to learn, great for a first truck. Tap-to-pay on the reader or Square hardware.</p>
+            <div class="pspecs"><span class="tag">Tap to pay</span><span class="tag">Quick setup</span><span class="tag">App-based</span></div>
+            <div class="pprice">From <b>$$</b> <span>/mo + processing</span></div>
+            <div class="pcta">
+              <div class="pcta-row"><a class="btn btn-primary btn-sm" href="POS Systems.html#square">See pricing</a><a class="btn btn-outline btn-sm" href="POS Systems.html#square">Learn more</a></div>
+              <button class="btn btn-compare btn-sm btn-block" data-compare="ft-pos-square"><span class="cmp-label">Add to compare</span></button>
+            </div>
+          </div>
+        </article>
+        
+      </div>
+    </div>
+
+    <!-- TERMINAL -->
+    <div class="recblock" id="stack-terminal" style="margin-top:70px">
+      <div class="rec">
+        <div class="rec-media">
+          <span class="rec-ribbon">★ Recommended terminal</span>
+          <image-slot id="img-term-pax" fit="contain" radius="0" src="https://www.pax.us/wp-content/uploads/2025/05/A920Pro_angled_left_appscreen-.png" placeholder="Drop PAX A920 photo"></image-slot>
+        </div>
+        <div class="rec-body">
+          <span class="pbrand" style="color:var(--teal-dark);font-weight:800;text-transform:uppercase;font-size:12.5px">PAX · Mobile</span>
+          <h3>PAX A920 Pro</h3>
+          <p class="muted" style="font-size:15.5px">The food-truck workhorse: an all-in-one Android smart terminal with a built-in printer, all-day battery, and 4G + Wi-Fi. Tap, dip, or swipe anywhere on the truck.</p>
+          <ul class="why">
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg> <span><b>Built-in receipt printer</b> — no second device cluttering the window.</span></li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg> <span><b>4G + Wi-Fi</b> with a battery that lasts a full service shift.</span></li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg> <span><b>Pairs with NextPay POS</b> or runs standalone for tap-to-pay.</span></li>
+          </ul>
+          <div class="rec-cta">
+            <a class="btn btn-primary" href="Credit Card Terminals.html#pax-a920">See pricing</a>
+            <a class="btn btn-outline" href="Credit Card Terminals.html#pax-a920">Learn more</a>
+            <button class="btn btn-compare" data-compare="ft-term-pax"><span class="cmp-label">Add to compare</span></button>
+            <a class="link-teal" href="#" style="align-self:center">Get a quote
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+          </div>
+        </div>
+      </div>
+
+      <div class="rec-althead">
+        <h4>Other terminals for food trucks</h4>
+        <a class="link-teal" href="Credit Card Terminals.html">See all terminals
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+      </div>
+      <div class="alt-row">
+        <article class="pcard">
+          <div class="pimg"><span class="tag pbadge">Android handheld</span><image-slot id="img-term-dejavoo" fit="contain" radius="0" src="assets/terminals/dejavoo-qd4-duo.webp" placeholder="Drop Dejavoo QD4 photo"></image-slot></div>
+          <div class="pbody">
+            <span class="pbrand">Dejavoo</span>
+            <h3>Dejavoo QD4 Handheld</h3>
+            <p class="pdesc">Sleek Android terminal from the QD line with printer and contactless — a great PAX alternative.</p>
+            <div class="pspecs"><span class="tag">Printer</span><span class="tag">4G/Wi-Fi</span><span class="tag">Contactless</span></div>
+            <div class="pprice">From <b>$$</b> <span>or buy outright</span></div>
+            <div class="pcta">
+              <div class="pcta-row"><a class="btn btn-primary btn-sm" href="Credit Card Terminals.html#dejavoo-qd4">See pricing</a><a class="btn btn-outline btn-sm" href="Credit Card Terminals.html#dejavoo-qd3">Learn more</a></div>
+              <button class="btn btn-compare btn-sm btn-block" data-compare="ft-term-dejavoo"><span class="cmp-label">Add to compare</span></button>
+            </div>
+          </div>
+        </article>
+        <article class="pcard">
+          <div class="pimg"><span class="tag pbadge">If you run Clover POS</span><image-slot id="img-term-cloverflex" src="assets/terminals/clover-flex.webp" fit="contain" radius="0" placeholder="Drop Clover Flex photo"></image-slot></div>
+          <div class="pbody">
+            <span class="pbrand">Clover</span>
+            <h3>Clover Flex</h3>
+            <p class="pdesc">Handheld with printer and barcode scanner. Best when you're already in the Clover ecosystem.</p>
+            <div class="pspecs"><span class="tag">Printer</span><span class="tag">Scanner</span><span class="tag">Clover apps</span></div>
+            <div class="pprice">From <b>$$</b> <span>/mo + processing</span></div>
+            <div class="pcta">
+              <div class="pcta-row"><a class="btn btn-primary btn-sm" href="Credit Card Terminals.html#clover-flex">See pricing</a><a class="btn btn-outline btn-sm" href="Credit Card Terminals.html#clover-flex">Learn more</a></div>
+              <button class="btn btn-compare btn-sm btn-block" data-compare="ft-term-cloverflex"><span class="cmp-label">Add to compare</span></button>
+            </div>
+          </div>
+        </article>
+        
+      </div>
+    </div>
+
+    <!-- INVOICING (optional · catering & events) -->
+    <div class="recblock" id="stack-invoicing" style="margin-top:70px">
+      <div class="rec">
+        <div class="rec-media">
+          <span class="rec-ribbon">Optional · catering &amp; events</span>
+          <image-slot id="img-inv-swipesimple" fit="contain" radius="0" src="assets/logos/swipesimple.png" placeholder="Drop SwipeSimple logo"></image-slot>
+        </div>
+        <div class="rec-body">
+          <span class="pbrand" style="color:var(--teal-dark);font-weight:800;text-transform:uppercase;font-size:12.5px">SwipeSimple</span>
+          <h3>SwipeSimple Invoicing</h3>
+          <p class="muted" style="font-size:15.5px">Most trucks don't need invoicing — but if you do catering or private events, send invoices and Text-to-Pay links right from your phone. ACH dual pricing can wipe out the processing fee, and it syncs to QuickBooks.</p>
+          <ul class="why">
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg> <span><b>Invoices &amp; Text-to-Pay links</b> for catering &amp; event deposits.</span></li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg> <span><b>ACH dual pricing</b> to offset — or eliminate — processing fees.</span></li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg> <span><b>Settles to the same NextPay account</b> and syncs to QuickBooks.</span></li>
+          </ul>
+          <div class="rec-cta">
+            <a class="btn btn-primary" href="Invoicing.html#inv-swipesimple" target="_blank" rel="noopener">See pricing</a>
+            <a class="btn btn-outline" href="Credit Card Terminals.html#swipesimple" target="_blank" rel="noopener">Learn more</a>
+            <button class="btn btn-compare" data-compare="ft-inv-swipesimple"><span class="cmp-label">Add to compare</span></button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ AT A GLANCE TABLE ============ -->
+<section class="section" id="glance" style="background:var(--bg-soft)">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="eyebrow">Food-truck POS at a glance</span>
+      <h2>The two POS picks, side by side</h2>
+      <p>The quick read. Want a custom comparison across any products on this page? Tap <b>Add to compare</b> on each card and we'll build the table for you.</p>
+    </div>
+    <div class="glance">
+      <table>
+        <thead>
+          <tr>
+            <th></th>
+            <th class="best"><span class="gpill">Recommended</span><br>Shift4 Dine</th>
+            <th>Square Mobile</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><th>Best for</th><td class="best">Food trucks &amp; full service</td><td>First-time / simple</td></tr>
+          <tr><th>Form factor</th><td class="best">Handheld + station</td><td>Phone/tablet + reader</td></tr>
+          <tr><th>Online ordering</th><td class="best">Commission-free, included</td><td>Add-on</td></tr>
+          <tr><th>Built-in tips</th><td class="best">Yes</td><td>Yes</td></tr>
+          <tr><th>QR pay-at-table</th><td class="best">Yes</td><td>Add-on</td></tr>
+          <tr><th>Processing</th><td class="best">Match-or-beat</td><td>Flat-rate</td></tr>
+          <tr><th>Setup time</th><td class="best">~1 week</td><td>Same day</td></tr>
+          <tr>
+            <th></th>
+            <td class="best"><a class="btn btn-primary btn-sm" href="POS Systems.html#shift4" target="_blank" rel="noopener">See pricing</a></td>
+            <td><button class="btn btn-compare btn-sm" data-compare="ft-pos-square"><span class="cmp-label">Add to compare</span></button></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- ============ INTEGRATIONS ============ -->
+<section class="section" id="integrations">
+  <div class="wrap">
+    <div class="sec-head"><span class="eyebrow">Integrations</span><h2>Works with the tools you already run</h2><p>Your NextPay setup syncs with the delivery apps and back-office tools food trucks rely on — so orders, payments, and your books stay in one place.</p></div>
+    <div class="intg-row"><span class="intg-chip">DoorDash</span><span class="intg-chip">Uber Eats</span><span class="intg-chip">Grubhub</span><span class="intg-chip">MarginEdge</span><span class="intg-chip">QuickBooks</span><span class="intg-chip">Online Ordering</span></div>
+  </div>
+</section>
+
+<!-- ============ CTA BAND ============ -->
+<section class="section">
+  <div class="wrap">
+    <div class="cta-band">
+      <span class="eyebrow" style="color:var(--teal-bright)">Not sure it's the right fit?</span>
+      <h2>Let's build your food-truck stack in 2 minutes</h2>
+      <p>Answer a few questions about your menu, volume, and events. We'll confirm the exact hardware, software, and rate — and a human will help you set it up.</p>
+      <div class="hero-cta">
+        <a class="btn btn-primary" href="#">Take the Quiz
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+        <a class="btn btn-ghost" href="#">Get a quote</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ OTHER INDUSTRIES ============ -->
+<section class="section-tight" style="background:var(--bg-soft)">
+  <div class="wrap">
+    <div class="rec-althead" style="margin-bottom:22px">
+      <div><span class="eyebrow">Explore other industries</span><h2 style="font-size:28px">Different business? Different stack.</h2></div>
+      <a class="link-teal" href="#">See all industries
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+    </div>
+    <div class="ind-grid">
+      <a class="ind-card on" href="Food Trucks.html"><image-slot id="ind-foodtruck" src="assets/lifestyle/food-truck.png" placeholder="Food truck"></image-slot><div class="ic-b">Food Trucks <span class="now">You're here</span></div></a>
+      <a class="ind-card" href="#"><image-slot id="ind-restaurant" src="assets/industries/fine-dining.png" placeholder="Restaurant"></image-slot><div class="ic-b">Restaurants <span>→</span></div></a>
+      <a class="ind-card" href="#"><image-slot id="ind-retail" src="assets/industries/retail.png" placeholder="Retail"></image-slot><div class="ic-b">Retail <span>→</span></div></a>
+      <a class="ind-card" href="#"><image-slot id="ind-salon" src="assets/industries/services.png" placeholder="Salon & spa"></image-slot><div class="ic-b">Salon &amp; Spa <span>→</span></div></a>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FOOTER ============ -->
+<footer class="foot">
+  <div class="wrap">
+    <div class="foot-grid">
+      <div>
+        <div class="brand">Next<span>Pay</span></div>
+        <p style="margin-top:12px;max-width:280px;color:#aebccb">Smarter Solutions. Stronger Businesses. Payments, POS, gateways, and growth tools — all connected.</p>
+      </div>
+      <div><h4>Solutions</h4>
+        <a href="POS Systems.html">POS Systems</a><a href="Credit Card Terminals.html">Credit Card Terminals</a><a href="Online Gateways.html">Online Gateways</a><a href="Invoicing.html">Invoicing</a></div>
+      <div><h4>Industries</h4>
+        <a href="#">Retail</a><a href="#">Services</a><a href="#">Food &amp; Beverage</a><a href="#">Healthcare &amp; Medical</a><a href="#">High Risk &amp; Specialty</a></div>
+      <div><h4>Company</h4>
+        <a href="#">Why NextPay</a><a href="#">Pricing</a><a href="#">Resources</a><a href="#">Contact</a></div>
+    </div>
+    <div class="foot-bottom"><span>© 2026 NextPay. All rights reserved.</span><span>nextpaypos.com</span></div>
+  </div>
+</footer>
+
+<!-- ============ PRODUCT REGISTRY (for compare) ============ -->
+<script>
+window.NP_PRODUCTS = {
+  'ft-inv-swipesimple':{name:'SwipeSimple Invoicing',brand:'SwipeSimple',slot:'img-inv-swipesimple',href:'Invoicing.html#inv-swipesimple',
+    specs:{Brand:'SwipeSimple','Best for':'Catering & events',Type:'Invoicing + Text-to-Pay',Payments:'ACH dual pricing',Integrations:'QuickBooks',Highlight:'Only if you invoice'}},
+  'ft-pos-chively':{name:'NextPay Mobile POS',brand:'NextPay · Chively',slot:'img-pos-chively',href:'Chively.html',pricing:'Chively.html',
+    specs:{Brand:'NextPay (Chively)','Best for':'Food trucks & QSR','Form factor':'Handheld + countertop',Connectivity:'4G + Wi-Fi',Payments:'Tap, chip, swipe, QR',Software:'Menus, mods, tips, offline',Setup:'2–4 days',Processing:'Match-or-beat',Highlight:'Built-in offline mode'}},
+  'ft-pos-shift4':{name:'Shift4 Dine',brand:'Shift4',slot:'img-pos-shift4',href:'POS Systems.html#shift4',
+    specs:{Brand:'Shift4','Best for':'Full food service','Form factor':'Handheld + station',Connectivity:'Wi-Fi + 4G',Payments:'Tap, chip, swipe',Software:'Online ordering, QR pay',Setup:'~1 week',Processing:'Bundled',Highlight:'Online ordering included'}},
+  'ft-pos-square':{name:'Square Mobile POS',brand:'Square',slot:'img-pos-square',href:'POS Systems.html#square',
+    specs:{Brand:'Square','Best for':'First-time / simple','Form factor':'Phone/tablet + reader',Connectivity:'Wi-Fi',Payments:'Tap, chip',Software:'Square app',Setup:'Same day',Processing:'Flat-rate',Highlight:'Easiest to learn'}},
+  'ft-pos-dejapay':{name:'DejaPay Pro',brand:'DejaPay',slot:'img-pos-dejapay',href:'POS Systems.html#dejapay',
+    specs:{Brand:'DejaPay','Best for':'Lean budget setup','Form factor':'Android handheld',Connectivity:'Wi-Fi + 4G',Payments:'Tap, chip, swipe',Software:'Card-present core',Setup:'2–5 days',Processing:'Low flat',Highlight:'Best value'}},
+  'ft-term-pax':{name:'PAX A920 Pro',brand:'PAX',slot:'img-term-pax',href:'Credit Card Terminals.html#pax-a920',
+    specs:{Brand:'PAX','Best for':'Food trucks','Form factor':'Android smart terminal',Connectivity:'4G + Wi-Fi',Printer:'Built-in',Battery:'Full shift',Payments:'Tap, chip, swipe',Highlight:'All-in-one workhorse'}},
+  'ft-term-dejavoo':{name:'Dejavoo QD4 Handheld',brand:'Dejavoo',slot:'img-term-dejavoo',href:'Credit Card Terminals.html#dejavoo-qd4',
+    specs:{Brand:'Dejavoo','Best for':'PAX alternative','Form factor':'Android handheld',Connectivity:'4G + Wi-Fi',Printer:'Built-in',Battery:'All-day',Payments:'Tap, chip, swipe',Highlight:'Sleek QD line'}},
+  'ft-term-cloverflex':{name:'Clover Flex',brand:'Clover',slot:'img-term-cloverflex',href:'Credit Card Terminals.html#clover-flex',
+    specs:{Brand:'Clover','Best for':'Clover users','Form factor':'Handheld',Connectivity:'4G + Wi-Fi',Printer:'Built-in',Battery:'All-day',Payments:'Tap, chip, swipe',Highlight:'Barcode scanner'}},
+  'ft-term-squarehand':{name:'Square Handheld Terminal',brand:'Square',slot:'img-term-squarehand',href:'Credit Card Terminals.html#square-terminal',
+    specs:{Brand:'Square','Best for':'Square users','Form factor':'Handheld',Connectivity:'Wi-Fi',Printer:'Built-in',Battery:'All-day',Payments:'Tap, chip',Highlight:'Lightweight'}},
+  'ft-gw-nmi':{name:'NMI Gateway',brand:'NMI',slot:'img-gw-nmi',href:'Online Gateways.html#nmi',
+    specs:{Brand:'NMI','Best for':'Pre-orders & catering',Type:'Online gateway',Integrations:'Most carts/plugins',Payments:'Cards, ACH, wallets',Highlight:'One settlement w/ truck'}},
+  'ft-gw-fluidpay':{name:'FluidPay',brand:'FluidPay',slot:'img-gw-fluidpay',href:'Online Gateways.html#fluidpay',
+    specs:{Brand:'FluidPay','Best for':'Subscriptions',Type:'Modern API gateway',Integrations:'API + carts',Payments:'Cards, ACH, recurring',Highlight:'Great recurring billing'}},
+  'ft-gw-authnet':{name:'Authorize.net',brand:'Authorize.net',slot:'img-gw-authnet',href:'Online Gateways.html#authnet',
+    specs:{Brand:'Authorize.net','Best for':'Universal support',Type:'Online gateway',Integrations:'Nearly everything',Payments:'Cards, ACH, wallets',Highlight:'Most plugins'}},
+  'ft-gw-valor':{name:'Valor Gateway',brand:'Valor',slot:'img-gw-valor',href:'Online Gateways.html#valor',
+    specs:{Brand:'Valor','Best for':'One-vendor stack',Type:'Gateway + virtual terminal',Integrations:'Valor VL terminals',Payments:'Cards, ACH',Highlight:'Links to VL terminals'}},
+  'ft-inv-fieldpulse':{name:'FieldPulse',brand:'FieldPulse',slot:'img-inv-fieldpulse',href:'Invoicing.html#fieldpulse',
+    specs:{Brand:'FieldPulse','Best for':'Catering & events',Type:'Invoicing + scheduling',Payments:'Pay-by-link',Integrations:'NextPay account',Highlight:'Quotes → deposits → paid'}},
+  'ft-inv-lqpay':{name:'LQPay',brand:'LQPay',slot:'img-inv-lqpay',href:'Invoicing.html#lqpay',
+    specs:{Brand:'LQPay','Best for':'Quick links',Type:'Pay-by-link invoicing',Payments:'Pay-by-link',Integrations:'Mobile',Highlight:'Send from your phone'}},
+  'ft-inv-fieldwork':{name:'Field Work',brand:'Field Work',slot:'img-inv-fieldwork',href:'Invoicing.html#fieldwork',
+    specs:{Brand:'Field Work','Best for':'Private events',Type:'Job-based invoicing',Payments:'Pay-by-link',Integrations:'Recurring contracts',Highlight:'Jobs & recurring'}}
+};
+</script>
+<script src="js/image-slot.js"></script>
+<script src="js/nextpay.js"></script>
+<script>
+// sticky-stack active link on scroll
+(function(){
+  const links=[...document.querySelectorAll('.stickystack a')];
+  const map=links.map(a=>({a,el:document.querySelector(a.getAttribute('href'))})).filter(x=>x.el);
+  function upd(){
+    let cur=map[0];
+    for(const m of map){ if(m.el.getBoundingClientRect().top<160) cur=m; }
+    links.forEach(a=>a.classList.remove('on')); if(cur) cur.a.classList.add('on');
+  }
+  document.addEventListener('scroll',upd,{passive:true}); upd();
+})();
+</script>
+</body>
+</html>

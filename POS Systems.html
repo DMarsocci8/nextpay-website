@@ -1,0 +1,828 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>POS Systems — NextPay</title>
+<link rel="stylesheet" href="css/nextpay.css">
+<style>
+.thero{background:var(--navy);color:#fff;position:relative;overflow:hidden}
+.thero::after{content:"";position:absolute;right:-140px;top:-140px;width:560px;height:560px;border-radius:50%;background:radial-gradient(circle,rgba(20,161,140,.22),transparent 70%)}
+.thero .wrap{position:relative;z-index:2}
+.thero-crumb{display:flex;gap:8px;align-items:center;font-size:14px;color:#9fb1c2;padding:20px 0 0}
+.thero-crumb a:hover{color:#fff}.thero-crumb .sep{opacity:.5}
+.thero-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:48px;align-items:center;padding:40px 0 72px}
+.thero h1{font-size:clamp(28px,4vw,48px);line-height:1.08;margin:16px 0 0;color:#fff;white-space:nowrap}
+.thero h1 em{color:var(--teal-bright);font-style:normal}
+.thero .lead{color:#c4d0db;margin-top:18px;max-width:540px}
+.thero-cta{display:flex;gap:13px;flex-wrap:wrap;margin-top:28px}
+.thero-media{position:relative;display:grid;place-items:center}
+.thero-media image-slot{width:100%;height:380px;background:#eef3f5;border-radius:22px}
+.brandstrip{display:flex;gap:12px;flex-wrap:wrap;margin-top:30px}
+.brandstrip .bchip{display:flex;align-items:center;justify-content:center;background:#fff;border-radius:12px;padding:0 18px;height:50px;min-width:78px;transition:.18s ease;box-shadow:0 1px 2px rgba(0,0,0,.18)}
+.brandstrip .bchip img{height:24px;width:auto;max-width:104px;display:block}
+.brandstrip .bchip:hover{transform:translateY(-3px);box-shadow:0 12px 26px rgba(0,0,0,.28);outline:2px solid var(--teal-bright);outline-offset:0}
+
+.brandnav{position:sticky;top:78px;z-index:40;background:rgba(255,255,255,.95);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+.brandnav .wrap{display:flex;gap:8px;align-items:center;padding:12px 28px;overflow:auto}
+.brandnav .bn-label{font-weight:800;font-size:13px;text-transform:uppercase;letter-spacing:.08em;color:var(--teal-dark);background:var(--bg-soft);padding:9px 16px;border-radius:999px;margin-right:8px;white-space:nowrap}
+.brandnav a{white-space:nowrap;padding:9px 16px;border-radius:999px;font-weight:700;font-size:14px;color:var(--slate)}
+.brandnav a:hover,.brandnav a.on{background:var(--bg-soft);color:var(--teal-dark)}
+
+.bsec{padding:66px 0;border-bottom:1px solid var(--line);scroll-margin-top:132px}
+.bsec:nth-child(even){background:var(--bg-soft)}
+.bhead{display:flex;align-items:flex-end;justify-content:space-between;gap:24px;margin-bottom:30px;flex-wrap:wrap}
+.bhead .bh-left{display:flex;flex-direction:column;gap:12px;max-width:660px}
+.bhead .blogo{height:46px;display:flex;align-items:center}
+.bhead .blogo img{height:100%;width:auto}
+.brandlogo.cardbrand-img{height:17px;width:auto;max-width:118px;align-self:flex-start;display:block;margin-bottom:4px}
+.bhead .bname{font-size:clamp(26px,3vw,34px);font-weight:800;letter-spacing:-.02em}
+.bhead p{color:var(--slate);font-size:16px}
+.bhead .bestfor{display:flex;gap:7px;flex-wrap:wrap}
+.tgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+.tgrid:has(> .pcard:only-child){grid-template-columns:minmax(300px,440px);justify-content:center}
+.tgrid.cols4{grid-template-columns:repeat(4,1fr)}
+
+.sec-head{max-width:720px;margin:0 auto 40px;text-align:center}
+.sec-head h2{font-size:clamp(28px,3.4vw,40px)}
+.sec-head p{margin-top:14px;color:var(--slate);font-size:18px}
+
+.tband{background:linear-gradient(120deg,var(--navy),var(--navy-3));color:#fff;border-radius:26px;padding:52px;text-align:center;position:relative;overflow:hidden;margin:64px 0}
+.tband::after{content:"";position:absolute;left:-80px;bottom:-120px;width:420px;height:420px;border-radius:50%;background:radial-gradient(circle,rgba(20,161,140,.25),transparent 70%)}
+.tband h2{font-size:clamp(26px,3.2vw,38px);position:relative;z-index:2}
+.tband p{color:#c4d0db;margin:12px auto 0;max-width:560px;font-size:17px;position:relative;z-index:2}
+.tband .thero-cta{justify-content:center;position:relative;z-index:2}
+
+@media(max-width:1000px){
+  .thero-grid{grid-template-columns:1fr;gap:28px;padding:30px 0 54px}
+  .thero-media image-slot{height:280px}
+  .tgrid,.tgrid.cols4{grid-template-columns:repeat(2,1fr)}
+}
+@media(max-width:680px){ .tgrid,.tgrid.cols4{grid-template-columns:1fr} .bsec{padding:48px 0} }
+.clover-extra{margin-top:48px;border-top:1px solid var(--line);padding-top:40px}
+.ce-head{text-align:center;max-width:640px;margin:0 auto 24px}
+.ce-head h3{font-size:clamp(22px,2.6vw,30px);margin-top:4px}
+.ce-head p{color:var(--slate);font-size:15.5px;margin-top:10px;line-height:1.5}
+.plan-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.plan{background:#fff;border:1px solid var(--line);border-radius:14px;box-shadow:var(--shadow-sm);padding:22px}
+.plan h4{font-size:16px}
+.plan .plan-price{font-size:28px;font-weight:800;letter-spacing:-.02em;color:var(--teal-dark);margin:8px 0 6px}
+.plan .plan-price span{font-size:13px;font-weight:600;color:var(--slate)}
+.plan p{font-size:13.5px;color:var(--slate);line-height:1.45}
+.acc-table{max-width:820px;margin:0 auto;border:1px solid var(--line);border-radius:16px;overflow:hidden;box-shadow:var(--shadow-sm);background:#fff}
+.acc-row{display:grid;grid-template-columns:1fr 130px 130px;gap:14px;padding:14px 20px;border-bottom:1px solid var(--line);font-size:14.5px;align-items:center}
+.acc-row:last-child{border-bottom:0}
+.acc-row span:nth-child(2),.acc-row span:nth-child(3){text-align:right;font-weight:700;color:var(--ink)}
+.acc-row em{display:block;font-style:normal;font-size:12px;color:var(--slate);font-weight:400;margin-top:2px}
+.acc-row.acc-h{background:var(--navy);color:#fff;font-weight:700;font-size:12.5px;text-transform:uppercase;letter-spacing:.05em}
+.acc-row.acc-h span:nth-child(2),.acc-row.acc-h span:nth-child(3){color:#fff}
+@media(max-width:680px){.plan-grid{grid-template-columns:1fr 1fr}.acc-row{grid-template-columns:1fr 80px 80px;font-size:13px}}
+.notfound{background:linear-gradient(180deg,rgba(20,161,140,.07),rgba(20,161,140,.04));border:1px solid rgba(20,161,140,.28);border-radius:20px;padding:34px 30px;display:flex;flex-direction:column;align-items:center;text-align:center;gap:14px;max-width:680px;margin:0 auto}
+.notfound .nf-ic{width:48px;height:48px;border-radius:14px;background:rgba(20,161,140,.14);display:grid;place-items:center;color:var(--teal-dark)}
+.notfound .nf-ic svg{width:24px;height:24px}
+.notfound b{color:var(--ink);font-size:19px;display:block}
+.notfound>div{font-size:15.5px;color:var(--slate);max-width:520px;line-height:1.55}
+.bestfor{align-items:center}
+.pmeta{margin-top:auto;border-top:1px solid var(--line);padding-top:11px;display:flex;flex-direction:column;gap:6px}
+.pmeta-row{display:flex;align-items:center;justify-content:space-between;gap:10px;font-size:13px}
+.pmeta-row span{color:var(--slate);font-weight:600}
+.pmeta-row b{color:var(--ink);font-weight:800;text-align:right}
+.vtag-label{font-size:12px;font-weight:800;text-transform:uppercase;letter-spacing:.06em;color:var(--slate-2);margin-right:2px}
+.vtag{font-size:13px}
+.tgrid .more-card{display:none}
+.tgrid.expanded .more-card{display:flex}
+.showmore{display:flex;align-items:center;gap:9px;margin:22px auto 0;padding:12px 24px;border-radius:999px;border:1.5px solid var(--line);background:#fff;color:var(--navy);font-family:inherit;font-weight:700;font-size:15px;cursor:pointer;transition:.16s}
+.showmore:hover{border-color:var(--teal);color:var(--teal-dark)}
+.showmore svg{width:16px;height:16px;transition:.2s}
+.showmore.open svg{transform:rotate(180deg)}
+.bsec .wrap{display:flex;flex-direction:column}
+.bsec .showmore{align-self:center}
+.bchip .bchip-txt{font-weight:800;font-size:13.5px;color:var(--navy);white-space:nowrap}
+.lcloud-sec{background:var(--navy)}
+.lcloud-sec .sec-head h2{color:#fff}
+.lcloud-sec .eyebrow{color:var(--teal-bright)}
+.lcloud{display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:20px 26px}
+.lcloud .lcl{height:26px;width:auto;max-width:94px;filter:brightness(0) invert(1);opacity:.85}
+.lcloud .lcl-txt{font-size:21px;font-weight:800;color:#fff;opacity:.8;letter-spacing:-.01em}
+.posfilter{background:#fff;border-bottom:1px solid var(--line)}
+.posfilter .wrap{display:flex;gap:10px;align-items:center;flex-wrap:wrap;padding:16px 28px}
+.posfilter .pf-label{font-weight:800;font-size:13px;text-transform:uppercase;letter-spacing:.08em;color:var(--slate);margin-right:6px}
+.posfilter button{font-family:inherit;font-weight:700;font-size:14px;padding:9px 17px;border-radius:999px;border:1px solid var(--line);background:#fff;color:var(--slate);cursor:pointer;transition:.15s}
+.posfilter button:hover{border-color:var(--teal);color:var(--teal-dark)}
+.posfilter button.on{background:var(--navy);color:#fff;border-color:var(--navy)}
+.bsec.pf-hide{display:none}
+.bhead{align-items:center}
+.bh-quiz{display:flex;flex-direction:column;align-items:flex-end;gap:8px;text-align:right}
+.bh-quiz span{font-size:14px;font-weight:600;color:var(--slate)}
+.bh-quiz .btn{white-space:nowrap}
+.pimg-navy{background:#0C1B2A!important}
+.pimg-navy image-slot::part(frame){background:#0C1B2A!important}
+@media(max-width:700px){.bh-quiz{align-items:flex-start;text-align:left;margin-top:6px}}
+</style>
+<script>
+function npLogoFail(img){var b=img.getAttribute('data-brand');if(img.classList.contains('hdr')){img.parentElement.outerHTML='<div class="bname">'+b+'</div>';}else{img.outerHTML='<span class="pbrand">'+b+'</span>';}}
+window.addEventListener('load',function(){document.querySelectorAll('img.brandlogo').forEach(function(im){if(im.complete&&im.naturalWidth===0)npLogoFail(im);});});
+</script>
+</head>
+<body data-page="pos">
+
+<div id="np-nav"></div>
+
+<!-- HERO -->
+<header class="thero" data-screen-label="POS hero">
+  <div class="wrap">
+    <div class="thero-crumb"><a href="index.html">Home</a><span class="sep">/</span><a href="Accept Payments.html">Solutions</a><span class="sep">/</span><span style="color:#fff">POS Systems</span></div>
+    <div class="thero-grid">
+      <div>
+        <span class="tag tag-teal">Accept Payments · POS Systems</span>
+        <h1>The right POS system,<br><em>matched to how you run.</em></h1>
+        <p class="lead">Full registers, sleek countertops, handhelds and tablet POS — from Chively, Clover, DejaPay Pro, Korona, NRS, Quantic, Shift4 Dine and Square — and more. Compare systems side by side, see what each is best for, and we’ll get you the best rate to run them.</p>
+        <div class="thero-cta">
+          <a class="btn btn-primary" href="quiz.html" target="_blank" rel="noopener">Take the Quiz <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+          <a class="btn btn-ghost" href="#all">Browse all systems</a>
+        </div>
+        <div class="brandstrip">
+          <a href="#square" class="bchip" title="Square"><img src="assets/logos/square.svg" alt="Square"></a>
+          <a href="#shift4" class="bchip" title="Shift4 Dine"><img src="assets/logos/shift4-tight.png" alt="Shift4 Dine"></a>
+          <a href="#clover" class="bchip" title="Clover"><img src="assets/logos/clover.png" alt="Clover"></a>
+          <a href="#nrs" class="bchip" title="NRS"><img src="assets/logos/nrs.png" alt="NRS"></a>
+          <a href="#quantic" class="bchip" title="Quantic"><img src="assets/logos/quantic-tight.png" alt="Quantic"></a>
+          <a href="#korona" class="bchip" title="Korona"><img src="assets/logos/korona.png" alt="Korona"></a>
+          <a href="#nextpay" class="bchip" title="Chively"><img src="assets/logos/chively-white.png" style="filter:brightness(0)" alt="Chively"></a>
+          <a href="#dejapay" class="bchip" title="DejaPay Pro"><img src="assets/logos/dejapay.webp" alt="DejaPay Pro"></a>
+        </div>
+      </div>
+      <div class="thero-media">
+        <image-slot id="pos-hero" shape="rounded" radius="22" fit="cover" src="assets/lifestyle/pos-counter.jpg" placeholder="Drop a POS hero image"></image-slot>
+      </div>
+    </div>
+  </div>
+</header>
+
+<div class="brandnav" id="all">
+  <div class="wrap">
+    <span class="bn-label">Shop by brand</span>
+    <a class="on" href="#square">Square</a>
+    <a href="#shift4">Shift4 Dine</a>
+    <a href="#clover">Clover</a>
+    <a href="#pays">PAYS POS</a>
+    <a href="#nrs">NRS</a>
+    <a href="#quantic">Quantic</a>
+    <a href="#korona">Korona</a>
+    <a href="#nextpay">Chively</a>
+    <a href="#dejapay">DejaPay Pro</a>
+    <a href="#compare-help">Compare</a>
+  </div>
+</div>
+
+<div class="posfilter">
+  <div class="wrap">
+    <span class="pf-label">Show POS for</span>
+    <button data-f="all" class="on">All</button>
+    <button data-f="restaurant">Restaurant</button>
+    <button data-f="retail">Retail</button>
+    <button data-f="convenience">Convenience / QSR</button>
+    <button data-f="services">Services</button>
+    <button data-f="highrisk">High-risk</button>
+  </div>
+</div>
+
+<section class="bsec" data-cats="restaurant retail convenience services" id="square">
+  <div class="wrap">
+    <div class="bhead">
+      <div class="bh-left">
+        <div class="blogo"><img src="assets/logos/square.svg" alt="Square"></div>
+        <p>Simple, familiar POS with a free tier, built-in eCommerce and the broadest fit. <b>For single-location restaurants we recommend the Square Plus Plan — $49/mo for unlimited stations.</b></p>
+        <div class="bestfor"><span class="vtag-label">Best for</span><span class="tag tag-teal vtag">Restaurant</span><span class="tag tag-teal vtag">Retail</span><span class="tag tag-teal vtag">Convenience / QSR</span><span class="tag tag-teal vtag">Services</span></div>
+      </div>
+      
+          <div class="bh-quiz"><span>Not sure which Square?</span><a class="btn btn-primary btn-sm" href="quiz.html" target="_blank" rel="noopener">Take the quiz <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a><a class="link-teal" href="Square Features.html" target="_blank" rel="noopener" style="margin-top:10px;display:inline-flex;align-items:center;gap:6px;font-weight:700">Learn more about Square <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></div>
+    </div>
+    <div class="tgrid">
+      <article class="pcard" id="pos-sq-register">
+        <div class="pimg"><span class="tag  pbadge">Popular</span><image-slot id="p-sq-register" src="assets/pos/square-register.png" fit="contain" radius="0" placeholder="Square Register"></image-slot></div>
+        <div class="pbody">
+          <img class="brandlogo cardbrand-img" src="assets/logos/square.svg" alt="Square"><h3>Square Station</h3>
+          <p class="pdesc">All-in-one restaurant station with a built-in printer and customer-facing display.</p>
+          <div class="pspecs"><span class="tag">All-in-one</span><span class="tag">Printer</span><span class="tag">Customer display</span></div>
+          <div class="pmeta"><div class="pmeta-row"><span>Software</span><b>Plus Plan $49/mo</b></div><div class="pmeta-row"><span>Processing</span><b>2.6% + 10¢</b></div><div class="pmeta-row"><span>Hardware</span><b>$899 or $44/mo</b></div></div>
+          <div class="pcta"><div class="pcta-row"><a class="btn btn-primary btn-sm" href="#pos-sq-register">See pricing</a><a class="btn btn-outline btn-sm" href="Square.html">Learn more</a></div>
+            <button class="btn btn-compare btn-sm btn-block" data-compare="p-sq-register"><span class="cmp-label">Add to compare</span></button></div>
+        </div>
+      </article>
+      <article class="pcard" id="pos-sq-stand">
+        <div class="pimg"><image-slot id="p-sq-stand" src="assets/pos/square-stand.png" fit="contain" radius="0" placeholder="Square Stand"></image-slot></div>
+        <div class="pbody">
+          <img class="brandlogo cardbrand-img" src="assets/logos/square.svg" alt="Square"><h3>Square Stand</h3>
+          <p class="pdesc">Turns an iPad into a sleek countertop POS. Add an iPad for $349, or bring your own.</p>
+          <div class="pspecs"><span class="tag">iPad</span><span class="tag">Countertop</span></div>
+          <div class="pmeta"><div class="pmeta-row"><span>Software</span><b>Plus Plan $49/mo</b></div><div class="pmeta-row"><span>Processing</span><b>2.6% + 10¢</b></div><div class="pmeta-row"><span>Hardware</span><b>Stand $149 · iPad +$349 (or BYO)</b></div></div>
+          <div class="pcta"><div class="pcta-row"><a class="btn btn-primary btn-sm" href="#pos-sq-stand">See pricing</a><a class="btn btn-outline btn-sm" href="Square.html">Learn more</a></div>
+            <button class="btn btn-compare btn-sm btn-block" data-compare="p-sq-stand"><span class="cmp-label">Add to compare</span></button></div>
+        </div>
+      </article>
+      <article class="pcard" id="pos-sq-app">
+        <div class="pimg"><image-slot id="p-sq-app" src="assets/terminals/square-handheld.png" fit="contain" radius="0" placeholder="Square Handheld"></image-slot></div>
+        <div class="pbody">
+          <img class="brandlogo cardbrand-img" src="assets/logos/square.svg" alt="Square"><h3>Square Handheld</h3>
+          <p class="pdesc">Lightweight handheld for tableside ordering and fast tap-to-pay on the floor.</p>
+          <div class="pspecs"><span class="tag">Handheld</span><span class="tag">Tableside</span><span class="tag">Tap to pay</span></div>
+          <div class="pmeta"><div class="pmeta-row"><span>Software</span><b>Free–$49/mo</b></div><div class="pmeta-row"><span>Processing</span><b>2.6% + 10¢</b></div><div class="pmeta-row"><span>Hardware</span><b>$399 or $37/mo</b></div></div>
+          <div class="pcta"><div class="pcta-row"><a class="btn btn-primary btn-sm" href="#pos-sq-app">See pricing</a><a class="btn btn-outline btn-sm" href="Square.html">Learn more</a></div>
+            <button class="btn btn-compare btn-sm btn-block" data-compare="p-sq-app"><span class="cmp-label">Add to compare</span></button></div>
+        </div>
+      </article>
+      <article class="pcard more-card" id="pos-sq-terminal">
+        <div class="pimg"><image-slot id="p-sq-terminal" src="assets/terminals/square-terminal.png" fit="contain" radius="0" placeholder="Square Terminal"></image-slot></div>
+        <div class="pbody">
+          <img class="brandlogo cardbrand-img" src="assets/logos/square.svg" alt="Square"><h3>Square Terminal</h3>
+          <p class="pdesc">All-in-one card machine with a built-in printer — take payments and print receipts anywhere in store.</p>
+          <div class="pspecs"><span class="tag">All-in-one</span><span class="tag">Printer</span><span class="tag">Mobile</span></div>
+          <div class="pmeta"><div class="pmeta-row"><span>Software</span><b>Free–$49/mo</b></div><div class="pmeta-row"><span>Processing</span><b>2.6% + 10¢</b></div><div class="pmeta-row"><span>Hardware</span><b>$299 or $27/mo</b></div></div>
+          <div class="pcta"><div class="pcta-row"><a class="btn btn-primary btn-sm" href="#pos-sq-terminal">See pricing</a><a class="btn btn-outline btn-sm" href="Square.html">Learn more</a></div>
+            <button class="btn btn-compare btn-sm btn-block" data-compare="p-sq-terminal"><span class="cmp-label">Add to compare</span></button></div>
+        </div>
+      </article>
+      <article class="pcard more-card" id="pos-sq-reader">
+        <div class="pimg"><image-slot id="p-sq-reader" src="assets/terminals/square-reader.avif" fit="contain" radius="0" placeholder="Square Reader"></image-slot></div>
+        <div class="pbody">
+          <img class="brandlogo cardbrand-img" src="assets/logos/square.svg" alt="Square"><h3>Square Reader</h3>
+          <p class="pdesc">Pocket contactless + chip reader that pairs with your phone for tap and dip on the go.</p>
+          <div class="pspecs"><span class="tag">Contactless</span><span class="tag">Chip</span><span class="tag">Bluetooth</span></div>
+          <div class="pmeta"><div class="pmeta-row"><span>Software</span><b>Free plan</b></div><div class="pmeta-row"><span>Processing</span><b>2.6% + 10¢</b></div><div class="pmeta-row"><span>Hardware</span><b>$59 or $21/mo</b></div></div>
+          <div class="pcta"><div class="pcta-row"><a class="btn btn-primary btn-sm" href="#pos-sq-reader">See pricing</a><a class="btn btn-outline btn-sm" href="Square.html">Learn more</a></div>
+            <button class="btn btn-compare btn-sm btn-block" data-compare="p-sq-reader"><span class="cmp-label">Add to compare</span></button></div>
+        </div>
+      </article>
+      <article class="pcard more-card" id="pos-sq-kiosk">
+        <div class="pimg"><image-slot src="assets/pos/square-kiosk-white.png" id="p-sq-kiosk" fit="contain" radius="0" placeholder="Square Kiosk"></image-slot></div>
+        <div class="pbody">
+          <img class="brandlogo cardbrand-img" src="assets/logos/square.svg" alt="Square"><h3>Square Kiosk</h3>
+          <p class="pdesc">Self-serve ordering kiosk — let customers browse, customize, and pay themselves to speed up lines. Pairs with a countertop or Bosstab floor stand (sold separately).</p>
+          <div class="pspecs"><span class="tag">Self-order</span><span class="tag">Contactless</span><span class="tag">QSR</span></div>
+          <div class="pmeta"><div class="pmeta-row"><span>Software</span><b>Kiosk $89/mo</b></div><div class="pmeta-row"><span>Processing</span><b>2.6% + 10¢</b></div><div class="pmeta-row"><span>Hardware</span><b>Stand $149 + iPad</b></div></div>
+          <div class="pcta"><div class="pcta-row"><a class="btn btn-primary btn-sm" href="#pos-sq-kiosk">See pricing</a><a class="btn btn-outline btn-sm" href="Square.html">Learn more</a></div>
+            <button class="btn btn-compare btn-sm btn-block" data-compare="p-sq-kiosk"><span class="cmp-label">Add to compare</span></button></div>
+        </div>
+      </article>
+    </div>
+    <button class="showmore" type="button" data-label="Square products">Show more Square products <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg></button>
+  </div>
+</section>
+
+<section class="bsec" data-cats="restaurant" id="shift4">
+  <div class="wrap">
+    <div class="bhead">
+      <div class="bh-left">
+        <div class="blogo"><img src="assets/logos/shift4-tight.png" alt="Shift4 Dine"></div>
+        <p>Restaurant-grade POS with online ordering, QR pay-at-table and reservations. <b>No upfront fees — $29.99/mo per terminal</b>, and dual-pricing processing means zero credit card fees.</p>
+        <div class="bestfor"><span class="vtag-label">Best for</span><span class="tag tag-teal vtag">Restaurant</span></div>
+      </div>
+      
+          <div class="bh-quiz"><span>Not sure which Shift4 Dine?</span><a class="btn btn-primary btn-sm" href="quiz.html" target="_blank" rel="noopener">Take the quiz <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a><a class="link-teal" href="Shift4 Dine.html" target="_blank" rel="noopener" style="margin-top:10px;display:inline-flex;align-items:center;gap:6px;font-weight:700">Learn more about Shift4 Dine <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></div>
+    </div>
+    <div class="tgrid">
+      <article class="pcard" id="pos-s4-station">
+        <div class="pimg"><span class="tag  pbadge">Restaurants</span><image-slot id="p-s4-station" src="assets/pos/shift4-skytab-pos.png" fit="contain" radius="0" placeholder="Workstation"></image-slot></div>
+        <div class="pbody">
+          <img class="brandlogo cardbrand-img" src="assets/logos/shift4-tight.png" alt="Shift4 Dine"><h3>Workstation</h3>
+          <p class="pdesc">Full-service bundle — workstation, cash drawer and receipt printer — with KDS and online ordering.</p>
+          <div class="pspecs"><span class="tag">Workstation</span><span class="tag">Cash drawer</span><span class="tag">Receipt printer</span></div>
+          <div class="pmeta"><div class="pmeta-row"><span>Software</span><b>$29.99/mo per terminal</b></div><div class="pmeta-row"><span>Processing</span><b>0% with dual pricing</b></div><div class="pmeta-row"><span>Hardware</span><b>No upfront fees</b></div></div>
+          <div class="pcta"><div class="pcta-row"><a class="btn btn-primary btn-sm" href="#pos-s4-station">See pricing</a><a class="btn btn-outline btn-sm" href="#pos-s4-station">Learn more</a></div>
+            <button class="btn btn-compare btn-sm btn-block" data-compare="p-s4-station"><span class="cmp-label">Add to compare</span></button></div>
+        </div>
+      </article>
+      <article class="pcard" id="pos-s4-handheld">
+        <div class="pimg"><image-slot id="p-s4-handheld" src="assets/pos/shift4-handheld.png" fit="contain" radius="0" placeholder="Handheld"></image-slot></div>
+        <div class="pbody">
+          <img class="brandlogo cardbrand-img" src="assets/logos/shift4-tight.png" alt="Shift4 Dine"><h3>Handheld</h3>
+          <p class="pdesc">Pay-at-table handheld bundle with receipt printer that speeds up turns and lifts tips.</p>
+          <div class="pspecs"><span class="tag">Handheld</span><span class="tag">Pay-at-table</span><span class="tag">Printer</span></div>
+          <div class="pmeta"><div class="pmeta-row"><span>Software</span><b>$29.99/mo per terminal</b></div><div class="pmeta-row"><span>Processing</span><b>0% with dual pricing</b></div><div class="pmeta-row"><span>Hardware</span><b>No upfront fees</b></div></div>
+          <div class="pcta"><div class="pcta-row"><a class="btn btn-primary btn-sm" href="#pos-s4-handheld">See pricing</a><a class="btn btn-outline btn-sm" href="#pos-s4-handheld">Learn more</a></div>
+            <button class="btn btn-compare btn-sm btn-block" data-compare="p-s4-handheld"><span class="cmp-label">Add to compare</span></button></div>
+        </div>
+      </article>
+      <article class="pcard" id="pos-s4-glass">
+        <div class="pimg"><image-slot id="p-s4-glass" src="assets/pos/shift4-glass.png" fit="contain" radius="0" placeholder="Tablet"></image-slot></div>
+        <div class="pbody">
+          <img class="brandlogo cardbrand-img" src="assets/logos/shift4-tight.png" alt="Shift4 Dine"><h3>Tablet</h3>
+          <p class="pdesc">Premium tablet bundle — with cash drawer and receipt printer — for a modern front-of-house.</p>
+          <div class="pspecs"><span class="tag">Tablet</span><span class="tag">Cash drawer</span><span class="tag">Receipt printer</span></div>
+          <div class="pmeta"><div class="pmeta-row"><span>Software</span><b>$29.99/mo per terminal</b></div><div class="pmeta-row"><span>Processing</span><b>0% with dual pricing</b></div><div class="pmeta-row"><span>Hardware</span><b>No upfront fees</b></div></div>
+          <div class="pcta"><div class="pcta-row"><a class="btn btn-primary btn-sm" href="#pos-s4-glass">See pricing</a><a class="btn btn-outline btn-sm" href="#pos-s4-glass">Learn more</a></div>
+            <button class="btn btn-compare btn-sm btn-block" data-compare="p-s4-glass"><span class="cmp-label">Add to compare</span></button></div>
+        </div>
+      </article>
+      <article class="pcard more-card" id="pos-s4-kds">
+        <div class="pimg"><image-slot id="p-s4-kds" src="assets/pos/shift4-skytab-kds.png" fit="contain" radius="0" placeholder="Shift4 KDS"></image-slot></div>
+        <div class="pbody">
+          <img class="brandlogo cardbrand-img" data-brand="Shift4 Dine" src="assets/logos/shift4.png" alt="Shift4 Dine" onerror="npLogoFail(this)" style="height:34px;max-width:150px"><h3>Kitchen Display System</h3>
+          <p class="pdesc">Kitchen Display System that fires orders straight to the line — clear tickets, faster turns.</p>
+          <div class="pspecs"><span class="tag">Kitchen display</span><span class="tag">Order routing</span><span class="tag">Heat-rated</span></div>
+          <div class="pmeta"><div class="pmeta-row"><span>Software</span><b>$29.99/mo per terminal</b></div><div class="pmeta-row"><span>Processing</span><b>0% with dual pricing</b></div><div class="pmeta-row"><span>Hardware</span><b>No upfront fees</b></div></div>
+          <div class="pcta"><div class="pcta-row"><a class="btn btn-primary btn-sm" href="#pos-s4-kds">See pricing</a><a class="btn btn-outline btn-sm" href="#pos-s4-kds">Learn more</a></div>
+            <button class="btn btn-compare btn-sm btn-block" data-compare="p-s4-kds"><span class="cmp-label">Add to compare</span></button></div>
+        </div>
+      </article>
+      <article class="pcard more-card" id="pos-s4-kiosk">
+        <div class="pimg"><image-slot id="p-s4-kiosk" src="assets/pos/shift4-skytab-kiosk.png" fit="contain" radius="0" placeholder="Shift4 Self-Order Kiosk"></image-slot></div>
+        <div class="pbody">
+          <img class="brandlogo cardbrand-img" data-brand="Shift4 Dine" src="assets/logos/shift4.png" alt="Shift4 Dine" onerror="npLogoFail(this)" style="height:34px;max-width:150px"><h3>Self Order Kiosk</h3>
+          <p class="pdesc">Let guests browse, customize, and pay themselves — lifts average ticket and frees up staff.</p>
+          <div class="pspecs"><span class="tag">Self-order</span><span class="tag">Customer-facing</span><span class="tag">Upsell</span></div>
+          <div class="pmeta"><div class="pmeta-row"><span>Software</span><b>$29.99/mo per terminal</b></div><div class="pmeta-row"><span>Processing</span><b>0% with dual pricing</b></div><div class="pmeta-row"><span>Hardware</span><b>No upfront fees</b></div></div>
+          <div class="pcta"><div class="pcta-row"><a class="btn btn-primary btn-sm" href="#pos-s4-kiosk">See pricing</a><a class="btn btn-outline btn-sm" href="#pos-s4-kiosk">Learn more</a></div>
+            <button class="btn btn-compare btn-sm btn-block" data-compare="p-s4-kiosk"><span class="cmp-label">Add to compare</span></button></div>
+        </div>
+      </article>
+      <article class="pcard more-card" id="pos-s4-display">
+        <div class="pimg"><image-slot id="p-s4-display" src="assets/pos/shift4-skytab-terminal.png" fit="contain" radius="0" placeholder="Shift4 Customer Display"></image-slot></div>
+        <div class="pbody">
+          <img class="brandlogo cardbrand-img" data-brand="Shift4 Dine" src="assets/logos/shift4.png" alt="Shift4 Dine" onerror="npLogoFail(this)" style="height:34px;max-width:150px"><h3>Customer Display</h3>
+          <p class="pdesc">Customer-facing screen with tip prompt and digital receipts for a modern checkout.</p>
+          <div class="pspecs"><span class="tag">Customer display</span><span class="tag">Tip prompt</span><span class="tag">Digital receipt</span></div>
+          <div class="pmeta"><div class="pmeta-row"><span>Software</span><b>$29.99/mo per terminal</b></div><div class="pmeta-row"><span>Processing</span><b>0% with dual pricing</b></div><div class="pmeta-row"><span>Hardware</span><b>No upfront fees</b></div></div>
+          <div class="pcta"><div class="pcta-row"><a class="btn btn-primary btn-sm" href="#pos-s4-display">See pricing</a><a class="btn btn-outline btn-sm" href="#pos-s4-display">Learn more</a></div>
+            <button class="btn btn-compare btn-sm btn-block" data-compare="p-s4-display"><span class="cmp-label">Add to compare</span></button></div>
+        </div>
+      </article>
+    </div>
+    <button class="showmore" type="button" data-label="Shift4 Dine products">Show more Shift4 Dine products <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg></button>
+  </div>
+</section>
+
+<section class="bsec" data-cats="restaurant retail services" id="clover">
+  <div class="wrap">
+    <div class="bhead">
+      <div class="bh-left">
+        <div class="blogo"><img src="assets/logos/clover.png" alt="Clover"></div>
+        <p>Flexible POS with a 500+ app marketplace and a no-upfront placement program — strong for retail and food service.</p>
+        <div class="bestfor"><span class="vtag-label">Best for</span><span class="tag tag-teal vtag">Restaurant</span><span class="tag tag-teal vtag">Retail</span><span class="tag tag-teal vtag">Services</span></div>
+      </div>
+      
+          <div class="bh-quiz"><span>Not sure which Clover?</span><a class="btn btn-primary btn-sm" href="quiz.html" target="_blank" rel="noopener">Take the quiz <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a><a class="link-teal" href="Clover.html" target="_blank" rel="noopener" style="margin-top:10px;display:inline-flex;align-items:center;gap:6px;font-weight:700">Learn more about Clover <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></div>
+    </div>
+    <div class="tgrid">
+      <article class="pcard" id="pos-cl-duo">
+        <div class="pimg"><span class="tag  pbadge">Flagship</span><image-slot id="p-cl-duo" src="assets/pos/clover-duo.png" fit="contain" radius="0" placeholder="Clover Station Duo"></image-slot></div>
+        <div class="pbody">
+          <img class="brandlogo cardbrand-img" src="assets/logos/clover.png" alt="Clover"><h3>Clover Station Duo</h3>
+          <p class="pdesc">Dual-screen flagship register with a customer-facing display and printer.</p>
+          <div class="pspecs"><span class="tag">Dual-screen</span><span class="tag">Printer</span><span class="tag">Cash drawer</span></div>
+          <div class="pmeta"><div class="pmeta-row"><span>Purchase</span><b>$2,078</b></div><div class="pmeta-row"><span>Placement</span><b>$55/mo · no upfront</b></div><div class="pmeta-row"><span>Processing</span><b>Custom — we match or beat</b></div></div>
+          <div class="pcta"><div class="pcta-row"><a class="btn btn-primary btn-sm" href="#pos-cl-duo">See pricing</a><a class="btn btn-outline btn-sm" href="#pos-cl-duo">Learn more</a></div>
+            <button class="btn btn-compare btn-sm btn-block" data-compare="p-cl-duo"><span class="cmp-label">Add to compare</span></button></div>
+        </div>
+      </article>
+      <article class="pcard" id="pos-cl-mini">
+        <div class="pimg"><image-slot id="p-cl-mini" src="assets/pos/clover-mini.png" fit="contain" radius="0" placeholder="Clover Mini"></image-slot></div>
+        <div class="pbody">
+          <img class="brandlogo cardbrand-img" src="assets/logos/clover.png" alt="Clover"><h3>Clover Mini</h3>
+          <p class="pdesc">Compact countertop POS with full touchscreen in a small footprint.</p>
+          <div class="pspecs"><span class="tag">Countertop</span><span class="tag">Touchscreen</span><span class="tag">Printer</span></div>
+          <div class="pmeta"><div class="pmeta-row"><span>Purchase</span><b>$937</b></div><div class="pmeta-row"><span>Placement</span><b>$25/mo · no upfront</b></div><div class="pmeta-row"><span>Processing</span><b>Custom — we match or beat</b></div></div>
+          <div class="pcta"><div class="pcta-row"><a class="btn btn-primary btn-sm" href="#pos-cl-mini">See pricing</a><a class="btn btn-outline btn-sm" href="#pos-cl-mini">Learn more</a></div>
+            <button class="btn btn-compare btn-sm btn-block" data-compare="p-cl-mini"><span class="cmp-label">Add to compare</span></button></div>
+        </div>
+      </article>
+      <article class="pcard" id="pos-cl-flex">
+        <div class="pimg"><image-slot id="p-cl-flex" src="assets/pos/clover-flex.webp" fit="contain" radius="0" placeholder="Clover Flex"></image-slot></div>
+        <div class="pbody">
+          <img class="brandlogo cardbrand-img" src="assets/logos/clover.png" alt="Clover"><h3>Clover Flex</h3>
+          <p class="pdesc">Handheld POS with printer for tableside and line-busting.</p>
+          <div class="pspecs"><span class="tag">Handheld</span><span class="tag">Printer</span><span class="tag">Scanner</span></div>
+          <div class="pmeta"><div class="pmeta-row"><span>Purchase</span><b>$758</b></div><div class="pmeta-row"><span>Placement</span><b>$20/mo · no upfront</b></div><div class="pmeta-row"><span>Processing</span><b>Custom — we match or beat</b></div></div>
+          <div class="pcta"><div class="pcta-row"><a class="btn btn-primary btn-sm" href="#pos-cl-flex">See pricing</a><a class="btn btn-outline btn-sm" href="#pos-cl-flex">Learn more</a></div>
+            <button class="btn btn-compare btn-sm btn-block" data-compare="p-cl-flex"><span class="cmp-label">Add to compare</span></button></div>
+        </div>
+      </article>
+      <article class="pcard more-card" id="pos-cl-go">
+        <div class="pimg"><image-slot id="p-cl-go" src="assets/pos/clover-pocket.png" fit="contain" radius="0" placeholder="Clover Go"></image-slot></div>
+        <div class="pbody">
+          <img class="brandlogo cardbrand-img" src="assets/logos/clover.png" alt="Clover"><h3>Clover Pocket</h3>
+          <p class="pdesc">The most portable Clover — a pocket device for tap, dip, and on-the-go payments anywhere you serve.</p>
+          <div class="pspecs"><span class="tag">Mobile reader</span><span class="tag">Bluetooth</span><span class="tag">Tap & dip</span></div>
+          <div class="pmeta"><div class="pmeta-row"><span>Purchase</span><b>$449</b></div><div class="pmeta-row"><span>Placement</span><b>$18/mo · no upfront</b></div><div class="pmeta-row"><span>Processing</span><b>Custom — we match or beat</b></div></div>
+          <div class="pcta"><div class="pcta-row"><a class="btn btn-primary btn-sm" href="#pos-cl-go">See pricing</a><a class="btn btn-outline btn-sm" href="#pos-cl-go">Learn more</a></div>
+            <button class="btn btn-compare btn-sm btn-block" data-compare="p-cl-go"><span class="cmp-label">Add to compare</span></button></div>
+        </div>
+      </article>
+      <article class="pcard more-card" id="pos-cl-solo">
+        <div class="pimg"><image-slot src="assets/pos/clover-station-solo.webp" id="p-cl-solo" fit="contain" radius="0" placeholder="Clover Station Solo"></image-slot></div>
+        <div class="pbody">
+          <img class="brandlogo cardbrand-img" src="assets/logos/clover.png" alt="Clover"><h3>Clover Station Solo</h3>
+          <p class="pdesc">Single-screen flagship register with printer — full-power countertop POS for retail and dining.</p>
+          <div class="pspecs"><span class="tag">Countertop</span><span class="tag">Printer</span><span class="tag">Cash drawer</span></div>
+          <div class="pmeta"><div class="pmeta-row"><span>Purchase</span><b>$1,766</b></div><div class="pmeta-row"><span>Placement</span><b>$45/mo · no upfront</b></div><div class="pmeta-row"><span>Processing</span><b>Custom — we match or beat</b></div></div>
+          <div class="pcta"><div class="pcta-row"><a class="btn btn-primary btn-sm" href="#pos-cl-solo">See pricing</a><a class="btn btn-outline btn-sm" href="#pos-cl-solo">Learn more</a></div>
+            <button class="btn btn-compare btn-sm btn-block" data-compare="p-cl-solo"><span class="cmp-label">Add to compare</span></button></div>
+        </div>
+      </article>
+      <article class="pcard more-card" id="pos-cl-kds">
+        <div class="pimg"><image-slot id="p-cl-kds" src="assets/pos/clover-kds.jpg" fit="contain" radius="0" placeholder="Clover Kitchen Display"></image-slot></div>
+        <div class="pbody">
+          <img class="brandlogo cardbrand-img" src="assets/logos/clover.png" alt="Clover"><h3>Clover Kitchen Display</h3>
+          <p class="pdesc">Routes orders to the kitchen line with clear tickets — keeps back-of-house in sync. Screen only; choose 14″ or 24″, with optional wall mount or countertop stand.</p>
+          <div class="pspecs"><span class="tag">14″ / 24″</span><span class="tag">Wall mount</span><span class="tag">Stand</span></div>
+          <div class="pmeta"><div class="pmeta-row"><span>KDS 14″</span><b>$531 · $14/mo</b></div><div class="pmeta-row"><span>KDS 24″</span><b>$722 · $24/mo</b></div><div class="pmeta-row"><span>Wall mount / stand</span><b>$53 / $80</b></div></div>
+          <div class="pcta"><div class="pcta-row"><a class="btn btn-primary btn-sm" href="#pos-cl-kds">See pricing</a><a class="btn btn-outline btn-sm" href="#pos-cl-kds">Learn more</a></div>
+            <button class="btn btn-compare btn-sm btn-block" data-compare="p-cl-kds"><span class="cmp-label">Add to compare</span></button></div>
+        </div>
+      </article>
+      <article class="pcard more-card" id="pos-cl-kiosk">
+        <div class="pimg"><image-slot src="assets/pos/clover-kiosk.webp" id="p-cl-kiosk" fit="contain" radius="0" placeholder="Clover Kiosk"></image-slot></div>
+        <div class="pbody">
+          <img class="brandlogo cardbrand-img" src="assets/logos/clover.png" alt="Clover"><h3>Clover Kiosk</h3>
+          <p class="pdesc">Self-order kiosk that lets guests browse and pay themselves — speeds lines and lifts ticket size.</p>
+          <div class="pspecs"><span class="tag">Self-order</span><span class="tag">Customer-facing</span><span class="tag">Upsell</span></div>
+          <div class="pmeta"><div class="pmeta-row"><span>Purchase</span><b>$3,587</b></div><div class="pmeta-row"><span>Placement</span><b>$90/mo · no upfront</b></div><div class="pmeta-row"><span>Processing</span><b>Custom — we match or beat</b></div></div>
+          <div class="pcta"><div class="pcta-row"><a class="btn btn-primary btn-sm" href="#pos-cl-kiosk">See pricing</a><a class="btn btn-outline btn-sm" href="#pos-cl-kiosk">Learn more</a></div>
+            <button class="btn btn-compare btn-sm btn-block" data-compare="p-cl-kiosk"><span class="cmp-label">Add to compare</span></button></div>
+        </div>
+      </article>
+    </div>
+    <button class="showmore" type="button" data-label="Clover options">Show more Clover options <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg></button>
+
+    <div class="center" style="margin-top:36px"><a class="btn btn-primary" href="Pricing.html#pos">See full pricing &amp; plans <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></div>
+  </div>
+</section>
+
+<section class="bsec" data-cats="restaurant retail" id="pays">
+  <div class="wrap">
+    <div class="bhead">
+      <div class="bh-left">
+        <div class="blogo"><img src="assets/logos/pays.svg" alt="PAYS POS" style="height:38px"></div>
+        <p>An all-inclusive POS built around <b>dual pricing</b> — promote <b>zero processing fees</b> with volume discounts, no contract, free shipping, and a dedicated account manager.</p>
+        <div class="bestfor"><span class="vtag-label">Best for</span><span class="tag tag-teal vtag">Restaurants</span><span class="tag tag-teal vtag">Retail</span><span class="tag tag-teal vtag">Dual pricing</span></div>
+      </div>
+          <div class="bh-quiz"><span>Not sure which PAYS?</span><a class="btn btn-primary btn-sm" href="quiz.html" target="_blank" rel="noopener">Take the quiz <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a><a class="link-teal" href="PAYS POS.html" target="_blank" rel="noopener" style="margin-top:10px;display:inline-flex;align-items:center;gap:6px;font-weight:700">Learn more about PAYS <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></div>
+    </div>
+    <div class="tgrid">
+      <article class="pcard" id="pos-pays-station">
+        <div class="pimg"><span class="tag tag-teal pbadge">Zero processing fees</span><image-slot id="p-pays-station" src="assets/pos/pays-station-web2.png" fit="contain" radius="0" placeholder="PAYS POS Station"></image-slot></div>
+        <div class="pbody">
+          <img class="brandlogo cardbrand-img" src="assets/logos/pays.svg" alt="PAYS"><h3>PAYS POS Station + Reader</h3>
+          <p class="pdesc">All-in-one dual-screen POS station and credit card reader, all-inclusive software, and a dedicated account manager — no contract, free shipping.</p>
+          <div class="pspecs"><span class="tag">Dual pricing</span><span class="tag">No contract</span><span class="tag">Free shipping</span></div>
+          <div class="pmeta"><div class="pmeta-row"><span>Hardware</span><b>$999 <s>$1,200</s></b></div><div class="pmeta-row"><span>Software</span><b>from $59/mo</b></div><div class="pmeta-row"><span>Processing</span><b>0% with dual pricing</b></div></div>
+          <div class="pcta"><div class="pcta-row"><a class="btn btn-primary btn-sm" href="#pos-pays-station">See pricing</a><a class="btn btn-outline btn-sm" href="#pos-pays-station">Learn more</a></div>
+            <button class="btn btn-compare btn-sm btn-block" data-compare="p-pays-station"><span class="cmp-label">Add to compare</span></button></div>
+        </div>
+      </article>
+      <article class="pcard" id="pos-pays-handheld">
+        <div class="pimg"><image-slot id="p-pays-handheld" src="assets/pos/pays-handheld.png" fit="contain" radius="0" placeholder="PAYS Handheld POS"></image-slot></div>
+        <div class="pbody">
+          <img class="brandlogo cardbrand-img" src="assets/logos/pays.svg" alt="PAYS"><h3>PAYS Handheld POS</h3>
+          <p class="pdesc">All-in-one mobile POS and card reader with built-in printer — take orders and payments tableside or on the go.</p>
+          <div class="pspecs"><span class="tag">Handheld</span><span class="tag">Printer</span><span class="tag">Dual pricing</span></div>
+          <div class="pmeta"><div class="pmeta-row"><span>Software</span><b>from $59/mo</b></div><div class="pmeta-row"><span>Processing</span><b>0% with dual pricing</b></div></div>
+          <div class="pcta"><div class="pcta-row"><a class="btn btn-primary btn-sm" href="#pos-pays-handheld">See pricing</a><a class="btn btn-outline btn-sm" href="#pos-pays-handheld">Learn more</a></div>
+            <button class="btn btn-compare btn-sm btn-block" data-compare="p-pays-handheld"><span class="cmp-label">Add to compare</span></button></div>
+        </div>
+      </article>
+      <article class="pcard" id="pos-pays-kiosk">
+        <div class="pimg"><image-slot id="p-pays-kiosk" src="assets/pos/pays-kiosk-web.png" fit="contain" radius="0" placeholder="PAYS Kiosk"></image-slot></div>
+        <div class="pbody">
+          <img class="brandlogo cardbrand-img" src="assets/logos/pays.svg" alt="PAYS"><h3>PAYS Self-Order Kiosk</h3>
+          <p class="pdesc">Let guests browse, customize, and pay themselves — built-in scanner and contactless reader speed up lines and lift average ticket.</p>
+          <div class="pspecs"><span class="tag">Self-order</span><span class="tag">Scanner</span><span class="tag">Contactless</span></div>
+          <div class="pmeta"><div class="pmeta-row"><span>Software</span><b>from $79/mo</b></div><div class="pmeta-row"><span>Processing</span><b>0% with dual pricing</b></div></div>
+          <div class="pcta"><div class="pcta-row"><a class="btn btn-primary btn-sm" href="#pos-pays-kiosk">See pricing</a><a class="btn btn-outline btn-sm" href="#pos-pays-kiosk">Learn more</a></div>
+            <button class="btn btn-compare btn-sm btn-block" data-compare="p-pays-kiosk"><span class="cmp-label">Add to compare</span></button></div>
+        </div>
+      </article>
+      <article class="pcard more-card" id="pos-pays-kds">
+        <div class="pimg"><image-slot id="p-pays-kds" src="assets/pos/pays-kds.png" fit="contain" radius="0" placeholder="PAYS KDS"></image-slot></div>
+        <div class="pbody">
+          <img class="brandlogo cardbrand-img" src="assets/logos/pays.svg" alt="PAYS"><h3>PAYS Kitchen Display</h3>
+          <p class="pdesc">Routes orders to the kitchen with clear tickets, timers, and item counts — keeps the line in sync during the rush.</p>
+          <div class="pspecs"><span class="tag">Kitchen display</span><span class="tag">Order routing</span><span class="tag">Timers</span></div>
+          <div class="pmeta"><div class="pmeta-row"><span>Software</span><b>from $79/mo</b></div><div class="pmeta-row"><span>Pairs with</span><b>PAYS POS</b></div></div>
+          <div class="pcta"><div class="pcta-row"><a class="btn btn-primary btn-sm" href="#pos-pays-kds">See pricing</a><a class="btn btn-outline btn-sm" href="#pos-pays-kds">Learn more</a></div>
+            <button class="btn btn-compare btn-sm btn-block" data-compare="p-pays-kds"><span class="cmp-label">Add to compare</span></button></div>
+        </div>
+      </article>
+    </div>
+    <button class="showmore" type="button" data-label="PAYS hardware">Show more PAYS hardware <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg></button>
+
+    <div class="center" style="margin-top:36px"><a class="btn btn-primary" href="Pricing.html#pos">See full pricing &amp; plans <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></div>
+  </div>
+</section>
+
+<section class="bsec" data-cats="convenience retail" id="nrs">
+  <div class="wrap">
+    <div class="bhead">
+      <div class="bh-left">
+        <div class="blogo"><img src="assets/logos/nrs.png" alt="NRS"></div>
+        <p>Purpose-built register for convenience stores and bodegas, with cash-discount support and a customer-facing screen.</p>
+        <div class="bestfor"><span class="vtag-label">Best for</span><span class="tag tag-teal vtag">Convenience / QSR</span><span class="tag tag-teal vtag">Retail</span></div>
+      </div>
+      
+          <div class="bh-quiz"><span>Not sure which NRS?</span><a class="btn btn-primary btn-sm" href="quiz.html" target="_blank" rel="noopener">Take the quiz <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a><a class="link-teal" href="NRS.html" target="_blank" rel="noopener" style="margin-top:10px;display:inline-flex;align-items:center;gap:6px;font-weight:700">Learn more about NRS <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></div>
+    </div>
+    <div class="tgrid">
+      <article class="pcard" id="pos-nrs-register">
+        <div class="pimg"><span class="tag tag-navy pbadge">Popular for Tobacco, Vape &amp; Retail</span><image-slot id="p-nrs-register" src="assets/terminals/pax-a35.jpeg" fit="contain" radius="0" placeholder="NRS POS Register"></image-slot></div>
+        <div class="pbody">
+          <img class="brandlogo cardbrand-img" src="assets/logos/nrs.png" alt="NRS"><h3>NRS POS Register</h3>
+          <p class="pdesc">All-in-one bodega register with scanner, customer-facing screen and cash discount — runs on the PAX A35.</p>
+          <div class="pspecs"><span class="tag">All-in-one</span><span class="tag">Scanner</span><span class="tag">Cash discount</span></div>
+          <div class="pmeta"><div class="pmeta-row"><span>Standard</span><b>2.49% + 10&cent;</b></div><div class="pmeta-row"><span>Statement min</span><b>$10/mo</b></div><div class="pmeta-row"><span>Cash discount</span><b>$49.95/mo flat &middot; $0 per transaction</b></div></div>
+          <div class="pcta"><div class="pcta-row"><a class="btn btn-primary btn-sm" href="#pos-nrs-register">See pricing</a><a class="btn btn-outline btn-sm" href="NRS.html" target="_blank" rel="noopener">Learn more</a></div>
+            <button class="btn btn-compare btn-sm btn-block" data-compare="p-nrs-register"><span class="cmp-label">Add to compare</span></button></div>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="bsec" data-cats="restaurant retail" id="quantic">
+  <div class="wrap">
+    <div class="bhead">
+      <div class="bh-left">
+        <div class="blogo"><img src="assets/logos/quantic-tight.png" alt="Quantic" style="height:52px"></div>
+        <p>Cloud iPad POS for restaurants and retail with deep inventory and reporting — works online or off.</p>
+        <div class="bestfor"><span class="vtag-label">Best for</span><span class="tag tag-teal vtag">Restaurant</span><span class="tag tag-teal vtag">Retail</span></div>
+      </div>
+      
+          <div class="bh-quiz"><span>Not sure which Quantic?</span><a class="btn btn-primary btn-sm" href="quiz.html" target="_blank" rel="noopener">Take the quiz <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a><a class="link-teal" href="Quantic.html" target="_blank" rel="noopener" style="margin-top:10px;display:inline-flex;align-items:center;gap:6px;font-weight:700">Learn more about Quantic <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></div>
+    </div>
+    <div class="tgrid">
+      <article class="pcard" id="pos-qt-ipad">
+        <div class="pimg"><span class="tag tag-navy pbadge">Popular for Convenience &amp; Grocery</span><image-slot id="p-qt-ipad" src="assets/pos/quantic-pos.png" fit="contain" radius="0" placeholder="Quantic POS"></image-slot></div>
+        <div class="pbody">
+          <img class="brandlogo cardbrand-img" src="assets/logos/quantic-tight.png" alt="Quantic"><h3>Quantic POS</h3>
+          <p class="pdesc">Full iPad-based POS with rich menus, inventory and analytics — works online or off.</p>
+          <div class="pspecs"><span class="tag">iPad</span><span class="tag">Cloud</span><span class="tag">Offline</span></div>
+          <div class="pmeta"><div class="pmeta-row"><span>Software</span><b>$60/mo first terminal</b></div><div class="pmeta-row"><span>Each additional</span><b>$50/mo</b></div><div class="pmeta-row"><span>Save</span><b>10% with annual prepay</b></div></div>
+          <div class="pcta"><div class="pcta-row"><a class="btn btn-primary btn-sm" href="#pos-qt-ipad">See pricing</a><a class="btn btn-outline btn-sm" href="#pos-qt-ipad">Learn more</a></div>
+            <button class="btn btn-compare btn-sm btn-block" data-compare="p-qt-ipad"><span class="cmp-label">Add to compare</span></button></div>
+        </div>
+      </article>
+      <article class="pcard" id="pos-qt-lite">
+        <div class="pimg"><image-slot id="p-qt-lite" src="assets/pos/quantic-lite.jpg" fit="contain" radius="0" placeholder="Quantic Lite"></image-slot></div>
+        <div class="pbody">
+          <img class="brandlogo cardbrand-img" src="assets/logos/quantic-tight.png" alt="Quantic"><h3>Quantic Lite</h3>
+          <p class="pdesc">A streamlined plan for smaller operations — core POS at a lower monthly per terminal.</p>
+          <div class="pspecs"><span class="tag">iPad</span><span class="tag">Cloud</span><span class="tag">Core POS</span></div>
+          <div class="pmeta"><div class="pmeta-row"><span>Software</span><b>$30/mo first terminal</b></div><div class="pmeta-row"><span>Each additional</span><b>$25/mo</b></div><div class="pmeta-row"><span>Save</span><b>10% with annual prepay</b></div></div>
+          <div class="pcta"><div class="pcta-row"><a class="btn btn-primary btn-sm" href="#pos-qt-lite">See pricing</a><a class="btn btn-outline btn-sm" href="#pos-qt-lite">Learn more</a></div>
+            <button class="btn btn-compare btn-sm btn-block" data-compare="p-qt-lite"><span class="cmp-label">Add to compare</span></button></div>
+        </div>
+      </article>
+      <article class="pcard" id="pos-qt-terminal">
+        <div class="pimg"><image-slot id="p-qt-terminal" src="assets/pos/quantic-smart-terminal.png" fit="contain" radius="0" placeholder="Quantic Smart Terminal"></image-slot></div>
+        <div class="pbody">
+          <img class="brandlogo cardbrand-img" src="assets/logos/quantic-tight.png" alt="Quantic"><h3>Quantic Smart Terminal</h3>
+          <p class="pdesc">All-in-one Android smart terminal (PAX A920 Pro) running Quantic — take sales, tips, refunds and reporting right in your hand.</p>
+          <div class="pspecs"><span class="tag">Android</span><span class="tag">Built-in printer</span><span class="tag">4G + Wi-Fi</span></div>
+          <div class="pmeta"><div class="pmeta-row"><span>Software</span><b>$60/mo first terminal</b></div><div class="pmeta-row"><span>Each additional</span><b>$50/mo</b></div><div class="pmeta-row"><span>Save</span><b>10% with annual prepay</b></div></div>
+          <div class="pcta"><div class="pcta-row"><a class="btn btn-primary btn-sm" href="#pos-qt-terminal">See pricing</a><a class="btn btn-outline btn-sm" href="#pos-qt-terminal">Learn more</a></div>
+            <button class="btn btn-compare btn-sm btn-block" data-compare="p-qt-terminal"><span class="cmp-label">Add to compare</span></button></div>
+        </div>
+      </article>
+      <article class="pcard more-card" id="pos-qt-kds">
+        <div class="pimg"><image-slot id="p-qt-kds" src="assets/pos/quantic-kds.png" fit="contain" radius="0" placeholder="Quantic Kitchen Display System"></image-slot></div>
+        <div class="pbody">
+          <img class="brandlogo cardbrand-img" src="assets/logos/quantic-tight.png" alt="Quantic"><h3>Quantic Kitchen Display System</h3>
+          <p class="pdesc">Fires orders straight to the kitchen with clear tickets, coursing and recall — keeps the line in sync during the rush.</p>
+          <div class="pspecs"><span class="tag">Kitchen display</span><span class="tag">Coursing</span><span class="tag">Order routing</span></div>
+          <div class="pmeta"><div class="pmeta-row"><span>Software</span><b>Add-on module</b></div><div class="pmeta-row"><span>Pairs with</span><b>Quantic POS / Lite</b></div></div>
+          <div class="pcta"><div class="pcta-row"><a class="btn btn-primary btn-sm" href="#pos-qt-kds">See pricing</a><a class="btn btn-outline btn-sm" href="#pos-qt-kds">Learn more</a></div>
+            <button class="btn btn-compare btn-sm btn-block" data-compare="p-qt-kds"><span class="cmp-label">Add to compare</span></button></div>
+        </div>
+      </article>
+      <article class="pcard more-card" id="pos-qt-cds">
+        <div class="pimg"><image-slot id="p-qt-cds" src="assets/pos/quantic-cust-display.png" fit="contain" radius="0" placeholder="Customer Display"></image-slot></div>
+        <div class="pbody">
+          <img class="brandlogo cardbrand-img" src="assets/logos/quantic-tight.png" alt="Quantic"><h3>Customer Display System</h3>
+          <p class="pdesc">Second customer-facing screen that shows the order, totals, and prompts — add to any Quantic station.</p>
+          <div class="pspecs"><span class="tag">2nd display</span><span class="tag">Order view</span><span class="tag">Add-on</span></div>
+          <div class="pmeta"><div class="pmeta-row"><span>Software</span><b>$10/mo each</b></div><div class="pmeta-row"><span>Pairs with</span><b>Quantic POS / Lite</b></div></div>
+          <div class="pcta"><div class="pcta-row"><a class="btn btn-primary btn-sm" href="#pos-qt-cds">See pricing</a><a class="btn btn-outline btn-sm" href="#pos-qt-cds">Learn more</a></div>
+            <button class="btn btn-compare btn-sm btn-block" data-compare="p-qt-cds"><span class="cmp-label">Add to compare</span></button></div>
+        </div>
+      </article>
+    </div>
+    <button class="showmore" type="button" data-label="Quantic products">Show more Quantic products <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg></button>
+    <p class="center muted" style="font-size:13px;margin-top:14px;max-width:680px;margin-left:auto;margin-right:auto">Hardware (stations, terminals, printers, cash drawers) quoted per setup. iPads not included. Ask us for a tailored hardware &amp; setup quote.</p>
+  </div>
+</section>
+
+<section class="bsec" data-cats="convenience retail highrisk" id="korona">
+  <div class="wrap">
+    <div class="bhead">
+      <div class="bh-left">
+        <div class="blogo"><img src="assets/logos/korona.png" alt="Korona"></div>
+        <p>Cloud retail POS for convenience, grocery, ticketing and regulated / high-risk — with age verification and multi-location support.</p>
+        <div class="bestfor"><span class="vtag-label">Best for</span><span class="tag tag-teal vtag">Convenience / QSR</span><span class="tag tag-teal vtag">Retail</span><span class="tag tag-teal vtag">High-risk</span></div>
+      </div>
+      
+          <div class="bh-quiz"><span>Not sure which Korona?</span><a class="btn btn-primary btn-sm" href="quiz.html" target="_blank" rel="noopener">Take the quiz <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a><a class="link-teal" href="Korona.html" target="_blank" rel="noopener" style="margin-top:10px;display:inline-flex;align-items:center;gap:6px;font-weight:700">Learn more about Korona <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></div>
+    </div>
+    <div class="tgrid">
+      <article class="pcard" id="pos-ko-pos">
+        <div class="pimg"><span class="tag  pbadge">Multi-location</span><image-slot src="assets/pos/korona-full-set.png" id="p-ko-pos" fit="contain" radius="0" placeholder="Korona POS"></image-slot></div>
+        <div class="pbody">
+          <img class="brandlogo cardbrand-img" src="assets/logos/korona.png" alt="Korona"><h3>Korona POS</h3>
+          <p class="pdesc">Cloud retail POS with inventory, ticketing and age verification — no contracts, month-to-month.</p>
+          <div class="pspecs"><span class="tag">Retail</span><span class="tag">Multi-location</span><span class="tag">Age verify</span></div>
+          <div class="pmeta"><div class="pmeta-row"><span>Software</span><b>From $59/mo per register</b></div><div class="pmeta-row"><span>Processing</span><b>NextPay — match or beat</b></div><div class="pmeta-row"><span>Contract</span><b>None — cancel anytime</b></div></div>
+          <div class="pcta"><div class="pcta-row"><a class="btn btn-primary btn-sm" href="#pos-ko-pos">See pricing</a><a class="btn btn-outline btn-sm" href="Korona.html" target="_blank" rel="noopener">Learn more</a></div>
+            <button class="btn btn-compare btn-sm btn-block" data-compare="p-ko-pos"><span class="cmp-label">Add to compare</span></button></div>
+        </div>
+      </article>
+      <article class="pcard" id="pos-ko-station">
+        <div class="pimg"><span class="tag  pbadge">All-in-one</span><image-slot id="p-ko-station" src="assets/pos/korona-station.png" fit="contain" radius="0" placeholder="Korona Station"></image-slot></div>
+        <div class="pbody">
+          <img class="brandlogo cardbrand-img" src="assets/logos/korona.png" alt="Korona"><h3>Korona Station</h3>
+          <p class="pdesc">All-in-one A5 touchscreen terminal with receipt printer and cash drawer — the everyday register.</p>
+          <div class="pspecs"><span class="tag">Countertop</span><span class="tag">All-in-one</span><span class="tag">Printer</span></div>
+          <div class="pmeta"><div class="pmeta-row"><span>Software</span><b>From $59/mo per register</b></div><div class="pmeta-row"><span>Processing</span><b>NextPay — match or beat</b></div><div class="pmeta-row"><span>Contract</span><b>None — cancel anytime</b></div></div>
+          <div class="pcta"><div class="pcta-row"><a class="btn btn-primary btn-sm" href="#pos-ko-station">See pricing</a><a class="btn btn-outline btn-sm" href="Korona.html" target="_blank" rel="noopener">Learn more</a></div>
+            <button class="btn btn-compare btn-sm btn-block" data-compare="p-ko-station"><span class="cmp-label">Add to compare</span></button></div>
+        </div>
+      </article>
+      <article class="pcard" id="pos-ko-mobile">
+        <div class="pimg"><image-slot id="p-ko-mobile" src="assets/pos/korona-mobile.png" fit="contain" radius="0" placeholder="Korona Mobile POS"></image-slot></div>
+        <div class="pbody">
+          <img class="brandlogo cardbrand-img" src="assets/logos/korona.png" alt="Korona"><h3>Korona Mobile POS</h3>
+          <p class="pdesc">Handheld Android terminal for line-busting, tableside and on-the-floor sales.</p>
+          <div class="pspecs"><span class="tag">Handheld</span><span class="tag">Mobile</span><span class="tag">Scan</span></div>
+          <div class="pmeta"><div class="pmeta-row"><span>Software</span><b>From $59/mo per register</b></div><div class="pmeta-row"><span>Processing</span><b>NextPay — match or beat</b></div><div class="pmeta-row"><span>Contract</span><b>None — cancel anytime</b></div></div>
+          <div class="pcta"><div class="pcta-row"><a class="btn btn-primary btn-sm" href="#pos-ko-mobile">See pricing</a><a class="btn btn-outline btn-sm" href="Korona.html" target="_blank" rel="noopener">Learn more</a></div>
+            <button class="btn btn-compare btn-sm btn-block" data-compare="p-ko-mobile"><span class="cmp-label">Add to compare</span></button></div>
+        </div>
+      </article>
+      <article class="pcard more-card" id="pos-ko-kiosk">
+        <div class="pimg"><span class="tag  pbadge">Self-service</span><image-slot id="p-ko-kiosk" src="assets/pos/korona-kiosk.png" fit="contain" radius="0" placeholder="Korona Self-Checkout Kiosk"></image-slot></div>
+        <div class="pbody">
+          <img class="brandlogo cardbrand-img" src="assets/logos/korona.png" alt="Korona"><h3>Korona Self-Checkout Kiosk</h3>
+          <p class="pdesc">Customer-facing self-checkout with scanning and contactless payment — cut queues and labor.</p>
+          <div class="pspecs"><span class="tag">Self-checkout</span><span class="tag">Contactless</span><span class="tag">Scanning</span></div>
+          <div class="pmeta"><div class="pmeta-row"><span>Software</span><b>From $79/mo per kiosk</b></div><div class="pmeta-row"><span>Processing</span><b>NextPay — match or beat</b></div><div class="pmeta-row"><span>Contract</span><b>None — cancel anytime</b></div></div>
+          <div class="pcta"><div class="pcta-row"><a class="btn btn-primary btn-sm" href="#pos-ko-kiosk">See pricing</a><a class="btn btn-outline btn-sm" href="Korona.html" target="_blank" rel="noopener">Learn more</a></div>
+            <button class="btn btn-compare btn-sm btn-block" data-compare="p-ko-kiosk"><span class="cmp-label">Add to compare</span></button></div>
+        </div>
+      </article>
+      <article class="pcard more-card" id="pos-ko-display">
+        <div class="pimg"><image-slot id="p-ko-display" src="assets/pos/korona-display.png" fit="contain" radius="0" placeholder="Korona Customer Display"></image-slot></div>
+        <div class="pbody">
+          <img class="brandlogo cardbrand-img" src="assets/logos/korona.png" alt="Korona"><h3>Korona Customer Display</h3>
+          <p class="pdesc">Rear customer-facing display for order transparency, branding and dual-pricing prompts.</p>
+          <div class="pspecs"><span class="tag">Customer display</span><span class="tag">Branding</span><span class="tag">Dual-price</span></div>
+          <div class="pmeta"><div class="pmeta-row"><span>Software</span><b>Add-on hardware</b></div><div class="pmeta-row"><span>Processing</span><b>NextPay — match or beat</b></div><div class="pmeta-row"><span>Contract</span><b>None — cancel anytime</b></div></div>
+          <div class="pcta"><div class="pcta-row"><a class="btn btn-primary btn-sm" href="#pos-ko-display">See pricing</a><a class="btn btn-outline btn-sm" href="Korona.html" target="_blank" rel="noopener">Learn more</a></div>
+            <button class="btn btn-compare btn-sm btn-block" data-compare="p-ko-display"><span class="cmp-label">Add to compare</span></button></div>
+        </div>
+      </article>
+    </div>
+
+    <button class="showmore" type="button" data-label="Korona hardware">Show more Korona hardware <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg></button>
+
+    <div class="center" style="margin-top:36px"><a class="btn btn-primary" href="Pricing.html#pos">See full pricing &amp; plans <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></div>
+  </div>
+</section>
+
+<section class="bsec" data-cats="restaurant retail" id="nextpay">
+  <div class="wrap">
+    <div class="bhead">
+      <div class="bh-left">
+        <div class="blogo"><img src="assets/logos/chively-white.png" alt="Chively" style="filter:brightness(0)"></div>
+        <p>Our flagship POS — built for food & beverage and retail with offline mode, smart tipping, and match-or-beat processing.</p>
+        <div class="bestfor"><span class="vtag-label">Best for</span><span class="tag tag-teal vtag">Restaurant</span><span class="tag tag-teal vtag">Retail</span></div>
+      </div>
+      <a class="link-teal" href="quiz.html" target="_blank" rel="noopener">Not sure? Take the quiz <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+          <div class="bh-quiz"><span>Not sure which Chively?</span><a class="btn btn-primary btn-sm" href="quiz.html" target="_blank" rel="noopener">Take the quiz <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a><a class="link-teal" href="Chively.html" target="_blank" rel="noopener" style="margin-top:10px;display:inline-flex;align-items:center;gap:6px;font-weight:700">Learn more about Chively <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></div>
+    </div>
+    <div class="tgrid">
+      <article class="pcard" id="pos-chively-handheld">
+        <div class="pimg"><span class="tag tag-teal pbadge">★ Recommended</span><image-slot id="p-chively-handheld" fit="contain" radius="0" placeholder="Chively Handheld POS"></image-slot></div>
+        <div class="pbody">
+          <img class="brandlogo cardbrand-img" data-brand="Chively" src="assets/logos/chively-white.png" style="filter:brightness(0)" alt="Chively"><h3>Chively Handheld POS</h3>
+          <p class="pdesc">Apron-pocket Android POS with offline mode, menus, modifiers and built-in tipping.</p>
+          <div class="pspecs"><span class="tag">Handheld</span><span class="tag">Offline mode</span><span class="tag">Tipping</span></div>
+          <div class="pprice"><b>From $29</b> <span>/mo + 2.39% + 5¢</span></div>
+          <div class="pcta"><div class="pcta-row"><a class="btn btn-primary btn-sm" href="Chively.html#pricing">See pricing</a><a class="btn btn-outline btn-sm" href="Chively.html" target="_blank" rel="noopener">Learn more</a></div>
+            <button class="btn btn-compare btn-sm btn-block" data-compare="p-chively-handheld"><span class="cmp-label">Add to compare</span></button></div>
+        </div>
+      </article>
+      <article class="pcard" id="pos-chively-counter">
+        <div class="pimg"><image-slot id="p-chively-counter" src="assets/pos/chively-d3-front.png" fit="contain" radius="0" placeholder="Chively Countertop POS"></image-slot></div>
+        <div class="pbody">
+          <img class="brandlogo cardbrand-img" data-brand="Chively" src="assets/logos/chively-white.png" style="filter:brightness(0)" alt="Chively"><h3>Chively Countertop POS</h3>
+          <p class="pdesc">Sleek countertop touchscreen with printer for fast front-counter checkout.</p>
+          <div class="pspecs"><span class="tag">Countertop</span><span class="tag">Touchscreen</span><span class="tag">Printer</span></div>
+          <div class="pprice"><b>Match-or-beat</b> <span>processing</span></div>
+          <div class="pcta"><div class="pcta-row"><a class="btn btn-primary btn-sm" href="Chively.html#pricing">See pricing</a><a class="btn btn-outline btn-sm" href="Chively.html" target="_blank" rel="noopener">Learn more</a></div>
+            <button class="btn btn-compare btn-sm btn-block" data-compare="p-chively-counter"><span class="cmp-label">Add to compare</span></button></div>
+        </div>
+      </article>
+      <article class="pcard" id="pos-chively-station">
+        <div class="pimg"><image-slot id="p-chively-station" src="assets/pos/chively-d3-angled.png" fit="contain" radius="0" placeholder="Chively Full Station"></image-slot></div>
+        <div class="pbody">
+          <img class="brandlogo cardbrand-img" data-brand="Chively" src="assets/logos/chively-white.png" style="filter:brightness(0)" alt="Chively"><h3>Chively Full Station</h3>
+          <p class="pdesc">Dual-screen register with customer display for higher-volume floors.</p>
+          <div class="pspecs"><span class="tag">Dual-screen</span><span class="tag">Customer display</span><span class="tag">Cash drawer</span></div>
+          <div class="pprice"><b>Match-or-beat</b> <span>processing</span></div>
+          <div class="pcta"><div class="pcta-row"><a class="btn btn-primary btn-sm" href="Chively.html#pricing">See pricing</a><a class="btn btn-outline btn-sm" href="Chively.html" target="_blank" rel="noopener">Learn more</a></div>
+            <button class="btn btn-compare btn-sm btn-block" data-compare="p-chively-station"><span class="cmp-label">Add to compare</span></button></div>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="bsec" data-cats="retail services" id="dejapay">
+  <div class="wrap">
+    <div class="bhead">
+      <div class="bh-left">
+        <div class="blogo"><img src="assets/logos/dejapay.webp" alt="DejaPay Pro"></div>
+        <p>Value Android POS with solid card-present features for lean operations.</p>
+        <div class="bestfor"><span class="vtag-label">Best for</span><span class="tag tag-teal vtag">Retail</span><span class="tag tag-teal vtag">Services</span></div>
+      </div>
+      
+          <div class="bh-quiz"><span>Not sure which DejaPay Pro?</span><a class="btn btn-primary btn-sm" href="quiz.html" target="_blank" rel="noopener">Take the quiz <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a><a class="link-teal" href="DejaPay Pro.html" target="_blank" rel="noopener" style="margin-top:10px;display:inline-flex;align-items:center;gap:6px;font-weight:700">Learn more about DejaPay Pro <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></div>
+    </div>
+    <div class="tgrid">
+      <article class="pcard" id="pos-dp-pos">
+        <div class="pimg"><image-slot id="p-dp-pos" fit="contain" radius="0" placeholder="DejaPay Pro"></image-slot></div>
+        <div class="pbody">
+          <img class="brandlogo cardbrand-img" src="assets/logos/dejapay.webp" alt="DejaPay Pro"><h3>DejaPay Pro</h3>
+          <p class="pdesc">Affordable Android POS for a lean setup.</p>
+          <div class="pspecs"><span class="tag">Android</span><span class="tag">Low cost</span><span class="tag">Card-present</span></div>
+          <div class="pprice"><b>$59</b> <span>/mo software</span></div>
+          <div class="pcta"><div class="pcta-row"><a class="btn btn-primary btn-sm" href="#pos-dp-pos">See pricing</a><a class="btn btn-outline btn-sm" href="DejaPay Pro.html" target="_blank" rel="noopener">Learn more</a></div>
+            <button class="btn btn-compare btn-sm btn-block" data-compare="p-dp-pos"><span class="cmp-label">Add to compare</span></button></div>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="section lcloud-sec">
+  <div class="wrap">
+    <div class="sec-head"><span class="eyebrow">The brands we carry</span><h2>One partner, every major POS</h2></div>
+    <div class="lcloud">
+      <img class="lcl" src="assets/logos/square.svg" alt="Square">
+      <img class="lcl" src="assets/logos/shift4-tight.png" alt="Shift4 Dine">
+      <img class="lcl" src="assets/logos/clover.png" alt="Clover">
+      <img class="lcl" src="assets/logos/nrs.png" alt="NRS">
+      <img class="lcl" src="assets/logos/quantic-tight.png" alt="Quantic">
+      <img class="lcl" src="assets/logos/korona.png" alt="Korona">
+      <img class="lcl" src="assets/logos/chively-white.png" alt="Chively">
+      <img class="lcl" src="assets/logos/dejapay.webp" alt="DejaPay Pro">
+    </div>
+  </div>
+</section>
+
+<section class="ssec" style="padding:28px 0 0"><div class="wrap"><div class="notfound"><div class="nf-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4-4"/></svg></div><div><b>Don’t see what you’re looking for?</b>We carry far more than we can list here — tell us what you need and we can likely get it.</div><a class="btn btn-primary" href="Contact.html" target="_blank" rel="noopener">Ask us about it</a></div></div></section>
+
+<!-- COMPARE HELP + CTA -->
+<section class="section" id="compare-help">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="eyebrow">Compare any POS systems</span>
+      <h2>Line them up side by side</h2>
+      <p>Tap <b>Add to compare</b> on any system above (up to 4) and we'll build a side-by-side spec table — features, form factor, software, and what each is best for.</p>
+      <div class="center" style="margin-top:22px"><a class="btn btn-primary" href="#all">Browse systems to compare
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg></a></div>
+    </div>
+    <div class="tband">
+      <span class="eyebrow" style="color:var(--teal-bright)">Still deciding?</span>
+      <h2>Answer 10 quick questions, get your POS</h2>
+      <p>The quiz matches your industry, volume, and setup to the right system and the best rate — then a human helps you get running.</p>
+      <div class="thero-cta">
+        <a class="btn btn-primary" href="quiz.html" target="_blank" rel="noopener">Take the Quiz
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+        <a class="btn btn-ghost" href="Statement Upload.html" target="_blank" rel="noopener">Get a quote</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="ssec" data-backlink style="padding:6px 0 60px"><div class="wrap"><a class="link-teal" href="Accept Payments.html" style="display:inline-flex;align-items:center;gap:7px;font-weight:700"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" style="transform:rotate(180deg)"><path d="M5 12h14M13 6l6 6-6 6"/></svg>Back to Accept Payments</a></div></section>
+<div id="np-footer"></div>
+
+<!-- PRODUCT REGISTRY -->
+<script>
+window.NP_PRODUCTS = {"p-chively-handheld":{"name":"Chively Handheld POS","brand":"Chively","slot":"p-chively-handheld","href":"#pos-chively-handheld","specs":{"Brand":"Chively","Best for":"Food & Beverage, Retail, Dual pricing","Type":"Handheld","Features":"Handheld, Offline mode, Tipping","Pricing":"Match-or-beat processing","Highlight":"★ Recommended"}},"p-chively-counter":{"name":"Chively Countertop POS","brand":"Chively","slot":"p-chively-counter","href":"#pos-chively-counter","specs":{"Brand":"Chively","Best for":"Food & Beverage, Retail, Dual pricing","Type":"Countertop","Features":"Countertop, Touchscreen, Printer","Pricing":"Match-or-beat processing","Highlight":"Countertop"}},"p-chively-station":{"name":"Chively Full Station","brand":"Chively","slot":"p-chively-station","href":"#pos-chively-station","specs":{"Brand":"Chively","Best for":"Food & Beverage, Retail, Dual pricing","Type":"Dual-screen","Features":"Dual-screen, Customer display, Cash drawer","Pricing":"Match-or-beat processing","Highlight":"Dual-screen"}},"p-cl-duo":{"name":"Clover Station Duo","brand":"Clover","slot":"p-cl-duo","href":"#pos-cl-duo","specs":{"Brand":"Clover","Best for":"Retail, Food & Beverage, Placement program","Type":"Dual-screen","Features":"Dual-screen, Printer, Cash drawer","Pricing":"Placement or buy","Highlight":"Flagship"}},"p-cl-mini":{"name":"Clover Mini","brand":"Clover","slot":"p-cl-mini","href":"#pos-cl-mini","specs":{"Brand":"Clover","Best for":"Retail, Food & Beverage, Placement program","Type":"Countertop","Features":"Countertop, Touchscreen, Printer","Pricing":"Placement or buy","Highlight":"Countertop"}},"p-cl-flex":{"name":"Clover Flex","brand":"Clover","slot":"p-cl-flex","href":"#pos-cl-flex","specs":{"Brand":"Clover","Best for":"Retail, Food & Beverage, Placement program","Type":"Handheld","Features":"Handheld, Printer, Scanner","Pricing":"Placement or buy","Highlight":"Handheld"}},"p-dp-pos":{"name":"DejaPay Pro","brand":"DejaPay Pro","slot":"p-dp-pos","href":"#pos-dp-pos","specs":{"Brand":"DejaPay Pro","Best for":"Value, Android, Card-present","Type":"Android","Features":"Android, Low cost, Card-present","Pricing":"$59/mo software","Highlight":"Android"}},"p-ko-pos":{"name":"Korona POS","brand":"Korona","slot":"p-ko-pos","href":"#pos-ko-pos","specs":{"Brand":"Korona","Best for":"Convenience, Ticketing, Multi-location, High-risk","Type":"Retail","Features":"Retail, Multi-location, Age verify","Pricing":"From $59/mo per register (Core) · $79 Retail · $99 Plus · NextPay processing","Highlight":"Multi-location"}},"p-ko-station":{"name":"Korona Station","brand":"Korona","slot":"p-ko-station","href":"#pos-ko-station","specs":{"Brand":"Korona","Best for":"Convenience, Retail, Grocery","Type":"All-in-one countertop register","Features":"All-in-one, Printer, Cash drawer","Pricing":"From $59/mo per register · NextPay processing","Highlight":"Everyday register"}},"p-ko-mobile":{"name":"Korona Mobile POS","brand":"Korona","slot":"p-ko-mobile","href":"#pos-ko-mobile","specs":{"Brand":"Korona","Best for":"Line-busting, Tableside","Type":"Handheld mobile terminal","Features":"Handheld, Mobile, Scan","Pricing":"From $59/mo per register · NextPay processing","Highlight":"Sell anywhere"}},"p-ko-kiosk":{"name":"Korona Self-Checkout Kiosk","brand":"Korona","slot":"p-ko-kiosk","href":"#pos-ko-kiosk","specs":{"Brand":"Korona","Best for":"Convenience / high-traffic retail","Type":"Self-checkout kiosk","Features":"Self-checkout, Contactless, Scanning","Pricing":"From $79/mo per kiosk · NextPay processing","Highlight":"Cuts queues & labor"}},"p-ko-display":{"name":"Korona Customer Display","brand":"Korona","slot":"p-ko-display","href":"#pos-ko-display","specs":{"Brand":"Korona","Best for":"Order transparency & branding","Type":"Rear customer-facing display","Features":"Customer display, Branding, Dual-price","Pricing":"Add-on hardware · NextPay processing","Highlight":"Builds trust at checkout"}},"p-nrs-register":{"name":"NRS POS Register","brand":"NRS","slot":"p-nrs-register","href":"#pos-nrs-register","specs":{"Brand":"NRS","Best for":"Convenience, Bodega, Cash discount","Type":"All-in-one","Features":"All-in-one, Scanner, Cash discount","Pricing":"2.49% + 10¢ (\$10/mo statement min) OR cash discount \$49.95/mo flat, \$0 per transaction","Highlight":"All-in-one"}},"p-qt-ipad":{"name":"Quantic POS","brand":"Quantic","slot":"p-qt-ipad","href":"#pos-qt-ipad","specs":{"Brand":"Quantic","Best for":"Restaurants, Retail, Convenience","Type":"iPad","Features":"iPad, Cloud, Offline","Pricing":"$60/mo first terminal · $50/mo additional · 10% annual prepay","Highlight":"iPad"}},"p-qt-terminal":{"name":"Quantic Smart Terminal","brand":"Quantic","slot":"p-qt-terminal","href":"#pos-qt-terminal","specs":{"Brand":"Quantic","Best for":"Restaurants, Retail, Mobile","Type":"Android smart terminal (PAX A920 Pro)","Features":"Built-in printer, 4G + Wi-Fi, Tap/chip/swipe","Pricing":"$60/mo first terminal · $50/mo additional · 10% annual prepay","Highlight":"All-in-one handheld"}},"p-qt-kds":{"name":"Quantic Kitchen Display System","brand":"Quantic","slot":"p-qt-kds","href":"#pos-qt-kds","specs":{"Brand":"Quantic","Best for":"Kitchens","Type":"Kitchen Display","Features":"Coursing, Recall, Order routing","Pricing":"Add-on module · pairs with Quantic POS / Lite","Highlight":"Faster tickets"}},"p-s4-station":{"name":"Workstation","brand":"Shift4 Dine","slot":"p-s4-station","href":"#pos-s4-station","specs":{"Brand":"Shift4 Dine","Best for":"Restaurants, Online ordering, No upfront","Type":"Workstation","Features":"Workstation, Cash drawer, Receipt printer","Pricing":"$29.99/mo per terminal · no upfront · dual pricing","Highlight":"Restaurants"}},"p-s4-handheld":{"name":"Handheld","brand":"Shift4 Dine","slot":"p-s4-handheld","href":"#pos-s4-handheld","specs":{"Brand":"Shift4 Dine","Best for":"Restaurants, Online ordering, No upfront","Type":"Handheld","Features":"Handheld, Pay-at-table, Printer","Pricing":"Lease lifetime warranty","Highlight":"Handheld"}},"p-s4-glass":{"name":"Tablet","brand":"Shift4 Dine","slot":"p-s4-glass","href":"#pos-s4-glass","specs":{"Brand":"Shift4 Dine","Best for":"Restaurants, Online ordering, No upfront","Type":"Tablet","Features":"Tablet, Cash drawer, Receipt printer","Pricing":"Lease lifetime warranty","Highlight":"Glass"}},"p-s4-kds":{"name":"Kitchen Display System","brand":"Shift4 Dine","slot":"p-s4-kds","href":"#pos-s4-kds","specs":{"Brand":"Shift4 Dine","Best for":"Kitchens","Type":"Kitchen Display","Features":"Order routing, Heat-rated","Pricing":"$29.99/mo · 0% w/ dual pricing","Highlight":"Faster turns"}},"p-s4-kiosk":{"name":"Self Order Kiosk","brand":"Shift4 Dine","slot":"p-s4-kiosk","href":"#pos-s4-kiosk","specs":{"Brand":"Shift4 Dine","Best for":"QSR / high traffic","Type":"Self-order kiosk","Features":"Self-order, Upsell","Pricing":"$29.99/mo · 0% w/ dual pricing","Highlight":"Lifts ticket"}},"p-s4-display":{"name":"Customer Display","brand":"Shift4 Dine","slot":"p-s4-display","href":"#pos-s4-display","specs":{"Brand":"Shift4 Dine","Best for":"Front counter","Type":"Customer display","Features":"Tip prompt, Digital receipt","Pricing":"$29.99/mo · 0% w/ dual pricing","Highlight":"Modern checkout"}},"p-cl-go":{"name":"Clover Pocket","brand":"Clover","slot":"p-cl-go","href":"#pos-cl-go","specs":{"Brand":"Clover","Best for":"Most portable","Type":"Pocket device","Features":"Tap, dip, mobile","Pricing":"$449 buy or $18/mo placement","Highlight":"Pairs with phone"}},"p-cl-solo":{"name":"Clover Station Solo","brand":"Clover","slot":"p-cl-solo","href":"#pos-cl-solo","specs":{"Brand":"Clover","Best for":"Retail & dining","Type":"Countertop register","Features":"Printer, Cash drawer","Pricing":"$1,766 buy or $45/mo placement","Highlight":"Single-screen flagship"}},"p-cl-kds":{"name":"Clover Kitchen Display","brand":"Clover","slot":"p-cl-kds","href":"#pos-cl-kds","specs":{"Brand":"Clover","Best for":"Kitchens","Type":"Kitchen Display (14″ / 24″, screen only)","Features":"Order routing, Wall mount, Countertop stand","Pricing":"14″ $531 or $14/mo · 24″ $722 or $24/mo · wall mount $53 ($2/mo) · stand $80 ($3/mo)","Highlight":"Back-of-house sync"}},"p-cl-kiosk":{"name":"Clover Kiosk","brand":"Clover","slot":"p-cl-kiosk","href":"#pos-cl-kiosk","specs":{"Brand":"Clover","Best for":"QSR / high traffic","Type":"Self-order kiosk","Features":"Self-order, Upsell","Pricing":"$3,587 buy or $90/mo placement","Highlight":"Lifts ticket"}},"p-pays-station":{"name":"PAYS POS Station + Reader","brand":"PAYS","slot":"p-pays-station","href":"#pos-pays-station","specs":{"Brand":"PAYS","Best for":"Restaurants, Retail, Dual pricing","Type":"All-in-one POS station","Features":"Dual pricing, No contract, Free shipping, Dedicated account manager","Pricing":"$999 hardware · software from $59/mo · 0% with dual pricing","Highlight":"Zero processing fees"}},"p-qt-lite":{"name":"Quantic Lite","brand":"Quantic","slot":"p-qt-lite","href":"#pos-qt-lite","specs":{"Brand":"Quantic","Best for":"Smaller operations","Type":"Cloud iPad POS (core)","Features":"iPad, Cloud, Core POS","Pricing":"$30/mo first terminal · $25/mo additional · 10% annual prepay","Highlight":"Lower-cost plan"}},"p-qt-cds":{"name":"Customer Display System","brand":"Quantic","slot":"p-qt-cds","href":"#pos-qt-cds","specs":{"Brand":"Quantic","Best for":"Add-on","Type":"2nd customer display","Features":"Order view, Totals","Pricing":"$10/mo each","Highlight":"Pairs with Quantic POS / Lite"}},"p-pays-handheld":{"name":"PAYS Handheld POS","brand":"PAYS","slot":"p-pays-handheld","href":"#pos-pays-handheld","specs":{"Brand":"PAYS","Best for":"Tableside / mobile","Type":"Handheld POS + reader","Features":"Printer, Dual pricing","Pricing":"Software from $59/mo · 0% with dual pricing","Highlight":"All-in-one mobile"}},"p-pays-kiosk":{"name":"PAYS Self-Order Kiosk","brand":"PAYS","slot":"p-pays-kiosk","href":"#pos-pays-kiosk","specs":{"Brand":"PAYS","Best for":"QSR / high traffic","Type":"Self-order kiosk","Features":"Scanner, Contactless","Pricing":"Software from $79/mo · 0% with dual pricing","Highlight":"Lifts ticket"}},"p-pays-kds":{"name":"PAYS Kitchen Display","brand":"PAYS","slot":"p-pays-kds","href":"#pos-pays-kds","specs":{"Brand":"PAYS","Best for":"Kitchens","Type":"Kitchen Display","Features":"Order routing, Timers","Pricing":"Software from $79/mo","Highlight":"Pairs with PAYS POS"}},"p-sq-terminal":{"name":"Square Terminal","brand":"Square","slot":"p-sq-terminal","href":"#pos-sq-terminal","specs":{"Brand":"Square","Best for":"Restaurants, Retail","Type":"All-in-one terminal","Features":"Printer, Mobile","Pricing":"$299 or $27/mo (12mo)","Highlight":"All-in-one"}},"p-sq-reader":{"name":"Square Reader","brand":"Square","slot":"p-sq-reader","href":"#pos-sq-reader","specs":{"Brand":"Square","Best for":"On-the-go","Type":"Mobile reader","Features":"Contactless, Chip, Bluetooth","Pricing":"$59 or $21/mo (12mo)","Highlight":"Mobile"}},"p-sq-kiosk":{"name":"Square Kiosk","brand":"Square","slot":"p-sq-kiosk","href":"#pos-sq-kiosk","specs":{"Brand":"Square","Best for":"QSR self-order","Type":"Self-order kiosk","Features":"Self-order, Contactless","Pricing":"Kiosk software $89/mo · Stand $149 + iPad","Highlight":"Speeds up lines"}},"p-sq-register":{"name":"Square Station","brand":"Square","slot":"p-sq-register","href":"#pos-sq-register","specs":{"Brand":"Square","Best for":"Restaurants, Retail, eCommerce","Type":"All-in-one station","Features":"Printer, Customer display","Pricing":"$899 or $44/mo (24mo) + Plus Plan $49/mo","Highlight":"Popular"}},"p-sq-stand":{"name":"Square Stand","brand":"Square","slot":"p-sq-stand","href":"#pos-sq-stand","specs":{"Brand":"Square","Best for":"Retail, First-timers, eCommerce","Type":"iPad","Features":"iPad, Countertop","Pricing":"Plus Plan $49/mo · Stand $149 · iPad +$349 or BYO · 2.6% + 10¢","Highlight":"iPad"}},"p-sq-app":{"name":"Square Handheld","brand":"Square","slot":"p-sq-app","href":"#pos-sq-app","specs":{"Brand":"Square","Best for":"Restaurants, Retail, eCommerce","Type":"Handheld","Features":"Tableside, Tap to pay","Pricing":"$399 or $37/mo (12mo)","Highlight":"Handheld"}}};
+</script>
+<script src="js/nav.js"></script>
+<script src="js/image-slot.js"></script>
+<script src="js/nextpay.js"></script>
+<script>
+(function(){
+  const links=[...document.querySelectorAll('.brandnav a')];
+  const map=links.map(a=>({a,el:document.querySelector(a.getAttribute('href'))})).filter(x=>x.el);
+  links.forEach(function(a){a.addEventListener('click',function(e){var el=document.querySelector(a.getAttribute('href'));if(el){e.preventDefault();var y=el.getBoundingClientRect().top+window.pageYOffset-128;window.scrollTo({top:y,behavior:'smooth'});}});});
+  function upd(){let cur=map[0];for(const m of map){if(m.el.getBoundingClientRect().top<160)cur=m;}links.forEach(a=>a.classList.remove('on'));if(cur)cur.a.classList.add('on');}
+  document.addEventListener('scroll',upd,{passive:true});upd();
+})();
+</script>
+<script>(function(){var bar=document.querySelector(".posfilter");if(!bar)return;var secs=[].slice.call(document.querySelectorAll(".bsec"));bar.addEventListener("click",function(e){var btn=e.target.closest("button");if(!btn)return;bar.querySelectorAll("button").forEach(function(b){b.classList.remove("on")});btn.classList.add("on");var f=btn.getAttribute("data-f");secs.forEach(function(s){var cats=(s.getAttribute("data-cats")||"").split(" ");s.classList.toggle("pf-hide", f!=="all" && cats.indexOf(f)<0)});window.scrollTo({top:bar.offsetTop-90,behavior:"smooth"});});})();</script>
+<script>document.querySelectorAll(".showmore").forEach(function(btn){var lbl=btn.getAttribute("data-label")||"products";btn.addEventListener("click",function(){var grid=btn.previousElementSibling;while(grid&&!grid.classList.contains("tgrid"))grid=grid.previousElementSibling;if(!grid)return;var open=grid.classList.toggle("expanded");btn.classList.toggle("open",open);btn.firstChild.textContent=(open?"Show fewer "+lbl+" ":"Show more "+lbl+" ");});});</script>
+</body>
+</html>

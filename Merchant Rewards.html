@@ -1,0 +1,445 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Merchant Rewards — NextPay</title>
+<link rel="stylesheet" href="css/nextpay.css">
+<style>
+/* ---------- hero ---------- */
+.rhero{background:var(--navy);color:#fff;position:relative;overflow:hidden}
+.rhero::after{content:"";position:absolute;right:-140px;top:-160px;width:560px;height:560px;border-radius:50%;background:radial-gradient(circle,rgba(31,194,166,.22),transparent 70%)}
+.rhero .wrap{position:relative;z-index:2}
+.rhero-crumb{display:flex;gap:8px;align-items:center;font-size:14px;color:#9fb1c2;padding:20px 0 0}
+.rhero-crumb a:hover{color:#fff}.rhero-crumb .sep{opacity:.5}
+.rhero-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:50px;align-items:center;padding:42px 0 80px}
+.rhero h1{font-size:clamp(38px,5vw,62px);line-height:1.02;margin:18px 0 0;color:#fff}
+.rhero h1 em{color:var(--teal-bright);font-style:normal}
+.rhero .lead{color:#c4d0db;margin-top:20px;max-width:540px}
+.rhero-cta{display:flex;gap:13px;flex-wrap:wrap;margin-top:30px}
+.rhero-media{position:relative}
+.rhero-media image-slot{width:100%;height:440px;background:#0e2236;border-radius:24px}
+.rhero-media .pointchip{position:absolute;left:-20px;bottom:-20px;background:#fff;color:var(--ink);border-radius:18px;box-shadow:var(--shadow-lg);padding:16px 20px;display:flex;align-items:center;gap:14px}
+.rhero-media .pointchip .pc-n{font-size:26px;font-weight:800;color:var(--teal-dark);line-height:1}
+.rhero-media .pointchip span{font-size:13px;color:var(--slate)}
+
+.sec-head{max-width:760px;margin:0 auto 48px;text-align:center}
+.sec-head h2{font-size:clamp(28px,3.6vw,42px)}
+.sec-head p{margin-top:14px;color:var(--slate);font-size:18px}
+
+/* ---------- value chain ---------- */
+.chain{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
+.chain .clink{padding:24px;border-radius:var(--radius);border:1px solid var(--line);background:#fff;box-shadow:var(--shadow-sm);position:relative}
+.chain .clink.you{background:var(--navy);color:#fff;border-color:var(--navy)}
+.chain .clink h4{font-size:16px;margin-bottom:8px}
+.chain .clink.you h4{color:#fff}
+.chain .clink p{font-size:14px;color:var(--slate);line-height:1.45}
+.chain .clink.you p{color:#bdd0e0}
+.chain .clink .ctag{font-size:11.5px;font-weight:800;text-transform:uppercase;letter-spacing:.08em;color:var(--teal-dark);margin-bottom:10px;display:block}
+.chain .clink.you .ctag{color:var(--teal-bright)}
+
+/* ---------- how it works ---------- */
+.steps4{display:grid;grid-template-columns:repeat(4,1fr);gap:22px}
+.stepc{display:flex;flex-direction:column;gap:10px}
+.stepc .sn{width:60px;height:60px;border-radius:16px;background:var(--teal);color:#fff;font-size:26px;font-weight:800;line-height:1;letter-spacing:-.02em;display:flex;align-items:center;justify-content:center;box-shadow:0 8px 20px rgba(20,161,140,.32)}
+.stepc h4{font-size:19px}
+.stepc p{font-size:14.5px;color:var(--slate);line-height:1.5}
+
+/* ---------- earn categories ---------- */
+.earn-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:18px}
+.earn-card{border-radius:var(--radius);overflow:hidden;border:1px solid var(--line);background:#fff;box-shadow:var(--shadow-sm);transition:.18s}
+.earn-card:hover{transform:translateY(-3px);box-shadow:var(--shadow)}
+.earn-card image-slot{width:100%;height:150px}
+.earn-card .ec-b{padding:14px 16px}
+.earn-card .ec-b b{font-size:15.5px;display:block}
+.earn-card .ec-b span{font-size:12.5px;color:var(--slate)}
+.stat-row{display:grid;grid-template-columns:1fr 1fr;gap:22px;margin-top:24px}
+.stat-card{background:var(--bg-soft);border-radius:var(--radius);padding:28px 30px;display:flex;align-items:center;gap:20px}
+.stat-card .sbig{font-size:48px;font-weight:800;color:var(--teal-dark);letter-spacing:-.03em;line-height:1}
+.stat-card b{font-size:17px;display:block}.stat-card p{font-size:14px;color:var(--slate);margin-top:3px}
+
+/* ---------- dual pricing offset section ---------- */
+.offset{background:var(--navy);color:#fff;border-radius:26px;padding:54px;position:relative;overflow:hidden}
+.offset::after{content:"";position:absolute;right:-100px;top:-100px;width:420px;height:420px;border-radius:50%;background:radial-gradient(circle,rgba(31,194,166,.22),transparent 70%)}
+.offset .wrap2{position:relative;z-index:2}
+.offset .sec-head h2{color:#fff}.offset .sec-head p{color:#c4d0db}
+.offset .sec-head{margin-bottom:34px}
+.compare2{display:grid;grid-template-columns:1fr 1fr;gap:20px;max-width:880px;margin:0 auto}
+.c2{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.14);border-radius:18px;padding:26px}
+.c2.win{background:#fff;color:var(--ink);border-color:#fff}
+.c2 .c2-tag{display:inline-flex;align-items:center;gap:7px;font-size:12.5px;font-weight:800;text-transform:uppercase;letter-spacing:.06em;padding:6px 12px;border-radius:999px;margin-bottom:14px}
+.c2 .c2-tag.dim{background:rgba(255,255,255,.1);color:#cdd8e2}
+.c2 .c2-tag.good{background:rgba(20,161,140,.14);color:var(--teal-dark)}
+.c2 h4{font-size:21px;margin-bottom:6px}
+.c2.win h4{color:var(--ink)}.c2:not(.win) h4{color:#fff}
+.c2 p{font-size:14.5px;line-height:1.5}
+.c2:not(.win) p{color:#bdd0e0}.c2.win p{color:var(--slate)}
+.c2 .c2-line{display:flex;gap:10px;align-items:flex-start;margin-top:14px;font-size:14.5px}
+.c2 .c2-line svg{width:19px;height:19px;flex:none;margin-top:1px}
+.c2.win .c2-line svg{color:var(--teal)}
+.c2:not(.win) .c2-line{color:#dbe5ee}.c2:not(.win) .c2-line svg{color:#7d93a8}
+.offset-note{text-align:center;color:#c4d0db;font-size:15px;margin-top:26px;max-width:620px;margin-left:auto;margin-right:auto}
+
+/* ---------- sample rewards rails ---------- */
+.railhead{font-size:20px;font-weight:800;margin:34px 0 16px;display:flex;align-items:baseline;gap:12px}
+.railhead span{font-size:13px;font-weight:600;color:var(--slate)}
+.rail{display:grid;grid-template-columns:repeat(5,1fr);gap:16px}
+.rcard{border-radius:var(--radius);overflow:hidden;border:1px solid var(--line);background:#fff;box-shadow:var(--shadow-sm)}
+.rcard image-slot{width:100%;height:150px;background:var(--bg-soft)}
+.rcard .rc-b{padding:13px 15px}
+.rcard .rc-b b{font-size:14.5px;display:block;line-height:1.25}
+.rcard .rc-b .rc-pts{font-size:12.5px;color:var(--teal-dark);font-weight:700;margin-top:4px}
+
+/* ---------- calculator ---------- */
+.calc{background:#fff;border:1.5px solid var(--teal);border-radius:24px;box-shadow:var(--shadow);overflow:hidden;display:grid;grid-template-columns:1.05fr .95fr}
+.calc-in{padding:40px 42px}
+.calc-in .eyebrow{margin-bottom:10px}
+.calc-in h3{font-size:28px}
+.calc-in .ci-sub{color:var(--slate);font-size:15.5px;margin-top:8px}
+.calc-in .ci-note{display:flex;gap:9px;align-items:flex-start;margin-top:24px;font-size:13.5px;color:var(--slate);line-height:1.45;background:var(--bg-soft);border-radius:12px;padding:13px 15px}
+.calc-in .ci-note svg{width:18px;height:18px;flex:none;margin-top:1px;color:var(--teal)}
+.calc-field{margin-top:26px}
+.calc-field label{font-size:13px;font-weight:700;display:block;margin-bottom:8px}
+.calc-num{display:flex;align-items:center;border:1.5px solid var(--line);border-radius:13px;overflow:hidden;max-width:280px}
+.calc-num .pre{padding:0 4px 0 16px;font-weight:700;color:var(--slate)}
+.calc-num input{border:0;outline:0;font-family:inherit;font-size:22px;font-weight:700;padding:13px 14px 13px 4px;width:100%;color:var(--ink)}
+.calc-num .suf{padding:0 16px;font-size:13px;color:var(--slate);white-space:nowrap}
+.rng{position:relative;margin-top:22px}
+.rng input[type=range]{width:100%;-webkit-appearance:none;appearance:none;height:8px;border-radius:999px;background:transparent;position:relative;z-index:2;margin:0}
+.rng .rng-track{position:absolute;left:0;right:0;top:50%;transform:translateY(-50%);height:8px;border-radius:999px;background:var(--bg-soft-2)}
+.rng .rng-fill{position:absolute;left:0;top:50%;transform:translateY(-50%);height:8px;border-radius:999px;background:var(--teal)}
+.rng input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:24px;height:24px;border-radius:50%;background:#fff;border:3px solid var(--teal);box-shadow:var(--shadow-sm);cursor:pointer}
+.rng input[type=range]::-moz-range-thumb{width:24px;height:24px;border-radius:50%;background:#fff;border:3px solid var(--teal);cursor:pointer}
+.rng-marks{display:flex;justify-content:space-between;font-size:12px;color:var(--slate-2);margin-top:8px}
+.quickvol{display:flex;gap:8px;flex-wrap:wrap;margin-top:18px}
+.quickvol button{font-family:inherit;font-size:13px;font-weight:700;padding:8px 14px;border-radius:999px;border:1px solid var(--line);background:#fff;color:var(--slate);cursor:pointer;transition:.15s}
+.quickvol button:hover{border-color:var(--teal);color:var(--teal-dark)}
+.dp-toggle{display:flex;align-items:center;gap:12px;margin-top:24px;padding:14px 16px;border-radius:13px;background:var(--bg-soft);cursor:pointer}
+.dp-toggle input{width:0;height:0;opacity:0;position:absolute}
+.dp-sw{width:46px;height:27px;border-radius:999px;background:#c7d2da;position:relative;transition:.18s;flex:none}
+.dp-sw::after{content:"";position:absolute;top:3px;left:3px;width:21px;height:21px;border-radius:50%;background:#fff;transition:.18s;box-shadow:0 1px 3px rgba(0,0,0,.2)}
+.dp-toggle input:checked + .dp-sw{background:var(--teal)}
+.dp-toggle input:checked + .dp-sw::after{transform:translateX(19px)}
+.dp-toggle .dp-lbl b{font-size:14.5px}.dp-toggle .dp-lbl span{font-size:12.5px;color:var(--slate);display:block}
+.calc-out{background:linear-gradient(160deg,var(--navy),var(--navy-3));color:#fff;padding:40px 42px;display:flex;flex-direction:column}
+.calc-out .co-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:8px}
+.co-stat{background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.13);border-radius:16px;padding:20px}
+.co-stat .co-n{font-size:34px;font-weight:800;color:var(--teal-bright);letter-spacing:-.02em;line-height:1}
+.co-stat .co-l{font-size:13px;color:#bdd0e0;margin-top:7px}
+.rc-out-row{font-size:15px;color:#dbe5ee;margin-top:20px}
+.rc-out-pts{font-size:20px;font-weight:800;color:#fff}
+.rc-out-sub{font-size:15px;color:#c4d0db;line-height:1.55;margin-top:6px}
+.rc-out-sub b{color:#fff}
+.rc-cost{display:flex;gap:11px;align-items:flex-start;margin-top:auto;padding-top:22px;font-size:13.5px;line-height:1.5}
+.rc-cost svg{width:20px;height:20px;flex:none;margin-top:1px}
+.rc-cost.good svg{color:var(--teal-bright)}.rc-cost.good{color:#dbe5ee}.rc-cost.good b{color:#fff}
+.rc-cost.warn svg{color:var(--gold)}.rc-cost.warn{color:#c4d0db}.rc-cost.warn b{color:#fff}
+.calc-cta{display:flex;gap:11px;flex-wrap:wrap;margin-top:auto;padding-top:22px}
+
+/* ---------- specialist form ---------- */
+.spec{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:start}
+.spec ul{list-style:none;padding:0;margin:18px 0 0;display:flex;flex-direction:column;gap:13px}
+.spec ul li{display:flex;gap:11px;align-items:flex-start;font-size:16px}
+.spec ul li svg{width:21px;height:21px;flex:none;margin-top:2px;color:var(--teal)}
+.specform{background:#fff;border:1px solid var(--line);border-radius:20px;box-shadow:var(--shadow);padding:30px 32px}
+.specform h3{font-size:21px}.specform .sf-sub{color:var(--slate);font-size:14px;margin-top:4px}
+.sf-row{display:grid;grid-template-columns:1fr 1fr;gap:13px;margin-top:16px}
+.field{display:flex;flex-direction:column;gap:6px}.field.full{grid-column:1/-1}
+.field label{font-size:12.5px;font-weight:700}
+.field input,.field select{font-family:inherit;font-size:15px;padding:11px 13px;border:1.5px solid var(--line);border-radius:11px;background:#fff;color:var(--ink)}
+.field input:focus,.field select:focus{outline:none;border-color:var(--teal)}
+
+/* ---------- faq ---------- */
+.faq{max-width:820px;margin:0 auto;display:flex;flex-direction:column;gap:12px}
+.faq details{background:#fff;border:1px solid var(--line);border-radius:14px;padding:4px 22px;box-shadow:var(--shadow-sm)}
+.faq summary{list-style:none;cursor:pointer;padding:18px 0;font-weight:700;font-size:17px;display:flex;justify-content:space-between;align-items:center;gap:16px}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary .fi{width:24px;height:24px;flex:none;transition:.2s;color:var(--teal-dark)}
+.faq details[open] summary .fi{transform:rotate(45deg)}
+.faq .fa{padding:0 0 20px;color:var(--slate);font-size:15.5px;line-height:1.6}
+
+.rband{background:linear-gradient(120deg,var(--navy),var(--navy-3));color:#fff;border-radius:26px;padding:56px;text-align:center;position:relative;overflow:hidden}
+.rband::after{content:"";position:absolute;left:-80px;bottom:-120px;width:420px;height:420px;border-radius:50%;background:radial-gradient(circle,rgba(31,194,166,.25),transparent 70%)}
+.rband h2{font-size:clamp(28px,3.5vw,42px);position:relative;z-index:2;color:#fff}
+.rband p{color:#c4d0db;margin:14px auto 0;max-width:560px;font-size:18px;position:relative;z-index:2}
+.rband .rhero-cta{justify-content:center;position:relative;z-index:2}
+
+@media(max-width:1000px){
+  .rhero-grid{grid-template-columns:1fr;gap:30px;padding:32px 0 64px}
+  .rhero-media image-slot{height:320px}
+  .chain,.steps4{grid-template-columns:1fr 1fr}
+  .earn-grid,.rail{grid-template-columns:repeat(3,1fr)}
+  .calc,.compare2,.spec{grid-template-columns:1fr}
+  .offset{padding:38px 24px}
+  .stat-row{grid-template-columns:1fr}
+}
+@media(max-width:620px){
+  .chain,.steps4,.earn-grid,.rail,.co-grid,.sf-row{grid-template-columns:1fr}
+  .earn-grid,.rail{grid-template-columns:1fr 1fr}
+}
+</style>
+</head>
+<body data-page="rewards">
+<div id="np-nav"></div>
+
+<!-- HERO -->
+<header class="rhero" data-screen-label="Rewards hero">
+  <div class="wrap">
+    <div class="rhero-crumb"><a href="index.html">Home</a><span class="sep">/</span><a href="Grow Your Business.html">Grow Your Business</a><span class="sep">/</span><span style="color:#fff">Merchant Rewards</span></div>
+    <div class="rhero-grid">
+      <div>
+        <span class="tag tag-teal">NextPay Merchant Rewards</span>
+        <h1>You accept cards every day.<br><em>Now earn rewards for it.</em></h1>
+        <p class="lead">Process payments with NextPay and earn real rewards on every dollar you run — travel, luxury goods, electronics, gift cards and more. No extra steps. No separate spending. Just rewards for the business you already do.</p>
+        <div class="rhero-cta">
+          <a class="btn btn-primary" href="#calculator">See how many points you'd earn
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+          <a class="btn btn-ghost" href="#specialist">Start earning today</a>
+        </div>
+      </div>
+      <div class="rhero-media">
+        <image-slot id="rw-hero" shape="rounded" radius="24" fit="cover" src="https://galaxy-prod.tlcdn.com/gen/user_3Eb17T9oOFZ9qisq1IawSJ0x1zW/e70f2ddf-12a8-44ee-803f-8e1a47981a4f.jpg" placeholder="Drop a rewards lifestyle photo"></image-slot>
+        <div class="pointchip"><div class="pc-n">+120,000</div><span>points a year on<br>$50k/mo processing</span></div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- VALUE CHAIN -->
+<section class="section">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="eyebrow">Here's what's been missing</span>
+      <h2>Your customers have always earned rewards for paying you. Now you earn them, too.</h2>
+      <p>Every time a customer taps a rewards card, they earn miles, cashback, or points — funded in part by the fees you pay. You've been powering the rewards economy this whole time. With NextPay Merchant Rewards, you finally earn on it too.</p>
+    </div>
+    <div class="chain">
+      <div class="clink"><span class="ctag">Consumers</span><h4>Points, miles &amp; cashback</h4><p>Earn on every purchase they make at your register.</p></div>
+      <div class="clink"><span class="ctag">Card networks</span><h4>Transaction fees</h4><p>Collected on every swipe, tap, and dip.</p></div>
+      <div class="clink"><span class="ctag">Banks &amp; issuers</span><h4>Interchange revenue</h4><p>Plus the rewards that drive more card usage.</p></div>
+      <div class="clink you"><span class="ctag">You — the merchant</span><h4>Nothing. Until now.</h4><p>NextPay Merchant Rewards finally puts you on the earning side.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section class="section" style="background:var(--bg-soft)">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="eyebrow">How it works</span>
+      <h2>Simple as frequent-flyer miles — for your business</h2>
+      <p>No extra steps and no new habits. You run your business exactly as you do today, and the rewards take care of themselves.</p>
+    </div>
+    <div class="steps4">
+      <div class="stepc"><div class="sn">01</div><h4>Process payments</h4><p>Accept cards at your counter, online, or on the go — just like you always do.</p></div>
+      <div class="stepc"><div class="sn">02</div><h4>Points are earned</h4><p>Every dollar you process automatically converts to reward points in the background.</p></div>
+      <div class="stepc"><div class="sn">03</div><h4>They accumulate</h4><p>Your points build up in your personal rewards account month after month.</p></div>
+      <div class="stepc"><div class="sn">04</div><h4>Redeem for anything</h4><p>Travel, luxury goods, electronics, gift cards and more — from a 6,000+ item catalog.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- WHAT YOU CAN EARN -->
+<section class="section">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="eyebrow">6,000+ items · reward catalog</span>
+      <h2>What you can earn</h2>
+      <p>Not statement credits. Real rewards you can use for yourself, your team, or your family.</p>
+    </div>
+    <div class="earn-grid">
+      <div class="earn-card"><image-slot id="earn-travel" fit="cover" src="https://galaxy-prod.tlcdn.com/gen/user_3Eb17T9oOFZ9qisq1IawSJ0x1zW/e70f2ddf-12a8-44ee-803f-8e1a47981a4f.jpg" placeholder="Travel"></image-slot><div class="ec-b"><b>Travel</b><span>Flights · hotels · rental cars</span></div></div>
+      <div class="earn-card"><image-slot id="earn-luxury" fit="cover" src="https://galaxy-prod.tlcdn.com/gen/user_3Eb17T9oOFZ9qisq1IawSJ0x1zW/43127d31-0ab7-4842-ab1d-39e24ee32b02.jpg" placeholder="Luxury goods"></image-slot><div class="ec-b"><b>Luxury Goods</b><span>Watches · handbags · jewelry</span></div></div>
+      <div class="earn-card"><image-slot id="earn-elec" fit="cover" src="https://galaxy-prod.tlcdn.com/gen/user_3Eb17T9oOFZ9qisq1IawSJ0x1zW/13a3ab7f-54b7-4203-9cd8-6882390d7ce6.jpg" placeholder="Electronics"></image-slot><div class="ec-b"><b>Electronics</b><span>AirPods, Xbox, iMac &amp; more</span></div></div>
+      <div class="earn-card"><image-slot id="earn-gift" fit="cover" src="https://galaxy-prod.tlcdn.com/gen/user_3Eb17T9oOFZ9qisq1IawSJ0x1zW/2e40319b-ac25-42ab-8dc3-61ec105bb698.jpg" placeholder="Gift cards"></image-slot><div class="ec-b"><b>Gift Cards</b><span>200+ brands</span></div></div>
+      <div class="earn-card"><image-slot id="earn-merch" fit="cover" src="https://galaxy-prod.tlcdn.com/gen/user_3Eb17T9oOFZ9qisq1IawSJ0x1zW/d04e1e05-7df1-4deb-98bb-1a0fda2919cb.jpg" placeholder="Merchandise"></image-slot><div class="ec-b"><b>Merchandise</b><span>Hundreds of unique items</span></div></div>
+    </div>
+    <div class="stat-row">
+      <div class="stat-card"><div class="sbig">100%</div><div><b>of your volume earns</b><p>Every processed dollar counts toward your rewards.</p></div></div>
+      <div class="stat-card"><div class="sbig">6,000+</div><div><b>items to redeem</b><p>From gift cards to a Rolex — your points, your choice.</p></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- CALCULATOR -->
+<section class="section" id="calculator">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="eyebrow">Rewards estimator</span>
+      <h2>How many points would you earn?</h2>
+      <p>Enter your monthly processing volume and see exactly what's waiting for you — earned automatically, just for doing business as usual.</p>
+    </div>
+    <div class="calc" id="rewardscalc">
+      <div class="calc-in">
+        <span class="eyebrow">Your business</span>
+        <h3>Monthly card volume</h3>
+        <p class="ci-sub">The total you run through cards each month.</p>
+        <div class="calc-field">
+          <div class="calc-num"><span class="pre">$</span><input id="rc-num" type="text" inputmode="numeric" value="50,000"><span class="suf">/ month</span></div>
+          <div class="rng">
+            <div class="rng-track"></div><div class="rng-fill" id="rc-fill"></div>
+            <input id="rc-range" type="range" min="2000" max="250000" step="1000" value="50000">
+          </div>
+          <div class="rng-marks"><span>$2k</span><span>$125k</span><span>$250k+</span></div>
+          <div class="quickvol">
+            <button data-vol="10000">$10k</button>
+            <button data-vol="25000">$25k</button>
+            <button data-vol="50000">$50k</button>
+            <button data-vol="100000">$100k</button>
+            <button data-vol="200000">$200k</button>
+          </div>
+        </div>
+        <p class="ci-note"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg> 100% of your processed volume earns points — no extra steps, no separate spending.</p>
+      </div>
+      <div class="calc-out">
+        <div class="co-grid">
+          <div class="co-stat"><div class="co-n" id="rc-permo">10,000</div><div class="co-l">points / month</div></div>
+          <div class="co-stat"><div class="co-n" id="rc-peryr">120,000</div><div class="co-l">points / year</div></div>
+        </div>
+        <div id="rc-out"></div>
+        <div class="calc-cta">
+          <a class="btn btn-primary" href="#specialist">Start earning
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+          <a class="btn btn-ghost" href="#catalog">See the catalog</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SAMPLE REWARDS -->
+<section class="section" id="catalog" style="background:var(--bg-soft)">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="eyebrow">Sample rewards · 6,000+ items</span>
+      <h2>What you can actually get</h2>
+      <p>A taste of the catalog. Your points, your choice — for you, your family, or your team.</p>
+    </div>
+
+    <div class="railhead">Luxury Watches</div>
+    <div class="rail">
+      <div class="rcard"><image-slot id="w1" fit="cover" src="https://galaxy-prod.tlcdn.com/gen/user_3Eb17T9oOFZ9qisq1IawSJ0x1zW/0f1b5d04-5903-470c-be41-d9576fc6a403.jpg" placeholder="Rolex"></image-slot><div class="rc-b"><b>Rolex Submariner</b><div class="rc-pts">1,970,000 pts</div></div></div>
+      <div class="rcard"><image-slot id="w2" fit="cover" src="https://galaxy-prod.tlcdn.com/gen/user_3Eb17T9oOFZ9qisq1IawSJ0x1zW/5aeda59d-864e-4ade-8750-f66f2c503b6e.jpg" placeholder="Cartier"></image-slot><div class="rc-b"><b>Cartier Ballon Bleu</b><div class="rc-pts">2,428,800 pts</div></div></div>
+      <div class="rcard"><image-slot id="w3" fit="cover" src="https://galaxy-prod.tlcdn.com/gen/user_3Eb17T9oOFZ9qisq1IawSJ0x1zW/e4128d43-a9a9-4b87-9cba-c9460f81eec8.jpg" placeholder="Omega"></image-slot><div class="rc-b"><b>Omega Master Co-Axial</b><div class="rc-pts">1,462,800 pts</div></div></div>
+      <div class="rcard"><image-slot id="w4" fit="cover" src="https://galaxy-prod.tlcdn.com/gen/user_3Eb17T9oOFZ9qisq1IawSJ0x1zW/df638b91-3824-46a8-98ac-7d8835c4d911.jpg" placeholder="Breitling"></image-slot><div class="rc-b"><b>Breitling Chronomat</b><div class="rc-pts">1,173,000 pts</div></div></div>
+      <div class="rcard"><image-slot id="w5" fit="cover" src="https://galaxy-prod.tlcdn.com/gen/user_3Eb17T9oOFZ9qisq1IawSJ0x1zW/57373306-78a3-4679-9eb5-9f60fbc72568.jpg" placeholder="Omega Seamaster"></image-slot><div class="rc-b"><b>Omega Seamaster</b><div class="rc-pts">814,200 pts</div></div></div>
+    </div>
+
+    <div class="railhead">Trip Packages <span>· flight for 2 + hotel · from</span></div>
+    <div class="rail">
+      <div class="rcard"><image-slot id="t1" fit="cover" src="https://galaxy-prod.tlcdn.com/gen/user_3Eb17T9oOFZ9qisq1IawSJ0x1zW/462728c1-f225-4c94-a69a-f20dc43f4329.jpg" placeholder="Maui"></image-slot><div class="rc-b"><b>Maui, HI</b><div class="rc-pts">455,000 pts</div></div></div>
+      <div class="rcard"><image-slot id="t2" fit="cover" src="https://galaxy-prod.tlcdn.com/gen/user_3Eb17T9oOFZ9qisq1IawSJ0x1zW/6c4beb09-39ab-47ed-97e3-a195b9ba52e6.jpg" placeholder="Miami"></image-slot><div class="rc-b"><b>Miami, FL</b><div class="rc-pts">487,500 pts</div></div></div>
+      <div class="rcard"><image-slot id="t3" fit="cover" src="https://galaxy-prod.tlcdn.com/gen/user_3Eb17T9oOFZ9qisq1IawSJ0x1zW/eb1e2d42-9fbf-4a39-826c-2123f335dba0.jpg" placeholder="Las Vegas"></image-slot><div class="rc-b"><b>Las Vegas, NV</b><div class="rc-pts">520,000 pts</div></div></div>
+      <div class="rcard"><image-slot id="t4" fit="cover" src="https://galaxy-prod.tlcdn.com/gen/user_3Eb17T9oOFZ9qisq1IawSJ0x1zW/8a8f390b-645a-4e27-ab35-8b4aaa5c7e30.jpg" placeholder="Aspen"></image-slot><div class="rc-b"><b>Aspen, CO</b><div class="rc-pts">825,500 pts</div></div></div>
+      <div class="rcard"><image-slot id="t5" fit="cover" src="https://galaxy-prod.tlcdn.com/gen/user_3Eb17T9oOFZ9qisq1IawSJ0x1zW/18020ef8-9a7f-48d1-a0fe-d74b599f2893.jpg" placeholder="Cancun"></image-slot><div class="rc-b"><b>Cancun, MX</b><div class="rc-pts">845,000 pts</div></div></div>
+    </div>
+
+    <div class="railhead">Electronics</div>
+    <div class="rail">
+      <div class="rcard"><image-slot id="e1" fit="cover" src="https://galaxy-prod.tlcdn.com/gen/user_3Eb17T9oOFZ9qisq1IawSJ0x1zW/b48005c1-592e-4899-b073-a8c7f96a0f31.jpg" placeholder="Xbox"></image-slot><div class="rc-b"><b>Xbox Series X</b><div class="rc-pts">62,040 pts</div></div></div>
+      <div class="rcard"><image-slot id="e2" fit="cover" src="https://galaxy-prod.tlcdn.com/gen/user_3Eb17T9oOFZ9qisq1IawSJ0x1zW/0e3a3b08-6311-4006-b4d1-208912c84349.jpg" placeholder="AirPods Max"></image-slot><div class="rc-b"><b>Apple AirPods Max</b><div class="rc-pts">75,840 pts</div></div></div>
+      <div class="rcard"><image-slot id="e3" fit="cover" src="https://galaxy-prod.tlcdn.com/gen/user_3Eb17T9oOFZ9qisq1IawSJ0x1zW/ef111729-c21d-4a39-ba55-9595923cd8e3.jpg" placeholder="Galaxy Tab"></image-slot><div class="rc-b"><b>Galaxy Tab S10+</b><div class="rc-pts">138,000 pts</div></div></div>
+      <div class="rcard"><image-slot id="e4" fit="cover" src="https://galaxy-prod.tlcdn.com/gen/user_3Eb17T9oOFZ9qisq1IawSJ0x1zW/3636fdcd-767d-4b65-8a1a-129891c6316e.jpg" placeholder="iMac"></image-slot><div class="rc-b"><b>iMac All-in-One</b><div class="rc-pts">179,280 pts</div></div></div>
+      <div class="rcard"><image-slot id="e5" fit="cover" src="https://galaxy-prod.tlcdn.com/gen/user_3Eb17T9oOFZ9qisq1IawSJ0x1zW/7d59c526-6e9a-4b6e-9926-07ef485d89f7.jpg" placeholder="Scooter"></image-slot><div class="rc-b"><b>Electric Scooter</b><div class="rc-pts">690,000 pts</div></div></div>
+    </div>
+
+    <div class="railhead">Gift Cards <span>· 200+ brands · from 12,000 pts</span></div>
+    <div class="rail">
+      <div class="rcard"><image-slot id="g1" fit="cover" src="https://galaxy-prod.tlcdn.com/gen/user_3Eb17T9oOFZ9qisq1IawSJ0x1zW/586f7c80-aaab-4653-a194-78b4e3eb419e.jpg" placeholder="Amazon"></image-slot><div class="rc-b"><b>Amazon</b><div class="rc-pts">from 12,000 pts</div></div></div>
+      <div class="rcard"><image-slot id="g2" fit="cover" src="https://galaxy-prod.tlcdn.com/gen/user_3Eb17T9oOFZ9qisq1IawSJ0x1zW/a628ddb1-58b8-4ad5-ab5c-43390810ad39.jpg" placeholder="Uber"></image-slot><div class="rc-b"><b>Uber</b><div class="rc-pts">from 12,000 pts</div></div></div>
+      <div class="rcard"><image-slot id="g3" fit="cover" src="https://galaxy-prod.tlcdn.com/gen/user_3Eb17T9oOFZ9qisq1IawSJ0x1zW/d972992c-bb08-49f1-ab49-9b8befa8b6ff.jpg" placeholder="Starbucks"></image-slot><div class="rc-b"><b>Starbucks</b><div class="rc-pts">from 12,000 pts</div></div></div>
+      <div class="rcard"><image-slot id="g4" fit="cover" src="https://galaxy-prod.tlcdn.com/gen/user_3Eb17T9oOFZ9qisq1IawSJ0x1zW/627fec38-075c-4c1f-8d57-cd46ab9b185f.jpg" placeholder="Nordstrom"></image-slot><div class="rc-b"><b>Nordstrom</b><div class="rc-pts">from 12,000 pts</div></div></div>
+      <div class="rcard"><image-slot id="g5" fit="cover" src="https://galaxy-prod.tlcdn.com/gen/user_3Eb17T9oOFZ9qisq1IawSJ0x1zW/1f1b8a91-6a8b-4212-83dd-9c57767af250.jpg" placeholder="Best Buy"></image-slot><div class="rc-b"><b>Best Buy</b><div class="rc-pts">from 12,000 pts</div></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- SPECIALIST -->
+<section class="section" id="specialist">
+  <div class="wrap">
+    <div class="spec">
+      <div>
+        <span class="eyebrow">Get more from your rewards</span>
+        <h2 style="font-size:clamp(28px,3.2vw,40px)">Talk to a rewards specialist</h2>
+        <p class="lead" style="margin-top:14px">We'll walk through your current processing volume, show you exactly how many points you're earning, and share strategies to maximize your rewards — including ways to accelerate your points earning.</p>
+        <ul>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg>A personalized rewards strategy for your business</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg>Tips to accelerate your points faster</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg>Help navigating the 6,000+ item catalog</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg>No cost, no pressure — just honest advice</li>
+        </ul>
+      </div>
+      <form class="specform" id="specform">
+        <h3>Start earning rewards</h3>
+        <p class="sf-sub">We'll reach out within one business day.</p>
+        <div class="sf-row">
+          <div class="field"><label>First name</label><input required name="first" placeholder="Jordan"></div>
+          <div class="field"><label>Last name</label><input required name="last" placeholder="Rivera"></div>
+          <div class="field full"><label>Business name</label><input required name="biz" placeholder="Rivera's Tacos"></div>
+          <div class="field"><label>Email</label><input required type="email" name="email" placeholder="you@business.com"></div>
+          <div class="field"><label>Phone</label><input required type="tel" name="phone" placeholder="(555) 123-4567"></div>
+          <div class="field full"><label>Monthly processing volume</label>
+            <select name="volume"><option value="">Select a range…</option><option>Under $10,000/mo</option><option>$10,000 – $25,000/mo</option><option>$25,000 – $50,000/mo</option><option>$50,000 – $100,000/mo</option><option>Over $100,000/mo</option></select></div>
+        </div>
+        <button class="btn btn-primary btn-block" type="submit" style="margin-top:18px">Talk to a specialist
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="section" style="background:var(--bg-soft)">
+  <div class="wrap">
+    <div class="sec-head"><span class="eyebrow">Good to know</span><h2>Common questions</h2></div>
+    <div class="faq">
+      <details open><summary>Do I have to change anything about how I accept payments?<svg class="fi" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg></summary><div class="fa">Nothing changes. You process payments exactly as you do today — points are earned and tracked in the background automatically.</div></details>
+      <details><summary>Is this only available if I process with NextPay?<svg class="fi" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg></summary><div class="fa">Yes — the rewards program is a benefit included with your NextPay merchant account. If you're not yet a NextPay customer, contact us and we'll get you set up.</div></details>
+      <details><summary>When do my points show up?<svg class="fi" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg></summary><div class="fa">Points are calculated based on your monthly processing volume and credited to your rewards account regularly. You can check your balance anytime through your portal.</div></details>
+      <details><summary>Can I use the rewards for my employees or team?<svg class="fi" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg></summary><div class="fa">Absolutely. Your points are yours to use however you'd like — for yourself, your family, your team, or even as employee recognition rewards.</div></details>
+      <details><summary>How do I redeem?<svg class="fi" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg></summary><div class="fa">Once you're enrolled, you'll have access to your rewards portal where you can browse the full catalog and redeem points directly. No phone calls needed.</div></details>
+    </div>
+  </div>
+</section>
+
+<!-- FINAL CTA -->
+<section class="section">
+  <div class="wrap">
+    <div class="rband">
+      <span class="eyebrow" style="color:var(--teal-bright)">Ready to start earning?</span>
+      <h2>You've been processing payments. Now get rewarded for it.</h2>
+      <p>Enroll in NextPay Merchant Rewards and turn your everyday volume into real rewards — set up the right way, at no net cost.</p>
+      <div class="rhero-cta">
+        <a class="btn btn-primary" href="#specialist">Start earning today
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+        <a class="btn btn-ghost" href="#calculator">Estimate my points</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="ssec" data-backlink style="padding:6px 0 60px"><div class="wrap"><a class="link-teal" href="Grow Your Business.html" style="display:inline-flex;align-items:center;gap:7px;font-weight:700"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" style="transform:rotate(180deg)"><path d="M5 12h14M13 6l6 6-6 6"/></svg>Back to Grow Your Business</a></div></section>
+<div id="np-footer"></div>
+
+<script src="js/nav.js"></script>
+<script src="js/image-slot.js"></script>
+<script src="js/rewards.js"></script>
+<script>
+document.getElementById('specform').addEventListener('submit',function(e){
+  e.preventDefault();
+  var form=this, fd=new FormData(form);
+  var first=fd.get('first')||'there';
+  fd.append('_subject','New Merchant Rewards lead — '+(fd.get('biz')||'NextPay'));
+  fd.append('_cc','payments@nextpaypos.com,alexander@nextpaypos.com');
+  fd.append('_template','table');
+  fd.append('Lead source','Merchant Rewards page — Talk to a Specialist');
+  var btn=form.querySelector('button[type=submit]'); if(btn){btn.disabled=true;btn.textContent='Sending…';}
+  function done(){
+    form.innerHTML='<div style="text-align:center;padding:18px 6px"><div style="width:64px;height:64px;border-radius:50%;background:rgba(20,161,140,.12);display:grid;place-items:center;color:var(--teal-dark);margin:0 auto 16px"><svg viewBox="0 0 24 24" width="34" height="34" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 13l4 4L19 7"/></svg></div><h3>Thanks, '+first+' — you\u2019re in good hands.</h3><p class="sf-sub" style="font-size:15px;margin-top:10px;max-width:340px;margin-left:auto;margin-right:auto">A NextPay rewards specialist will reach out within one business day to set up your account and your rewards.</p></div>';
+  }
+  fetch('https://formsubmit.co/ajax/dom@nextpaypos.com',{method:'POST',headers:{'Accept':'application/json'},body:fd})
+    .then(function(r){return r.json();}).then(done).catch(done);
+});
+</script>
+</body>
+</html>

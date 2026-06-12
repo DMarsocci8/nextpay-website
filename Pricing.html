@@ -1,0 +1,670 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Pricing — NextPay</title>
+<link rel="stylesheet" href="css/nextpay.css">
+<link rel="stylesheet" href="css/solution.css">
+<style>
+.pr-nav{position:sticky;top:78px;z-index:40;background:rgba(255,255,255,.95);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+.pr-nav .wrap{display:flex;gap:8px;align-items:center;padding:12px 28px;overflow:auto}
+.pr-nav .pn-label{font-weight:800;font-size:13px;text-transform:uppercase;letter-spacing:.08em;color:var(--slate);margin-right:6px;white-space:nowrap}
+.pr-nav a{white-space:nowrap;padding:9px 16px;border-radius:999px;font-weight:700;font-size:14px;color:var(--slate)}
+.pr-nav a:hover,.pr-nav a.on{background:var(--bg-soft);color:var(--teal-dark)}
+.prsec{padding:70px 0;border-bottom:1px solid var(--line)}
+.prsec:nth-child(even){background:var(--bg-soft)}
+.sec-head{max-width:760px;margin:0 auto 44px;text-align:center}
+.sec-head h2{font-size:clamp(28px,3.4vw,40px)}
+.sec-head p{margin-top:12px;color:var(--slate);font-size:18px}
+/* processing cards */
+.proc-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;max-width:1080px;margin:0 auto}
+.proc-card{background:#fff;border:1px solid var(--line);border-radius:18px;box-shadow:var(--shadow-sm);padding:30px 28px;display:flex;flex-direction:column;gap:10px}
+.proc-card.feat{border:1.5px solid var(--teal);box-shadow:0 0 0 1px var(--teal),var(--shadow)}
+.proc-card .pt{font-size:12px;font-weight:800;text-transform:uppercase;letter-spacing:.08em;color:var(--teal-dark)}
+.proc-card h3{font-size:22px}
+.proc-card .big{font-size:40px;font-weight:800;letter-spacing:-.02em;color:var(--ink);line-height:1}
+.proc-card .big span{font-size:16px;color:var(--slate);font-weight:600}
+.proc-card p{font-size:14.5px;color:var(--slate);line-height:1.5}
+.proc-card ul{list-style:none;margin:6px 0 0;padding:0;display:flex;flex-direction:column;gap:9px}
+.proc-card li{display:flex;gap:10px;align-items:flex-start;font-size:14.5px;color:var(--ink)}
+.proc-card li svg{width:18px;height:18px;flex:none;margin-top:1px;color:var(--teal)}
+/* expandable processing cards */
+.proc-card{cursor:pointer;transition:box-shadow .2s,transform .2s,border-color .2s}
+.proc-card:hover{transform:translateY(-3px);box-shadow:var(--shadow)}
+.proc-card.feat:hover{box-shadow:0 0 0 1px var(--teal),0 18px 40px -18px rgba(20,161,140,.45)}
+.proc-toggle{margin-top:auto;padding-top:14px;display:flex;align-items:center;justify-content:space-between;gap:10px;font-size:14px;font-weight:700;color:var(--teal-dark);border-top:1px solid var(--line)}
+.proc-toggle .pt-on{display:none}
+.proc-card.open .proc-toggle .pt-on{display:inline}
+.proc-card.open .proc-toggle .pt-off{display:none}
+.proc-toggle svg{width:18px;height:18px;transition:transform .3s}
+.proc-card.open .proc-toggle svg{transform:rotate(180deg)}
+.proc-more{display:grid;grid-template-rows:0fr;transition:grid-template-rows .35s ease}
+.proc-card.open .proc-more{grid-template-rows:1fr}
+.proc-more-in{overflow:hidden;min-height:0}
+.proc-more-in>div{padding-top:18px;margin-top:16px;border-top:1px dashed var(--line)}
+.proc-more h4{font-size:13px;font-weight:800;text-transform:uppercase;letter-spacing:.06em;color:var(--ink);margin:0 0 6px}
+.proc-more p{font-size:14px;color:var(--slate);line-height:1.55;margin:0 0 14px}
+.proc-eg{background:#f4f8f7;border:1px solid var(--line);border-radius:12px;padding:13px 15px;margin:0 0 14px}
+.proc-eg .eg-lbl{font-size:11px;font-weight:800;text-transform:uppercase;letter-spacing:.07em;color:var(--teal-dark);margin-bottom:4px}
+.proc-eg .eg-body{font-size:13.5px;color:var(--ink);line-height:1.5}
+.proc-bf{font-size:13.5px;color:var(--ink);line-height:1.5;margin:0 0 16px}
+.proc-bf b{color:var(--ink)}
+.proc-more .btn-card{display:inline-flex;align-items:center;gap:7px;background:var(--teal);color:#fff;font-weight:700;font-size:14px;padding:11px 18px;border-radius:999px;text-decoration:none;transition:background .2s}
+.proc-more .btn-card:hover{background:var(--teal-dark)}
+.proc-more .btn-card svg{width:16px;height:16px}
+.proc-see{margin-top:auto;width:100%;padding:13px 16px;display:flex;align-items:center;justify-content:center;gap:8px;font-size:14px;font-weight:700;color:var(--teal-dark);background:#f4f8f7;border:1px solid var(--line);border-radius:999px;cursor:pointer;transition:.18s}
+.proc-see:hover{background:var(--teal);color:#fff;border-color:var(--teal)}
+.proc-see svg{width:16px;height:16px;transition:transform .18s}
+.proc-see:hover svg{transform:translateX(3px)}
+/* how-it-works modal */
+.pm-overlay{position:fixed;inset:0;background:rgba(12,27,42,.55);backdrop-filter:blur(3px);-webkit-backdrop-filter:blur(3px);display:flex;align-items:center;justify-content:center;padding:24px;z-index:1000;opacity:0;visibility:hidden;transition:opacity .25s,visibility .25s}
+.pm-overlay.open{opacity:1;visibility:visible}
+.pm-modal{background:#fff;border-radius:22px;max-width:560px;width:100%;max-height:88vh;overflow-y:auto;box-shadow:0 30px 80px -20px rgba(12,27,42,.55);transform:translateY(14px) scale(.98);transition:transform .25s}
+.pm-overlay.open .pm-modal{transform:none}
+.pm-head{position:sticky;top:0;background:#fff;padding:26px 28px 16px;border-bottom:1px solid var(--line);display:flex;justify-content:space-between;align-items:flex-start;gap:16px;z-index:1}
+.pm-tag{font-size:11px;font-weight:800;text-transform:uppercase;letter-spacing:.08em;color:var(--teal-dark)}
+.pm-head h3{font-size:26px;margin:7px 0 0;color:var(--ink);letter-spacing:-.01em}
+.pm-close{flex:none;width:38px;height:38px;border-radius:999px;border:1px solid var(--line);background:#fff;display:grid;place-items:center;cursor:pointer;color:var(--slate);transition:.18s}
+.pm-close:hover{background:#f4f8f7;color:var(--ink)}
+.pm-close svg{width:18px;height:18px}
+.pm-body{padding:20px 28px 26px}
+.pm-body h4{font-size:12px;font-weight:800;text-transform:uppercase;letter-spacing:.06em;color:var(--ink);margin:20px 0 8px}
+.pm-body h4:first-child{margin-top:0}
+.pm-body>p{font-size:15px;color:var(--slate);line-height:1.6;margin:0 0 12px}
+.pm-eg{background:#f4f8f7;border:1px solid var(--line);border-radius:14px;padding:16px 18px;margin:4px 0 6px}
+.pm-eg .eg-t{font-size:12px;font-weight:800;text-transform:uppercase;letter-spacing:.05em;color:var(--teal-dark);margin-bottom:11px}
+.pm-eg ul{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:9px}
+.pm-eg li{display:flex;justify-content:space-between;gap:16px;font-size:14px;color:var(--ink);line-height:1.4}
+.pm-eg li span:last-child{font-weight:800;white-space:nowrap;font-variant-numeric:tabular-nums;color:var(--ink)}
+.pm-eg li.tot{border-top:1px solid var(--line);padding-top:9px;margin-top:3px}
+.pm-eg li.tot span:last-child{color:var(--teal-dark)}
+.pm-eg .eg-note{font-size:13px;color:var(--slate);line-height:1.5;margin-top:11px}
+.pm-bf{font-size:14px;color:var(--ink);line-height:1.55;margin:14px 0 0}
+.pm-foot{display:flex;align-items:center;gap:14px;flex-wrap:wrap;border-top:1px solid var(--line);margin-top:20px;padding-top:18px}
+.pm-foot .btn-card{display:inline-flex;align-items:center;gap:7px;background:var(--teal);color:#fff;font-weight:700;font-size:14px;padding:12px 20px;border-radius:999px;text-decoration:none;transition:.18s}
+.pm-foot .btn-card:hover{background:var(--teal-dark)}
+.pm-foot .btn-card svg{width:16px;height:16px}
+.pm-disc{font-size:12px;color:var(--slate);opacity:.8;margin:14px 0 0;line-height:1.45}
+body.pm-lock{overflow:hidden}
+/* generic price table */
+.ptable{max-width:920px;margin:0 auto;border:1px solid var(--line);border-radius:16px;overflow:hidden;box-shadow:var(--shadow-sm);background:#fff}
+.ptable .pt-cap{background:var(--navy);color:#fff;padding:16px 22px;font-weight:800;font-size:16px;display:flex;align-items:center;gap:12px}
+.ptable .pt-cap img{height:22px;width:auto}
+.prow{display:grid;grid-template-columns:1fr 150px 150px;gap:14px;padding:14px 22px;border-top:1px solid var(--line);align-items:center;font-size:14.5px}
+.ptable-4 .prow{grid-template-columns:1.3fr 140px 1fr 130px}
+.ptable-4 .prow span:nth-child(4){text-align:right;font-weight:700;color:var(--ink)}
+.prow.h{background:var(--bg-soft);font-weight:800;font-size:12px;text-transform:uppercase;letter-spacing:.05em;color:var(--slate)}
+.prow span:nth-child(2),.prow span:nth-child(3){text-align:right;font-weight:700;color:var(--ink)}
+.prow b{font-weight:700}.prow em{display:block;font-style:normal;font-size:12px;color:var(--slate);font-weight:400;margin-top:2px}
+.ptable+.ptable{margin-top:26px}
+.plan-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;max-width:1000px;margin:0 auto}
+.plan{background:#fff;border:1px solid var(--line);border-radius:14px;box-shadow:var(--shadow-sm);padding:22px}
+.plan h4{font-size:16px}
+.plan .plan-price{font-size:28px;font-weight:800;letter-spacing:-.02em;color:var(--teal-dark);margin:8px 0 6px}
+.plan .plan-price span{font-size:13px;font-weight:600;color:var(--slate)}
+.plan p{font-size:13.5px;color:var(--slate);line-height:1.45}
+.subhead{text-align:center;font-size:13px;font-weight:800;text-transform:uppercase;letter-spacing:.08em;color:var(--teal-dark);margin:38px 0 18px}
+.note{text-align:center;font-size:13px;color:var(--slate);max-width:720px;margin:22px auto 0;line-height:1.5}
+.note-fine{font-size:11.5px;opacity:.75;margin-top:8px;max-width:640px}
+@media(max-width:900px){.proc-grid,.plan-grid{grid-template-columns:1fr}.prow{grid-template-columns:1fr 92px 92px;font-size:13px}.ptable-4 .prow{grid-template-columns:1fr 80px 96px 76px;font-size:12px;gap:8px}}
+/* per-product pricing cards */
+.ppos{display:flex;flex-direction:column;gap:28px;max-width:1000px;margin:0 auto}
+.ppos-card{background:#fff;border:1.5px solid #d4dde3;border-left:5px solid var(--teal);border-radius:16px;box-shadow:0 6px 22px -14px rgba(12,27,42,.28);overflow:hidden;transition:box-shadow .18s,transform .18s,border-color .18s}
+.ppos-card:hover{box-shadow:0 16px 40px -20px rgba(12,27,42,.4);border-left-color:var(--teal-bright)}
+.ppos-head{display:flex;align-items:center;gap:16px;padding:20px 26px;background:var(--bg-soft-2);border-bottom:1.5px solid var(--line);flex-wrap:wrap}
+.ppos-head .pl{display:flex;align-items:center;gap:13px;flex:1;min-width:200px}
+.ppos-head .pl img{height:26px;width:auto;max-width:130px}
+.ppos-head .pl .nm{font-size:20px;font-weight:800;letter-spacing:-.02em}
+.ppos-head .pl .tg{font-size:13px;color:var(--slate);font-weight:600}
+.ppos-head .pl .stack{display:flex;flex-direction:column;gap:1px}
+.ppos-head a.ml{color:var(--teal-dark);font-weight:700;font-size:14px;display:inline-flex;align-items:center;gap:6px;white-space:nowrap}
+.ppos-head a.ml svg{width:14px;height:14px}
+.ppos-facts{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line)}
+.ppos-facts .ft{background:#fff;padding:16px 20px}
+.ppos-facts .ft .k{font-size:11px;font-weight:800;text-transform:uppercase;letter-spacing:.06em;color:var(--slate-2)}
+.ppos-facts .ft .v{font-size:15px;font-weight:700;color:var(--ink);margin-top:4px;line-height:1.3}
+.ppos-facts .ft .v.teal{color:var(--teal-dark)}
+.ppos-detail{padding:20px 26px;background:var(--bg-soft);border-top:1px solid var(--line)}
+.ppos-detail .dt{font-size:11.5px;font-weight:800;text-transform:uppercase;letter-spacing:.06em;color:var(--teal-dark);margin-bottom:12px}
+.ppos-tiers{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+.ppos-tier{background:#fff;border:1px solid var(--line);border-radius:12px;padding:16px}
+.ppos-tier h5{font-size:14px;font-weight:800}
+.ppos-tier .tp{font-size:22px;font-weight:800;letter-spacing:-.02em;color:var(--teal-dark);margin:4px 0 6px}
+.ppos-tier .tp span{font-size:12px;font-weight:600;color:var(--slate)}
+.ppos-tier p{font-size:12.5px;color:var(--slate);line-height:1.4}
+.ppos-mods{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px}
+.ppos-mods .mod{background:#fff;border:1px solid var(--line);border-radius:999px;padding:7px 13px;font-size:12.5px;font-weight:600;color:var(--ink)}
+.ppos-mods .mod b{color:var(--teal-dark)}
+.ppos-foot{padding:14px 26px;font-size:12.5px;color:var(--slate);border-top:1px solid var(--line)}
+@media(max-width:760px){.ppos-facts,.ppos-tiers{grid-template-columns:1fr}}
+</style>
+</head>
+<body data-page="pricing">
+<div id="np-nav"></div>
+
+<header class="shero" data-screen-label="Pricing hero">
+  <div class="wrap">
+    <div class="shero-crumb"><a href="index.html">Home</a><span class="sep">/</span><span style="color:#fff">Pricing</span></div>
+    <div class="shero-grid">
+      <div>
+        <span class="tag tag-teal">Pricing</span>
+        <h1>Clear pricing,<br><em>no surprises.</em></h1>
+        <p class="lead">Processing, POS systems, and card terminals — laid out plainly. We'll match or beat your current rate, and most setups have no upfront cost. Get a custom quote in minutes.</p>
+        <div class="shero-cta">
+          <a class="btn btn-primary" href="quiz.html" target="_blank" rel="noopener">Take the Quiz
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+          <a class="btn btn-ghost" href="Statement Upload.html" target="_blank" rel="noopener">Free rate review</a>
+        </div>
+      </div>
+      <div class="shero-media"><image-slot id="pr-hero" src="assets/lifestyle/card-tap.jpg" shape="rounded" radius="24" fit="cover" placeholder="Drop a pricing / checkout photo"></image-slot></div>
+    </div>
+  </div>
+</header>
+
+<div class="pr-nav">
+  <div class="wrap">
+    <span class="pn-label">Jump to</span>
+    <a href="#processing" class="on">Processing</a>
+    <a href="#pos">POS Systems</a>
+    <a href="#terminals">Card Terminals</a>
+  </div>
+</div>
+
+<!-- PROCESSING -->
+<section class="prsec" id="processing">
+  <div class="wrap">
+    <div class="sec-head"><span class="eyebrow">Payment processing</span><h2>Ways to process — pick what fits</h2>
+      <p>Every program is transparent. We'll review your statement and match or beat your effective rate.</p></div>
+    <div class="proc-grid">
+      <div class="proc-card feat" role="button" tabindex="0" data-model="dual" aria-haspopup="dialog">
+        <span class="pt">Most popular</span>
+        <h3>Dual Pricing</h3>
+        <div class="big">0%<span> effective</span></div>
+        <p>Offset processing by offering a cash price and a card price. Customers who pay by card cover the fee, so card costs come off your books.</p>
+        <ul>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg>Effectively eliminate card fees</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg>Compliant signage &amp; receipts included</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg>Card-paying customers run ~3–4%</li>
+        </ul>
+        <button class="proc-see" type="button"><span>See how it works</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
+      </div>
+      <div class="proc-card" role="button" tabindex="0" data-model="ic" aria-haspopup="dialog">
+        <span class="pt">Transparent</span>
+        <h3>Interchange-Plus</h3>
+        <div class="big">Cost<span> + flat markup</span></div>
+        <p>You see interchange passed through at cost plus one clear, flat markup. The most transparent traditional model for established businesses.</p>
+        <ul>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg>No hidden tiers</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg>Great for higher volume</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg>Match-or-beat your rate</li>
+        </ul>
+        <button class="proc-see" type="button"><span>See how it works</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
+      </div>
+      <div class="proc-card" role="button" tabindex="0" data-model="flat" aria-haspopup="dialog">
+        <span class="pt">Simple</span>
+        <h3>Flat Rate</h3>
+        <div class="big">One<span> simple rate</span></div>
+        <p>A single predictable rate per transaction — easiest to understand, great for newer or lower-volume businesses.</p>
+        <ul>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg>Predictable statements</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg>No monthly minimums</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg>Upgrade anytime</li>
+        </ul>
+        <button class="proc-see" type="button"><span>See how it works</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
+      </div>
+    </div>
+    <p class="note"><b>How dual pricing really works:</b> it's a separate program from interchange or flat rate. When a customer chooses to pay the fee on card, the effective card rate is typically <b>3–4%</b> depending on card mix and volume. On the full program this can <b>eliminate your processing fees entirely</b> — a business processing <b>$50,000/month</b> typically pays <b>$1,500–$2,000</b> in fees, so the savings can run <b>$18,000–$24,000 a year</b>, replaced by a single flat monthly cost.<sup>*</sup> Businesses that see a lot of AMEX or premium rewards cards may still pay some processing unless they're on the full ~4% program. We'll model your exact mix before you decide.</p>
+    <p class="note note-fine"><sup>*</sup> Dual pricing replaces percentage-based processing fees with a flat monthly cost. Actual savings depend on your card mix, volume, and program tier.</p>
+  </div>
+</section>
+
+<!-- PRICING PROGRAMS ACCORDION -->
+<style>
+.pprog{max-width:860px;margin:0 auto;display:flex;flex-direction:column;gap:12px}
+.pprog details{background:#fff;border:1px solid var(--line);border-radius:14px;box-shadow:var(--shadow-sm)}
+.pprog details[open]{border-color:var(--teal);box-shadow:0 0 0 1px var(--teal),var(--shadow)}
+.pprog summary{list-style:none;cursor:pointer;display:flex;align-items:center;justify-content:space-between;gap:14px;padding:20px 24px}
+.pprog summary::-webkit-details-marker{display:none}
+.pprog summary b{font-size:18px;color:var(--ink)}
+.pprog summary .ps-sub{font-weight:500;font-size:14px;color:var(--slate);margin-left:8px}
+.pprog summary .chev{width:20px;height:20px;flex:none;color:var(--teal-dark);transition:transform .25s}
+.pprog details[open] summary .chev{transform:rotate(180deg)}
+.pprog .pp-body{padding:0 24px 22px;font-size:15px;color:var(--slate);line-height:1.6}
+.pprog .pp-body h4{font-size:13px;text-transform:uppercase;letter-spacing:.05em;color:var(--teal-dark);margin:14px 0 4px}
+.pprog .pp-ex{background:var(--bg-soft);border-radius:10px;padding:12px 16px;margin-top:12px;font-size:14px;color:var(--ink)}
+.pprog .pp-tags{display:flex;gap:8px;flex-wrap:wrap;margin-top:14px}
+.pprog .pp-tags span{font-size:12.5px;font-weight:700;background:var(--bg-soft);color:var(--slate);padding:5px 11px;border-radius:999px}
+</style>
+<section class="prsec" id="programs">
+  <div class="wrap">
+    <div class="sec-head"><span class="eyebrow">Pricing programs in detail</span><h2>Every program, explained</h2>
+      <p>Tap any program to see how it works, who it's best for, and a worked example. We'll match or beat your effective rate on any of them.</p></div>
+    <div style="max-width:860px;margin:0 auto 26px;background:linear-gradient(120deg,var(--navy),var(--navy-3));color:#fff;border-radius:14px;padding:22px 26px"><b style="color:var(--teal-bright)">Compliance matters — we handle it.</b><p style="color:#c4d0db;font-size:14.5px;line-height:1.55;margin:6px 0 0">Dual pricing, cash discount and surcharge programs are governed by card-brand rules and state laws. Set them up wrong and you risk card-network fines, chargebacks, or a frozen account. NextPay configures the right pricing, signage and receipt disclosures — and the legal caps — so you stay compliant from day one.</p></div>
+    <div class="pprog">
+      <details open><summary><span><b>Dual Pricing</b><span class="ps-sub">— most popular, ~0% effective</span></span><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg></summary>
+        <div class="pp-body">Every item shows a lower <b>cash price</b> and a slightly higher <b>card price</b>, side by side. Customers who pay by card cover the processing fee, so you net the cash price either way.
+        <h4>Worked example</h4><div class="pp-ex">$100 cash price · $103.50 card price → you keep <b>$100</b> on every sale.</div>
+        <h4>Best for</h4>Retail, restaurants and service businesses that want to wipe out processing costs with clear, upfront pricing.
+        <h4>Staying compliant</h4>Both the cash and card prices must be clearly shown <b>before</b> checkout, and the card price disclosed on signage and receipts. We set up the compliant two-price display and receipt language so you're covered.<div class="pp-tags"><span>0% effective</span><span>Clear signage</span><span>Card payer covers fee</span></div></div>
+      </details>
+      <details><summary><span><b>Cash Discount</b><span class="ps-sub">— one posted price</span></span><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg></summary>
+        <div class="pp-body">You post the <b>card price</b> everywhere, then give customers a <b>discount for paying cash</b> at the register. Card payers fund the processing; cash payers save.
+        <h4>Worked example</h4><div class="pp-ex">Posted $103.50 · cash discount −$3.50 → cash customer pays <b>$100</b>; card sales cost you nothing.</div>
+        <h4>Best for</h4>Businesses that prefer a single posted price and simple signage over a two-price display.
+        <h4>Staying compliant</h4>The <b>posted price must be the card price</b>, with the cash discount applied at the register and disclosed on signage and receipts. We configure the posting and disclosures the compliant way.<div class="pp-tags"><span>Single price</span><span>Simple signage</span><span>Cash incentive</span></div></div>
+      </details>
+      <details><summary><span><b>Surcharge</b><span class="ps-sub">— credit cards only</span></span><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg></summary>
+        <div class="pp-body">A compliant fee is added to <b>credit-card</b> transactions only (never debit), automatically capped to card-brand and state limits. Debit and cash pay the base price.
+        <h4>Worked example</h4><div class="pp-ex">$100 base + 3% credit surcharge → credit customer pays <b>$103</b>; debit &amp; cash stay <b>$100</b>.</div>
+        <h4>Best for</h4>Credit-heavy or B2B merchants in states where surcharging is permitted. We keep you within the legal caps.
+        <h4>Staying compliant</h4>Surcharges apply to <b>credit only</b> (never debit or prepaid), are <b>capped</b> (commonly up to 3%), require advance card-brand notice plus clear signage and a receipt line item — and are restricted in a few states. We handle the caps, notices and disclosures so you never cross a line.<div class="pp-tags"><span>Credit only</span><span>Capped &amp; compliant</span><span>Debit exempt</span></div></div>
+      </details>
+      <details><summary><span><b>Interchange-Plus</b><span class="ps-sub">— transparent, cost + markup</span></span><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg></summary>
+        <div class="pp-body">The wholesale <b>interchange</b> set by Visa/Mastercard is passed straight through <b>at cost</b>, and NextPay adds one clear, flat markup. The most transparent way to process.
+        <h4>Worked example</h4><div class="pp-ex">On a $100 sale: interchange (e.g. 1.80% + 10¢) at cost + a flat markup (e.g. 0.30%) → you see exactly what each part costs.</div>
+        <h4>Best for</h4>Established or higher-volume merchants who want full transparency and the lowest true cost.
+        <div class="pp-tags"><span>Cost + flat markup</span><span>Fully transparent</span><span>Great at volume</span></div></div>
+      </details>
+      <details><summary><span><b>Flat Rate</b><span class="ps-sub">— one simple rate</span></span><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg></summary>
+        <div class="pp-body">One rate applies to <b>every card sale</b> regardless of card type, plus a small per-transaction fee. The easiest model to forecast — what you see is what you pay.
+        <h4>Worked example</h4><div class="pp-ex">2.6% + 10¢ on a $100 sale = <b>$2.70</b> — same whether it's a debit or a rewards card.</div>
+        <h4>Best for</h4>Newer or lower-volume businesses that value simplicity and predictable costs.
+        <div class="pp-tags"><span>One rate</span><span>Predictable</span><span>Easy to forecast</span></div></div>
+      </details>
+      <details><summary><span><b>Membership / Subscription</b><span class="ps-sub">— flat monthly, 0% markup</span></span><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg></summary>
+        <div class="pp-body">You pay a <b>flat monthly membership</b> and get interchange passed through <b>at cost with 0% markup</b> — just the wholesale cost plus a small per-transaction fee. Volume makes the membership pay for itself.
+        <h4>Worked example</h4><div class="pp-ex">Flat $X/month + interchange at cost + a few cents per transaction — no percentage markup on top.</div>
+        <h4>Best for</h4>High-volume merchants whose savings on markup outweigh the monthly fee.
+        <div class="pp-tags"><span>Flat monthly</span><span>0% markup</span><span>Best at high volume</span></div></div>
+      </details>
+    </div>
+  </div>
+</section>
+
+<!-- POS SYSTEMS -->
+<section class="prsec" id="pos">
+  <div class="wrap">
+    <div class="sec-head"><span class="eyebrow">POS systems</span><h2>POS software &amp; hardware pricing</h2>
+      <p>Each system is priced its own way. Here's the structure for every brand — see each brand's page for the full lineup.</p></div>
+
+    <div class="ppos">
+
+      <!-- Chively -->
+      <div class="ppos-card">
+        <div class="ppos-head">
+          <div class="pl"><img src="assets/logos/chively-white.png" style="filter:brightness(0)" alt="Chively"><div class="stack"><span class="tg">Our flagship — F&amp;B &amp; retail, offline mode</span></div></div>
+          <a class="ml" href="Chively.html" target="_blank" rel="noopener">Learn more <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+        </div>
+        <div class="ppos-facts">
+          <div class="ft"><div class="k">Software</div><div class="v">$29 Lite · $69 Complete /mo</div></div>
+          <div class="ft"><div class="k">Processing</div><div class="v teal">As low as 2.39% + 5¢</div></div>
+          <div class="ft"><div class="k">Hardware</div><div class="v">Match-or-beat</div></div>
+        </div>
+      </div>
+
+      <!-- Square -->
+      <div class="ppos-card">
+        <div class="ppos-head">
+          <div class="pl"><img src="assets/logos/square.svg" alt="Square"><div class="stack"><span class="tg">Plus plan recommended for restaurants &amp; retail</span></div></div>
+          <a class="ml" href="POS Systems.html#square" target="_blank" rel="noopener">See lineup <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+        </div>
+        <div class="ppos-facts">
+          <div class="ft"><div class="k">Software</div><div class="v">$0–$149/mo per location</div></div>
+          <div class="ft"><div class="k">Processing</div><div class="v">2.4%–2.6% + 15¢ in person</div></div>
+          <div class="ft"><div class="k">Hardware</div><div class="v">Reader $59 · Register $799</div></div>
+        </div>
+        <div class="ppos-detail">
+          <div class="dt">Software plans</div>
+          <div class="ppos-tiers">
+            <div class="ppos-tier"><h5>Square Free</h5><div class="tp">$0<span>/mo</span></div><p>Pay only when you take a payment</p></div>
+            <div class="ppos-tier"><h5>Square Plus</h5><div class="tp">$49<span>/mo per location</span></div><p>Lower fees, industry POS, loyalty · 30-day free trial</p></div>
+            <div class="ppos-tier"><h5>Square Premium</h5><div class="tp">$149<span>/mo per location</span></div><p>Lowest fees, 24/7 support, advanced reporting</p></div>
+            <div class="ppos-tier"><h5>Square Pro</h5><div class="tp">Custom<span></span></div><p>For businesses processing $250K+/yr</p></div>
+          </div>
+          <div class="dt" style="margin-top:18px">Processing fees — Free / Plus / Premium</div>
+          <div class="ppos-mods">
+            <span class="mod">Tap, dip or swipe <b>2.6% / 2.5% / 2.4% + 15¢</b></span>
+            <span class="mod">Online &amp; invoices <b>3.3% / 2.9% / 2.9% + 30¢</b></span>
+            <span class="mod">Keyed / card on file <b>3.5% + 15¢</b></span>
+            <span class="mod">ACH bank transfer <b>1%, $1 min</b></span>
+            <span class="mod">Afterpay <b>6% + 30¢</b></span>
+            <span class="mod">Cash or check <b>Free</b></span>
+          </div>
+          <div class="dt" style="margin-top:18px">Hardware &amp; app add-ons</div>
+          <div class="ppos-mods">
+            <span class="mod">Reader (contactless + chip) <b>$59</b></span>
+            <span class="mod">Stand for iPad <b>$149</b></span>
+            <span class="mod">Terminal <b>$299</b></span>
+            <span class="mod">Register <b>$799</b></span>
+            <span class="mod">Handheld <b>$399</b></span>
+            <span class="mod">KDS app <b>$30 / $20 per device</b></span>
+            <span class="mod">Kiosk app <b>$50 / $30 per device</b></span>
+          </div>
+        </div>
+        <div class="ppos-foot">Tap to Pay on iPhone &amp; Android included — no extra hardware. Plus/Premium pricing is per location; processing fees shown are Free / Plus / Premium tiers.</div>
+      </div>
+
+      <!-- Shift4 Dine -->
+      <div class="ppos-card">
+        <div class="ppos-head">
+          <div class="pl"><img src="assets/logos/shift4.png" alt="Shift4 Dine" style="height:50px;max-width:200px"><div class="stack"><span class="tg">No upfront · dual pricing</span></div></div>
+          <a class="ml" href="POS Systems.html#shift4" target="_blank" rel="noopener">See lineup <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+        </div>
+        <div class="ppos-facts">
+          <div class="ft"><div class="k">Software</div><div class="v">$29.99/mo per terminal</div></div>
+          <div class="ft"><div class="k">Processing</div><div class="v teal">0% with dual pricing</div></div>
+          <div class="ft"><div class="k">Hardware</div><div class="v">$0 upfront</div></div>
+        </div>
+      </div>
+
+      <!-- Clover -->
+      <div class="ppos-card">
+        <div class="ppos-head">
+          <div class="pl"><img src="assets/logos/clover.png" alt="Clover"><div class="stack"><span class="tg">Plans priced per device + buy/placement hardware</span></div></div>
+          <a class="ml" href="POS Systems.html#clover" target="_blank" rel="noopener">See lineup <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+        </div>
+        <div class="ppos-facts">
+          <div class="ft"><div class="k">Software</div><div class="v">$0–$89.95/mo per plan</div></div>
+          <div class="ft"><div class="k">Processing</div><div class="v">Custom — match or beat</div></div>
+          <div class="ft"><div class="k">Hardware</div><div class="v">Buy or monthly placement</div></div>
+        </div>
+        <div class="ppos-detail">
+          <div class="dt">Software plans by device</div>
+          <div class="ppos-tiers">
+            <div class="ppos-tier"><h5>Starter / Healthcare</h5><div class="tp">$0<span>/mo, 1 device</span></div><p>+ $11.95 each additional</p></div>
+            <div class="ppos-tier"><h5>Essentials</h5><div class="tp">$29.95<span>/mo</span></div><p>Includes Clover Go · + $11.95 each additional</p></div>
+            <div class="ppos-tier"><h5>Growth (Retail/Services/Restaurant)</h5><div class="tp">$84.95+<span>/mo</span></div><p>+ $19.95 each additional device</p></div>
+          </div>
+          <div class="dt" style="margin-top:18px">Hardware — purchase / placement</div>
+          <div class="ppos-mods">
+            <span class="mod">Station Duo <b>$2,078 · $55/mo</b></span>
+            <span class="mod">Station Solo <b>$1,766 · $45/mo</b></span>
+            <span class="mod">Mini <b>$937 · $25/mo</b></span>
+            <span class="mod">Flex <b>$758 · $20/mo</b></span>
+            <span class="mod">Pocket <b>$449 · $18/mo</b></span>
+            <span class="mod">Kiosk <b>$3,587 · $90/mo</b></span>
+            <span class="mod">KDS 24" <b>$722 · $24/mo</b></span>
+            <span class="mod">Cash Drawer <b>$79 · $5/mo</b></span>
+          </div>
+        </div>
+        <div class="ppos-foot">Bundles &amp; more accessories (scanners, kitchen printers, mounts) available — ask for the full sheet.</div>
+      </div>
+
+      <!-- PAYS POS -->
+      <div class="ppos-card">
+        <div class="ppos-head">
+          <div class="pl"><img src="assets/logos/pays.svg" alt="PAYS POS"><div class="stack"><span class="tg">All-inclusive · zero processing fees</span></div></div>
+          <a class="ml" href="POS Systems.html#pays" target="_blank" rel="noopener">See lineup <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+        </div>
+        <div class="ppos-facts">
+          <div class="ft"><div class="k">Software</div><div class="v">$59 / $79 / $99 /mo</div></div>
+          <div class="ft"><div class="k">Processing</div><div class="v teal">0% with dual pricing</div></div>
+          <div class="ft"><div class="k">Hardware</div><div class="v">Station + Reader $999</div></div>
+        </div>
+        <div class="ppos-detail">
+          <div class="dt">Software plans</div>
+          <div class="ppos-tiers">
+            <div class="ppos-tier"><h5>Starter</h5><div class="tp">$59<span>/mo</span></div><p>Processing, support, reporting, online ordering, take-out.</p></div>
+            <div class="ppos-tier"><h5>Growth</h5><div class="tp">$79<span>/mo</span></div><p>+ invoicing, delivery, KDS, fine dine-in, scan gun.</p></div>
+            <div class="ppos-tier"><h5>Enterprise</h5><div class="tp">$99<span>/mo</span></div><p>+ gift cards, loyalty, marketing, catering, multi-location.</p></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Korona -->
+      <div class="ppos-card">
+        <div class="ppos-head">
+          <div class="pl"><img src="assets/logos/korona.png" alt="Korona"><div class="stack"><span class="tg">Per-register plans + à la carte modules</span></div></div>
+          <a class="ml" href="Korona.html" target="_blank" rel="noopener">Learn more <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+        </div>
+        <div class="ppos-facts">
+          <div class="ft"><div class="k">Software</div><div class="v">$59 / $79 / $99 per register</div></div>
+          <div class="ft"><div class="k">Processing</div><div class="v">NextPay — match or beat</div></div>
+          <div class="ft"><div class="k">Hardware</div><div class="v">Quoted</div></div>
+        </div>
+        <div class="ppos-detail">
+          <div class="dt">Plans (per register)</div>
+          <div class="ppos-tiers">
+            <div class="ppos-tier"><h5>Core</h5><div class="tp">$59<span>/mo</span></div><p>Checkout, product DB, KPI reports, eCommerce, gift cards, 24/7 support.</p></div>
+            <div class="ppos-tier"><h5>Retail</h5><div class="tp">$79<span>/mo</span></div><p>+ inventory, stock management, barcode, supplier interface, CRM.</p></div>
+            <div class="ppos-tier"><h5>Plus</h5><div class="tp">$99<span>/mo</span></div><p>+ advanced stock, per-store pricing, ABC analysis, accounting export.</p></div>
+          </div>
+          <div class="dt" style="margin-top:18px">Add-on modules</div>
+          <div class="ppos-mods">
+            <span class="mod">Food <b>+$10/mo</b></span>
+            <span class="mod">Invoicing <b>+$10/mo</b></span>
+            <span class="mod">Ticketing <b>+$50/mo per gate</b></span>
+            <span class="mod">Franchise <b>+$30/mo</b></span>
+            <span class="mod">Integration <b>+$45/mo per token</b></span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Quantic -->
+      <div class="ppos-card">
+        <div class="ppos-head">
+          <div class="pl"><img src="assets/logos/quantic-tight.png" alt="Quantic"><div class="stack"><span class="tg">Cloud iPad POS · priced per terminal</span></div></div>
+          <a class="ml" href="POS Systems.html#quantic" target="_blank" rel="noopener">See lineup <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+        </div>
+        <div class="ppos-facts">
+          <div class="ft"><div class="k">Software</div><div class="v">Lite $30 · POS $60 /mo per terminal</div></div>
+          <div class="ft"><div class="k">Processing</div><div class="v">NextPay — match or beat</div></div>
+          <div class="ft"><div class="k">Hardware</div><div class="v">Quoted per setup</div></div>
+        </div>
+        <div class="ppos-foot">Additional terminals discounted; save 10% with annual prepay. Customer Display +$10/mo. iPads not included.</div>
+      </div>
+
+      <!-- NRS -->
+      <div class="ppos-card">
+        <div class="ppos-head">
+          <div class="pl"><img src="assets/logos/nrs.png" alt="NRS"><div class="stack"><span class="tg">Bodega &amp; tobacco/vape · two processing plans</span></div></div>
+          <a class="ml" href="NRS.html" target="_blank" rel="noopener">Learn more <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+        </div>
+        <div class="ppos-facts">
+          <div class="ft"><div class="k">Clean Rate</div><div class="v">2.49% + 10¢ · $10/mo min</div></div>
+          <div class="ft"><div class="k">Cash Discount</div><div class="v teal">$0/txn · $49.95/mo</div></div>
+          <div class="ft"><div class="k">Hardware</div><div class="v">Free reader w/ NRS Pay</div></div>
+        </div>
+        <div class="ppos-foot">Cash-discount monthly fee waived over $18k/mo volume. EBT Unlimited +$49.95/mo.</div>
+      </div>
+
+      <!-- DejaPay Pro -->
+      <div class="ppos-card">
+        <div class="ppos-head">
+          <div class="pl"><img src="assets/logos/dejapay.webp" alt="DejaPay Pro"><div class="stack"><span class="tg">Value Android cloud register</span></div></div>
+          <a class="ml" href="DejaPay Pro.html" target="_blank" rel="noopener">Learn more <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+        </div>
+        <div class="ppos-facts">
+          <div class="ft"><div class="k">Software</div><div class="v">Low monthly</div></div>
+          <div class="ft"><div class="k">Processing</div><div class="v teal">0% with dual pricing</div></div>
+          <div class="ft"><div class="k">Hardware</div><div class="v">Quoted · Android / iOS</div></div>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="center" style="margin-top:30px"><a class="btn btn-outline" href="POS Systems.html">Browse all POS systems
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></div>
+  </div>
+</section>
+
+<!-- TERMINALS -->
+<section class="prsec" id="terminals">
+  <div class="wrap">
+    <div class="sec-head"><span class="eyebrow">Credit card terminals</span><h2>Terminal pricing</h2>
+      <p>Most terminals are available to buy outright or lease monthly with no upfront cost. Many support dual pricing for zero card fees.</p></div>
+    <div class="ptable">
+      <div class="pt-cap">Terminals — buy or lease</div>
+      <div class="prow h"><span>Terminal</span><span>Purchase</span><span>Lease</span></div>
+      <div class="prow"><span><b>PAX</b> A920 / A920 MAX / A77 / A800<em>Android smart terminals, printer, 4G</em></span><span>Buy outright</span><span>or monthly</span></div>
+      <div class="prow"><span><b>Dejavoo</b> QD line &amp; P-line<em>Tip prompting, dual pricing, PIN debit</em></span><span>Buy outright</span><span>or monthly</span></div>
+      <div class="prow"><span><b>Valor</b> VL550 / VP550 / VP550E<em>Dual pricing built in, SMS marketing</em></span><span>Buy outright</span><span>no upfront</span></div>
+      <div class="prow"><span><b>Clover</b> Flex / Pocket<em>Handheld, pairs with Clover POS</em></span><span>$758 / $449</span><span>$20 / $18/mo</span></div>
+      <div class="prow"><span><b>Square</b> Terminal / Reader<em>Square ecosystem</em></span><span>$299 / from $0</span><span>$27/mo</span></div>
+      <div class="prow"><span><b>SwipeSimple</b> B250 / Terminal<em>Mobile-first, Text-to-Pay</em></span><span>From $0 / $299</span><span>From $25/mo</span></div>
+    </div>
+    <p class="note">Processing on terminals is set to your program (dual pricing, interchange-plus, or flat rate). Ask for an exact quote — we'll match or beat your current rate.</p>
+    <div class="center" style="margin-top:24px"><a class="btn btn-outline" href="Credit Card Terminals.html">Browse all terminals
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></div>
+  </div>
+</section>
+
+<!-- SOFTWARE & SERVICES -->
+<style>
+.svcpr-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;max-width:1080px;margin:0 auto}
+.svcpr{display:flex;flex-direction:column;background:#fff;border:1px solid var(--line);border-radius:16px;box-shadow:var(--shadow-sm);padding:26px}
+.svcpr h3{font-size:19px;margin:0 0 4px}
+.svcpr .price{font-size:26px;font-weight:800;letter-spacing:-.01em;color:var(--ink);margin:6px 0 2px}
+.svcpr .price span{font-size:14px;font-weight:600;color:var(--slate)}
+.svcpr .model{font-size:13px;font-weight:800;text-transform:uppercase;letter-spacing:.05em;color:var(--teal-dark);margin:6px 0 2px}
+.svcpr p{font-size:14px;color:var(--slate);line-height:1.5;margin:8px 0 16px;flex:1}
+.svcpr a.link-teal{font-weight:700;font-size:14.5px;display:inline-flex;align-items:center;gap:6px}
+.svcpr a.link-teal svg{width:16px;height:16px}
+@media(max-width:860px){.svcpr-grid{grid-template-columns:1fr}}
+</style>
+<section class="prsec" id="software">
+  <div class="wrap">
+    <div class="sec-head"><span class="eyebrow">Software &amp; services</span><h2>Tools to run &amp; grow — priced simply</h2>
+      <p>Set monthly pricing where it applies; everything else is a quick custom quote.</p></div>
+    <div class="svcpr-grid">
+      <div class="svcpr">
+        <h3>NextLink</h3><div class="price">$599<span>/mo per seat</span></div>
+        <p>Multi-channel outreach &amp; automation. 3-month trial term, then annual ($749/mo) or month-to-month ($999/mo). 10+ seats: enterprise pricing.</p>
+        <a class="link-teal" href="Client Automation Outreach.html#pricing" target="_blank" rel="noopener">See NextLink pricing <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+      </div>
+      <div class="svcpr">
+        <h3>Payroll &amp; Workers Comp</h3><div class="model">Custom quote</div>
+        <p>Full-service payroll, tax filing, direct deposit and workers-comp coverage — priced to your team size and pay schedule.</p>
+        <a class="link-teal" href="Payroll - Workers Comp.html" target="_blank" rel="noopener">Get a quote <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+      </div>
+      <div class="svcpr">
+        <h3>Bookkeeping</h3><div class="model">Custom quote</div>
+        <p>Done-for-you reconciliation, monthly reports and tax-ready books — priced to your transaction volume and scope.</p>
+        <a class="link-teal" href="Bookkeeping.html" target="_blank" rel="noopener">Get a quote <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- QUOTED SERVICES -->
+<section class="prsec" id="quoted">
+  <div class="wrap">
+    <div class="sec-head"><span class="eyebrow">Quoted services</span><h2>Priced to the deal, not a sticker</h2>
+      <p>Some services are inherently bespoke — here's how each one is priced.</p></div>
+    <div class="svcpr-grid" style="grid-template-columns:repeat(2,1fr);max-width:760px">
+      <div class="svcpr">
+        <h3>Business Brokerage</h3><div class="model">Commission-based</div>
+        <p>Buy, sell or get a valuation. Pricing is a commission — a percentage of the deal — so there's no upfront cost to explore your options.</p>
+        <a class="link-teal" href="Business Brokerage.html" target="_blank" rel="noopener">Get a quote <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+      </div>
+      <div class="svcpr">
+        <h3>Business Funding</h3><div class="model">Based on the offer</div>
+        <p>Working capital and cash advances. Cost depends on the amount funded and your terms — we'll show you the numbers before you commit.</p>
+        <a class="link-teal" href="Business Financing.html" target="_blank" rel="noopener">Get a quote <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="prsec" style="border-bottom:0">
+  <div class="wrap">
+    <div class="sband">
+      <span class="eyebrow" style="color:var(--teal-bright)">Get your exact numbers</span>
+      <h2>A custom quote in minutes</h2>
+      <p>Take the quiz or send a recent statement. We'll confirm the right setup and the best rate — a real person follows up, no pressure.</p>
+      <div class="shero-cta">
+        <a class="btn btn-primary" href="quiz.html" target="_blank" rel="noopener">Take the Quiz
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+        <a class="btn btn-ghost" href="Statement Upload.html" target="_blank" rel="noopener">Free rate review</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- HOW-IT-WORKS MODAL -->
+<div class="pm-overlay" id="pm-overlay" role="dialog" aria-modal="true" aria-labelledby="pm-title">
+  <div class="pm-modal">
+    <div class="pm-head">
+      <div><div class="pm-tag" id="pm-tag"></div><h3 id="pm-title"></h3></div>
+      <button class="pm-close" id="pm-close" type="button" aria-label="Close"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
+    </div>
+    <div class="pm-body" id="pm-body"></div>
+  </div>
+</div>
+<script>
+(function(){
+  var ARW='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg>';
+  var DATA={
+    dual:{tag:'Most popular · 0% effective',title:'Dual Pricing',body:
+      '<h4>How it works</h4>'+
+      '<p>You show two prices on every item — a lower <b>cash price</b> and a slightly higher <b>card price</b>. Customers who choose to pay by card cover the processing fee, so those costs come off your books. NextPay sets up compliant signage, receipts and POS prompts so it stays clear and above-board in your state.</p>'+
+      '<h4>Worked example</h4>'+
+      '<div class="pm-eg"><div class="eg-t">Coffee shop · $50,000/mo in card sales</div>'+
+      '<ul>'+
+      '<li><span>Traditional processing (~3.5% blended)</span><span>−$1,750/mo</span></li>'+
+      '<li><span>Card-price adjustment customers cover</span><span>+$1,750/mo</span></li>'+
+      '<li><span>Your flat monthly software fee</span><span>$0 processing*</span></li>'+
+      '<li class="tot"><span>You keep per year</span><span>≈ $18k–$24k</span></li>'+
+      '</ul>'+
+      '<div class="eg-note">Customers always keep the cash-price option, shown transparently at checkout — the card price simply offsets the fee you used to absorb.</div></div>'+
+      '<p class="pm-bf"><b>Best for:</b> retail, restaurants and service businesses that want predictable, near-zero card costs.</p>'+
+      '<div class="pm-foot"><a class="btn-card" href="Statement Upload.html" target="_blank" rel="noopener">Model my savings '+ARW+'</a></div>'+
+      '<p class="pm-disc">*Replaces percentage-based processing with a flat monthly cost. Figures are illustrative — we\u2019ll model your exact mix from your statement.</p>'},
+    ic:{tag:'Transparent · cost + flat markup',title:'Interchange-Plus',body:
+      '<h4>How it works</h4>'+
+      '<p><b>Interchange</b> — the wholesale rate the card networks (Visa, Mastercard and others) set — is passed straight through to you <b>at cost</b>. NextPay adds one clear, <b>flat markup</b> on top. Nothing is bundled into padded \u201Ctiers\u201D or hidden fees, and our markup never changes from card to card.</p>'+
+      '<h4>Worked example</h4>'+
+      '<div class="pm-eg"><div class="eg-t">A single $100 sale</div>'+
+      '<ul>'+
+      '<li><span>Visa debit — interchange (to the bank)</span><span>$0.95</span></li>'+
+      '<li><span>NextPay flat markup (0.25% + $0.10)</span><span>$0.35</span></li>'+
+      '<li class="tot"><span>Your cost on this sale</span><span>$1.30</span></li>'+
+      '</ul>'+
+      '<div class="eg-note">On a premium rewards credit card, interchange is higher (say $1.90), so your cost rises to <b>$2.25</b> — but the NextPay markup stays exactly <b>$0.35</b>. Both lines show on every statement.</div></div>'+
+      '<p class="pm-bf"><b>Best for:</b> established, higher-volume businesses that want the lowest true cost with full transparency.</p>'+
+      '<div class="pm-foot"><a class="btn-card" href="Statement Upload.html" target="_blank" rel="noopener">Get a rate review '+ARW+'</a></div>'+
+      '<p class="pm-disc">Rates shown are illustrative — your interchange depends on card type. We\u2019ll match or beat your effective rate from your statement.</p>'},
+    flat:{tag:'Simple · one rate',title:'Flat Rate',body:
+      '<h4>How it works</h4>'+
+      '<p>One simple rate applies to <b>every card sale</b>, regardless of card type, plus a small per-transaction fee. It\u2019s the easiest model to forecast — what you see is what you pay, with no monthly minimums and no tiers.</p>'+
+      '<h4>Worked example</h4>'+
+      '<div class="pm-eg"><div class="eg-t">A flat 2.6% + 10¢</div>'+
+      '<ul>'+
+      '<li><span>$100 debit card sale</span><span>$2.70</span></li>'+
+      '<li><span>$100 premium rewards sale</span><span>$2.70</span></li>'+
+      '<li class="tot"><span>Same cost either way</span><span>Predictable</span></li>'+
+      '</ul>'+
+      '<div class="eg-note">Trade-off: on low-cost debit cards you may pay slightly more than interchange-plus — but you never have to think about card types or tiers.</div></div>'+
+      '<p class="pm-bf"><b>Best for:</b> newer or lower-volume businesses that value simplicity over squeezing out every basis point.</p>'+
+      '<div class="pm-foot"><a class="btn-card" href="quiz.html" target="_blank" rel="noopener">Find my fit '+ARW+'</a></div>'+
+      '<p class="pm-disc">Sample rate shown for illustration. Ask us for your exact flat rate.</p>'}
+  };
+  var ov=document.getElementById('pm-overlay'),tag=document.getElementById('pm-tag'),title=document.getElementById('pm-title'),body=document.getElementById('pm-body');
+  function open(m){var d=DATA[m];if(!d)return;tag.textContent=d.tag;title.textContent=d.title;body.innerHTML=d.body;ov.classList.add('open');document.body.classList.add('pm-lock');document.getElementById('pm-close').focus();}
+  function close(){ov.classList.remove('open');document.body.classList.remove('pm-lock');}
+  [].slice.call(document.querySelectorAll('.proc-card')).forEach(function(c){
+    var m=c.getAttribute('data-model');
+    c.addEventListener('click',function(e){if(e.target.closest('a'))return;open(m);});
+    c.addEventListener('keydown',function(e){if(e.key==='Enter'||e.key===' '){e.preventDefault();open(m);}});
+  });
+  document.getElementById('pm-close').addEventListener('click',close);
+  ov.addEventListener('click',function(e){if(e.target===ov)close();});
+  document.addEventListener('keydown',function(e){if(e.key==='Escape'&&ov.classList.contains('open'))close();});
+})();
+</script>
+
+<div id="np-footer"></div>
+<script src="js/nav.js"></script>
+<script src="js/image-slot.js"></script>
+<script>
+(function(){
+  var links=[].slice.call(document.querySelectorAll('.pr-nav a'));
+  var map=links.map(function(a){return {a:a,el:document.querySelector(a.getAttribute('href'))};}).filter(function(x){return x.el;});
+  function upd(){var cur=map[0];for(var i=0;i<map.length;i++){if(map[i].el.getBoundingClientRect().top<160)cur=map[i];}links.forEach(function(a){a.classList.remove('on');});if(cur)cur.a.classList.add('on');}
+  document.addEventListener('scroll',upd,{passive:true});upd();
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,146 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Authorize.net — The Universal Payment Gateway — NextPay</title>
+<link rel="stylesheet" href="css/nextpay.css">
+<link rel="stylesheet" href="css/solution.css">
+<style>
+.an-logo-hero{height:30px;width:auto;margin-bottom:18px;background:#fff;border-radius:8px;padding:8px 12px}
+.an-stats{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;max-width:1000px;margin:0 auto}
+.an-stat{background:#fff;border:1px solid var(--line);border-radius:16px;box-shadow:var(--shadow-sm);padding:26px;text-align:center}
+.an-stat .n{font-size:34px;font-weight:800;letter-spacing:-.02em;color:var(--teal-dark);line-height:1}
+.an-stat .l{font-size:13.5px;color:var(--slate);font-weight:600;margin-top:8px;line-height:1.35}
+.an-mod{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;max-width:1040px;margin:0 auto}
+.an-chip{display:flex;align-items:center;gap:10px;background:#fff;border:1px solid var(--line);border-radius:12px;padding:14px 16px;font-weight:700;font-size:14px;box-shadow:var(--shadow-sm)}
+.an-chip .kd{width:9px;height:9px;border-radius:50%;background:var(--teal);flex:none}
+.an-plans{display:grid;grid-template-columns:repeat(2,1fr);gap:18px;max-width:760px;margin:0 auto}
+.an-plan{background:#fff;border:1.5px solid var(--line);border-radius:16px;box-shadow:var(--shadow-sm);padding:28px}
+.an-plan.feat{border-color:var(--teal);box-shadow:0 0 0 1px var(--teal),var(--shadow)}
+.an-plan .tagp{display:inline-block;font-size:12px;font-weight:800;text-transform:uppercase;letter-spacing:.05em;color:var(--teal-dark);background:rgba(20,161,140,.12);padding:5px 12px;border-radius:999px;margin-bottom:14px}
+.an-plan .amt{font-size:34px;font-weight:800;letter-spacing:-.02em;color:var(--ink);line-height:1}
+.an-plan .amt span{font-size:15px;font-weight:600;color:var(--slate)}
+.an-plan .sub{font-size:14px;font-weight:700;color:var(--teal-dark);margin-top:8px}
+.an-plan p{font-size:13.5px;color:var(--slate);line-height:1.5;margin-top:12px}
+@media(max-width:1000px){.an-stats,.an-mod{grid-template-columns:1fr 1fr}.an-plans{grid-template-columns:1fr}}
+</style>
+</head>
+<body data-page="authnet-gateway">
+<div id="np-nav"></div>
+
+<header class="shero" data-screen-label="Authorize.net Gateway hero">
+  <div class="wrap">
+    <div class="shero-crumb"><a href="index.html">Home</a><span class="sep">/</span><a href="Online Gateways.html">Online Payments</a><span class="sep">/</span><span style="color:#fff">Authorize.net</span></div>
+    <div class="shero-grid">
+      <div>
+        <img class="an-logo-hero" src="assets/logos/authnet-tight.png" alt="Authorize.net">
+        <span class="tag tag-teal">Online Payments · Gateway</span>
+        <h1>The universal payment gateway,<br><em>trusted since 1996.</em></h1>
+        <p class="lead">Authorize.net is the most widely supported gateway in eCommerce — it connects to almost every website builder, shopping cart and plugin, with invoicing, eCheck ACH, recurring billing and QuickBooks sync. A dependable, universal choice backed by Visa.</p>
+        <div class="shero-cta">
+          <a class="btn btn-primary" href="Online Gateways.html#gw-authnet">See pricing
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+          <a class="btn btn-ghost" href="quiz.html" target="_blank" rel="noopener">Take the Quiz</a>
+        </div>
+        <div class="shero-chips">
+          <span class="shero-chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg>Universal integrations</span>
+          <span class="shero-chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg>Free fraud suite</span>
+        </div>
+      </div>
+      <div class="shero-media"><image-slot id="authnet-hero" src="assets/gateways/authnet-dashboard.png" shape="rounded" radius="24" fit="cover" placeholder="Drop an Authorize.net dashboard image"></image-slot></div>
+    </div>
+  </div>
+</header>
+
+<!-- STATS -->
+<section class="ssec">
+  <div class="wrap">
+    <div class="an-stats">
+      <div class="an-stat"><div class="n">1996</div><div class="l">trusted since</div></div>
+      <div class="an-stat"><div class="n">430K+</div><div class="l">merchants worldwide</div></div>
+      <div class="an-stat"><div class="n">1B+</div><div class="l">transactions a year</div></div>
+      <div class="an-stat"><div class="n">100s</div><div class="l">of cart &amp; plugin integrations</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- WHY -->
+<section class="ssec ssec-soft">
+  <div class="wrap">
+    <div class="sec-head"><span class="eyebrow">Why merchants choose Authorize.net</span><h2>The gateway that plugs in anywhere</h2>
+      <p>If your website builder, cart or plugin supports a gateway, odds are it supports Authorize.net out of the box — with the security and support of a Visa solution.</p></div>
+    <div class="sfeat">
+      <div class="fc"><div class="fic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.5 2.5 2.5 15.5 0 18M12 3c-2.5 2.5-2.5 15.5 0 18"/></svg></div><h4>Universal Integrations</h4><p>Connects to nearly every website builder, shopping cart and plugin out of the box.</p></div>
+      <div class="fc"><div class="fic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="10" width="16" height="11" rx="2"/><path d="M8 10V7a4 4 0 0 1 8 0v3"/></svg></div><h4>Customer Information Manager</h4><p>Stores tokenized customer profiles for fast, PCI-friendly repeat checkout.</p></div>
+      <div class="fc"><div class="fic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12a9 9 0 0 1 15-6.7L21 8"/><path d="M21 3v5h-5"/><path d="M21 12a9 9 0 0 1-15 6.7L3 16"/><path d="M3 21v-5h5"/></svg></div><h4>Automated Recurring Billing</h4><p>Set up subscriptions and scheduled payments with flexible intervals.</p></div>
+      <div class="fc"><div class="fic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3 5 6v5c0 4.5 3 8 7 10 4-2 7-5.5 7-10V6z"/><path d="m9.5 12 2 2 3.5-4"/></svg></div><h4>Fraud Detection Suite</h4><p>A free, configurable set of filters and rules that screen transactions in real time.</p></div>
+      <div class="fc"><div class="fic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="6" width="18" height="13" rx="2"/><path d="M3 10h18M7 15h4"/></svg></div><h4>eCheck.Net (ACH)</h4><p>Accept bank-account payments alongside cards for lower-cost transactions.</p></div>
+      <div class="fc"><div class="fic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 3h10a2 2 0 0 1 2 2v16l-3-2-2 2-2-2-2 2-2-2-2 2V5a2 2 0 0 1 2-2z"/><path d="M9 8h6M9 12h6"/></svg></div><h4>Invoicing</h4><p>Email branded invoices and let customers pay online in a click.</p></div>
+      <div class="fc"><div class="fic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="14" rx="2"/><path d="M3 9h18M8 18v3h8v-3"/></svg></div><h4>Virtual Terminal</h4><p>Key in phone and mail orders from any browser — no extra hardware needed.</p></div>
+      <div class="fc"><div class="fic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12a9 9 0 1 1-6.2-8.6"/><path d="M21 4v5h-5"/></svg></div><h4>Sync for QuickBooks</h4><p>Push transactions into QuickBooks and keep stored cards current with Account Updater.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- INTEGRATIONS -->
+<section class="ssec">
+  <div class="wrap">
+    <div class="sec-head"><span class="eyebrow">Connects to what you already use</span><h2>Built to plug in anywhere</h2></div>
+    <div class="an-mod">
+      <div class="an-chip"><span class="kd"></span>Accept Hosted</div>
+      <div class="an-chip"><span class="kd"></span>Accept.js</div>
+      <div class="an-chip"><span class="kd"></span>WooCommerce &amp; Shopify</div>
+      <div class="an-chip"><span class="kd"></span>QuickBooks</div>
+      <div class="an-chip"><span class="kd"></span>Mobile SDKs</div>
+      <div class="an-chip"><span class="kd"></span>eCheck.Net / ACH</div>
+      <div class="an-chip"><span class="kd"></span>Virtual Terminal</div>
+      <div class="an-chip"><span class="kd"></span>CIM Tokenization</div>
+    </div>
+  </div>
+</section>
+
+<!-- PRICING -->
+<section class="ssec ssec-soft" id="pricing">
+  <div class="wrap">
+    <div class="sec-head"><span class="eyebrow">Two ways to use it</span><h2>Pricing that fits how you buy</h2>
+      <p>Get Authorize.net direct, or run it on your NextPay merchant account for one bill, one support line — and we'll match or beat your processing rate.</p></div>
+    <div class="an-plans">
+      <div class="an-plan feat">
+        <span class="tagp">Through NextPay</span>
+        <div class="amt">$12 <span>/mo</span></div>
+        <div class="sub">+ 5¢ / transaction · 5¢ daily batch</div>
+        <p>Run Authorize.net on your NextPay merchant account — one bill, one support line, and we match or beat your effective processing rate.</p>
+      </div>
+      <div class="an-plan">
+        <span class="tagp">Direct retail</span>
+        <div class="amt">2.9% <span>+ 30¢ / txn</span></div>
+        <div class="sub">$25/mo · Authorize.net's published rate</div>
+        <p>Authorize.net's bundled merchant-account-plus-gateway pricing if you sign up with them directly.</p>
+      </div>
+    </div>
+    <p class="center muted" style="font-size:13.5px;margin-top:20px">Published Authorize.net rates shown — your effective rate depends on your card mix. Ask us for a tailored quote.</p>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="ssec">
+  <div class="wrap">
+    <div class="sband">
+      <span class="eyebrow" style="color:var(--teal-bright)">Run Authorize.net on NextPay's best rate</span>
+      <h2>The universal gateway, set up right</h2>
+      <p>We'll connect Authorize.net to your store and pair it with transparent processing — match or beat your current rate, and a real person helps you launch.</p>
+      <div class="shero-cta">
+        <a class="btn btn-primary" href="quiz.html" target="_blank" rel="noopener">Take the Quiz
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+        <a class="btn btn-ghost" href="Statement Upload.html" target="_blank" rel="noopener">Free rate review</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div id="np-footer"></div>
+<script src="js/nav.js"></script>
+<script src="js/image-slot.js"></script>
+</body>
+</html>

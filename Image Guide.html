@@ -1,0 +1,149 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Image Guide — NextPay (internal)</title>
+<link rel="stylesheet" href="css/nextpay.css">
+<link rel="stylesheet" href="css/solution.css">
+<style>
+.ig-hero{background:var(--navy);color:#fff;padding:40px 0 36px}
+.ig-hero .wrap{max-width:1000px}
+.ig-hero h1{color:#fff;font-size:clamp(28px,3.6vw,42px)}
+.ig-hero p{color:#c4d0db;margin-top:12px;max-width:680px;font-size:17px;line-height:1.6}
+.ig-wrap{max-width:1000px;margin:0 auto;padding:0 28px}
+.ig-legend{display:flex;gap:18px;flex-wrap:wrap;margin-top:20px}
+.ig-legend span{display:inline-flex;align-items:center;gap:8px;font-size:13.5px;font-weight:600;color:#dbe5ee}
+.ig-dot{width:11px;height:11px;border-radius:50%;flex:none}
+.ig-dot.done{background:var(--teal-bright)}.ig-dot.need{background:var(--gold)}
+.ig-sec{padding:44px 0 8px}
+.ig-sec h2{font-size:26px;letter-spacing:-.01em}
+.ig-sec .sub{color:var(--slate);margin-top:6px;font-size:15.5px}
+.ig-card{background:#fff;border:1px solid var(--line);border-radius:16px;box-shadow:var(--shadow-sm);padding:6px 26px;margin-top:20px}
+.ig-row{display:grid;grid-template-columns:26px 1.4fr 1fr 1.1fr;gap:18px;align-items:start;padding:18px 0;border-bottom:1px solid var(--line)}
+.ig-row:last-child{border-bottom:0}
+.ig-row .st{margin-top:5px}
+.ig-row .st .ig-dot{width:13px;height:13px}
+.ig-row h4{font-size:16px}
+.ig-row .where{font-size:13.5px;color:var(--slate);margin-top:3px}
+.ig-row .spec{font-size:13.5px;color:var(--ink);font-weight:600}
+.ig-row .spec small{display:block;color:var(--slate);font-weight:500;margin-top:2px}
+.ig-row .terms{font-size:13px;color:var(--slate);line-height:1.5}
+.ig-row .terms b{color:var(--teal-dark);font-weight:700}
+.ig-head-row{display:grid;grid-template-columns:26px 1.4fr 1fr 1.1fr;gap:18px;padding:14px 0 8px;font-size:11.5px;font-weight:800;text-transform:uppercase;letter-spacing:.06em;color:var(--slate-2);border-bottom:2px solid var(--line)}
+.ig-note{background:var(--bg-soft);border-left:4px solid var(--teal);border-radius:0 12px 12px 0;padding:18px 22px;margin:22px 0;font-size:15px;line-height:1.6}
+.ig-note b{color:var(--ink)}
+.ig-sources{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:18px}
+.ig-source{border:1px solid var(--line);border-radius:13px;padding:18px 20px;background:#fff;box-shadow:var(--shadow-sm)}
+.ig-source h4{font-size:16px}.ig-source p{font-size:13.5px;color:var(--slate);margin-top:4px;line-height:1.45}
+.ig-source a{color:var(--teal-dark);font-weight:700;font-size:13.5px;display:inline-block;margin-top:8px}
+@media(max-width:820px){.ig-row,.ig-head-row{grid-template-columns:20px 1fr;gap:8px}.ig-head-row{display:none}.ig-row .spec,.ig-row .terms{grid-column:2}.ig-sources{grid-template-columns:1fr}}
+</style>
+</head>
+<body data-page="imageguide">
+<div id="np-nav"></div>
+
+<header class="ig-hero">
+  <div class="wrap">
+    <span class="eyebrow" style="color:var(--teal-bright)">Internal reference</span>
+    <h1>Image Guide — what to upload &amp; where</h1>
+    <p>Every photo slot across the site, what goes in it, the ideal size, and free-stock search terms to find it fast. Drag any image onto its slot in the live page — it saves automatically. This page is a checklist, not a public page.</p>
+    <div class="ig-legend">
+      <span><span class="ig-dot done"></span>Already filled — replace only if you want</span>
+      <span><span class="ig-dot need"></span>Needs an image from you</span>
+    </div>
+  </div>
+</header>
+
+<div class="ig-wrap">
+
+  <!-- GENERAL -->
+  <section class="ig-sec">
+    <h2>The basics</h2>
+    <p class="sub">A few rules that make every image look right in the NextPay layout.</p>
+    <div class="ig-note">
+      <b>Lifestyle &amp; hero photos:</b> landscape orientation, at least <b>1600×1000px</b>, bright and uncluttered. Real people and real businesses beat staged stock. JPG is fine.<br><br>
+      <b>Product shots &amp; logos:</b> on a <b>white or transparent</b> background, PNG preferred. We can whiten a colored background for you — just send the best version you have.<br><br>
+      <b>Blog headers:</b> landscape, at least <b>1600×900px</b>, relevant to the topic but not text-heavy.
+    </div>
+    <div class="ig-sources">
+      <div class="ig-source"><h4>Unsplash</h4><p>Free, high-quality photos, no attribution required. Best for hero &amp; industry shots.</p><a href="https://unsplash.com" target="_blank" rel="noopener">unsplash.com →</a></div>
+      <div class="ig-source"><h4>Pexels</h4><p>Free stock photos &amp; short videos. Great business and retail variety.</p><a href="https://pexels.com" target="_blank" rel="noopener">pexels.com →</a></div>
+      <div class="ig-source"><h4>Brand press kits</h4><p>For logos &amp; product shots, the manufacturer's official press/brand page is best.</p><a href="#brands">see brand list ↓</a></div>
+    </div>
+  </section>
+
+  <!-- KEY PAGE HEROES -->
+  <section class="ig-sec">
+    <h2>Key page hero photos</h2>
+    <p class="sub">The big image at the top of each main page.</p>
+    <div class="ig-card">
+      <div class="ig-head-row"><span></span><span>Where it appears</span><span>Size / type</span><span>Search terms</span></div>
+      <div class="ig-row"><span class="st"><span class="ig-dot need"></span></span><div><h4>Why NextPay — hero</h4><div class="where">Why NextPay.html, top right</div></div><div class="spec">Landscape<small>1600×1000, JPG</small></div><div class="terms"><b>small business owner counter,</b> confident shop owner, local business team</div></div>
+      <div class="ig-row"><span class="st"><span class="ig-dot need"></span></span><div><h4>Why NextPay — 3 story images</h4><div class="where">Hardware lineup · statement/savings · dashboard</div></div><div class="spec">Landscape<small>1400×900, JPG</small></div><div class="terms"><b>pos terminal lineup,</b> reviewing paperwork desk, laptop dashboard analytics</div></div>
+      <div class="ig-row"><span class="st"><span class="ig-dot need"></span></span><div><h4>Resources — hero</h4><div class="where">Resources.html, top right</div></div><div class="spec">Landscape<small>1600×1000, JPG</small></div><div class="terms"><b>person reading laptop coffee,</b> business owner learning, cozy workspace</div></div>
+      <div class="ig-row"><span class="st"><span class="ig-dot need"></span></span><div><h4>Solution pages — heroes</h4><div class="where">Integrations, Payroll, HR, Fee Programs, Chargebacks, Brokerage</div></div><div class="spec">Landscape<small>1500×950, JPG</small></div><div class="terms"><b>per page:</b> connected software, happy team payday, HR office, retail checkout signage, secure dashboard, business handshake</div></div>
+      <div class="ig-row"><span class="st"><span class="ig-dot need"></span></span><div><h4>Business Financing — hero</h4><div class="where">Business Financing.html</div></div><div class="spec">Landscape<small>1500×950, JPG</small></div><div class="terms"><b>business owner planning growth,</b> contractor with equipment, real estate keys</div></div>
+    </div>
+  </section>
+
+  <!-- BLOG HEADERS -->
+  <section class="ig-sec">
+    <h2>Blog header images</h2>
+    <p class="sub">One landscape image per article (and the matching card on the Resources page).</p>
+    <div class="ig-card">
+      <div class="ig-head-row"><span></span><span>Article</span><span>Size / type</span><span>Search terms</span></div>
+      <div class="ig-row"><span class="st"><span class="ig-dot need"></span></span><div><h4>Lowering processing fees</h4></div><div class="spec">1600×900<small>JPG</small></div><div class="terms"><b>calculator receipts money,</b> small business finances</div></div>
+      <div class="ig-row"><span class="st"><span class="ig-dot need"></span></span><div><h4>Dual pricing vs cash discount</h4></div><div class="spec">1600×900<small>JPG</small></div><div class="terms"><b>price tag store,</b> cash and card payment counter</div></div>
+      <div class="ig-row"><span class="st"><span class="ig-dot need"></span></span><div><h4>Choosing a POS</h4></div><div class="spec">1600×900<small>JPG</small></div><div class="terms"><b>pos system checkout counter,</b> tablet register</div></div>
+      <div class="ig-row"><span class="st"><span class="ig-dot need"></span></span><div><h4>Reading your statement</h4></div><div class="spec">1600×900<small>JPG</small></div><div class="terms"><b>reviewing documents desk,</b> paperwork magnifying</div></div>
+      <div class="ig-row"><span class="st"><span class="ig-dot need"></span></span><div><h4>Restaurant &amp; food truck tips</h4></div><div class="spec">1600×900<small>JPG</small></div><div class="terms"><b>food truck payment,</b> restaurant card machine tableside</div></div>
+      <div class="ig-row"><span class="st"><span class="ig-dot need"></span></span><div><h4>Chargebacks 101</h4></div><div class="spec">1600×900<small>JPG</small></div><div class="terms"><b>online security laptop,</b> customer dispute service desk</div></div>
+      <div class="ig-row"><span class="st"><span class="ig-dot need"></span></span><div><h4>Merchant rewards guide</h4></div><div class="spec">1600×900<small>JPG</small></div><div class="terms"><b>rewards points travel,</b> happy shop owner phone</div></div>
+    </div>
+  </section>
+
+  <!-- INDUSTRIES -->
+  <section class="ig-sec">
+    <h2>Industry hero photos</h2>
+    <p class="sub">Most are already in from your earlier uploads. Just three still need a photo.</p>
+    <div class="ig-card">
+      <div class="ig-head-row"><span></span><span>Industry page</span><span>Size / type</span><span>Search terms</span></div>
+      <div class="ig-row"><span class="st"><span class="ig-dot need"></span></span><div><h4>Auto Repair &amp; Automotive</h4></div><div class="spec">Landscape<small>1500×950</small></div><div class="terms"><b>auto repair shop mechanic,</b> car service bay</div></div>
+      <div class="ig-row"><span class="st"><span class="ig-dot need"></span></span><div><h4>Fitness &amp; Gyms</h4></div><div class="spec">Landscape<small>1500×950</small></div><div class="terms"><b>modern gym interior,</b> fitness studio front desk</div></div>
+      <div class="ig-row"><span class="st"><span class="ig-dot need"></span></span><div><h4>Cleaning Services</h4></div><div class="spec">Landscape<small>1500×950</small></div><div class="terms"><b>cleaning service professional,</b> home cleaning team</div></div>
+      <div class="ig-row"><span class="st"><span class="ig-dot done"></span></span><div><h4>All other 19 industries</h4><div class="where">Retail, F&amp;B, Healthcare, Salons, Home Services, etc.</div></div><div class="spec">— done —</div><div class="terms">Already filled from your uploads. Swap any you'd like to upgrade.</div></div>
+    </div>
+    <div class="ig-note">The four <b>Industries mega-menu photo headers</b> (Retail / Services / Food &amp; Beverage / Healthcare) are also wired from your uploads. If a menu thumbnail looks off, drop a cleaner landscape photo on it from any page.</div>
+  </section>
+
+  <!-- PRODUCT + LOGOS -->
+  <section class="ig-sec" id="brands">
+    <h2>Product shots &amp; brand logos</h2>
+    <p class="sub">The catalog is largely complete. Here's what's still open.</p>
+    <div class="ig-card">
+      <div class="ig-head-row"><span></span><span>Item</span><span>Type</span><span>Where to find it</span></div>
+      <div class="ig-row"><span class="st"><span class="ig-dot need"></span></span><div><h4>Authorize.net logo</h4><div class="where">Gateways page + industry stack cards</div></div><div class="spec">Logo<small>transparent PNG/SVG</small></div><div class="terms">Visa/Authorize.net brand assets page</div></div>
+      <div class="ig-row"><span class="st"><span class="ig-dot need"></span></span><div><h4>QuickBooks logo</h4><div class="where">Invoicing page + stack cards</div></div><div class="spec">Logo<small>transparent PNG/SVG</small></div><div class="terms">Intuit QuickBooks brand/press page</div></div>
+      <div class="ig-row"><span class="st"><span class="ig-dot need"></span></span><div><h4>FluidPay logo</h4><div class="where">Gateways page</div></div><div class="spec">Logo<small>transparent PNG/SVG</small></div><div class="terms">FluidPay brand assets</div></div>
+      <div class="ig-row"><span class="st"><span class="ig-dot need"></span></span><div><h4>FieldPulse logo</h4><div class="where">Invoicing page</div></div><div class="spec">Logo<small>transparent PNG/SVG</small></div><div class="terms">FieldPulse brand/press page</div></div>
+      <div class="ig-row"><span class="st"><span class="ig-dot need"></span></span><div><h4>Chively POS — product photos</h4><div class="where">POS page + Food Trucks recommended</div></div><div class="spec">Product<small>white background</small></div><div class="terms">Your own / Chively (chively.com) product images</div></div>
+      <div class="ig-row"><span class="st"><span class="ig-dot done"></span></span><div><h4>All terminals &amp; most POS</h4><div class="where">PAX, Dejavoo, Clover, Square, Valor, Shift4, Quantic, NRS…</div></div><div class="spec">— done —</div><div class="terms">Already in &amp; background-cleaned. Send better shots anytime.</div></div>
+    </div>
+  </section>
+
+  <section class="ig-sec" style="padding-bottom:70px">
+    <div class="sband">
+      <span class="eyebrow" style="color:var(--teal-bright)">How to add an image</span>
+      <h2 style="color:#fff;font-size:26px">Just drag &amp; drop onto any slot</h2>
+      <p>Open the page, find the empty image area, and drag your photo file right onto it — it saves to that spot automatically. Send me logos/product shots that need a background cleaned up and I'll process them for you.</p>
+    </div>
+  </section>
+
+</div>
+
+<div id="np-footer"></div>
+<script src="js/nav.js"></script>
+<script src="js/image-slot.js"></script>
+</body>
+</html>
