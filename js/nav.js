@@ -153,8 +153,13 @@
     if(!a) return;
     const href=a.getAttribute('href');
     if(!href||href.charAt(0)==='#'||/^(mailto:|tel:|javascript:)/i.test(href)) return;
+    e.preventDefault();
+    // Don't pass 'noopener' in the features string: window.open then returns
+    // null even when the tab opens, which made the fallback below fire too and
+    // navigate the current page. Sever opener on the handle instead.
     let w=null;
-    try{ w=window.open(href,'_blank','noopener'); }catch(err){}
-    if(!w){ e.preventDefault(); window.location.href=href; }
+    try{ w=window.open(href,'_blank'); }catch(err){}
+    if(w){ try{ w.opener=null; }catch(err){} }
+    else window.location.href=href;
   },true);
 })();
