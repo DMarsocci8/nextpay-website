@@ -9,13 +9,17 @@
 <style>
 .cv-logo-hero{height:40px;width:auto;margin-bottom:18px;filter:brightness(0) invert(1)}
 /* pricing tiers */
-.cv-tiers{display:grid;grid-template-columns:1fr 1fr;gap:26px;max-width:920px;margin:0 auto}
+.cv-tiers{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;max-width:1140px;margin:0 auto}
 .cv-tier{border-radius:22px;padding:38px 36px;border:1px solid var(--line);background:#fff;display:flex;flex-direction:column;box-shadow:var(--shadow-sm)}
 .cv-tier.pop{background:var(--navy);border-color:var(--navy);color:#fff;box-shadow:var(--shadow-lg)}
 .cv-tier-head{display:flex;align-items:center;justify-content:space-between;gap:12px}
 .cv-tier h3{font-size:24px;letter-spacing:-.01em}
 .cv-tier.pop h3{color:#fff}
-.cv-pop-badge{font-size:12px;font-weight:800;text-transform:uppercase;letter-spacing:.06em;color:var(--teal-bright);border:1.5px solid rgba(31,194,166,.5);padding:6px 13px;border-radius:999px}
+.cv-pop-badge{font-size:12px;font-weight:800;text-transform:uppercase;letter-spacing:.06em;color:var(--teal-dark);background:rgba(20,161,140,.12);border:1.5px solid rgba(20,161,140,.35);padding:6px 13px;border-radius:999px;white-space:nowrap}
+.cv-tier.pop .cv-pop-badge{color:var(--teal-bright);background:rgba(31,194,166,.14);border-color:rgba(31,194,166,.5)}
+.cv-soon-badge{font-size:12px;font-weight:800;text-transform:uppercase;letter-spacing:.06em;color:#b07a16;background:rgba(214,158,46,.14);border:1.5px solid rgba(214,158,46,.4);padding:6px 13px;border-radius:999px;white-space:nowrap}
+.cv-tier.soon{background:var(--bg-soft)}
+.cv-tier.soon .cv-price .amt{color:var(--slate)}
 .cv-price{display:flex;align-items:baseline;gap:4px;margin:20px 0 6px}
 .cv-price .amt{font-size:54px;font-weight:800;letter-spacing:-.03em;line-height:1;color:var(--ink)}
 .cv-tier.pop .cv-price .amt{color:#fff}
@@ -98,31 +102,30 @@
 <section class="ssec" id="pricing">
   <div class="wrap">
     <div class="sec-head"><span class="eyebrow">Software pricing</span><h2>Simple monthly plans</h2>
-      <p>Pick the plan that fits how you run — upgrade anytime as you grow.</p></div>
+      <p>Pick the plan that fits how you run, and upgrade anytime as you grow.</p></div>
     <div class="cv-tiers">
       <div class="cv-tier">
         <div class="cv-tier-head"><h3>Lite</h3></div>
         <div class="cv-price"><span class="amt">$29</span><span class="per">/ month</span></div>
-        <p class="blurb">All the core features needed to run your service.</p>
+        <p class="blurb">Basic POS functionality for small businesses. Perfect for food trucks, cafes, coffee shops and any handheld-serviceable restaurant.</p>
         <ul class="cv-feats">
-          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg>Full Point-of-Sale (POS) software</li>
-          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg>Counter service &amp; simple table flows</li>
-          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg>Handheld &amp; tableside ordering</li>
-          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg>Full menu &amp; modifier control</li>
-          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg>Staff &amp; sales management</li>
-          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg>Core reporting &amp; analytics</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg>Full POS functionality</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg>Table management</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg>Menu control</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg>Tableside ordering</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg>Staff management</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg>Sales reporting</li>
         </ul>
         <a class="btn btn-outline" href="Contact.html" target="_blank" rel="noopener">Request a Demo</a>
       </div>
       <div class="cv-tier pop">
-        <div class="cv-tier-head"><h3>Complete</h3><span class="cv-pop-badge">Most popular</span></div>
+        <div class="cv-tier-head"><h3>Core</h3><span class="cv-pop-badge">Popular</span></div>
         <div class="cv-price"><span class="amt">$69</span><span class="per">/ month</span></div>
-        <p class="blurb">Enhanced features for growing businesses with advanced features &amp; reporting.</p>
+        <p class="blurb">Robust all-in-one solution with advanced analytics: KDS, multi-kitchen, gift cards and full inventory control.</p>
         <ul class="cv-feats">
           <li class="plus"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg>Everything in Lite, plus:</li>
           <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg>Kitchen Display System (KDS) &amp; dual-screen ready</li>
-          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg>Third-party delivery integrations</li>
-          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg>Gift cards &amp; loyalty programs</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg>Gift card &amp; loyalty programs</li>
           <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg>Online ordering platform</li>
           <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg>Advanced inventory reporting</li>
           <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg>QR code ordering &amp; payment</li>
@@ -131,6 +134,20 @@
           <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg>SMS marketing features</li>
         </ul>
         <a class="btn btn-primary" href="Contact.html" target="_blank" rel="noopener">Request a Demo</a>
+      </div>
+      <div class="cv-tier soon">
+        <div class="cv-tier-head"><h3>Complete</h3><span class="cv-soon-badge">Coming soon</span></div>
+        <div class="cv-price"><span class="amt">$159</span><span class="per">/ month</span></div>
+        <p class="blurb">Complete solution with advanced delivery integrations, supercharging any delivery-dependent restaurant.</p>
+        <ul class="cv-feats">
+          <li class="plus"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg>Everything in Core, plus:</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg>Full delivery aggregation</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg>Full DoorDash integration</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg>Full UberEats integration</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg>Full GrubHub integration</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg>Full EZ Cater integration</li>
+        </ul>
+        <a class="btn btn-outline" href="Contact.html" target="_blank" rel="noopener">Join the waitlist</a>
       </div>
     </div>
   </div>
