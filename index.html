@@ -11,7 +11,8 @@
 .home-hero::after{content:"";position:absolute;right:-160px;top:-160px;width:620px;height:620px;border-radius:50%;background:radial-gradient(circle,rgba(31,194,166,.22),transparent 70%)}
 .home-hero .wrap{position:relative;z-index:2}
 .home-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:50px;align-items:center;padding:56px 0 84px}
-.home-hero h1{font-size:clamp(40px,5.4vw,64px);line-height:1.02;color:#fff;margin:18px 0 0;letter-spacing:-.02em}
+.home-hero h1{font-size:clamp(34px,4.9vw,58px);line-height:1.06;color:#fff;margin:18px 0 0;letter-spacing:-.02em}
+.home-hero h1 .l1{white-space:nowrap}
 .home-hero h1 em{color:var(--teal-bright);font-style:normal}
 .home-hero .lead{color:#c4d0db;margin-top:20px;max-width:540px;font-size:19px;line-height:1.6}
 .home-cta{display:flex;gap:13px;flex-wrap:wrap;margin-top:30px}
@@ -49,6 +50,7 @@
 .why-item h4{font-size:17px}
 .why-item p{font-size:14px;color:var(--slate);line-height:1.5}
 @media(max-width:1000px){.home-grid{grid-template-columns:1fr;gap:32px;padding:40px 0 60px}.home-media image-slot{height:300px}.sol3,.why4{grid-template-columns:1fr}.ind4{grid-template-columns:1fr 1fr}}
+@media(max-width:700px){.home-hero h1{font-size:clamp(25px,8.2vw,34px)}}
 </style>
 </head>
 <body data-page="home">
@@ -60,7 +62,7 @@
     <div class="home-grid">
       <div>
         <span class="tag tag-teal">Smarter Solutions. Stronger Businesses.</span>
-        <h1>Payments &amp; tools&nbsp;to<br><em>run and grow</em> your business.</h1>
+        <h1><span class="l1">Payments &amp; tools to</span><br><em>run and grow</em> your business.</h1>
         <p class="lead">NextPay brings POS systems, card terminals, online gateways, invoicing, payroll, funding, and growth tools together under one account — with transparent processing we'll match or beat.</p>
         <div class="home-cta">
           <a class="btn btn-primary" href="quiz.html" target="_blank" rel="noopener">Take the Quiz
