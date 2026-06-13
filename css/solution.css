@@ -29,7 +29,7 @@
 /* feature cards */
 .sfeat{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
 .sfeat .fc{padding:28px;border-radius:var(--radius);border:1px solid var(--line);background:#fff;box-shadow:var(--shadow-sm);transition:.18s}
-.sfeat .fc:hover{box-shadow:var(--shadow);transform:translateY(-3px)}
+.sfeat .fc:hover{box-shadow:var(--shadow);transform:translateY(-3px);border-color:var(--teal)}
 .sfeat .fc .fic{width:48px;height:48px;border-radius:13px;background:rgba(20,161,140,.12);display:grid;place-items:center;color:var(--teal-dark);margin-bottom:16px}
 .sfeat .fc .fic svg{width:24px;height:24px}
 .sfeat .fc h4{font-size:18px;line-height:1.25}
