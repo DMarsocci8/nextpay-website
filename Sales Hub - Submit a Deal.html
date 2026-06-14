@@ -102,6 +102,26 @@
 .contact .cways a{color:var(--teal-dark);font-weight:600}
 .todo-text{color:var(--slate-2);font-style:italic}
 
+.platline{display:inline-flex;align-items:center;gap:8px;font-size:13px;font-weight:700;color:var(--teal-dark);background:rgba(20,161,140,.1);border-radius:999px;padding:6px 13px;margin-bottom:14px}
+.platline svg{width:14px;height:14px}
+
+/* submission portals panel */
+.portals{margin-top:26px}
+.portals-h{font-size:19px;letter-spacing:-.01em;margin-bottom:4px}
+.portals-sub{font-size:14.5px;color:var(--slate);margin-bottom:16px}
+.portal-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+@media(max-width:860px){.portal-grid{grid-template-columns:1fr}}
+.portal{background:#fff;border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow-sm);padding:22px;display:flex;flex-direction:column;gap:9px}
+.portal .pnum{width:34px;height:34px;border-radius:10px;background:var(--navy);color:#fff;display:grid;place-items:center;font-weight:800;font-size:15px}
+.portal h4{font-size:17px;letter-spacing:-.01em}
+.portal p{font-size:13.5px;color:var(--slate);line-height:1.5;flex:1}
+.portal .access{font-size:12px;font-weight:800;letter-spacing:.05em;text-transform:uppercase;padding:4px 10px;border-radius:999px;align-self:flex-start;background:rgba(242,163,60,.16);color:#b9741a}
+.portal .access.given{background:rgba(20,161,140,.14);color:var(--teal-dark)}
+.portal .plink{display:inline-flex;align-items:center;gap:8px;font-weight:700;font-size:13.5px;color:#fff;background:var(--teal);border-radius:999px;padding:9px 15px;align-self:flex-start;margin-top:2px}
+.portal .plink:hover{background:var(--teal-dark)}
+.portal .plink.todo{background:var(--bg-soft-2);color:var(--slate-2);pointer-events:none}
+.portal .plink svg{width:14px;height:14px}
+
 .empty{display:none;text-align:center;padding:50px 20px;color:var(--slate)}
 .empty.show{display:block}
 
@@ -147,7 +167,36 @@
     <div><b>This is a working scaffold.</b><p>Every product below has the right structure but placeholder content. Send Dom the real order-form link, the submission steps, what's required, and the contacts for each product, and they get dropped straight in. Items still needing info are marked <span class="status todo" style="vertical-align:middle">Needs info</span>.</p></div>
   </div>
 
-  <div class="controls">
+  <!-- SUBMISSION PORTALS -->
+  <section class="portals">
+    <h3 class="portals-h">Where deals get submitted — your main portals</h3>
+    <p class="portals-sub">Most products route through one of these. You'll be given access to the ones you need. Each product card below tells you which portal it uses.</p>
+    <div class="portal-grid">
+      <div class="portal">
+        <span class="pnum">1</span>
+        <h4>Solutions in Payments Portal</h4>
+        <p>Submit and board <b>most products</b> here — terminals, gateways and more. Your primary day-to-day portal.</p>
+        <span class="access given">Access provided</span>
+        <span class="plink todo"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M14 3h7v7M21 3l-9 9M21 14v5a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h5"/></svg>Portal link needed</span>
+      </div>
+      <div class="portal">
+        <span class="pnum">2</span>
+        <h4>SkyTab Portal</h4>
+        <p><b>Shift4 Dine / SkyTab</b> deals are submitted in SkyTab's own portal. You'll get your own login to start and track deals there.</p>
+        <span class="access given">Your own login provided</span>
+        <span class="plink todo"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M14 3h7v7M21 3l-9 9M21 14v5a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h5"/></svg>Portal link needed</span>
+      </div>
+      <div class="portal">
+        <span class="pnum">3</span>
+        <h4>Square</h4>
+        <p><b>Square</b> has its own sign-up path. Create your <b>own</b> Square account first so you know the flow and can coach merchants through applying.</p>
+        <span class="access">Create your own account</span>
+        <span class="plink todo"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M14 3h7v7M21 3l-9 9M21 14v5a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h5"/></svg>Sign-up link needed</span>
+      </div>
+    </div>
+  </section>
+
+  <div class="controls" style="padding-top:30px">
     <div class="ctrl-search">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg>
       <input id="search" type="search" placeholder="Search a product — e.g. “Clover”, “FluidPay”, “PAX”…" autocomplete="off">
@@ -189,14 +238,35 @@
    =========================================================== */
   var TODO = "";   // leave a field as "" (empty) to flag it as "Needs info"
 
-  function p(name, brand, type){ return {name:name, brand:brand, type:type, form:{url:TODO,label:""}, steps:[], needs:[], turnaround:TODO, contacts:[{role:"Submissions / Boarding", name:TODO, phone:TODO, email:TODO},{role:"Tech / Onboarding", name:TODO, phone:TODO, email:TODO}]}; }
+  // default platform for most products is the Solutions in Payments Portal
+  function p(name, brand, type, platform){ return {name:name, brand:brand, type:type, platform:platform||"Solutions in Payments Portal", form:{url:TODO,label:""}, steps:[], needs:[], turnaround:TODO, contacts:[{role:"Submissions / Boarding", name:TODO, phone:TODO, email:TODO},{role:"Tech / Onboarding", name:TODO, phone:TODO, email:TODO}]}; }
 
   var PRODUCTS = [
     /* ---- POS ---- */
     p("NextPay (Chively)", "NextPay / Chively", "pos"),
-    p("Square", "Square", "pos"),
+    {name:"Square", brand:"Square", type:"pos", platform:"Square — your own agent account",
+     form:{url:TODO, label:""},
+     steps:[
+       "Create your OWN Square account first so you know the flow and can teach merchants",
+       "Walk the merchant through Square's online sign-up / application path",
+       "Have them complete sign-up so the account is tied to us",
+       "Confirm the merchant is approved and processing"
+     ],
+     needs:["Your own Square account (for practice & demo)","Merchant business details & EIN","Merchant bank account for deposits"],
+     turnaround:TODO,
+     contacts:[{role:"Square Support", name:TODO, phone:TODO, email:TODO}]},
     p("Clover", "Fiserv / Clover", "pos"),
-    p("Shift4 Dine", "Shift4", "pos"),
+    {name:"Shift4 Dine (SkyTab)", brand:"Shift4 / SkyTab", type:"pos", platform:"SkyTab Portal (your own login)",
+     form:{url:TODO, label:"Open SkyTab portal"},
+     steps:[
+       "Log in to your SkyTab portal (your access is provided)",
+       "Start a new deal / merchant application in the portal",
+       "Enter the merchant and business details",
+       "Submit through the portal and save the confirmation"
+     ],
+     needs:["Your SkyTab portal login","Merchant business details & EIN","Bank info for deposits"],
+     turnaround:TODO,
+     contacts:[{role:"SkyTab / Shift4 Support", name:TODO, phone:TODO, email:TODO}]},
     p("Quantic", "Quantic", "pos"),
     p("Korona", "Korona", "pos"),
     p("NRS", "National Retail Solutions", "pos"),
@@ -274,7 +344,9 @@
       +    '<svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg>'
       +  '</button>'
       +  '<div class="pbody"><div class="pgrid">'
-      +    '<div class="block"><h4>How to submit</h4>'+steps
+      +    '<div class="block"><h4>How to submit</h4>'
+      +      '<div class="platline"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M14 3h7v7M21 3l-9 9M21 14v5a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h5"/></svg>Submit via: '+esc(pr.platform||"")+'</div>'
+      +      steps
       +      '<div style="margin-top:16px">'+formBtn+'</div>'
       +      '<div class="metaline"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>Turnaround: <b>'+(pr.turnaround?esc(pr.turnaround):'<span class="todo-text">— needs info —</span>')+'</b></div>'
       +    '</div>'
