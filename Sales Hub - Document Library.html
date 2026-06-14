@@ -1,0 +1,213 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Document Library — NextPay Sales Hub</title>
+<link rel="stylesheet" href="css/nextpay.css">
+<style>
+.hub-bar{position:sticky;top:0;z-index:60;background:var(--navy);color:#fff;border-bottom:1px solid rgba(255,255,255,.10)}
+.hub-bar-inner{display:flex;align-items:center;gap:18px;height:66px;max-width:var(--maxw);margin:0 auto;padding:0 28px}
+.hub-bar img.logo{height:34px;width:auto;display:block}
+.hub-bar .pipe{width:1px;height:26px;background:rgba(255,255,255,.18)}
+.hub-bar .hub-tag{font-weight:800;font-size:15px;color:#fff;display:flex;align-items:center;gap:9px}
+.hub-bar .hub-tag .badge{font-size:10.5px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;background:var(--teal);color:#fff;padding:4px 9px;border-radius:999px}
+.hub-bar .right{margin-left:auto;display:flex;align-items:center;gap:20px}
+.hub-bar .right a{color:#cdd8e2;font-weight:600;font-size:14.5px}.hub-bar .right a:hover{color:#fff}
+
+.pg-head{background:linear-gradient(180deg,var(--navy),var(--navy-2));color:#fff}
+.pg-head .wrap{padding:30px 0 34px}
+.crumbs{display:flex;gap:8px;align-items:center;font-size:13.5px;color:#9fb1c2;padding-bottom:14px}
+.crumbs a{color:#cdd8e2;font-weight:600}.crumbs a:hover{color:#fff}.crumbs .sep{opacity:.5}
+.pg-head h1{font-size:clamp(27px,3.8vw,40px);color:#fff;letter-spacing:-.02em}
+.pg-head p.lead{color:#c4d0db;margin-top:12px;max-width:640px;font-size:16.5px;line-height:1.6}
+.pg-search{margin-top:22px;max-width:560px;position:relative}
+.pg-search input{width:100%;border:0;border-radius:999px;padding:15px 18px 15px 48px;font-family:inherit;font-size:15.5px;color:var(--ink);box-shadow:var(--shadow)}
+.pg-search input:focus{outline:2px solid var(--teal-bright)}
+.pg-search svg{position:absolute;left:18px;top:50%;transform:translateY(-50%);width:19px;height:19px;color:var(--slate)}
+
+main.wrap{padding:26px 0 10px}
+/* filter groups */
+.fgroup{display:flex;align-items:center;gap:9px;flex-wrap:wrap;margin-bottom:11px}
+.fgroup .flabel{font-size:11.5px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:var(--slate-2);width:74px;flex:none}
+.chip{display:inline-flex;align-items:center;gap:7px;padding:8px 15px;border-radius:999px;background:#fff;border:1px solid var(--line);font-weight:700;font-size:13.5px;color:var(--slate);cursor:pointer;transition:.14s;font-family:inherit}
+.chip:hover{border-color:var(--teal);color:var(--teal-dark)}
+.chip.active{background:var(--navy);border-color:var(--navy);color:#fff}
+
+.lib-count{font-size:13.5px;color:var(--slate);margin:14px 0 4px;font-weight:600}
+.lib-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;padding-top:6px}
+@media(max-width:980px){.lib-grid{grid-template-columns:1fr 1fr}}
+@media(max-width:640px){.lib-grid{grid-template-columns:1fr}}
+.doc{background:#fff;border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow-sm);padding:20px;display:flex;flex-direction:column;gap:11px;transition:.16s}
+.doc:hover{box-shadow:var(--shadow);transform:translateY(-2px);border-color:var(--teal)}
+.doc-top{display:flex;align-items:center;gap:12px}
+.doc .ft{width:44px;height:44px;border-radius:11px;display:grid;place-items:center;font-size:11px;font-weight:800;color:#fff;flex:none;letter-spacing:.02em}
+.ft.pdf{background:#d6453b}.ft.doc{background:#2b6cb0}.ft.img{background:var(--teal-dark)}.ft.xls{background:#1f8a5b}.ft.link{background:var(--slate)}
+.doc h3{font-size:16px;letter-spacing:-.01em;line-height:1.25}
+.doc .tags{display:flex;gap:6px;flex-wrap:wrap}
+.doc .t{font-size:11px;font-weight:700;padding:4px 9px;border-radius:999px;background:var(--bg-soft-2);color:var(--slate)}
+.doc .t.prod{background:rgba(20,161,140,.12);color:var(--teal-dark)}
+.doc p.dn{font-size:13px;color:var(--slate);line-height:1.45;flex:1}
+.doc .dl{display:inline-flex;align-items:center;gap:7px;font-weight:700;font-size:13.5px;color:var(--teal-dark);margin-top:2px}
+.doc .dl svg{width:15px;height:15px}
+
+/* empty state */
+.lib-empty{display:none;text-align:center;padding:44px 24px;background:var(--bg-soft);border:1px dashed var(--line);border-radius:var(--radius-lg);margin-top:10px}
+.lib-empty.show{display:block}
+.lib-empty .ei{width:60px;height:60px;border-radius:16px;background:#fff;border:1px solid var(--line);display:grid;place-items:center;color:var(--teal-dark);margin:0 auto 14px}
+.lib-empty .ei svg{width:30px;height:30px}
+.lib-empty h3{font-size:19px;margin-bottom:6px}
+.lib-empty p{font-size:14.5px;color:var(--slate);max-width:480px;margin:0 auto;line-height:1.55}
+
+/* how-to-add note */
+.addnote{display:flex;gap:14px;align-items:flex-start;background:#fff;border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow-sm);padding:18px 20px;margin-top:30px}
+.addnote .ni{flex:none;width:42px;height:42px;border-radius:11px;background:rgba(20,161,140,.12);display:grid;place-items:center;color:var(--teal-dark)}
+.addnote .ni svg{width:21px;height:21px}
+.addnote b{font-size:15px}
+.addnote p{font-size:13.5px;color:var(--slate);line-height:1.55;margin-top:3px}
+
+.hub-foot{background:var(--navy);color:#9fb1c2;padding:30px 0;margin-top:46px;font-size:13.5px}
+.hub-foot .wrap{display:flex;justify-content:space-between;gap:18px;flex-wrap:wrap}
+.hub-foot a{color:#cdd8e2;font-weight:600}.hub-foot a:hover{color:#fff}
+</style>
+</head>
+<body>
+
+<div class="hub-bar">
+  <div class="hub-bar-inner">
+    <img class="logo" src="assets/logos/nextpay-nav.png" alt="NextPay">
+    <span class="pipe"></span>
+    <span class="hub-tag">Sales Hub <span class="badge">Internal</span></span>
+    <div class="right"><a href="Sales Hub.html">← Hub home</a></div>
+  </div>
+</div>
+
+<header class="pg-head">
+  <div class="wrap">
+    <div class="crumbs"><a href="Sales Hub.html">Sales Hub</a><span class="sep">/</span><span>Document Library</span></div>
+    <h1>Document Library</h1>
+    <p class="lead">One organized shelf for every PDF, deck, flyer, application, script and form — sorted by product and type. Filter or search to find what you need fast.</p>
+    <div class="pg-search">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg>
+      <input id="libSearch" type="search" placeholder="Search documents — name, product or keyword…" autocomplete="off">
+    </div>
+  </div>
+</header>
+
+<main class="wrap">
+
+  <div class="fgroup" data-dim="product">
+    <span class="flabel">Product</span>
+    <button class="chip active" data-val="all">All products</button>
+    <button class="chip" data-val="pos">POS</button>
+    <button class="chip" data-val="terminals">Terminals</button>
+    <button class="chip" data-val="gateways">Gateways</button>
+    <button class="chip" data-val="invoicing">Invoicing</button>
+    <button class="chip" data-val="general">General</button>
+  </div>
+  <div class="fgroup" data-dim="category">
+    <span class="flabel">Type</span>
+    <button class="chip active" data-val="all">All types</button>
+    <button class="chip" data-val="script">Scripts</button>
+    <button class="chip" data-val="proposal">Proposals</button>
+    <button class="chip" data-val="flyer">Flyers</button>
+    <button class="chip" data-val="onepager">One-Pagers</button>
+    <button class="chip" data-val="form">Forms &amp; Apps</button>
+    <button class="chip" data-val="contract">Contracts</button>
+    <button class="chip" data-val="training">Training</button>
+  </div>
+
+  <div class="lib-count" id="libCount"></div>
+  <div class="lib-grid" id="libGrid"></div>
+
+  <div class="lib-empty" id="libEmpty">
+    <div class="ei"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 7a2 2 0 012-2h4l2 2h8a2 2 0 012 2v8a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><path d="M12 11v5M9.5 13.5h5"/></svg></div>
+    <h3>The library is ready — let's fill it</h3>
+    <p>No documents here yet. Send Dom your first file (name it and say what it's for) and it'll appear here, tagged by product and type.</p>
+  </div>
+
+  <div class="addnote">
+    <div class="ni"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14"/></svg></div>
+    <div>
+      <b>Adding documents</b>
+      <p>Hand Dom one file at a time — share it in Drive or just name it and say what it is (e.g. "NextPay POS flyer" or "Cold-call script — all products"). It gets saved into the site and added here with the right tags. New files can be added any time.</p>
+    </div>
+  </div>
+
+</main>
+
+<footer class="hub-foot">
+  <div class="wrap">
+    <span>NextPay Sales Hub · Document Library · Internal use only.</span>
+    <span><a href="Sales Hub.html">← Back to hub</a></span>
+  </div>
+</footer>
+
+<script>
+/* ===========================================================
+   DOCUMENT LIBRARY DATA
+   Add one object per document. Fields:
+     title    – display name
+     product  – pos | terminals | gateways | invoicing | general
+     category – script | proposal | flyer | onepager | form | contract | training
+     type     – pdf | doc | img | xls | link   (controls the badge)
+     href     – path to the file (e.g. assets/docs/filename.pdf) or URL
+     note     – short description (optional)
+   Example:
+     {title:"NextPay POS Flyer", product:"pos", category:"flyer", type:"pdf",
+      href:"assets/docs/nextpay-pos-flyer.pdf", note:"One-page handout for retail."}
+   =========================================================== */
+var DOCS = [
+  // (empty — documents will be added here as Dom provides them)
+];
+
+var grid=document.getElementById('libGrid'), empty=document.getElementById('libEmpty'),
+    count=document.getElementById('libCount'), search=document.getElementById('libSearch');
+var state={product:'all', category:'all'};
+var FT={pdf:'PDF',doc:'DOC',img:'IMG',xls:'XLS',link:'LINK'};
+
+function card(d){
+  var ext = (d.type||'link').toLowerCase();
+  var prodLabel = {pos:'POS',terminals:'Terminals',gateways:'Gateways',invoicing:'Invoicing',general:'General'}[d.product]||d.product;
+  var catLabel = {script:'Script',proposal:'Proposal',flyer:'Flyer',onepager:'One-Pager',form:'Form',contract:'Contract',training:'Training'}[d.category]||d.category;
+  return '<div class="doc">'
+    + '<div class="doc-top"><span class="ft '+ext+'">'+(FT[ext]||'FILE')+'</span>'
+    + '<h3>'+d.title+'</h3></div>'
+    + '<div class="tags"><span class="t prod">'+prodLabel+'</span><span class="t">'+catLabel+'</span></div>'
+    + (d.note?'<p class="dn">'+d.note+'</p>':'<p class="dn"></p>')
+    + '<a class="dl" href="'+d.href+'" target="_blank" rel="noopener">Open / download '
+    + '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 3v12M7 10l5 5 5-5M5 21h14"/></svg></a>'
+    + '</div>';
+}
+
+function apply(){
+  var q=(search.value||'').trim().toLowerCase();
+  var list=DOCS.filter(function(d){
+    return (state.product==='all'||d.product===state.product)
+        && (state.category==='all'||d.category===state.category)
+        && (!q || (d.title+' '+(d.note||'')+' '+d.product+' '+d.category).toLowerCase().indexOf(q)!==-1);
+  });
+  grid.innerHTML=list.map(card).join('');
+  empty.classList.toggle('show', DOCS.length===0 || list.length===0);
+  if(DOCS.length===0){ count.textContent=''; }
+  else { count.textContent = list.length+' document'+(list.length===1?'':'s')
+        + (list.length!==DOCS.length?(' of '+DOCS.length):''); }
+}
+
+document.querySelectorAll('.fgroup').forEach(function(group){
+  var dim=group.getAttribute('data-dim');
+  group.querySelectorAll('.chip').forEach(function(chip){
+    chip.addEventListener('click', function(){
+      state[dim]=chip.getAttribute('data-val');
+      group.querySelectorAll('.chip').forEach(function(c){c.classList.remove('active');});
+      chip.classList.add('active');
+      apply();
+    });
+  });
+});
+search.addEventListener('input', apply);
+apply();
+</script>
+</body>
+</html>
