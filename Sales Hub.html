@@ -1,0 +1,311 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>NextPay Sales Hub — Internal</title>
+<link rel="stylesheet" href="css/nextpay.css">
+<style>
+/* ===========================================================
+   Sales Hub — INTERNAL tool. Self-contained (no public nav).
+   Brand styles inherited from nextpay.css. Designed so a
+   Cloudflare Access login gate can sit in front with no rework.
+   =========================================================== */
+
+/* ---- internal top bar ---- */
+.hub-bar{position:sticky;top:0;z-index:60;background:var(--navy);color:#fff;border-bottom:1px solid rgba(255,255,255,.10)}
+.hub-bar-inner{display:flex;align-items:center;gap:18px;height:66px;max-width:var(--maxw);margin:0 auto;padding:0 28px}
+.hub-bar img.logo{height:34px;width:auto;display:block}
+.hub-bar .pipe{width:1px;height:26px;background:rgba(255,255,255,.18)}
+.hub-bar .hub-tag{font-weight:800;font-size:15px;letter-spacing:-.01em;color:#fff;display:flex;align-items:center;gap:9px}
+.hub-bar .hub-tag .badge{font-size:10.5px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;background:var(--teal);color:#fff;padding:4px 9px;border-radius:999px}
+.hub-bar .right{margin-left:auto;display:flex;align-items:center;gap:20px}
+.hub-bar .right a{color:#cdd8e2;font-weight:600;font-size:14.5px}
+.hub-bar .right a:hover{color:#fff}
+@media(max-width:680px){.hub-bar .right a.muted-hide{display:none}}
+
+/* ---- hero ---- */
+.hub-hero{background:linear-gradient(180deg,var(--navy),var(--navy-2));color:#fff;position:relative;overflow:hidden}
+.hub-hero::after{content:"";position:absolute;right:-180px;top:-160px;width:560px;height:560px;border-radius:50%;background:radial-gradient(circle,rgba(31,194,166,.18),transparent 70%)}
+.hub-hero .wrap{position:relative;z-index:2;padding:52px 0 40px}
+.hub-hero h1{font-size:clamp(30px,4.4vw,46px);color:#fff;letter-spacing:-.02em;line-height:1.06;max-width:760px}
+.hub-hero h1 em{color:var(--teal-bright);font-style:normal}
+.hub-hero p.lead{color:#c4d0db;margin-top:16px;max-width:620px;font-size:18px;line-height:1.6}
+/* search */
+.hub-search{margin-top:26px;max-width:620px;position:relative}
+.hub-search input{width:100%;border:0;border-radius:999px;padding:16px 20px 16px 50px;font-family:inherit;font-size:16px;color:var(--ink);box-shadow:var(--shadow)}
+.hub-search input:focus{outline:2px solid var(--teal-bright)}
+.hub-search svg{position:absolute;left:19px;top:50%;transform:translateY(-50%);width:20px;height:20px;color:var(--slate)}
+/* quick tools */
+.hub-quick{display:flex;gap:11px;flex-wrap:wrap;margin-top:22px}
+.hub-quick a{display:inline-flex;align-items:center;gap:9px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.16);border-radius:999px;padding:11px 17px;font-size:14.5px;font-weight:700;color:#eaf1f6;transition:.16s}
+.hub-quick a:hover{background:rgba(31,194,166,.18);border-color:var(--teal-bright);color:#fff}
+.hub-quick a svg{width:16px;height:16px;color:var(--teal-bright)}
+
+/* ---- filter tabs ---- */
+.hub-filters{display:flex;gap:9px;flex-wrap:wrap;padding:26px 0 4px}
+.hub-tab{display:inline-flex;align-items:center;gap:8px;padding:10px 18px;border-radius:999px;background:#fff;border:1px solid var(--line);font-weight:700;font-size:14.5px;color:var(--slate);cursor:pointer;transition:.16s;font-family:inherit}
+.hub-tab:hover{border-color:var(--teal);color:var(--teal-dark)}
+.hub-tab.active{background:var(--navy);border-color:var(--navy);color:#fff}
+.hub-tab .dot{width:8px;height:8px;border-radius:50%;background:var(--teal)}
+
+/* ---- section grid ---- */
+.hub-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;padding-top:22px}
+.hub-card{background:#fff;border:1px solid var(--line);border-radius:var(--radius-lg);box-shadow:var(--shadow-sm);padding:26px;display:flex;flex-direction:column;gap:11px;transition:.18s;position:relative;text-align:left}
+.hub-card:hover{box-shadow:var(--shadow);transform:translateY(-3px);border-color:var(--teal)}
+.hub-card .ic{width:50px;height:50px;border-radius:14px;background:rgba(20,161,140,.12);display:grid;place-items:center;color:var(--teal-dark)}
+.hub-card .ic svg{width:25px;height:25px}
+.hub-card h3{font-size:19px;display:flex;align-items:center;gap:9px;flex-wrap:wrap}
+.hub-card p{font-size:14.5px;color:var(--slate);line-height:1.55;flex:1}
+.hub-card .types{display:flex;gap:6px;flex-wrap:wrap;margin-top:2px}
+.hub-card .go{font-size:14.5px;font-weight:700;color:var(--teal-dark);display:inline-flex;align-items:center;gap:7px;margin-top:4px}
+.hub-card:hover .go{gap:10px}
+.hub-card .go svg{width:15px;height:15px;transition:.16s}
+/* status pills */
+.pill{font-size:11px;font-weight:800;letter-spacing:.05em;text-transform:uppercase;padding:4px 10px;border-radius:999px}
+.pill-live{background:rgba(20,161,140,.14);color:var(--teal-dark)}
+.pill-soon{background:var(--bg-soft-2);color:var(--slate-2)}
+.pill-new{background:rgba(242,163,60,.18);color:#b9741a}
+.hub-card.is-soon{opacity:.85}
+.hub-card.is-soon:hover{transform:none;border-color:var(--line);box-shadow:var(--shadow-sm)}
+.hub-card.is-soon .go{color:var(--slate-2)}
+
+/* ---- recently added ---- */
+.hub-recent{background:var(--bg-soft);border:1px solid var(--line);border-radius:var(--radius-lg);padding:26px 28px;margin-top:14px}
+.hub-recent h4{font-size:15px;letter-spacing:.04em;text-transform:uppercase;color:var(--slate);margin-bottom:14px}
+.hub-recent ul{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:2px}
+.hub-recent li a{display:flex;align-items:center;gap:13px;padding:11px 12px;border-radius:11px;transition:.14s}
+.hub-recent li a:hover{background:#fff;box-shadow:var(--shadow-sm)}
+.hub-recent .ri{width:34px;height:34px;border-radius:9px;background:rgba(20,161,140,.12);display:grid;place-items:center;color:var(--teal-dark);flex:none}
+.hub-recent .ri svg{width:17px;height:17px}
+.hub-recent .rt{font-weight:700;font-size:15px}
+.hub-recent .rd{font-size:13px;color:var(--slate)}
+.hub-recent .rmeta{margin-left:auto;font-size:12.5px;color:var(--slate-2);font-weight:600;white-space:nowrap}
+
+/* section heading */
+.hub-sec-head{display:flex;align-items:flex-end;justify-content:space-between;gap:20px;flex-wrap:wrap;margin-bottom:2px}
+.hub-sec-head h2{font-size:26px;letter-spacing:-.02em}
+.hub-sec-head .eyebrow{margin:0 0 6px}
+.hub-empty{display:none;text-align:center;padding:50px 20px;color:var(--slate)}
+.hub-empty.show{display:block}
+
+/* footer note */
+.hub-foot{background:var(--navy);color:#9fb1c2;padding:34px 0;margin-top:60px;font-size:13.5px}
+.hub-foot .wrap{display:flex;justify-content:space-between;gap:18px;flex-wrap:wrap}
+.hub-foot a{color:#cdd8e2;font-weight:600}
+.hub-foot a:hover{color:#fff}
+
+@media(max-width:1000px){.hub-grid{grid-template-columns:1fr 1fr}}
+@media(max-width:680px){.hub-grid{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+
+<!-- INTERNAL TOP BAR -->
+<div class="hub-bar">
+  <div class="hub-bar-inner">
+    <img class="logo" src="assets/logos/nextpay-nav.png" alt="NextPay">
+    <span class="pipe"></span>
+    <span class="hub-tag">Sales Hub <span class="badge">Internal</span></span>
+    <div class="right">
+      <a class="muted-hide" href="index.html" target="_blank" rel="noopener">Main site ↗</a>
+      <a class="muted-hide" href="Pricing.html" target="_blank" rel="noopener">Pricing</a>
+      <a href="Contact.html">Help</a>
+    </div>
+  </div>
+</div>
+
+<!-- HERO + SEARCH -->
+<header class="hub-hero">
+  <div class="wrap">
+    <span class="tag tag-teal" style="background:rgba(31,194,166,.16);color:var(--teal-bright)">For the NextPay sales team</span>
+    <h1 style="margin-top:14px">Everything you need to <em>sell, quote, and close</em> — in one place.</h1>
+    <p class="lead">Pricing sheets, product one-pagers, competitor battlecards, objection handling, training, calculators and tools. Search it, filter by product, and grab what you need on a call.</p>
+
+    <div class="hub-search">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg>
+      <input id="hubSearch" type="search" placeholder="Search the hub — e.g. “dual pricing”, “Clover”, “Square battlecard”…" autocomplete="off">
+    </div>
+
+    <div class="hub-quick">
+      <a href="Pricing.html" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M12 1v22M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"/></svg>Pricing &amp; fee programs</a>
+      <a href="Statement Upload.html" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M12 16V4M7 9l5-5 5 5M5 20h14"/></svg>Statement rate analyzer</a>
+      <a href="quiz.html" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M9 9a3 3 0 116 0c0 2-3 2.5-3 5M12 19h.01"/></svg>Recommendation quiz</a>
+      <a href="#tools"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 10h18M9 16h6"/></svg>Rewards calculator</a>
+    </div>
+  </div>
+</header>
+
+<main class="wrap" style="padding-bottom:20px">
+
+  <!-- FILTER TABS -->
+  <div class="hub-filters" id="hubFilters">
+    <button class="hub-tab active" data-type="all">All resources</button>
+    <button class="hub-tab" data-type="pos"><span class="dot"></span>POS Systems</button>
+    <button class="hub-tab" data-type="terminals"><span class="dot"></span>Terminals</button>
+    <button class="hub-tab" data-type="gateways"><span class="dot"></span>Gateways</button>
+    <button class="hub-tab" data-type="invoicing"><span class="dot"></span>Invoicing</button>
+    <button class="hub-tab" data-type="pricing"><span class="dot"></span>Pricing &amp; Fees</button>
+    <button class="hub-tab" data-type="training"><span class="dot"></span>Training</button>
+  </div>
+
+  <!-- SECTION GRID -->
+  <div class="hub-grid" id="hubGrid">
+
+    <!-- Pricing & Fee Programs -->
+    <a class="hub-card" href="Pricing.html" target="_blank" rel="noopener" data-type="pricing pos terminals gateways invoicing" data-text="pricing fee programs dual pricing cash discount surcharge interchange flat rate rates cost sheets buy rates">
+      <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 1v22M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"/></svg></div>
+      <h3>Pricing &amp; Fee Programs <span class="pill pill-live">Live</span></h3>
+      <p>The single source of truth for processing rates, dual pricing, cash discount, surcharge, IC+, flat rate, buy rates and hardware pricing. All pricing lives here.</p>
+      <span class="go">Open pricing center <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+    </a>
+
+    <!-- Product One-Pagers -->
+    <a class="hub-card is-soon" href="#" onclick="return false" data-type="pos terminals gateways invoicing" data-text="product one pagers spec sheets chively clover square shift4 quantic korona nrs pax dejavoo valor nmi fluidpay authorize hardware specs">
+      <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 3h7l5 5v13H7z"/><path d="M14 3v5h5M9 13h6M9 17h4"/></svg></div>
+      <h3>Product One-Pagers <span class="pill pill-soon">Next up</span></h3>
+      <p>Clean spec sheets for every POS, terminal, gateway and invoicing product — features, ideal fit, pricing and talk-track, ready to screen-share or send.</p>
+      <span class="go">Coming next <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+    </a>
+
+    <!-- Competitor Battlecards -->
+    <a class="hub-card is-soon" href="#" onclick="return false" data-type="pos terminals gateways" data-text="competitor battlecards vs square vs clover vs toast vs shift4 comparison win against objections rebuttals">
+      <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3l8 3v6c0 5-3.5 8-8 9-4.5-1-8-4-8-9V6z"/><path d="M9 12l2 2 4-4"/></svg></div>
+      <h3>Competitor Battlecards <span class="pill pill-soon">Planned</span></h3>
+      <p>Head-to-head cards: NextPay vs Square, Clover, Toast, Stripe and more — where we win, what to say, and how to flip their pitch.</p>
+      <span class="go">Coming soon <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+    </a>
+
+    <!-- Objection Handling -->
+    <a class="hub-card is-soon" href="#" onclick="return false" data-type="training" data-text="objection handling rebuttals i already have a processor too expensive contract cancellation fee scripts talk track">
+      <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg></div>
+      <h3>Objection Handling <span class="pill pill-soon">Planned</span></h3>
+      <p>The top objections reps hear — "I'm in a contract," "your rate's higher," "I love my current POS" — with proven rebuttals and scripts.</p>
+      <span class="go">Coming soon <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+    </a>
+
+    <!-- Sales Training -->
+    <a class="hub-card is-soon" href="#" onclick="return false" data-type="training" data-text="sales training onboarding new rep ramp pitch process discovery closing videos modules certification">
+      <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 10L12 5 2 10l10 5 10-5z"/><path d="M6 12v5c0 1 2.7 3 6 3s6-2 6-3v-5"/></svg></div>
+      <h3>Sales Training <span class="pill pill-soon">Planned</span></h3>
+      <p>Onboarding path for new reps plus ongoing modules — the NextPay pitch, discovery, the rate review process, and closing. Add videos &amp; docs as you build them.</p>
+      <span class="go">Coming soon <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+    </a>
+
+    <!-- Industry Training -->
+    <a class="hub-card is-soon" href="#" onclick="return false" data-type="training" data-text="industry training restaurants retail salons auto repair healthcare verticals how to sell to talk track per industry">
+      <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 21h18M5 21V7l8-4 8 4v14M9 9h.01M9 13h.01M9 17h.01M15 9h.01M15 13h.01M15 17h.01"/></svg></div>
+      <h3>Industry Training <span class="pill pill-soon">Planned</span></h3>
+      <p>How to sell into each vertical — restaurants, retail, salons, auto, healthcare — pain points, the right stack, and the language that lands.</p>
+      <span class="go">Coming soon <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+    </a>
+
+    <!-- Rewards Calculator -->
+    <a class="hub-card is-soon" href="#" onclick="return false" id="tools" data-type="pricing" data-text="rewards calculator merchant rewards points earn estimate volume processing calculate savings">
+      <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="2" width="16" height="20" rx="2"/><path d="M8 6h8M8 10h2M14 10h2M8 14h2M14 14h2M8 18h2M14 18h2"/></svg></div>
+      <h3>Rewards Calculator <span class="pill pill-soon">Planned</span></h3>
+      <p>Plug in a merchant's monthly volume and show the Merchant Rewards points they'd earn — a live close tool you can run on the call.</p>
+      <span class="go">Coming soon <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+    </a>
+
+    <!-- Statement Rate Analyzer -->
+    <a class="hub-card" href="Statement Upload.html" target="_blank" rel="noopener" data-type="pricing" data-text="statement analyzer upload rate review current rate effective rate beat match proposal savings competitor statement">
+      <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 16V4M7 9l5-5 5 5M5 20h14"/></svg></div>
+      <h3>Statement Rate Analyzer <span class="pill pill-live">Live</span></h3>
+      <p>Upload a prospect's current statement, surface their effective rate, then build a proposal to beat or match it. (Existing rate-review flow — we'll grow it into a full in-hub calculator.)</p>
+      <span class="go">Open analyzer <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+    </a>
+
+    <!-- Product & Industry Quizzes -->
+    <a class="hub-card is-soon" href="#" onclick="return false" data-type="training pos terminals gateways invoicing" data-text="quizzes product knowledge industry knowledge test reps certification check learning">
+      <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 9a3 3 0 116 0c0 2-3 2.5-3 5M12 19h.01"/><circle cx="12" cy="12" r="10"/></svg></div>
+      <h3>Product &amp; Industry Quizzes <span class="pill pill-soon">Planned</span></h3>
+      <p>Short knowledge checks on products and verticals so reps prove they know the stack before they pitch it. Track who's certified.</p>
+      <span class="go">Coming soon <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+    </a>
+
+    <!-- Document Library -->
+    <a class="hub-card is-soon" href="#" onclick="return false" data-type="pos terminals gateways invoicing pricing training" data-text="document library downloads pdf decks contracts flyers brochures forms applications upload files assets">
+      <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 7a2 2 0 012-2h4l2 2h8a2 2 0 012 2v8a2 2 0 01-2 2H5a2 2 0 01-2-2z"/></svg></div>
+      <h3>Document Library <span class="pill pill-soon">Planned</span></h3>
+      <p>One organized shelf for every PDF, deck, flyer, application and form — sorted by product type. The "drop it in as you get it" home for your existing material.</p>
+      <span class="go">Coming soon <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+    </a>
+
+    <!-- Product Catalog (organize by type) -->
+    <a class="hub-card" href="POS Systems.html" target="_blank" rel="noopener" data-type="pos terminals gateways invoicing" data-text="product catalog browse by type pos terminals gateways invoicing all products hardware compare">
+      <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5"/><rect x="14" y="14" width="7" height="7" rx="1.5"/></svg></div>
+      <h3>Product Catalog <span class="pill pill-live">Live</span></h3>
+      <p>Browse the full lineup by product type — POS, terminals, gateways, invoicing — with the existing compare engine and spec pages your customers see.</p>
+      <span class="go">Browse catalog <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+    </a>
+
+  </div>
+
+  <div class="hub-empty" id="hubEmpty">
+    <p>No resources match that yet — try another search or filter. New material gets added here as it's created.</p>
+  </div>
+
+  <!-- RECENTLY ADDED -->
+  <section style="padding:46px 0 0">
+    <div class="hub-sec-head">
+      <div><span class="eyebrow">Stay current</span><h2>Recently added</h2></div>
+    </div>
+    <div class="hub-recent" style="margin-top:18px">
+      <h4>Latest updates to the hub</h4>
+      <ul>
+        <li><a href="Pricing.html" target="_blank" rel="noopener"><span class="ri"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 1v22M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"/></svg></span><span><span class="rt">Pricing &amp; fee programs center</span><br><span class="rd">Processing rates, dual pricing, hardware pricing</span></span><span class="rmeta"><span class="pill pill-new">New</span></span></a></li>
+        <li><a href="Statement Upload.html" target="_blank" rel="noopener"><span class="ri"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 16V4M7 9l5-5 5 5M5 20h14"/></svg></span><span><span class="rt">Statement rate analyzer</span><br><span class="rd">Upload a statement, beat or match the rate</span></span><span class="rmeta"><span class="pill pill-new">New</span></span></a></li>
+      </ul>
+    </div>
+  </section>
+
+</main>
+
+<!-- INTERNAL FOOTER -->
+<footer class="hub-foot">
+  <div class="wrap">
+    <span>NextPay Sales Hub · Internal use only — not for public distribution.</span>
+    <span><a href="index.html" target="_blank" rel="noopener">Main site</a> · <a href="Contact.html">Report a problem</a></span>
+  </div>
+</footer>
+
+<script>
+/* ---- live search + product-type filter over the section grid ---- */
+(function(){
+  var search = document.getElementById('hubSearch');
+  var grid   = document.getElementById('hubGrid');
+  var empty  = document.getElementById('hubEmpty');
+  var cards  = Array.prototype.slice.call(grid.querySelectorAll('.hub-card'));
+  var tabs   = Array.prototype.slice.call(document.querySelectorAll('.hub-tab'));
+  var activeType = 'all';
+
+  function apply(){
+    var q = (search.value || '').trim().toLowerCase();
+    var shown = 0;
+    cards.forEach(function(card){
+      var types = (card.getAttribute('data-type') || '').toLowerCase();
+      var text  = ((card.getAttribute('data-text') || '') + ' ' + card.textContent).toLowerCase();
+      var typeOk = activeType === 'all' || types.indexOf(activeType) !== -1;
+      var textOk = !q || text.indexOf(q) !== -1;
+      var ok = typeOk && textOk;
+      card.style.display = ok ? '' : 'none';
+      if(ok) shown++;
+    });
+    empty.classList.toggle('show', shown === 0);
+  }
+
+  search.addEventListener('input', apply);
+  tabs.forEach(function(tab){
+    tab.addEventListener('click', function(){
+      tabs.forEach(function(t){ t.classList.remove('active'); });
+      tab.classList.add('active');
+      activeType = tab.getAttribute('data-type');
+      apply();
+    });
+  });
+})();
+</script>
+</body>
+</html>
