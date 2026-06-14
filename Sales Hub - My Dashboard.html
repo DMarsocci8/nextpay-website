@@ -1,0 +1,252 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>My Dashboard — NextPay Sales Hub</title>
+<link rel="stylesheet" href="css/nextpay.css">
+<style>
+.hub-bar{position:sticky;top:0;z-index:60;background:var(--navy);color:#fff;border-bottom:1px solid rgba(255,255,255,.10)}
+.hub-bar-inner{display:flex;align-items:center;gap:18px;height:66px;max-width:var(--maxw);margin:0 auto;padding:0 28px}
+.hub-bar img.logo{height:34px;width:auto;display:block}
+.hub-bar .pipe{width:1px;height:26px;background:rgba(255,255,255,.18)}
+.hub-bar .hub-tag{font-weight:800;font-size:15px;color:#fff;display:flex;align-items:center;gap:9px}
+.hub-bar .hub-tag .badge{font-size:10.5px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;background:var(--teal);color:#fff;padding:4px 9px;border-radius:999px}
+.hub-bar .right{margin-left:auto;display:flex;align-items:center;gap:20px}
+.hub-bar .right a{color:#cdd8e2;font-weight:600;font-size:14.5px}.hub-bar .right a:hover{color:#fff}
+
+/* hero w/ progress */
+.dash-head{background:linear-gradient(180deg,var(--navy),var(--navy-2));color:#fff}
+.dash-head .wrap{padding:34px 0 38px}
+.crumbs{display:flex;gap:8px;align-items:center;font-size:13.5px;color:#9fb1c2;padding-bottom:14px}
+.crumbs a{color:#cdd8e2;font-weight:600}.crumbs a:hover{color:#fff}.crumbs .sep{opacity:.5}
+.dash-head h1{font-size:clamp(26px,3.8vw,38px);color:#fff;letter-spacing:-.02em}
+.dash-head p.lead{color:#c4d0db;margin-top:8px;font-size:16.5px}
+
+.prog{display:flex;align-items:center;gap:22px;margin-top:24px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.12);border-radius:18px;padding:20px 24px;flex-wrap:wrap}
+.ring{--p:0;width:84px;height:84px;border-radius:50%;flex:none;display:grid;place-items:center;background:conic-gradient(var(--teal-bright) calc(var(--p)*1%), rgba(255,255,255,.14) 0)}
+.ring .inner{width:64px;height:64px;border-radius:50%;background:var(--navy);display:grid;place-items:center;font-weight:800;font-size:19px;color:#fff}
+.prog .ptext{flex:1;min-width:200px}
+.prog .ptext b{font-size:18px;color:#fff}
+.prog .ptext p{font-size:14px;color:#c4d0db;margin-top:3px}
+.prog .pcount{font-size:14px;color:#9fb1c2;font-weight:700;white-space:nowrap}
+
+main.wrap{padding:34px 0 10px}
+.sec{margin-bottom:34px}
+.sec-h{display:flex;align-items:baseline;gap:12px;flex-wrap:wrap;margin-bottom:4px}
+.sec-h h2{font-size:22px;letter-spacing:-.01em}
+.sec-h .eyebrow{margin:0}
+.sec-h span.note{font-size:14px;color:var(--slate)}
+
+/* checklist */
+.tasks{display:flex;flex-direction:column;gap:10px;margin-top:14px}
+.task{display:flex;align-items:flex-start;gap:14px;background:#fff;border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow-sm);padding:16px 18px;transition:.14s}
+.task:hover{border-color:#d4dde3}
+.task.done{background:var(--bg-soft);border-color:var(--line)}
+.task .cb{flex:none;width:24px;height:24px;border-radius:7px;border:2px solid var(--line);background:#fff;cursor:pointer;display:grid;place-items:center;margin-top:1px;transition:.14s}
+.task .cb svg{width:14px;height:14px;color:#fff;opacity:0;transition:.14s}
+.task.done .cb{background:var(--teal);border-color:var(--teal)}
+.task.done .cb svg{opacity:1}
+.task .body{flex:1;min-width:0}
+.task .tt{font-size:15.5px;font-weight:700;color:var(--ink)}
+.task.done .tt{color:var(--slate);text-decoration:line-through}
+.task .td{font-size:13.5px;color:var(--slate);margin-top:2px;line-height:1.45}
+.task .go{font-size:13.5px;font-weight:700;color:var(--teal-dark);white-space:nowrap;display:inline-flex;align-items:center;gap:6px;margin-top:7px}
+.task .go svg{width:14px;height:14px}
+
+/* growth cards */
+.grow-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;margin-top:14px}
+@media(max-width:780px){.grow-grid{grid-template-columns:1fr}}
+.grow{display:flex;gap:14px;align-items:flex-start;background:#fff;border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow-sm);padding:18px;transition:.14s}
+.grow.done{background:var(--bg-soft)}
+.grow .gi{flex:none;width:42px;height:42px;border-radius:11px;background:rgba(20,161,140,.12);display:grid;place-items:center;color:var(--teal-dark)}
+.grow .gi svg{width:21px;height:21px}
+.grow .gt{font-size:15.5px;font-weight:700}
+.grow.done .gt{text-decoration:line-through;color:var(--slate)}
+.grow .gd{font-size:13.5px;color:var(--slate);line-height:1.45;margin-top:3px}
+.grow .cb{flex:none;width:22px;height:22px;border-radius:6px;border:2px solid var(--line);background:#fff;cursor:pointer;display:grid;place-items:center;margin-left:auto;align-self:center}
+.grow .cb svg{width:13px;height:13px;color:#fff;opacity:0}
+.grow.done .cb{background:var(--teal);border-color:var(--teal)}.grow.done .cb svg{opacity:1}
+
+.resetbar{display:flex;justify-content:flex-end;margin-top:6px}
+.resetbar button{background:none;border:0;color:var(--slate);font-weight:600;font-size:13px;cursor:pointer;font-family:inherit}
+.resetbar button:hover{color:var(--ink);text-decoration:underline}
+
+.hub-foot{background:var(--navy);color:#9fb1c2;padding:30px 0;margin-top:40px;font-size:13.5px}
+.hub-foot .wrap{display:flex;justify-content:space-between;gap:18px;flex-wrap:wrap}
+.hub-foot a{color:#cdd8e2;font-weight:600}.hub-foot a:hover{color:#fff}
+</style>
+</head>
+<body>
+
+<div class="hub-bar">
+  <div class="hub-bar-inner">
+    <img class="logo" src="assets/logos/nextpay-nav.png" alt="NextPay">
+    <span class="pipe"></span>
+    <span class="hub-tag">Sales Hub <span class="badge">Internal</span></span>
+    <div class="right"><a href="Sales Hub.html">← Hub home</a></div>
+  </div>
+</div>
+
+<header class="dash-head">
+  <div class="wrap">
+    <div class="crumbs"><a href="Sales Hub.html">Sales Hub</a><span class="sep">/</span><span>My Dashboard</span></div>
+    <h1 id="greet">Welcome to the team 👋</h1>
+    <p class="lead">Your checklist to get ramped, plus immediate steps to grow your book of business. Progress saves automatically on this device.</p>
+
+    <div class="prog">
+      <div class="ring" id="ring"><div class="inner" id="ringPct">0%</div></div>
+      <div class="ptext">
+        <b id="progTitle">Let's get you started</b>
+        <p id="progSub">Check things off as you complete them — your progress bar fills up.</p>
+      </div>
+      <div class="pcount" id="progCount">0 of 0 done</div>
+    </div>
+  </div>
+</header>
+
+<main class="wrap">
+
+  <div class="sec">
+    <div class="sec-h"><span class="eyebrow">Step 1</span><h2>Get set up</h2><span class="note">Do these first — takes about 30 minutes.</span></div>
+    <div class="tasks" data-group="setup"></div>
+  </div>
+
+  <div class="sec">
+    <div class="sec-h"><span class="eyebrow">Step 2</span><h2>Learn what you're selling</h2><span class="note">Know the products and the industries before you pitch.</span></div>
+    <div class="tasks" data-group="learn"></div>
+  </div>
+
+  <div class="sec">
+    <div class="sec-h"><span class="eyebrow">Step 3</span><h2>Start selling</h2><span class="note">Get your first deals moving.</span></div>
+    <div class="tasks" data-group="sell"></div>
+  </div>
+
+  <div class="sec" id="grow">
+    <div class="sec-h"><span class="eyebrow">Keep growing</span><h2>Immediate steps to grow your portfolio</h2><span class="note">High-leverage habits that compound.</span></div>
+    <div class="grow-grid" id="growGrid"></div>
+  </div>
+
+  <div class="resetbar"><button id="resetBtn" type="button">Reset my progress</button></div>
+
+</main>
+
+<footer class="hub-foot">
+  <div class="wrap">
+    <span>NextPay Sales Hub · My Dashboard · Progress saved on this device.</span>
+    <span><a href="Sales Hub.html">← Back to hub</a></span>
+  </div>
+</footer>
+
+<script>
+/* ---- data: edit here to add/change tasks ---- */
+var GROUPS = {
+  setup:[
+    {id:'s1', t:'Make your business card', d:'Add your name, cell and email, then print or save a PDF.', href:'Sales Hub - Business Card.html', link:'Open card maker'},
+    {id:'s2', t:'Read the pricing & fee programs', d:'Know dual pricing, cash discount and how we price processing.', href:'Pricing.html', link:'Open pricing', blank:true},
+    {id:'s3', t:'Learn how to submit a deal', d:'Walk the per-product order & submission playbook.', href:'Sales Hub - Submit a Deal.html', link:'Open playbook'},
+    {id:'s4', t:'Bookmark the Sales Hub', d:'Save this hub so it is one click away on every device.', href:'', link:''}
+  ],
+  learn:[
+    {id:'l1', t:'Complete sales training', d:'The NextPay pitch, discovery and closing basics.', href:'Sales Hub.html', link:'Find training'},
+    {id:'l2', t:'Review the product one-pagers', d:'Know the top POS, terminals, gateways and invoicing options.', href:'POS Systems.html', link:'Browse products', blank:true},
+    {id:'l3', t:'Know your industries', d:'How to sell into restaurants, retail, services and healthcare.', href:'Industries.html', link:'View industries', blank:true},
+    {id:'l4', t:'Pass a product quiz', d:'Prove you know the stack before you pitch it.', href:'', link:''}
+  ],
+  sell:[
+    {id:'x1', t:'Run your first rate review', d:'Use the statement analyzer to beat or match a prospect rate.', href:'Statement Upload.html', link:'Open analyzer', blank:true},
+    {id:'x2', t:'Build a list of 10 local prospects', d:'Businesses you can walk into or call this week.', href:'', link:''},
+    {id:'x3', t:'Submit your first deal', d:'Follow the product playbook end to end.', href:'Sales Hub - Submit a Deal.html', link:'How to submit'},
+    {id:'x4', t:'Book your first 3 appointments', d:'Get face time on the calendar.', href:'', link:''}
+  ]
+};
+
+var GROWTH = [
+  {id:'g1', t:'Ask every merchant for 2 referrals', d:'Your happiest customers are your best lead source — ask right after the install.', icon:'<path d="M16 21v-2a4 4 0 00-4-4H6a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 00-3-3.9M16 3.1a4 4 0 010 7.8"/>'},
+  {id:'g2', t:'Partner with complementary businesses', d:'Bookkeepers, POS resellers, web designers and business consultants send deals your way.', icon:'<path d="M3 7l9-4 9 4v10l-9 4-9-4z"/><path d="M3 7l9 4 9-4M12 11v10"/>'},
+  {id:'g3', t:'Re-contact past leads & no-decisions', d:'Deals that stalled often close later — a simple follow-up wins business.', icon:'<path d="M3 12a9 9 0 109-9 9 9 0 00-9 9zM3 12H1m11-7V3"/><path d="M12 7v5l3 2"/>'},
+  {id:'g4', t:'Offer free statement analysis', d:'Lead with a no-pressure rate review for 5 local businesses this week.', icon:'<path d="M12 16V4M7 9l5-5 5 5M5 20h14"/>'},
+  {id:'g5', t:'Post a win on social weekly', d:'Share a savings story or install — keeps you top of mind in your network.', icon:'<rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/>'},
+  {id:'g6', t:'Attend one networking event/month', d:'Chambers, BNI groups and local meetups are full of business owners.', icon:'<circle cx="12" cy="10" r="3"/><path d="M12 2a8 8 0 00-8 8c0 5 8 12 8 12s8-7 8-12a8 8 0 00-8-8z"/>'}
+];
+
+/* ---- persistence ---- */
+var PKEY='np_rep_progress';
+function loadDone(){ try{return JSON.parse(localStorage.getItem(PKEY))||{};}catch(e){return {};} }
+function saveDone(d){ try{localStorage.setItem(PKEY,JSON.stringify(d));}catch(e){} }
+var done = loadDone();
+
+var CHECK='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M5 13l4 4L19 7"/></svg>';
+
+function taskHTML(it){
+  var link = it.href ? '<a class="go" href="'+it.href+'"'+(it.blank?' target="_blank" rel="noopener"':'')+'>'+it.link+' <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>' : '';
+  return '<div class="task'+(done[it.id]?' done':'')+'" data-id="'+it.id+'">'
+    + '<button class="cb" aria-label="toggle">'+CHECK+'</button>'
+    + '<div class="body"><div class="tt">'+it.t+'</div><div class="td">'+it.d+'</div>'+link+'</div></div>';
+}
+function growHTML(it){
+  return '<div class="grow'+(done[it.id]?' done':'')+'" data-id="'+it.id+'">'
+    + '<div class="gi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">'+it.icon+'</svg></div>'
+    + '<div><div class="gt">'+it.t+'</div><div class="gd">'+it.d+'</div></div>'
+    + '<button class="cb" aria-label="toggle">'+CHECK+'</button></div>';
+}
+
+Object.keys(GROUPS).forEach(function(g){
+  document.querySelector('.tasks[data-group="'+g+'"]').innerHTML = GROUPS[g].map(taskHTML).join('');
+});
+document.getElementById('growGrid').innerHTML = GROWTH.map(growHTML).join('');
+
+/* ---- progress math ---- */
+function allIds(){
+  var ids=[];
+  Object.keys(GROUPS).forEach(function(g){ GROUPS[g].forEach(function(it){ ids.push(it.id); }); });
+  GROWTH.forEach(function(it){ ids.push(it.id); });
+  return ids;
+}
+function refresh(){
+  var ids=allIds(), total=ids.length, complete=ids.filter(function(id){return done[id];}).length;
+  var pct = total? Math.round(complete/total*100):0;
+  document.getElementById('ring').style.setProperty('--p', pct);
+  document.getElementById('ringPct').textContent = pct+'%';
+  document.getElementById('progCount').textContent = complete+' of '+total+' done';
+  var title=document.getElementById('progTitle'), sub=document.getElementById('progSub');
+  if(pct===0){ title.textContent='Let\'s get you started'; sub.textContent='Check things off as you complete them — your progress fills up.'; }
+  else if(pct===100){ title.textContent='You\'re fully ramped 🎉'; sub.textContent='Now keep working the growth habits below to build your portfolio.'; }
+  else { title.textContent='Nice progress — keep going'; sub.textContent='You\'re building momentum. Finish your checklist, then grow.'; }
+}
+
+/* ---- toggle handling ---- */
+function toggle(id, el){
+  done[id] = !done[id];
+  if(!done[id]) delete done[id];
+  saveDone(done);
+  el.classList.toggle('done');
+  refresh();
+}
+document.querySelectorAll('.task').forEach(function(el){
+  el.querySelector('.cb').addEventListener('click', function(){ toggle(el.getAttribute('data-id'), el); });
+});
+document.querySelectorAll('.grow').forEach(function(el){
+  el.querySelector('.cb').addEventListener('click', function(){ toggle(el.getAttribute('data-id'), el); });
+});
+
+document.getElementById('resetBtn').addEventListener('click', function(){
+  if(!confirm('Reset all your progress on this device?')) return;
+  done={}; saveDone(done);
+  document.querySelectorAll('.task.done,.grow.done').forEach(function(el){el.classList.remove('done');});
+  refresh();
+});
+
+/* ---- greeting from saved rep profile ---- */
+(function(){
+  try{
+    var p = JSON.parse(localStorage.getItem('np_rep_profile'))||{};
+    if(p.name){ document.getElementById('greet').textContent = 'Welcome back, '+p.name.split(/\s+/)[0]+' 👋'; }
+  }catch(e){}
+})();
+
+refresh();
+</script>
+</body>
+</html>

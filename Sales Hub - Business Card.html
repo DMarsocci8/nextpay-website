@@ -1,0 +1,217 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Business Card Maker — NextPay Sales Hub</title>
+<link rel="stylesheet" href="css/nextpay.css">
+<style>
+/* shared internal bar */
+.hub-bar{position:sticky;top:0;z-index:60;background:var(--navy);color:#fff;border-bottom:1px solid rgba(255,255,255,.10)}
+.hub-bar-inner{display:flex;align-items:center;gap:18px;height:66px;max-width:var(--maxw);margin:0 auto;padding:0 28px}
+.hub-bar img.logo{height:34px;width:auto;display:block}
+.hub-bar .pipe{width:1px;height:26px;background:rgba(255,255,255,.18)}
+.hub-bar .hub-tag{font-weight:800;font-size:15px;color:#fff;display:flex;align-items:center;gap:9px}
+.hub-bar .hub-tag .badge{font-size:10.5px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;background:var(--teal);color:#fff;padding:4px 9px;border-radius:999px}
+.hub-bar .right{margin-left:auto;display:flex;align-items:center;gap:20px}
+.hub-bar .right a{color:#cdd8e2;font-weight:600;font-size:14.5px}.hub-bar .right a:hover{color:#fff}
+
+.pg-head{background:linear-gradient(180deg,var(--navy),var(--navy-2));color:#fff}
+.pg-head .wrap{padding:28px 0 30px}
+.crumbs{display:flex;gap:8px;align-items:center;font-size:13.5px;color:#9fb1c2;padding-bottom:14px}
+.crumbs a{color:#cdd8e2;font-weight:600}.crumbs a:hover{color:#fff}.crumbs .sep{opacity:.5}
+.pg-head h1{font-size:clamp(26px,3.6vw,38px);color:#fff;letter-spacing:-.02em}
+.pg-head p.lead{color:#c4d0db;margin-top:10px;max-width:600px;font-size:16.5px;line-height:1.55}
+
+.layout{display:grid;grid-template-columns:380px 1fr;gap:40px;padding:36px 0 20px;align-items:start}
+@media(max-width:900px){.layout{grid-template-columns:1fr;gap:28px}}
+
+/* form */
+.form-card{background:#fff;border:1px solid var(--line);border-radius:var(--radius-lg);box-shadow:var(--shadow-sm);padding:26px}
+.form-card h2{font-size:18px;margin-bottom:4px}
+.form-card .hint{font-size:13.5px;color:var(--slate);margin-bottom:18px}
+.field{margin-bottom:15px}
+.field label{display:block;font-size:13px;font-weight:700;color:var(--ink);margin-bottom:6px}
+.field input{width:100%;border:1px solid var(--line);border-radius:10px;padding:11px 13px;font-family:inherit;font-size:15px;color:var(--ink)}
+.field input:focus{outline:2px solid var(--teal)}
+.saved-note{font-size:12.5px;color:var(--teal-dark);font-weight:600;margin-top:2px;min-height:16px}
+.actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:8px}
+
+/* preview */
+.preview h2{font-size:15px;letter-spacing:.04em;text-transform:uppercase;color:var(--slate);margin-bottom:14px}
+.stage{display:flex;flex-wrap:wrap;gap:30px}
+@media screen{.stage{zoom:1.7}}            /* enlarge on screen only */
+.bizcard{width:3.5in;height:2in;border-radius:10px;overflow:hidden;box-shadow:0 6px 24px rgba(12,27,42,.18);position:relative;background:var(--navy);color:#fff;display:flex;flex-direction:column;justify-content:space-between;padding:.2in .24in}
+.bizcard.back{background:linear-gradient(135deg,var(--teal),var(--teal-dark));align-items:center;justify-content:center}
+.bizcard.back .blogo{height:.42in;width:auto;filter:none}
+.bizcard.back .btag{margin-top:.08in;font-size:6.5pt;letter-spacing:.16em;text-transform:uppercase;color:rgba(255,255,255,.85);font-weight:700}
+.bc-top{display:flex;align-items:center;justify-content:space-between}
+.bc-logo{height:.3in;width:auto}
+.bc-accent{width:.5in;height:3px;background:var(--teal-bright);border-radius:2px}
+.bc-name{font-size:13pt;font-weight:800;letter-spacing:-.01em;line-height:1.05}
+.bc-title{font-size:6.5pt;font-weight:700;letter-spacing:.13em;text-transform:uppercase;color:var(--teal-bright);margin-top:2px}
+.bc-rule{height:1px;background:rgba(255,255,255,.16);margin:.07in 0}
+.bc-lines{display:flex;flex-direction:column;gap:1.5px}
+.bc-line{display:flex;align-items:center;gap:6px;font-size:7pt;color:#dbe5ee;font-weight:500}
+.bc-line svg{width:8pt;height:8pt;color:var(--teal-bright);flex:none}
+.bc-mid{display:flex;flex-direction:column;justify-content:center;flex:1;padding:.05in 0}
+
+.tip{display:flex;gap:12px;align-items:flex-start;background:var(--bg-soft);border:1px solid var(--line);border-radius:12px;padding:14px 16px;margin-top:26px;max-width:560px}
+.tip svg{width:18px;height:18px;color:var(--teal-dark);flex:none;margin-top:2px}
+.tip p{font-size:13.5px;color:var(--slate);line-height:1.5}
+
+.hub-foot{background:var(--navy);color:#9fb1c2;padding:30px 0;margin-top:46px;font-size:13.5px}
+.hub-foot .wrap{display:flex;justify-content:space-between;gap:18px;flex-wrap:wrap}
+.hub-foot a{color:#cdd8e2;font-weight:600}.hub-foot a:hover{color:#fff}
+
+/* ---- print: show only the cards, at true size ---- */
+@media print{
+  .hub-bar,.pg-head,.form-card,.preview h2,.tip,.hub-foot,.actions{display:none !important}
+  body{background:#fff}
+  .layout{display:block;padding:0}
+  .stage{zoom:1;gap:.3in;display:block}
+  .bizcard{box-shadow:none;margin:0 0 .3in 0;page-break-inside:avoid}
+  @page{size:3.5in 2in;margin:0}
+}
+</style>
+</head>
+<body>
+
+<div class="hub-bar">
+  <div class="hub-bar-inner">
+    <img class="logo" src="assets/logos/nextpay-nav.png" alt="NextPay">
+    <span class="pipe"></span>
+    <span class="hub-tag">Sales Hub <span class="badge">Internal</span></span>
+    <div class="right"><a href="Sales Hub.html">← Hub home</a></div>
+  </div>
+</div>
+
+<header class="pg-head">
+  <div class="wrap">
+    <div class="crumbs"><a href="Sales Hub.html">Sales Hub</a><span class="sep">/</span><span>Business Card Maker</span></div>
+    <h1>Make your business card</h1>
+    <p class="lead">Type your details once, check the live preview, then print or save as PDF. Your info is saved on this device and reused to personalize one-pagers too.</p>
+  </div>
+</header>
+
+<main class="wrap">
+  <div class="layout">
+
+    <!-- FORM -->
+    <div class="form-card">
+      <h2>Your details</h2>
+      <p class="hint">Fill these in — the card updates as you type.</p>
+
+      <div class="field"><label for="f-name">Full name</label><input id="f-name" type="text" placeholder="Alex Rivera" autocomplete="name"></div>
+      <div class="field"><label for="f-title">Title</label><input id="f-title" type="text" placeholder="Payments Consultant" autocomplete="organization-title"></div>
+      <div class="field"><label for="f-cell">Cell phone</label><input id="f-cell" type="tel" placeholder="(555) 123-4567" autocomplete="tel"></div>
+      <div class="field"><label for="f-email">Email</label><input id="f-email" type="email" placeholder="alex@nextpaypos.com" autocomplete="email"></div>
+      <div class="field"><label for="f-book">Booking link <span style="color:var(--slate-2);font-weight:500">(optional)</span></label><input id="f-book" type="text" placeholder="calendly.com/alex-nextpay"></div>
+      <div class="saved-note" id="savedNote"></div>
+
+      <div class="actions">
+        <button class="btn btn-primary btn-sm" onclick="window.print()">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M6 9V2h12v7M6 18H4a2 2 0 01-2-2v-5a2 2 0 012-2h16a2 2 0 012 2v5a2 2 0 01-2 2h-2M6 14h12v8H6z"/></svg>
+          Print / Save PDF
+        </button>
+        <button class="btn btn-outline btn-sm" id="clearBtn" type="button">Clear</button>
+      </div>
+    </div>
+
+    <!-- PREVIEW -->
+    <div class="preview">
+      <h2>Live preview — front &amp; back</h2>
+      <div class="stage">
+        <!-- FRONT -->
+        <div class="bizcard front">
+          <div class="bc-top">
+            <img class="bc-logo" src="assets/logos/nextpay-nav.png" alt="NextPay">
+            <span class="bc-accent"></span>
+          </div>
+          <div class="bc-mid">
+            <div class="bc-name" id="c-name">Your Name</div>
+            <div class="bc-title" id="c-title">Payments Consultant</div>
+          </div>
+          <div>
+            <div class="bc-rule"></div>
+            <div class="bc-lines">
+              <span class="bc-line" id="line-cell"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.9v3a2 2 0 01-2.2 2 19.8 19.8 0 01-8.6-3 19.5 19.5 0 01-6-6 19.8 19.8 0 01-3-8.6A2 2 0 014.1 2h3a2 2 0 012 1.7c.1.9.4 1.8.7 2.7a2 2 0 01-.5 2.1L8.1 9.9a16 16 0 006 6l1.4-1.2a2 2 0 012.1-.4c.9.3 1.8.6 2.7.7a2 2 0 011.7 2z"/></svg><span id="c-cell">(555) 123-4567</span></span>
+              <span class="bc-line" id="line-email"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M2 7l10 6 10-6"/></svg><span id="c-email">you@nextpaypos.com</span></span>
+              <span class="bc-line"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15 15 0 010 20 15 15 0 010-20"/></svg><span>nextpaypos.com</span></span>
+              <span class="bc-line" id="line-book" style="display:none"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg><span id="c-book"></span></span>
+            </div>
+          </div>
+        </div>
+        <!-- BACK -->
+        <div class="bizcard back">
+          <img class="blogo" src="assets/logos/nextpay-nav.png" alt="NextPay">
+          <div class="btag">Smarter Solutions. Stronger Businesses.</div>
+        </div>
+      </div>
+
+      <div class="tip">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4M12 8h.01"/></svg>
+        <p><b>Printing tip:</b> click <b>Print / Save PDF</b>, choose “Save as PDF” (or your printer), set margins to <b>None</b> and scale to <b>100%</b>. Each card prints at true 3.5″ × 2″ size — send the PDF to any print shop, or use card stock at home.</p>
+      </div>
+    </div>
+
+  </div>
+</main>
+
+<footer class="hub-foot">
+  <div class="wrap">
+    <span>NextPay Sales Hub · Business Card Maker · Internal use only.</span>
+    <span><a href="Sales Hub.html">← Back to hub</a></span>
+  </div>
+</footer>
+
+<script>
+/* shared rep profile — reused across the hub (one-pagers, dashboard greeting) */
+var KEY = 'np_rep_profile';
+
+function load(){ try{ return JSON.parse(localStorage.getItem(KEY)) || {}; }catch(e){ return {}; } }
+function save(p){ try{ localStorage.setItem(KEY, JSON.stringify(p)); }catch(e){} }
+
+var fields = {name:'f-name', title:'f-title', cell:'f-cell', email:'f-email', booking:'f-book'};
+var prof = load();
+
+// hydrate inputs from saved profile
+Object.keys(fields).forEach(function(k){
+  var el = document.getElementById(fields[k]);
+  if(prof[k]) el.value = prof[k];
+});
+
+function update(){
+  var p = {};
+  Object.keys(fields).forEach(function(k){ p[k] = document.getElementById(fields[k]).value.trim(); });
+  save(p);
+
+  document.getElementById('c-name').textContent  = p.name  || 'Your Name';
+  document.getElementById('c-title').textContent = p.title || 'Payments Consultant';
+  document.getElementById('c-cell').textContent  = p.cell  || '(555) 123-4567';
+  document.getElementById('c-email').textContent = p.email || 'you@nextpaypos.com';
+
+  var bookLine = document.getElementById('line-book');
+  if(p.booking){ document.getElementById('c-book').textContent = p.booking; bookLine.style.display=''; }
+  else bookLine.style.display='none';
+
+  var note = document.getElementById('savedNote');
+  note.textContent = (p.name || p.email) ? '✓ Saved on this device — reused for your one-pagers' : '';
+}
+
+Object.keys(fields).forEach(function(k){
+  document.getElementById(fields[k]).addEventListener('input', update);
+});
+
+document.getElementById('clearBtn').addEventListener('click', function(){
+  if(!confirm('Clear your saved details on this device?')) return;
+  Object.keys(fields).forEach(function(k){ document.getElementById(fields[k]).value=''; });
+  localStorage.removeItem(KEY);
+  update();
+});
+
+update();
+</script>
+</body>
+</html>
