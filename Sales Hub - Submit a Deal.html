@@ -104,6 +104,14 @@
 
 .platline{display:inline-flex;align-items:center;gap:8px;font-size:13px;font-weight:700;color:var(--teal-dark);background:rgba(20,161,140,.1);border-radius:999px;padding:6px 13px;margin-bottom:14px}
 .platline svg{width:14px;height:14px}
+/* "how to apply" methods note */
+.methods{display:flex;gap:10px;align-items:flex-start;background:rgba(20,161,140,.08);border:1px solid rgba(20,161,140,.22);border-radius:11px;padding:12px 14px;font-size:13px;color:var(--ink);line-height:1.5;margin-bottom:16px}
+.methods svg{width:16px;height:16px;color:var(--teal-dark);flex:none;margin-top:2px}
+.methods b{color:var(--teal-dark)}
+/* multiple application links */
+.applinks{display:flex;flex-direction:column;gap:13px;margin-top:16px}
+.applink-row{display:flex;flex-direction:column;gap:5px}
+.applink-note{font-size:12.5px;color:var(--slate);padding-left:2px}
 
 /* submission portals panel */
 .portals{margin-top:26px}
@@ -244,15 +252,20 @@
   var PRODUCTS = [
     /* ---- POS ---- */
     p("NextPay (Chively)", "NextPay / Chively", "pos"),
-    {name:"Square", brand:"Square", type:"pos", platform:"Square — your own agent account",
-     form:{url:TODO, label:""},
-     steps:[
-       "Create your OWN Square account first so you know the flow and can teach merchants",
-       "Walk the merchant through Square's online sign-up / application path",
-       "Have them complete sign-up so the account is tied to us",
-       "Confirm the merchant is approved and processing"
+    {name:"Square", brand:"Square", type:"pos", platform:"Square application links (apply live, or send to the merchant)",
+     methods:"<b>Preferred:</b> set the merchant up live on the link while you're on the phone or in front of them. You can also send them the link to complete the application themselves.",
+     links:[
+       {label:"Apply — Cash Discount 4%", url:"https://app.squareup.com/signup/en-us?signup_token=C76D31CB54", note:"Use for merchants going on Cash Discount (4%)."},
+       {label:"Apply — Rack Rate (Interchange Plus)", url:"https://app.squareup.com/signup/en-us?signup_token=1DC988FC39", note:"Standard rack rate — interchange plus pricing."}
      ],
-     needs:["Your own Square account (for practice & demo)","Merchant business details & EIN","Merchant bank account for deposits"],
+     steps:[
+       "Pick the right link for the merchant's pricing — Cash Discount 4% or Rack Rate (Interchange Plus)",
+       "Preferred: open the link and set the merchant up live, on the phone or in person",
+       "Or send the merchant the link to complete the sign-up themselves",
+       "Complete the Square application with the merchant's business and bank details",
+       "Confirm the account is approved and processing"
+     ],
+     needs:["The right pricing link (Cash Discount vs Rack Rate)","Merchant business details & EIN","Merchant bank account for deposits","Owner contact info"],
      turnaround:TODO,
      contacts:[{role:"Square Support", name:TODO, phone:TODO, email:TODO}]},
     p("Clover", "Fiserv / Clover", "pos"),
@@ -313,7 +326,7 @@
   function val(s){ return s ? esc(s) : '<span class="todo-text">— needs info —</span>'; }
   function initials(n){ return n ? n.split(/\s+/).slice(0,2).map(function(w){return w[0];}).join("").toUpperCase() : "?"; }
 
-  function isReady(pr){ return !!(pr.form.url && pr.steps.length && pr.turnaround); }
+  function isReady(pr){ return !!(((pr.links && pr.links.length) || pr.form.url) && pr.steps.length); }
 
   function render(){
     var list = document.getElementById('plist');
@@ -325,9 +338,19 @@
       var needs = pr.needs.length
         ? '<ul class="needs">'+pr.needs.map(function(s){return '<li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg>'+esc(s)+'</li>';}).join('')+'</ul>'
         : '<p class="todo-text">— required items needed —</p>';
-      var formBtn = pr.form.url
-        ? '<a class="formbtn" href="'+esc(pr.form.url)+'" target="_blank" rel="noopener">'+esc(pr.form.label||"Open order form")+' <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>'
-        : '<span class="formbtn todo"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 9v4M12 17h.01M10.3 3.9L1.8 18a2 2 0 001.7 3h17a2 2 0 001.7-3L13.7 3.9a2 2 0 00-3.4 0z"/></svg>Order form link needed</span>';
+      var arrow = ' <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg>';
+      var applyBlock;
+      if(pr.links && pr.links.length){
+        applyBlock = '<div class="applinks">'+pr.links.map(function(l){
+          return '<div class="applink-row"><a class="formbtn" href="'+esc(l.url)+'" target="_blank" rel="noopener">'+esc(l.label)+arrow+'</a>'
+            + (l.note?'<span class="applink-note">'+esc(l.note)+'</span>':'')+'</div>';
+        }).join('')+'</div>';
+      } else if(pr.form.url){
+        applyBlock = '<div style="margin-top:16px"><a class="formbtn" href="'+esc(pr.form.url)+'" target="_blank" rel="noopener">'+esc(pr.form.label||"Open order form")+arrow+'</a></div>';
+      } else {
+        applyBlock = '<div style="margin-top:16px"><span class="formbtn todo"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 9v4M12 17h.01M10.3 3.9L1.8 18a2 2 0 001.7 3h17a2 2 0 001.7-3L13.7 3.9a2 2 0 00-3.4 0z"/></svg>Order form link needed</span></div>';
+      }
+      var methods = pr.methods ? '<div class="methods"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2a10 10 0 100 20 10 10 0 000-20zM12 16v-4M12 8h.01"/></svg><div>'+pr.methods+'</div></div>' : '';
       var contacts = '<div class="contacts">'+pr.contacts.map(function(c){
         return '<div class="contact"><div class="av">'+initials(c.name)+'</div><div><div class="crole">'+esc(c.role)+'</div><div class="cname">'+val(c.name)+'</div><div class="cways">'
           +'<span>Phone: '+ (c.phone?('<a href="tel:'+esc(c.phone)+'">'+esc(c.phone)+'</a>'):'<span class="todo-text">—</span>') +'</span>'
@@ -346,8 +369,9 @@
       +  '<div class="pbody"><div class="pgrid">'
       +    '<div class="block"><h4>How to submit</h4>'
       +      '<div class="platline"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M14 3h7v7M21 3l-9 9M21 14v5a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h5"/></svg>Submit via: '+esc(pr.platform||"")+'</div>'
+      +      methods
       +      steps
-      +      '<div style="margin-top:16px">'+formBtn+'</div>'
+      +      applyBlock
       +      '<div class="metaline"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>Turnaround: <b>'+(pr.turnaround?esc(pr.turnaround):'<span class="todo-text">— needs info —</span>')+'</b></div>'
       +    '</div>'
       +    '<div class="block"><h4>Have ready</h4>'+needs
