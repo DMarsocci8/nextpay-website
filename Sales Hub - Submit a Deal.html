@@ -248,9 +248,11 @@
 
   // Shift4 Partner Portal login (Sales Center is where applications are submitted)
   var SHIFT4_PORTAL = "https://link.shift4payments.com/auth/login?redirectUrl=https%3A%2F%2Fapi.dealer-portal.shift4.com%2Fapi%2Fauth%2Flink%3Fredirect%3Dhttps%253A%252F%252Fpartner-portal.shift4.com%252F%252F";
-  // Shift4 Partner Academy (training) — shared block reused on Shift4 products
+  // Shift4 Partner Academy (training) + referral — shared block reused on Shift4 products
   var SHIFT4_TRAIN_BLOCK = '<h4 style="margin-top:22px">Training</h4>'
-    + '<div style="margin-top:10px"><a class="formbtn" href="https://shift4partneracademy.learnupon.com/users/sign_in?next=%2Fmy-learning" target="_blank" rel="noopener">Open Shift4 Partner Academy <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></div>';
+    + '<div style="margin-top:10px"><a class="formbtn" href="https://shift4partneracademy.learnupon.com/users/sign_in?next=%2Fmy-learning" target="_blank" rel="noopener">Open Shift4 Partner Academy <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></div>'
+    + '<h4 style="margin-top:22px">Refer Shift4</h4>'
+    + '<div class="methods"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 21v-2a4 4 0 00-4-4H6a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 00-3-3.9M16 3.1a4 4 0 010 7.8"/></svg><div>Have someone who wants to <b>refer Shift4</b>? Use office code <b>SP527</b> on the referral form. <i>(Referral link still needed.)</i></div></div>';
 
   // default platform for most products is the Solutions in Payments Portal
   function p(name, brand, type, platform){ return {name:name, brand:brand, type:type, platform:platform||"Solutions in Payments Portal", form:{url:TODO,label:""}, steps:[], needs:[], turnaround:TODO, contacts:[{role:"Submissions / Boarding", name:TODO, phone:TODO, email:TODO},{role:"Tech / Onboarding", name:TODO, phone:TODO, email:TODO}]}; }
