@@ -1,0 +1,10 @@
+# Cloudflare Pages redirects — clean shortcuts to the Sales Hub
+/hub      /Sales%20Hub.html                       302
+/hub/     /Sales%20Hub.html                       302
+/submit   /Sales%20Hub%20-%20Submit%20a%20Deal.html        302
+/library  /Sales%20Hub%20-%20Document%20Library.html       302
+/training /Sales%20Hub%20-%20Training.html                 302
+/dashboard /Sales%20Hub%20-%20My%20Dashboard.html          302
+/leads    /Sales%20Hub%20-%20Lead%20Generation.html        302
+/promos   /Sales%20Hub%20-%20Promotions.html               302
+/card     /Sales%20Hub%20-%20Business%20Card.html          302
