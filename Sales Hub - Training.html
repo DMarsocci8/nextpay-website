@@ -1,0 +1,274 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Training Academy — NextPay Sales Hub</title>
+<link rel="stylesheet" href="css/nextpay.css">
+<style>
+.hub-bar{position:sticky;top:0;z-index:60;background:var(--navy);color:#fff;border-bottom:1px solid rgba(255,255,255,.10)}
+.hub-bar-inner{display:flex;align-items:center;gap:18px;height:66px;max-width:var(--maxw);margin:0 auto;padding:0 28px}
+.hub-bar img.logo{height:34px;width:auto;display:block}
+.hub-bar .pipe{width:1px;height:26px;background:rgba(255,255,255,.18)}
+.hub-bar .hub-tag{font-weight:800;font-size:15px;color:#fff;display:flex;align-items:center;gap:9px}
+.hub-bar .hub-tag .badge{font-size:10.5px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;background:var(--teal);color:#fff;padding:4px 9px;border-radius:999px}
+.hub-bar .right{margin-left:auto;display:flex;align-items:center;gap:20px}
+.hub-bar .right a{color:#cdd8e2;font-weight:600;font-size:14.5px}.hub-bar .right a:hover{color:#fff}
+
+.t-head{background:linear-gradient(180deg,var(--navy),var(--navy-2));color:#fff}
+.t-head .wrap{padding:32px 0 36px}
+.crumbs{display:flex;gap:8px;align-items:center;font-size:13.5px;color:#9fb1c2;padding-bottom:14px}
+.crumbs a{color:#cdd8e2;font-weight:600}.crumbs a:hover{color:#fff}.crumbs .sep{opacity:.5}
+.t-head h1{font-size:clamp(27px,3.8vw,40px);color:#fff;letter-spacing:-.02em}
+.t-head p.lead{color:#c4d0db;margin-top:10px;max-width:640px;font-size:16.5px;line-height:1.6}
+.prog{display:flex;align-items:center;gap:22px;margin-top:24px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.12);border-radius:18px;padding:18px 24px;flex-wrap:wrap}
+.ring{--p:0;width:78px;height:78px;border-radius:50%;flex:none;display:grid;place-items:center;background:conic-gradient(var(--teal-bright) calc(var(--p)*1%), rgba(255,255,255,.14) 0)}
+.ring .inner{width:60px;height:60px;border-radius:50%;background:var(--navy);display:grid;place-items:center;font-weight:800;font-size:17px;color:#fff}
+.prog .ptext b{font-size:17px;color:#fff}
+.prog .ptext p{font-size:13.5px;color:#c4d0db;margin-top:3px}
+.prog .pcount{margin-left:auto;font-size:14px;color:#9fb1c2;font-weight:700;white-space:nowrap}
+
+main.wrap{padding:30px 0 10px}
+.module{margin-bottom:30px}
+.mod-head{display:flex;align-items:baseline;gap:13px;flex-wrap:wrap;margin-bottom:4px}
+.mod-head .mnum{font-size:12px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:var(--teal-dark);background:rgba(20,161,140,.12);padding:5px 11px;border-radius:999px}
+.mod-head h2{font-size:22px;letter-spacing:-.01em}
+.mod-intro{font-size:14.5px;color:var(--slate);margin:2px 0 14px}
+
+.lesson{background:#fff;border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow-sm);margin-bottom:12px;overflow:hidden}
+.lhead{display:flex;align-items:center;gap:14px;width:100%;background:none;border:0;padding:17px 20px;cursor:pointer;text-align:left;font-family:inherit}
+.lhead .dot{width:24px;height:24px;border-radius:50%;border:2px solid var(--line);flex:none;display:grid;place-items:center}
+.lhead .dot svg{width:13px;height:13px;color:#fff;opacity:0}
+.lesson.done .lhead .dot{background:var(--teal);border-color:var(--teal)}
+.lesson.done .lhead .dot svg{opacity:1}
+.lhead .lt{font-size:16px;font-weight:700;color:var(--ink);flex:1}
+.lhead .ld{font-size:12.5px;color:var(--slate-2);font-weight:600;white-space:nowrap}
+.lhead .chev{width:20px;height:20px;color:var(--slate-2);transition:.2s;flex:none}
+.lesson.open .lhead .chev{transform:rotate(180deg)}
+.lbody{display:none;padding:4px 20px 22px;border-top:1px solid var(--line)}
+.lesson.open .lbody{display:block}
+
+.vid{position:relative;padding-bottom:56.25%;height:0;border-radius:12px;overflow:hidden;margin:16px 0;background:#000}
+.vid iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+.vid-ph{display:flex;align-items:center;gap:12px;justify-content:center;background:var(--bg-soft);border:1px dashed var(--line);border-radius:12px;padding:26px;color:var(--slate);font-size:14px;font-weight:600;margin:16px 0;text-align:center}
+.vid-ph svg{width:26px;height:26px;color:var(--teal-dark);flex:none}
+
+.lcontent{font-size:15px;color:var(--ink);line-height:1.65}
+.lcontent p{margin:0 0 12px}
+.lcontent h4{font-size:15px;margin:18px 0 8px}
+.lcontent ul{margin:0 0 12px;padding-left:20px}
+.lcontent li{margin-bottom:6px}
+.lcontent .todo-note{background:var(--bg-soft);border:1px dashed var(--line);border-radius:10px;padding:14px;color:var(--slate);font-style:italic}
+
+.quiz{background:var(--bg-soft);border:1px solid var(--line);border-radius:12px;padding:18px;margin-top:18px}
+.quiz h4{font-size:14px;letter-spacing:.03em;text-transform:uppercase;color:var(--slate);margin-bottom:10px}
+.quiz .q{font-size:15px;font-weight:700;margin-bottom:12px}
+.quiz label{display:flex;align-items:center;gap:10px;padding:10px 12px;border:1px solid var(--line);border-radius:10px;background:#fff;margin-bottom:8px;cursor:pointer;font-size:14.5px;transition:.12s}
+.quiz label:hover{border-color:var(--teal)}
+.quiz label.correct{border-color:var(--teal);background:rgba(20,161,140,.1)}
+.quiz label.wrong{border-color:#d6453b;background:rgba(214,69,59,.08)}
+.quiz .qres{font-size:13.5px;font-weight:700;margin-top:6px;display:none}
+.quiz .qres.show{display:block}
+.quiz .qres.ok{color:var(--teal-dark)}.quiz .qres.no{color:#c0392b}
+
+.lactions{display:flex;gap:10px;flex-wrap:wrap;margin-top:18px}
+
+.empty-mod{text-align:center;padding:46px 24px;background:var(--bg-soft);border:1px dashed var(--line);border-radius:var(--radius-lg)}
+.empty-mod h3{font-size:18px;margin-bottom:6px}
+.empty-mod p{font-size:14.5px;color:var(--slate);max-width:520px;margin:0 auto;line-height:1.55}
+
+.build-note{display:flex;gap:14px;align-items:flex-start;background:#fff;border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow-sm);padding:18px 20px;margin-top:26px}
+.build-note .ni{flex:none;width:42px;height:42px;border-radius:11px;background:rgba(20,161,140,.12);display:grid;place-items:center;color:var(--teal-dark)}
+.build-note .ni svg{width:21px;height:21px}
+.build-note b{font-size:15px}.build-note p{font-size:13.5px;color:var(--slate);line-height:1.55;margin-top:3px}
+
+.hub-foot{background:var(--navy);color:#9fb1c2;padding:30px 0;margin-top:44px;font-size:13.5px}
+.hub-foot .wrap{display:flex;justify-content:space-between;gap:18px;flex-wrap:wrap}
+.hub-foot a{color:#cdd8e2;font-weight:600}.hub-foot a:hover{color:#fff}
+</style>
+</head>
+<body>
+
+<div class="hub-bar">
+  <div class="hub-bar-inner">
+    <img class="logo" src="assets/logos/nextpay-nav.png" alt="NextPay">
+    <span class="pipe"></span>
+    <span class="hub-tag">Sales Hub <span class="badge">Internal</span></span>
+    <div class="right"><a href="Sales Hub.html">← Hub home</a></div>
+  </div>
+</div>
+
+<header class="t-head">
+  <div class="wrap">
+    <div class="crumbs"><a href="Sales Hub.html">Sales Hub</a><span class="sep">/</span><span>Training Academy</span></div>
+    <h1>NextPay Training Academy</h1>
+    <p class="lead">Original, NextPay-branded sales training — modules, lessons, videos and quizzes. Work through it at your own pace; your progress saves automatically.</p>
+    <div class="prog">
+      <div class="ring" id="ring"><div class="inner" id="ringPct">0%</div></div>
+      <div class="ptext"><b id="progTitle">Start learning</b><p id="progSub">Complete lessons to fill your progress bar.</p></div>
+      <div class="pcount" id="progCount">0 of 0 lessons</div>
+    </div>
+  </div>
+</header>
+
+<main class="wrap" id="modules"></main>
+
+<div class="wrap">
+  <div class="build-note">
+    <div class="ni"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14"/></svg></div>
+    <div>
+      <b>This is the training shell — ready to fill</b>
+      <p>Modules and lessons are added from the data list at the bottom of this page. Send Dom the section/lesson titles (screenshots are fine) and the scripts, and finished NextPay-branded lessons drop in here — each with a video slot that accepts a YouTube/Vimeo link once recorded.</p>
+    </div>
+  </div>
+</div>
+
+<footer class="hub-foot">
+  <div class="wrap">
+    <span>NextPay Sales Hub · Training Academy · Internal use only.</span>
+    <span><a href="Sales Hub.html">← Back to hub</a></span>
+  </div>
+</footer>
+
+<script>
+/* ===========================================================
+   NEXTPAY TRAINING — content lives here.
+   A module = { title, intro, lessons:[ lesson, ... ] }
+   A lesson = {
+     id      : unique short id (used to save progress)
+     title   : lesson name
+     duration: e.g. "5 min" (optional)
+     video   : YouTube/Vimeo URL, or "" for a "video coming" slot
+     body     : HTML string of the lesson content (original NextPay content)
+     quiz    : { q:"question", options:["a","b",...], answer:index }  (optional)
+   }
+   All lesson content is ORIGINAL and NextPay-branded — written fresh,
+   not copied from any other platform.
+   =========================================================== */
+var MODULES = [
+  {
+    title:"Payments Foundations",
+    intro:"Start here — the basics every rep needs before pitching. (Sample module — keep, edit, or replace as your curriculum comes in.)",
+    lessons:[
+      {
+        id:"pf-1",
+        title:"How a card payment actually works",
+        duration:"5 min",
+        video:"",
+        body:"<p>Before you can sell payment processing, you need to understand what actually happens when a customer taps or swipes a card. Every transaction moves through the same handful of players in just a couple of seconds.</p>"
+            +"<h4>The five players</h4>"
+            +"<ul>"
+            +"<li><b>Cardholder</b> — the customer paying with their card.</li>"
+            +"<li><b>Merchant</b> — your prospect, the business getting paid.</li>"
+            +"<li><b>Acquirer / processor</b> — moves the transaction for the merchant (this is the side NextPay sets up).</li>"
+            +"<li><b>Card network</b> — Visa, Mastercard, Discover, Amex — the rails the transaction rides on.</li>"
+            +"<li><b>Issuing bank</b> — the customer's bank that issued the card and approves the charge.</li>"
+            +"</ul>"
+            +"<h4>The flow, in plain English</h4>"
+            +"<p><b>1) Authorization:</b> the card is presented, the request travels through the processor and network to the issuing bank, which approves or declines in about a second. <b>2) Clearing &amp; funding:</b> at the end of the day the approved transactions are batched and the money is moved, landing in the merchant's bank account (usually next day).</p>"
+            +"<h4>Where the fees come from</h4>"
+            +"<p>The cost of accepting a card is built from three pieces: <b>interchange</b> (set by the card networks, paid to the issuing bank), <b>assessments</b> (the networks' own small fee), and the <b>processor markup</b>. Interchange and assessments are the same for everyone — the markup is where pricing programs like dual pricing change the math for the merchant. We'll cover those next.</p>",
+        quiz:{ q:"Who sets interchange rates?", options:["The merchant","The card networks (Visa/Mastercard)","The acquirer/processor","The cardholder"], answer:1 }
+      }
+    ]
+  }
+];
+
+/* ---------- engine ---------- */
+var PKEY='np_training_progress';
+function loadDone(){ try{return JSON.parse(localStorage.getItem(PKEY))||{};}catch(e){return {};} }
+function saveDone(d){ try{localStorage.setItem(PKEY,JSON.stringify(d));}catch(e){} }
+var done=loadDone();
+var CHECK='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M5 13l4 4L19 7"/></svg>';
+
+function videoEmbed(url){
+  if(!url) return '<div class="vid-ph"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M10 8l6 4-6 4z" fill="currentColor"/></svg>Video coming soon — script ready to record.</div>';
+  var yt=url.match(/(?:youtu\.be\/|youtube\.com\/(?:watch\?v=|embed\/|shorts\/))([\w-]{11})/);
+  if(yt) return '<div class="vid"><iframe src="https://www.youtube.com/embed/'+yt[1]+'" allowfullscreen loading="lazy"></iframe></div>';
+  var vm=url.match(/vimeo\.com\/(\d+)/);
+  if(vm) return '<div class="vid"><iframe src="https://player.vimeo.com/video/'+vm[1]+'" allowfullscreen loading="lazy"></iframe></div>';
+  return '<div class="vid"><iframe src="'+url+'" allowfullscreen loading="lazy"></iframe></div>';
+}
+
+function lessonHTML(L){
+  var quiz='';
+  if(L.quiz){
+    quiz='<div class="quiz" data-answer="'+L.quiz.answer+'"><h4>Knowledge check</h4><div class="q">'+L.quiz.q+'</div>'
+      + L.quiz.options.map(function(o,i){return '<label data-i="'+i+'"><input type="radio" name="q-'+L.id+'">'+o+'</label>';}).join('')
+      + '<div class="qres"></div></div>';
+  }
+  var body = L.body || '<div class="todo-note">Lesson content coming soon.</div>';
+  return '<div class="lesson'+(done[L.id]?' done':'')+'" data-id="'+L.id+'">'
+    + '<button class="lhead" type="button"><span class="dot">'+CHECK+'</span>'
+    + '<span class="lt">'+L.title+'</span>'
+    + (L.duration?'<span class="ld">'+L.duration+'</span>':'')
+    + '<svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg></button>'
+    + '<div class="lbody">'+videoEmbed(L.video)+'<div class="lcontent">'+body+'</div>'+quiz
+    + '<div class="lactions"><button class="btn btn-primary btn-sm mark">'+(done[L.id]?'✓ Completed':'Mark lesson complete')+'</button></div>'
+    + '</div></div>';
+}
+
+function render(){
+  var root=document.getElementById('modules');
+  if(!MODULES.length || !MODULES.some(function(m){return m.lessons&&m.lessons.length;})){
+    root.innerHTML='<div class="empty-mod"><h3>No lessons yet</h3><p>The Academy is ready. Send the section/lesson titles and scripts, and branded lessons appear here.</p></div>';
+    refresh(); return;
+  }
+  root.innerHTML=MODULES.map(function(m,mi){
+    var lessons=(m.lessons||[]).map(lessonHTML).join('');
+    return '<section class="module"><div class="mod-head"><span class="mnum">Module '+(mi+1)+'</span><h2>'+m.title+'</h2></div>'
+      + (m.intro?'<p class="mod-intro">'+m.intro+'</p>':'')
+      + (lessons||'<div class="empty-mod"><p>Lessons coming soon.</p></div>')
+      + '</section>';
+  }).join('');
+
+  // accordion
+  root.querySelectorAll('.lhead').forEach(function(h){
+    h.addEventListener('click', function(){ h.parentNode.classList.toggle('open'); });
+  });
+  // quiz
+  root.querySelectorAll('.quiz').forEach(function(q){
+    var ans=+q.getAttribute('data-answer');
+    q.querySelectorAll('label').forEach(function(lab){
+      lab.addEventListener('click', function(){
+        q.querySelectorAll('label').forEach(function(l){l.classList.remove('correct','wrong');});
+        var i=+lab.getAttribute('data-i');
+        var res=q.querySelector('.qres');
+        if(i===ans){ lab.classList.add('correct'); res.className='qres show ok'; res.textContent='Correct!'; }
+        else { lab.classList.add('wrong'); q.querySelector('label[data-i="'+ans+'"]').classList.add('correct'); res.className='qres show no'; res.textContent='Not quite — the highlighted answer is correct.'; }
+      });
+    });
+  });
+  // mark complete
+  root.querySelectorAll('.lesson').forEach(function(el){
+    var id=el.getAttribute('data-id');
+    el.querySelector('.mark').addEventListener('click', function(e){
+      e.stopPropagation();
+      done[id]=!done[id]; if(!done[id]) delete done[id];
+      saveDone(done);
+      el.classList.toggle('done', !!done[id]);
+      e.target.textContent = done[id]?'✓ Completed':'Mark lesson complete';
+      refresh();
+    });
+  });
+  refresh();
+}
+
+function refresh(){
+  var ids=[]; MODULES.forEach(function(m){(m.lessons||[]).forEach(function(l){ids.push(l.id);});});
+  var total=ids.length, complete=ids.filter(function(id){return done[id];}).length;
+  var pct=total?Math.round(complete/total*100):0;
+  document.getElementById('ring').style.setProperty('--p',pct);
+  document.getElementById('ringPct').textContent=pct+'%';
+  document.getElementById('progCount').textContent=complete+' of '+total+' lesson'+(total===1?'':'s');
+  var t=document.getElementById('progTitle'), s=document.getElementById('progSub');
+  if(pct===0){t.textContent='Start learning';s.textContent='Complete lessons to fill your progress bar.';}
+  else if(pct===100){t.textContent='Academy complete 🎉';s.textContent='You\'ve finished every lesson — nice work.';}
+  else{t.textContent='Keep going';s.textContent='You\'re making progress — finish the remaining lessons.';}
+}
+
+render();
+</script>
+</body>
+</html>
