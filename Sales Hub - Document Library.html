@@ -109,6 +109,7 @@ main.wrap{padding:26px 0 10px}
   <div class="fgroup" data-dim="category">
     <span class="flabel">Type</span>
     <button class="chip active" data-val="all">All types</button>
+    <button class="chip" data-val="pricing">Pricing</button>
     <button class="chip" data-val="script">Scripts</button>
     <button class="chip" data-val="proposal">Proposals</button>
     <button class="chip" data-val="flyer">Flyers</button>
@@ -187,7 +188,10 @@ var DOCS = [
    note:"How to resell Square as an agent — program details and how it works."},
   {title:"Square — YouTube Channel", product:"pos", category:"training", type:"link",
    href:"https://www.youtube.com/square",
-   note:"Square's official YouTube — product videos, demos and how-tos."}
+   note:"Square's official YouTube — product videos, demos and how-tos."},
+  {title:"Square Reseller Pricing", product:"pos", category:"pricing", type:"xls",
+   href:"https://docs.google.com/spreadsheets/d/1c5fABFs3DypowMQJjS05p29IFaaT7O59YLrhGnIizEI/edit?gid=0#gid=0",
+   note:"Square reseller pricing sheet."}
 ];
 
 var grid=document.getElementById('libGrid'), empty=document.getElementById('libEmpty'),
@@ -198,7 +202,7 @@ var FT={pdf:'PDF',doc:'DOC',img:'IMG',xls:'XLS',link:'LINK'};
 function card(d){
   var ext = (d.type||'link').toLowerCase();
   var prodLabel = {pos:'POS',terminals:'Terminals',gateways:'Gateways',invoicing:'Invoicing',general:'General'}[d.product]||d.product;
-  var catLabel = {script:'Script',proposal:'Proposal',flyer:'Flyer',onepager:'One-Pager',deck:'Presentation',form:'Form',contract:'Contract',training:'Training',portal:'Portal'}[d.category]||d.category;
+  var catLabel = {pricing:'Pricing',script:'Script',proposal:'Proposal',flyer:'Flyer',onepager:'One-Pager',deck:'Presentation',form:'Form',contract:'Contract',training:'Training',portal:'Portal'}[d.category]||d.category;
   return '<div class="doc">'
     + '<div class="doc-top"><span class="ft '+ext+'">'+(FT[ext]||'FILE')+'</span>'
     + '<h3>'+d.title+'</h3></div>'
