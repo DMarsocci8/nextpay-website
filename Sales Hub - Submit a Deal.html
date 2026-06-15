@@ -511,12 +511,13 @@
       el.scrollIntoView({behavior:'smooth', block:'start'});
       el.classList.add('flash');
       setTimeout(function(){ el.classList.remove('flash'); }, 1400);
-    }, 80);
+    }, 200);
   }
 
   render();
   openFromHash();
   window.addEventListener('hashchange', openFromHash);
+  window.addEventListener('load', openFromHash);
   document.getElementById('search').addEventListener('input', applyFilter);
   Array.prototype.forEach.call(document.querySelectorAll('.tab'), function(tab){
     tab.addEventListener('click', function(){
