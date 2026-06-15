@@ -295,9 +295,11 @@ function requestInterest(val){
     var interests=fd.getAll('interest');
     if(!interests.length){ alert('Pick at least one option you are interested in.'); return; }
     var name=fd.get('name')||'there';
-    fd.append('_subject','Lead-gen interest — '+(fd.get('name')||'Agent')+' ('+interests.join(', ')+')');
-    fd.append('_cc','alexander@nextpaypos.com');
-    fd.append('_template','table');
+    fd.append('access_key','ee318ebf-e50a-4aaf-a11c-5efd7dd86a8b');
+    fd.append('subject','Lead-gen interest — '+(fd.get('name')||'Agent')+' ('+interests.join(', ')+')');
+    fd.append('from_name','NextPay Sales Hub');
+    fd.append('cc','alexander@nextpaypos.com');
+    fd.append('Interested in',interests.join(', '));
     fd.append('Source','Sales Hub — Lead Generation interest form');
     var btn=form.querySelector('button[type=submit]'); if(btn){btn.disabled=true;btn.textContent='Sending…';}
     var d=document.getElementById('leadDone');
@@ -312,9 +314,9 @@ function requestInterest(val){
       d.classList.add('show');
       d.scrollIntoView({behavior:'smooth',block:'center'});
     }
-    fetch('https://formsubmit.co/ajax/dom@nextpaypos.com',{method:'POST',headers:{'Accept':'application/json'},body:fd})
+    fetch('https://api.web3forms.com/submit',{method:'POST',headers:{'Accept':'application/json'},body:fd})
       .then(function(r){return r.json();})
-      .then(function(res){ finish(res && (res.success===true || res.success==='true'), res && res.message); })
+      .then(function(res){ finish(res && res.success, res && res.message); })
       .catch(function(){ finish(false,'Network error reaching the form service. Please try again.'); });
   });
 })();
