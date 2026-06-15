@@ -72,6 +72,8 @@
 .phead .plogo{width:48px;height:48px;border-radius:11px;background:#fff;border:1px solid var(--line);display:grid;place-items:center;flex:none;padding:7px;box-shadow:var(--shadow-sm)}
 .phead .plogo img{max-width:100%;max-height:100%;object-fit:contain;display:block}
 .phead .plogo.dark{background:var(--navy);border-color:var(--navy)}
+.pitem{scroll-margin-top:84px}
+.pitem.flash{box-shadow:0 0 0 2px var(--teal);transition:box-shadow .3s}
 .status{font-size:11px;font-weight:800;letter-spacing:.05em;text-transform:uppercase;padding:3px 9px;border-radius:999px}
 .status.todo{background:var(--bg-soft-2);color:var(--slate-2)}
 .status.ready{background:rgba(20,161,140,.14);color:var(--teal-dark)}
@@ -381,6 +383,7 @@
   function initials(n){ return n ? n.split(/\s+/).slice(0,2).map(function(w){return w[0];}).join("").toUpperCase() : "?"; }
 
   function isReady(pr){ return !!(((pr.links && pr.links.length) || pr.form.url) && pr.steps.length); }
+  function slug(s){ return (s||"").toLowerCase().replace(/[^a-z0-9]+/g,'-').replace(/^-|-$/g,''); }
 
   function render(){
     var list = document.getElementById('plist');
@@ -413,7 +416,7 @@
       }).join('')+'</div>';
 
       return ''
-      +'<div class="pitem" data-type="'+pr.type+'" data-text="'+esc((pr.name+' '+pr.brand+' '+TYPE_LABEL[pr.type]).toLowerCase())+'">'
+      +'<div class="pitem" id="p-'+slug(pr.name)+'" data-type="'+pr.type+'" data-text="'+esc((pr.name+' '+pr.brand+' '+TYPE_LABEL[pr.type]).toLowerCase())+'">'
       +  '<button class="phead" type="button" data-i="'+i+'">'
       +    (LOGOS[pr.name] ? '<span class="plogo'+(DARK_LOGOS[pr.name]?' dark':'')+'"><img src="assets/logos/'+LOGOS[pr.name]+'" alt="'+esc(pr.name)+' logo" loading="lazy"></span>' : '')
       +    '<span class="left"><span class="pname">'+esc(pr.name)+'</span><span class="pmeta">'+esc(pr.brand)+'</span></span>'
@@ -458,7 +461,29 @@
     document.getElementById('empty').classList.toggle('show', shown===0);
   }
 
+  // open + scroll to a product when linked with a #hash (e.g. from Promotions)
+  function openFromHash(){
+    var h = (location.hash||'').replace('#','');
+    if(!h) return;
+    var el = document.getElementById(h);
+    if(!el) return;
+    // make sure filters don't hide it
+    document.getElementById('search').value='';
+    Array.prototype.forEach.call(document.querySelectorAll('.tab'), function(t){
+      t.classList.toggle('active', t.getAttribute('data-type')==='all');
+    });
+    applyFilter();
+    el.classList.add('open');
+    setTimeout(function(){
+      el.scrollIntoView({behavior:'smooth', block:'start'});
+      el.classList.add('flash');
+      setTimeout(function(){ el.classList.remove('flash'); }, 1400);
+    }, 80);
+  }
+
   render();
+  openFromHash();
+  window.addEventListener('hashchange', openFromHash);
   document.getElementById('search').addEventListener('input', applyFilter);
   Array.prototype.forEach.call(document.querySelectorAll('.tab'), function(tab){
     tab.addEventListener('click', function(){
