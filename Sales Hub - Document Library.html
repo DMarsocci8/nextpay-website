@@ -113,6 +113,7 @@ main.wrap{padding:26px 0 10px}
     <button class="chip" data-val="proposal">Proposals</button>
     <button class="chip" data-val="flyer">Flyers</button>
     <button class="chip" data-val="onepager">One-Pagers</button>
+    <button class="chip" data-val="deck">Presentations</button>
     <button class="chip" data-val="form">Forms &amp; Apps</button>
     <button class="chip" data-val="contract">Contracts</button>
     <button class="chip" data-val="training">Training</button>
@@ -161,7 +162,10 @@ main.wrap{padding:26px 0 10px}
 var DOCS = [
   {title:"Shift4 Partner Academy — Training", product:"general", category:"training", type:"link",
    href:"https://shift4partneracademy.learnupon.com/users/sign_in?next=%2Fmy-learning",
-   note:"Shift4's LearnUpon partner academy — product courses & training. Sign in with your partner academy login."}
+   note:"Shift4's LearnUpon partner academy — product courses & training. Sign in with your partner academy login."},
+  {title:"Shift4 Prospect Presentation Deck", product:"pos", category:"deck", type:"link",
+   href:"https://dine.shift4.com/digideck",
+   note:"Shift4 Digideck — presentation to walk prospects through during your pitch."}
 ];
 
 var grid=document.getElementById('libGrid'), empty=document.getElementById('libEmpty'),
@@ -172,7 +176,7 @@ var FT={pdf:'PDF',doc:'DOC',img:'IMG',xls:'XLS',link:'LINK'};
 function card(d){
   var ext = (d.type||'link').toLowerCase();
   var prodLabel = {pos:'POS',terminals:'Terminals',gateways:'Gateways',invoicing:'Invoicing',general:'General'}[d.product]||d.product;
-  var catLabel = {script:'Script',proposal:'Proposal',flyer:'Flyer',onepager:'One-Pager',form:'Form',contract:'Contract',training:'Training'}[d.category]||d.category;
+  var catLabel = {script:'Script',proposal:'Proposal',flyer:'Flyer',onepager:'One-Pager',deck:'Presentation',form:'Form',contract:'Contract',training:'Training'}[d.category]||d.category;
   return '<div class="doc">'
     + '<div class="doc-top"><span class="ft '+ext+'">'+(FT[ext]||'FILE')+'</span>'
     + '<h3>'+d.title+'</h3></div>'
