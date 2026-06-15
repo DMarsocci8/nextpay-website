@@ -74,6 +74,13 @@
 .phead .plogo.dark{background:var(--navy);border-color:var(--navy)}
 .pitem{scroll-margin-top:84px}
 .pitem.flash{box-shadow:0 0 0 2px var(--teal);transition:box-shadow .3s}
+.status.offer{background:rgba(242,163,60,.18);color:#b9741a}
+.promo-banner{display:flex;align-items:center;gap:12px;background:rgba(242,163,60,.1);border:1px solid rgba(242,163,60,.32);border-radius:12px;padding:12px 15px;margin:4px 0 16px;text-decoration:none}
+.promo-banner:hover{background:rgba(242,163,60,.16)}
+.promo-banner .pb-ic{font-size:18px;flex:none}
+.promo-banner .pb-txt{font-size:13.5px;color:var(--slate);line-height:1.4}
+.promo-banner .pb-txt b{color:var(--ink)}
+.promo-banner .pb-go{margin-left:auto;color:#b9741a;font-weight:800;white-space:nowrap;font-size:13.5px}
 .status{font-size:11px;font-weight:800;letter-spacing:.05em;text-transform:uppercase;padding:3px 9px;border-radius:999px}
 .status.todo{background:var(--bg-soft-2);color:var(--slate-2)}
 .status.ready{background:rgba(20,161,140,.14);color:var(--teal-dark)}
@@ -377,6 +384,12 @@
   };
   // logos that are white/reversed and need a dark backing
   var DARK_LOGOS = {"Chively":1};
+  // products with an active promotion (shows an Offer badge + banner linking to Promotions)
+  var PROMO = {
+    "Shift4 Dine":"$5,000 switch incentive — no upfront, free install, training & menu programming.",
+    "Clover":"Placement program — no upfront costs, just pay monthly.",
+    "Square":"Financing available — no upfront, pay the hardware over time."
+  };
 
   function esc(s){ return (s||"").replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;"); }
   function val(s){ return s ? esc(s) : '<span class="todo-text">— needs info —</span>'; }
@@ -421,10 +434,13 @@
       +    (LOGOS[pr.name] ? '<span class="plogo'+(DARK_LOGOS[pr.name]?' dark':'')+'"><img src="assets/logos/'+LOGOS[pr.name]+'" alt="'+esc(pr.name)+' logo" loading="lazy"></span>' : '')
       +    '<span class="left"><span class="pname">'+esc(pr.name)+'</span><span class="pmeta">'+esc(pr.brand)+'</span></span>'
       +    '<span class="ptag">'+esc(TYPE_LABEL[pr.type])+'</span>'
+      +    (PROMO[pr.name] ? '<span class="status offer">🎁 Offer</span>' : '')
       +    '<span class="status '+(ready?'ready':'todo')+'">'+(ready?'Ready':'Needs info')+'</span>'
       +    '<svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg>'
       +  '</button>'
-      +  '<div class="pbody"><div class="pgrid">'
+      +  '<div class="pbody">'
+      +    (PROMO[pr.name] ? '<a class="promo-banner" href="Sales Hub - Promotions.html"><span class="pb-ic">🎁</span><span class="pb-txt"><b>Current offer:</b> '+esc(PROMO[pr.name])+'</span><span class="pb-go">View promotions →</span></a>' : '')
+      +    '<div class="pgrid">'
       +    '<div class="block"><h4>How to submit</h4>'
       +      '<div class="platline"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M14 3h7v7M21 3l-9 9M21 14v5a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h5"/></svg>Submit via: '+esc(pr.platform||"")+'</div>'
       +      methods
