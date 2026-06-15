@@ -71,6 +71,7 @@
 .phead .left{flex:1;min-width:0}
 .phead .plogo{width:48px;height:48px;border-radius:11px;background:#fff;border:1px solid var(--line);display:grid;place-items:center;flex:none;padding:7px;box-shadow:var(--shadow-sm)}
 .phead .plogo img{max-width:100%;max-height:100%;object-fit:contain;display:block}
+.phead .plogo.dark{background:var(--navy);border-color:var(--navy)}
 .status{font-size:11px;font-weight:800;letter-spacing:.05em;text-transform:uppercase;padding:3px 9px;border-radius:999px}
 .status.todo{background:var(--bg-soft-2);color:var(--slate-2)}
 .status.ready{background:rgba(20,161,140,.14);color:var(--teal-dark)}
@@ -261,7 +262,6 @@
 
   var PRODUCTS = [
     /* ---- POS ---- */
-    p("NextPay (Chively)", "NextPay / Chively", "pos"),
     {name:"Square", brand:"Square", type:"pos", platform:"Square application links (apply live, or send to the merchant)",
      methods:"<b>Preferred:</b> set the merchant up live on the link while you're on the phone or in front of them. You can also send them the link to complete the application themselves.",
      links:[
@@ -309,6 +309,7 @@
        +'<div class="methods" style="margin-top:12px"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg><div>Schedule a <b>product demo</b> from the partner hub — two options, with <b>Gavin</b> or <b>Brett</b>.</div></div>'},
     p("NRS", "National Retail Solutions", "pos"),
     p("DejaPay Pro", "Dejavoo", "pos"),
+    p("Chively", "Chively", "pos"),
     /* ---- Terminals ---- */
     p("PAX (Mobile line)", "PAX", "terminals"),
     p("Dejavoo (P / QD line)", "Dejavoo", "terminals"),
@@ -363,7 +364,7 @@
 
   // product -> brand logo (files already in assets/logos/)
   var LOGOS = {
-    "NextPay (Chively)":"nextpay.png", "Square":"square.svg", "Clover":"clover.png",
+    "Chively":"chively-white.png", "Square":"square.svg", "Clover":"clover.png",
     "Shift4 Dine":"shift4.png", "Quantic":"quantic.svg", "Korona":"korona.png",
     "NRS":"nrs.png", "DejaPay Pro":"dejapay.webp",
     "PAX (Mobile line)":"pax.svg", "Dejavoo (P / QD line)":"dejavoo.png", "Valor VL":"valor.png",
@@ -372,6 +373,8 @@
     "Authorize.net":"authnet.png", "iPOSPays":"ipospays.png",
     "FieldPulse":"fieldpulse.png", "Field Work":"fieldwork.png", "LQPay":"lqpay.png", "QuickBooks Integration":"quickbooks.png"
   };
+  // logos that are white/reversed and need a dark backing
+  var DARK_LOGOS = {"Chively":1};
 
   function esc(s){ return (s||"").replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;"); }
   function val(s){ return s ? esc(s) : '<span class="todo-text">— needs info —</span>'; }
@@ -412,7 +415,7 @@
       return ''
       +'<div class="pitem" data-type="'+pr.type+'" data-text="'+esc((pr.name+' '+pr.brand+' '+TYPE_LABEL[pr.type]).toLowerCase())+'">'
       +  '<button class="phead" type="button" data-i="'+i+'">'
-      +    (LOGOS[pr.name] ? '<span class="plogo"><img src="assets/logos/'+LOGOS[pr.name]+'" alt="'+esc(pr.name)+' logo" loading="lazy"></span>' : '')
+      +    (LOGOS[pr.name] ? '<span class="plogo'+(DARK_LOGOS[pr.name]?' dark':'')+'"><img src="assets/logos/'+LOGOS[pr.name]+'" alt="'+esc(pr.name)+' logo" loading="lazy"></span>' : '')
       +    '<span class="left"><span class="pname">'+esc(pr.name)+'</span><span class="pmeta">'+esc(pr.brand)+'</span></span>'
       +    '<span class="ptag">'+esc(TYPE_LABEL[pr.type])+'</span>'
       +    '<span class="status '+(ready?'ready':'todo')+'">'+(ready?'Ready':'Needs info')+'</span>'
