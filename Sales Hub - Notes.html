@@ -1,0 +1,152 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Hub Notes & To-Do — Internal</title>
+<link rel="stylesheet" href="css/nextpay.css">
+<style>
+.hub-bar{position:sticky;top:0;z-index:60;background:var(--navy);color:#fff;border-bottom:1px solid rgba(255,255,255,.10)}
+.hub-bar-inner{display:flex;align-items:center;gap:18px;height:66px;max-width:var(--maxw);margin:0 auto;padding:0 28px}
+.hub-bar img.logo{height:34px;width:auto;display:block}
+.hub-bar .pipe{width:1px;height:26px;background:rgba(255,255,255,.18)}
+.hub-bar .hub-tag{font-weight:800;font-size:15px;color:#fff;display:flex;align-items:center;gap:9px}
+.hub-bar .hub-tag .badge{font-size:10.5px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;background:#b9741a;color:#fff;padding:4px 9px;border-radius:999px}
+.hub-bar .right{margin-left:auto;display:flex;align-items:center;gap:20px}
+.hub-bar .right a{color:#cdd8e2;font-weight:600;font-size:14.5px}.hub-bar .right a:hover{color:#fff}
+
+.pg-head{background:linear-gradient(180deg,var(--navy),var(--navy-2));color:#fff}
+.pg-head .wrap{padding:30px 0 30px}
+.crumbs{display:flex;gap:8px;align-items:center;font-size:13.5px;color:#9fb1c2;padding-bottom:14px}
+.crumbs a{color:#cdd8e2;font-weight:600}.crumbs a:hover{color:#fff}.crumbs .sep{opacity:.5}
+.pg-head h1{font-size:clamp(25px,3.4vw,34px);color:#fff;letter-spacing:-.02em}
+.pg-head p.lead{color:#c4d0db;margin-top:8px;font-size:15.5px;max-width:620px;line-height:1.55}
+
+main.wrap{padding:26px 0 10px}
+.addbar{display:flex;gap:10px;margin-bottom:20px;flex-wrap:wrap}
+.addbar input{flex:1;min-width:240px;border:1px solid var(--line);border-radius:10px;padding:11px 14px;font-family:inherit;font-size:15px;color:var(--ink)}
+.addbar input:focus{outline:2px solid var(--teal)}
+
+.sec-h{font-size:13px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:var(--slate-2);margin:24px 0 10px}
+.notes{display:flex;flex-direction:column;gap:9px}
+.note{display:flex;align-items:flex-start;gap:13px;background:#fff;border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow-sm);padding:14px 16px}
+.note.done{background:var(--bg-soft);opacity:.7}
+.note .cb{flex:none;width:23px;height:23px;border-radius:7px;border:2px solid var(--line);background:#fff;cursor:pointer;display:grid;place-items:center;margin-top:1px}
+.note .cb svg{width:13px;height:13px;color:#fff;opacity:0}
+.note.done .cb{background:var(--teal);border-color:var(--teal)}.note.done .cb svg{opacity:1}
+.note .body{flex:1;min-width:0}
+.note .tt{font-size:15px;font-weight:700;color:var(--ink)}
+.note.done .tt{text-decoration:line-through;color:var(--slate)}
+.note .meta{font-size:12.5px;color:var(--slate-2);margin-top:3px}
+.note.pin{border-color:#b9741a;box-shadow:inset 0 0 0 1px #b9741a}
+.note .pinbadge{font-size:10.5px;font-weight:800;letter-spacing:.06em;text-transform:uppercase;background:rgba(242,163,60,.18);color:#b9741a;padding:3px 9px;border-radius:999px;margin-left:8px;vertical-align:middle}
+.del{margin-left:auto;background:none;border:0;color:var(--slate-2);cursor:pointer;font-size:18px;line-height:1;padding:0 4px;flex:none}
+.del:hover{color:#c0392b}
+
+.hub-foot{background:var(--navy);color:#9fb1c2;padding:30px 0;margin-top:46px;font-size:13.5px}
+.hub-foot .wrap{display:flex;justify-content:space-between;gap:18px;flex-wrap:wrap}
+.hub-foot a{color:#cdd8e2;font-weight:600}.hub-foot a:hover{color:#fff}
+</style>
+</head>
+<body>
+
+<div class="hub-bar">
+  <div class="hub-bar-inner">
+    <a href="Sales Hub.html" style="display:flex;align-items:center" aria-label="Sales Hub home"><img class="logo" src="assets/logos/nextpay-nav.png" alt="NextPay"></a>
+    <span class="pipe"></span>
+    <span class="hub-tag">Hub Notes <span class="badge">Admin only</span></span>
+    <div class="right"><a href="Sales Hub.html">← Hub home</a></div>
+  </div>
+</div>
+
+<header class="pg-head">
+  <div class="wrap">
+    <div class="crumbs"><a href="Sales Hub.html">Sales Hub</a><span class="sep">/</span><span>Notes &amp; To-Do</span></div>
+    <h1>Hub Notes &amp; To-Do</h1>
+    <p class="lead">Your private build list and reminders. This page isn&rsquo;t linked in the rep navigation — bookmark it. Items save on this device.</p>
+  </div>
+</header>
+
+<main class="wrap">
+
+  <div class="addbar">
+    <input id="newNote" type="text" placeholder="Add a note or reminder, then press Enter…">
+    <button class="btn btn-primary btn-sm" id="addBtn" type="button">Add</button>
+  </div>
+
+  <div class="sec-h">Open items</div>
+  <div class="notes" id="openList"></div>
+
+  <div class="sec-h" style="margin-top:28px">Done</div>
+  <div class="notes" id="doneList"></div>
+
+</main>
+
+<footer class="hub-foot">
+  <div class="wrap">
+    <span>NextPay Sales Hub · Notes &amp; To-Do · Admin only — not linked in rep nav.</span>
+    <span><a href="Sales Hub.html">← Back to hub</a></span>
+  </div>
+</footer>
+
+<script>
+/* Seed items (only added once). After that, your own edits persist on this device. */
+var SEED = [
+  {id:'check-alex-cc', t:'Confirm Alex received the CC email from the Lead Generation form', meta:'Test submit landed for Dom on Jun 15 — verify alexander@nextpaypos.com got the CC. If not, add him as a recipient in the Web3Forms dashboard.', pin:true},
+  {id:'nextlink-pricing', t:'NextLink: add agent seat price + reseller details', meta:'Lead Generation → NextLink card'},
+  {id:'leadgen-pricing', t:'Lead-gen pricing: Live Transfers, Warm Email Lists, Seamless.AI agent discount', meta:'Lead Generation cards'},
+  {id:'korona-fluidpay-steps', t:'Korona & FluidPay: add submission steps + contacts', meta:'Submit a Deal'},
+  {id:'clover-where', t:'Clover: where the completed order form goes + turnaround + who to call', meta:'Submit a Deal → Clover'},
+  {id:'square-turnaround', t:'Square: nothing outstanding (turnaround added) — keep as reference', meta:'Submit a Deal → Square'},
+  {id:'content-assets', t:'Send content: flyers, one-pagers, proposals, social assets', meta:'Lead Generation → Standard resources'},
+  {id:'training-videos', t:'Record 6-Week Jumpstart videos (HeyGen) and send links to embed', meta:'Training Academy'},
+  {id:'prelaunch-cleanup', t:'Pre-launch: strip internal "Needs from Dom / fill in" notes before opening to the team', meta:'Submit a Deal, Lead Gen, Pricing'},
+  {id:'cloudflare-gate', t:'Attach hub.nextpaypos.com + add Cloudflare Access (team login) when domain is ready', meta:'Go-live'}
+];
+
+var KEY='np_hub_notes';
+function load(){ try{return JSON.parse(localStorage.getItem(KEY));}catch(e){return null;} }
+function save(d){ try{localStorage.setItem(KEY,JSON.stringify(d));}catch(e){} }
+var data = load();
+if(!data){ data = SEED.map(function(s){return {id:s.id,t:s.t,meta:s.meta||'',pin:!!s.pin,done:false};}); save(data); }
+
+var CHECK='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M5 13l4 4L19 7"/></svg>';
+function esc(s){return (s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');}
+
+function render(){
+  var open=document.getElementById('openList'), don=document.getElementById('doneList');
+  function row(n){
+    return '<div class="note'+(n.done?' done':'')+(n.pin&&!n.done?' pin':'')+'" data-id="'+n.id+'">'
+      + '<button class="cb" aria-label="toggle">'+CHECK+'</button>'
+      + '<div class="body"><div class="tt">'+esc(n.t)+(n.pin&&!n.done?'<span class="pinbadge">Check back</span>':'')+'</div>'
+      + (n.meta?'<div class="meta">'+esc(n.meta)+'</div>':'')+'</div>'
+      + '<button class="del" aria-label="delete">&times;</button></div>';
+  }
+  open.innerHTML = data.filter(function(n){return !n.done;}).map(row).join('') || '<div class="meta" style="color:var(--slate);padding:8px">Nothing open — nice.</div>';
+  don.innerHTML  = data.filter(function(n){return n.done;}).map(row).join('') || '<div class="meta" style="color:var(--slate);padding:8px">Nothing done yet.</div>';
+
+  document.querySelectorAll('.note').forEach(function(el){
+    var id=el.getAttribute('data-id');
+    el.querySelector('.cb').addEventListener('click',function(){
+      var n=data.find(function(x){return x.id===id;}); if(n){n.done=!n.done; save(data); render();}
+    });
+    el.querySelector('.del').addEventListener('click',function(){
+      if(!confirm('Delete this note?')) return;
+      data=data.filter(function(x){return x.id!==id;}); save(data); render();
+    });
+  });
+}
+
+function add(){
+  var inp=document.getElementById('newNote'); var v=inp.value.trim(); if(!v) return;
+  data.unshift({id:'n'+Date.now(), t:v, meta:'Added '+new Date().toLocaleDateString(), pin:false, done:false});
+  save(data); inp.value=''; render();
+}
+document.getElementById('addBtn').addEventListener('click', add);
+document.getElementById('newNote').addEventListener('keydown', function(e){ if(e.key==='Enter') add(); });
+
+render();
+</script>
+</body>
+</html>
