@@ -69,6 +69,8 @@
 .phead .chev{margin-left:auto;width:22px;height:22px;color:var(--slate);transition:.2s;flex:none}
 .pitem.open .phead .chev{transform:rotate(180deg)}
 .phead .left{flex:1;min-width:0}
+.phead .plogo{width:48px;height:48px;border-radius:11px;background:#fff;border:1px solid var(--line);display:grid;place-items:center;flex:none;padding:7px;box-shadow:var(--shadow-sm)}
+.phead .plogo img{max-width:100%;max-height:100%;object-fit:contain;display:block}
 .status{font-size:11px;font-weight:800;letter-spacing:.05em;text-transform:uppercase;padding:3px 9px;border-radius:999px}
 .status.todo{background:var(--bg-soft-2);color:var(--slate-2)}
 .status.ready{background:rgba(20,161,140,.14);color:var(--teal-dark)}
@@ -359,6 +361,18 @@
 
   var TYPE_LABEL = {pos:"POS System", terminals:"Terminal", gateways:"Gateway", invoicing:"Invoicing"};
 
+  // product -> brand logo (files already in assets/logos/)
+  var LOGOS = {
+    "NextPay (Chively)":"nextpay.png", "Square":"square.svg", "Clover":"clover.png",
+    "Shift4 Dine":"shift4.png", "Quantic":"quantic.svg", "Korona":"korona.png",
+    "NRS":"nrs.png", "DejaPay Pro":"dejapay.webp",
+    "PAX (Mobile line)":"pax.svg", "Dejavoo (P / QD line)":"dejavoo.png", "Valor VL":"valor.png",
+    "Clover Flex / Go":"clover.png", "Square Mobile / Handheld":"square.svg", "Shift4 Terminals":"shift4.png",
+    "FluidPay":"fluidpay.png", "NMI":"nmi.png", "Luqra":"luqra.png", "Valor Gateway":"valor.png",
+    "Authorize.net":"authnet.png", "iPOSPays":"ipospays.png",
+    "FieldPulse":"fieldpulse.png", "Field Work":"fieldwork.png", "LQPay":"lqpay.png", "QuickBooks Integration":"quickbooks.png"
+  };
+
   function esc(s){ return (s||"").replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;"); }
   function val(s){ return s ? esc(s) : '<span class="todo-text">— needs info —</span>'; }
   function initials(n){ return n ? n.split(/\s+/).slice(0,2).map(function(w){return w[0];}).join("").toUpperCase() : "?"; }
@@ -398,6 +412,7 @@
       return ''
       +'<div class="pitem" data-type="'+pr.type+'" data-text="'+esc((pr.name+' '+pr.brand+' '+TYPE_LABEL[pr.type]).toLowerCase())+'">'
       +  '<button class="phead" type="button" data-i="'+i+'">'
+      +    (LOGOS[pr.name] ? '<span class="plogo"><img src="assets/logos/'+LOGOS[pr.name]+'" alt="'+esc(pr.name)+' logo" loading="lazy"></span>' : '')
       +    '<span class="left"><span class="pname">'+esc(pr.name)+'</span><span class="pmeta">'+esc(pr.brand)+'</span></span>'
       +    '<span class="ptag">'+esc(TYPE_LABEL[pr.type])+'</span>'
       +    '<span class="status '+(ready?'ready':'todo')+'">'+(ready?'Ready':'Needs info')+'</span>'
