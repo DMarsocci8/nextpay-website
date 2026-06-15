@@ -298,7 +298,17 @@
        +'<div>For a Square <b>product demo</b>, fill out the demo request form below. Once it\'s scheduled, add Dom &amp; Alex to the calendar invite: '
        +'<a href="mailto:dom@nextpaypos.com">dom@nextpaypos.com</a>, <a href="mailto:Alexander@nextpaypos.com">Alexander@nextpaypos.com</a>.</div></div>'
        +'<div style="margin-top:12px"><a class="formbtn" href="https://docs.google.com/forms/d/e/1FAIpQLSedLS22jwms21UlW5Ybxy0HHhRDp-BRpSSkn5TpzgqoXcMmBA/viewform" target="_blank" rel="noopener">Open Square demo request form <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></div>'},
-    p("Clover", "Fiserv / Clover", "pos"),
+    {name:"Clover", brand:"Fiserv / Clover", type:"pos", platform:"Clover order form",
+     form:{url:"assets/docs/clover-order-form.pdf", label:"Open Clover order form"},
+     steps:[
+       "Open and complete the Clover order form (linked below)",
+       "Fill in the merchant, business and equipment/plan details",
+       "Submit the completed form per the instructions on it",
+       "Save your confirmation"
+     ],
+     needs:["Merchant business details & EIN","Bank info for deposits","Equipment / plan selection"],
+     turnaround:TODO,
+     contacts:[{role:"Submissions / Boarding", name:TODO, phone:TODO, email:TODO}]},
     {name:"Shift4 Dine", brand:"Shift4", type:"pos", platform:"Shift4 Partner Portal → Sales Center (your own login)",
      form:{url:SHIFT4_PORTAL, label:"Open Shift4 Partner Portal"},
      steps:[
