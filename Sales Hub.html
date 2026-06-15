@@ -55,6 +55,17 @@
 .flow-step:hover{border-color:var(--teal);box-shadow:var(--shadow-sm);transform:translateY(-2px)}
 .flow-step.active{border-color:var(--teal);background:rgba(20,161,140,.06);box-shadow:inset 0 0 0 1px var(--teal)}
 .flow-step .n{width:30px;height:30px;border-radius:9px;background:var(--navy);color:#fff;display:grid;place-items:center;font-weight:800;font-size:14px}
+/* color-code each workflow stage */
+.flow-step[data-stage="learn"] .n{background:#14A18C}
+.flow-step[data-stage="pitch"] .n{background:#4F6BED}
+.flow-step[data-stage="quote"] .n{background:#E8943A}
+.flow-step[data-stage="submit"] .n{background:#7C5CE0}
+.flow-step[data-stage="support"] .n{background:#1E9E5A}
+.flow-step[data-stage="learn"].active{border-color:#14A18C;box-shadow:inset 0 0 0 1px #14A18C;background:rgba(20,161,140,.06)}
+.flow-step[data-stage="pitch"].active{border-color:#4F6BED;box-shadow:inset 0 0 0 1px #4F6BED;background:rgba(79,107,237,.06)}
+.flow-step[data-stage="quote"].active{border-color:#E8943A;box-shadow:inset 0 0 0 1px #E8943A;background:rgba(232,148,58,.07)}
+.flow-step[data-stage="submit"].active{border-color:#7C5CE0;box-shadow:inset 0 0 0 1px #7C5CE0;background:rgba(124,92,224,.06)}
+.flow-step[data-stage="support"].active{border-color:#1E9E5A;box-shadow:inset 0 0 0 1px #1E9E5A;background:rgba(30,158,90,.06)}
 .flow-step.active .n{background:var(--teal)}
 .flow-step h3{font-size:16px;letter-spacing:-.01em}
 .flow-step p{font-size:13px;color:var(--slate);line-height:1.45}

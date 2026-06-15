@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="robots" content="noindex, nofollow">
-<title>My Dashboard — NextPay Sales Hub</title>
+<title>My Journey — NextPay Sales Hub</title>
 <link rel="stylesheet" href="css/nextpay.css">
 <style>
 .hub-bar{position:sticky;top:0;z-index:60;background:var(--navy);color:#fff;border-bottom:1px solid rgba(255,255,255,.10)}
@@ -16,60 +16,50 @@
 .hub-bar .right{margin-left:auto;display:flex;align-items:center;gap:20px}
 .hub-bar .right a{color:#cdd8e2;font-weight:600;font-size:14.5px}.hub-bar .right a:hover{color:#fff}
 
-/* hero w/ progress */
 .dash-head{background:linear-gradient(180deg,var(--navy),var(--navy-2));color:#fff}
-.dash-head .wrap{padding:34px 0 38px}
+.dash-head .wrap{padding:34px 0 36px}
 .crumbs{display:flex;gap:8px;align-items:center;font-size:13.5px;color:#9fb1c2;padding-bottom:14px}
 .crumbs a{color:#cdd8e2;font-weight:600}.crumbs a:hover{color:#fff}.crumbs .sep{opacity:.5}
 .dash-head h1{font-size:clamp(26px,3.8vw,38px);color:#fff;letter-spacing:-.02em}
-.dash-head p.lead{color:#c4d0db;margin-top:8px;font-size:16.5px}
+.dash-head p.lead{color:#c4d0db;margin-top:8px;font-size:16.5px;max-width:640px;line-height:1.55}
 
-.prog{display:flex;align-items:center;gap:22px;margin-top:24px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.12);border-radius:18px;padding:20px 24px;flex-wrap:wrap}
-.ring{--p:0;width:84px;height:84px;border-radius:50%;flex:none;display:grid;place-items:center;background:conic-gradient(var(--teal-bright) calc(var(--p)*1%), rgba(255,255,255,.14) 0)}
-.ring .inner{width:64px;height:64px;border-radius:50%;background:var(--navy);display:grid;place-items:center;font-weight:800;font-size:19px;color:#fff}
-.prog .ptext{flex:1;min-width:200px}
-.prog .ptext b{font-size:18px;color:#fff}
-.prog .ptext p{font-size:14px;color:#c4d0db;margin-top:3px}
-.prog .pcount{font-size:14px;color:#9fb1c2;font-weight:700;white-space:nowrap}
+.prog{display:flex;align-items:center;gap:22px;margin-top:24px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.12);border-radius:18px;padding:18px 24px;flex-wrap:wrap}
+.ring{--p:0;width:80px;height:80px;border-radius:50%;flex:none;display:grid;place-items:center;background:conic-gradient(var(--teal-bright) calc(var(--p)*1%), rgba(255,255,255,.14) 0)}
+.ring .inner{width:62px;height:62px;border-radius:50%;background:var(--navy);display:grid;place-items:center;font-weight:800;font-size:18px;color:#fff}
+.prog .ptext b{font-size:17px;color:#fff}
+.prog .ptext p{font-size:13.5px;color:#c4d0db;margin-top:3px}
+.prog .pcount{margin-left:auto;font-size:14px;color:#9fb1c2;font-weight:700;white-space:nowrap}
 
-main.wrap{padding:34px 0 10px}
-.sec{margin-bottom:34px}
-.sec-h{display:flex;align-items:baseline;gap:12px;flex-wrap:wrap;margin-bottom:4px}
-.sec-h h2{font-size:22px;letter-spacing:-.01em}
-.sec-h .eyebrow{margin:0}
-.sec-h span.note{font-size:14px;color:var(--slate)}
+/* phase journey rail */
+.rail{display:flex;gap:8px;flex-wrap:wrap;margin-top:18px}
+.rail a{display:inline-flex;align-items:center;gap:8px;background:#fff;border:1px solid var(--line);border-radius:999px;padding:7px 13px 7px 8px;font-size:13px;font-weight:700;color:var(--slate)}
+.rail a:hover{border-color:var(--ink);color:var(--ink)}
+.rail a .rn{width:22px;height:22px;border-radius:50%;display:grid;place-items:center;color:#fff;font-size:12px;font-weight:800;background:var(--acc)}
 
-/* checklist */
-.tasks{display:flex;flex-direction:column;gap:10px;margin-top:14px}
-.task{display:flex;align-items:flex-start;gap:14px;background:#fff;border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow-sm);padding:16px 18px;transition:.14s}
-.task:hover{border-color:#d4dde3}
-.task.done{background:var(--bg-soft);border-color:var(--line)}
-.task .cb{flex:none;width:24px;height:24px;border-radius:7px;border:2px solid var(--line);background:#fff;cursor:pointer;display:grid;place-items:center;margin-top:1px;transition:.14s}
-.task .cb svg{width:14px;height:14px;color:#fff;opacity:0;transition:.14s}
-.task.done .cb{background:var(--teal);border-color:var(--teal)}
+main.wrap{padding:18px 0 10px}
+.phase{margin-bottom:30px;scroll-margin-top:84px;border:1px solid var(--line);border-radius:var(--radius-lg);background:#fff;box-shadow:var(--shadow-sm);overflow:hidden}
+.phase-head{display:flex;align-items:center;gap:15px;padding:20px 22px;border-left:5px solid var(--acc)}
+.phase-head .pn{width:42px;height:42px;border-radius:12px;background:var(--acc);color:#fff;display:grid;place-items:center;font-weight:800;font-size:18px;flex:none}
+.phase-head h2{font-size:20px;letter-spacing:-.01em}
+.phase-head p{font-size:13.5px;color:var(--slate);margin-top:2px;line-height:1.45}
+.phase-head .pc{margin-left:auto;font-size:13px;font-weight:800;color:var(--acc);white-space:nowrap;background:color-mix(in srgb,var(--acc) 12%,#fff);padding:6px 12px;border-radius:999px}
+
+.items{padding:6px 18px 18px;display:flex;flex-direction:column;gap:9px}
+.task{display:flex;align-items:flex-start;gap:13px;background:#fff;border:1px solid var(--line);border-radius:var(--radius);padding:14px 16px;transition:.14s}
+.task.done{background:var(--bg-soft)}
+.task .cb{flex:none;width:23px;height:23px;border-radius:7px;border:2px solid var(--line);background:#fff;cursor:pointer;display:grid;place-items:center;margin-top:1px;transition:.14s}
+.task .cb svg{width:13px;height:13px;color:#fff;opacity:0}
+.task.done .cb{background:var(--acc);border-color:var(--acc)}
 .task.done .cb svg{opacity:1}
 .task .body{flex:1;min-width:0}
-.task .tt{font-size:15.5px;font-weight:700;color:var(--ink)}
+.task .tt{font-size:15px;font-weight:700;color:var(--ink)}
 .task.done .tt{color:var(--slate);text-decoration:line-through}
-.task .td{font-size:13.5px;color:var(--slate);margin-top:2px;line-height:1.45}
-.task .go{font-size:13.5px;font-weight:700;color:var(--teal-dark);white-space:nowrap;display:inline-flex;align-items:center;gap:6px;margin-top:7px}
+.task .td{font-size:13px;color:var(--slate);margin-top:2px;line-height:1.45}
+.task .go{font-size:13px;font-weight:700;color:var(--acc);white-space:nowrap;display:inline-flex;align-items:center;gap:6px;margin-top:7px}
 .task .go svg{width:14px;height:14px}
+.task .soon{font-size:11px;font-weight:800;letter-spacing:.05em;text-transform:uppercase;color:var(--slate-2);background:var(--bg-soft-2);padding:3px 9px;border-radius:999px;margin-top:8px;display:inline-block}
 
-/* growth cards */
-.grow-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;margin-top:14px}
-@media(max-width:780px){.grow-grid{grid-template-columns:1fr}}
-.grow{display:flex;gap:14px;align-items:flex-start;background:#fff;border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow-sm);padding:18px;transition:.14s}
-.grow.done{background:var(--bg-soft)}
-.grow .gi{flex:none;width:42px;height:42px;border-radius:11px;background:rgba(20,161,140,.12);display:grid;place-items:center;color:var(--teal-dark)}
-.grow .gi svg{width:21px;height:21px}
-.grow .gt{font-size:15.5px;font-weight:700}
-.grow.done .gt{text-decoration:line-through;color:var(--slate)}
-.grow .gd{font-size:13.5px;color:var(--slate);line-height:1.45;margin-top:3px}
-.grow .cb{flex:none;width:22px;height:22px;border-radius:6px;border:2px solid var(--line);background:#fff;cursor:pointer;display:grid;place-items:center;margin-left:auto;align-self:center}
-.grow .cb svg{width:13px;height:13px;color:#fff;opacity:0}
-.grow.done .cb{background:var(--teal);border-color:var(--teal)}.grow.done .cb svg{opacity:1}
-
-.resetbar{display:flex;justify-content:flex-end;margin-top:6px}
+.resetbar{display:flex;justify-content:flex-end;margin-top:4px}
 .resetbar button{background:none;border:0;color:var(--slate);font-weight:600;font-size:13px;cursor:pointer;font-family:inherit}
 .resetbar button:hover{color:var(--ink);text-decoration:underline}
 
@@ -91,162 +81,170 @@ main.wrap{padding:34px 0 10px}
 
 <header class="dash-head">
   <div class="wrap">
-    <div class="crumbs"><a href="Sales Hub.html">Sales Hub</a><span class="sep">/</span><span>My Dashboard</span></div>
+    <div class="crumbs"><a href="Sales Hub.html">Sales Hub</a><span class="sep">/</span><span>My Journey</span></div>
     <h1 id="greet">Welcome to the team 👋</h1>
-    <p class="lead">Your checklist to get ramped, plus immediate steps to grow your book of business. Progress saves automatically on this device.</p>
-
+    <p class="lead">Your step-by-step journey from setup to selling. Work the phases in order, check off each step, and your progress saves automatically on this device.</p>
     <div class="prog">
       <div class="ring" id="ring"><div class="inner" id="ringPct">0%</div></div>
-      <div class="ptext">
-        <b id="progTitle">Let's get you started</b>
-        <p id="progSub">Check things off as you complete them — your progress bar fills up.</p>
-      </div>
-      <div class="pcount" id="progCount">0 of 0 done</div>
+      <div class="ptext"><b id="progTitle">Let's get you started</b><p id="progSub">Begin with Phase 1 — your Marketing Kit.</p></div>
+      <div class="pcount" id="progCount">0 of 0 steps</div>
     </div>
+    <div class="rail" id="rail"></div>
   </div>
 </header>
 
-<main class="wrap">
+<main class="wrap" id="phases"></main>
 
-  <div class="sec">
-    <div class="sec-h"><span class="eyebrow">Step 1</span><h2>Get set up</h2><span class="note">Do these first — takes about 30 minutes.</span></div>
-    <div class="tasks" data-group="setup"></div>
-  </div>
-
-  <div class="sec">
-    <div class="sec-h"><span class="eyebrow">Step 2</span><h2>Learn what you're selling</h2><span class="note">Know the products and the industries before you pitch.</span></div>
-    <div class="tasks" data-group="learn"></div>
-  </div>
-
-  <div class="sec">
-    <div class="sec-h"><span class="eyebrow">Step 3</span><h2>Start selling</h2><span class="note">Get your first deals moving.</span></div>
-    <div class="tasks" data-group="sell"></div>
-  </div>
-
-  <div class="sec" id="grow">
-    <div class="sec-h"><span class="eyebrow">Keep growing</span><h2>Immediate steps to grow your portfolio</h2><span class="note">High-leverage habits that compound.</span></div>
-    <div class="grow-grid" id="growGrid"></div>
-  </div>
-
-  <div class="resetbar"><button id="resetBtn" type="button">Reset my progress</button></div>
-
-</main>
+<div class="wrap"><div class="resetbar"><button id="resetBtn" type="button">Reset my progress</button></div></div>
 
 <footer class="hub-foot">
   <div class="wrap">
-    <span>NextPay Sales Hub · My Dashboard · Progress saved on this device.</span>
+    <span>NextPay Sales Hub · My Journey · Progress saved on this device.</span>
     <span><a href="Sales Hub.html">← Back to hub</a></span>
   </div>
 </footer>
 
 <script>
-/* ---- data: edit here to add/change tasks ---- */
-var GROUPS = {
-  setup:[
-    {id:'s1', t:'Make your business card', d:'Add your name, cell and email, then print or save a PDF.', href:'Sales Hub - Business Card.html', link:'Open card maker'},
-    {id:'s2', t:'Read the pricing & fee programs', d:'Know dual pricing, cash discount and how we price processing.', href:'Sales Hub - Pricing.html', link:'Open pricing'},
-    {id:'s3', t:'Learn how to submit a deal', d:'Walk the per-product order & submission playbook.', href:'Sales Hub - Submit a Deal.html', link:'Open playbook'},
-    {id:'s4', t:'Bookmark the Sales Hub', d:'Save this hub so it is one click away on every device.', href:'', link:''}
-  ],
-  learn:[
-    {id:'l1', t:'Complete sales training', d:'The NextPay pitch, discovery and closing basics.', href:'Sales Hub - Training.html', link:'Open the Academy'},
-    {id:'l2', t:'Review the product one-pagers', d:'Know the top POS, terminals, gateways and invoicing options.', href:'POS Systems.html', link:'Browse products', blank:true},
-    {id:'l3', t:'Know your industries', d:'How to sell into restaurants, retail, services and healthcare.', href:'Industries.html', link:'View industries', blank:true},
-    {id:'l4', t:'Pass a product quiz', d:'Prove you know the stack before you pitch it.', href:'', link:''}
-  ],
-  sell:[
-    {id:'x1', t:'Run your first rate review', d:'Use the statement analyzer to beat or match a prospect rate.', href:'Statement Upload.html', link:'Open analyzer', blank:true},
-    {id:'x2', t:'Build a list of 10 local prospects', d:'Businesses you can walk into or call this week.', href:'', link:''},
-    {id:'x3', t:'Submit your first deal', d:'Follow the product playbook end to end.', href:'Sales Hub - Submit a Deal.html', link:'How to submit'},
-    {id:'x4', t:'Book your first 3 appointments', d:'Get face time on the calendar.', href:'', link:''}
-  ]
-};
-
-var GROWTH = [
-  {id:'g1', t:'Ask every merchant for 2 referrals', d:'Your happiest customers are your best lead source — ask right after the install.', icon:'<path d="M16 21v-2a4 4 0 00-4-4H6a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 00-3-3.9M16 3.1a4 4 0 010 7.8"/>'},
-  {id:'g2', t:'Partner with complementary businesses', d:'Bookkeepers, POS resellers, web designers and business consultants send deals your way.', icon:'<path d="M3 7l9-4 9 4v10l-9 4-9-4z"/><path d="M3 7l9 4 9-4M12 11v10"/>'},
-  {id:'g3', t:'Re-contact past leads & no-decisions', d:'Deals that stalled often close later — a simple follow-up wins business.', icon:'<path d="M3 12a9 9 0 109-9 9 9 0 00-9 9zM3 12H1m11-7V3"/><path d="M12 7v5l3 2"/>'},
-  {id:'g4', t:'Offer free statement analysis', d:'Lead with a no-pressure rate review for 5 local businesses this week.', icon:'<path d="M12 16V4M7 9l5-5 5 5M5 20h14"/>'},
-  {id:'g5', t:'Post a win on social weekly', d:'Share a savings story or install — keeps you top of mind in your network.', icon:'<rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/>'},
-  {id:'g6', t:'Attend one networking event/month', d:'Chambers, BNI groups and local meetups are full of business owners.', icon:'<circle cx="12" cy="10" r="3"/><path d="M12 2a8 8 0 00-8 8c0 5 8 12 8 12s8-7 8-12a8 8 0 00-8-8z"/>'}
+/* ===========================================================
+   THE AGENT JOURNEY — five phases, in order.
+   phase = { key, title, sub, acc (accent color), items:[ item ] }
+   item  = { id, t, d, href?, link?, blank?(external), soon?(planned) }
+   =========================================================== */
+var CRM = "https://nextpayllc.myfreshworks.com/crm/sales/my_dashboards?tab=353503";
+var PHASES = [
+  {
+    key:"setup", acc:"#14A18C",
+    title:"Set Up for Success — Your Marketing Kit",
+    sub:"You've just been set up with your new NextPay email and everything you'll carry into the field. Get your kit ready.",
+    items:[
+      {id:"m1", t:"Set up your new NextPay email", d:"Confirm your @nextpaypos.com inbox is working on your phone and computer."},
+      {id:"m2", t:"Create your business card", d:"Add your name, title, cell and email — then print or save a PDF.", href:"Sales Hub - Business Card.html", link:"Make your card"},
+      {id:"m3", t:"Get your flyers", d:"Personalized print flyers to hand out and leave behind.", href:"Sales Hub - Lead Generation.html", link:"Marketing kit", soon:true},
+      {id:"m4", t:"Get your one-pagers", d:"Branded product sell-sheets you personalize and print.", href:"Sales Hub - Lead Generation.html", link:"Marketing kit", soon:true},
+      {id:"m5", t:"Save the Hub to your phone & desktop", d:"Bookmark the Hub so it's one tap away in the field."}
+    ]
+  },
+  {
+    key:"learn", acc:"#4F6BED",
+    title:"Before You Hit the Field — Training & Learning",
+    sub:"Know your stuff before you knock. Work through the training so you can speak with confidence.",
+    items:[
+      {id:"t1", t:"Complete the Training Academy basics", d:"The NextPay pitch, payments foundations and core skills.", href:"Sales Hub - Training.html", link:"Open the Academy"},
+      {id:"t2", t:"Product training — know what you sell", d:"POS, terminals, gateways and invoicing — features and fit.", href:"Sales Hub - Document Library.html", link:"Product resources"},
+      {id:"t3", t:"Industry training — how to sell each vertical", d:"Restaurants, retail, services, healthcare — pain points and pitch.", href:"Sales Hub - Document Library.html", link:"Training library", soon:true},
+      {id:"t4", t:"Pricing & fee programs training", d:"Dual pricing, cash discount, surcharge, IC+ and how to pitch each.", href:"Sales Hub - Pricing.html", link:"Open pricing"},
+      {id:"t5", t:"Pass a product quiz", d:"Prove you know the stack before you pitch it.", soon:true}
+    ]
+  },
+  {
+    key:"toolkit", acc:"#E8943A",
+    title:"Your Field Toolkit — What to Use in the Field",
+    sub:"The tools you'll actually use every day, in front of merchants.",
+    items:[
+      {id:"f1", t:"Your business cards", d:"Hand them out everywhere — your fastest brand builder.", href:"Sales Hub - Business Card.html", link:"Open card maker"},
+      {id:"f2", t:"One-pagers & leave-behinds", d:"Drop a branded sheet with every prospect you visit.", href:"Sales Hub - Lead Generation.html", link:"Marketing kit", soon:true},
+      {id:"f3", t:"Google Maps — find & route local prospects", d:"Map your territory and plan efficient door-to-door runs.", href:"https://www.google.com/maps", link:"Open Maps", blank:true},
+      {id:"f4", t:"The CRM — log every lead & deal", d:"Track conversations, follow-ups and your pipeline.", href:CRM, link:"Open CRM", blank:true},
+      {id:"f5", t:"Statement Rate Analyzer", d:"Run a rate review on the spot to show savings.", href:"Statement Upload.html", link:"Open analyzer", blank:true}
+    ]
+  },
+  {
+    key:"pipeline", acc:"#7C5CE0",
+    title:"Build Your Pipeline — Lead Gen & Outreach",
+    sub:"Fill your pipeline through every channel. Work several at once and stay consistent.",
+    items:[
+      {id:"p1", t:"Explore the lead generation tools", d:"Live transfers, warm lists, paid ads and NextLink.", href:"Sales Hub - Lead Generation.html", link:"Lead gen tools"},
+      {id:"p2", t:"Set up cold email campaigns", d:"Use warm lists to run consistent outreach.", href:"Sales Hub - Lead Generation.html", link:"Get lists", soon:true},
+      {id:"p3", t:"LinkedIn outreach (NextLink)", d:"Grow your network and prospect with NextLink.", href:"Sales Hub - Lead Generation.html", link:"About NextLink"},
+      {id:"p4", t:"Create your Alignable profile", d:"Connect with local business owners on Alignable.", href:"https://www.alignable.com", link:"Open Alignable", blank:true},
+      {id:"p5", t:"Engage local Facebook business pages", d:"Join and post in local business & community groups."},
+      {id:"p6", t:"Make Chamber of Commerce connections", d:"Join your local chamber and work the networking events."}
+    ]
+  },
+  {
+    key:"sell", acc:"#1E9E5A",
+    title:"Start Selling",
+    sub:"Time to close — put it all together and get deals moving.",
+    items:[
+      {id:"s1", t:"Build a list of 10 local prospects", d:"Businesses you can call or walk into this week."},
+      {id:"s2", t:"Run your first rate review", d:"Use the analyzer to beat or match a prospect's rate.", href:"Statement Upload.html", link:"Open analyzer", blank:true},
+      {id:"s3", t:"Lead with a current promotion", d:"Use an active offer to kill the cost-to-switch objection.", href:"Sales Hub - Promotions.html", link:"See offers"},
+      {id:"s4", t:"Submit your first deal", d:"Follow the product playbook end to end.", href:"Sales Hub - Submit a Deal.html", link:"How to submit"},
+      {id:"s5", t:"Book your first 3 appointments", d:"Get face time on the calendar."}
+    ]
+  }
 ];
 
 /* ---- persistence ---- */
-var PKEY='np_rep_progress';
+var PKEY='np_journey_progress';
 function loadDone(){ try{return JSON.parse(localStorage.getItem(PKEY))||{};}catch(e){return {};} }
 function saveDone(d){ try{localStorage.setItem(PKEY,JSON.stringify(d));}catch(e){} }
-var done = loadDone();
-
+var done=loadDone();
 var CHECK='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M5 13l4 4L19 7"/></svg>';
+var ARROW='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg>';
 
-function taskHTML(it){
-  var link = it.href ? '<a class="go" href="'+it.href+'"'+(it.blank?' target="_blank" rel="noopener"':'')+'>'+it.link+' <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>' : '';
+function itemHTML(it){
+  var link = it.href
+    ? '<a class="go" href="'+it.href+'"'+(it.blank?' target="_blank" rel="noopener"':'')+'>'+(it.link||'Open')+' '+ARROW+'</a>'
+    : '';
+  var soon = it.soon ? '<span class="soon">Coming soon</span>' : '';
   return '<div class="task'+(done[it.id]?' done':'')+'" data-id="'+it.id+'">'
     + '<button class="cb" aria-label="toggle">'+CHECK+'</button>'
-    + '<div class="body"><div class="tt">'+it.t+'</div><div class="td">'+it.d+'</div>'+link+'</div></div>';
-}
-function growHTML(it){
-  return '<div class="grow'+(done[it.id]?' done':'')+'" data-id="'+it.id+'">'
-    + '<div class="gi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">'+it.icon+'</svg></div>'
-    + '<div><div class="gt">'+it.t+'</div><div class="gd">'+it.d+'</div></div>'
-    + '<button class="cb" aria-label="toggle">'+CHECK+'</button></div>';
+    + '<div class="body"><div class="tt">'+it.t+'</div><div class="td">'+it.d+'</div>'+link+soon+'</div></div>';
 }
 
-Object.keys(GROUPS).forEach(function(g){
-  document.querySelector('.tasks[data-group="'+g+'"]').innerHTML = GROUPS[g].map(taskHTML).join('');
-});
-document.getElementById('growGrid').innerHTML = GROWTH.map(growHTML).join('');
+function phaseDone(ph){ return ph.items.filter(function(i){return done[i.id];}).length; }
 
-/* ---- progress math ---- */
-function allIds(){
-  var ids=[];
-  Object.keys(GROUPS).forEach(function(g){ GROUPS[g].forEach(function(it){ ids.push(it.id); }); });
-  GROWTH.forEach(function(it){ ids.push(it.id); });
-  return ids;
-}
-function refresh(){
-  var ids=allIds(), total=ids.length, complete=ids.filter(function(id){return done[id];}).length;
-  var pct = total? Math.round(complete/total*100):0;
-  document.getElementById('ring').style.setProperty('--p', pct);
-  document.getElementById('ringPct').textContent = pct+'%';
-  document.getElementById('progCount').textContent = complete+' of '+total+' done';
-  var title=document.getElementById('progTitle'), sub=document.getElementById('progSub');
-  if(pct===0){ title.textContent='Let\'s get you started'; sub.textContent='Check things off as you complete them — your progress fills up.'; }
-  else if(pct===100){ title.textContent='You\'re fully ramped 🎉'; sub.textContent='Now keep working the growth habits below to build your portfolio.'; }
-  else { title.textContent='Nice progress — keep going'; sub.textContent='You\'re building momentum. Finish your checklist, then grow.'; }
-}
+function render(){
+  document.getElementById('phases').innerHTML = PHASES.map(function(ph,i){
+    return '<section class="phase" id="ph-'+ph.key+'" style="--acc:'+ph.acc+'">'
+      + '<div class="phase-head"><span class="pn">'+(i+1)+'</span>'
+      + '<div><h2>'+ph.title+'</h2><p>'+ph.sub+'</p></div>'
+      + '<span class="pc" data-phase="'+ph.key+'">'+phaseDone(ph)+'/'+ph.items.length+'</span></div>'
+      + '<div class="items">'+ph.items.map(itemHTML).join('')+'</div></section>';
+  }).join('');
 
-/* ---- toggle handling ---- */
-function toggle(id, el){
-  done[id] = !done[id];
-  if(!done[id]) delete done[id];
-  saveDone(done);
-  el.classList.toggle('done');
+  document.getElementById('rail').innerHTML = PHASES.map(function(ph,i){
+    return '<a href="#ph-'+ph.key+'" style="--acc:'+ph.acc+'"><span class="rn">'+(i+1)+'</span>'+ph.title.split(' — ')[0]+'</a>';
+  }).join('');
+
+  document.querySelectorAll('.task').forEach(function(el){
+    el.querySelector('.cb').addEventListener('click', function(){
+      var id=el.getAttribute('data-id');
+      done[id]=!done[id]; if(!done[id]) delete done[id];
+      saveDone(done); el.classList.toggle('done', !!done[id]); refresh();
+    });
+  });
   refresh();
 }
-document.querySelectorAll('.task').forEach(function(el){
-  el.querySelector('.cb').addEventListener('click', function(){ toggle(el.getAttribute('data-id'), el); });
-});
-document.querySelectorAll('.grow').forEach(function(el){
-  el.querySelector('.cb').addEventListener('click', function(){ toggle(el.getAttribute('data-id'), el); });
-});
+
+function refresh(){
+  var ids=[]; PHASES.forEach(function(ph){ ph.items.forEach(function(i){ids.push(i.id);}); });
+  var total=ids.length, complete=ids.filter(function(id){return done[id];}).length;
+  var pct=total?Math.round(complete/total*100):0;
+  document.getElementById('ring').style.setProperty('--p',pct);
+  document.getElementById('ringPct').textContent=pct+'%';
+  document.getElementById('progCount').textContent=complete+' of '+total+' steps';
+  PHASES.forEach(function(ph){
+    var el=document.querySelector('.pc[data-phase="'+ph.key+'"]'); if(el) el.textContent=phaseDone(ph)+'/'+ph.items.length;
+  });
+  var t=document.getElementById('progTitle'), s=document.getElementById('progSub');
+  if(pct===0){t.textContent='Let\'s get you started';s.textContent='Begin with Phase 1 — your Marketing Kit.';}
+  else if(pct===100){t.textContent='You\'re field-ready 🎉';s.textContent='Every phase complete — now go close deals.';}
+  else{t.textContent='Great progress — keep going';s.textContent='Work the phases in order and check off each step.';}
+}
 
 document.getElementById('resetBtn').addEventListener('click', function(){
-  if(!confirm('Reset all your progress on this device?')) return;
+  if(!confirm('Reset all your journey progress on this device?')) return;
   done={}; saveDone(done);
-  document.querySelectorAll('.task.done,.grow.done').forEach(function(el){el.classList.remove('done');});
+  document.querySelectorAll('.task.done').forEach(function(el){el.classList.remove('done');});
   refresh();
 });
 
-/* ---- greeting from saved rep profile ---- */
-(function(){
-  try{
-    var p = JSON.parse(localStorage.getItem('np_rep_profile'))||{};
-    if(p.name){ document.getElementById('greet').textContent = 'Welcome back, '+p.name.split(/\s+/)[0]+' 👋'; }
-  }catch(e){}
-})();
+(function(){ try{ var p=JSON.parse(localStorage.getItem('np_rep_profile'))||{};
+  if(p.name){ document.getElementById('greet').textContent='Welcome, '+p.name.split(/\s+/)[0]+' 👋'; } }catch(e){} })();
 
-refresh();
+render();
 </script>
 </body>
 </html>
