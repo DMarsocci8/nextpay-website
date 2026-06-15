@@ -294,15 +294,22 @@ function requestInterest(val){
     fd.append('_template','table');
     fd.append('Source','Sales Hub — Lead Generation interest form');
     var btn=form.querySelector('button[type=submit]'); if(btn){btn.disabled=true;btn.textContent='Sending…';}
-    function done(){
-      form.style.display='none';
-      var d=document.getElementById('leadDone');
-      d.innerHTML='<h3>Got it, '+name+' — request sent ✅</h3><p>Dom &amp; Alex have your request for: <b>'+interests.join(', ')+'</b>. They will email you back shortly.</p>';
+    var d=document.getElementById('leadDone');
+    function finish(ok,msg){
+      if(ok){
+        form.style.display='none';
+        d.innerHTML='<h3>Got it, '+name+' — request sent ✅</h3><p>Dom &amp; Alex have your request for: <b>'+interests.join(', ')+'</b>. They will email you back shortly.</p>';
+      } else {
+        if(btn){btn.disabled=false;btn.textContent='Send my request';}
+        d.innerHTML='<h3 style="color:#c0392b">That didn&rsquo;t send</h3><p>'+(msg||'Please try again. If this is the first time, check <b>dom@nextpaypos.com</b> (including spam) for a FormSubmit activation email and click it once, then resubmit.')+'</p>';
+      }
       d.classList.add('show');
       d.scrollIntoView({behavior:'smooth',block:'center'});
     }
     fetch('https://formsubmit.co/ajax/dom@nextpaypos.com',{method:'POST',headers:{'Accept':'application/json'},body:fd})
-      .then(function(r){return r.json();}).then(done).catch(done);
+      .then(function(r){return r.json();})
+      .then(function(res){ finish(res && (res.success===true || res.success==='true'), res && res.message); })
+      .catch(function(){ finish(false,'Network error reaching the form service. Please try again.'); });
   });
 })();
 </script>
