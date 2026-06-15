@@ -197,7 +197,7 @@
         <h4>Solutions in Payments Portal</h4>
         <p>Submit and board <b>most products</b> here — terminals, gateways and more. Your primary day-to-day portal.</p>
         <span class="access given">Access provided</span>
-        <span class="plink todo"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M14 3h7v7M21 3l-9 9M21 14v5a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h5"/></svg>Portal link needed</span>
+        <a class="plink" href="https://solutionsinpaymentsportal.com/" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M14 3h7v7M21 3l-9 9M21 14v5a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h5"/></svg>Open Solutions in Payments Portal</a>
       </div>
       <div class="portal">
         <span class="pnum">2</span>
@@ -260,6 +260,8 @@
 
   // Shift4 Partner Portal login (Sales Center is where applications are submitted)
   var SHIFT4_PORTAL = "https://link.shift4payments.com/auth/login?redirectUrl=https%3A%2F%2Fapi.dealer-portal.shift4.com%2Fapi%2Fauth%2Flink%3Fredirect%3Dhttps%253A%252F%252Fpartner-portal.shift4.com%252F%252F";
+  // Solutions in Payments Portal — primary portal for most products
+  var SIP_PORTAL = "https://solutionsinpaymentsportal.com/";
   // Shift4 Partner Academy (training) + referral — shared block reused on Shift4 products
   var SHIFT4_TRAIN_BLOCK = '<h4 style="margin-top:22px">Training</h4>'
     + '<div style="margin-top:10px"><a class="formbtn" href="https://shift4partneracademy.learnupon.com/users/sign_in?next=%2Fmy-learning" target="_blank" rel="noopener">Open Shift4 Partner Academy <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></div>'
@@ -267,7 +269,7 @@
     + '<div class="methods"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 21v-2a4 4 0 00-4-4H6a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 00-3-3.9M16 3.1a4 4 0 010 7.8"/></svg><div>Have someone who wants to <b>refer Shift4</b>? Use office code <b>SP527</b> on the referral form. <i>(Referral link still needed.)</i></div></div>';
 
   // default platform for most products is the Solutions in Payments Portal
-  function p(name, brand, type, platform){ return {name:name, brand:brand, type:type, platform:platform||"Solutions in Payments Portal", form:{url:TODO,label:""}, steps:[], needs:[], turnaround:TODO, contacts:[{role:"Submissions / Boarding", name:TODO, phone:TODO, email:TODO},{role:"Tech / Onboarding", name:TODO, phone:TODO, email:TODO}]}; }
+  function p(name, brand, type, platform){ return {name:name, brand:brand, type:type, platform:platform||"Solutions in Payments Portal", form:{url:SIP_PORTAL,label:"Open Solutions in Payments Portal"}, steps:[], needs:[], turnaround:TODO, contacts:[{role:"Submissions / Boarding", name:TODO, phone:TODO, email:TODO},{role:"Tech / Onboarding", name:TODO, phone:TODO, email:TODO}]}; }
 
   var PRODUCTS = [
     /* ---- POS ---- */
@@ -287,10 +289,8 @@
      needs:["The right pricing link (Cash Discount vs Rack Rate)","Merchant business details & EIN","Merchant bank account for deposits","Owner contact info"],
      turnaround:"Usually 24–48 hours — sometimes approved immediately",
      contacts:[
-       {role:"Square Partner Support", name:"Square Partner Support", phone:"855-700-6000", email:""},
-       {role:"Sales help", name:"Dom Marsocci", phone:"", email:"dom@nextpaypos.com"},
-       {role:"Sales help", name:"Alex", phone:"", email:"Alexander@nextpaypos.com"}
-     ],
+       {role:"Square Partner Support", name:"Square Partner Support", phone:"855-700-6000", email:""}
+     ].concat(SALES_HELP),
      extra:'<h4 style="margin-top:22px">Book a product demo</h4>'
        +'<div class="methods"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>'
        +'<div>For a Square <b>product demo</b>, fill out the demo request form below. Once it\'s scheduled, add Dom &amp; Alex to the calendar invite: '
@@ -311,7 +311,7 @@
      extra:SHIFT4_TRAIN_BLOCK},
     p("Quantic", "Quantic", "pos"),
     {name:"Korona", brand:"Korona", type:"pos", platform:"Solutions in Payments Portal",
-     form:{url:TODO, label:""}, steps:[], needs:[], turnaround:TODO,
+     form:{url:SIP_PORTAL, label:"Open Solutions in Payments Portal"}, steps:[], needs:[], turnaround:TODO,
      contacts:[{role:"Submissions / Boarding", name:TODO, phone:TODO, email:TODO}],
      extra:'<h4 style="margin-top:22px">Partner resources &amp; demos</h4>'
        +'<div style="margin-top:10px"><a class="formbtn" href="https://koronapos.com/partner-resources/" target="_blank" rel="noopener">Open Korona Partner Hub <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></div>'
@@ -390,6 +390,11 @@
     "Clover":"Placement program — no upfront costs, just pay monthly.",
     "Square":"Financing available — no upfront, pay the hardware over time."
   };
+  // NextPay sales help — reusable contact pair (Dom & Alex)
+  var SALES_HELP = [
+    {role:"Sales help", name:"Domenico Marsocci", phone:"585-303-2769", email:"dom@nextpaypos.com"},
+    {role:"Sales help", name:"Alexander Bautista", phone:"310-357-4660", email:"Alexander@nextpaypos.com"}
+  ];
 
   function esc(s){ return (s||"").replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;"); }
   function val(s){ return s ? esc(s) : '<span class="todo-text">— needs info —</span>'; }
