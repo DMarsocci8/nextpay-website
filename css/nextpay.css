@@ -190,7 +190,6 @@ button{font-family:inherit;cursor:pointer}
 .pcard .pimg image-slot::part(frame){background:#fff}
 .rec .rec-media image-slot::part(frame){background:#fff}
 .pcard .pimg image-slot{width:100%;height:100%}
-.pcard .pimg:has(#p-sq-reader),.pcard .pimg:has(#t-sq-reader){box-sizing:border-box;padding:18px}
 .pcard .pbadge{position:absolute;top:12px;left:12px;z-index:2}
 .pcard .pbody{padding:18px 18px 20px;display:flex;flex-direction:column;gap:10px;flex:1}
 .pcard .pbrand{font-size:12.5px;font-weight:700;color:var(--teal-dark);letter-spacing:.02em;text-transform:uppercase}
