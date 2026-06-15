@@ -248,6 +248,9 @@
 
   // Shift4 Partner Portal login (Sales Center is where applications are submitted)
   var SHIFT4_PORTAL = "https://link.shift4payments.com/auth/login?redirectUrl=https%3A%2F%2Fapi.dealer-portal.shift4.com%2Fapi%2Fauth%2Flink%3Fredirect%3Dhttps%253A%252F%252Fpartner-portal.shift4.com%252F%252F";
+  // Shift4 Partner Academy (training) — shared block reused on Shift4 products
+  var SHIFT4_TRAIN_BLOCK = '<h4 style="margin-top:22px">Training</h4>'
+    + '<div style="margin-top:10px"><a class="formbtn" href="https://shift4partneracademy.learnupon.com/users/sign_in?next=%2Fmy-learning" target="_blank" rel="noopener">Open Shift4 Partner Academy <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></div>';
 
   // default platform for most products is the Solutions in Payments Portal
   function p(name, brand, type, platform){ return {name:name, brand:brand, type:type, platform:platform||"Solutions in Payments Portal", form:{url:TODO,label:""}, steps:[], needs:[], turnaround:TODO, contacts:[{role:"Submissions / Boarding", name:TODO, phone:TODO, email:TODO},{role:"Tech / Onboarding", name:TODO, phone:TODO, email:TODO}]}; }
@@ -291,7 +294,8 @@
      ],
      needs:["Your Shift4 Partner Portal login","Merchant business details & EIN","Bank info for deposits"],
      turnaround:TODO,
-     contacts:[{role:"SkyTab / Shift4 Support", name:TODO, phone:TODO, email:TODO}]},
+     contacts:[{role:"Shift4 Merchant Support", name:"Shift4 Merchant Support", phone:"1-888-857-9751", email:""}],
+     extra:SHIFT4_TRAIN_BLOCK},
     p("Quantic", "Quantic", "pos"),
     p("Korona", "Korona", "pos"),
     p("NRS", "National Retail Solutions", "pos"),
@@ -312,7 +316,8 @@
      ],
      needs:["Your Shift4 Partner Portal login","Merchant business details & EIN","Bank info for deposits"],
      turnaround:TODO,
-     contacts:[{role:"SkyTab / Shift4 Support", name:TODO, phone:TODO, email:TODO}]},
+     contacts:[{role:"Shift4 Merchant Support", name:"Shift4 Merchant Support", phone:"1-888-857-9751", email:""}],
+     extra:SHIFT4_TRAIN_BLOCK},
     /* ---- Gateways ---- */
     p("FluidPay", "FluidPay", "gateways"),
     p("NMI", "NMI", "gateways"),
