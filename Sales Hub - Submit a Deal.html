@@ -190,12 +190,12 @@
   <!-- SUBMISSION PORTALS -->
   <section class="portals">
     <h3 class="portals-h">Where deals get submitted — your main portals</h3>
-    <p class="portals-sub">Most products route through one of these. You'll be given access to the ones you need. Each product card below tells you which portal it uses.</p>
+    <p class="portals-sub"><b>Square, Clover and Shift4 each have their own path</b> — everything else submits through the <b>Solutions in Payments Portal</b>. Each product card below tells you exactly which one to use.</p>
     <div class="portal-grid">
       <div class="portal">
         <span class="pnum">1</span>
         <h4>Solutions in Payments Portal</h4>
-        <p>Submit and board <b>most products</b> here — terminals, gateways and more. Your primary day-to-day portal.</p>
+        <p>Submit and board <b>every product except Square, Clover and Shift4</b> here — terminals, gateways, invoicing and more. Your primary day-to-day portal.</p>
         <span class="access given">Access provided</span>
         <a class="plink" href="https://solutionsinpaymentsportal.com/" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M14 3h7v7M21 3l-9 9M21 14v5a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h5"/></svg>Open Solutions in Payments Portal</a>
       </div>
@@ -335,8 +335,32 @@
     p("PAX (Mobile line)", "PAX", "terminals"),
     p("Dejavoo (P / QD line)", "Dejavoo", "terminals"),
     p("Valor VL", "Valor PayTech", "terminals"),
-    p("Clover Flex / Go", "Fiserv / Clover", "terminals"),
-    p("Square Mobile / Handheld", "Square", "terminals"),
+    {name:"Clover Flex / Go", brand:"Fiserv / Clover", type:"terminals", platform:"Clover order form",
+     form:{url:"assets/docs/clover-order-form.pdf", label:"Open Clover order form"},
+     steps:[
+       "Open and complete the Clover order form (linked below)",
+       "Fill in the merchant, business and hardware details (Flex or Go)",
+       "Submit the completed form per the instructions on it",
+       "Save your confirmation"
+     ],
+     needs:["Merchant business details & EIN","Bank info for deposits","Hardware selection (Flex / Go)"],
+     turnaround:TODO,
+     contacts:[{role:"Submissions / Boarding", name:TODO, phone:TODO, email:TODO}]},
+    {name:"Square Mobile / Handheld", brand:"Square", type:"terminals", platform:"Square — your own sign-up path",
+     methods:"Square hardware is set up through the merchant's Square account — the same sign-up path as Square POS.",
+     links:[
+       {label:"Apply — Cash Discount 4%", url:"https://app.squareup.com/signup/en-us?signup_token=C76D31CB54", note:"Cash Discount (4%) pricing."},
+       {label:"Apply — Rack Rate (Interchange Plus)", url:"https://app.squareup.com/signup/en-us?signup_token=1DC988FC39", note:"Standard rack rate — interchange plus."}
+     ],
+     steps:[
+       "Pick the right pricing link — Cash Discount 4% or Rack Rate (Interchange Plus)",
+       "Set the merchant up on the link, or send it to them",
+       "Add the Square hardware (Reader, Terminal, Stand or Register) to their account",
+       "Confirm the account is approved and processing"
+     ],
+     needs:["The right pricing link","Merchant business details & EIN","Merchant bank account for deposits"],
+     turnaround:"Usually 24–48 hours — sometimes approved immediately",
+     contacts:[{role:"Square Partner Support", name:"Square Partner Support", phone:"855-700-6000", email:""}].concat(SALES_HELP)},
     {name:"Shift4 Terminals", brand:"Shift4", type:"terminals", platform:"Shift4 Partner Portal → Sales Center (your own login)",
      form:{url:SHIFT4_PORTAL, label:"Open Shift4 Partner Portal"},
      steps:[
@@ -350,10 +374,11 @@
      contacts:[{role:"Shift4 Merchant Support", name:"Shift4 Merchant Support", phone:"1-888-857-9751", email:""}],
      extra:SHIFT4_TRAIN_BLOCK},
     /* ---- Gateways ---- */
-    {name:"FluidPay", brand:"FluidPay", type:"gateways", platform:"FluidPay gateway portal",
-     form:{url:"https://app.fluidpay.com/auth", label:"Open FluidPay portal"},
+    {name:"FluidPay", brand:"FluidPay", type:"gateways", platform:"Solutions in Payments Portal",
+     form:{url:SIP_PORTAL, label:"Open Solutions in Payments Portal"},
      steps:[], needs:[], turnaround:TODO,
-     contacts:[{role:"Submissions / Boarding", name:TODO, phone:TODO, email:TODO}]},
+     contacts:[{role:"Submissions / Boarding", name:TODO, phone:TODO, email:TODO}],
+     extra:'<h4 style="margin-top:22px">Gateway login</h4><div style="margin-top:10px"><a class="formbtn" href="https://app.fluidpay.com/auth" target="_blank" rel="noopener">Open FluidPay portal <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></div>'},
     p("NMI", "NMI", "gateways"),
     p("Luqra", "Luqra", "gateways"),
     p("Valor Gateway", "Valor PayTech", "gateways"),
