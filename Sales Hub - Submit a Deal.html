@@ -326,7 +326,10 @@
      contacts:[{role:"Shift4 Merchant Support", name:"Shift4 Merchant Support", phone:"1-888-857-9751", email:""}],
      extra:SHIFT4_TRAIN_BLOCK},
     /* ---- Gateways ---- */
-    p("FluidPay", "FluidPay", "gateways"),
+    {name:"FluidPay", brand:"FluidPay", type:"gateways", platform:"FluidPay gateway portal",
+     form:{url:"https://app.fluidpay.com/auth", label:"Open FluidPay portal"},
+     steps:[], needs:[], turnaround:TODO,
+     contacts:[{role:"Submissions / Boarding", name:TODO, phone:TODO, email:TODO}]},
     p("NMI", "NMI", "gateways"),
     p("Luqra", "Luqra", "gateways"),
     p("Valor Gateway", "Valor PayTech", "gateways"),
