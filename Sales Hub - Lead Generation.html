@@ -78,9 +78,15 @@ main.wrap{padding:34px 0 10px}
 .req-checks{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:18px}
 @media(max-width:700px){.req-checks{grid-template-columns:1fr 1fr}}
 @media(max-width:460px){.req-checks{grid-template-columns:1fr}}
-.chk{display:flex;align-items:center;gap:10px;border:1px solid var(--line);border-radius:11px;padding:12px 14px;cursor:pointer;font-weight:700;font-size:14px;color:var(--ink);transition:.12s;user-select:none}
-.chk:hover{border-color:var(--teal)}
-.chk input{width:18px;height:18px;accent-color:var(--teal);flex:none}
+.optchip{position:relative;display:flex;align-items:center;justify-content:space-between;gap:12px;border:1.5px solid var(--line);border-radius:12px;padding:15px 16px;cursor:pointer;transition:.14s;background:#fff;font-weight:700;font-size:14.5px;color:var(--ink);user-select:none}
+.optchip:hover{border-color:var(--teal);background:var(--bg-soft)}
+.optchip input{position:absolute;opacity:0;width:0;height:0;margin:0}
+.optchip .olbl{line-height:1.25}
+.optchip .tick{width:22px;height:22px;border-radius:6px;border:2px solid var(--line);flex:none;display:grid;place-items:center;color:#fff;transition:.14s}
+.optchip .tick svg{width:13px;height:13px;opacity:0;transition:.14s}
+.optchip input:checked ~ .tick{background:var(--teal);border-color:var(--teal)}
+.optchip input:checked ~ .tick svg{opacity:1}
+.optchip:has(input:checked){border-color:var(--teal);background:rgba(20,161,140,.07);box-shadow:inset 0 0 0 1px var(--teal)}
 .req-fields{display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px;margin-bottom:12px}
 @media(max-width:700px){.req-fields{grid-template-columns:1fr}}
 .req-form input,.req-form textarea{width:100%;border:1px solid var(--line);border-radius:10px;padding:11px 13px;font-family:inherit;font-size:15px;color:var(--ink)}
@@ -248,12 +254,12 @@ main.wrap{padding:34px 0 10px}
       <p class="sec-sub">Check the tools you&rsquo;re interested in, add your details, and send — it goes straight to Dom &amp; Alex and they&rsquo;ll email you back.</p>
       <form id="leadForm" class="req-form" novalidate>
         <div class="req-checks">
-          <label class="chk"><input type="checkbox" name="interest" value="Live Transfers"><span>Live Transfers</span></label>
-          <label class="chk"><input type="checkbox" name="interest" value="Warm Email Lists"><span>Warm Email Lists</span></label>
-          <label class="chk"><input type="checkbox" name="interest" value="Seamless.AI access"><span>Seamless.AI access</span></label>
-          <label class="chk"><input type="checkbox" name="interest" value="Paid Ads"><span>Paid Ads</span></label>
-          <label class="chk"><input type="checkbox" name="interest" value="NextLink seat"><span>NextLink seat</span></label>
-          <label class="chk"><input type="checkbox" name="interest" value="NextLink reselling"><span>NextLink reselling</span></label>
+          <label class="optchip"><input type="checkbox" name="interest" value="Live Transfers"><span class="olbl">Live Transfers</span><span class="tick"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M5 13l4 4L19 7"/></svg></span></label>
+          <label class="optchip"><input type="checkbox" name="interest" value="Warm Email Lists"><span class="olbl">Warm Email Lists</span><span class="tick"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M5 13l4 4L19 7"/></svg></span></label>
+          <label class="optchip"><input type="checkbox" name="interest" value="Seamless.AI access"><span class="olbl">Seamless.AI access</span><span class="tick"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M5 13l4 4L19 7"/></svg></span></label>
+          <label class="optchip"><input type="checkbox" name="interest" value="Paid Ads"><span class="olbl">Paid Ads</span><span class="tick"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M5 13l4 4L19 7"/></svg></span></label>
+          <label class="optchip"><input type="checkbox" name="interest" value="NextLink seat"><span class="olbl">NextLink seat</span><span class="tick"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M5 13l4 4L19 7"/></svg></span></label>
+          <label class="optchip"><input type="checkbox" name="interest" value="NextLink reselling"><span class="olbl">NextLink reselling</span><span class="tick"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M5 13l4 4L19 7"/></svg></span></label>
         </div>
         <div class="req-fields">
           <input name="name" type="text" placeholder="Your name" autocomplete="name" required>
