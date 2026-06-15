@@ -251,7 +251,7 @@ main.wrap{padding:34px 0 10px}
     <!-- INTEREST / REQUEST FORM -->
     <div id="request-form">
       <div class="sec-head"><span class="eyebrow">Request</span><h2>Tell us what you want pricing on</h2></div>
-      <p class="sec-sub">Check the tools you&rsquo;re interested in, add your details, and send — it goes straight to Dom &amp; Alex and they&rsquo;ll email you back.</p>
+      <p class="sec-sub">Check the tools you&rsquo;re interested in, add your details, and send — it goes straight to our team and they&rsquo;ll email you back.</p>
       <form id="leadForm" class="req-form" novalidate>
         <div class="req-checks">
           <label class="optchip"><input type="checkbox" name="interest" value="Live Transfers"><span class="olbl">Live Transfers</span><span class="tick"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M5 13l4 4L19 7"/></svg></span></label>
@@ -269,7 +269,7 @@ main.wrap{padding:34px 0 10px}
         <textarea name="message" rows="3" placeholder="Anything else? (optional)"></textarea>
         <div class="req-actions">
           <button type="submit" class="btn btn-primary">Send my request</button>
-          <span class="req-note">Goes to Dom &amp; Alex — you&rsquo;ll hear back by email.</span>
+          <span class="req-note">Goes to our team — you&rsquo;ll hear back by email.</span>
         </div>
       </form>
       <div id="leadDone" class="lead-done"></div>
@@ -306,7 +306,7 @@ function requestInterest(val){
     function finish(ok,msg){
       if(ok){
         form.style.display='none';
-        d.innerHTML='<h3>Got it, '+name+' — request sent ✅</h3><p>Dom &amp; Alex have your request for: <b>'+interests.join(', ')+'</b>. They will email you back shortly.</p>';
+        d.innerHTML='<h3>Got it, '+name+' — request sent ✅</h3><p>Our team has your request for: <b>'+interests.join(', ')+'</b>. They will email you back shortly.</p>';
       } else {
         if(btn){btn.disabled=false;btn.textContent='Send my request';}
         d.innerHTML='<h3 style="color:#c0392b">That didn&rsquo;t send</h3><p>'+(msg||'Please try again. If this is the first time, check <b>dom@nextpaypos.com</b> (including spam) for a FormSubmit activation email and click it once, then resubmit.')+'</p>';
