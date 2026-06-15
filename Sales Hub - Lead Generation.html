@@ -71,6 +71,28 @@ main.wrap{padding:34px 0 10px}
 
 .divider{height:1px;background:var(--line);margin:42px 0 34px}
 
+/* interest / request form */
+#request-form{scroll-margin-top:84px;margin-top:38px}
+.req-form{background:#fff;border:1px solid var(--line);border-radius:var(--radius-lg);box-shadow:var(--shadow-sm);padding:24px;margin-top:10px;transition:box-shadow .3s}
+.req-form.req-flash{box-shadow:0 0 0 2px var(--teal)}
+.req-checks{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:18px}
+@media(max-width:700px){.req-checks{grid-template-columns:1fr 1fr}}
+@media(max-width:460px){.req-checks{grid-template-columns:1fr}}
+.chk{display:flex;align-items:center;gap:10px;border:1px solid var(--line);border-radius:11px;padding:12px 14px;cursor:pointer;font-weight:700;font-size:14px;color:var(--ink);transition:.12s;user-select:none}
+.chk:hover{border-color:var(--teal)}
+.chk input{width:18px;height:18px;accent-color:var(--teal);flex:none}
+.req-fields{display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px;margin-bottom:12px}
+@media(max-width:700px){.req-fields{grid-template-columns:1fr}}
+.req-form input,.req-form textarea{width:100%;border:1px solid var(--line);border-radius:10px;padding:11px 13px;font-family:inherit;font-size:15px;color:var(--ink)}
+.req-form input:focus,.req-form textarea:focus{outline:2px solid var(--teal)}
+.req-form textarea{resize:vertical;margin-bottom:14px}
+.req-actions{display:flex;align-items:center;gap:14px;flex-wrap:wrap}
+.req-note{font-size:13px;color:var(--slate)}
+.lead-done{display:none}
+.lead-done.show{display:block;background:rgba(20,161,140,.08);border:1px solid rgba(20,161,140,.3);border-radius:var(--radius);padding:24px;margin-top:10px;text-align:center}
+.lead-done h3{font-size:19px;color:var(--teal-dark);margin-bottom:6px}
+.lead-done p{font-size:14.5px;color:var(--slate);line-height:1.5}
+
 .hub-foot{background:var(--navy);color:#9fb1c2;padding:30px 0;margin-top:46px;font-size:13.5px}
 .hub-foot .wrap{display:flex;justify-content:space-between;gap:18px;flex-wrap:wrap}
 .hub-foot a{color:#cdd8e2;font-weight:600}.hub-foot a:hover{color:#fff}
@@ -161,8 +183,7 @@ main.wrap{padding:34px 0 10px}
         <div class="lg-top"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.9v3a2 2 0 01-2.2 2 19.8 19.8 0 01-8.6-3 19.5 19.5 0 01-6-6 19.8 19.8 0 01-3-8.6A2 2 0 014.1 2h3a2 2 0 012 1.7c.1.9.4 1.8.7 2.7a2 2 0 01-.5 2.1L8.1 9.9a16 16 0 006 6l1.4-1.2a2 2 0 012.1-.4c.9.3 1.8.6 2.7.7a2 2 0 011.7 2z"/></svg></div>
           <h3>Live Transfers</h3><span class="pill pill-new">Agent pricing</span></div>
         <p>Interested business owners connected to you in real time — the highest-intent lead type.</p>
-        <div class="cta"><a class="btn btn-primary btn-sm btn-todo">Get pricing <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></div>
-        <div class="note"><b>Needs from Dom:</b> sign-up link, agent price, and delivery details.</div>
+        <div class="cta"><a class="btn btn-primary btn-sm" href="#request-form" onclick="requestInterest('Live Transfers');return false;">Get pricing <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></div>
       </div>
 
       <!-- Warm Email Lists -->
@@ -170,8 +191,15 @@ main.wrap{padding:34px 0 10px}
         <div class="lg-top"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M2 7l10 6 10-6"/></svg></div>
           <h3>Warm Email Lists</h3><span class="pill pill-new">Agent pricing</span></div>
         <p>Targeted business lists to fuel your own email and follow-up campaigns — never start cold.</p>
-        <div class="cta"><a class="btn btn-primary btn-sm btn-todo">Get pricing <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></div>
-        <div class="note"><b>Needs from Dom:</b> sign-up link, list criteria, and agent price.</div>
+        <div class="cta"><a class="btn btn-primary btn-sm" href="#request-form" onclick="requestInterest('Warm Email Lists');return false;">Get pricing <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></div>
+      </div>
+
+      <!-- Email & Phone Calls -->
+      <div class="lg">
+        <div class="lg-top"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 2L11 13M22 2l-7 20-4-9-9-4z"/></svg></div>
+          <h3>Email &amp; Phone Calls</h3><span class="pill pill-new">Agent pricing</span></div>
+        <p>Done-for-you outbound email and phone-call campaigns that book appointments and keep your pipeline full.</p>
+        <div class="cta"><a class="btn btn-primary btn-sm" href="#request-form" onclick="requestInterest('Email & Phone Calls');return false;">Get pricing <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></div>
       </div>
 
       <!-- Paid Ads -->
@@ -179,7 +207,7 @@ main.wrap{padding:34px 0 10px}
         <div class="lg-top"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 11l18-5v12L3 13v6H1v-8z"/><path d="M11 8v6"/></svg></div>
           <h3>Paid Ads</h3><span class="pill pill-soon">Coming soon</span></div>
         <p>Done-for-you paid advertising to drive inbound leads to you. Launching soon — details &amp; sign-up will appear here.</p>
-        <div class="cta"><a class="btn btn-outline btn-sm btn-todo">Notify me <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></div>
+        <div class="cta"><a class="btn btn-outline btn-sm" href="#request-form" onclick="requestInterest('Paid Ads');return false;">Notify me <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></div>
       </div>
 
       <!-- NextLink (feature) -->
@@ -205,17 +233,79 @@ main.wrap{padding:34px 0 10px}
           </div>
         </div>
         <div class="cta">
-          <a class="btn btn-primary btn-sm btn-todo">Get a NextLink seat <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+          <a class="btn btn-primary btn-sm" href="#request-form" onclick="requestInterest('NextLink seat');return false;">Get a NextLink seat <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
           <a class="btn btn-outline btn-sm" href="https://app.nextlinks.co/auth/sign-in" target="_blank" rel="noopener">NextLink login <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
-          <a class="btn btn-outline btn-sm btn-todo">Learn about reselling</a>
+          <a class="btn btn-outline btn-sm" href="#request-form" onclick="requestInterest('NextLink reselling');return false;">Learn about reselling</a>
         </div>
         <div class="note"><b>Needs from Dom:</b> NextLink sign-up link, agent seat price, reseller details, and Sales Navigator purchase guidance.</div>
       </div>
 
     </div>
+
+    <!-- INTEREST / REQUEST FORM -->
+    <div id="request-form">
+      <div class="sec-head"><span class="eyebrow">Request</span><h2>Tell us what you want pricing on</h2></div>
+      <p class="sec-sub">Check the tools you&rsquo;re interested in, add your details, and send — it goes straight to Dom &amp; Alex and they&rsquo;ll email you back.</p>
+      <form id="leadForm" class="req-form" novalidate>
+        <div class="req-checks">
+          <label class="chk"><input type="checkbox" name="interest" value="Live Transfers"><span>Live Transfers</span></label>
+          <label class="chk"><input type="checkbox" name="interest" value="Warm Email Lists"><span>Warm Email Lists</span></label>
+          <label class="chk"><input type="checkbox" name="interest" value="Email & Phone Calls"><span>Email &amp; Phone Calls</span></label>
+          <label class="chk"><input type="checkbox" name="interest" value="Paid Ads"><span>Paid Ads</span></label>
+          <label class="chk"><input type="checkbox" name="interest" value="NextLink seat"><span>NextLink seat</span></label>
+          <label class="chk"><input type="checkbox" name="interest" value="NextLink reselling"><span>NextLink reselling</span></label>
+        </div>
+        <div class="req-fields">
+          <input name="name" type="text" placeholder="Your name" autocomplete="name" required>
+          <input name="email" type="email" placeholder="Your email" autocomplete="email" required>
+          <input name="phone" type="tel" placeholder="Your cell (optional)" autocomplete="tel">
+        </div>
+        <textarea name="message" rows="3" placeholder="Anything else? (optional)"></textarea>
+        <div class="req-actions">
+          <button type="submit" class="btn btn-primary">Send my request</button>
+          <span class="req-note">Goes to Dom &amp; Alex — you&rsquo;ll hear back by email.</span>
+        </div>
+      </form>
+      <div id="leadDone" class="lead-done"></div>
+    </div>
+
   </section>
 
 </main>
+
+<script>
+function requestInterest(val){
+  var cb=document.querySelector('#leadForm input[value="'+val+'"]');
+  if(cb) cb.checked=true;
+  document.getElementById('request-form').scrollIntoView({behavior:'smooth',block:'start'});
+  var form=document.getElementById('leadForm');
+  form.classList.add('req-flash'); setTimeout(function(){form.classList.remove('req-flash');},1200);
+}
+(function(){
+  var form=document.getElementById('leadForm');
+  form.addEventListener('submit',function(e){
+    e.preventDefault();
+    var fd=new FormData(form);
+    var interests=fd.getAll('interest');
+    if(!interests.length){ alert('Pick at least one option you are interested in.'); return; }
+    var name=fd.get('name')||'there';
+    fd.append('_subject','Lead-gen interest — '+(fd.get('name')||'Agent')+' ('+interests.join(', ')+')');
+    fd.append('_cc','alexander@nextpaypos.com');
+    fd.append('_template','table');
+    fd.append('Source','Sales Hub — Lead Generation interest form');
+    var btn=form.querySelector('button[type=submit]'); if(btn){btn.disabled=true;btn.textContent='Sending…';}
+    function done(){
+      form.style.display='none';
+      var d=document.getElementById('leadDone');
+      d.innerHTML='<h3>Got it, '+name+' — request sent ✅</h3><p>Dom &amp; Alex have your request for: <b>'+interests.join(', ')+'</b>. They will email you back shortly.</p>';
+      d.classList.add('show');
+      d.scrollIntoView({behavior:'smooth',block:'center'});
+    }
+    fetch('https://formsubmit.co/ajax/dom@nextpaypos.com',{method:'POST',headers:{'Accept':'application/json'},body:fd})
+      .then(function(r){return r.json();}).then(done).catch(done);
+  });
+})();
+</script>
 
 <footer class="hub-foot">
   <div class="wrap">
