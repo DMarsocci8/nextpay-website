@@ -246,6 +246,9 @@
    =========================================================== */
   var TODO = "";   // leave a field as "" (empty) to flag it as "Needs info"
 
+  // Shift4 Partner Portal login (Sales Center is where applications are submitted)
+  var SHIFT4_PORTAL = "https://link.shift4payments.com/auth/login?redirectUrl=https%3A%2F%2Fapi.dealer-portal.shift4.com%2Fapi%2Fauth%2Flink%3Fredirect%3Dhttps%253A%252F%252Fpartner-portal.shift4.com%252F%252F";
+
   // default platform for most products is the Solutions in Payments Portal
   function p(name, brand, type, platform){ return {name:name, brand:brand, type:type, platform:platform||"Solutions in Payments Portal", form:{url:TODO,label:""}, steps:[], needs:[], turnaround:TODO, contacts:[{role:"Submissions / Boarding", name:TODO, phone:TODO, email:TODO},{role:"Tech / Onboarding", name:TODO, phone:TODO, email:TODO}]}; }
 
@@ -278,11 +281,11 @@
        +'<a href="mailto:dom@nextpaypos.com">dom@nextpaypos.com</a>, <a href="mailto:Alexander@nextpaypos.com">Alexander@nextpaypos.com</a>.</div></div>'
        +'<div style="margin-top:12px"><a class="formbtn" href="https://docs.google.com/forms/d/e/1FAIpQLSedLS22jwms21UlW5Ybxy0HHhRDp-BRpSSkn5TpzgqoXcMmBA/viewform" target="_blank" rel="noopener">Open Square demo request form <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></div>'},
     p("Clover", "Fiserv / Clover", "pos"),
-    {name:"Shift4 Dine (SkyTab)", brand:"Shift4 / SkyTab", type:"pos", platform:"Shift4 Partner Portal (your own login)",
-     form:{url:"https://link.shift4payments.com/auth/login?redirectUrl=https%3A%2F%2Fapi.dealer-portal.shift4.com%2Fapi%2Fauth%2Flink%3Fredirect%3Dhttps%253A%252F%252Fpartner-portal.shift4.com%252F%252F", label:"Open Shift4 Partner Portal"},
+    {name:"Shift4 Dine (SkyTab)", brand:"Shift4 / SkyTab", type:"pos", platform:"Shift4 Partner Portal → Sales Center (your own login)",
+     form:{url:SHIFT4_PORTAL, label:"Open Shift4 Partner Portal"},
      steps:[
        "Log in to the Shift4 Partner Portal (your access is provided)",
-       "Start a new deal / merchant application in the portal",
+       "Go to the Sales Center to start a new merchant application",
        "Enter the merchant and business details",
        "Submit through the portal and save the confirmation"
      ],
@@ -299,7 +302,17 @@
     p("Valor VL", "Valor PayTech", "terminals"),
     p("Clover Flex / Go", "Fiserv / Clover", "terminals"),
     p("Square Mobile / Handheld", "Square", "terminals"),
-    p("Shift4 Terminals", "Shift4", "terminals"),
+    {name:"Shift4 Terminals", brand:"Shift4", type:"terminals", platform:"Shift4 Partner Portal → Sales Center (your own login)",
+     form:{url:SHIFT4_PORTAL, label:"Open Shift4 Partner Portal"},
+     steps:[
+       "Log in to the Shift4 Partner Portal (your access is provided)",
+       "Go to the Sales Center to submit a new application",
+       "Enter the merchant, business details and the terminal/hardware",
+       "Submit through the portal and save the confirmation"
+     ],
+     needs:["Your Shift4 Partner Portal login","Merchant business details & EIN","Bank info for deposits"],
+     turnaround:TODO,
+     contacts:[{role:"SkyTab / Shift4 Support", name:TODO, phone:TODO, email:TODO}]},
     /* ---- Gateways ---- */
     p("FluidPay", "FluidPay", "gateways"),
     p("NMI", "NMI", "gateways"),
