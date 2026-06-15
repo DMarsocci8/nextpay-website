@@ -103,7 +103,7 @@ main.wrap{padding:30px 0 10px}
   <div class="wrap">
     <div class="crumbs"><a href="Sales Hub.html">Sales Hub</a><span class="sep">/</span><span>Training Academy</span></div>
     <h1>NextPay Training Academy</h1>
-    <p class="lead">Original, NextPay-branded sales training — modules, lessons, videos and quizzes. Work through it at your own pace; your progress saves automatically.</p>
+    <p class="lead">The <b>6-Week Jumpstart Program</b> — original, NextPay-branded merchant-sales training. Work one week at a time: lessons, quizzes and (soon) videos. Your progress saves automatically.</p>
     <div class="prog">
       <div class="ring" id="ring"><div class="inner" id="ringPct">0%</div></div>
       <div class="ptext"><b id="progTitle">Start learning</b><p id="progSub">Complete lessons to fill your progress bar.</p></div>
@@ -118,8 +118,8 @@ main.wrap{padding:30px 0 10px}
   <div class="build-note">
     <div class="ni"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14"/></svg></div>
     <div>
-      <b>This is the training shell — ready to fill</b>
-      <p>Modules and lessons are added from the data list at the bottom of this page. Send Dom the section/lesson titles (screenshots are fine) and the scripts, and finished NextPay-branded lessons drop in here — each with a video slot that accepts a YouTube/Vimeo link once recorded.</p>
+      <b>Add a video to any lesson</b>
+      <p>Every lesson has a video slot ready for a YouTube or Vimeo link — record with a tool like HeyGen using the lesson as your script, then send Dom the links and they drop straight into each week. More weeks, quizzes and lessons can be added or refined any time.</p>
     </div>
   </div>
 </div>
@@ -147,30 +147,175 @@ main.wrap{padding:30px 0 10px}
    not copied from any other platform.
    =========================================================== */
 var MODULES = [
+  /* ===== WEEK 1 ===== */
   {
-    title:"Payments Foundations",
-    intro:"Start here — the basics every rep needs before pitching. (Sample module — keep, edit, or replace as your curriculum comes in.)",
+    title:"Week 1 — Merchant Services Foundations",
+    intro:"Why this is a great career, how payments actually work, and the fee programs that win deals.",
     lessons:[
-      {
-        id:"pf-1",
-        title:"How a card payment actually works",
-        duration:"5 min",
-        video:"",
-        body:"<p>Before you can sell payment processing, you need to understand what actually happens when a customer taps or swipes a card. Every transaction moves through the same handful of players in just a couple of seconds.</p>"
-            +"<h4>The five players</h4>"
-            +"<ul>"
-            +"<li><b>Cardholder</b> — the customer paying with their card.</li>"
-            +"<li><b>Merchant</b> — your prospect, the business getting paid.</li>"
-            +"<li><b>Acquirer / processor</b> — moves the transaction for the merchant (this is the side NextPay sets up).</li>"
-            +"<li><b>Card network</b> — Visa, Mastercard, Discover, Amex — the rails the transaction rides on.</li>"
-            +"<li><b>Issuing bank</b> — the customer's bank that issued the card and approves the charge.</li>"
-            +"</ul>"
-            +"<h4>The flow, in plain English</h4>"
-            +"<p><b>1) Authorization:</b> the card is presented, the request travels through the processor and network to the issuing bank, which approves or declines in about a second. <b>2) Clearing &amp; funding:</b> at the end of the day the approved transactions are batched and the money is moved, landing in the merchant's bank account (usually next day).</p>"
-            +"<h4>Where the fees come from</h4>"
-            +"<p>The cost of accepting a card is built from three pieces: <b>interchange</b> (set by the card networks, paid to the issuing bank), <b>assessments</b> (the networks' own small fee), and the <b>processor markup</b>. Interchange and assessments are the same for everyone — the markup is where pricing programs like dual pricing change the math for the merchant. We'll cover those next.</p>",
-        quiz:{ q:"Who sets interchange rates?", options:["The merchant","The card networks (Visa/Mastercard)","The acquirer/processor","The cardholder"], answer:1 }
-      }
+      { id:"w1l1", title:"Why sell merchant services", duration:"5 min", video:"",
+        body:"<p>Merchant services is one of the rare industries where <b>almost every prospect is qualified</b>. Drive down any street and every business you pass takes payments — so every one of them is a potential client. You are not hunting for the rare buyer; you are choosing who to talk to first.</p>"
+          +"<h4>Why it is a great career</h4><ul>"
+          +"<li><b>Huge market</b> — every business needs to accept payments.</li>"
+          +"<li><b>Recurring income</b> — you build a residual book that pays you month after month.</li>"
+          +"<li><b>You are the expert</b> — owners want a real person who can lower a real cost.</li>"
+          +"<li><b>Good for the business</b> — card acceptance grows their sales and average ticket.</li></ul>"
+          +"<p>Your one job is simple: <b>bring in deals</b>. The more you write, the faster your income and standing grow. Everything in this program is built to get you there.</p>",
+        quiz:{ q:"What makes merchant services prospecting different from most sales?", options:["You can only sell to wealthy buyers","Almost every business is already a qualified prospect","There are very few potential customers","Merchants rarely accept cards"], answer:1 } },
+      { id:"w1l2", title:"Where the industry is heading", duration:"4 min", video:"",
+        body:"<p>This is one of the most exciting times in payments — and that matters, because <b>owners want something new</b>, not the same pitch they have heard for ten years.</p>"
+          +"<h4>What is changing</h4><ul>"
+          +"<li><b>New ways to pay</b> — tap-to-pay, mobile wallets (Apple Pay, Google Pay), QR and online checkout.</li>"
+          +"<li><b>Fee programs</b> — dual pricing, cash discount and surcharging cut processing costs dramatically.</li>"
+          +"<li><b>Better hardware and software</b> — modern POS that runs the whole business, not just payments.</li></ul>"
+          +"<p>You can walk in and honestly say, <i>here is something new that puts money back in your pocket</i>. That beats &lsquo;want a lower rate?&rsquo; every time.</p>" },
+      { id:"w1l3", title:"How a card payment works — front end &amp; back end", duration:"6 min", video:"",
+        body:"<p>Before you can sell processing, know what happens when a card is tapped. It moves through the same players every time, in about a second.</p>"
+          +"<h4>The players</h4><ul>"
+          +"<li><b>Cardholder</b> — the customer paying.</li>"
+          +"<li><b>Merchant</b> — your client getting paid.</li>"
+          +"<li><b>Acquirer / processor</b> — moves the transaction for the merchant (our side).</li>"
+          +"<li><b>Card network</b> — Visa, Mastercard, Discover, Amex.</li>"
+          +"<li><b>Issuing bank</b> — the customer&rsquo;s bank that approves the charge.</li></ul>"
+          +"<h4>Front end vs back end</h4><p>The <b>front end</b> authorizes the sale in real time (approved or declined). The <b>back end</b> clears and funds it — batching the day&rsquo;s sales and depositing the money, usually next day.</p>"
+          +"<h4>Where fees come from</h4><p>Cost is built from <b>interchange</b> (set by the networks, paid to the issuer), <b>assessments</b> (the networks&rsquo; fee), and the <b>processor markup</b>. Interchange and assessments are the same for everyone — the markup and the fee program you choose are what change the merchant&rsquo;s real cost.</p>",
+        quiz:{ q:"Which part of a transaction approves the sale in real time?", options:["The back end","The front end","The batch","The statement"], answer:1 } },
+      { id:"w1l4", title:"The three fee programs that win deals", duration:"4 min", video:"",
+        body:"<p>The fastest way to win today is a <b>fee program</b> that cuts the merchant&rsquo;s cost to near zero. Three to know:</p>"
+          +"<ul><li><b>Dual Pricing</b> — post a cash price and a card price; card customers cover the fee.</li>"
+          +"<li><b>Cash Discount</b> — the card price is the shelf price; cash payers get a discount.</li>"
+          +"<li><b>Surcharge</b> — a capped fee added to credit only (never debit); check state rules.</li></ul>"
+          +"<p>The pitch writes itself: <i>does it make more sense for you to pay $1,000 a month, or for the customers using cards to cover it?</i> Get the full details and wording on the <a href='Sales Hub - Pricing.html'>Pricing &amp; Fee Programs</a> page.</p>" }
+    ]
+  },
+  /* ===== WEEK 2 ===== */
+  {
+    title:"Week 2 — Products, Services &amp; What You Sell",
+    intro:"Know the lineup, explain EMV/NFC simply, and use value-add services to win and keep accounts.",
+    lessons:[
+      { id:"w2l1", title:"Hardware &amp; software — the lineup", duration:"5 min", video:"",
+        body:"<p>You are not just selling a rate — you are selling the <b>right setup</b> for the business.</p>"
+          +"<ul><li><b>POS systems</b> — full restaurant/retail systems (Square, Clover, Shift4 Dine) that run the whole operation.</li>"
+          +"<li><b>Terminals</b> — simple countertop/wireless card machines for quick acceptance.</li>"
+          +"<li><b>Gateways</b> — for online and virtual-terminal payments.</li>"
+          +"<li><b>Mobile</b> — take payments on a phone or handheld anywhere.</li></ul>"
+          +"<p><b>Sell our solutions</b> — lead with NextPay&rsquo;s stack (Square, Clover, Shift4 and our terminals/gateways) and match the tool to how the business runs. See the <a href='Sales Hub - Submit a Deal.html'>product playbook</a>.</p>" },
+      { id:"w2l2", title:"EMV &amp; NFC, explained simply", duration:"4 min", video:"",
+        body:"<p>Two terms every merchant asks about — keep it simple.</p>"
+          +"<h4>EMV (chip)</h4><p>The chip card standard. It creates a unique code per transaction, so it is far harder to counterfeit. The big deal for merchants: accepting chip shifts <b>fraud liability</b> away from them.</p>"
+          +"<h4>NFC (tap)</h4><p>Near-field communication — &lsquo;tap to pay&rsquo; with cards and phones (Apple Pay, Google Pay). Fast, secure, and what customers increasingly expect.</p>"
+          +"<p><b>How to say it:</b> &lsquo;Your equipment should take chip and tap — it protects you from fraud and gives customers the fast checkout they want.&rsquo;</p>",
+        quiz:{ q:"A key merchant benefit of accepting EMV chip transactions is:", options:["Higher interchange","Fraud liability shifts away from the merchant","Slower checkout","No need for a processor"], answer:1 } },
+      { id:"w2l3", title:"Value-add services that make you sticky", duration:"4 min", video:"",
+        body:"<p>Processing gets your foot in the door; <b>value-add services</b> help you win and keep the account.</p>"
+          +"<ul><li><b>Gift &amp; loyalty</b> — keep customers coming back and raise average spend.</li>"
+          +"<li><b>Rewards</b> — like NextPay Rewards, where the merchant earns on their processing.</li>"
+          +"<li><b>Other services</b> — funding, analytics and tools that make you a full partner, not just a rate.</li></ul>"
+          +"<p>The more a merchant uses, the harder it is for a competitor to unseat you.</p>" },
+      { id:"w2l4", title:"Cash discount vs surcharge", duration:"4 min", video:"",
+        body:"<p>They sound alike but are not the same — know the difference cold.</p>"
+          +"<ul><li><b>Cash discount</b> — the posted price includes card cost; cash payers get a discount. Applies to all cards.</li>"
+          +"<li><b>Surcharge</b> — a fee added to <b>credit only</b> (never debit), capped by the brands, not allowed in a few states, and requires signage and registration.</li></ul>"
+          +"<p>When in doubt, dual pricing / cash discount is the simplest, most broadly compliant way to get the merchant to near-zero cost. Details on the <a href='Sales Hub - Pricing.html'>Pricing</a> page.</p>",
+        quiz:{ q:"Surcharging can be applied to:", options:["Debit cards only","Credit cards only","Cash","Any payment type"], answer:1 } }
+    ]
+  },
+  /* ===== WEEK 3 ===== */
+  {
+    title:"Week 3 — Prospecting &amp; Filling Your Pipeline",
+    intro:"The truth about prospecting, who to target, and the channels that keep your funnel full.",
+    lessons:[
+      { id:"w3l1", title:"The truth about prospecting", duration:"4 min", video:"",
+        body:"<p>Here is the honest truth: <b>activity drives results</b>. Talent helps, but the rep who talks to more owners wins. Prospecting is a numbers game made better by consistency.</p>"
+          +"<ul><li>Set a daily activity target (doors, calls, conversations) and hit it no matter what.</li>"
+          +"<li>Track everything in the CRM — most deals come on the follow-up.</li>"
+          +"<li>Protect your prospecting time; it is the engine of your income.</li></ul>"
+          +"<p>Slumps are almost always activity problems. Keep the funnel full and the sales follow.</p>",
+        quiz:{ q:"The biggest driver of prospecting success is:", options:["Waiting for referrals","Consistent daily activity","A perfect script","Luck"], answer:1 } },
+      { id:"w3l2", title:"Who to target &amp; build your list", duration:"4 min", video:"",
+        body:"<p>Everyone is a prospect — but some are <b>better</b> prospects. Prioritize:</p>"
+          +"<ul><li>Businesses with steady card volume — retail, restaurants, services, auto, salons.</li>"
+          +"<li>Owners who are reachable and make the decision.</li>"
+          +"<li>Your local territory — use <a href='https://www.google.com/maps' target='_blank' rel='noopener'>Google Maps</a> to map and route an area you can work door-to-door.</li></ul>"
+          +"<p>Build a living list in the CRM. A good list you actually work beats a perfect list you never touch.</p>" },
+      { id:"w3l3", title:"Prospecting channels", duration:"4 min", video:"",
+        body:"<p>Work several channels so you are never dependent on one.</p>"
+          +"<ul><li><b>In person</b> — door-to-door in your mapped territory.</li>"
+          +"<li><b>Phone</b> — consistent dials to local businesses.</li>"
+          +"<li><b>Referrals</b> — ask every happy merchant.</li>"
+          +"<li><b>Networking</b> — Chamber of Commerce, Alignable, local groups.</li>"
+          +"<li><b>Social &amp; lead gen</b> — a Facebook business presence, plus our tools (live transfers, warm lists, NextLink).</li></ul>"
+          +"<p>See the <a href='Sales Hub - Lead Generation.html'>Lead Generation</a> page for the tools.</p>" }
+    ]
+  },
+  /* ===== WEEK 4 ===== */
+  {
+    title:"Week 4 — The Pitch &amp; Presentation",
+    intro:"Earn the conversation, let the statement do the selling, and present a solution to the owner&rsquo;s pain.",
+    lessons:[
+      { id:"w4l1", title:"The opening pitch that works", duration:"4 min", video:"",
+        body:"<p>Your opener has one job: <b>earn the next two minutes</b>. Lead with something new and valuable, not &lsquo;can I quote your rate?&rsquo;</p>"
+          +"<p><b>A simple opener:</b> &lsquo;Hi, I help local businesses cut or eliminate their card processing fees with a program a lot of owners haven&rsquo;t seen yet — do you have your statement handy so I can show you what you&rsquo;re paying now?&rsquo;</p>"
+          +"<ul><li>Be warm, confident and quick.</li><li>Lead with the savings / new program.</li><li>Aim to get the statement or book a short sit-down.</li></ul>",
+        quiz:{ q:"A strong opening pitch leads with:", options:["A request for their rate","Something new and valuable to the owner","Your company history","A long product list"], answer:1 } },
+      { id:"w4l2", title:"The statement review", duration:"4 min", video:"",
+        body:"<p>The statement is your best sales tool — it turns &lsquo;maybe&rsquo; into a real number.</p>"
+          +"<ul><li>Get the merchant&rsquo;s current statement.</li>"
+          +"<li>Find their <b>effective rate</b> (total fees &divide; total volume).</li>"
+          +"<li>Build a proposal that beats or matches it — or eliminates it with a fee program.</li></ul>"
+          +"<p>Use the <a href='Statement Upload.html' target='_blank' rel='noopener'>Statement Rate Analyzer</a> to do this fast and show the savings in black and white.</p>" },
+      { id:"w4l3", title:"Presenting the solution", duration:"4 min", video:"",
+        body:"<p>Tie it together: <b>product + pricing + promotion</b> aimed at the owner&rsquo;s pain.</p>"
+          +"<ul><li>Show the right hardware/software for how they operate.</li>"
+          +"<li>Show the fee program and the dollars saved.</li>"
+          +"<li>Use a current offer to remove the cost of switching — see <a href='Sales Hub - Promotions.html'>Promotions</a>.</li></ul>"
+          +"<p>Keep it about <b>their</b> numbers and outcomes, not features.</p>" }
+    ]
+  },
+  /* ===== WEEK 5 ===== */
+  {
+    title:"Week 5 — Closing &amp; Objections",
+    intro:"Ask for the business, use questions to advance the deal, and handle the objections you&rsquo;ll hear most.",
+    lessons:[
+      { id:"w5l1", title:"Closing fundamentals", duration:"3 min", video:"",
+        body:"<p>Closing is not a trick — it is <b>asking for the business</b> after you have shown value. Most reps simply never ask.</p>"
+          +"<ul><li>Assume the sale: &lsquo;Let&rsquo;s get you set up.&rsquo;</li><li>Make the next step small and clear.</li><li>Stay quiet after you ask — let them answer.</li></ul>" },
+      { id:"w5l2", title:"Porcupine questions &amp; soft closes", duration:"4 min", video:"",
+        body:"<p>A <b>porcupine</b> is answering a question with a question to move the deal forward.</p>"
+          +"<p>Merchant: &lsquo;Can I keep my current POS?&rsquo; You: &lsquo;Would you want to keep it if I could lower your cost and you barely change a thing?&rsquo; Their answer advances the sale and tells you what matters to them.</p>"
+          +"<ul><li>Use questions to confirm interest and uncover the real objection.</li><li>Trial-close often: &lsquo;If we solved that, are we good to move forward?&rsquo;</li></ul>",
+        quiz:{ q:"A &lsquo;porcupine&rsquo; close means:", options:["Pushing hard for the sale","Answering a question with a question to advance the deal","Lowering the price","Ending the call"], answer:1 } },
+      { id:"w5l3", title:"Handling the top objections", duration:"5 min", video:"",
+        body:"<p>Most objections are a few familiar ones. Have a calm, honest answer ready — and never argue.</p>"
+          +"<ul><li><b>&lsquo;I&rsquo;m in a contract.&rsquo;</b> — &lsquo;Many programs cover or offset that — let&rsquo;s see the numbers; the savings often more than make up for it.&rsquo;</li>"
+          +"<li><b>&lsquo;My rate&rsquo;s fine.&rsquo;</b> — &lsquo;Great — let&rsquo;s confirm it with your statement. If you&rsquo;re already in great shape, I&rsquo;ll tell you. If not, I&rsquo;ll show you.&rsquo;</li>"
+          +"<li><b>&lsquo;I love my current POS.&rsquo;</b> — &lsquo;Perfect — this is mostly about your cost. We can often keep it simple and still cut your fees.&rsquo;</li></ul>"
+          +"<p>Agree, then redirect to the statement and the savings.</p>" }
+    ]
+  },
+  /* ===== WEEK 6 ===== */
+  {
+    title:"Week 6 — Niches, Lead Gen &amp; Keeping Your Book",
+    intro:"Sell into specific industries with our solutions, generate your own leads, and retain the merchants you sign.",
+    lessons:[
+      { id:"w6l1", title:"Selling to specific industries", duration:"5 min", video:"",
+        body:"<p>Tailor the stack to the vertical — owners trust a rep who knows their world.</p>"
+          +"<ul><li><b>Restaurants / pizza shops</b> — recommend a real restaurant POS such as <b>Shift4 Dine</b>, <b>Clover</b> or <b>Square</b> with tableside and online ordering. Always sell <b>our</b> solutions — not third-party POS we don&rsquo;t represent.</li>"
+          +"<li><b>Retail</b> — fast checkout, inventory and dual pricing.</li>"
+          +"<li><b>Services / mobile</b> — invoicing, virtual terminal, tap on phone.</li></ul>"
+          +"<p>Match the recommendation to how they run, and lead with NextPay&rsquo;s lineup. See <a href='Sales Hub - Submit a Deal.html'>products</a>.</p>" },
+      { id:"w6l2", title:"Generating your own leads online", duration:"4 min", video:"",
+        body:"<p>Build channels that bring leads to <b>you</b>.</p>"
+          +"<ul><li><b>Local video / YouTube</b> — short helpful videos for local owners with a clear call to action.</li>"
+          +"<li><b>Facebook business page</b> — post wins and tips; engage local business groups.</li>"
+          +"<li><b>LinkedIn</b> — grow your network and reach out (see NextLink on the <a href='Sales Hub - Lead Generation.html'>Lead Gen</a> page).</li></ul>"
+          +"<p>Pick one, stay consistent, and let it compound.</p>" },
+      { id:"w6l3", title:"Service starts with the sale", duration:"4 min", video:"",
+        body:"<p>You build real income from <b>keeping</b> merchants, not just signing them. Losing a quarter of your book each year means starting over every year.</p>"
+          +"<ul><li><b>Onboard well</b> — make sure they&rsquo;re set up, trained and processing smoothly.</li>"
+          +"<li><b>Stay in touch</b> — a quick check-in prevents cancellations and earns referrals.</li>"
+          +"<li><b>Ask for referrals</b> — your happy merchants are your best lead source.</li></ul>"
+          +"<p>Great service is how a good month becomes a great career.</p>",
+        quiz:{ q:"The best way to build lasting residual income is to:", options:["Only chase new accounts","Onboard well, retain merchants and ask for referrals","Ignore existing customers","Compete on price alone"], answer:1 } }
     ]
   }
 ];
