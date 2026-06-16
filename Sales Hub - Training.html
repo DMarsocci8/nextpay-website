@@ -82,6 +82,19 @@ main.wrap{padding:30px 0 10px}
 .build-note .ni{flex:none;width:42px;height:42px;border-radius:11px;background:rgba(20,161,140,.12);display:grid;place-items:center;color:var(--teal-dark)}
 .build-note .ni svg{width:21px;height:21px}
 .build-note b{font-size:15px}.build-note p{font-size:13.5px;color:var(--slate);line-height:1.55;margin-top:3px}
+.programs{padding-top:6px}
+.programs h2{font-size:22px;letter-spacing:-.01em;margin-bottom:4px}
+.programs .psub{font-size:14px;color:var(--slate);margin-bottom:16px}
+.prog-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+@media(max-width:820px){.prog-grid{grid-template-columns:1fr}}
+.prog-card{background:#fff;border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow-sm);padding:20px;display:flex;flex-direction:column;gap:8px;transition:.16s}
+.prog-card:hover{box-shadow:var(--shadow);transform:translateY(-2px);border-color:var(--teal)}
+.prog-card .ic{width:44px;height:44px;border-radius:11px;background:rgba(20,161,140,.12);display:grid;place-items:center;color:var(--teal-dark)}
+.prog-card .ic svg{width:22px;height:22px}
+.prog-card h3{font-size:16px}
+.prog-card p{font-size:13.5px;color:var(--slate);line-height:1.45;flex:1}
+.prog-card .go{font-size:13.5px;font-weight:700;color:var(--teal-dark);display:inline-flex;align-items:center;gap:7px}
+.prog-card .go svg{width:15px;height:15px}
 
 .hub-foot{background:var(--navy);color:#9fb1c2;padding:30px 0;margin-top:44px;font-size:13.5px}
 .hub-foot .wrap{display:flex;justify-content:space-between;gap:18px;flex-wrap:wrap}
@@ -113,6 +126,31 @@ main.wrap{padding:30px 0 10px}
 </header>
 
 <main class="wrap" id="modules"></main>
+
+<section class="wrap programs">
+  <h2>Popular sales training programs</h2>
+  <p class="psub">Proven outside methodologies to sharpen your selling — reference these alongside the Academy.</p>
+  <div class="prog-grid">
+    <a class="prog-card" href="assets/docs/sandler-cheat-sheet.pdf" target="_blank" rel="noopener">
+      <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5A2.5 2.5 0 016.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 014 19.5v-15A2.5 2.5 0 016.5 2z"/></svg></div>
+      <h3>Sandler — Sales Cheat Sheet</h3>
+      <p>The Sandler selling system at a glance.</p>
+      <span class="go">Open <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+    </a>
+    <a class="prog-card" href="assets/docs/challenger-sale-summary.pdf" target="_blank" rel="noopener">
+      <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2l2.4 5 5.6.6-4 4 1 5.4L12 19l-5 3 1-5.4-4-4 5.6-.6z"/></svg></div>
+      <h3>The Challenger Sale — Summary</h3>
+      <p>Teach, tailor, take control — the Challenger method summarized.</p>
+      <span class="go">Open <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+    </a>
+    <a class="prog-card" href="assets/docs/sandler-shortening-sales-cycle.pdf" target="_blank" rel="noopener">
+      <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></div>
+      <h3>Sandler — Shortening the Sales Cycle</h3>
+      <p>Move deals faster and shorten the sales cycle.</p>
+      <span class="go">Open <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+    </a>
+  </div>
+</section>
 
 <footer class="hub-foot">
   <div class="wrap">
