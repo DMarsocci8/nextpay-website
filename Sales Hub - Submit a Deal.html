@@ -150,8 +150,10 @@
 .docs-needed .dn-head svg{width:22px;height:22px;color:var(--teal-dark);flex:none}
 .docs-needed .dn-head h3{font-size:19px;letter-spacing:-.01em}
 .docs-needed .dn-sub{font-size:14px;color:var(--slate);margin-bottom:15px}
-.dn-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px 24px}
-@media(max-width:700px){.dn-grid{grid-template-columns:1fr}}
+.dn-cols{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+@media(max-width:760px){.dn-cols{grid-template-columns:1fr}}
+.dn-cols>div{display:flex;flex-direction:column;gap:9px}
+.dn-grp{font-size:11.5px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:var(--slate-2);margin-bottom:1px}
 .dn-item{display:flex;gap:9px;align-items:flex-start;font-size:14px;color:var(--ink);line-height:1.45;font-weight:600}
 .dn-item svg{width:16px;height:16px;flex:none;margin-top:2px;color:var(--teal)}
 .dn-item a{color:var(--teal-dark);font-weight:800}
@@ -239,16 +241,32 @@
 
   <section class="docs-needed">
     <div class="dn-head"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 7a2 2 0 012-2h4l2 2h8a2 2 0 012 2v8a2 2 0 01-2 2H5a2 2 0 01-2-2z"/></svg><h3>What you need to submit a deal</h3></div>
-    <p class="dn-sub">Have these ready before you submit — required for most products.</p>
-    <div class="dn-grid">
-      <span class="dn-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg>Driver's license</span>
-      <span class="dn-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg>Social Security Number</span>
-      <span class="dn-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg>Tax ID (EIN)</span>
-      <span class="dn-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg>SS-4 document showing the EIN — <a href="assets/docs/ss4-example.pdf" target="_blank" rel="noopener">see sample</a></span>
-      <span class="dn-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg>3 months credit card processing statements</span>
-      <span class="dn-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg>3 months business bank statements</span>
-      <span class="dn-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg>3 months personal bank statements (if no processing history)</span>
-      <span class="dn-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg>Voided check with the business checking account &amp; routing number</span>
+    <p class="dn-sub">Merchant account information &amp; documents — have these ready before you submit.</p>
+    <div class="dn-cols">
+      <div>
+        <span class="dn-grp">Business info</span>
+        <span class="dn-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg>Legal business name</span>
+        <span class="dn-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg>Legal business address</span>
+        <span class="dn-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg>DBA (doing business as) name</span>
+        <span class="dn-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg>Legal &amp; DBA address(es)</span>
+        <span class="dn-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg>Business email address</span>
+        <span class="dn-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg>Business phone number</span>
+      </div>
+      <div>
+        <span class="dn-grp">Owner(s)</span>
+        <span class="dn-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg>Driver's license of the owner(s)</span>
+        <span class="dn-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg>SSN for the owner(s)</span>
+        <span class="dn-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg>SS-4 document with EIN — <a href="assets/docs/ss4-example.pdf" target="_blank" rel="noopener">see sample</a></span>
+      </div>
+      <div>
+        <span class="dn-grp">Documents</span>
+        <span class="dn-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg>Articles of Organization</span>
+        <span class="dn-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg>Corporate Bylaws</span>
+        <span class="dn-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg>Operating Agreement</span>
+        <span class="dn-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg>Voided check or bank letter (no older than 6 months)</span>
+        <span class="dn-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg>3 months business processing statements</span>
+        <span class="dn-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg>3 months personal bank statements (if no processing history)</span>
+      </div>
     </div>
   </section>
 
