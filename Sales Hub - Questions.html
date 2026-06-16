@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Prospecting Questions — NextPay Sales Hub</title>
+<link rel="stylesheet" href="css/nextpay.css">
+<style>
+.hub-bar{position:sticky;top:0;z-index:60;background:var(--navy);color:#fff;border-bottom:1px solid rgba(255,255,255,.10)}
+.hub-bar-inner{display:flex;align-items:center;gap:18px;height:66px;max-width:var(--maxw);margin:0 auto;padding:0 28px}
+.hub-bar img.logo{height:34px;width:auto;display:block}.hub-bar .pipe{width:1px;height:26px;background:rgba(255,255,255,.18)}
+.hub-bar .hub-tag{font-weight:800;font-size:15px;color:#fff;display:flex;align-items:center;gap:9px}
+.hub-bar .hub-tag .badge{font-size:10.5px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;background:var(--teal);color:#fff;padding:4px 9px;border-radius:999px}
+.hub-bar .right{margin-left:auto}.hub-bar .right a{color:#cdd8e2;font-weight:600;font-size:14.5px}.hub-bar .right a:hover{color:#fff}
+.pg-head{background:linear-gradient(180deg,var(--navy),var(--navy-2));color:#fff}
+.pg-head .wrap{padding:30px 0 32px}
+.crumbs{display:flex;gap:8px;align-items:center;font-size:13.5px;color:#9fb1c2;padding-bottom:14px}
+.crumbs a{color:#cdd8e2;font-weight:600}.crumbs a:hover{color:#fff}.crumbs .sep{opacity:.5}
+.pg-head h1{font-size:clamp(26px,3.6vw,38px);color:#fff;letter-spacing:-.02em}
+.pg-head p.lead{color:#c4d0db;margin-top:10px;max-width:660px;font-size:16px;line-height:1.6}
+main.wrap{padding:30px 0 10px}
+.q{display:flex;gap:16px;background:#fff;border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow-sm);padding:18px 20px;margin-bottom:12px}
+.q .n{width:34px;height:34px;border-radius:9px;background:var(--teal);color:#fff;display:grid;place-items:center;font-weight:800;font-size:15px;flex:none}
+.q .qt{font-size:15.5px;font-weight:700;color:var(--ink);line-height:1.45}
+.q .why{font-size:13.5px;color:var(--slate);line-height:1.5;margin-top:6px}
+.q .why b{color:var(--teal-dark)}
+.hub-foot{background:var(--navy);color:#9fb1c2;padding:30px 0;margin-top:46px;font-size:13.5px}
+.hub-foot .wrap{display:flex;justify-content:space-between;gap:18px;flex-wrap:wrap}
+.hub-foot a{color:#cdd8e2;font-weight:600}.hub-foot a:hover{color:#fff}
+</style>
+</head>
+<body>
+<div class="hub-bar"><div class="hub-bar-inner">
+  <a href="Sales Hub.html" style="display:flex;align-items:center" aria-label="Sales Hub home"><img class="logo" src="assets/logos/nextpay-nav.png" alt="NextPay"></a>
+  <span class="pipe"></span><span class="hub-tag">Sales Hub <span class="badge">Internal</span></span>
+  <div class="right"><a href="Sales Hub.html">← Hub home</a></div>
+</div></div>
+<header class="pg-head"><div class="wrap">
+  <div class="crumbs"><a href="Sales Hub.html">Sales Hub</a><span class="sep">/</span><span>Prospecting Questions</span></div>
+  <h1>Top 10 questions to ask a merchant</h1>
+  <p class="lead">Discovery questions that uncover pain and set up the cost-savings conversation. Ask, listen, and let them tell you their biggest problem in their own words.</p>
+</div></header>
+<main class="wrap" id="list"></main>
+<footer class="hub-foot"><div class="wrap">
+  <span>NextPay Sales Hub · Prospecting Questions · Internal use only.</span>
+  <span><a href="Sales Hub.html">← Back to hub</a></span>
+</div></footer>
+<script>
+var Q=[
+ {q:"What payment processing system are you currently using, and how long have you been with them?", w:"Gauges loyalty to — or frustration with — their current provider."},
+ {q:"How satisfied are you with your processor's fees? Do you feel like you're paying too much?", w:"Uncovers pricing pain and sets up the cost-savings conversation."},
+ {q:"Do you get your payouts same-day, next-day, or longer? Ever had a delay getting your funds?", w:"Slow-payout frustration makes faster funding very attractive."},
+ {q:"Have you ever seen unexpected fees or rate increases from your processor?", w:"Surfaces hidden costs that may already be bugging them."},
+ {q:"How easy is your current POS or terminal for your staff? Any training issues or glitches?", w:"User-friendliness is a big pain point, especially with staff turnover."},
+ {q:"Does your system accept every payment type — contactless, mobile, QR, gift cards?", w:"Merchants missing modern options may be losing customers."},
+ {q:"How well does your payment system integrate with your bookkeeping/POS software?", w:"If they reconcile manually, they'll value automation."},
+ {q:"Have you ever had your account frozen or transactions flagged for no clear reason?", w:"Stripe / PayPal / Square users often have horror stories here."},
+ {q:"If you could improve one thing about your payment setup, what would it be?", w:"Gets them to name their biggest pain point in their own words."},
+ {q:"Would you be open to a quick cost-savings analysis to see how much we can keep in your pocket?", w:"The soft close — earns the statement and the next step."}
+];
+document.getElementById('list').innerHTML=Q.map(function(o,i){
+ return '<div class="q"><span class="n">'+(i+1)+'</span><div><div class="qt">'+o.q+'</div><div class="why"><b>Why:</b> '+o.w+'</div></div></div>';
+}).join('');
+</script>
+</body>
+</html>

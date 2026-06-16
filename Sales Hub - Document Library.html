@@ -237,7 +237,19 @@ var DOCS = [
    note:"Summary of The Challenger Sale methodology — teach, tailor, take control."},
   {title:"Sandler — Shortening the Sales Cycle", product:"general", category:"training", type:"pdf",
    href:"assets/docs/sandler-shortening-sales-cycle.pdf",
-   note:"Sandler guide to moving deals faster and shortening the sales cycle."}
+   note:"Sandler guide to moving deals faster and shortening the sales cycle."},
+  {title:"Dejavoo QD2 / QD4 / QD5", product:"terminals", category:"onepager", type:"pdf",
+   href:"assets/docs/dejavoo-qd2-qd4-qd5.pdf", note:"Dejavoo QD-line terminal spec sheet."},
+  {title:"Dejavoo P1 / P3 / P5", product:"terminals", category:"onepager", type:"pdf",
+   href:"assets/docs/dejavoo-p1-p3-p5.pdf", note:"Dejavoo P-line terminal spec sheet."},
+  {title:"Dejavoo Apple Tap to Pay", product:"terminals", category:"onepager", type:"pdf",
+   href:"assets/docs/dejavoo-apple-tap-to-pay.pdf", note:"Dejavoo Apple Tap to Pay overview."},
+  {title:"Dejavoo P-Line — Fee Programs (QRG)", product:"terminals", category:"pricing", type:"pdf",
+   href:"assets/docs/dejavoo-p-line-fee-programs.pdf", note:"Dejavoo P-line quick reference — all fee programs."},
+  {title:"iPOSPays Gateway Pricing", product:"gateways", category:"pricing", type:"pdf",
+   href:"assets/docs/ipospays-gateway-pricing.pdf", note:"iPOSPays gateway pricing — Schedule G."},
+  {title:"Choosing What to Sell", product:"general", category:"training", type:"pdf",
+   href:"assets/docs/choosing-what-to-sell.pdf", note:"Guide to matching the right product/solution to each merchant."}
 ];
 
 var grid=document.getElementById('libGrid'), empty=document.getElementById('libEmpty'),
@@ -255,6 +267,15 @@ function logoFor(d){
   if(s.indexOf('fieldpulse')>-1) return 'fieldpulse.png';
   if(s.indexOf('swipesimple')>-1) return 'swipesimple.png';
   if(s.indexOf('nextlink')>-1) return 'nextlink-2tone.svg';
+  if(s.indexOf('dejavoo')>-1) return 'dejavoo.png';
+  if(s.indexOf('ipospays')>-1||s.indexOf('ipos')>-1) return 'ipospays.png';
+  if(s.indexOf('pax')>-1) return 'pax.svg';
+  if(s.indexOf('valor')>-1) return 'valor.png';
+  if(s.indexOf('quantic')>-1) return 'quantic.svg';
+  if(s.indexOf('nrs')>-1) return 'nrs.png';
+  if(s.indexOf('luqra')>-1) return 'luqra.png';
+  if(s.indexOf('authorize')>-1) return 'authnet.png';
+  if(s.indexOf('quickbooks')>-1) return 'quickbooks.png';
   return 'nextpay.png';
 }
 function card(d){
