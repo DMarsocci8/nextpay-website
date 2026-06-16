@@ -93,6 +93,7 @@ table.cmp .best{color:var(--slate)}
       <a href="#icplus">Interchange-Plus</a>
       <a href="#flat">Flat Rate</a>
       <a href="#compare">Compare</a>
+      <a href="#gateways">Gateway pricing</a>
     </div>
   </div>
 </header>
@@ -203,6 +204,22 @@ table.cmp .best{color:var(--slate)}
         <tr><td>Surcharge</td><td>Low (credit cost passed)</td><td class="best">Pass only credit cost</td><td class="best">Credit only; capped; state rules</td></tr>
         <tr><td>Interchange-Plus</td><td>Low &amp; transparent</td><td class="best">Larger merchants wanting clarity</td><td class="best">Varies by card type</td></tr>
         <tr><td>Flat Rate</td><td>Predictable, higher</td><td class="best">Small/newer merchants</td><td class="best">Pricier at volume</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h2 id="gateways" style="font-size:24px;letter-spacing:-.02em;margin:34px 0 6px;scroll-margin-top:84px">Gateway pricing</h2>
+  <p class="muted" style="font-size:14px;color:var(--slate);margin-bottom:14px">Gateway fees by provider. Billing routes either directly from the gateway or through Luqra (who then assesses the bill to agents or merchants).</p>
+  <div class="cmp-wrap">
+    <table class="cmp">
+      <thead><tr><th>Gateway</th><th>Set-up fee</th><th>Monthly fee</th><th>Per-transaction</th><th>Batch fee</th><th>Billed by</th></tr></thead>
+      <tbody>
+        <tr><td>Authorize.net</td><td>$0.00</td><td>$12.00</td><td>$0.05</td><td>$0.05</td><td class="best">Bills the merchant directly</td></tr>
+        <tr><td>FluidPay</td><td>$0.00</td><td>$10.00</td><td>$0.05</td><td>$0.05</td><td class="best">Bills Luqra → assessed to agents/merchants</td></tr>
+        <tr><td>NMI</td><td>$0.00</td><td>$10.00</td><td>$0.05</td><td>$0.05</td><td class="best">Bills Luqra → assessed to agents/merchants</td></tr>
+        <tr><td>SwipeSimple</td><td>$5.95</td><td>$11.95</td><td>$0.05</td><td>$0.05</td><td class="best">Bills Luqra → assessed to agents/merchants</td></tr>
+        <tr><td>Valor Virtual Terminal</td><td>$0.00</td><td>$10.00</td><td>$0.05</td><td>$0.05</td><td class="best">Bills Luqra → assessed to agents/merchants</td></tr>
+        <tr><td>iPOSPays</td><td>$0.00</td><td>$6.95</td><td>$0.05</td><td>$0.05</td><td class="best">Bills Luqra → assessed to agents/merchants</td></tr>
       </tbody>
     </table>
   </div>

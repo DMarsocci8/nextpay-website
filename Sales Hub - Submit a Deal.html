@@ -145,6 +145,16 @@
 .portal .plink.todo{background:var(--bg-soft-2);color:var(--slate-2);pointer-events:none}
 .portal .noaccess{align-self:flex-start;margin-top:2px;font-size:12.5px;font-weight:700;color:#b9741a;background:rgba(242,163,60,.12);border:1px solid rgba(242,163,60,.32);border-radius:9px;padding:7px 12px;transition:.14s}
 .portal .noaccess:hover{background:rgba(242,163,60,.2);border-color:rgba(242,163,60,.5)}
+.docs-needed{background:#fff;border:1px solid var(--line);border-radius:var(--radius-lg);box-shadow:var(--shadow-sm);padding:22px 24px;margin:26px 0 4px}
+.docs-needed .dn-head{display:flex;align-items:center;gap:11px;margin-bottom:4px}
+.docs-needed .dn-head svg{width:22px;height:22px;color:var(--teal-dark);flex:none}
+.docs-needed .dn-head h3{font-size:19px;letter-spacing:-.01em}
+.docs-needed .dn-sub{font-size:14px;color:var(--slate);margin-bottom:15px}
+.dn-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px 24px}
+@media(max-width:700px){.dn-grid{grid-template-columns:1fr}}
+.dn-item{display:flex;gap:9px;align-items:flex-start;font-size:14px;color:var(--ink);line-height:1.45;font-weight:600}
+.dn-item svg{width:16px;height:16px;flex:none;margin-top:2px;color:var(--teal)}
+.dn-item a{color:var(--teal-dark);font-weight:800}
 .portal .plink svg{width:14px;height:14px}
 
 .empty{display:none;text-align:center;padding:50px 20px;color:var(--slate)}
@@ -224,6 +234,21 @@
         <span class="access given">Order form</span>
         <a class="plink" href="assets/docs/clover-order-form.pdf" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M14 3h7v7M21 3l-9 9M21 14v5a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h5"/></svg>Open Clover order form</a>
       </div>
+    </div>
+  </section>
+
+  <section class="docs-needed">
+    <div class="dn-head"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 7a2 2 0 012-2h4l2 2h8a2 2 0 012 2v8a2 2 0 01-2 2H5a2 2 0 01-2-2z"/></svg><h3>What you need to submit a deal</h3></div>
+    <p class="dn-sub">Have these ready before you submit — required for most products.</p>
+    <div class="dn-grid">
+      <span class="dn-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg>Driver's license</span>
+      <span class="dn-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg>Social Security Number</span>
+      <span class="dn-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg>Tax ID (EIN)</span>
+      <span class="dn-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg>SS-4 document showing the EIN — <a href="assets/docs/ss4-example.pdf" target="_blank" rel="noopener">see sample</a></span>
+      <span class="dn-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg>3 months credit card processing statements</span>
+      <span class="dn-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg>3 months business bank statements</span>
+      <span class="dn-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg>3 months personal bank statements (if no processing history)</span>
+      <span class="dn-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg>Voided check with the business checking account &amp; routing number</span>
     </div>
   </section>
 
