@@ -63,6 +63,7 @@ table.cmp td:first-child{font-weight:700;color:var(--ink)}
 table.cmp .best{color:var(--slate)}
 
 .rate-ph{font-size:12.5px;color:#b9741a;background:rgba(242,163,60,.14);border-radius:7px;padding:2px 8px;font-weight:700;display:inline-block}
+.rate{font-size:12.5px;color:var(--teal-dark);background:rgba(20,161,140,.13);border-radius:7px;padding:2px 8px;font-weight:800;display:inline-block}
 
 .hub-foot{background:var(--navy);color:#9fb1c2;padding:30px 0;margin-top:46px;font-size:13.5px}
 .hub-foot .wrap{display:flex;justify-content:space-between;gap:18px;flex-wrap:wrap}
@@ -100,7 +101,7 @@ table.cmp .best{color:var(--slate)}
 
   <div class="note-band">
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4M12 8h.01"/></svg>
-    <p><b>This page is about pricing the merchant — not your pay.</b> Your personal compensation lives in your own Schedule A, kept separately. Use this to choose a program and present the savings. Specific NextPay rates are marked <span class="rate-ph">fill in</span> — send Dom the numbers and I'll drop them in.</p>
+    <p><b>This page is about pricing the merchant — not your pay.</b> Your personal compensation lives in your own Schedule A, kept separately. The goal is to <b>match or beat</b> the merchant's current rate — you must receive their statement to analyze the cost. As a rule of thumb, dual pricing &amp; cash discount typically run <span class="rate">3–4%</span> and surcharge is typically <span class="rate">3%</span>.</p>
   </div>
 
   <!-- Dual Pricing -->
@@ -116,7 +117,7 @@ table.cmp .best{color:var(--slate)}
       <div class="cell"><h4>Keep in mind</h4><ul>
         <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg>Both prices must be clearly posted</li>
         <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg>Needs a POS/terminal that supports it (most do)</li>
-        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg>Card price difference: <span class="rate-ph">fill in</span></li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg>Card price: <span class="rate">typically 3–4%</span> — match or beat their current rate (analyze the statement)</li>
       </ul></div>
     </div>
     <div class="pitch"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg><p><b>What to say:</b> "You keep more of every sale — the card price covers your processing, and your cash customers actually pay less. Most owners go from paying thousands a year in fees to nearly nothing."</p></div>
@@ -133,7 +134,7 @@ table.cmp .best{color:var(--slate)}
       </ul></div>
       <div class="cell"><h4>Keep in mind</h4><ul>
         <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg>The cash discount must be disclosed at the register</li>
-        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg>Discount amount: <span class="rate-ph">fill in</span></li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg>Cash discount: <span class="rate">typically 3–4%</span> — match or beat their current rate (analyze the statement)</li>
       </ul></div>
     </div>
     <div class="pitch"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg><p><b>What to say:</b> "Your shelf price covers card fees, and you reward anyone paying cash with a discount — so the processing cost stops coming out of your pocket."</p></div>
@@ -151,6 +152,7 @@ table.cmp .best{color:var(--slate)}
         <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg>Credit only — debit cannot be surcharged</li>
         <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg>Capped by the card brands; signage + registration required</li>
         <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg>Not allowed in some states — confirm before quoting</li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg>Surcharge: <span class="rate">typically 3%</span> on credit</li>
       </ul></div>
     </div>
     <div class="pitch"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg><p><b>What to say:</b> "Customers who choose credit cover the credit fee. Debit stays free for them, and you stay compliant with the card brands and your state."</p></div>
@@ -167,7 +169,7 @@ table.cmp .best{color:var(--slate)}
       </ul></div>
       <div class="cell"><h4>Keep in mind</h4><ul>
         <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg>Cost varies by card type, so the statement shows line items</li>
-        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg>Markup (the "plus"): <span class="rate-ph">fill in</span></li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg><span class="rate">Match or beat the current rate</span> — must receive a statement to analyze the cost</li>
       </ul></div>
     </div>
     <div class="pitch"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg><p><b>What to say:</b> "You see the real cost and exactly what we add — no hidden tiers, no padding. It's the most transparent way to price."</p></div>
@@ -184,7 +186,7 @@ table.cmp .best{color:var(--slate)}
       </ul></div>
       <div class="cell"><h4>Keep in mind</h4><ul>
         <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg>Simple, but usually not the cheapest at higher volume</li>
-        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg>Rate: <span class="rate-ph">fill in</span></li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg><span class="rate">Match or beat the current rate</span> — must receive a statement to analyze the cost</li>
       </ul></div>
     </div>
     <div class="pitch"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg><p><b>What to say:</b> "One simple rate, no surprises — you'll always know exactly what you pay on every sale."</p></div>
