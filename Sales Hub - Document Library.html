@@ -43,6 +43,8 @@ main.wrap{padding:26px 0 10px}
 .doc:hover{box-shadow:var(--shadow);transform:translateY(-2px);border-color:var(--teal)}
 .doc-top{display:flex;align-items:center;gap:12px}
 .doc .ft{width:44px;height:44px;border-radius:11px;display:grid;place-items:center;font-size:11px;font-weight:800;color:#fff;flex:none;letter-spacing:.02em}
+.doc .dlogo{width:46px;height:46px;border-radius:11px;background:#fff;border:1px solid var(--line);display:grid;place-items:center;flex:none;padding:7px;box-shadow:var(--shadow-sm)}
+.doc .dlogo img{max-width:100%;max-height:100%;object-fit:contain;display:block}
 .ft.pdf{background:#d6453b}.ft.doc{background:#2b6cb0}.ft.img{background:var(--teal-dark)}.ft.xls{background:#1f8a5b}.ft.link{background:var(--slate)}
 .doc h3{font-size:16px;letter-spacing:-.01em;line-height:1.25}
 .doc .tags{display:flex;gap:6px;flex-wrap:wrap}
@@ -184,7 +186,7 @@ var DOCS = [
    note:"Log in to NextLink — the LinkedIn outreach platform (Enhanced lead-gen tool)."},
   {title:"NextPay CRM", product:"general", category:"portal", type:"link",
    href:"https://nextpayllc.myfreshworks.com/crm/sales/my_dashboards?tab=353503",
-   note:"NextPay CRM — track your leads, deals and pipeline. Access required — ask Dom for your login."},
+   note:"NextPay CRM (Freshsales) — track your leads, deals and pipeline. Access required — ask your team for your login."},
   {title:"Square Agent Reseller Guide", product:"pos", category:"training", type:"pdf",
    href:"assets/docs/square-agent-reseller-guide.pdf",
    note:"How to resell Square as an agent — program details and how it works."},
@@ -223,7 +225,10 @@ var DOCS = [
    note:"Price out deals and calculate profitability. (Excel download.)"},
   {title:"Shift4 Flat Rate Plus Calculator", product:"pos", category:"tool", type:"xls",
    href:"assets/docs/shift4-flat-rate-plus-calculator.xlsx",
-   note:"Price out Shift4 deals — Flat Rate Plus, with proposal. (Excel download.)"}
+   note:"Price out Shift4 deals — Flat Rate Plus, with proposal. (Excel download.)"},
+  {title:"Pitch Deck Template", product:"general", category:"deck", type:"pdf",
+   href:"assets/docs/pitch-deck-template.pdf",
+   note:"A modern, editable pitch deck template to build your own presentation for prospects."}
 ];
 
 var grid=document.getElementById('libGrid'), empty=document.getElementById('libEmpty'),
@@ -231,14 +236,26 @@ var grid=document.getElementById('libGrid'), empty=document.getElementById('libE
 var state={product:'all', category:'all'};
 var FT={pdf:'PDF',doc:'DOC',img:'IMG',xls:'XLS',link:'LINK'};
 
+function logoFor(d){
+  var s=(d.title+' '+(d.product||'')).toLowerCase();
+  if(s.indexOf('shift4')>-1||s.indexOf('skytab')>-1) return 'shift4.png';
+  if(s.indexOf('square')>-1) return 'square.svg';
+  if(s.indexOf('clover')>-1) return 'clover.png';
+  if(s.indexOf('korona')>-1) return 'korona.png';
+  if(s.indexOf('fluidpay')>-1) return 'fluidpay.png';
+  if(s.indexOf('fieldpulse')>-1) return 'fieldpulse.png';
+  if(s.indexOf('swipesimple')>-1) return 'swipesimple.png';
+  if(s.indexOf('nextlink')>-1) return 'nextlink-2tone.svg';
+  return 'nextpay.png';
+}
 function card(d){
   var ext = (d.type||'link').toLowerCase();
   var prodLabel = {pos:'POS',terminals:'Terminals',gateways:'Gateways',invoicing:'Invoicing',general:'General'}[d.product]||d.product;
   var catLabel = {pricing:'Pricing',script:'Script',proposal:'Proposal',flyer:'Flyer',onepager:'One-Pager',deck:'Presentation',form:'Form',contract:'Contract',training:'Training',statement:'Statement',tool:'Calculator',portal:'Portal'}[d.category]||d.category;
   return '<div class="doc">'
-    + '<div class="doc-top"><span class="ft '+ext+'">'+(FT[ext]||'FILE')+'</span>'
+    + '<div class="doc-top"><span class="dlogo"><img src="assets/logos/'+logoFor(d)+'" alt=""></span>'
     + '<h3>'+d.title+'</h3></div>'
-    + '<div class="tags"><span class="t prod">'+prodLabel+'</span><span class="t">'+catLabel+'</span></div>'
+    + '<div class="tags"><span class="t prod">'+prodLabel+'</span><span class="t">'+catLabel+'</span><span class="t">'+(FT[ext]||'FILE')+'</span></div>'
     + (d.note?'<p class="dn">'+d.note+'</p>':'<p class="dn"></p>')
     + '<a class="dl" href="'+d.href+'" target="_blank" rel="noopener">Open / download '
     + '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 3v12M7 10l5 5 5-5M5 21h14"/></svg></a>'

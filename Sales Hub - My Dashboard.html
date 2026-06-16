@@ -157,8 +157,8 @@ var PHASES = [
       {id:"p2", t:"Set up cold email campaigns", d:"Use warm lists to run consistent outreach.", href:"Sales Hub - Lead Generation.html", link:"Get lists", soon:true},
       {id:"p3", t:"LinkedIn outreach (NextLink)", d:"Grow your network and prospect with NextLink.", href:"Sales Hub - Lead Generation.html", link:"About NextLink"},
       {id:"p4", t:"Create your Alignable profile", d:"Connect with local business owners on Alignable.", href:"https://www.alignable.com", link:"Open Alignable", blank:true},
-      {id:"p5", t:"Engage local Facebook business pages", d:"Join and post in local business & community groups."},
-      {id:"p6", t:"Make Chamber of Commerce connections", d:"Join your local chamber and work the networking events."}
+      {id:"p5", t:"Engage local Facebook business pages", d:"Join and post in local business & community groups.", worksheet:"assets/docs/worksheet-facebook.docx", wlabel:"Open worksheet"},
+      {id:"p6", t:"Make Chamber of Commerce connections", d:"Join your local chamber and work the networking events.", worksheet:"assets/docs/worksheet-chamber.docx", wlabel:"Open worksheet"}
     ]
   },
   {
@@ -166,11 +166,11 @@ var PHASES = [
     title:"Start Selling",
     sub:"Time to close — put it all together and get deals moving.",
     items:[
-      {id:"s1", t:"Build a list of 10 local prospects", d:"Businesses you can call or walk into this week."},
+      {id:"s1", t:"Build a list of 10 local prospects", d:"Businesses you can call or walk into this week.", worksheet:"assets/docs/worksheet-prospect-list.docx", wlabel:"Open prospect worksheet"},
       {id:"s2", t:"Run your first rate review", d:"Use the analyzer to beat or match a prospect's rate.", href:"Statement Upload.html", link:"Open analyzer", blank:true},
       {id:"s3", t:"Lead with a current promotion", d:"Use an active offer to kill the cost-to-switch objection.", href:"Sales Hub - Promotions.html", link:"See offers"},
       {id:"s4", t:"Submit your first deal", d:"Follow the product playbook end to end.", href:"Sales Hub - Submit a Deal.html", link:"How to submit"},
-      {id:"s5", t:"Book your first 3 appointments", d:"Get face time on the calendar."}
+      {id:"s5", t:"Book your first 3 appointments", d:"Get face time on the calendar.", worksheet:"assets/docs/worksheet-appointments.docx", wlabel:"Open appointments worksheet"}
     ]
   }
 ];
@@ -184,9 +184,9 @@ var CHECK='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-wid
 var ARROW='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg>';
 
 function itemHTML(it){
-  var link = it.href
-    ? '<a class="go" href="'+it.href+'"'+(it.blank?' target="_blank" rel="noopener"':'')+'>'+(it.link||'Open')+' '+ARROW+'</a>'
-    : '';
+  var link='';
+  if(it.href){ link='<a class="go" href="'+it.href+'" target="_blank" rel="noopener">'+(it.link||'Open')+' '+ARROW+'</a>'; }
+  else if(it.worksheet){ link='<a class="go" href="'+it.worksheet+'" target="_blank" rel="noopener">'+(it.wlabel||'Open worksheet')+' '+ARROW+'</a>'; }
   var soon = it.soon ? '<span class="soon">Coming soon</span>' : '';
   return '<div class="task'+(done[it.id]?' done':'')+'" data-id="'+it.id+'">'
     + '<button class="cb" aria-label="toggle">'+CHECK+'</button>'
