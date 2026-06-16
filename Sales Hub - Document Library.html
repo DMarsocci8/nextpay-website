@@ -118,6 +118,8 @@ main.wrap{padding:26px 0 10px}
     <button class="chip" data-val="form">Forms &amp; Apps</button>
     <button class="chip" data-val="contract">Contracts</button>
     <button class="chip" data-val="training">Training</button>
+    <button class="chip" data-val="statement">Statements</button>
+    <button class="chip" data-val="tool">Calculators</button>
     <button class="chip" data-val="portal">Portals &amp; Logins</button>
   </div>
 
@@ -212,7 +214,16 @@ var DOCS = [
    note:"A full library of merchant sales training courses and payments-knowledge resources."},
   {title:"Shift4 Dine — SkyTab Proposal", product:"pos", category:"proposal", type:"pdf",
    href:"assets/docs/shift4-dine-skytab-proposal.pdf",
-   note:"Sample Shift4 Dine (SkyTab) proposal to present to prospects."}
+   note:"Sample Shift4 Dine (SkyTab) proposal to present to prospects."},
+  {title:"Clover Statement Guide", product:"pos", category:"statement", type:"pdf",
+   href:"assets/docs/clover-statement-guide.pdf",
+   note:"How to find and read a Clover statement, then run a rate review."},
+  {title:"Profitability Calculator", product:"general", category:"tool", type:"xls",
+   href:"assets/docs/profitability-calculator.xlsx",
+   note:"Price out deals and calculate profitability. (Excel download.)"},
+  {title:"Shift4 Flat Rate Plus Calculator", product:"pos", category:"tool", type:"xls",
+   href:"assets/docs/shift4-flat-rate-plus-calculator.xlsx",
+   note:"Price out Shift4 deals — Flat Rate Plus, with proposal. (Excel download.)"}
 ];
 
 var grid=document.getElementById('libGrid'), empty=document.getElementById('libEmpty'),
@@ -223,7 +234,7 @@ var FT={pdf:'PDF',doc:'DOC',img:'IMG',xls:'XLS',link:'LINK'};
 function card(d){
   var ext = (d.type||'link').toLowerCase();
   var prodLabel = {pos:'POS',terminals:'Terminals',gateways:'Gateways',invoicing:'Invoicing',general:'General'}[d.product]||d.product;
-  var catLabel = {pricing:'Pricing',script:'Script',proposal:'Proposal',flyer:'Flyer',onepager:'One-Pager',deck:'Presentation',form:'Form',contract:'Contract',training:'Training',portal:'Portal'}[d.category]||d.category;
+  var catLabel = {pricing:'Pricing',script:'Script',proposal:'Proposal',flyer:'Flyer',onepager:'One-Pager',deck:'Presentation',form:'Form',contract:'Contract',training:'Training',statement:'Statement',tool:'Calculator',portal:'Portal'}[d.category]||d.category;
   return '<div class="doc">'
     + '<div class="doc-top"><span class="ft '+ext+'">'+(FT[ext]||'FILE')+'</span>'
     + '<h3>'+d.title+'</h3></div>'

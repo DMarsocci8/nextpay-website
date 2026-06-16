@@ -1,0 +1,284 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Square — Pricing & Deal Info — NextPay Sales Hub</title>
+<link rel="stylesheet" href="css/nextpay.css">
+<style>
+.hub-bar{position:sticky;top:0;z-index:60;background:var(--navy);color:#fff;border-bottom:1px solid rgba(255,255,255,.10)}
+.hub-bar-inner{display:flex;align-items:center;gap:18px;height:66px;max-width:var(--maxw);margin:0 auto;padding:0 28px}
+.hub-bar img.logo{height:34px;width:auto;display:block}
+.hub-bar .pipe{width:1px;height:26px;background:rgba(255,255,255,.18)}
+.hub-bar .hub-tag{font-weight:800;font-size:15px;color:#fff;display:flex;align-items:center;gap:9px}
+.hub-bar .hub-tag .badge{font-size:10.5px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;background:var(--teal);color:#fff;padding:4px 9px;border-radius:999px}
+.hub-bar .right{margin-left:auto;display:flex;align-items:center;gap:20px}
+.hub-bar .right a{color:#cdd8e2;font-weight:600;font-size:14.5px}.hub-bar .right a:hover{color:#fff}
+
+.pg-head{background:linear-gradient(180deg,var(--navy),var(--navy-2));color:#fff}
+.pg-head .wrap{padding:30px 0 32px}
+.crumbs{display:flex;gap:8px;align-items:center;font-size:13.5px;color:#9fb1c2;padding-bottom:14px}
+.crumbs a{color:#cdd8e2;font-weight:600}.crumbs a:hover{color:#fff}.crumbs .sep{opacity:.5}
+.pg-head .htop{display:flex;align-items:center;gap:16px}
+.pg-head .plogo{width:64px;height:64px;border-radius:15px;background:#fff;display:grid;place-items:center;padding:10px;flex:none}
+.pg-head .plogo img{max-width:100%;max-height:100%;object-fit:contain}
+.pg-head h1{font-size:clamp(26px,3.6vw,38px);color:#fff;letter-spacing:-.02em}
+.pg-head p.lead{color:#c4d0db;margin-top:10px;max-width:640px;font-size:16px;line-height:1.55}
+.jump{display:flex;gap:9px;flex-wrap:wrap;margin-top:20px}
+.jump a{display:inline-flex;align-items:center;gap:7px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.16);border-radius:999px;padding:8px 14px;font-size:13px;font-weight:700;color:#eaf1f6}
+.jump a:hover{background:rgba(31,194,166,.18);border-color:var(--teal-bright);color:#fff}
+.jump a.sub{background:var(--teal);border-color:var(--teal);color:#fff}
+
+main.wrap{padding:30px 0 10px}
+.sec{margin-bottom:34px;scroll-margin-top:84px}
+.sec h2{font-size:23px;letter-spacing:-.02em;margin-bottom:4px}
+.sec .sub{font-size:14.5px;color:var(--slate);margin-bottom:16px}
+
+/* plans */
+.plans{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+@media(max-width:820px){.plans{grid-template-columns:1fr}}
+.plan{background:#fff;border:1px solid var(--line);border-radius:var(--radius-lg);box-shadow:var(--shadow-sm);padding:22px;display:flex;flex-direction:column;gap:10px}
+.plan.mid{border-color:var(--teal);box-shadow:var(--shadow)}
+.plan h3{font-size:18px}
+.plan .price{font-size:26px;font-weight:800;color:var(--navy);letter-spacing:-.02em}
+.plan .price span{font-size:13px;font-weight:600;color:var(--slate)}
+.plan .trial{font-size:12px;font-weight:700;color:var(--teal-dark);background:rgba(20,161,140,.12);padding:4px 10px;border-radius:999px;align-self:flex-start}
+.plan ul{list-style:none;margin:6px 0 0;padding:0;display:flex;flex-direction:column;gap:7px}
+.plan ul li{display:flex;gap:9px;align-items:flex-start;font-size:13.5px;color:var(--ink);line-height:1.4}
+.plan ul li svg{width:15px;height:15px;flex:none;margin-top:2px;color:var(--teal)}
+
+/* tables */
+.tbl-wrap{overflow-x:auto;border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow-sm)}
+table.t{width:100%;border-collapse:collapse;background:#fff;min-width:520px}
+table.t th,table.t td{text-align:left;padding:11px 16px;font-size:14px;border-bottom:1px solid var(--line);vertical-align:top}
+table.t th{background:var(--navy);color:#fff;font-size:11.5px;letter-spacing:.05em;text-transform:uppercase;font-weight:800;position:sticky;top:0}
+table.t tr:last-child td{border-bottom:0}
+table.t td.c{font-weight:800;color:var(--navy);white-space:nowrap}
+table.t td a{color:var(--teal-dark);font-weight:600}
+table.t tbody tr:hover{background:var(--bg-soft)}
+.muted{font-size:12.5px;color:var(--slate-2)}
+
+.note-band{display:flex;gap:13px;align-items:flex-start;background:var(--bg-soft);border:1px solid var(--line);border-radius:12px;padding:14px 16px;margin-top:14px}
+.note-band svg{width:18px;height:18px;color:var(--teal-dark);flex:none;margin-top:2px}
+.note-band p{font-size:13.5px;color:var(--slate);line-height:1.5}.note-band b{color:var(--ink)}
+
+/* submit block */
+.submit-block{background:linear-gradient(135deg,var(--navy),var(--navy-2));color:#fff;border-radius:var(--radius-lg);padding:28px;box-shadow:var(--shadow)}
+.submit-block h2{color:#fff;font-size:23px;margin-bottom:6px}
+.submit-block p{color:#c4d0db;font-size:14.5px;line-height:1.55;max-width:640px}
+.submit-block .ways{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:18px}
+@media(max-width:680px){.submit-block .ways{grid-template-columns:1fr}}
+.wayc{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.14);border-radius:14px;padding:18px;display:flex;flex-direction:column;gap:8px}
+.wayc h4{font-size:16px;color:#fff}
+.wayc p{font-size:13px;color:#aebccb}
+.wayc a{display:inline-flex;align-items:center;gap:8px;background:var(--teal);color:#fff;font-weight:700;font-size:14px;border-radius:999px;padding:11px 16px;align-self:flex-start;margin-top:4px}
+.wayc a:hover{background:var(--teal-dark)}
+.wayc a svg{width:15px;height:15px}
+.submit-block .more{display:flex;gap:10px;flex-wrap:wrap;margin-top:18px}
+.submit-block .more a{color:#eaf1f6;font-weight:600;font-size:13.5px;text-decoration:underline}
+
+.hub-foot{background:var(--navy);color:#9fb1c2;padding:30px 0;margin-top:46px;font-size:13.5px}
+.hub-foot .wrap{display:flex;justify-content:space-between;gap:18px;flex-wrap:wrap}
+.hub-foot a{color:#cdd8e2;font-weight:600}.hub-foot a:hover{color:#fff}
+</style>
+</head>
+<body>
+
+<div class="hub-bar">
+  <div class="hub-bar-inner">
+    <a href="Sales Hub.html" style="display:flex;align-items:center" aria-label="Sales Hub home"><img class="logo" src="assets/logos/nextpay-nav.png" alt="NextPay"></a>
+    <span class="pipe"></span>
+    <span class="hub-tag">Sales Hub <span class="badge">Internal</span></span>
+    <div class="right"><a href="Sales Hub - Submit a Deal.html">Submit a Deal</a><a href="Sales Hub.html">← Hub home</a></div>
+  </div>
+</div>
+
+<header class="pg-head">
+  <div class="wrap">
+    <div class="crumbs"><a href="Sales Hub.html">Sales Hub</a><span class="sep">/</span><span>Square — Pricing &amp; Deal Info</span></div>
+    <div class="htop">
+      <span class="plogo"><img src="assets/logos/square.svg" alt="Square"></span>
+      <div>
+        <h1>Square — Pricing &amp; Deal Info</h1>
+        <p class="lead">Plans, hardware and implementation pricing — plus how to submit the deal. Square has its own sign-up path; create your own Square account first so you know the flow.</p>
+      </div>
+    </div>
+    <div class="jump">
+      <a href="#plans">Plans</a>
+      <a href="#hardware">Hardware</a>
+      <a href="#implementation">Implementation</a>
+      <a href="#fees">Add-on fees</a>
+      <a class="sub" href="#submit">Submit a Square deal →</a>
+    </div>
+  </div>
+</header>
+
+<main class="wrap">
+
+  <!-- PLANS -->
+  <section class="sec" id="plans">
+    <h2>Software plans</h2>
+    <p class="sub">Per location. All plans include a 30-day free trial.</p>
+    <div class="plans">
+      <div class="plan">
+        <h3>Square Free</h3>
+        <div class="price">$0<span> /mo per location</span></div>
+        <span class="trial">30-day free trial</span>
+        <ul>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg>POS app for any payment</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg>Online site &amp; item library</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg>Invoicing &amp; booking</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg>Checking &amp; savings accounts</li>
+        </ul>
+      </div>
+      <div class="plan mid">
+        <h3>Square Plus</h3>
+        <div class="price">$49<span> /mo per location</span></div>
+        <span class="trial">30-day free trial · unlimited devices</span>
+        <ul>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg>Everything in Free</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg>Industry POS features &amp; lower processing fees</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg>Loyalty rewards program</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg>Email &amp; text marketing · staff management</li>
+        </ul>
+      </div>
+      <div class="plan">
+        <h3>Square Premium</h3>
+        <div class="price">$149<span> /mo per location</span></div>
+        <span class="trial">30-day free trial · unlimited devices</span>
+        <ul>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg>Everything in Plus</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg>24/7 priority support · advanced reporting</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg>Lowest processing fees</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg>More text marketing · no gift card load fees</li>
+        </ul>
+      </div>
+    </div>
+    <div class="note-band">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4M12 8h.01"/></svg>
+      <p><b>Custom rate</b> (anything different than rack rate): merchant must process over $500k annually, with custom pricing approval and a 2-year contract signed by the seller.</p>
+    </div>
+  </section>
+
+  <!-- HARDWARE -->
+  <section class="sec" id="hardware">
+    <h2>Hardware pricing</h2>
+    <p class="sub">Retail hardware cost. Tap a name for Square's product page where available.</p>
+    <div class="tbl-wrap">
+      <table class="t">
+        <thead><tr><th>Hardware</th><th>Cost</th></tr></thead>
+        <tbody>
+          <tr><td><a href="https://squareup.com/shop/hardware/us/en/products/register-pos" target="_blank" rel="noopener">Register</a></td><td class="c">$799</td></tr>
+          <tr><td>Customer Facing Display</td><td class="c">$149</td></tr>
+          <tr><td>Customer Facing Display — Countertop Mount</td><td class="c">$149</td></tr>
+          <tr><td><a href="https://squareup.com/shop/hardware/us/en/products/ipad-pos-stand-integrated-card-reader-usb-c" target="_blank" rel="noopener">Stand (2nd Gen USB-C)</a></td><td class="c">$149</td></tr>
+          <tr><td>iPad (10th Gen 64GB)</td><td class="c">$349</td></tr>
+          <tr><td><a href="https://squareup.com/shop/hardware/us/en/products/terminal-credit-card-machine" target="_blank" rel="noopener">Terminal</a></td><td class="c">$299</td></tr>
+          <tr><td>Handheld</td><td class="c">$399</td></tr>
+          <tr><td><a href="https://squareup.com/shop/hardware/us/en/products/self-service-kiosk-machine-v2" target="_blank" rel="noopener">Kiosk</a></td><td class="c">$149</td></tr>
+          <tr><td><a href="https://squareup.com/shop/hardware/us/en/products/kitchen-touchscreen-22" target="_blank" rel="noopener">KDS 21.5"</a></td><td class="c">$599</td></tr>
+          <tr><td><a href="https://squareup.com/shop/hardware/us/en/products/kitchen-touchscreen-15" target="_blank" rel="noopener">KDS 15.6"</a></td><td class="c">$499</td></tr>
+          <tr><td><a href="https://squareup.com/shop/hardware/us/en/products/kitchen-touchscreen-mount" target="_blank" rel="noopener">KDS &amp; Kiosk Wall Mount</a></td><td class="c">$79</td></tr>
+          <tr><td><a href="https://squareup.com/shop/hardware/us/en/products/receipt-printer-usb-ethernet" target="_blank" rel="noopener">Receipt Printer</a></td><td class="c">$299</td></tr>
+          <tr><td><a href="https://squareup.com/shop/hardware/us/en/products/star-micronics-ethernet-kitchen-printer" target="_blank" rel="noopener">Kitchen Printer</a></td><td class="c">$349</td></tr>
+          <tr><td><a href="https://squareup.com/shop/hardware/us/en/products/usb-ethernet-sticky-label-printer" target="_blank" rel="noopener">Thermal Sticky Label Printer</a></td><td class="c">$399</td></tr>
+          <tr><td><a href="https://squareup.com/shop/hardware/us/en/products/zebra-zd411-barcode-label-printer" target="_blank" rel="noopener">Barcode Label Printer</a></td><td class="c">$349</td></tr>
+          <tr><td><a href="https://squareup.com/shop/hardware/us/en/products/cash-drawer-16-inch" target="_blank" rel="noopener">Cash Drawer</a></td><td class="c">$129</td></tr>
+          <tr><td><a href="https://squareup.com/shop/hardware/us/en/products/barcode-scanner-usb" target="_blank" rel="noopener">Barcode Scanner (Corded)</a></td><td class="c">$119</td></tr>
+          <tr><td><a href="https://squareup.com/shop/hardware/us/en/products/barcode-scanner-2d-cordless" target="_blank" rel="noopener">Barcode Scanner (Cordless)</a></td><td class="c">$249</td></tr>
+          <tr><td><a href="https://squareup.com/shop/hardware/us/en/products/barcode-scanner-2d-hands-free" target="_blank" rel="noopener">Barcode Scanner (Hands Free)</a></td><td class="c">$249</td></tr>
+          <tr><td><a href="https://squareup.com/shop/hardware/us/en/products/ipc-ipad-mini6-case" target="_blank" rel="noopener">Case (iPad Mini)</a></td><td class="c">$79</td></tr>
+          <tr><td><a href="https://squareup.com/shop/hardware/us/en/products/bundle-brecknell-scale" target="_blank" rel="noopener">Scale (USB)</a></td><td class="c">$500</td></tr>
+          <tr><td><a href="https://squareup.com/shop/hardware/us/en/products/chip-credit-card-reader-with-nfc" target="_blank" rel="noopener">Reader (Contactless, 2nd Gen)</a></td><td class="c">$59</td></tr>
+          <tr><td><a href="https://squareup.com/us/en/hardware/reader/specs" target="_blank" rel="noopener">Reader (Magstripe)</a></td><td class="c">$0</td></tr>
+          <tr><td><a href="https://squareup.com/shop/hardware/us/en/products/cloud-gateway-ultra" target="_blank" rel="noopener">Router (Cloud Gateway Ultra)</a></td><td class="c">$129</td></tr>
+          <tr><td><a href="https://squareup.com/shop/hardware/us/en/products/indoor-wifi-access-point" target="_blank" rel="noopener">Access Point (Indoor)</a></td><td class="c">$129</td></tr>
+          <tr><td><a href="https://squareup.com/shop/hardware/us/en/products/outdoor-wifi-access-point" target="_blank" rel="noopener">Access Point (Outdoor)</a></td><td class="c">$179</td></tr>
+          <tr><td><a href="https://squareup.com/shop/hardware/us/en/products/switch-lite-16-poe" target="_blank" rel="noopener">Switch (16 PoE)</a></td><td class="c">$199</td></tr>
+          <tr><td><a href="https://squareup.com/shop/hardware/us/en/products/switch-pro-24-poe" target="_blank" rel="noopener">Switch (24 PoE)</a></td><td class="c">$699</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- IMPLEMENTATION -->
+  <section class="sec" id="implementation">
+    <h2>Implementation packages</h2>
+    <p class="sub">One-time onboarding services.</p>
+    <div class="tbl-wrap">
+      <table class="t">
+        <thead><tr><th>Package</th><th>Cost</th><th>Details</th></tr></thead>
+        <tbody>
+          <tr><td>Plus Package</td><td class="c">$699</td><td>30-min kickoff + 3 tasks (non-appointment migration &amp; payroll) + 90 min with a GSO rep (up to two calls). ~5 business days to go live.</td></tr>
+          <tr><td>Premium Implementation</td><td class="c">$1,499</td><td>Dedicated remote onboarding from kickoff through one week post go-live, up to two locations: kickoff + up to 6 tasks + dashboard, Online, POS training + post-training Q&amp;A. ~10 business days to go live.</td></tr>
+          <tr><td>Onsite Package</td><td class="c">$2,199</td><td>Everything in Premium plus one onsite installation day with a Square-trained resource. ~10 business days.</td></tr>
+          <tr><td>Payroll Implementation</td><td class="c">$250</td><td>White-glove payroll onboarding with a dedicated specialist.</td></tr>
+          <tr><td>Optimization Call</td><td class="c">$159</td><td>Timed call to supplement self-onboarding or get new staff up to speed.</td></tr>
+          <tr><td>Gift Card Migration</td><td class="c">$149</td><td>Excel/CSV; 3–4 business days (task, no live call).</td></tr>
+          <tr><td>Menu Build</td><td class="c">$149</td><td>Menu build &amp; revisions (task, no live call).</td></tr>
+          <tr><td>Loyalty Migration</td><td class="c">$149</td><td>Excel/CSV; 3–4 business days (task, no live call).</td></tr>
+          <tr><td>Product Catalog Import</td><td class="c">$149</td><td>Excel/CSV; 3–4 business days (task, no live call).</td></tr>
+          <tr><td>Square for Franchises — New Location</td><td class="c">$149</td><td>Excel/CSV; 3–4 business days (task, no live call).</td></tr>
+          <tr><td>Square Online Site Copy</td><td class="c">$149</td><td>—</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- ADD-ON FEES -->
+  <section class="sec" id="fees">
+    <h2>Key add-on fees</h2>
+    <p class="sub">By plan (Free / Plus / Premium).</p>
+    <div class="tbl-wrap">
+      <table class="t">
+        <thead><tr><th>Service</th><th>Free</th><th>Plus</th><th>Premium</th></tr></thead>
+        <tbody>
+          <tr><td>Text message marketing</td><td>Not available</td><td>500 texts, then $0.03/text</td><td>2,500 texts, then $0.015/text</td></tr>
+          <tr><td>Gift card load</td><td>2.5%</td><td>2.5%</td><td>0%</td></tr>
+          <tr><td>Bitcoin conversions</td><td>1.0%</td><td>1.0%</td><td>0.5%</td></tr>
+          <tr><td>Square KDS app</td><td>Not available</td><td>$30/mo per device</td><td>$20/mo per device</td></tr>
+          <tr><td>Square Kiosk app</td><td>Not available</td><td>$50/mo per device</td><td>$30/mo per device</td></tr>
+          <tr><td>ACH transfer (via invoice)</td><td>1%, $1 min</td><td>1%, $1 min, $10 cap</td><td>1%, $1 min, $10 cap</td></tr>
+          <tr><td>ACH transfer (via API)</td><td>1%, $1 min, $5 cap</td><td>1%, $1 min, $5 cap</td><td>1%, $1 min, $5 cap</td></tr>
+          <tr><td>Cash App Afterpay</td><td>6% + $0.30</td><td>6% + $0.30</td><td>6% + $0.30</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="muted" style="margin-top:10px">Additional services: Square Payroll ($35/mo + $6 per person paid) · Square Banking. More features vary by industry (All / Food &amp; Beverage / Retail / Beauty / Service).</p>
+  </section>
+
+  <!-- SUBMIT -->
+  <section class="sec" id="submit">
+    <div class="submit-block">
+      <h2>Submit a Square deal</h2>
+      <p>Square has its own sign-up path. <b>Preferred:</b> set the merchant up live on the link while you're on the phone or in front of them — or send them the link to complete it. Pick the pricing program that fits the merchant:</p>
+      <div class="ways">
+        <div class="wayc">
+          <h4>Cash Discount 4%</h4>
+          <p>For merchants going on Cash Discount (4%).</p>
+          <a href="https://app.squareup.com/signup/en-us?signup_token=C76D31CB54" target="_blank" rel="noopener">Sign up — Cash Discount 4% <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+        </div>
+        <div class="wayc">
+          <h4>Rack Rate (Interchange Plus)</h4>
+          <p>Standard rack rate — interchange-plus pricing.</p>
+          <a href="https://app.squareup.com/signup/en-us?signup_token=1DC988FC39" target="_blank" rel="noopener">Sign up — Rack Rate (IC+) <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+        </div>
+      </div>
+      <div class="more">
+        <a href="Sales Hub - Submit a Deal.html#p-square">Full Square submission steps &amp; contacts →</a>
+        <a href="Statement Upload.html" target="_blank" rel="noopener">Statement Rate Analyzer →</a>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="hub-foot">
+  <div class="wrap">
+    <span>NextPay Sales Hub · Square — Pricing &amp; Deal Info · Internal use only.</span>
+    <span><a href="Sales Hub.html">← Back to hub</a></span>
+  </div>
+</footer>
+</body>
+</html>

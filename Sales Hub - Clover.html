@@ -1,0 +1,170 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Clover — Pricing & Deal Info — NextPay Sales Hub</title>
+<link rel="stylesheet" href="css/nextpay.css">
+<style>
+.hub-bar{position:sticky;top:0;z-index:60;background:var(--navy);color:#fff;border-bottom:1px solid rgba(255,255,255,.10)}
+.hub-bar-inner{display:flex;align-items:center;gap:18px;height:66px;max-width:var(--maxw);margin:0 auto;padding:0 28px}
+.hub-bar img.logo{height:34px;width:auto;display:block}
+.hub-bar .pipe{width:1px;height:26px;background:rgba(255,255,255,.18)}
+.hub-bar .hub-tag{font-weight:800;font-size:15px;color:#fff;display:flex;align-items:center;gap:9px}
+.hub-bar .hub-tag .badge{font-size:10.5px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;background:var(--teal);color:#fff;padding:4px 9px;border-radius:999px}
+.hub-bar .right{margin-left:auto;display:flex;align-items:center;gap:20px}
+.hub-bar .right a{color:#cdd8e2;font-weight:600;font-size:14.5px}.hub-bar .right a:hover{color:#fff}
+
+.pg-head{background:linear-gradient(180deg,var(--navy),var(--navy-2));color:#fff}
+.pg-head .wrap{padding:30px 0 32px}
+.crumbs{display:flex;gap:8px;align-items:center;font-size:13.5px;color:#9fb1c2;padding-bottom:14px}
+.crumbs a{color:#cdd8e2;font-weight:600}.crumbs a:hover{color:#fff}.crumbs .sep{opacity:.5}
+.pg-head .htop{display:flex;align-items:center;gap:16px}
+.pg-head .plogo{width:64px;height:64px;border-radius:15px;background:#fff;display:grid;place-items:center;padding:10px;flex:none}
+.pg-head .plogo img{max-width:100%;max-height:100%;object-fit:contain}
+.pg-head h1{font-size:clamp(26px,3.6vw,38px);color:#fff;letter-spacing:-.02em}
+.pg-head p.lead{color:#c4d0db;margin-top:10px;max-width:640px;font-size:16px;line-height:1.55}
+.jump{display:flex;gap:9px;flex-wrap:wrap;margin-top:20px}
+.jump a{display:inline-flex;align-items:center;gap:7px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.16);border-radius:999px;padding:8px 14px;font-size:13px;font-weight:700;color:#eaf1f6}
+.jump a:hover{background:rgba(31,194,166,.18);border-color:var(--teal-bright);color:#fff}
+.jump a.sub{background:var(--teal);border-color:var(--teal);color:#fff}
+
+main.wrap{padding:30px 0 10px}
+.sec{margin-bottom:34px;scroll-margin-top:84px}
+.sec h2{font-size:23px;letter-spacing:-.02em;margin-bottom:4px}
+.sec .sub{font-size:14.5px;color:var(--slate);margin-bottom:16px}
+
+.offer-band{display:flex;gap:14px;align-items:center;background:rgba(242,163,60,.12);border:1px solid rgba(242,163,60,.35);border-radius:14px;padding:16px 18px;margin-bottom:22px}
+.offer-band .ico{font-size:22px}
+.offer-band b{color:#b9741a}
+.offer-band p{font-size:14px;color:var(--ink);line-height:1.5}
+
+.tbl-wrap{overflow-x:auto;border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow-sm)}
+table.t{width:100%;border-collapse:collapse;background:#fff;min-width:560px}
+table.t th,table.t td{text-align:left;padding:11px 16px;font-size:14px;border-bottom:1px solid var(--line);vertical-align:top}
+table.t th{background:var(--navy);color:#fff;font-size:11.5px;letter-spacing:.05em;text-transform:uppercase;font-weight:800}
+table.t tr:last-child td{border-bottom:0}
+table.t td.c{font-weight:800;color:var(--navy);white-space:nowrap}
+table.t td.p{font-weight:800;color:var(--teal-dark);white-space:nowrap}
+table.t tbody tr:hover{background:var(--bg-soft)}
+table.t td small{color:var(--slate-2);font-weight:500}
+
+.note-band{display:flex;gap:13px;align-items:flex-start;background:var(--bg-soft);border:1px solid var(--line);border-radius:12px;padding:14px 16px;margin-top:14px}
+.note-band svg{width:18px;height:18px;color:var(--teal-dark);flex:none;margin-top:2px}
+.note-band p{font-size:13.5px;color:var(--slate);line-height:1.5}.note-band b{color:var(--ink)}
+
+.submit-block{background:linear-gradient(135deg,var(--navy),var(--navy-2));color:#fff;border-radius:var(--radius-lg);padding:28px;box-shadow:var(--shadow)}
+.submit-block h2{color:#fff;font-size:23px;margin-bottom:6px}
+.submit-block p{color:#c4d0db;font-size:14.5px;line-height:1.55;max-width:660px}
+.submit-block .btnrow{display:flex;gap:12px;flex-wrap:wrap;margin-top:18px}
+.submit-block .btnrow a{display:inline-flex;align-items:center;gap:8px;background:var(--teal);color:#fff;font-weight:700;font-size:14px;border-radius:999px;padding:12px 18px}
+.submit-block .btnrow a:hover{background:var(--teal-dark)}
+.submit-block .btnrow a.ghost{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.16)}
+.submit-block .btnrow a svg{width:15px;height:15px}
+
+.hub-foot{background:var(--navy);color:#9fb1c2;padding:30px 0;margin-top:46px;font-size:13.5px}
+.hub-foot .wrap{display:flex;justify-content:space-between;gap:18px;flex-wrap:wrap}
+.hub-foot a{color:#cdd8e2;font-weight:600}.hub-foot a:hover{color:#fff}
+</style>
+</head>
+<body>
+
+<div class="hub-bar">
+  <div class="hub-bar-inner">
+    <a href="Sales Hub.html" style="display:flex;align-items:center" aria-label="Sales Hub home"><img class="logo" src="assets/logos/nextpay-nav.png" alt="NextPay"></a>
+    <span class="pipe"></span>
+    <span class="hub-tag">Sales Hub <span class="badge">Internal</span></span>
+    <div class="right"><a href="Sales Hub - Submit a Deal.html">Submit a Deal</a><a href="Sales Hub.html">← Hub home</a></div>
+  </div>
+</div>
+
+<header class="pg-head">
+  <div class="wrap">
+    <div class="crumbs"><a href="Sales Hub.html">Sales Hub</a><span class="sep">/</span><span>Clover — Pricing &amp; Deal Info</span></div>
+    <div class="htop">
+      <span class="plogo"><img src="assets/logos/clover.png" alt="Clover"></span>
+      <div>
+        <h1>Clover — Pricing &amp; Deal Info</h1>
+        <p class="lead">Hardware &amp; placement pricing and how to submit. Buy outright at the listed price, or use the Clover Placement Program — no upfront cost, merchant just pays the monthly placement.</p>
+      </div>
+    </div>
+    <div class="jump">
+      <a href="#hardware">Hardware &amp; placement</a>
+      <a href="#resources">Resources</a>
+      <a class="sub" href="#submit">Submit a Clover deal →</a>
+    </div>
+  </div>
+</header>
+
+<main class="wrap">
+
+  <div class="offer-band">
+    <span class="ico">🎁</span>
+    <p><b>Active offer — Clover Placement Program:</b> no upfront costs on hardware; the merchant just pays monthly. Low barrier to say yes.</p>
+  </div>
+
+  <!-- HARDWARE -->
+  <section class="sec" id="hardware">
+    <h2>Hardware &amp; placement pricing</h2>
+    <p class="sub"><b>Price</b> = buy outright. <b>Placement</b> = monthly cost under the Placement Program (no upfront).</p>
+    <div class="tbl-wrap">
+      <table class="t">
+        <thead><tr><th>Equipment</th><th>Price</th><th>Placement</th></tr></thead>
+        <tbody>
+          <tr><td>Clover Station Duo</td><td class="c">$2,078</td><td class="p">$55</td></tr>
+          <tr><td>Clover Station Duo Bundle <small>(tablet, printer, terminal, starter kit, cash drawer)</small></td><td class="c">$2,172.80</td><td class="p">$60</td></tr>
+          <tr><td>Clover Station Solo</td><td class="c">$1,766</td><td class="p">$45</td></tr>
+          <tr><td>Clover Station Solo Bundle <small>(tablet, printer, starter kit, cash drawer)</small></td><td class="c">$1,860.80</td><td class="p">$50</td></tr>
+          <tr><td>Clover Mini</td><td class="c">$937</td><td class="p">$25</td></tr>
+          <tr><td>Clover Flex <small>(Gen 4)</small></td><td class="c">$758</td><td class="p">$20</td></tr>
+          <tr><td>Clover Kiosk <small>(24" display, Kiosk Mini, printer, frame)</small></td><td class="c">$3,587</td><td class="p">$90</td></tr>
+          <tr><td>Clover Kiosk Floor Stand</td><td class="c">$549</td><td class="p">$25</td></tr>
+          <tr><td>Clover Kiosk Wall Mount</td><td class="c">$54</td><td class="p">$3</td></tr>
+          <tr><td>Clover KDS 14" <small>(screen only)</small></td><td class="c">$531</td><td class="p">$14</td></tr>
+          <tr><td>Clover KDS 24" <small>(screen only)</small></td><td class="c">$722</td><td class="p">$24</td></tr>
+          <tr><td>Clover KDS Wall Mount</td><td class="c">$53</td><td class="p">$2</td></tr>
+          <tr><td>Clover KDS Countertop Stand</td><td class="c">$80</td><td class="p">$3</td></tr>
+          <tr><td>Zebra DS 9308 Scanner</td><td class="c">$233.22</td><td class="p">$8</td></tr>
+          <tr><td>Zebra DS 2208 Scanner</td><td class="c">$164.22</td><td class="p">$6</td></tr>
+          <tr><td>STAR Impact Kitchen Printer</td><td class="c">$539.22</td><td class="p">$20</td></tr>
+          <tr><td>STAR Thermal Kitchen Printer</td><td class="c">$365.22</td><td class="p">$15</td></tr>
+          <tr><td>Clover Cash Drawer Only</td><td class="c">$79</td><td class="p">$5</td></tr>
+          <tr><td>Clover Pocket</td><td class="c">$449</td><td class="p">$18</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- RESOURCES -->
+  <section class="sec" id="resources">
+    <h2>Resources</h2>
+    <div class="note-band">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 3h7l5 5v13H7z"/><path d="M14 3v5h5"/></svg>
+      <p><b>How to find a Clover statement:</b> use the <a href="assets/docs/clover-statement-guide.pdf" target="_blank" rel="noopener" style="color:var(--teal-dark);font-weight:700">Clover Statement Guide</a> to locate and read a merchant's current statement, then run a rate review.</p>
+    </div>
+  </section>
+
+  <!-- SUBMIT -->
+  <section class="sec" id="submit">
+    <div class="submit-block">
+      <h2>Submit a Clover deal</h2>
+      <p>Clover deals submit through the <b>Clover order form</b>. Complete it with the merchant, business and hardware details (and whether they're buying outright or using placement), then submit per the instructions on the form.</p>
+      <div class="btnrow">
+        <a href="assets/docs/clover-order-form.pdf" target="_blank" rel="noopener">Open Clover order form <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+        <a class="ghost" href="Sales Hub - Submit a Deal.html#p-clover">Full submission steps &amp; contacts <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+        <a class="ghost" href="Statement Upload.html" target="_blank" rel="noopener">Statement Rate Analyzer</a>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="hub-foot">
+  <div class="wrap">
+    <span>NextPay Sales Hub · Clover — Pricing &amp; Deal Info · Internal use only.</span>
+    <span><a href="Sales Hub.html">← Back to hub</a></span>
+  </div>
+</footer>
+</body>
+</html>
