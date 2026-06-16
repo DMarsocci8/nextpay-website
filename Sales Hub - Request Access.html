@@ -1,0 +1,135 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Request Portal Access — NextPay Sales Hub</title>
+<link rel="stylesheet" href="css/nextpay.css">
+<style>
+.hub-bar{position:sticky;top:0;z-index:60;background:var(--navy);color:#fff;border-bottom:1px solid rgba(255,255,255,.10)}
+.hub-bar-inner{display:flex;align-items:center;gap:18px;height:66px;max-width:var(--maxw);margin:0 auto;padding:0 28px}
+.hub-bar img.logo{height:34px;width:auto;display:block}
+.hub-bar .pipe{width:1px;height:26px;background:rgba(255,255,255,.18)}
+.hub-bar .hub-tag{font-weight:800;font-size:15px;color:#fff;display:flex;align-items:center;gap:9px}
+.hub-bar .hub-tag .badge{font-size:10.5px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;background:var(--teal);color:#fff;padding:4px 9px;border-radius:999px}
+.hub-bar .right{margin-left:auto;display:flex;align-items:center;gap:20px}
+.hub-bar .right a{color:#cdd8e2;font-weight:600;font-size:14.5px}.hub-bar .right a:hover{color:#fff}
+
+.pg-head{background:linear-gradient(180deg,var(--navy),var(--navy-2));color:#fff}
+.pg-head .wrap{padding:30px 0 30px}
+.crumbs{display:flex;gap:8px;align-items:center;font-size:13.5px;color:#9fb1c2;padding-bottom:14px}
+.crumbs a{color:#cdd8e2;font-weight:600}.crumbs a:hover{color:#fff}.crumbs .sep{opacity:.5}
+.pg-head h1{font-size:clamp(25px,3.4vw,34px);color:#fff;letter-spacing:-.02em}
+.pg-head p.lead{color:#c4d0db;margin-top:10px;max-width:600px;font-size:16px;line-height:1.55}
+
+main.wrap{padding:32px 0 10px;max-width:680px}
+.req-form{background:#fff;border:1px solid var(--line);border-radius:var(--radius-lg);box-shadow:var(--shadow-sm);padding:26px}
+.field{margin-bottom:16px}
+.field label{display:block;font-size:13px;font-weight:700;color:var(--ink);margin-bottom:6px}
+.req-form input,.req-form select,.req-form textarea{width:100%;border:1px solid var(--line);border-radius:10px;padding:12px 13px;font-family:inherit;font-size:15px;color:var(--ink);background:#fff}
+.req-form input:focus,.req-form select:focus,.req-form textarea:focus{outline:2px solid var(--teal)}
+.req-form textarea{resize:vertical}
+.actions{display:flex;align-items:center;gap:14px;flex-wrap:wrap;margin-top:4px}
+.req-note{font-size:13px;color:var(--slate)}
+.lead-done{display:none}
+.lead-done.show{display:block;background:rgba(20,161,140,.08);border:1px solid rgba(20,161,140,.3);border-radius:var(--radius);padding:24px;margin-top:10px;text-align:center}
+.lead-done h3{font-size:19px;color:var(--teal-dark);margin-bottom:6px}
+.lead-done p{font-size:14.5px;color:var(--slate);line-height:1.5}
+
+.hub-foot{background:var(--navy);color:#9fb1c2;padding:30px 0;margin-top:46px;font-size:13.5px}
+.hub-foot .wrap{display:flex;justify-content:space-between;gap:18px;flex-wrap:wrap}
+.hub-foot a{color:#cdd8e2;font-weight:600}.hub-foot a:hover{color:#fff}
+</style>
+</head>
+<body>
+
+<div class="hub-bar">
+  <div class="hub-bar-inner">
+    <a href="Sales Hub.html" style="display:flex;align-items:center" aria-label="Sales Hub home"><img class="logo" src="assets/logos/nextpay-nav.png" alt="NextPay"></a>
+    <span class="pipe"></span>
+    <span class="hub-tag">Sales Hub <span class="badge">Internal</span></span>
+    <div class="right"><a href="Sales Hub - Submit a Deal.html">← Submit a Deal</a></div>
+  </div>
+</div>
+
+<header class="pg-head">
+  <div class="wrap">
+    <div class="crumbs"><a href="Sales Hub.html">Sales Hub</a><span class="sep">/</span><a href="Sales Hub - Submit a Deal.html">Submit a Deal</a><span class="sep">/</span><span>Request Access</span></div>
+    <h1>Request portal access</h1>
+    <p class="lead">Don't have access to a portal yet? Send a quick request — it goes straight to our team and they'll get you set up.</p>
+  </div>
+</header>
+
+<main class="wrap">
+  <form id="accessForm" class="req-form" novalidate>
+    <div class="field">
+      <label for="portal">Which portal do you need access to?</label>
+      <select id="portal" name="portal">
+        <option>Solutions in Payments Portal</option>
+        <option>Shift4 Partner Portal</option>
+        <option>Square</option>
+        <option>Other</option>
+      </select>
+    </div>
+    <div class="field"><label for="name">Your name</label><input id="name" name="name" type="text" autocomplete="name" required></div>
+    <div class="field"><label for="email">Your email</label><input id="email" name="email" type="email" autocomplete="email" required></div>
+    <div class="field"><label for="phone">Your cell <span style="color:var(--slate-2);font-weight:500">(optional)</span></label><input id="phone" name="phone" type="tel" autocomplete="tel"></div>
+    <div class="field"><label for="message">Anything else? <span style="color:var(--slate-2);font-weight:500">(optional)</span></label><textarea id="message" name="message" rows="3"></textarea></div>
+    <div class="actions">
+      <button type="submit" class="btn btn-primary">Send access request</button>
+      <span class="req-note">Goes to our team — they'll set up your access.</span>
+    </div>
+  </form>
+  <div id="accessDone" class="lead-done"></div>
+</main>
+
+<footer class="hub-foot">
+  <div class="wrap">
+    <span>NextPay Sales Hub · Request Access · Internal use only.</span>
+    <span><a href="Sales Hub - Submit a Deal.html">← Back to Submit a Deal</a></span>
+  </div>
+</footer>
+
+<script>
+// pre-select the portal from ?portal=...
+(function(){
+  try{
+    var p=new URLSearchParams(location.search).get('portal');
+    if(p){ var sel=document.getElementById('portal');
+      for(var i=0;i<sel.options.length;i++){ if(sel.options[i].value===p){ sel.selectedIndex=i; return; } }
+      // not in list -> add it
+      var o=document.createElement('option'); o.text=p; o.value=p; sel.add(o,0); sel.selectedIndex=0;
+    }
+  }catch(e){}
+})();
+
+(function(){
+  var form=document.getElementById('accessForm');
+  form.addEventListener('submit',function(e){
+    e.preventDefault();
+    var fd=new FormData(form);
+    var name=fd.get('name')||'there', portal=fd.get('portal')||'a portal';
+    fd.append('access_key','ee318ebf-e50a-4aaf-a11c-5efd7dd86a8b');
+    fd.append('subject','Portal access request — '+portal+' — '+(fd.get('name')||'Agent'));
+    fd.append('from_name','NextPay Sales Hub');
+    fd.append('cc','alexander@nextpaypos.com');
+    fd.append('Source','Sales Hub — Request portal access');
+    var btn=form.querySelector('button[type=submit]'); if(btn){btn.disabled=true;btn.textContent='Sending…';}
+    var d=document.getElementById('accessDone');
+    function finish(ok,msg){
+      if(ok){ form.style.display='none';
+        d.innerHTML='<h3>Request sent, '+name+' ✅</h3><p>Our team will set up your access to <b>'+portal+'</b> and follow up by email.</p>';
+      } else { if(btn){btn.disabled=false;btn.textContent='Send access request';}
+        d.innerHTML='<h3 style="color:#c0392b">That didn&rsquo;t send</h3><p>'+(msg||'Please try again in a moment.')+'</p>'; }
+      d.classList.add('show'); d.scrollIntoView({behavior:'smooth',block:'center'});
+    }
+    fetch('https://api.web3forms.com/submit',{method:'POST',headers:{'Accept':'application/json'},body:fd})
+      .then(function(r){return r.json();})
+      .then(function(res){ finish(res && res.success, res && res.message); })
+      .catch(function(){ finish(false,'Network error. Please try again.'); });
+  });
+})();
+</script>
+</body>
+</html>

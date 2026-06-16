@@ -1,0 +1,153 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Statements & Calculators — NextPay Sales Hub</title>
+<link rel="stylesheet" href="css/nextpay.css">
+<style>
+.hub-bar{position:sticky;top:0;z-index:60;background:var(--navy);color:#fff;border-bottom:1px solid rgba(255,255,255,.10)}
+.hub-bar-inner{display:flex;align-items:center;gap:18px;height:66px;max-width:var(--maxw);margin:0 auto;padding:0 28px}
+.hub-bar img.logo{height:34px;width:auto;display:block}
+.hub-bar .pipe{width:1px;height:26px;background:rgba(255,255,255,.18)}
+.hub-bar .hub-tag{font-weight:800;font-size:15px;color:#fff;display:flex;align-items:center;gap:9px}
+.hub-bar .hub-tag .badge{font-size:10.5px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;background:var(--teal);color:#fff;padding:4px 9px;border-radius:999px}
+.hub-bar .right{margin-left:auto;display:flex;align-items:center;gap:20px}
+.hub-bar .right a{color:#cdd8e2;font-weight:600;font-size:14.5px}.hub-bar .right a:hover{color:#fff}
+
+.pg-head{background:linear-gradient(180deg,var(--navy),var(--navy-2));color:#fff}
+.pg-head .wrap{padding:30px 0 32px}
+.crumbs{display:flex;gap:8px;align-items:center;font-size:13.5px;color:#9fb1c2;padding-bottom:14px}
+.crumbs a{color:#cdd8e2;font-weight:600}.crumbs a:hover{color:#fff}.crumbs .sep{opacity:.5}
+.pg-head h1{font-size:clamp(26px,3.6vw,38px);color:#fff;letter-spacing:-.02em}
+.pg-head h1 em{color:var(--teal-bright);font-style:normal}
+.pg-head p.lead{color:#c4d0db;margin-top:10px;max-width:640px;font-size:16px;line-height:1.55}
+.jump{display:flex;gap:9px;flex-wrap:wrap;margin-top:20px}
+.jump a{display:inline-flex;align-items:center;gap:7px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.16);border-radius:999px;padding:8px 14px;font-size:13px;font-weight:700;color:#eaf1f6}
+.jump a:hover{background:rgba(31,194,166,.18);border-color:var(--teal-bright);color:#fff}
+
+main.wrap{padding:30px 0 10px}
+.sec{margin-bottom:36px;scroll-margin-top:84px}
+.sec-head{display:flex;align-items:baseline;gap:12px;flex-wrap:wrap;margin-bottom:4px}
+.sec-head h2{font-size:23px;letter-spacing:-.02em}
+.sec-head .eyebrow{margin:0}
+.sec .sub{font-size:14.5px;color:var(--slate);margin-bottom:18px}
+
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+@media(max-width:920px){.grid{grid-template-columns:1fr 1fr}}
+@media(max-width:600px){.grid{grid-template-columns:1fr}}
+.card{background:#fff;border:1px solid var(--line);border-radius:var(--radius-lg);box-shadow:var(--shadow-sm);padding:24px;display:flex;flex-direction:column;gap:11px;transition:.16s}
+.card:hover{box-shadow:var(--shadow);transform:translateY(-2px);border-color:var(--teal)}
+.card.soon{opacity:.85}.card.soon:hover{transform:none;border-color:var(--line);box-shadow:var(--shadow-sm)}
+.card .ic{width:50px;height:50px;border-radius:14px;background:rgba(20,161,140,.12);display:grid;place-items:center;color:var(--teal-dark)}
+.card .ic svg{width:25px;height:25px}
+.card h3{font-size:18px;display:flex;align-items:center;gap:9px;flex-wrap:wrap}
+.card p{font-size:14px;color:var(--slate);line-height:1.5;flex:1}
+.card .go{font-size:14px;font-weight:700;color:var(--teal-dark);display:inline-flex;align-items:center;gap:7px}
+.card .go svg{width:15px;height:15px}
+.pill{font-size:11px;font-weight:800;letter-spacing:.05em;text-transform:uppercase;padding:4px 10px;border-radius:999px}
+.pill-live{background:rgba(20,161,140,.14);color:var(--teal-dark)}
+.pill-xls{background:rgba(31,138,91,.14);color:#1f8a5b}
+.pill-soon{background:var(--bg-soft-2);color:var(--slate-2)}
+
+.hub-foot{background:var(--navy);color:#9fb1c2;padding:30px 0;margin-top:46px;font-size:13.5px}
+.hub-foot .wrap{display:flex;justify-content:space-between;gap:18px;flex-wrap:wrap}
+.hub-foot a{color:#cdd8e2;font-weight:600}.hub-foot a:hover{color:#fff}
+</style>
+</head>
+<body>
+
+<div class="hub-bar">
+  <div class="hub-bar-inner">
+    <a href="Sales Hub.html" style="display:flex;align-items:center" aria-label="Sales Hub home"><img class="logo" src="assets/logos/nextpay-nav.png" alt="NextPay"></a>
+    <span class="pipe"></span>
+    <span class="hub-tag">Sales Hub <span class="badge">Internal</span></span>
+    <div class="right"><a href="Sales Hub.html">← Hub home</a></div>
+  </div>
+</div>
+
+<header class="pg-head">
+  <div class="wrap">
+    <div class="crumbs"><a href="Sales Hub.html">Sales Hub</a><span class="sep">/</span><span>Statements &amp; Calculators</span></div>
+    <h1>Statements &amp; <em>calculators</em></h1>
+    <p class="lead">Find a merchant's current statement, then price the deal. Statement guides per processor and the calculators you'll use to build proposals — all in one place.</p>
+    <div class="jump">
+      <a href="#statements">Find a statement</a>
+      <a href="#calculators">Calculators</a>
+    </div>
+  </div>
+</header>
+
+<main class="wrap">
+
+  <!-- FIND A STATEMENT -->
+  <section class="sec" id="statements">
+    <div class="sec-head"><span class="eyebrow">Step 1</span><h2>Find a statement</h2></div>
+    <p class="sub">Locate and read the merchant's current processing statement so you can run a rate review.</p>
+    <div class="grid">
+
+      <div class="card">
+        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 3h7l5 5v13H7z"/><path d="M14 3v5h5M9 13h6M9 17h4"/></svg></div>
+        <h3>Clover Statement Guide <span class="pill pill-live">Live</span></h3>
+        <p>How to find and read a Clover merchant statement.</p>
+        <a class="go" href="assets/docs/clover-statement-guide.pdf" target="_blank" rel="noopener">Open guide <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+      </div>
+
+      <div class="card">
+        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 16V4M7 9l5-5 5 5M5 20h14"/></svg></div>
+        <h3>Statement Rate Analyzer <span class="pill pill-live">Live</span></h3>
+        <p>Upload a statement to surface the effective rate and build a beat-or-match proposal.</p>
+        <a class="go" href="Statement Upload.html" target="_blank" rel="noopener">Open analyzer <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+      </div>
+
+      <div class="card soon">
+        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 7a2 2 0 012-2h4l2 2h8a2 2 0 012 2v8a2 2 0 01-2 2H5a2 2 0 01-2-2z"/></svg></div>
+        <h3>More statement guides <span class="pill pill-soon">Adding</span></h3>
+        <p>Guides for other processors (Square, Shift4 and more) — send Dom the "how to find a statement" steps for any processor and they drop in here.</p>
+        <span class="go" style="color:var(--slate-2)">Coming soon</span>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- CALCULATORS -->
+  <section class="sec" id="calculators">
+    <div class="sec-head"><span class="eyebrow">Step 2</span><h2>Calculators</h2></div>
+    <p class="sub">Price out the deal and build the proposal. (Excel downloads.)</p>
+    <div class="grid">
+
+      <div class="card">
+        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="2" width="16" height="20" rx="2"/><path d="M8 6h8M8 10h2M14 10h2M8 14h2M14 14h2M8 18h2M14 18h2"/></svg></div>
+        <h3>Profitability Calculator <span class="pill pill-xls">Excel</span></h3>
+        <p>Price out a deal and calculate profitability — the SP527 profitability calculator.</p>
+        <a class="go" href="assets/docs/profitability-calculator.xlsx">Download <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 3v12M7 10l5 5 5-5M5 21h14"/></svg></a>
+      </div>
+
+      <div class="card">
+        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="2" width="16" height="20" rx="2"/><path d="M8 6h8M8 10h2M14 10h2M8 14h2M14 14h2M8 18h2M14 18h2"/></svg></div>
+        <h3>Shift4 Flat Rate Plus Calculator <span class="pill pill-xls">Excel</span></h3>
+        <p>Price out Shift4 deals — Flat Rate Plus, with the proposal built in.</p>
+        <a class="go" href="assets/docs/shift4-flat-rate-plus-calculator.xlsx">Download <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 3v12M7 10l5 5 5-5M5 21h14"/></svg></a>
+      </div>
+
+      <div class="card">
+        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 12v9H4v-9M2 7h20v5H2zM12 22V7M12 7H7.5a2.5 2.5 0 010-5C11 2 12 7 12 7zM12 7h4.5a2.5 2.5 0 000-5C13 2 12 7 12 7z"/></svg></div>
+        <h3>NextPay Rewards Calculator <span class="pill pill-live">Live</span></h3>
+        <p>Show a prospect what they could earn and qualify for through NextPay Rewards.</p>
+        <a class="go" href="https://app.tuzorewards.com/auth/nextpaybusinesssolutions/iso-calculator/" target="_blank" rel="noopener">Open calculator <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+      </div>
+
+    </div>
+  </section>
+
+</main>
+
+<footer class="hub-foot">
+  <div class="wrap">
+    <span>NextPay Sales Hub · Statements &amp; Calculators · Internal use only.</span>
+    <span><a href="Sales Hub.html">← Back to hub</a></span>
+  </div>
+</footer>
+</body>
+</html>

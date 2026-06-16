@@ -81,6 +81,10 @@
 .promo-banner .pb-txt{font-size:13.5px;color:var(--slate);line-height:1.4}
 .promo-banner .pb-txt b{color:var(--ink)}
 .promo-banner .pb-go{margin-left:auto;color:#b9741a;font-weight:800;white-space:nowrap;font-size:13.5px}
+.dealbtn{display:inline-flex;align-items:center;gap:10px;background:var(--teal);color:#fff;font-weight:800;font-size:14px;border-radius:11px;padding:12px 18px;margin:0 0 16px;box-shadow:var(--shadow-sm)}
+.dealbtn:hover{background:var(--teal-dark)}
+.dealbtn svg{width:17px;height:17px;flex:none}
+.dealbtn .arr{width:15px;height:15px;margin-left:auto}
 .status{font-size:11px;font-weight:800;letter-spacing:.05em;text-transform:uppercase;padding:3px 9px;border-radius:999px}
 .status.todo{background:var(--bg-soft-2);color:var(--slate-2)}
 .status.ready{background:rgba(20,161,140,.14);color:var(--teal-dark)}
@@ -140,6 +144,8 @@
 .portal .plink{display:inline-flex;align-items:center;gap:8px;font-weight:700;font-size:13.5px;color:#fff;background:var(--teal);border-radius:999px;padding:9px 15px;align-self:flex-start;margin-top:2px}
 .portal .plink:hover{background:var(--teal-dark)}
 .portal .plink.todo{background:var(--bg-soft-2);color:var(--slate-2);pointer-events:none}
+.portal .noaccess{align-self:flex-start;margin-top:2px;font-size:12.5px;font-weight:700;color:#b9741a;background:rgba(242,163,60,.12);border:1px solid rgba(242,163,60,.32);border-radius:9px;padding:7px 12px;transition:.14s}
+.portal .noaccess:hover{background:rgba(242,163,60,.2);border-color:rgba(242,163,60,.5)}
 .portal .plink svg{width:14px;height:14px}
 
 .empty{display:none;text-align:center;padding:50px 20px;color:var(--slate)}
@@ -198,13 +204,15 @@
         <p>Submit and board <b>every product except Square, Clover and Shift4</b> here — terminals, gateways, invoicing and more. Your primary day-to-day portal.</p>
         <span class="access given">Access provided</span>
         <a class="plink" href="https://solutionsinpaymentsportal.com/" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M14 3h7v7M21 3l-9 9M21 14v5a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h5"/></svg>Open Solutions in Payments Portal</a>
+        <a class="noaccess" href="Sales Hub - Request Access.html?portal=Solutions+in+Payments+Portal">Don't have access? Click here →</a>
       </div>
       <div class="portal">
         <span class="pnum">2</span>
         <h4>Shift4 Partner Portal</h4>
         <p><b>Shift4 Dine</b> and <b>Shift4 Terminals</b> are submitted here — log in and submit under the <b>Sales Center</b>. You'll get your own login.</p>
-        <span class="access given">Your own login provided</span>
+        <span class="access given">Access provided</span>
         <a class="plink" href="https://link.shift4payments.com/auth/login?redirectUrl=https%3A%2F%2Fapi.dealer-portal.shift4.com%2Fapi%2Fauth%2Flink%3Fredirect%3Dhttps%253A%252F%252Fpartner-portal.shift4.com%252F%252F" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M14 3h7v7M21 3l-9 9M21 14v5a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h5"/></svg>Open Shift4 Partner Portal</a>
+        <a class="noaccess" href="Sales Hub - Request Access.html?portal=Shift4+Partner+Portal">Don't have access? Click here →</a>
       </div>
       <div class="portal">
         <span class="pnum">3</span>
@@ -439,11 +447,18 @@
 
   function isReady(pr){ return !!(((pr.links && pr.links.length) || pr.form.url) && pr.steps.length); }
   function slug(s){ return (s||"").toLowerCase().replace(/[^a-z0-9]+/g,'-').replace(/^-|-$/g,''); }
+  function dealPageFor(pr){ var s=((pr.name||'')+' '+(pr.brand||'')).toLowerCase();
+    if(s.indexOf('square')>-1) return 'Sales Hub - Square.html';
+    if(s.indexOf('clover')>-1) return 'Sales Hub - Clover.html';
+    if(s.indexOf('shift4')>-1) return 'Sales Hub - Shift4.html';
+    return ''; }
 
   function render(){
     var list = document.getElementById('plist');
     list.innerHTML = PRODUCTS.map(function(pr, i){
       var ready = isReady(pr);
+      var dp = dealPageFor(pr);
+      var dealbtn = dp ? '<a class="dealbtn" href="'+dp+'"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M7 3h7l5 5v13H7z"/><path d="M14 3v5h5M9 13h6M9 17h4"/></svg>View full pricing &amp; deal info<svg class="arr" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>' : '';
       var steps = pr.steps.length
         ? '<ol class="steps">'+pr.steps.map(function(s){return '<li>'+esc(s)+'</li>';}).join('')+'</ol>'
         : '<p class="todo-text">— submission steps needed —</p>';
@@ -481,6 +496,7 @@
       +    '<svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg>'
       +  '</button>'
       +  '<div class="pbody">'
+      +    dealbtn
       +    (PROMO[pr.name] ? '<a class="promo-banner" href="Sales Hub - Promotions.html"><span class="pb-ic">🎁</span><span class="pb-txt"><b>Current offer:</b> '+esc(PROMO[pr.name])+'</span><span class="pb-go">View promotions →</span></a>' : '')
       +    '<div class="pgrid">'
       +    '<div class="block"><h4>How to submit</h4>'
