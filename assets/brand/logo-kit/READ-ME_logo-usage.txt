@@ -1,14 +1,14 @@
 NEXTPAY BUSINESS SOLUTIONS - LOGO KIT
 =====================================
 Everything you need to put the NextPay logo anywhere - web, social, email,
-print, flyers, business cards, apparel and more. Pick the right file for the
-background you are putting it on.
+print, flyers, business cards and apparel. Pick the file that fits your
+background. All raster files here are generated from a TRUE VECTOR master,
+so they are sharp at every size.
 
 BRAND COLORS
   Navy (dark)     #0C1B2A
   Teal            #14A18C
   Bright Teal     #1FC2A6   (the "Pay" wordmark + accents)
-  Always pair the logo with plenty of clear space around it.
 
 QUICK PICK - WHICH FILE?
   On a WHITE / light background ....... 01_Primary-Color  (navy Next + teal Pay)
@@ -21,23 +21,16 @@ QUICK PICK - WHICH FILE?
   Social profile pictures (square) .... 08_Social-Avatars-Square
   Website favicon / app icons ......... 09_Favicon-and-App-Icons
   Full lockup with tagline ............ 10_With-Tagline
-  Generic web vector wrapper .......... 11_Web-SVG
+  TRUE VECTOR (scales forever) ........ 11_Vector-SVG   <-- big print / apparel
 
 SIZES
-  Each transparent logo comes in large (1600px), medium (800px) and small (400px) widths.
-  - Email signature / social post: medium or small
-  - Website header: medium
-  - Flyers / business cards: large
+  Transparent logos come in large (1600px), medium (800px), small (400px).
+  Need bigger and perfectly crisp? Use the SVG in 11_Vector-SVG - it never blurs.
 
 FILE TYPES
-  PNG  - transparent, best for almost everything digital
-  JPG  - white/navy background baked in; use where PNG/transparency is not supported
-  ICO  - website favicon (multi-size)
-  SVG  - included as a web wrapper (raster inside)
-
-APPAREL & LARGE-FORMAT PRINT (banners, signs, embroidery)
-  For the sharpest result at large sizes, export a TRUE VECTOR (.SVG, .PDF or .EPS)
-  from Canva (Pro: Share > Download > SVG/PDF Print) and give that to your printer.
-  The PNGs here are high-resolution and fine for most jobs, but vector never blurs.
+  SVG - true vector; best for apparel, banners, signs, large print; imports into Canva.
+  PNG - transparent; best for almost everything digital.
+  JPG - white/navy background baked in; where transparency is not supported.
+  ICO - website favicon (multi-size).
 
 Questions? dom@nextpaypos.com
