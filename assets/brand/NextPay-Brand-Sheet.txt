@@ -1,0 +1,23 @@
+NEXTPAY BUSINESS SOLUTIONS — BRAND SHEET
+========================================
+
+COLORS
+  Navy (primary / text) ......... #0C1B2A
+  Navy 2 (gradients) ............ #10243A
+  Teal (primary) ................ #14A18C
+  Teal Dark (hover/contrast) .... #0E8473
+  Bright Teal (logo Pay/accent) . #1FC2A6
+  Slate (body text) ............. #566472
+  Light (backgrounds) ........... #F3F7F8
+  White (reverse) ............... #FFFFFF
+
+LOGO
+  Navy #0C1B2A "Next" + Bright Teal #1FC2A6 "Pay".
+  Color version -> light backgrounds.  White version -> dark backgrounds.
+  Full kit: Sales Hub -> Brand Assets (download).
+
+FONT
+  Plus Jakarta Sans  (logo wordmark, headings & body) — free on Google Fonts.
+  Weights used: ExtraBold (800) for the logo/headlines, Regular/Medium for body.
+
+Questions? dom@nextpaypos.com

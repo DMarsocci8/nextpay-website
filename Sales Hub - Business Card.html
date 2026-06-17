@@ -116,10 +116,10 @@
       <h2>Your details</h2>
       <p class="hint">Fill these in — the card updates as you type.</p>
 
-      <div class="field"><label for="f-name">Full name</label><input id="f-name" type="text" placeholder="Domenico Marsocci" autocomplete="name"></div>
-      <div class="field"><label for="f-title">Title</label><input id="f-title" type="text" placeholder="Relationship Manager" autocomplete="organization-title"></div>
-      <div class="field"><label for="f-cell">Cell phone</label><input id="f-cell" type="tel" placeholder="585.303.2769" autocomplete="tel"></div>
-      <div class="field"><label for="f-email">Email</label><input id="f-email" type="email" placeholder="dom@nextpaypos.com" autocomplete="email"></div>
+      <div class="field"><label for="f-name">Full name</label><input id="f-name" type="text" placeholder="" autocomplete="name"></div>
+      <div class="field"><label for="f-title">Title</label><input id="f-title" type="text" placeholder="" autocomplete="organization-title"></div>
+      <div class="field"><label for="f-cell">Cell phone</label><input id="f-cell" type="tel" placeholder="" autocomplete="tel"></div>
+      <div class="field"><label for="f-email">Email</label><input id="f-email" type="email" placeholder="" autocomplete="email"></div>
       <div class="saved-note" id="savedNote"></div>
 
       <div class="actions">
@@ -144,7 +144,7 @@
               <div class="bc-name" id="c-name">Your Name</div>
               <div class="bc-title" id="c-title">Relationship Manager</div>
               <div class="bc-rows">
-                <div class="bc-row"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.9v3a2 2 0 01-2.2 2 19.8 19.8 0 01-8.6-3 19.5 19.5 0 01-6-6 19.8 19.8 0 01-3-8.6A2 2 0 014.1 2h3a2 2 0 012 1.7c.1.9.4 1.8.7 2.7a2 2 0 01-.5 2.1L8.1 9.9a16 16 0 006 6l1.4-1.2a2 2 0 012.1-.4c.9.3 1.8.6 2.7.7a2 2 0 011.7 2z"/></svg></span><span id="c-cell">585.303.2769</span></div>
+                <div class="bc-row"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.9v3a2 2 0 01-2.2 2 19.8 19.8 0 01-8.6-3 19.5 19.5 0 01-6-6 19.8 19.8 0 01-3-8.6A2 2 0 014.1 2h3a2 2 0 012 1.7c.1.9.4 1.8.7 2.7a2 2 0 01-.5 2.1L8.1 9.9a16 16 0 006 6l1.4-1.2a2 2 0 012.1-.4c.9.3 1.8.6 2.7.7a2 2 0 011.7 2z"/></svg></span><span id="c-cell">Your phone</span></div>
                 <div class="bc-row"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M2 7l10 6 10-6"/></svg></span><span id="c-email">you@nextpaypos.com</span></div>
                 <div class="bc-row"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10 13a5 5 0 007 0l3-3a5 5 0 00-7-7l-1 1M14 11a5 5 0 00-7 0l-3 3a5 5 0 007 7l1-1"/></svg></span><span>app.nextlinks.co</span></div>
                 <div class="bc-row"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15 15 0 010 20 15 15 0 010-20"/></svg></span><span>www.nextpaypos.com</span></div>
@@ -207,7 +207,7 @@ function update(){
   save(p);
   document.getElementById('c-name').textContent  = p.name  || 'Your Name';
   document.getElementById('c-title').textContent = p.title || 'Relationship Manager';
-  document.getElementById('c-cell').textContent  = p.cell  || '585.303.2769';
+  document.getElementById('c-cell').textContent  = p.cell  || 'Your phone';
   document.getElementById('c-email').textContent = p.email || 'you@nextpaypos.com';
   var note = document.getElementById('savedNote');
   note.textContent = (p.name || p.email) ? '✓ Saved on this device — reused for your one-pagers' : '';

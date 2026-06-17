@@ -137,9 +137,9 @@
         <label for="f-flyer">Flyer</label>
         <select id="f-flyer"></select>
       </div>
-      <div class="field"><label for="f-name">Full name</label><input id="f-name" type="text" placeholder="Domenico Marsocci" autocomplete="name"></div>
-      <div class="field"><label for="f-cell">Phone</label><input id="f-cell" type="tel" placeholder="585.303.2769" autocomplete="tel"></div>
-      <div class="field"><label for="f-email">Email</label><input id="f-email" type="email" placeholder="dom@nextpaypos.com" autocomplete="email"></div>
+      <div class="field"><label for="f-name">Full name</label><input id="f-name" type="text" placeholder="" autocomplete="name"></div>
+      <div class="field"><label for="f-cell">Phone</label><input id="f-cell" type="tel" placeholder="" autocomplete="tel"></div>
+      <div class="field"><label for="f-email">Email</label><input id="f-email" type="email" placeholder="" autocomplete="email"></div>
       <div class="saved-note" id="savedNote"></div>
 
       <div class="actions">
@@ -263,7 +263,7 @@ function ico(type){
 function buildContact(f){
   var p=load();
   var name=p.name||'Your Name';
-  var phone=p.cell||'585.303.2769';
+  var phone=p.cell||'Your phone';
   var email=p.email||'you@nextpaypos.com';
   var muted=(!p.cell&&!p.email)?' cb-muted':'';
   var alignCls=(f.contact&&f.contact.align==='center')?' center':'';
