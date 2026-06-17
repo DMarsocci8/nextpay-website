@@ -5,6 +5,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="robots" content="noindex, nofollow">
 <title>Agent Knowledge Base — NextPay Sales Hub</title>
+<link rel="icon" href="assets/favicon.ico" sizes="any">
+<link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
 <link rel="stylesheet" href="css/nextpay.css">
 <style>
 .hub-bar{position:sticky;top:0;z-index:60;background:var(--navy);color:#fff;border-bottom:1px solid rgba(255,255,255,.10)}
@@ -20,6 +22,10 @@
 .pg-head h1{font-size:clamp(26px,3.6vw,38px);color:#fff;letter-spacing:-.02em}
 .pg-head p.lead{color:#c4d0db;margin-top:10px;max-width:720px;font-size:16px;line-height:1.6}
 main.wrap{padding:26px 0 10px}
+body{background:var(--bg-soft)}                 /* soft grey so white tiles separate clearly */
+section.kb{background:#fff;border:1px solid var(--line);border-radius:18px;box-shadow:var(--shadow-sm);padding:22px 24px 26px}
+.sec-sub{padding-left:53px}
+@media(max-width:600px){section.kb{padding:18px 16px 20px}}
 
 /* table of contents */
 .toc{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:11px;margin:6px 0 30px}
@@ -42,7 +48,7 @@ section.kb{scroll-margin-top:80px;margin:0 0 34px}
 .cards.c2{grid-template-columns:1fr 1fr}.cards.c3{grid-template-columns:1fr 1fr 1fr}.cards.c4{grid-template-columns:repeat(4,1fr)}
 @media(max-width:880px){.cards.c3,.cards.c4{grid-template-columns:1fr 1fr}}
 @media(max-width:600px){.cards.c2,.cards.c3,.cards.c4{grid-template-columns:1fr}}
-.card{background:#fff;border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow-sm);padding:18px 20px;border-top:3px solid var(--teal)}
+.card{background:var(--bg-soft);border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow-sm);padding:18px 20px;border-top:3px solid var(--teal)}
 .card h3{font-size:16px;letter-spacing:-.01em;color:var(--navy)}
 .card .kicker{font-size:11px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:var(--teal-dark);margin-bottom:3px}
 .card ul{margin:10px 0 0;padding-left:18px}.card li{font-size:13.5px;color:var(--ink);line-height:1.5;margin-bottom:5px}
@@ -53,7 +59,7 @@ section.kb{scroll-margin-top:80px;margin:0 0 34px}
 /* numbered steps */
 .steps{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
 @media(max-width:880px){.steps{grid-template-columns:1fr 1fr}}@media(max-width:600px){.steps{grid-template-columns:1fr}}
-.step{background:#fff;border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow-sm);padding:18px 20px;position:relative}
+.step{background:var(--bg-soft);border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow-sm);padding:18px 20px;position:relative}
 .step .n{width:32px;height:32px;border-radius:9px;background:var(--navy);color:#fff;font-weight:800;display:grid;place-items:center;font-size:15px;margin-bottom:10px}
 .step h3{font-size:15.5px;color:var(--navy)}
 .step ul{margin:9px 0 0;padding-left:17px}.step li{font-size:13px;color:var(--ink);line-height:1.5;margin-bottom:5px}
@@ -72,7 +78,7 @@ section.kb{scroll-margin-top:80px;margin:0 0 34px}
 .callout a{color:var(--teal-dark);font-weight:700}
 
 /* video rows */
-.vid{display:flex;gap:15px;align-items:flex-start;background:#fff;border:1px solid var(--line);border-radius:14px;box-shadow:var(--shadow-sm);padding:15px 18px;margin-bottom:11px}
+.vid{display:flex;gap:15px;align-items:flex-start;background:var(--bg-soft);border:1px solid var(--line);border-radius:14px;box-shadow:var(--shadow-sm);padding:15px 18px;margin-bottom:11px}
 .vid .num{flex:none;width:40px;height:40px;border-radius:10px;background:var(--navy);color:#fff;font-weight:800;display:grid;place-items:center;font-size:16px}
 .vid .meta{flex:1}.vid .meta .len{font-size:11.5px;font-weight:800;color:var(--teal-dark);text-transform:uppercase;letter-spacing:.05em}
 .vid .meta h3{font-size:15px;color:var(--navy);margin:1px 0 4px}
@@ -82,7 +88,7 @@ section.kb{scroll-margin-top:80px;margin:0 0 34px}
 /* call flow */
 .flow{display:grid;grid-template-columns:repeat(7,1fr);gap:10px}
 @media(max-width:880px){.flow{grid-template-columns:repeat(2,1fr)}}@media(max-width:560px){.flow{grid-template-columns:1fr}}
-.flow .fs{background:#fff;border:1px solid var(--line);border-radius:13px;box-shadow:var(--shadow-sm);padding:14px;border-top:3px solid var(--teal)}
+.flow .fs{background:var(--bg-soft);border:1px solid var(--line);border-radius:13px;box-shadow:var(--shadow-sm);padding:14px;border-top:3px solid var(--teal)}
 .flow .fs .n{font-size:12px;font-weight:800;color:var(--teal-dark)}
 .flow .fs h3{font-size:14px;color:var(--navy);margin:3px 0 5px}
 .flow .fs p{font-size:12.5px;color:var(--slate);line-height:1.45}
