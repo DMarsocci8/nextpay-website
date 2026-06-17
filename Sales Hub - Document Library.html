@@ -39,12 +39,11 @@ main.wrap{padding:26px 0 10px}
 .lib-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;padding-top:6px}
 @media(max-width:980px){.lib-grid{grid-template-columns:1fr 1fr}}
 @media(max-width:640px){.lib-grid{grid-template-columns:1fr}}
-.doc{background:#fff;border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow-sm);padding:20px;display:flex;flex-direction:column;gap:11px;transition:.16s}
+.doc{background:#fff;border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow-sm);padding:16px 18px 18px;display:flex;flex-direction:column;gap:11px;transition:.16s}
 .doc:hover{box-shadow:var(--shadow);transform:translateY(-2px);border-color:var(--teal)}
-.doc-top{display:flex;align-items:center;gap:12px}
 .doc .ft{width:44px;height:44px;border-radius:11px;display:grid;place-items:center;font-size:11px;font-weight:800;color:#fff;flex:none;letter-spacing:.02em}
-.doc .dlogo{width:46px;height:46px;border-radius:11px;background:#fff;border:1px solid var(--line);display:grid;place-items:center;flex:none;padding:7px;box-shadow:var(--shadow-sm)}
-.doc .dlogo img{max-width:100%;max-height:100%;object-fit:contain;display:block}
+.doc .dlogo{width:100%;height:108px;border-radius:14px;background:var(--bg-soft);border:1px solid var(--line);display:grid;place-items:center;padding:18px;margin-bottom:2px}
+.doc .dlogo img{max-width:80%;max-height:72px;object-fit:contain;display:block}
 .ft.pdf{background:#d6453b}.ft.doc{background:#2b6cb0}.ft.img{background:var(--teal-dark)}.ft.xls{background:#1f8a5b}.ft.link{background:var(--slate)}
 .doc h3{font-size:16px;letter-spacing:-.01em;line-height:1.25}
 .doc .tags{display:flex;gap:6px;flex-wrap:wrap}
@@ -89,7 +88,7 @@ main.wrap{padding:26px 0 10px}
   <div class="wrap">
     <div class="crumbs"><a href="Sales Hub.html">Sales Hub</a><span class="sep">/</span><span>Document Library</span></div>
     <h1>Document Library</h1>
-    <p class="lead">One organized shelf for every PDF, deck, flyer, application, script and form — sorted by product and type. Filter or search to find what you need fast.</p>
+    <p class="lead">One organized shelf for every PDF, deck, flyer, application, script and form — sorted by product, company and type. Filter or search to find what you need fast.</p>
     <div class="pg-search">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg>
       <input id="libSearch" type="search" placeholder="Search documents — name, product or keyword…" autocomplete="off">
@@ -107,6 +106,10 @@ main.wrap{padding:26px 0 10px}
     <button class="chip" data-val="gateways">Gateways</button>
     <button class="chip" data-val="invoicing">Invoicing</button>
     <button class="chip" data-val="general">General</button>
+  </div>
+  <div class="fgroup" data-dim="brand" id="brandGroup">
+    <span class="flabel">Company</span>
+    <button class="chip active" data-val="all">All companies</button>
   </div>
   <div class="fgroup" data-dim="category">
     <span class="flabel">Type</span>
@@ -266,37 +269,61 @@ var DOCS = [
 
 var grid=document.getElementById('libGrid'), empty=document.getElementById('libEmpty'),
     count=document.getElementById('libCount'), search=document.getElementById('libSearch');
-var state={product:'all', category:'all'};
+var state={product:'all', brand:'all', category:'all'};
 var FT={pdf:'PDF',doc:'DOC',img:'IMG',xls:'XLS',link:'LINK'};
 
-function logoFor(d){
+/* brand/company registry — key order controls the filter row order.
+   Add a new brand here (label + logo) and it auto-appears once a doc matches it. */
+var BRANDS={
+  shift4:{label:'Shift4', logo:'shift4.png'},
+  square:{label:'Square', logo:'square.svg'},
+  clover:{label:'Clover', logo:'clover.png'},
+  korona:{label:'Korona', logo:'korona.png'},
+  quantic:{label:'Quantic', logo:'quantic.svg'},
+  nrs:{label:'NRS', logo:'nrs.png'},
+  dejavoo:{label:'Dejavoo', logo:'dejavoo.png'},
+  pax:{label:'PAX', logo:'pax.svg'},
+  valor:{label:'Valor', logo:'valor.png'},
+  fluidpay:{label:'FluidPay', logo:'fluidpay.png'},
+  ipospays:{label:'iPOSPays', logo:'ipospays.png'},
+  luqra:{label:'Luqra', logo:'luqra.png'},
+  authorize:{label:'Authorize.net', logo:'authnet.png'},
+  fieldpulse:{label:'FieldPulse', logo:'fieldpulse.png'},
+  quickbooks:{label:'QuickBooks', logo:'quickbooks.png'},
+  swipesimple:{label:'SwipeSimple', logo:'swipesimple.png'},
+  nextlink:{label:'NextLink', logo:'nextlink-2tone.svg'},
+  nextpay:{label:'NextPay / General', logo:'nextpay.png'}
+};
+function brandFor(d){
+  if(d.brand && BRANDS[d.brand]) return d.brand;
   var s=(d.title+' '+(d.product||'')).toLowerCase();
-  if(s.indexOf('shift4')>-1||s.indexOf('skytab')>-1) return 'shift4.png';
-  if(s.indexOf('square')>-1) return 'square.svg';
-  if(s.indexOf('clover')>-1) return 'clover.png';
-  if(s.indexOf('korona')>-1) return 'korona.png';
-  if(s.indexOf('fluidpay')>-1) return 'fluidpay.png';
-  if(s.indexOf('fieldpulse')>-1) return 'fieldpulse.png';
-  if(s.indexOf('swipesimple')>-1) return 'swipesimple.png';
-  if(s.indexOf('nextlink')>-1) return 'nextlink-2tone.svg';
-  if(s.indexOf('dejavoo')>-1) return 'dejavoo.png';
-  if(s.indexOf('ipospays')>-1||s.indexOf('ipos')>-1) return 'ipospays.png';
-  if(s.indexOf('pax')>-1) return 'pax.svg';
-  if(s.indexOf('valor')>-1) return 'valor.png';
-  if(s.indexOf('quantic')>-1) return 'quantic.svg';
-  if(s.indexOf('nrs')>-1) return 'nrs.png';
-  if(s.indexOf('luqra')>-1) return 'luqra.png';
-  if(s.indexOf('authorize')>-1) return 'authnet.png';
-  if(s.indexOf('quickbooks')>-1) return 'quickbooks.png';
-  return 'nextpay.png';
+  if(s.indexOf('shift4')>-1||s.indexOf('skytab')>-1) return 'shift4';
+  if(s.indexOf('square')>-1) return 'square';
+  if(s.indexOf('clover')>-1) return 'clover';
+  if(s.indexOf('korona')>-1) return 'korona';
+  if(s.indexOf('quantic')>-1) return 'quantic';
+  if(s.indexOf('nrs')>-1) return 'nrs';
+  if(s.indexOf('dejavoo')>-1) return 'dejavoo';
+  if(s.indexOf('pax')>-1) return 'pax';
+  if(s.indexOf('valor')>-1) return 'valor';
+  if(s.indexOf('fluidpay')>-1) return 'fluidpay';
+  if(s.indexOf('ipospays')>-1||s.indexOf('ipos')>-1) return 'ipospays';
+  if(s.indexOf('luqra')>-1) return 'luqra';
+  if(s.indexOf('authorize')>-1) return 'authorize';
+  if(s.indexOf('fieldpulse')>-1) return 'fieldpulse';
+  if(s.indexOf('quickbooks')>-1) return 'quickbooks';
+  if(s.indexOf('swipesimple')>-1) return 'swipesimple';
+  if(s.indexOf('nextlink')>-1) return 'nextlink';
+  return 'nextpay';
 }
+function logoFor(d){ return BRANDS[brandFor(d)].logo; }
 function card(d){
   var ext = (d.type||'link').toLowerCase();
   var prodLabel = {pos:'POS',terminals:'Terminals',gateways:'Gateways',invoicing:'Invoicing',general:'General'}[d.product]||d.product;
   var catLabel = {pricing:'Pricing',script:'Script',proposal:'Proposal',flyer:'Flyer',onepager:'One-Pager',deck:'Presentation',form:'Form',contract:'Contract',training:'Training',statement:'Statement',tool:'Calculator',portal:'Portal'}[d.category]||d.category;
   return '<div class="doc">'
-    + '<div class="doc-top"><span class="dlogo"><img src="assets/logos/'+logoFor(d)+'" alt=""></span>'
-    + '<h3>'+d.title+'</h3></div>'
+    + '<span class="dlogo"><img src="assets/logos/'+logoFor(d)+'" alt=""></span>'
+    + '<h3>'+d.title+'</h3>'
     + '<div class="tags"><span class="t prod">'+prodLabel+'</span><span class="t">'+catLabel+'</span><span class="t">'+(FT[ext]||'FILE')+'</span></div>'
     + (d.note?'<p class="dn">'+d.note+'</p>':'<p class="dn"></p>')
     + '<a class="dl" href="'+d.href+'" target="_blank" rel="noopener">Open / download '
@@ -308,8 +335,9 @@ function apply(){
   var q=(search.value||'').trim().toLowerCase();
   var list=DOCS.filter(function(d){
     return (state.product==='all'||d.product===state.product)
+        && (state.brand==='all'||brandFor(d)===state.brand)
         && (state.category==='all'||d.category===state.category)
-        && (!q || (d.title+' '+(d.note||'')+' '+d.product+' '+d.category).toLowerCase().indexOf(q)!==-1);
+        && (!q || (d.title+' '+(d.note||'')+' '+d.product+' '+d.category+' '+BRANDS[brandFor(d)].label).toLowerCase().indexOf(q)!==-1);
   });
   grid.innerHTML=list.map(card).join('');
   empty.classList.toggle('show', DOCS.length===0 || list.length===0);
@@ -317,6 +345,19 @@ function apply(){
   else { count.textContent = list.length+' document'+(list.length===1?'':'s')
         + (list.length!==DOCS.length?(' of '+DOCS.length):''); }
 }
+
+/* build the Company filter row from brands actually present in the library */
+(function buildBrandChips(){
+  var present={};
+  DOCS.forEach(function(d){ present[brandFor(d)]=true; });
+  var group=document.getElementById('brandGroup');
+  Object.keys(BRANDS).forEach(function(key){
+    if(!present[key]) return;
+    var b=document.createElement('button');
+    b.className='chip'; b.setAttribute('data-val',key); b.textContent=BRANDS[key].label;
+    group.appendChild(b);
+  });
+})();
 
 document.querySelectorAll('.fgroup').forEach(function(group){
   var dim=group.getAttribute('data-dim');
