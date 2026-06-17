@@ -1,0 +1,306 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Flyers &amp; One-Pagers — Personalize &amp; Print — NextPay Sales Hub</title>
+<link rel="stylesheet" href="css/nextpay.css">
+<style>
+.hub-bar{position:sticky;top:0;z-index:60;background:var(--navy);color:#fff;border-bottom:1px solid rgba(255,255,255,.10)}
+.hub-bar-inner{display:flex;align-items:center;gap:18px;height:66px;max-width:var(--maxw);margin:0 auto;padding:0 28px}
+.hub-bar img.logo{height:34px;width:auto;display:block}
+.hub-bar .pipe{width:1px;height:26px;background:rgba(255,255,255,.18)}
+.hub-bar .hub-tag{font-weight:800;font-size:15px;color:#fff;display:flex;align-items:center;gap:9px}
+.hub-bar .hub-tag .badge{font-size:10.5px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;background:var(--teal);color:#fff;padding:4px 9px;border-radius:999px}
+.hub-bar .right{margin-left:auto;display:flex;align-items:center;gap:20px}
+.hub-bar .right a{color:#cdd8e2;font-weight:600;font-size:14.5px}.hub-bar .right a:hover{color:#fff}
+
+.pg-head{background:linear-gradient(180deg,var(--navy),var(--navy-2));color:#fff}
+.pg-head .wrap{padding:28px 0 30px}
+.crumbs{display:flex;gap:8px;align-items:center;font-size:13.5px;color:#9fb1c2;padding-bottom:14px}
+.crumbs a{color:#cdd8e2;font-weight:600}.crumbs a:hover{color:#fff}.crumbs .sep{opacity:.5}
+.pg-head h1{font-size:clamp(26px,3.6vw,38px);color:#fff;letter-spacing:-.02em}
+.pg-head p.lead{color:#c4d0db;margin-top:10px;max-width:660px;font-size:16.5px;line-height:1.55}
+
+.layout{display:grid;grid-template-columns:360px 1fr;gap:46px;padding:36px 0 20px;align-items:start}
+@media(max-width:980px){.layout{grid-template-columns:1fr;gap:28px}}
+
+.form-card{background:#fff;border:1px solid var(--line);border-radius:var(--radius-lg);box-shadow:var(--shadow-sm);padding:26px;position:sticky;top:84px}
+@media(max-width:980px){.form-card{position:static}}
+.form-card h2{font-size:18px;margin-bottom:4px}
+.form-card .hint{font-size:13.5px;color:var(--slate);margin-bottom:18px}
+.field{margin-bottom:15px}
+.field label{display:block;font-size:13px;font-weight:700;color:var(--ink);margin-bottom:6px}
+.field input,.field select{width:100%;border:1px solid var(--line);border-radius:10px;padding:11px 13px;font-family:inherit;font-size:15px;color:var(--ink);background:#fff}
+.field input:focus,.field select:focus{outline:2px solid var(--teal)}
+.field .suffixed{display:flex;align-items:stretch}
+.field .suffixed input{border-top-right-radius:0;border-bottom-right-radius:0;border-right:0}
+.field .suffixed .suffix{display:flex;align-items:center;padding:0 12px;background:var(--bg-soft-2);border:1px solid var(--line);border-left:0;border-top-right-radius:10px;border-bottom-right-radius:10px;font-size:13.5px;font-weight:700;color:var(--slate)}
+.saved-note{font-size:12.5px;color:var(--teal-dark);font-weight:600;margin-top:2px;min-height:16px}
+.actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:8px}
+
+.preview .ptitle{font-size:15px;letter-spacing:.04em;text-transform:uppercase;color:var(--slate);margin-bottom:14px}
+.stage-wrap{display:flex;justify-content:center}
+.stage{transform-origin:top center}
+@media screen and (min-width:981px){.stage{transform:scale(.62)}.stage-wrap{height:calc(11in * .62)}}
+@media screen and (max-width:980px){.stage{transform:scale(.52)}.stage-wrap{height:calc(11in * .52)}}
+@media screen and (max-width:560px){.stage{transform:scale(.40)}.stage-wrap{height:calc(11in * .40)}}
+
+/* ---- the flyer (true 8.5 x 11) ---- */
+.flyer{position:relative;width:8.5in;height:11in;background:#fff;overflow:hidden;box-shadow:0 10px 40px rgba(12,27,42,.22);font-family:inherit}
+.flyer .flyer-art{position:absolute;inset:0;width:100%;height:100%}
+.flyer img.flyer-art{object-fit:cover;display:block}
+
+/* injected contact block */
+.contact-block{position:absolute;box-sizing:border-box}
+.cb-name{font-weight:800;font-size:17pt;letter-spacing:-.01em;line-height:1.08}
+.cb-rows{display:flex;flex-wrap:wrap;gap:.08in .34in;margin-top:.08in;font-size:11pt;font-weight:600}
+.cb-rows.center{justify-content:center}
+.cb-rows .cbi{display:flex;align-items:center;gap:.08in;white-space:nowrap}
+.cb-rows .cbi svg{width:.17in;height:.17in;flex:none;opacity:.95}
+.cb-muted{opacity:.6}
+
+/* ---------- SAMPLE FLYER (HTML) ---------- */
+.fl-sample{position:absolute;inset:0;display:flex;flex-direction:column;color:var(--navy);background:
+  radial-gradient(120% 80% at 100% 0%, rgba(31,194,166,.10), transparent 60%),#fff}
+.fl-sample .s-top{display:flex;align-items:center;justify-content:space-between;padding:.6in .7in 0}
+.fl-sample .s-top img{height:.62in;width:auto}
+.fl-sample .s-top .s-kick{font-size:9.5pt;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:var(--teal-dark)}
+.fl-sample .s-body{flex:1;padding:.35in .7in 0}
+.fl-sample h1{font-size:38pt;line-height:1.02;letter-spacing:-.02em;color:var(--navy);font-weight:800}
+.fl-sample h1 .em{color:var(--teal-dark)}
+.fl-sample .s-sub{font-size:13.5pt;color:var(--slate);line-height:1.45;margin-top:.18in;max-width:6.2in}
+.fl-sample .s-feats{display:grid;grid-template-columns:1fr 1fr;gap:.22in .3in;margin-top:.4in}
+.fl-sample .s-feat{display:flex;gap:.16in;align-items:flex-start}
+.fl-sample .s-feat .fi{width:.5in;height:.5in;border-radius:.13in;background:rgba(20,161,140,.12);display:grid;place-items:center;flex:none}
+.fl-sample .s-feat .fi svg{width:.26in;height:.26in;color:var(--teal-dark)}
+.fl-sample .s-feat h3{font-size:13pt;font-weight:800;color:var(--navy);letter-spacing:-.01em}
+.fl-sample .s-feat p{font-size:10.5pt;color:var(--slate);line-height:1.4;margin-top:.02in}
+.fl-sample .s-offer{margin:.42in .7in 0;background:linear-gradient(100deg,var(--navy),var(--navy-2));color:#fff;border-radius:.18in;padding:.3in .4in;display:flex;align-items:center;gap:.3in}
+.fl-sample .s-offer .big{font-size:30pt;font-weight:800;color:var(--teal-bright,#1FC2A6);line-height:1;letter-spacing:-.02em;flex:none}
+.fl-sample .s-offer h3{font-size:15pt;font-weight:800;letter-spacing:-.01em}
+.fl-sample .s-offer p{font-size:10.5pt;color:#c4d0db;margin-top:.04in;line-height:1.4}
+
+.tip{display:flex;gap:12px;align-items:flex-start;background:var(--bg-soft);border:1px solid var(--line);border-radius:12px;padding:14px 16px;margin-top:26px;max-width:600px}
+.tip svg{width:18px;height:18px;color:var(--teal-dark);flex:none;margin-top:2px}
+.tip p{font-size:13.5px;color:var(--slate);line-height:1.5}
+.addnote{display:flex;gap:14px;align-items:flex-start;background:#fff;border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow-sm);padding:18px 20px;margin-top:16px;max-width:600px}
+.addnote .ni{flex:none;width:42px;height:42px;border-radius:11px;background:rgba(20,161,140,.12);display:grid;place-items:center;color:var(--teal-dark)}
+.addnote .ni svg{width:21px;height:21px}.addnote b{font-size:15px}.addnote p{font-size:13.5px;color:var(--slate);line-height:1.55;margin-top:3px}
+
+.hub-foot{background:var(--navy);color:#9fb1c2;padding:30px 0;margin-top:46px;font-size:13.5px}
+.hub-foot .wrap{display:flex;justify-content:space-between;gap:18px;flex-wrap:wrap}
+.hub-foot a{color:#cdd8e2;font-weight:600}.hub-foot a:hover{color:#fff}
+
+@media print{
+  .hub-bar,.pg-head,.form-card,.preview .ptitle,.tip,.addnote,.hub-foot,.actions{display:none !important}
+  body{background:#fff}
+  .layout{display:block;padding:0}
+  .stage-wrap{height:auto;display:block}
+  .stage{transform:none}
+  .flyer{box-shadow:none;margin:0}
+  @page{size:8.5in 11in;margin:0}
+}
+</style>
+</head>
+<body>
+
+<div class="hub-bar">
+  <div class="hub-bar-inner">
+    <a href="Sales Hub.html" style="display:flex;align-items:center" aria-label="Sales Hub home"><img class="logo" src="assets/logos/nextpay-nav.png" alt="NextPay"></a>
+    <span class="pipe"></span>
+    <span class="hub-tag">Sales Hub <span class="badge">Internal</span></span>
+    <div class="right"><a href="Sales Hub - Business Card.html">Business card →</a><a href="Sales Hub.html">← Hub home</a></div>
+  </div>
+</div>
+
+<header class="pg-head">
+  <div class="wrap">
+    <div class="crumbs"><a href="Sales Hub.html">Sales Hub</a><span class="sep">/</span><span>Flyers &amp; One-Pagers</span></div>
+    <h1>Flyers &amp; One-Pagers — Personalize &amp; Print</h1>
+    <p class="lead">Pick a flyer, add your name and contact info once, and print it yourself — full 8.5″ × 11″, ready for any printer. Your details are saved on this device and shared with your business card, so you only type them once.</p>
+  </div>
+</header>
+
+<main class="wrap">
+  <div class="layout">
+
+    <!-- FORM -->
+    <div class="form-card">
+      <h2>Personalize</h2>
+      <p class="hint">Choose a flyer and fill in your details — the preview updates as you type.</p>
+
+      <div class="field">
+        <label for="f-flyer">Flyer</label>
+        <select id="f-flyer"></select>
+      </div>
+      <div class="field"><label for="f-name">Full name</label><input id="f-name" type="text" placeholder="Domenico Marsocci" autocomplete="name"></div>
+      <div class="field"><label for="f-cell">Phone</label><input id="f-cell" type="tel" placeholder="585.303.2769" autocomplete="tel"></div>
+      <div class="field"><label for="f-email">Email</label><input id="f-email" type="email" placeholder="dom@nextpaypos.com" autocomplete="email"></div>
+      <div class="saved-note" id="savedNote"></div>
+
+      <div class="actions">
+        <button class="btn btn-primary btn-sm" onclick="window.print()">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M6 9V2h12v7M6 18H4a2 2 0 01-2-2v-5a2 2 0 012-2h16a2 2 0 012 2v5a2 2 0 01-2 2h-2M6 14h12v8H6z"/></svg>
+          Print / Save PDF
+        </button>
+        <button class="btn btn-outline btn-sm" id="clearBtn" type="button">Clear</button>
+      </div>
+    </div>
+
+    <!-- PREVIEW -->
+    <div class="preview">
+      <div class="ptitle">Live preview — 8.5″ × 11″</div>
+      <div class="stage-wrap"><div class="stage" id="stage"></div></div>
+
+      <div class="tip">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4M12 8h.01"/></svg>
+        <p><b>Printing tip:</b> click <b>Print / Save PDF</b>, then set margins to <b>None</b> and scale to <b>100%</b> (uncheck “Fit to page”). Choose <b>“Save as PDF”</b> to email it, or send straight to your printer on letter paper.</p>
+      </div>
+      <div class="addnote">
+        <div class="ni"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14"/></svg></div>
+        <div><b>Adding more flyers</b><p>Hand Dom your Canva flyer as a <b>2× PNG</b> (8.5×11, with the name/contact area left blank) or a Claude-design flyer as <b>HTML</b> — it gets added to the picker above with your contact block dropped in the right spot.</p></div>
+      </div>
+    </div>
+
+  </div>
+</main>
+
+<footer class="hub-foot">
+  <div class="wrap">
+    <span>NextPay Sales Hub · Flyers &amp; One-Pagers · Internal use only.</span>
+    <span><a href="Sales Hub.html">← Back to hub</a></span>
+  </div>
+</footer>
+
+<script>
+/* ===========================================================
+   FLYER LIBRARY
+   Add one object per flyer:
+     id      – unique slug
+     label   – name shown in the picker
+     type    – 'html'  (Claude-design / built-in markup)  OR  'img' (Canva PNG export)
+     html    – full flyer markup (only for type:'html')
+     img     – path to 8.5x11 image, e.g. 'assets/flyers/my-flyer.png' (only for type:'img')
+     contact – where/how the agent's contact block sits on the flyer:
+                 style : inline CSS for position+look (left/right/top/bottom, background, color, padding, text-align)
+                 align : 'center' | 'left'   (row alignment)
+                 onDark: true if the band is dark (controls icon/text color via the inline color you pass)
+   =========================================================== */
+var FLYERS = [
+  {
+    id:'sample-savings',
+    label:'Sample — Savings & Growth (built-in demo)',
+    cat:'General',
+    type:'html',
+    contact:{ style:'left:0;right:0;bottom:0;background:var(--navy);color:#fff;padding:.34in .7in;text-align:center', align:'center' },
+    html:
+      '<div class="fl-sample">'
+      + '<div class="s-top"><img src="assets/logos/nextpay.png" alt="NextPay"><span class="s-kick">NextPay Business Solutions</span></div>'
+      + '<div class="s-body">'
+      +   '<h1>Stop overpaying to <span class="em">accept payments.</span></h1>'
+      +   '<p class="s-sub">A modern POS, transparent processing, and a real partner for every stage of your business — with a switch that pays for itself.</p>'
+      +   '<div class="s-feats">'
+      +     '<div class="s-feat"><div class="fi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 1v22M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"/></svg></div><div><h3>Lower your fees</h3><p>Transparent pricing that matches or beats your current rate.</p></div></div>'
+      +     '<div class="s-feat"><div class="fi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="12" rx="1"/><path d="M3 20h18M8 16v4M16 16v4"/></svg></div><div><h3>Modern POS</h3><p>Shift4, Square, Clover &amp; more — matched to your business.</p></div></div>'
+      +     '<div class="s-feat"><div class="fi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><path d="M22 4L12 14.01l-3-3"/></svg></div><div><h3>Never goes down</h3><p>Offline mode keeps you selling even when the internet drops.</p></div></div>'
+      +     '<div class="s-feat"><div class="fi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 12v9H4v-9M2 7h20v5H2zM12 22V7M12 7H7.5a2.5 2.5 0 010-5C11 2 12 7 12 7z"/></svg></div><div><h3>Earn rewards</h3><p>NextPay Rewards turns everyday processing into real perks.</p></div></div>'
+      +   '</div>'
+      + '</div>'
+      + '<div class="s-offer"><div class="big">$500</div><div><h3>Switch Guarantee</h3><p>Ask how we make switching risk-free — free onboarding, install &amp; training included.</p></div></div>'
+      + '</div>'
+  }
+  /* ---- example: a Canva PNG flyer, categorized by industry ----
+  , {
+    id:'attorneys-faster-payments',
+    label:'Attorneys — Faster Payments & Bigger Profits',
+    cat:'Professional Services',
+    type:'img',
+    img:'assets/flyers/attorneys-faster-payments.png',
+    // contact block sits in the teal oval, bottom-left of this flyer:
+    contact:{ style:'left:.55in;bottom:.7in;width:3.3in;color:#fff;text-align:center', align:'center' }
+  } */
+];
+
+/* shared rep profile — same key as the business card maker */
+var KEY='np_rep_profile';
+function load(){ try{ return JSON.parse(localStorage.getItem(KEY))||{}; }catch(e){ return {}; } }
+function save(p){ try{ localStorage.setItem(KEY, JSON.stringify(p)); }catch(e){} }
+
+var WEBSITE='www.nextpaypos.com';
+var fields={ name:'f-name', cell:'f-cell', email:'f-email' };
+var prof=load();
+Object.keys(fields).forEach(function(k){ var el=document.getElementById(fields[k]); if(prof[k]) el.value=prof[k]; });
+
+var stage=document.getElementById('stage');
+var picker=document.getElementById('f-flyer');
+var idx=0;
+
+/* build picker — grouped by industry/vertical (optgroups, ordered) */
+var CAT_ORDER=['General','Retail','Food & Beverage','Services','Professional Services','Healthcare & Medical','High Risk & Specialty'];
+(function buildPicker(){
+  var groups={};
+  FLYERS.forEach(function(f,i){ var c=f.cat||'General'; (groups[c]=groups[c]||[]).push(i); });
+  Object.keys(groups).sort(function(a,b){
+    var ia=CAT_ORDER.indexOf(a), ib=CAT_ORDER.indexOf(b);
+    return (ia<0?99:ia)-(ib<0?99:ib);
+  }).forEach(function(c){
+    var og=document.createElement('optgroup'); og.label=c;
+    groups[c].forEach(function(i){ var o=document.createElement('option'); o.value=i; o.textContent=FLYERS[i].label; og.appendChild(o); });
+    picker.appendChild(og);
+  });
+})();
+picker.addEventListener('change', function(){ idx=+picker.value; render(); });
+
+function ico(type){
+  if(type==='phone') return '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.9v3a2 2 0 01-2.2 2 19.8 19.8 0 01-8.6-3 19.5 19.5 0 01-6-6 19.8 19.8 0 01-3-8.6A2 2 0 014.1 2h3a2 2 0 012 1.7c.1.9.4 1.8.7 2.7a2 2 0 01-.5 2.1L8.1 9.9a16 16 0 006 6l1.4-1.2a2 2 0 012.1-.4c.9.3 1.8.6 2.7.7a2 2 0 011.7 2z"/></svg>';
+  if(type==='mail') return '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M2 7l10 6 10-6"/></svg>';
+  return '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15 15 0 010 20 15 15 0 010-20"/></svg>';
+}
+function buildContact(f){
+  var p=load();
+  var name=p.name||'Your Name';
+  var phone=p.cell||'585.303.2769';
+  var email=p.email||'you@nextpaypos.com';
+  var muted=(!p.cell&&!p.email)?' cb-muted':'';
+  var alignCls=(f.contact&&f.contact.align==='center')?' center':'';
+  return '<div class="cb-name">'+esc(name)+'</div>'
+    + '<div class="cb-rows'+alignCls+'">'
+    +   '<span class="cbi'+(p.cell?'':muted)+'">'+ico('phone')+esc(phone)+'</span>'
+    +   '<span class="cbi'+(p.email?'':muted)+'">'+ico('mail')+esc(email)+'</span>'
+    +   '<span class="cbi">'+ico('web')+WEBSITE+'</span>'
+    + '</div>';
+}
+function esc(s){ return String(s).replace(/[&<>"]/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c];}); }
+
+function render(){
+  var f=FLYERS[idx];
+  var art = f.type==='img'
+    ? '<img class="flyer-art" src="'+f.img+'" alt="">'
+    : '<div class="flyer-art">'+f.html+'</div>';
+  var cstyle = (f.contact&&f.contact.style)||'left:0;right:0;bottom:0;padding:.3in .6in;color:#0C1B2A';
+  stage.innerHTML='<div class="flyer">'+art+'<div class="contact-block" style="'+cstyle+'">'+buildContact(f)+'</div></div>';
+}
+
+function update(){
+  var p=load();
+  Object.keys(fields).forEach(function(k){ p[k]=document.getElementById(fields[k]).value.trim(); });
+  save(p);
+  render();
+  document.getElementById('savedNote').textContent=(p.name||p.email)?'✓ Saved on this device — shared with your business card':'';
+}
+Object.keys(fields).forEach(function(k){ document.getElementById(fields[k]).addEventListener('input', update); });
+
+document.getElementById('clearBtn').addEventListener('click', function(){
+  if(!confirm('Clear your saved details on this device?')) return;
+  Object.keys(fields).forEach(function(k){ document.getElementById(fields[k]).value=''; });
+  var p=load(); Object.keys(fields).forEach(function(k){ delete p[k]; }); save(p);
+  update();
+});
+
+render();
+update();
+</script>
+</body>
+</html>
