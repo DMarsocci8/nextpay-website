@@ -1,0 +1,43 @@
+NEXTPAY BUSINESS SOLUTIONS - LOGO KIT
+=====================================
+Everything you need to put the NextPay logo anywhere - web, social, email,
+print, flyers, business cards, apparel and more. Pick the right file for the
+background you are putting it on.
+
+BRAND COLORS
+  Navy (dark)     #0C1B2A
+  Teal            #14A18C
+  Bright Teal     #1FC2A6   (the "Pay" wordmark + accents)
+  Always pair the logo with plenty of clear space around it.
+
+QUICK PICK - WHICH FILE?
+  On a WHITE / light background ....... 01_Primary-Color  (navy Next + teal Pay)
+  On a DARK / navy background ......... 02_White          (white Next + teal Pay)
+  One-color print / dark shirt ........ 03_Mono-AllWhite
+  One-color print / light surface ..... 04_Mono-AllNavy
+  Black-only (stamp, fax, engrave) .... 05_Mono-Black
+  Where transparency is not allowed ... 06_Solid-Background (PNG + JPG)
+  Just the globe icon ................. 07_Icon-Mark-Only
+  Social profile pictures (square) .... 08_Social-Avatars-Square
+  Website favicon / app icons ......... 09_Favicon-and-App-Icons
+  Full lockup with tagline ............ 10_With-Tagline
+  Generic web vector wrapper .......... 11_Web-SVG
+
+SIZES
+  Each transparent logo comes in large (1600px), medium (800px) and small (400px) widths.
+  - Email signature / social post: medium or small
+  - Website header: medium
+  - Flyers / business cards: large
+
+FILE TYPES
+  PNG  - transparent, best for almost everything digital
+  JPG  - white/navy background baked in; use where PNG/transparency is not supported
+  ICO  - website favicon (multi-size)
+  SVG  - included as a web wrapper (raster inside)
+
+APPAREL & LARGE-FORMAT PRINT (banners, signs, embroidery)
+  For the sharpest result at large sizes, export a TRUE VECTOR (.SVG, .PDF or .EPS)
+  from Canva (Pro: Share > Download > SVG/PDF Print) and give that to your printer.
+  The PNGs here are high-resolution and fine for most jobs, but vector never blurs.
+
+Questions? dom@nextpaypos.com
