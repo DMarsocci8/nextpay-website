@@ -1,0 +1,11 @@
+NEXTPAY SOCIAL MEDIA PACK
+=========================
+LinkedIn Company Cover ... 1128x191
+LinkedIn Personal Banner . 1584x396
+LinkedIn Profile/Logo .... 400x400
+Facebook Cover ........... 1640x624 (displays 820x312)
+Facebook Profile ......... 500x500
+Alignable Cover .......... 1100x400
+Alignable Profile ........ 500x500
+Profile-Icon-on-Navy ..... 500x500 (alt)
+Colors: Navy #0C1B2A, Teal #14A18C, Bright Teal #1FC2A6.
