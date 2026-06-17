@@ -1,0 +1,118 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Quick Reference Guide — NextPay Sales Hub</title>
+<link rel="icon" href="assets/favicon.ico" sizes="any">
+<link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+<link rel="stylesheet" href="css/nextpay.css">
+<style>
+.hub-bar{position:sticky;top:0;z-index:60;background:var(--navy);color:#fff;border-bottom:1px solid rgba(255,255,255,.10)}
+.hub-bar-inner{display:flex;align-items:center;gap:18px;height:66px;max-width:var(--maxw);margin:0 auto;padding:0 28px}
+.hub-bar img.logo{height:34px;width:auto;display:block}.hub-bar .pipe{width:1px;height:26px;background:rgba(255,255,255,.18)}
+.hub-bar .hub-tag{font-weight:800;font-size:15px;color:#fff;display:flex;align-items:center;gap:9px}
+.hub-bar .hub-tag .badge{font-size:10.5px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;background:var(--teal);color:#fff;padding:4px 9px;border-radius:999px}
+.hub-bar .right{margin-left:auto}.hub-bar .right a{color:#cdd8e2;font-weight:600;font-size:14.5px}.hub-bar .right a:hover{color:#fff}
+.pg-head{background:linear-gradient(180deg,var(--navy),var(--navy-2));color:#fff}
+.pg-head .wrap{padding:30px 0 32px}
+.crumbs{display:flex;gap:8px;align-items:center;font-size:13.5px;color:#9fb1c2;padding-bottom:14px}
+.crumbs a{color:#cdd8e2;font-weight:600}.crumbs a:hover{color:#fff}.crumbs .sep{opacity:.5}
+.pg-head h1{font-size:clamp(26px,3.6vw,38px);color:#fff;letter-spacing:-.02em}
+.pg-head p.lead{color:#c4d0db;margin-top:10px;max-width:680px;font-size:16px;line-height:1.6}
+main.wrap{padding:24px 0 10px}
+.legend{display:flex;flex-wrap:wrap;gap:18px;margin-bottom:16px;font-size:13.5px;font-weight:600;color:var(--slate)}
+.legend span{display:inline-flex;align-items:center;gap:8px}
+.dot{width:22px;height:22px;border-radius:50%;display:grid;place-items:center;flex:none}
+.dot svg{width:13px;height:13px;color:#fff}
+.dot.yes{background:var(--teal)}.dot.no{background:#E3E9ED}.dot.no svg{color:#9aa7b2}.dot.cust{background:var(--navy)}
+.tbl-wrap{overflow-x:auto;border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow-sm);background:#fff}
+table.qrg{width:100%;border-collapse:collapse;min-width:820px}
+table.qrg th,table.qrg td{border-bottom:1px solid var(--line);padding:13px 14px;text-align:center;vertical-align:middle}
+table.qrg thead th{position:sticky;top:0;background:var(--navy);z-index:2}
+table.qrg thead th:first-child{text-align:left}
+.chead{display:flex;flex-direction:column;align-items:center;gap:7px}
+.chead .lbox{width:54px;height:40px;background:#fff;border-radius:9px;display:grid;place-items:center;padding:6px}
+.chead .lbox img{max-width:100%;max-height:100%;object-fit:contain;display:block}
+.chead b{color:#fff;font-size:13px;font-weight:800}
+.chead.custom .lbox{background:rgba(31,194,166,.15)}
+.chead.custom b{color:var(--teal-bright,#1FC2A6)}
+table.qrg td.mtype{text-align:left;font-size:13.5px;font-weight:600;color:var(--ink);line-height:1.4;min-width:280px;max-width:380px}
+table.qrg td.mtype b{color:var(--navy);font-weight:800}
+table.qrg tbody tr:hover{background:var(--bg-soft)}
+table.qrg td.custcol{background:rgba(20,161,140,.05)}
+.cell .dot{margin:0 auto}
+.note{font-size:13px;color:var(--slate);margin:14px 0 0;line-height:1.55}.note b{color:var(--navy)}
+.hub-foot{background:var(--navy);color:#9fb1c2;padding:30px 0;margin-top:46px;font-size:13.5px}
+.hub-foot .wrap{display:flex;justify-content:space-between;gap:18px;flex-wrap:wrap}
+.hub-foot a{color:#cdd8e2;font-weight:600}.hub-foot a:hover{color:#fff}
+</style>
+</head>
+<body>
+<div class="hub-bar"><div class="hub-bar-inner">
+  <a href="Sales Hub.html" style="display:flex;align-items:center" aria-label="Sales Hub home"><img class="logo" src="assets/logos/nextpay-nav.png" alt="NextPay"></a>
+  <span class="pipe"></span><span class="hub-tag">Sales Hub <span class="badge">Internal</span></span>
+  <div class="right"><a href="Sales Hub.html">← Hub home</a></div>
+</div></div>
+<header class="pg-head"><div class="wrap">
+  <div class="crumbs"><a href="Sales Hub.html">Sales Hub</a><span class="sep">/</span><span>Quick Reference Guide</span></div>
+  <h1>Quick Reference Guide</h1>
+  <p class="lead">The best-fit processor for each merchant type, at a glance. Not sure? <b>NextPay Custom</b> can board nearly anyone — so when in doubt, lead there.</p>
+</div></header>
+<main class="wrap">
+  <div class="legend">
+    <span><span class="dot yes"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M5 13l4 4L19 7"/></svg></span> Supported</span>
+    <span><span class="dot no"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M6 6l12 12M18 6L6 18"/></svg></span> Not a fit</span>
+    <span><span class="dot cust"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M5 13l4 4L19 7"/></svg></span> NextPay Custom (we can board it)</span>
+  </div>
+
+  <div class="tbl-wrap">
+    <table class="qrg"><thead><tr id="qrgHead"></tr></thead><tbody id="qrgBody"></tbody></table>
+  </div>
+
+  <p class="note"><b>How to read it:</b> a ✓ means that platform is a good fit for that merchant type. <b>NextPay Custom</b> is always available — use it for high-risk, e-commerce/subscription, or anything that doesn't fit a boxed product. Recommendations are guidance, not hard rules; the merchant's current setup and needs always win.</p>
+</main>
+<footer class="hub-foot"><div class="wrap">
+  <span>NextPay Sales Hub · Quick Reference Guide · Internal use only.</span>
+  <span><a href="Sales Hub.html">← Back to hub</a></span>
+</div></footer>
+<script>
+var COLS=[
+ {name:'Clover', logo:'assets/logos/clover.png'},
+ {name:'Square', logo:'assets/logos/square.svg'},
+ {name:'Shift4', logo:'assets/logos/shift4.png'},
+ {name:'SwipeSimple', logo:'assets/logos/swipesimple.png'},
+ {name:'NextPay Custom', logo:'assets/logos/nextpay-icon.png', custom:true}
+];
+// fit order: [Clover, Square, Shift4, SwipeSimple, Custom]
+var ROWS=[
+ {t:'Ecommerce / CNP / Subscription / High-Risk', f:[0,0,0,0,1]},
+ {t:'On-site & Field Services (HVAC, repair, contractors, cleaning, childcare, towing, landscaping)', f:[0,1,0,1,1]},
+ {t:'Specialty Retail & Trade — card-present small merchants / boutique / pop-ups / markets / fitness-gyms / jewelry / florists / furniture', f:[1,1,0,1,1]},
+ {t:'Professional Services (doctors, dentists, auto repair, lawyers, nonprofits)', f:[1,1,0,1,1]},
+ {t:'Hotels / Motels', f:[0,0,1,1,1]},
+ {t:'Restaurants (table service / hospitality)', f:[1,1,1,1,1]},
+ {t:'Quick-service restaurants / Cafés / Bars / Coffee Shops / Bakeries', f:[1,1,1,1,1]},
+ {t:'Retail – General (clothing, liquor, pet stores, sporting goods, hardware)', f:[1,1,0,1,1]},
+ {t:'Food, Convenience & Specialty Retail (caterers, convenience stores, laundromats)', f:[0,1,0,1,1]},
+ {t:'Specialty Retail & Trade (landscaping, florists, furniture)', f:[1,1,0,1,1]},
+ {t:'Entertainment – ticketing', f:[0,1,1,0,1]},
+ {t:'Nail salon / Barbers (scheduling)', f:[0,1,0,1,1]}
+];
+var CHECK='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M5 13l4 4L19 7"/></svg>';
+var XMARK='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M6 6l12 12M18 6L6 18"/></svg>';
+var head=document.getElementById('qrgHead');
+head.innerHTML='<th><div class="chead" style="align-items:flex-start"><b style="color:#fff;font-size:15px">Merchant type</b></div></th>'
+ + COLS.map(function(c){return '<th><div class="chead'+(c.custom?' custom':'')+'"><span class="lbox"><img src="'+c.logo+'" alt="'+c.name+'"></span><b>'+c.name+'</b></div></th>';}).join('');
+document.getElementById('qrgBody').innerHTML=ROWS.map(function(r){
+ var cells=r.f.map(function(v,i){
+   var custom=COLS[i].custom;
+   var cls=custom?'cust':(v?'yes':'no'); var ico=v?CHECK:XMARK;
+   return '<td class="cell'+(custom?' custcol':'')+'"><span class="dot '+cls+'">'+ico+'</span></td>';
+ }).join('');
+ return '<tr><td class="mtype">'+r.t+'</td>'+cells+'</tr>';
+}).join('');
+</script>
+</body>
+</html>
