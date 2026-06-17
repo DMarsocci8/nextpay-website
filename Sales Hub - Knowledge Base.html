@@ -1,0 +1,382 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Agent Knowledge Base — NextPay Sales Hub</title>
+<link rel="stylesheet" href="css/nextpay.css">
+<style>
+.hub-bar{position:sticky;top:0;z-index:60;background:var(--navy);color:#fff;border-bottom:1px solid rgba(255,255,255,.10)}
+.hub-bar-inner{display:flex;align-items:center;gap:18px;height:66px;max-width:var(--maxw);margin:0 auto;padding:0 28px}
+.hub-bar img.logo{height:34px;width:auto;display:block}.hub-bar .pipe{width:1px;height:26px;background:rgba(255,255,255,.18)}
+.hub-bar .hub-tag{font-weight:800;font-size:15px;color:#fff;display:flex;align-items:center;gap:9px}
+.hub-bar .hub-tag .badge{font-size:10.5px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;background:var(--teal);color:#fff;padding:4px 9px;border-radius:999px}
+.hub-bar .right{margin-left:auto}.hub-bar .right a{color:#cdd8e2;font-weight:600;font-size:14.5px}.hub-bar .right a:hover{color:#fff}
+.pg-head{background:linear-gradient(180deg,var(--navy),var(--navy-2));color:#fff}
+.pg-head .wrap{padding:30px 0 32px}
+.crumbs{display:flex;gap:8px;align-items:center;font-size:13.5px;color:#9fb1c2;padding-bottom:14px}
+.crumbs a{color:#cdd8e2;font-weight:600}.crumbs a:hover{color:#fff}.crumbs .sep{opacity:.5}
+.pg-head h1{font-size:clamp(26px,3.6vw,38px);color:#fff;letter-spacing:-.02em}
+.pg-head p.lead{color:#c4d0db;margin-top:10px;max-width:720px;font-size:16px;line-height:1.6}
+main.wrap{padding:26px 0 10px}
+
+/* table of contents */
+.toc{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:11px;margin:6px 0 30px}
+.toc a{display:flex;align-items:center;gap:12px;background:#fff;border:1px solid var(--line);border-radius:14px;box-shadow:var(--shadow-sm);padding:13px 15px;transition:.15s}
+.toc a:hover{border-color:var(--teal);transform:translateY(-1px)}
+.toc .ltr{flex:none;width:34px;height:34px;border-radius:9px;background:var(--navy);color:#fff;font-weight:800;display:grid;place-items:center;font-size:15px}
+.toc b{display:block;color:var(--navy);font-size:14.5px;letter-spacing:-.01em}
+.toc span{display:block;color:var(--slate-2);font-size:12px;margin-top:1px}
+
+/* section */
+section.kb{scroll-margin-top:80px;margin:0 0 34px}
+.sec-h{display:flex;align-items:center;gap:13px;margin:0 0 4px}
+.sec-h .ltr{flex:none;width:40px;height:40px;border-radius:11px;background:var(--teal);color:#fff;font-weight:800;display:grid;place-items:center;font-size:18px}
+.sec-h .eyebrow{font-size:11.5px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:var(--teal-dark)}
+.sec-h h2{font-size:clamp(20px,2.6vw,26px);letter-spacing:-.02em;color:var(--navy);margin:1px 0 0}
+.sec-sub{color:var(--slate);font-size:15px;margin:2px 0 16px;padding-left:53px;line-height:1.55}
+@media(max-width:600px){.sec-sub{padding-left:0}}
+
+.cards{display:grid;gap:14px}
+.cards.c2{grid-template-columns:1fr 1fr}.cards.c3{grid-template-columns:1fr 1fr 1fr}.cards.c4{grid-template-columns:repeat(4,1fr)}
+@media(max-width:880px){.cards.c3,.cards.c4{grid-template-columns:1fr 1fr}}
+@media(max-width:600px){.cards.c2,.cards.c3,.cards.c4{grid-template-columns:1fr}}
+.card{background:#fff;border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow-sm);padding:18px 20px;border-top:3px solid var(--teal)}
+.card h3{font-size:16px;letter-spacing:-.01em;color:var(--navy)}
+.card .kicker{font-size:11px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:var(--teal-dark);margin-bottom:3px}
+.card ul{margin:10px 0 0;padding-left:18px}.card li{font-size:13.5px;color:var(--ink);line-height:1.5;margin-bottom:5px}
+.card .unlock{display:inline-block;margin-top:2px;font-size:11.5px;font-weight:800;background:var(--bg-soft-2);color:var(--slate);border-radius:999px;padding:4px 10px;letter-spacing:.02em}
+.card .unlock.day1{background:rgba(20,161,140,.12);color:var(--teal-dark)}
+.card .unlock.later{background:rgba(12,27,42,.08);color:var(--navy)}
+
+/* numbered steps */
+.steps{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+@media(max-width:880px){.steps{grid-template-columns:1fr 1fr}}@media(max-width:600px){.steps{grid-template-columns:1fr}}
+.step{background:#fff;border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow-sm);padding:18px 20px;position:relative}
+.step .n{width:32px;height:32px;border-radius:9px;background:var(--navy);color:#fff;font-weight:800;display:grid;place-items:center;font-size:15px;margin-bottom:10px}
+.step h3{font-size:15.5px;color:var(--navy)}
+.step ul{margin:9px 0 0;padding-left:17px}.step li{font-size:13px;color:var(--ink);line-height:1.5;margin-bottom:5px}
+
+/* pill rows */
+.pills{display:flex;flex-wrap:wrap;gap:8px;margin-top:6px}
+.pills span{background:var(--bg-soft-2);color:var(--slate);font-size:12.5px;font-weight:700;border-radius:999px;padding:6px 13px}
+
+/* callouts */
+.callout{display:flex;gap:13px;align-items:flex-start;border-radius:14px;padding:15px 18px;margin:16px 0;font-size:14px;line-height:1.55}
+.callout .ico{flex:none;font-size:18px;line-height:1.3}
+.callout.tip{background:rgba(20,161,140,.08);border:1px solid rgba(20,161,140,.22)}
+.callout.tip b{color:var(--teal-dark)}
+.callout.warn{background:#fff7ed;border:1px solid #fed7aa}.callout.warn b{color:#b45309}
+.callout.key{background:rgba(12,27,42,.05);border:1px solid var(--line)}.callout.key b{color:var(--navy)}
+.callout a{color:var(--teal-dark);font-weight:700}
+
+/* video rows */
+.vid{display:flex;gap:15px;align-items:flex-start;background:#fff;border:1px solid var(--line);border-radius:14px;box-shadow:var(--shadow-sm);padding:15px 18px;margin-bottom:11px}
+.vid .num{flex:none;width:40px;height:40px;border-radius:10px;background:var(--navy);color:#fff;font-weight:800;display:grid;place-items:center;font-size:16px}
+.vid .meta{flex:1}.vid .meta .len{font-size:11.5px;font-weight:800;color:var(--teal-dark);text-transform:uppercase;letter-spacing:.05em}
+.vid .meta h3{font-size:15px;color:var(--navy);margin:1px 0 4px}
+.vid .meta p{font-size:13.5px;color:var(--slate);line-height:1.5}
+.vid .meta a{display:inline-block;margin-top:7px;font-weight:700;color:var(--teal-dark);font-size:13.5px}
+
+/* call flow */
+.flow{display:grid;grid-template-columns:repeat(7,1fr);gap:10px}
+@media(max-width:880px){.flow{grid-template-columns:repeat(2,1fr)}}@media(max-width:560px){.flow{grid-template-columns:1fr}}
+.flow .fs{background:#fff;border:1px solid var(--line);border-radius:13px;box-shadow:var(--shadow-sm);padding:14px;border-top:3px solid var(--teal)}
+.flow .fs .n{font-size:12px;font-weight:800;color:var(--teal-dark)}
+.flow .fs h3{font-size:14px;color:var(--navy);margin:3px 0 5px}
+.flow .fs p{font-size:12.5px;color:var(--slate);line-height:1.45}
+
+/* incentive stat blocks */
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+@media(max-width:700px){.stats{grid-template-columns:1fr}}
+.stat{background:linear-gradient(180deg,var(--navy),var(--navy-2));color:#fff;border-radius:var(--radius);padding:20px 22px}
+.stat .big{font-size:28px;font-weight:800;letter-spacing:-.02em;color:var(--teal-bright,#1FC2A6)}
+.stat h3{font-size:15px;color:#fff;margin:2px 0 6px}
+.stat p{font-size:13px;color:#c4d0db;line-height:1.5}
+
+/* link buttons */
+.lk{display:inline-flex;align-items:center;gap:7px;background:var(--teal);color:#fff;font-weight:700;font-size:13.5px;border-radius:999px;padding:8px 16px;margin:4px 6px 0 0}
+.lk:hover{background:var(--teal-dark);color:#fff}
+.lk.ghost{background:#fff;color:var(--navy);border:1px solid var(--line)}.lk.ghost:hover{border-color:var(--teal);color:var(--teal-dark)}
+
+/* contact / email box */
+.cbox{background:#fff;border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow-sm);padding:18px 20px}
+.cbox .row{display:flex;gap:12px;align-items:baseline;padding:8px 0;border-bottom:1px solid var(--line)}
+.cbox .row:last-child{border-bottom:0}
+.cbox .tag{flex:none;width:54px;font-size:11px;font-weight:800;letter-spacing:.06em;color:var(--teal-dark);text-transform:uppercase}
+.cbox .row b{color:var(--navy);font-size:14.5px}.cbox .row span{color:var(--slate-2);font-size:13px}
+
+.closing{background:linear-gradient(180deg,var(--navy),var(--navy-2));color:#fff;border-radius:var(--radius);padding:34px 32px;text-align:center;margin-top:14px}
+.closing h2{font-size:clamp(22px,3vw,30px);color:#fff;letter-spacing:-.02em}
+.closing p{color:#c4d0db;font-size:16px;line-height:1.6;max-width:620px;margin:12px auto 0}
+.closing .em{color:var(--teal-bright,#1FC2A6);font-weight:700}
+.closing .contacts{margin-top:18px;font-size:13.5px;color:#9fb1c2}
+.closing .contacts a{color:#cdd8e2;font-weight:600}
+
+.hub-foot{background:var(--navy);color:#9fb1c2;padding:30px 0;margin-top:46px;font-size:13.5px}
+.hub-foot .wrap{display:flex;justify-content:space-between;gap:18px;flex-wrap:wrap}
+.hub-foot a{color:#cdd8e2;font-weight:600}.hub-foot a:hover{color:#fff}
+</style>
+</head>
+<body>
+<div class="hub-bar"><div class="hub-bar-inner">
+  <a href="Sales Hub.html" style="display:flex;align-items:center" aria-label="Sales Hub home"><img class="logo" src="assets/logos/nextpay-nav.png" alt="NextPay"></a>
+  <span class="pipe"></span><span class="hub-tag">Sales Hub <span class="badge">Internal</span></span>
+  <div class="right"><a href="Sales Hub.html">← Hub home</a></div>
+</div></div>
+<header class="pg-head"><div class="wrap">
+  <div class="crumbs"><a href="Sales Hub.html">Sales Hub</a><span class="sep">/</span><span>Agent Knowledge Base</span></div>
+  <h1>Agent Knowledge Base</h1>
+  <p class="lead">Everything you need to get started, place merchants, and build a real career in payments. Your complete new-agent reference guide — platform, onboarding, tech stack, products, portals, call flow, prospecting and incentives.</p>
+</div></header>
+<main class="wrap">
+
+  <!-- TABLE OF CONTENTS -->
+  <div class="toc">
+    <a href="#a"><span class="ltr">A</span><span><b>Platform Overview</b><span>One platform, every vertical</span></span></a>
+    <a href="#b"><span class="ltr">B</span><span><b>Onboarding Path</b><span>Your 4 steps to the field</span></span></a>
+    <a href="#c"><span class="ltr">C</span><span><b>Tech Stack</b><span>Drive, Chat, CRM, Email</span></span></a>
+    <a href="#d"><span class="ltr">D</span><span><b>Products &amp; Placement</b><span>Know your products + the quiz</span></span></a>
+    <a href="#e"><span class="ltr">E</span><span><b>Shift4</b><span>Training &amp; incentives</span></span></a>
+    <a href="#f"><span class="ltr">F</span><span><b>Solutions in Payments</b><span>Portal, catalog &amp; deal email</span></span></a>
+    <a href="#g"><span class="ltr">G</span><span><b>SIP Training Videos</b><span>Watch before your first app</span></span></a>
+    <a href="#h"><span class="ltr">H</span><span><b>Square</b><span>Links &amp; process</span></span></a>
+    <a href="#i"><span class="ltr">I</span><span><b>Call Flow</b><span>First contact → signed deal</span></span></a>
+    <a href="#j"><span class="ltr">J</span><span><b>Prospecting &amp; Incentives</b><span>Pipeline, pay &amp; NextLink</span></span></a>
+  </div>
+
+  <!-- A · PLATFORM OVERVIEW -->
+  <section class="kb" id="a">
+    <div class="sec-h"><span class="ltr">A</span><div><div class="eyebrow">Section A · Platform Overview</div><h2>One Platform. Infinite Opportunity.</h2></div></div>
+    <p class="sec-sub">NextPay is a full-service platform — payments, point of sale, client engagement and business lending — so you can serve a merchant no matter their type or need.</p>
+    <div class="cards c3">
+      <div class="card"><div class="kicker">Our core offering</div><h3>Payments &amp; Point of Sale</h3>
+        <p style="font-size:13.5px;color:var(--slate);margin-top:6px;line-height:1.5">Full-service POS, payment processing, invoicing, online payments &amp; e-commerce for businesses of every type.</p>
+        <ul><li><b>Shift4</b> — Hospitality &amp; restaurants</li><li><b>Square</b> — Retail, restaurants, services, online &amp; more</li><li><b>Solutions in Payments</b> — All other verticals</li></ul></div>
+      <div class="card"><div class="kicker">Client engagement</div><h3>NextLink Platform</h3>
+        <p style="font-size:13.5px;color:var(--slate);margin-top:6px;line-height:1.5">Helps merchants engage their customers, build their network, and grow through reputation support and outreach tools.</p>
+        <ul><li>Client retention &amp; automated touchpoints</li><li>Referral network &amp; relationship building</li><li>Reputation management &amp; outreach systems</li></ul></div>
+      <div class="card"><div class="kicker">Growth capital</div><h3>Business Lending</h3>
+        <p style="font-size:13.5px;color:var(--slate);margin-top:6px;line-height:1.5">Working capital, equipment financing, merchant cash advances and expansion funding to help businesses grow.</p>
+        <ul><li>Working capital loans</li><li>Equipment financing</li><li>Merchant cash advances &amp; expansion</li></ul></div>
+    </div>
+    <div class="callout key"><span class="ico">🏢</span><div><b>Verticals we serve:</b> Restaurants · Retail · Healthcare · Personal Care · Automotive · Professional Services · Financial Services · Home Services.<br><span style="color:var(--slate)">Partner-led services also available: Payroll / Workers Comp · Business Brokerage.</span></div></div>
+  </section>
+
+  <!-- B · ONBOARDING -->
+  <section class="kb" id="b">
+    <div class="sec-h"><span class="ltr">B</span><div><div class="eyebrow">Section B · Onboarding</div><h2>Your Four-Step Path to the Field</h2></div></div>
+    <div class="steps">
+      <div class="step"><div class="n">1</div><h3>Get Hired</h3><ul><li>Complete onboarding paperwork</li><li>Background check &amp; agreements signed</li><li>W9 or 1099 setup processed</li></ul></div>
+      <div class="step"><div class="n">2</div><h3>Complete Training</h3><ul><li>Shift4 platform training</li><li>Square platform training</li><li>Solutions in Payments training</li></ul></div>
+      <div class="step"><div class="n">3</div><h3>Review Pay Plan</h3><ul><li>Schedule A pay plan provided</li><li>Understand commission tiers</li><li>Review splits &amp; bonus structure</li></ul></div>
+      <div class="step"><div class="n">4</div><h3>Unlock Tech Stack</h3><ul><li>Follow-up call with Alex</li><li>Demonstrate commitment</li><li>Full tech stack access granted</li></ul></div>
+    </div>
+    <div class="callout tip"><span class="ico">💡</span><div><b>Move fast.</b> Agents who complete all training within the first week close their first deal significantly faster.</div></div>
+  </section>
+
+  <!-- C · TECH STACK -->
+  <section class="kb" id="c">
+    <div class="sec-h"><span class="ltr">C</span><div><div class="eyebrow">Section C · Tech Stack</div><h2>The Tools That Keep You Moving</h2></div></div>
+    <div class="cards c4">
+      <div class="card"><h3>Google Drive</h3><span class="unlock day1">Unlock: Day 1</span><ul><li>All training materials &amp; guides</li><li>Contract templates &amp; forms</li><li>Shared team resources</li><li>Organized by product &amp; process</li></ul></div>
+      <div class="card"><h3>Google Chat</h3><span class="unlock day1">Unlock: Day 1</span><ul><li>Direct messaging with your team (download now)</li><li>Group channels by topic</li><li>Quick updates &amp; announcements</li><li>Mobile-friendly &amp; always on</li></ul></div>
+      <div class="card"><h3>Email Account</h3><span class="unlock later">Unlock: After Deal #1</span><ul><li>Professional @nextpay domain</li><li>Tied to Google Workspace</li><li>Enables email automations</li><li>Required for full CRM access</li></ul></div>
+      <div class="card"><h3>Freshsales CRM</h3><span class="unlock day1">Required: Day 1</span><ul><li>Log every call &amp; interaction</li><li>Track your pipeline stages</li><li>Required to receive lead lists</li><li>Automated follow-up reminders</li></ul></div>
+    </div>
+  </section>
+
+  <!-- D · PRODUCTS & PLACEMENT -->
+  <section class="kb" id="d">
+    <div class="sec-h"><span class="ltr">D</span><div><div class="eyebrow">Section D · Products &amp; Placement</div><h2>Know Your Products. Use the Quiz.</h2></div></div>
+    <div class="cards c3">
+      <div class="card"><div class="kicker">Restaurant &amp; full-service POS</div><h3>Shift4 Dine</h3>
+        <ul><li>Full table mgmt, KDS &amp; offline mode</li><li><b>$500 bonus</b> per Shift4 Dine closed · $250 per all other merchants</li><li>Up to <b>$5K</b> merchant incentive to switch</li></ul>
+        <a class="lk ghost" href="https://link.shift4payments.com/auth/login" target="_blank" rel="noopener">Shift4 Training ↗</a></div>
+      <div class="card"><div class="kicker">All other verticals &amp; products</div><h3>Solutions in Payments</h3>
+        <ul><li>Businesses outside Clover, Shift4 &amp; Square scope</li><li>Broadest equipment &amp; software catalog</li><li>Multiple pricing programs available</li><li>Portal access: contact team for login</li></ul>
+        <a class="lk ghost" href="https://solutionsinpaymentsportal.com/" target="_blank" rel="noopener">SIP Portal ↗</a></div>
+      <div class="card"><div class="kicker">Versatile business POS</div><h3>Square</h3>
+        <ul><li>Retail, food, services &amp; professional</li><li>Flat-rate &amp; interchange-plus options</li><li>4% co-branded dual pricing now available</li></ul>
+        <a class="lk ghost" href="https://youtube.com/square" target="_blank" rel="noopener">YouTube Training ↗</a></div>
+    </div>
+    <div class="callout tip"><span class="ico">🔍</span><div><b>Not sure which product fits?</b> Send every prospect to <a href="https://nextpaypos.com/pricing#custom-quote" target="_blank" rel="noopener">nextpaypos.com/pricing#custom-quote</a> to take the quiz — it matches them to the right product automatically.</div></div>
+  </section>
+
+  <!-- E · SHIFT4 -->
+  <section class="kb" id="e">
+    <div class="sec-h"><span class="ltr">E</span><div><div class="eyebrow">Section E · Shift4</div><h2>Full-Service POS — Strong Incentives</h2></div></div>
+    <div class="cards c2">
+      <div class="card"><div class="kicker">Why Shift4 wins</div><h3>The closing tools</h3>
+        <ul>
+          <li><b>Full restaurant stack:</b> table management, KDS, online ordering, reservations, loyalty &amp; detailed analytics.</li>
+          <li><b>Never goes down:</b> true offline mode keeps transactions processing even when internet fails.</li>
+          <li><b>Merchant incentive:</b> up to $5,000 for merchants switching to Shift4, no upfront costs — a powerful closing tool.</li>
+          <li><b>Agent bonuses:</b> $500 per closed Shift4 deal · $2,500 bonus for 5 deals in one month.</li>
+          <li><b>Support:</b> dedicated hardware &amp; software support — merchants won't get lost in a phone tree.</li>
+        </ul></div>
+      <div class="card"><div class="kicker">Training &amp; resources</div><h3>Get certified</h3>
+        <p style="font-size:13.5px;color:var(--slate);margin-top:6px;line-height:1.5">🎓 Complete the Shift4 agent training before your first restaurant pitch.</p>
+        <a class="lk" href="https://link.shift4payments.com/auth/login" target="_blank" rel="noopener">Shift4 Agent Training ↗</a>
+        <div class="callout key" style="margin:14px 0 0"><span class="ico">🔑</span><div><b>Application process:</b> Shift4 has its own merchant &amp; partner portal — separate from Solutions in Payments. Contact our team for portal access and agent login credentials.</div></div>
+        <p style="margin-top:12px"><a class="lk ghost" href="Sales Hub - Shift4" target="_blank" rel="noopener">Full Shift4 deal info →</a></p></div>
+    </div>
+  </section>
+
+  <!-- F · SOLUTIONS IN PAYMENTS -->
+  <section class="kb" id="f">
+    <div class="sec-h"><span class="ltr">F</span><div><div class="eyebrow">Section F · Solutions in Payments</div><h2>The Portal for Everything Beyond Shift4 &amp; Square</h2></div></div>
+    <div class="cards c2">
+      <div class="card"><div class="kicker">What SIP handles</div><h3>The catch-all portal</h3>
+        <ul>
+          <li>All merchant categories outside Clover, Shift4 &amp; Square</li>
+          <li>Specialty, niche &amp; complex business types</li>
+          <li>Broadest equipment &amp; software catalog</li>
+          <li>Multiple pricing programs</li>
+          <li>Online application with digital signature</li>
+          <li>Underwriting communications &amp; status tracking</li>
+        </ul>
+        <a class="lk" href="https://solutionsinpaymentsportal.com/" target="_blank" rel="noopener">Open SIP Portal ↗</a></div>
+      <div class="card"><div class="kicker">Application walkthrough</div><h3>Pricing &amp; Equipment (Step 2)</h3>
+        <p style="font-size:13.5px;color:var(--slate);margin-top:6px;line-height:1.5">Step 2 of the SIP application is <b>Pricing &amp; Equipment</b> — you select the merchant's processing type, application type, and attach hardware.</p>
+        <div class="kicker" style="margin-top:12px">Application types available</div>
+        <div class="pills"><span>Cash Discount</span><span>Dual Pricing</span><span>ERR</span><span>Flat Rate</span><span>Interchange</span><span>Surcharge</span><span>Tiered</span><span>&amp; more</span></div>
+        <p style="font-size:13px;color:var(--slate);margin-top:13px;line-height:1.5"><b>Equipment catalog:</b> SIP supports one of the largest equipment and software catalogs available — from basic card readers to full POS systems, kitchen display screens and specialty integrations. Full list is in the portal under <b>Pricing &amp; Equipment</b>.</p></div>
+    </div>
+    <div class="callout warn"><span class="ico">⚠️</span><div><b>REQUIRED — every deal closed = email.</b> Every time you sign a deal you must send an email with the merchant's DBA and sign-up email to:<br>
+      <b>TO:</b> support@solutionsinpayments.com (Solutions in Payments Support) &nbsp;·&nbsp; <b>CC:</b> dom@nextpaypos.com &nbsp;·&nbsp; <b>CC:</b> alexander@nextpaypos.com<br>
+      <span style="color:var(--slate)">Include: Merchant DBA (Doing Business As) + the email address they signed up with + Placement / Product.</span></div></div>
+    <div class="callout key"><span class="ico">🔑</span><div><b>Portal access:</b> Contact our team and we'll send you login credentials for the SIP portal.</div></div>
+  </section>
+
+  <!-- G · SIP TRAINING VIDEOS -->
+  <section class="kb" id="g">
+    <div class="sec-h"><span class="ltr">G</span><div><div class="eyebrow">Section G · SIP Training Videos</div><h2>Watch These Before Submitting Your First App</h2></div></div>
+    <div class="vid"><div class="num">1</div><div class="meta"><div class="len">6:51 min</div><h3>How to Start an Online Application &amp; Transfer for Digital Signature</h3><p>Walk through starting a merchant application in the SIP portal, completing the required fields, and sending it to your merchant for digital signature.</p><a href="https://youtube.com/watch?v=UPCw7-5YGTY" target="_blank" rel="noopener">▶ Watch on YouTube ↗</a></div></div>
+    <div class="vid"><div class="num">2</div><div class="meta"><div class="len">3:06 min</div><h3>How to Download &amp; Submit a Paper Merchant Processing Agreement</h3><p>Learn when to use a paper MPA instead of a digital app, how to download the form from the portal, and the proper way to submit it to underwriting.</p><a href="https://youtube.com/watch?v=1bLfvEVp7P8" target="_blank" rel="noopener">▶ Watch on YouTube ↗</a></div></div>
+    <div class="vid"><div class="num">3</div><div class="meta"><div class="len">4:10 min</div><h3>How to Respond to Underwriting Pending Requests</h3><p>Understand how underwriting communicates with you through the portal, how to respond quickly to pending requests, and keep deals from stalling.</p><a href="https://youtube.com/watch?v=Bz67RR8TW1M" target="_blank" rel="noopener">▶ Watch on YouTube ↗</a></div></div>
+    <div class="callout warn"><span class="ico">⚠️</span><div><b>Recommended:</b> Sign up your own demo account first so you can confidently walk merchants through the application process.</div></div>
+  </section>
+
+  <!-- H · SQUARE -->
+  <section class="kb" id="h">
+    <div class="sec-h"><span class="ltr">H</span><div><div class="eyebrow">Section H · Square</div><h2>Versatile POS — Now Live for Resell</h2></div></div>
+    <div class="callout tip"><span class="ico">✅</span><div><b>We are now LIVE and able to resell Square!</b> Use the links below to sign up merchants.</div></div>
+    <div class="cards c2">
+      <div class="card"><div class="kicker">Why Square works</div><h3>Versatile &amp; simple</h3>
+        <ul>
+          <li><b>Versatile use cases:</b> retail, restaurants, professional services, beauty, food trucks &amp; more.</li>
+          <li><b>Simple onboarding:</b> merchant signs up online — no complex underwriting for most businesses.</li>
+          <li><b>Two pricing programs:</b> interchange-plus (rack rate) OR 4% flat-rate dual pricing — agents pick what fits.</li>
+          <li><b>Co-branded 4% program:</b> Square + Solutions in Payments created a joint 4% flat-rate signup link.</li>
+          <li><b>Ecommerce built in:</b> online store, invoicing &amp; payment links included.</li>
+        </ul></div>
+      <div class="card"><div class="kicker">Demo account tip</div><h3>Walk it yourself first</h3>
+        <p style="font-size:13.5px;color:var(--slate);margin-top:6px;line-height:1.5">Sign up your own Square demo account using the rack-rate link below. Walk through the onboarding so you can guide merchants confidently — the process is intuitive once you've done it yourself.</p>
+        <a class="lk ghost" href="https://youtube.com/square" target="_blank" rel="noopener">Square Official YouTube ↗</a>
+        <p style="margin-top:8px"><a class="lk ghost" href="Sales Hub - Square" target="_blank" rel="noopener">Full Square deal info →</a></p></div>
+    </div>
+    <h3 style="font-size:17px;color:var(--navy);margin:22px 0 4px">Two links. Two programs. Know the difference.</h3>
+    <div class="cards c2">
+      <div class="card"><div class="kicker">Option 1 · 4% Flat Rate — Dual Pricing</div><h3>Cash Discount OR Service Charge</h3>
+        <p style="font-size:13.5px;color:var(--slate);margin-top:6px;line-height:1.5">Merchant passes the 4% processing fee to the customer. Two options:</p>
+        <ul><li><b>Cash Discount:</b> offer a discount to cash-paying customers to offset processing.</li><li><b>Service Charge:</b> add 4% to all card transactions to offset processing fees.</li></ul>
+        <a class="lk" href="https://squareup.com/i/C76D31CB54" target="_blank" rel="noopener">4% Dual Pricing signup ↗</a></div>
+      <div class="card"><div class="kicker">Option 2 · Interchange Plus (Rack Rate)</div><h3>Standard IC+ Pricing</h3>
+        <p style="font-size:13.5px;color:var(--slate);margin-top:6px;line-height:1.5">Merchant pays interchange-plus (rack rate) processing — the merchant absorbs all processing costs.</p>
+        <ul><li>Welcome email arrives after signup</li><li>Welcome email contains the rack-rate application link</li><li>Walk merchant through SaaS fee &amp; equipment selection</li></ul>
+        <a class="lk" href="https://app.squareup.com/signup/onboarding?token=1DC988FC39" target="_blank" rel="noopener">Rack Rate (IC+) signup ↗</a></div>
+    </div>
+    <h3 style="font-size:17px;color:var(--navy);margin:22px 0 4px">Square setup resources</h3>
+    <p style="font-size:14px;color:var(--slate);margin-bottom:14px">When onboarding a merchant onto the 4% dual pricing program, use these Square help resources to set up Cash Discount or Surcharge correctly.</p>
+    <div class="cards c3">
+      <div class="card"><h3>💵 Cash Discount Setup</h3><p style="font-size:13px;color:var(--slate);margin-top:6px;line-height:1.5">Step-by-step guide to creating and managing discounts for cash-paying customers in Square. Reduces card processing costs by rewarding cash customers.</p><a class="lk ghost" href="https://squareup.com/help/us/en/article/3955" target="_blank" rel="noopener">Open article ↗</a></div>
+      <div class="card"><h3>💳 Service Charge Setup</h3><p style="font-size:13px;color:var(--slate);margin-top:6px;line-height:1.5">How to get started with service charges in Square — adds 4% to card transactions to offset processing fees. Common in restaurants and service businesses.</p><a class="lk ghost" href="https://squareup.com/help/us/en/article/7625" target="_blank" rel="noopener">Open article ↗</a></div>
+      <div class="card"><h3>▶️ Video Tutorial</h3><p style="font-size:13px;color:var(--slate);margin-top:6px;line-height:1.5">Short walkthrough covering the 4% dual pricing program setup — prepare yourself and share with merchants who prefer visual guidance.</p><a class="lk ghost" href="https://youtube.com/shorts/zCxsohLxpZs" target="_blank" rel="noopener">Watch video ↗</a></div>
+    </div>
+    <div class="callout warn"><span class="ico">⚠️</span><div><b>Reminder:</b> email support@solutionsinpayments.com + CC dom@nextpaypos.com &amp; alexander@nextpaypos.com every time you sign a Square deal.</div></div>
+  </section>
+
+  <!-- I · CALL FLOW -->
+  <section class="kb" id="i">
+    <div class="sec-h"><span class="ltr">I</span><div><div class="eyebrow">Section I · Call Flow</div><h2>From First Contact to Signed Deal</h2></div></div>
+    <div class="flow">
+      <div class="fs"><div class="n">1</div><h3>Intro</h3><p>Introduce yourself, NextPay, and your value prop in under 30 seconds.</p></div>
+      <div class="fs"><div class="n">2</div><h3>Qualify</h3><p>Are they the decision maker? What POS/processor do they use now?</p></div>
+      <div class="fs"><div class="n">3</div><h3>Pain Points</h3><p>What's frustrating about their current setup or costs?</p></div>
+      <div class="fs"><div class="n">4</div><h3>Quiz</h3><p>Direct them to nextpaypos.com/pricing#custom-quote for the right-fit product.</p></div>
+      <div class="fs"><div class="n">5</div><h3>Present</h3><p>Walk through the relevant product — keep it clear and simple.</p></div>
+      <div class="fs"><div class="n">6</div><h3>Demo</h3><p>Offer a live demo if they need to see the product in action.</p></div>
+      <div class="fs"><div class="n">7</div><h3>Close</h3><p>Set a clear next step — never end a call without one.</p></div>
+    </div>
+    <h3 style="font-size:16px;color:var(--navy);margin:20px 0 8px">Application submissions</h3>
+    <p style="margin:0">
+      <a class="lk" href="https://squareup.com/i/C76D31CB54" target="_blank" rel="noopener">Square — 4% Dual Pricing ↗</a>
+      <a class="lk" href="https://app.squareup.com/signup/onboarding?token=1DC988FC39" target="_blank" rel="noopener">Square — Rack Rate (IC+) ↗</a>
+      <a class="lk" href="https://link.shift4payments.com/auth/login" target="_blank" rel="noopener">Shift4 ↗</a>
+      <a class="lk" href="https://solutionsinpaymentsportal.com/" target="_blank" rel="noopener">Solutions in Payments ↗</a>
+    </p>
+    <div class="callout key"><span class="ico">📅</span><div><b>Schedule a demo:</b> contact the team to schedule. Full submission steps &amp; portal contacts are on the <a href="Sales Hub - Submit a Deal" target="_blank" rel="noopener">Submit a Deal</a> page.</div></div>
+  </section>
+
+  <!-- J · PROSPECTING, INCENTIVES & NEXTLINK -->
+  <section class="kb" id="j">
+    <div class="sec-h"><span class="ltr">J</span><div><div class="eyebrow">Section J · Prospecting, Incentives &amp; NextLink</div><h2>Your Hustle. Your Pipeline. Your Pay.</h2></div></div>
+
+    <h3 style="font-size:17px;color:var(--navy);margin:4px 0 8px">Lead distribution rules</h3>
+    <div class="cards c2">
+      <div class="card"><ul style="margin-top:0"><li>Lists distributed to <b>active agents only</b></li><li>Must maintain call notes in Freshsales CRM</li><li>Actively calling = keeping your list</li></ul></div>
+      <div class="card"><ul style="margin-top:0"><li>Only take what you'll actually work — leads need multiple touches, emails &amp; relentless follow-up</li><li>Let hungrier agents take what you can't commit to</li></ul></div>
+    </div>
+    <div class="callout key"><span class="ico">🧰</span><div><b>Available now:</b> Social outreach · Local SLA · Sales automation tools · Live Transfers. &nbsp; <b>Coming soon:</b> Meta paid ads.</div></div>
+
+    <h3 style="font-size:17px;color:var(--navy);margin:22px 0 8px">Incentives — short-term</h3>
+    <div class="stats">
+      <div class="stat"><div class="big">$500</div><h3>Shift4 closed deal</h3><p>For every Shift4 merchant you close — on top of your regular commission split.</p></div>
+      <div class="stat"><div class="big">$250</div><h3>All other merchants</h3><p>For every other merchant you close outside of Shift4 — Square, SIP &amp; all other products.</p></div>
+      <div class="stat"><div class="big">$2,500</div><h3>5 deals in one month</h3><p>Close 5 deals in a single calendar month and earn an additional $2,500 bonus on top of your deal payouts.</p></div>
+    </div>
+
+    <h3 style="font-size:17px;color:var(--navy);margin:22px 0 8px">Long-term career track — more doors open as you produce</h3>
+    <div class="cards c4">
+      <div class="card"><h3>🔓 Close 1 Deal</h3><ul><li>Email account + live transfer access</li></ul></div>
+      <div class="card"><h3>⚡ Close 5 Deals</h3><ul><li>NextLink covered seat unlocked</li><li>Agent discount pricing available now</li></ul></div>
+      <div class="card"><h3>💰 5 / month × 90 days</h3><ul><li>Higher commission split OR W2 with draw</li></ul></div>
+      <div class="card"><h3>🚀 5 / month × 6 months</h3><ul><li>Management opportunity opens</li></ul></div>
+    </div>
+    <div class="callout tip"><span class="ico">📈</span><div><b>Merit-based opportunity.</b> The more you produce, the more doors open. Incentive details subject to change — confirm current terms with your manager.</div></div>
+
+    <h3 style="font-size:17px;color:var(--navy);margin:22px 0 8px">NextLink — client engagement &amp; networking platform</h3>
+    <div class="cards c4">
+      <div class="card"><h3>🔗 Client Engagement</h3><p style="font-size:13px;color:var(--slate);margin-top:6px;line-height:1.5">Keep merchants engaged post-sale with automated touchpoints, updates &amp; relationship tools.</p></div>
+      <div class="card"><h3>🌐 Referral Network</h3><p style="font-size:13px;color:var(--slate);margin-top:6px;line-height:1.5">Expand your referral network and build relationships that generate inbound leads over time.</p></div>
+      <div class="card"><h3>📣 Outreach Systems</h3><p style="font-size:13px;color:var(--slate);margin-top:6px;line-height:1.5">Built-in outreach tools to help you reach more prospects more efficiently.</p></div>
+      <div class="card"><h3>⭐ Reputation Support</h3><p style="font-size:13px;color:var(--slate);margin-top:6px;line-height:1.5">Help merchants build and manage their online presence — a genuine value-add for your clients.</p></div>
+    </div>
+    <div class="callout key"><span class="ico">🏷️</span><div>Purchase at agent discount pricing <b>now</b> · covered seat unlocked after 5 closed deals · ask your manager for access.</div></div>
+
+    <h3 style="font-size:17px;color:var(--navy);margin:22px 0 8px">Marketing &amp; partnerships — building your brand &amp; pipeline</h3>
+    <div class="cards c4">
+      <div class="card"><h3>📱 Social Media</h3><p style="font-size:13px;color:var(--slate);margin-top:6px;line-height:1.5">LinkedIn, Facebook &amp; Instagram to build your personal brand, share client wins, and stay top of mind.</p></div>
+      <div class="card"><h3>📍 Local SLA</h3><p style="font-size:13px;color:var(--slate);margin-top:6px;line-height:1.5">Chambers of commerce, business associations &amp; local networking events to build referral pipelines in your market.</p></div>
+      <div class="card"><h3>⚙️ Sales Automation</h3><p style="font-size:13px;color:var(--slate);margin-top:6px;line-height:1.5">Marketing automation &amp; drip campaign tools being evaluated — reduces manual effort while keeping outreach high-touch.</p></div>
+      <div class="card"><h3>🤝 Partnerships</h3><p style="font-size:13px;color:var(--slate);margin-top:6px;line-height:1.5">Referral programs with accountants, bookkeepers, business brokers &amp; adjacent service providers being built out.</p></div>
+    </div>
+    <div class="callout tip"><span class="ico">🎓</span><div><b>Additional training coming soon:</b> advanced call &amp; objection handling · processing deep-dives (IC+, dual pricing, surcharge) · vertical-specific modules · tech stack mastery (CRM + automation) · team leadership track. <b>Check Google Drive regularly</b> for new tools &amp; training modules.</div></div>
+  </section>
+
+  <!-- CLOSING -->
+  <div class="closing">
+    <h2>The opportunity is real.</h2>
+    <p>Every merchant you place keeps paying you <span class="em">every single month</span>. This is a residual income business — build it right. The only question is: <span class="em">how fast are you going to build it?</span></p>
+    <div class="contacts">support@solutionsinpayments.com · dom@nextpaypos.com · alexander@nextpaypos.com · <a href="https://www.nextpaypos.com" target="_blank" rel="noopener">www.nextpaypos.com</a><br>All resources shared via Google Drive.</div>
+  </div>
+
+</main>
+<footer class="hub-foot"><div class="wrap">
+  <span>NextPay Sales Hub · Agent Knowledge Base · Internal use only.</span>
+  <span><a href="Sales Hub.html">← Back to hub</a></span>
+</div></footer>
+</body>
+</html>
