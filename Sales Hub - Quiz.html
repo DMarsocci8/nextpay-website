@@ -1,0 +1,360 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Agent Quiz &amp; Knowledge Checks — NextPay Sales Hub</title>
+<link rel="stylesheet" href="css/nextpay.css">
+<style>
+.hub-bar{position:sticky;top:0;z-index:60;background:var(--navy);color:#fff;border-bottom:1px solid rgba(255,255,255,.10)}
+.hub-bar-inner{display:flex;align-items:center;gap:18px;height:66px;max-width:var(--maxw);margin:0 auto;padding:0 28px}
+.hub-bar img.logo{height:34px;width:auto;display:block}.hub-bar .pipe{width:1px;height:26px;background:rgba(255,255,255,.18)}
+.hub-bar .hub-tag{font-weight:800;font-size:15px;color:#fff;display:flex;align-items:center;gap:9px}
+.hub-bar .hub-tag .badge{font-size:10.5px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;background:var(--teal);color:#fff;padding:4px 9px;border-radius:999px}
+.hub-bar .right{margin-left:auto}.hub-bar .right a{color:#cdd8e2;font-weight:600;font-size:14.5px}.hub-bar .right a:hover{color:#fff}
+.pg-head{background:linear-gradient(180deg,var(--navy),var(--navy-2));color:#fff}
+.pg-head .wrap{padding:30px 0 32px}
+.crumbs{display:flex;gap:8px;align-items:center;font-size:13.5px;color:#9fb1c2;padding-bottom:14px}
+.crumbs a{color:#cdd8e2;font-weight:600}.crumbs a:hover{color:#fff}.crumbs .sep{opacity:.5}
+.pg-head h1{font-size:clamp(26px,3.6vw,38px);color:#fff;letter-spacing:-.02em}
+.pg-head p.lead{color:#c4d0db;margin-top:10px;max-width:720px;font-size:16px;line-height:1.6}
+main.wrap{padding:22px 0 10px}
+
+/* score bar */
+.scorebar{position:sticky;top:66px;z-index:50;background:#fff;border:1px solid var(--line);border-radius:14px;box-shadow:var(--shadow-sm);padding:13px 18px;display:flex;align-items:center;gap:18px;flex-wrap:wrap;margin-bottom:18px}
+.scorebar .stat{display:flex;flex-direction:column;line-height:1.1}
+.scorebar .stat b{font-size:20px;color:var(--navy)}.scorebar .stat span{font-size:11px;font-weight:700;letter-spacing:.05em;text-transform:uppercase;color:var(--slate-2)}
+.scorebar .stat b.good{color:var(--teal-dark)}
+.scorebar .bar{flex:1;min-width:140px;height:9px;background:var(--bg-soft-2);border-radius:999px;overflow:hidden}
+.scorebar .bar i{display:block;height:100%;width:0;background:var(--teal);border-radius:999px;transition:width .4s}
+.scorebar button{background:#fff;border:1px solid var(--line);color:var(--navy);font-weight:700;font-size:13px;border-radius:999px;padding:7px 15px;cursor:pointer}
+.scorebar button:hover{border-color:var(--teal);color:var(--teal-dark)}
+
+/* section filter pills */
+.filters{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:20px}
+.filters button{background:#fff;border:1px solid var(--line);color:var(--slate);font-weight:700;font-size:13px;border-radius:999px;padding:8px 14px;cursor:pointer;transition:.15s}
+.filters button:hover{border-color:var(--teal)}
+.filters button.active{background:var(--navy);color:#fff;border-color:var(--navy)}
+
+/* section block */
+.qsec{margin-bottom:34px;scroll-margin-top:150px}
+.qsec-h{display:flex;align-items:center;gap:12px;margin:0 0 14px}
+.qsec-h .ltr{flex:none;width:38px;height:38px;border-radius:10px;background:var(--teal);color:#fff;font-weight:800;display:grid;place-items:center;font-size:17px}
+.qsec-h h2{font-size:clamp(19px,2.4vw,24px);letter-spacing:-.02em;color:var(--navy)}
+.qsec-h .cnt{margin-left:auto;font-size:12px;font-weight:700;color:var(--slate-2);background:var(--bg-soft-2);border-radius:999px;padding:4px 11px}
+
+/* question card */
+.q{background:#fff;border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow-sm);padding:18px 20px;margin-bottom:13px}
+.q .stem{font-size:15.5px;font-weight:700;color:var(--navy);line-height:1.45;margin-bottom:12px;display:flex;gap:9px}
+.q .stem .qn{flex:none;color:var(--teal-dark);font-weight:800}
+.q .opts{display:grid;gap:8px}
+.q .opt{display:flex;align-items:flex-start;gap:10px;text-align:left;background:#fff;border:1.5px solid var(--line);border-radius:12px;padding:11px 14px;font-size:14px;color:var(--ink);cursor:pointer;transition:.12s;line-height:1.4;width:100%;font-family:inherit}
+.q .opt:hover{border-color:var(--teal)}
+.q .opt .mk{flex:none;width:22px;height:22px;border-radius:6px;border:1.5px solid var(--line);display:grid;place-items:center;font-size:12px;font-weight:800;color:var(--slate-2)}
+.q.answered .opt{cursor:default}
+.q.answered .opt:hover{border-color:var(--line)}
+.q .opt.correct{border-color:var(--teal);background:rgba(20,161,140,.08)}
+.q .opt.correct .mk{background:var(--teal);border-color:var(--teal);color:#fff}
+.q .opt.wrong{border-color:#e1556b;background:#fef2f4}
+.q .opt.wrong .mk{background:#e1556b;border-color:#e1556b;color:#fff}
+.q.answered .opt.correct .mk::after{content:"✓"}
+.q.answered .opt.wrong .mk::after{content:"✕"}
+.q .why{margin-top:12px;font-size:13.5px;line-height:1.55;color:var(--slate);background:var(--bg-soft);border-left:3px solid var(--teal);border-radius:8px;padding:11px 14px;display:none}
+.q.answered .why{display:block}
+.q .why b{color:var(--navy)}
+
+.hub-foot{background:var(--navy);color:#9fb1c2;padding:30px 0;margin-top:46px;font-size:13.5px}
+.hub-foot .wrap{display:flex;justify-content:space-between;gap:18px;flex-wrap:wrap}
+.hub-foot a{color:#cdd8e2;font-weight:600}.hub-foot a:hover{color:#fff}
+.intro-note{display:flex;gap:13px;align-items:flex-start;background:rgba(20,161,140,.08);border:1px solid rgba(20,161,140,.22);border-radius:14px;padding:14px 18px;margin-bottom:20px;font-size:14px;line-height:1.55}
+.intro-note b{color:var(--teal-dark)}.intro-note a{color:var(--teal-dark);font-weight:700}
+</style>
+</head>
+<body>
+<div class="hub-bar"><div class="hub-bar-inner">
+  <a href="Sales Hub.html" style="display:flex;align-items:center" aria-label="Sales Hub home"><img class="logo" src="assets/logos/nextpay-nav.png" alt="NextPay"></a>
+  <span class="pipe"></span><span class="hub-tag">Sales Hub <span class="badge">Internal</span></span>
+  <div class="right"><a href="Sales Hub.html">← Hub home</a></div>
+</div></div>
+<header class="pg-head"><div class="wrap">
+  <div class="crumbs"><a href="Sales Hub.html">Sales Hub</a><span class="sep">/</span><a href="Sales Hub - Knowledge Base.html">Knowledge Base</a><span class="sep">/</span><span>Agent Quiz</span></div>
+  <h1>Agent Quiz &amp; Knowledge Checks</h1>
+  <p class="lead">Test what you know across every section of the Knowledge Base — plus a dedicated product-training bank. Click an answer to lock it in; you'll see instantly whether you're right and exactly why. No login, nothing saved — retake as often as you like.</p>
+</div></header>
+<main class="wrap">
+
+  <div class="intro-note"><span style="font-size:18px">🎯</span><div><b>How to use it:</b> Pick a section below or scroll through all of them. Answer to reveal the explanation. Aim to ace every section before your first day in the field — then come back and re-test before a big pitch. New to the material? Read the <a href="Sales Hub - Knowledge Base.html">Knowledge Base</a> first.</div></div>
+
+  <!-- SCORE BAR -->
+  <div class="scorebar">
+    <div class="stat"><b id="sAnswered">0</b><span>Answered</span></div>
+    <div class="stat"><b class="good" id="sCorrect">0</b><span>Correct</span></div>
+    <div class="stat"><b id="sTotal">0</b><span>Total</span></div>
+    <div class="bar"><i id="sBar"></i></div>
+    <button type="button" id="resetBtn">Reset all</button>
+  </div>
+
+  <!-- FILTERS -->
+  <div class="filters" id="filters"></div>
+
+  <!-- QUIZ RENDERS HERE -->
+  <div id="quiz"></div>
+
+</main>
+<footer class="hub-foot"><div class="wrap">
+  <span>NextPay Sales Hub · Agent Quiz &amp; Knowledge Checks · Internal use only.</span>
+  <span><a href="Sales Hub - Knowledge Base.html">← Back to Knowledge Base</a></span>
+</div></footer>
+
+<script>
+/* ===== QUESTION BANK ===== */
+/* a = index of correct option */
+const BANK = [
+ { id:"A", ltr:"A", title:"Platform Overview", qs:[
+   { q:"NextPay places merchants on three main platforms. Which platform is built for hospitality and full-service restaurants?",
+     o:["Square","Shift4","Solutions in Payments","NextLink"], a:1,
+     w:"Shift4 is our restaurant/hospitality platform. Square covers retail, restaurants, services & online, and Solutions in Payments handles every other vertical." },
+   { q:"A specialty or niche business doesn't fit Clover, Shift4, or Square. Where does it go?",
+     o:["NextLink","Business Lending","Solutions in Payments","It can't be placed"], a:2,
+     w:"Solutions in Payments (SIP) is the catch-all portal for all other verticals and complex/specialty business types — it has the broadest equipment and pricing catalog." },
+   { q:"What is the NextLink platform designed to do for a merchant?",
+     o:["Process credit card payments","Engage customers, build referral networks & manage reputation","Underwrite merchant applications","Provide working capital loans"], a:1,
+     w:"NextLink is our client-engagement platform: retention & automated touchpoints, referral/relationship building, and reputation management & outreach." },
+   { q:"Which of these is part of NextPay's Business Lending offering?",
+     o:["Kitchen display systems","Working capital, equipment financing & merchant cash advances","Reputation management","Digital signature applications"], a:1,
+     w:"Business Lending = growth capital: working capital loans, equipment financing, merchant cash advances and expansion funding." },
+   { q:"Which two services are offered partner-led (alongside the core platform)?",
+     o:["Payroll/Workers Comp & Business Brokerage","Underwriting & Chargebacks","CRM & Email","Loyalty & Online Ordering"], a:0,
+     w:"Payroll / Workers Comp and Business Brokerage are available as partner-led services." },
+ ]},
+ { id:"B", ltr:"B", title:"Onboarding", qs:[
+   { q:"What is the correct order of the four-step path to the field?",
+     o:["Training → Get Hired → Tech Stack → Pay Plan","Get Hired → Complete Training → Review Pay Plan → Unlock Tech Stack","Get Hired → Tech Stack → Training → Pay Plan","Review Pay Plan → Get Hired → Training → Tech Stack"], a:1,
+     w:"Step 1 Get Hired, Step 2 Complete Training, Step 3 Review Pay Plan, Step 4 Unlock Tech Stack." },
+   { q:"What is the name of the document that lays out your commission tiers, splits and bonuses?",
+     o:["The MPA","Schedule A","The W9","The rack rate sheet"], a:1,
+     w:"Your pay plan is your Schedule A — it covers commission tiers, splits and bonus structure. (Pricing pages are about the merchant's rate, not your pay.)" },
+   { q:"In Step 1 (Get Hired), which tax setup is processed?",
+     o:["W2 only","W9 or 1099","1095-C","No tax setup needed"], a:1,
+     w:"Onboarding paperwork includes a background check, signed agreements, and W9 or 1099 setup." },
+   { q:"What unlocks your full tech stack in Step 4?",
+     o:["Closing 10 deals","A follow-up call with Alex and demonstrating commitment","Paying a setup fee","Six months of tenure"], a:1,
+     w:"Full tech-stack access is granted after a follow-up call with Alex and demonstrating commitment." },
+   { q:"Why does completing all training in your first week matter?",
+     o:["It's legally required","Agents who finish training in week one close their first deal significantly faster","It unlocks a higher base salary","Nothing — it's optional"], a:1,
+     w:"Speed matters: agents who complete training within the first week close their first deal significantly faster." },
+ ]},
+ { id:"C", ltr:"C", title:"Tech Stack", qs:[
+   { q:"When do you receive your professional @nextpay email account?",
+     o:["Day 1","After Deal #1","After 5 deals","Never — agents use personal email"], a:1,
+     w:"Your @nextpay email unlocks after your first closed deal. It's tied to Google Workspace and required for full CRM access." },
+   { q:"Which tool is REQUIRED on Day 1 and needed to receive lead lists?",
+     o:["Freshsales CRM","Google Chat","Your email account","NextLink"], a:0,
+     w:"Freshsales CRM is required Day 1 — you log every call/interaction, track pipeline, and you must maintain it to receive lead lists." },
+   { q:"What is Google Chat used for?",
+     o:["Storing contract templates","Direct messaging and group channels with your team","Logging your pipeline","Merchant digital signatures"], a:1,
+     w:"Google Chat (download it Day 1) is direct messaging + topic channels for quick updates and announcements." },
+   { q:"Where do you find training materials, contract templates and shared resources?",
+     o:["Freshsales CRM","Google Drive","The SIP portal","Google Chat"], a:1,
+     w:"Google Drive (Day 1) holds all training materials, contract templates/forms and shared team resources, organized by product & process. Check it regularly for updates." },
+ ]},
+ { id:"D", ltr:"D", title:"Products & Placement", qs:[
+   { q:"What is the agent bonus for a closed Shift4 Dine deal versus all other merchants?",
+     o:["$250 Shift4 Dine / $500 other","$500 Shift4 Dine / $250 other","$500 for both","$1,000 Shift4 Dine / $500 other"], a:1,
+     w:"$500 per Shift4 Dine deal, $250 per all other merchants — on top of your commission split." },
+   { q:"What merchant incentive can you offer to win a Shift4 switch?",
+     o:["Up to $500","Up to $2,500","Up to $5,000","No incentive available"], a:2,
+     w:"Up to $5,000 is available to merchants switching to Shift4, with no upfront costs — a powerful closing tool." },
+   { q:"A prospect isn't sure which product fits. What's the move?",
+     o:["Guess and pick one","Send them to the quiz at nextpaypos.com/pricing#custom-quote","Always default to Square","Tell them to call support"], a:1,
+     w:"Send every unsure prospect to the quiz (nextpaypos.com/pricing#custom-quote) — it matches them to the right product automatically." },
+   { q:"Which co-branded pricing program is now available on Square?",
+     o:["2% flat rate","4% dual pricing","Tiered pricing only","Interchange minus"], a:1,
+     w:"Square + Solutions in Payments created a joint 4% flat-rate dual pricing program, in addition to interchange-plus (rack rate)." },
+ ]},
+ { id:"E", ltr:"E", title:"Shift4", qs:[
+   { q:"Which Shift4 feature keeps transactions processing even when the internet goes down?",
+     o:["Cloud backup","True offline mode","Battery reserve","Dual SIM"], a:1,
+     w:"Shift4's true offline mode means it never goes down — transactions keep processing even when the internet fails." },
+   { q:"What bonus do you earn for closing 5 Shift4 deals in one month?",
+     o:["$1,000","$2,500","$5,000","A free terminal"], a:1,
+     w:"$2,500 bonus for 5 deals in one calendar month — on top of the $500-per-deal Shift4 bonus." },
+   { q:"How does the Shift4 application process differ from other products?",
+     o:["It uses the SIP portal","It has its own separate merchant & partner portal","It can't be submitted online","It uses the Square dashboard"], a:1,
+     w:"Shift4 has its own merchant & partner portal, separate from Solutions in Payments. Contact the team for portal access and agent login credentials." },
+   { q:"Which of these is part of the Shift4 full restaurant stack?",
+     o:["Table management, KDS, online ordering, reservations & loyalty","Payroll processing","Merchant cash advances","Business brokerage"], a:0,
+     w:"The Shift4 stack covers table management, KDS, online ordering, reservations, loyalty and detailed analytics — plus dedicated hardware/software support." },
+ ]},
+ { id:"F", ltr:"F", title:"Solutions in Payments", qs:[
+   { q:"REQUIRED after every closed SIP deal: you must email the merchant's DBA and sign-up email. Who is the TO recipient?",
+     o:["dom@nextpaypos.com","support@solutionsinpayments.com","alexander@nextpaypos.com","The merchant"], a:1,
+     w:"TO: support@solutionsinpayments.com, and CC both dom@nextpaypos.com and alexander@nextpaypos.com. Include the DBA, the sign-up email, and the placement/product." },
+   { q:"What is Step 2 of the SIP application?",
+     o:["Owner background check","Pricing & Equipment","Digital signature","Funding setup"], a:1,
+     w:"Step 2 is Pricing & Equipment — you select the merchant's processing type and application type, and attach hardware." },
+   { q:"Which of these is a valid SIP application/pricing type?",
+     o:["Cash Discount, Dual Pricing, ERR, Flat Rate, Interchange, Surcharge, Tiered","Only flat rate","Only interchange-plus","None — SIP has one price"], a:0,
+     w:"SIP supports many programs: Cash Discount, Dual Pricing, ERR, Flat Rate, Interchange, Surcharge, Tiered and more." },
+   { q:"What's the recommended way to get comfortable before walking a merchant through the SIP application?",
+     o:["Read the contract aloud","Sign up your own demo account first","Skip straight to live deals","Watch a competitor's video"], a:1,
+     w:"Set up your own demo account and walk the application yourself so you can confidently guide merchants. Also watch the three SIP training videos first." },
+ ]},
+ { id:"G", ltr:"G", title:"SIP Training Videos", qs:[
+   { q:"How many SIP training videos should you watch before submitting your first application?",
+     o:["One","Three","Five","Ten"], a:1,
+     w:"Three: (1) Starting an online application & transferring for digital signature, (2) Downloading & submitting a paper MPA, (3) Responding to underwriting pending requests." },
+   { q:"When would you use a paper Merchant Processing Agreement (MPA) instead of the digital app?",
+     o:["Never","In specific cases covered by training video #2","Always","Only for Square deals"], a:1,
+     w:"Video #2 explains when to use a paper MPA instead of a digital app, how to download it from the portal, and how to submit it to underwriting." },
+   { q:"How does underwriting communicate pending requests, and why respond fast?",
+     o:["By mail; speed doesn't matter","Through the portal; quick responses keep deals from stalling","By phone only","They don't — you just wait"], a:1,
+     w:"Underwriting communicates through the portal (video #3). Respond quickly to pending requests so deals don't stall." },
+ ]},
+ { id:"H", ltr:"H", title:"Square", qs:[
+   { q:"What are Square's two pricing programs?",
+     o:["Tiered and flat","4% dual pricing OR interchange-plus (rack rate)","Surcharge only","Free and premium"], a:1,
+     w:"Agents pick what fits: the co-branded 4% flat-rate dual pricing program, or interchange-plus (rack rate) where the merchant absorbs processing costs." },
+   { q:"Under the 4% dual pricing program, what are the two ways to pass the fee to customers?",
+     o:["Cash Discount or Service Charge","Surcharge or tip","Membership or subscription","Debit or credit only"], a:0,
+     w:"Cash Discount (discount cash payers) or Service Charge (add 4% to card transactions). Both offset processing costs." },
+   { q:"With the rack-rate (IC+) link, how does the merchant get their application?",
+     o:["You mail it","A welcome email after signup contains the rack-rate application link","It's instant at checkout","They visit a Square store"], a:1,
+     w:"The rack-rate link triggers a welcome email that contains the rack-rate application link; you then walk the merchant through the SaaS fee & equipment selection." },
+   { q:"What must you do every time you sign a Square deal?",
+     o:["Nothing","Email support@solutionsinpayments.com and CC dom & alexander","Call Square support","Post in Google Chat only"], a:1,
+     w:"Same rule as SIP: email support@solutionsinpayments.com + CC dom@nextpaypos.com & alexander@nextpaypos.com with the merchant details." },
+   { q:"Best practice before onboarding merchants onto Square?",
+     o:["Sign up your own Square demo account using the rack-rate link and walk it yourself","Memorize the pricing PDF","Wait for a manager to do the first one","Skip the demo — it's intuitive"], a:0,
+     w:"Sign up your own demo account using the rack-rate link and walk through onboarding — the process is intuitive once you've done it yourself." },
+ ]},
+ { id:"I", ltr:"I", title:"Call Flow", qs:[
+   { q:"What should the first 30 seconds of the call accomplish?",
+     o:["Quote a price","Introduce yourself, NextPay, and your value prop","Ask for the sale","Read the contract"], a:1,
+     w:"Step 1 Intro: introduce yourself, NextPay, and your value prop in under 30 seconds." },
+   { q:"In the call flow, what comes right after uncovering pain points?",
+     o:["Close","Demo","Direct them to the quiz for the right-fit product","Hang up"], a:2,
+     w:"Flow: Intro → Qualify → Pain Points → Quiz (nextpaypos.com/pricing#custom-quote) → Present → Demo → Close." },
+   { q:"What's the one thing you should never do at the end of a call?",
+     o:["Thank them","End without a clear next step","Offer a demo","Confirm their email"], a:1,
+     w:"Never end a call without a clear next step — that's the whole point of the Close step." },
+   { q:"During Qualify, what two things are you trying to learn?",
+     o:["Their favorite color and lunch order","Whether they're the decision maker, and what POS/processor they use now","Their credit score and SSN","Their square footage and rent"], a:1,
+     w:"Qualify = confirm they're the decision maker and find out what POS/processor they currently use." },
+ ]},
+ { id:"J", ltr:"J", title:"Prospecting & Incentives", qs:[
+   { q:"Who receives lead lists?",
+     o:["Every agent equally","Active agents only","New hires only","Top earners only"], a:1,
+     w:"Lead lists go to active agents only. Actively calling and maintaining CRM notes is how you keep your list." },
+   { q:"Closing your first deal unlocks what?",
+     o:["A company car","Your email account + live transfer access","Management","A higher base salary"], a:1,
+     w:"Deal #1 unlocks your email account and live transfers — and starts your residuals." },
+   { q:"What does closing 5 deals unlock?",
+     o:["Nothing extra","A NextLink covered seat + agent discount pricing","A W2 automatically","6 months of PTO"], a:1,
+     w:"At 5 closed deals, your NextLink covered seat unlocks; agent discount pricing is available now." },
+   { q:"What's the long-term reward for 5 deals/month sustained for 90 days?",
+     o:["A one-time $100 bonus","A higher commission split OR W2 with a draw","Immediate management","Nothing changes"], a:1,
+     w:"Phase 1 (5/month × 90 days): higher commission split OR W2 with draw. Phase 2 (5/month × 6 months): management opportunity opens." },
+   { q:"This is described as what kind of income business?",
+     o:["One-time commission","Residual / recurring revenue — every merchant keeps paying you monthly","Salary only","Hourly"], a:1,
+     w:"It's a residual income business — every merchant you place keeps paying you every single month. Build it right." },
+ ]},
+ { id:"P", ltr:"P", title:"Product Training", qs:[
+   { q:"A merchant wants to sell online with a built-in store, invoicing and payment links. Which platform includes ecommerce out of the box?",
+     o:["Square","A standalone credit card terminal","A paper MPA","Business Lending"], a:0,
+     w:"Square has ecommerce built in — online store, invoicing and payment links are included with the platform, making it a strong fit for omnichannel merchants." },
+   { q:"Besides Shift4 and Square, which product has its own dedicated ordering/submission process?",
+     o:["Clover","FluidPay","Korona","NRS"], a:0,
+     w:"Clover has its own order form and process. Everything outside Clover, Shift4 & Square routes through Solutions in Payments." },
+   { q:"A merchant wants an all-in-one Android smart terminal with a built-in printer and touchscreen. Which fits?",
+     o:["A basic magstripe reader","PAX A920 Pro","A paper imprinter","A desktop dialer terminal"], a:1,
+     w:"The PAX A920 Pro is an Android smart mobile terminal with touchscreen and built-in printer — part of the PAX Mobile line in scope (A920 Pro, A920 MAX, A77, A800, A6650, A6630, D195)." },
+   { q:"Which of these are NextPay's two Dejavoo terminal families?",
+     o:["P-line and QD line","X-line and Z-line","A-line and B-line","S-line and T-line"], a:0,
+     w:"Dejavoo's families in scope are the P-line (P1/P3/P5) and the QD line (QD2/QD4/QD5), plus Apple Tap to Pay support." },
+   { q:"Which of these is a payment GATEWAY in NextPay's lineup (not a POS)?",
+     o:["Clover","FluidPay","Quantic","Korona"], a:1,
+     w:"Gateways in scope: FluidPay, NMI, Luqra, Valor, Authorize.net and iPOSPays. Clover, Quantic and Korona are POS systems." },
+   { q:"Which products are NextPay's invoicing / recurring billing options?",
+     o:["FieldPulse, Field Work, LQPay & QuickBooks integrations","Only PayPal","Only Venmo","Cash App"], a:0,
+     w:"Invoicing in scope: FieldPulse, Field Work, LQPay and QuickBooks integrations (with more coming soon)." },
+   { q:"Under a SURCHARGE program, which card type can NEVER be surcharged?",
+     o:["Credit cards","Debit cards","Rewards cards","Business cards"], a:1,
+     w:"Debit cards can never be surcharged. Surcharge applies to credit only, is capped by the card brands, and a few states don't allow it." },
+   { q:"What's the rule of thumb for dual pricing & cash discount rates, and how do you set the actual number?",
+     o:["Always exactly 4%; never look at a statement","Typically 3–4% — but match or beat their current rate by analyzing a statement","Whatever the merchant asks","Always 10%"], a:1,
+     w:"Dual pricing & cash discount typically run 3–4% (surcharge ~3% on credit). The real goal is to match or beat their current rate — you must receive a statement to analyze the cost." },
+   { q:"Which Clover device is the handheld, mobile all-in-one?",
+     o:["Clover Flex","Clover Station","Clover Mini","Clover Kitchen"], a:0,
+     w:"Clover Flex is the handheld mobile device (Clover Go is a reader/dongle for a phone; Station and Mini are countertop)." },
+   { q:"A full-service restaurant needs table management and a kitchen display system. Best-fit platform?",
+     o:["Square Reader","Shift4 Dine","A standalone gateway","Invoicing only"], a:1,
+     w:"Shift4 Dine is the restaurant stack — table management, KDS, online ordering, reservations and loyalty — the natural fit for full-service dining." },
+ ]},
+];
+
+/* ===== RENDER ===== */
+const quizEl=document.getElementById('quiz');
+const filtersEl=document.getElementById('filters');
+let TOTAL=0, answered=0, correct=0;
+const answeredSet=new Set();
+
+// total
+BANK.forEach(s=>TOTAL+=s.qs.length);
+document.getElementById('sTotal').textContent=TOTAL;
+
+// filters
+const mkFilter=(label,target,active)=>{const b=document.createElement('button');b.textContent=label;if(active)b.classList.add('active');b.dataset.t=target;return b;};
+const allBtn=mkFilter('All sections','all',true);filtersEl.appendChild(allBtn);
+BANK.forEach(s=>filtersEl.appendChild(mkFilter(s.ltr+' · '+s.title,s.id,false)));
+filtersEl.addEventListener('click',e=>{const b=e.target.closest('button');if(!b)return;
+  filtersEl.querySelectorAll('button').forEach(x=>x.classList.remove('active'));b.classList.add('active');
+  const t=b.dataset.t;document.querySelectorAll('.qsec').forEach(sec=>{sec.style.display=(t==='all'||sec.dataset.id===t)?'':'none';});
+  window.scrollTo({top:0,behavior:'smooth'});
+});
+
+// build sections
+BANK.forEach(sec=>{
+  const wrap=document.createElement('section');wrap.className='qsec';wrap.dataset.id=sec.id;
+  wrap.innerHTML='<div class="qsec-h"><span class="ltr">'+sec.ltr+'</span><h2>'+sec.title+'</h2><span class="cnt">'+sec.qs.length+' questions</span></div>';
+  sec.qs.forEach((item,qi)=>{
+    const card=document.createElement('div');card.className='q';
+    const uid=sec.id+'-'+qi;
+    let opts='';
+    item.o.forEach((opt,oi)=>{
+      const letter='ABCD'[oi];
+      opts+='<button class="opt" type="button" data-oi="'+oi+'"><span class="mk">'+letter+'</span><span>'+opt+'</span></button>';
+    });
+    card.innerHTML='<div class="stem"><span class="qn">Q'+(qi+1)+'.</span><span>'+item.q+'</span></div><div class="opts">'+opts+'</div><div class="why"><b>Answer:</b> '+item.w+'</div>';
+    card.querySelectorAll('.opt').forEach(btn=>{
+      btn.addEventListener('click',()=>{
+        if(card.classList.contains('answered'))return;
+        card.classList.add('answered');
+        const chosen=+btn.dataset.oi;
+        card.querySelectorAll('.opt').forEach(b2=>{
+          const oi=+b2.dataset.oi;
+          if(oi===item.a)b2.classList.add('correct');
+          else if(oi===chosen)b2.classList.add('wrong');
+        });
+        if(!answeredSet.has(uid)){answeredSet.add(uid);answered++;if(chosen===item.a)correct++;updateScore();}
+      });
+    });
+    wrap.appendChild(card);
+  });
+  quizEl.appendChild(wrap);
+});
+
+function updateScore(){
+  document.getElementById('sAnswered').textContent=answered;
+  document.getElementById('sCorrect').textContent=correct;
+  document.getElementById('sBar').style.width=(TOTAL?(answered/TOTAL*100):0)+'%';
+}
+document.getElementById('resetBtn').addEventListener('click',()=>{
+  answeredSet.clear();answered=0;correct=0;updateScore();
+  document.querySelectorAll('.q').forEach(c=>{c.classList.remove('answered');c.querySelectorAll('.opt').forEach(b=>b.classList.remove('correct','wrong'));});
+  window.scrollTo({top:0,behavior:'smooth'});
+});
+</script>
+</body>
+</html>
