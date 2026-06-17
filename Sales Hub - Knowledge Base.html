@@ -31,15 +31,20 @@ section.kb{background:#fff;border:1px solid var(--line);border-radius:18px;box-s
 .toc{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:11px;margin:6px 0 30px}
 .toc a{display:flex;align-items:center;gap:12px;background:#fff;border:1px solid var(--line);border-radius:14px;box-shadow:var(--shadow-sm);padding:13px 15px;transition:.15s}
 .toc a:hover{border-color:var(--teal);transform:translateY(-1px)}
-.toc .ltr{flex:none;width:34px;height:34px;border-radius:9px;background:var(--navy);color:#fff;font-weight:800;display:grid;place-items:center;font-size:15px}
+.toc a{--accent:var(--navy)}
+.toc a:hover{border-color:var(--accent)}
+.toc .ltr{flex:none;width:34px;height:34px;border-radius:9px;background:var(--accent);color:#fff;font-weight:800;display:grid;place-items:center;font-size:15px}
 .toc b{display:block;color:var(--navy);font-size:14.5px;letter-spacing:-.01em}
 .toc span{display:block;color:var(--slate-2);font-size:12px;margin-top:1px}
 
-/* section */
-section.kb{scroll-margin-top:80px;margin:0 0 34px}
+/* section — each section sets its own --accent color for a quick visual cue */
+section.kb{scroll-margin-top:80px;margin:0 0 34px;--accent:var(--teal)}
+section.kb{border-top:5px solid var(--accent)}
 .sec-h{display:flex;align-items:center;gap:13px;margin:0 0 4px}
-.sec-h .ltr{flex:none;width:40px;height:40px;border-radius:11px;background:var(--teal);color:#fff;font-weight:800;display:grid;place-items:center;font-size:18px}
-.sec-h .eyebrow{font-size:11.5px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:var(--teal-dark)}
+.sec-h .ltr{flex:none;width:40px;height:40px;border-radius:11px;background:var(--accent);color:#fff;font-weight:800;display:grid;place-items:center;font-size:18px}
+.sec-h .eyebrow{font-size:11.5px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:var(--accent)}
+.sec-h .sec-logo{margin-left:auto;height:34px;width:auto;max-width:150px;object-fit:contain;align-self:center}
+@media(max-width:600px){.sec-h .sec-logo{height:26px;max-width:104px}}
 .sec-h h2{font-size:clamp(20px,2.6vw,26px);letter-spacing:-.02em;color:var(--navy);margin:1px 0 0}
 .sec-sub{color:var(--slate);font-size:15px;margin:2px 0 16px;padding-left:53px;line-height:1.55}
 @media(max-width:600px){.sec-sub{padding-left:0}}
@@ -141,20 +146,20 @@ section.kb{scroll-margin-top:80px;margin:0 0 34px}
 
   <!-- TABLE OF CONTENTS -->
   <div class="toc">
-    <a href="#a"><span class="ltr">A</span><span><b>Platform Overview</b><span>One platform, every vertical</span></span></a>
-    <a href="#b"><span class="ltr">B</span><span><b>Onboarding Path</b><span>Your 4 steps to the field</span></span></a>
-    <a href="#c"><span class="ltr">C</span><span><b>Tech Stack</b><span>Drive, Chat, CRM, Email</span></span></a>
-    <a href="#d"><span class="ltr">D</span><span><b>Products &amp; Placement</b><span>Know your products + the quiz</span></span></a>
-    <a href="#e"><span class="ltr">E</span><span><b>Shift4</b><span>Training &amp; incentives</span></span></a>
-    <a href="#f"><span class="ltr">F</span><span><b>Solutions in Payments</b><span>Portal, catalog &amp; deal email</span></span></a>
-    <a href="#g"><span class="ltr">G</span><span><b>SIP Training Videos</b><span>Watch before your first app</span></span></a>
-    <a href="#h"><span class="ltr">H</span><span><b>Square</b><span>Links &amp; process</span></span></a>
-    <a href="#i"><span class="ltr">I</span><span><b>Call Flow</b><span>First contact → signed deal</span></span></a>
-    <a href="#j"><span class="ltr">J</span><span><b>Prospecting &amp; Incentives</b><span>Pipeline, pay &amp; NextLink</span></span></a>
+    <a href="#a" style="--accent:#119683"><span class="ltr">A</span><span><b>Platform Overview</b><span>One platform, every vertical</span></span></a>
+    <a href="#b" style="--accent:#3D5BDB"><span class="ltr">B</span><span><b>Onboarding Path</b><span>Your 4 steps to the field</span></span></a>
+    <a href="#c" style="--accent:#C9781F"><span class="ltr">C</span><span><b>Tech Stack</b><span>Drive, Chat, CRM, Email</span></span></a>
+    <a href="#d" style="--accent:#6A48C9"><span class="ltr">D</span><span><b>Products &amp; Placement</b><span>Know your products + the quiz</span></span></a>
+    <a href="#e" style="--accent:#1D4ED8"><span class="ltr">E</span><span><b>Shift4</b><span>Training &amp; incentives</span></span></a>
+    <a href="#f" style="--accent:#157F47"><span class="ltr">F</span><span><b>Solutions in Payments</b><span>Portal, catalog &amp; deal email</span></span></a>
+    <a href="#g" style="--accent:#0E7C8B"><span class="ltr">G</span><span><b>SIP Training Videos</b><span>Watch before your first app</span></span></a>
+    <a href="#h" style="--accent:#1F2937"><span class="ltr">H</span><span><b>Square</b><span>Links &amp; process</span></span></a>
+    <a href="#i" style="--accent:#C43A56"><span class="ltr">I</span><span><b>Call Flow</b><span>First contact → signed deal</span></span></a>
+    <a href="#j" style="--accent:#B07D12"><span class="ltr">J</span><span><b>Prospecting &amp; Incentives</b><span>Pipeline, pay &amp; NextLink</span></span></a>
   </div>
 
   <!-- A · PLATFORM OVERVIEW -->
-  <section class="kb" id="a">
+  <section class="kb" id="a" style="--accent:#119683">
     <div class="sec-h"><span class="ltr">A</span><div><div class="eyebrow">Section A · Platform Overview</div><h2>One Platform. Infinite Opportunity.</h2></div></div>
     <p class="sec-sub">NextPay is a full-service platform — payments, point of sale, client engagement and business lending — so you can serve a merchant no matter their type or need.</p>
     <div class="cards c3">
@@ -172,7 +177,7 @@ section.kb{scroll-margin-top:80px;margin:0 0 34px}
   </section>
 
   <!-- B · ONBOARDING -->
-  <section class="kb" id="b">
+  <section class="kb" id="b" style="--accent:#3D5BDB">
     <div class="sec-h"><span class="ltr">B</span><div><div class="eyebrow">Section B · Onboarding</div><h2>Your Four-Step Path to the Field</h2></div></div>
     <div class="steps">
       <div class="step"><div class="n">1</div><h3>Get Hired</h3><ul><li>Complete onboarding paperwork</li><li>Background check &amp; agreements signed</li><li>W9 or 1099 setup processed</li></ul></div>
@@ -184,7 +189,7 @@ section.kb{scroll-margin-top:80px;margin:0 0 34px}
   </section>
 
   <!-- C · TECH STACK -->
-  <section class="kb" id="c">
+  <section class="kb" id="c" style="--accent:#C9781F">
     <div class="sec-h"><span class="ltr">C</span><div><div class="eyebrow">Section C · Tech Stack</div><h2>The Tools That Keep You Moving</h2></div></div>
     <div class="cards c4">
       <div class="card"><h3>Google Drive</h3><span class="unlock day1">Unlock: Day 1</span><ul><li>All training materials &amp; guides</li><li>Contract templates &amp; forms</li><li>Shared team resources</li><li>Organized by product &amp; process</li></ul></div>
@@ -195,7 +200,7 @@ section.kb{scroll-margin-top:80px;margin:0 0 34px}
   </section>
 
   <!-- D · PRODUCTS & PLACEMENT -->
-  <section class="kb" id="d">
+  <section class="kb" id="d" style="--accent:#6A48C9">
     <div class="sec-h"><span class="ltr">D</span><div><div class="eyebrow">Section D · Products &amp; Placement</div><h2>Know Your Products. Use the Quiz.</h2></div></div>
     <div class="cards c3">
       <div class="card"><div class="kicker">Restaurant &amp; full-service POS</div><h3>Shift4 Dine</h3>
@@ -212,8 +217,8 @@ section.kb{scroll-margin-top:80px;margin:0 0 34px}
   </section>
 
   <!-- E · SHIFT4 -->
-  <section class="kb" id="e">
-    <div class="sec-h"><span class="ltr">E</span><div><div class="eyebrow">Section E · Shift4</div><h2>Full-Service POS — Strong Incentives</h2></div></div>
+  <section class="kb" id="e" style="--accent:#1D4ED8">
+    <div class="sec-h"><span class="ltr">E</span><div><div class="eyebrow">Section E · Shift4</div><h2>Full-Service POS — Strong Incentives</h2></div><img class="sec-logo" src="assets/logos/shift4.png" alt="Shift4"></div>
     <div class="cards c2">
       <div class="card"><div class="kicker">Why Shift4 wins</div><h3>The closing tools</h3>
         <ul>
@@ -232,7 +237,7 @@ section.kb{scroll-margin-top:80px;margin:0 0 34px}
   </section>
 
   <!-- F · SOLUTIONS IN PAYMENTS -->
-  <section class="kb" id="f">
+  <section class="kb" id="f" style="--accent:#157F47">
     <div class="sec-h"><span class="ltr">F</span><div><div class="eyebrow">Section F · Solutions in Payments</div><h2>The Portal for Everything Beyond Shift4 &amp; Square</h2></div></div>
     <div class="cards c2">
       <div class="card"><div class="kicker">What SIP handles</div><h3>The catch-all portal</h3>
@@ -258,7 +263,7 @@ section.kb{scroll-margin-top:80px;margin:0 0 34px}
   </section>
 
   <!-- G · SIP TRAINING VIDEOS -->
-  <section class="kb" id="g">
+  <section class="kb" id="g" style="--accent:#0E7C8B">
     <div class="sec-h"><span class="ltr">G</span><div><div class="eyebrow">Section G · SIP Training Videos</div><h2>Watch These Before Submitting Your First App</h2></div></div>
     <div class="vid"><div class="num">1</div><div class="meta"><div class="len">6:51 min</div><h3>How to Start an Online Application &amp; Transfer for Digital Signature</h3><p>Walk through starting a merchant application in the SIP portal, completing the required fields, and sending it to your merchant for digital signature.</p><a href="https://youtube.com/watch?v=UPCw7-5YGTY" target="_blank" rel="noopener">▶ Watch on YouTube ↗</a></div></div>
     <div class="vid"><div class="num">2</div><div class="meta"><div class="len">3:06 min</div><h3>How to Download &amp; Submit a Paper Merchant Processing Agreement</h3><p>Learn when to use a paper MPA instead of a digital app, how to download the form from the portal, and the proper way to submit it to underwriting.</p><a href="https://youtube.com/watch?v=1bLfvEVp7P8" target="_blank" rel="noopener">▶ Watch on YouTube ↗</a></div></div>
@@ -267,8 +272,8 @@ section.kb{scroll-margin-top:80px;margin:0 0 34px}
   </section>
 
   <!-- H · SQUARE -->
-  <section class="kb" id="h">
-    <div class="sec-h"><span class="ltr">H</span><div><div class="eyebrow">Section H · Square</div><h2>Versatile POS — Retail, Restaurants, Services &amp; Online</h2></div></div>
+  <section class="kb" id="h" style="--accent:#1F2937">
+    <div class="sec-h"><span class="ltr">H</span><div><div class="eyebrow">Section H · Square</div><h2>Versatile POS — Retail, Restaurants, Services &amp; Online</h2></div><img class="sec-logo" src="assets/logos/square.svg" alt="Square"></div>
     <div class="callout tip"><span class="ico">✅</span><div><b>Square is one of our core platforms.</b> Use the links below to sign merchants up directly.</div></div>
     <div class="cards c2">
       <div class="card"><div class="kicker">Why Square works</div><h3>Versatile &amp; simple</h3>
@@ -306,7 +311,7 @@ section.kb{scroll-margin-top:80px;margin:0 0 34px}
   </section>
 
   <!-- I · CALL FLOW -->
-  <section class="kb" id="i">
+  <section class="kb" id="i" style="--accent:#C43A56">
     <div class="sec-h"><span class="ltr">I</span><div><div class="eyebrow">Section I · Call Flow</div><h2>From First Contact to Signed Deal</h2></div></div>
     <div class="flow">
       <div class="fs"><div class="n">1</div><h3>Intro</h3><p>Introduce yourself, NextPay, and your value prop in under 30 seconds.</p></div>
@@ -328,7 +333,7 @@ section.kb{scroll-margin-top:80px;margin:0 0 34px}
   </section>
 
   <!-- J · PROSPECTING, INCENTIVES & NEXTLINK -->
-  <section class="kb" id="j">
+  <section class="kb" id="j" style="--accent:#B07D12">
     <div class="sec-h"><span class="ltr">J</span><div><div class="eyebrow">Section J · Prospecting, Incentives &amp; NextLink</div><h2>Your Hustle. Your Pipeline. Your Pay.</h2></div></div>
 
     <h3 style="font-size:17px;color:var(--navy);margin:4px 0 8px">Lead distribution rules</h3>
