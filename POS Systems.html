@@ -824,5 +824,6 @@ window.NP_PRODUCTS = {"p-chively-handheld":{"name":"Chively Handheld POS","brand
 </script>
 <script>(function(){var bar=document.querySelector(".posfilter");if(!bar)return;var secs=[].slice.call(document.querySelectorAll(".bsec"));bar.addEventListener("click",function(e){var btn=e.target.closest("button");if(!btn)return;bar.querySelectorAll("button").forEach(function(b){b.classList.remove("on")});btn.classList.add("on");var f=btn.getAttribute("data-f");secs.forEach(function(s){var cats=(s.getAttribute("data-cats")||"").split(" ");s.classList.toggle("pf-hide", f!=="all" && cats.indexOf(f)<0)});window.scrollTo({top:bar.offsetTop-90,behavior:"smooth"});});})();</script>
 <script>document.querySelectorAll(".showmore").forEach(function(btn){var lbl=btn.getAttribute("data-label")||"products";btn.addEventListener("click",function(){var grid=btn.previousElementSibling;while(grid&&!grid.classList.contains("tgrid"))grid=grid.previousElementSibling;if(!grid)return;var open=grid.classList.toggle("expanded");btn.classList.toggle("open",open);btn.firstChild.textContent=(open?"Show fewer "+lbl+" ":"Show more "+lbl+" ");});});</script>
+<script src="js/vercel-analytics.js"></script>
 </body>
 </html>

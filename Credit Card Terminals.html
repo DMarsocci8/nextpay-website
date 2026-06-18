@@ -779,5 +779,6 @@ window.NP_PRODUCTS = {
 })();
 </script>
 <script>document.querySelectorAll(".showmore").forEach(function(btn){var lbl=btn.getAttribute("data-label")||"terminals";btn.addEventListener("click",function(){var grid=btn.previousElementSibling;while(grid&&!grid.classList.contains("tgrid"))grid=grid.previousElementSibling;if(!grid)return;var open=grid.classList.toggle("expanded");btn.classList.toggle("open",open);btn.firstChild.textContent=(open?"Show fewer "+lbl+" ":"Show more "+lbl+" ");});});</script>
+<script src="js/vercel-analytics.js"></script>
 </body>
 </html>
