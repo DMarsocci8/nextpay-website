@@ -12,7 +12,6 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600;700&family=Poppins:wght@500;600;700;800&display=swap" rel="stylesheet">
 <style>
-/* ---- hub shell ---- */
 .hub-bar{position:sticky;top:0;z-index:60;background:var(--navy);color:#fff;border-bottom:1px solid rgba(255,255,255,.10)}
 .hub-bar-inner{display:flex;align-items:center;gap:18px;height:66px;max-width:var(--maxw);margin:0 auto;padding:0 28px}
 .hub-bar img.logo{height:34px;width:auto;display:block}.hub-bar .pipe{width:1px;height:26px;background:rgba(255,255,255,.18)}
@@ -34,7 +33,10 @@
 .field input:focus,.field select:focus{outline:2px solid var(--teal)}
 .actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:6px}
 .preview h2{font-size:14px;letter-spacing:.04em;text-transform:uppercase;color:var(--slate);margin-bottom:13px}
-.flbox{border-radius:10px;overflow:hidden;box-shadow:0 10px 40px rgba(12,27,42,.2);background:#fff;max-width:100%}
+.flbox,.flboxP{border-radius:10px;overflow:hidden;box-shadow:0 10px 40px rgba(12,27,42,.2);background:#fff;max-width:100%}
+.flboxP{display:none}
+body.fmt-flyer .flbox{display:none}
+body.fmt-flyer .flboxP{display:block}
 .tip{display:flex;gap:12px;align-items:flex-start;background:var(--bg-soft);border:1px solid var(--line);border-radius:12px;padding:14px 16px;margin-top:22px;max-width:760px}
 .tip svg{width:18px;height:18px;color:var(--teal-dark);flex:none;margin-top:2px}.tip p{font-size:13px;color:var(--slate);line-height:1.5}
 .hub-foot{background:var(--navy);color:#9fb1c2;padding:30px 0;margin-top:46px;font-size:13.5px}
@@ -43,7 +45,7 @@
 
 /* ---- scoped flyer design ---- */
 
-  #stage{ font-family:'Figtree',sans-serif; 
+  #stage,#stageP{ font-family:'Figtree',sans-serif; 
     --navy:#143A4C;
     --navy-deep:#0E2A37;
     --teal:#3EA8A6;
@@ -52,7 +54,7 @@
     --ink:#16384a;
     --line: rgba(20,58,76,.12);
   }
-  #stage,#stage *{margin:0;padding:0;box-sizing:border-box;}
+  #stage,#stage *,#stageP,#stageP *{margin:0;padding:0;box-sizing:border-box;}
 
   /* ---- Stage / scaler ---- */
   #stage{transform-origin:top left;}
@@ -186,19 +188,62 @@
 
   
 
-#stage{transform-origin:top left;will-change:transform}
+/* ---- portrait 8.5x11 overrides ---- */
+#stageP .flyer{width:1500px;height:1941px;grid-template-rows:120px 470px 520px 300px 330px 201px;}
+#stageP .header{padding:0 60px}
+#stageP .header img{height:76px}
+#stageP .industries{font-size:20px;gap:16px}
+#stageP .hero{grid-template-columns:1fr 480px;padding:0 60px}
+#stageP .headline{font-size:104px}
+#stageP .subhead{font-size:23px;white-space:normal;max-width:780px;margin-top:20px;line-height:1.4}
+#stageP .subhead .hl{white-space:normal}
+#stageP .zero{width:470px;height:212px;gap:22px;padding:0 34px}
+#stageP .zero .big{font-size:150px}
+#stageP .zero .top{font-size:30px}
+#stageP .zero .desc{font-size:33px}
+#stageP .pos{padding:26px 60px 26px}
+#stageP .section-label{font-size:23px;margin-bottom:14px}
+#stageP .pos-grid{gap:18px}
+#stageP .pos-card img{max-height:170px}
+#stageP .pos-name{font-size:19px;padding:12px 0}
+#stageP .pos-card.accent .ring{width:58px;height:58px;font-size:38px}
+#stageP .pos-card.accent .csub{font-size:13px}
+#stageP .pos-note{font-size:18px;margin-top:18px}
+#stageP .benefits{padding:24px 60px}
+#stageP .ben-head span{font-size:19px}
+#stageP .bi .ck{width:42px;height:42px}
+#stageP .bi .ck::before{font-size:22px}
+#stageP .bi .ti{font-size:22px}
+#stageP .bi .de{font-size:16px;margin-top:5px}
+#stageP .funding{padding:18px 0}
+#stageP .funding .tag{width:250px;font-size:17px;padding:11px 0}
+#stageP .funding .msg{font-size:23px}
+#stageP .fund-strip{padding:0 60px;gap:24px}
+#stageP .footer{padding:30px 60px 0;gap:18px}
+#stageP .person .nm{font-size:33px}
+#stageP .person .rl{font-size:19px}
+#stageP .person .pw{font-size:16px}
+#stageP .ci .lbl{font-size:13px;width:54px}
+#stageP .ci .val{font-size:22px}
+#stageP .qr img{width:104px;height:104px}
+#stageP .qr .qtxt .s{font-size:22px}
+#stageP .qr .qtxt .q{font-size:16px;max-width:180px}
+#stageP .fineprint{font-size:16px;padding-top:16px}
 
-/* ---- print ---- */
+#stage,#stageP{transform-origin:top left;will-change:transform}
+
 @media print{
   body{background:#fff}
   .hub-bar,.pg-head,.form-card,.preview h2,.tip,.hub-foot,.actions{display:none !important}
   .layout{display:block;padding:0}
-  .flbox{box-shadow:none;border-radius:0;overflow:visible !important;height:auto !important}
+  .flbox,.flboxP{box-shadow:none;border-radius:0;overflow:visible !important;height:auto !important}
+  body.fmt-flyer .flbox{display:none !important}
+  body:not(.fmt-flyer) .flboxP{display:none !important}
 }
 </style>
 <style id="printCfg"></style>
 </head>
-<body>
+<body class="fmt-postcard">
 
 <div class="hub-bar"><div class="hub-bar-inner">
   <a href="Sales Hub.html" style="display:flex;align-items:center" aria-label="Sales Hub home"><img class="logo" src="assets/logos/nextpay-nav.png" alt="NextPay"></a>
@@ -209,7 +254,7 @@
 <header class="pg-head"><div class="wrap">
   <div class="crumbs"><a href="Sales Hub.html">Sales Hub</a><span class="sep">/</span><a href="Sales Hub - Marketing Assets.html">Marketing Assets</a><span class="sep">/</span><span>Pay Less. Earn More.</span></div>
   <h1>Pay Less. Earn More. &mdash; personalize</h1>
-  <p class="lead">A horizontal postcard (6&times;4) you hand to any prospect. Add your name and contact info once &mdash; it&rsquo;s saved with your business card and flyers &mdash; then print it or save a PDF. Print at postcard size or scaled up to fill a page.</p>
+  <p class="lead">The full NextPay value pitch you hand to any prospect. Add your name and contact info once &mdash; it&rsquo;s saved with your business card and flyers &mdash; then pick a format and print or save a PDF.</p>
 </div></header>
 
 <main class="wrap">
@@ -217,15 +262,16 @@
 
     <div class="form-card">
       <h2>Your details</h2>
-      <p class="hint">Fill these in &mdash; the postcard updates as you type.</p>
+      <p class="hint">Fill these in &mdash; the preview updates as you type.</p>
       <div class="field"><label for="f-name">Full name</label><input id="f-name" type="text" autocomplete="name"></div>
       <div class="field"><label for="f-title">Title</label><input id="f-title" type="text" autocomplete="organization-title" placeholder="Relationship Manager"></div>
       <div class="field"><label for="f-cell">Phone</label><input id="f-cell" type="tel" autocomplete="tel"></div>
       <div class="field"><label for="f-email">Email</label><input id="f-email" type="email" autocomplete="email"></div>
-      <div class="field"><label for="f-size">Print size</label>
+      <div class="field"><label for="f-size">Format</label>
         <select id="f-size">
           <option value="postcard">Postcard &mdash; 6 &times; 4 (horizontal)</option>
-          <option value="flyer">Full page &mdash; fills letter (landscape)</option>
+          <option value="fullpage">Full page &mdash; landscape letter</option>
+          <option value="flyer">Flyer &mdash; 8.5 &times; 11 (portrait)</option>
         </select>
       </div>
       <div class="actions">
@@ -236,8 +282,7 @@
 
     <div class="preview">
       <h2>Preview</h2>
-      <div class="flbox">
-<div id="stage">
+      <div class="flbox"><div id="stage">
     <div class="flyer" data-screen-label="NextPay Flyer 6x4">
 
       <!-- Header -->
@@ -362,11 +407,136 @@
       </footer>
 
     </div>
-  </div>
-      </div>
+  </div></div>
+      <div class="flboxP"><div id="stageP">
+    <div class="flyer" data-screen-label="NextPay Flyer 8.5x11">
+
+      <!-- Header -->
+      <header class="header">
+        <img src="assets/marketing/plem-logo.png" alt="NextPay Business Solutions">
+        <div class="industries">
+          <span>Retail</span><span class="dot"></span>
+          <span>Restaurant</span><span class="dot"></span>
+          <span>Service</span><span class="dot"></span>
+          <span>E‑Commerce</span>
+        </div>
+      </header>
+
+      <!-- Hero -->
+      <section class="hero">
+        <div class="hero-left">
+          <div class="eyebrow">Smarter Solutions for Your Business</div>
+          <h1 class="headline">Pay Less. <span class="t">Earn More.</span></h1>
+          <p class="subhead">Switch to NextPay, stop overpaying processors, and <span class="hl">earn rewards on every dollar</span> you process.</p>
+        </div>
+        <div class="zero">
+          <div class="big">$0</div>
+          <div class="stack">
+            <div class="top">Zero</div>
+            <div class="desc">Credit Card<br>Processing Fees</div>
+          </div>
+        </div>
+      </section>
+
+      <!-- POS lineup -->
+      <section class="pos">
+        <div class="section-label"><span>POS Systems &amp; Terminals We Offer</span><span class="sl-more">+ Many More</span><span class="sl-line"></span></div>
+        <div class="pos-grid">
+          <div class="pos-card">
+            <div class="imgwrap"><img src="assets/marketing/plem-square.jpg" alt="Square POS"></div>
+            <div class="pos-name">Square</div>
+          </div>
+          <div class="pos-card">
+            <div class="imgwrap"><img src="assets/marketing/plem-skytab.png" alt="SkyTab POS"></div>
+            <div class="pos-name">SkyTab</div>
+          </div>
+          <div class="pos-card">
+            <div class="imgwrap"><img src="assets/marketing/plem-clover.webp" alt="Clover POS"></div>
+            <div class="pos-name">Clover</div>
+          </div>
+          <div class="pos-card">
+            <div class="imgwrap"><img src="assets/marketing/plem-terminals.png" alt="Credit card terminals"></div>
+            <div class="pos-name">Terminals</div>
+          </div>
+          <div class="pos-card accent">
+            <div class="imgwrap">
+              <div class="ring">+<svg class="spark" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0l2.2 7.4L21.6 6l-5.3 5.4 5.7 4.9-7.4-1.1L12 24l-2.6-8.8L2 16.3l5.7-4.9L2.4 6l7.4 1.4z"></path></svg></div>
+              <div class="csub">Don’t see one you like?<br>We have more options.</div>
+            </div>
+            <div class="pos-name">Custom POS</div>
+          </div>
+        </div>
+        <div class="pos-note">Up to <b>$5K switch bonus</b>, buy-or-lease &amp; free-equipment options on select systems — <b>ask which fits you</b>.</div>
+      </section>
+
+      <!-- Benefits -->
+      <section class="benefits">
+        <div class="ben-head"><span>Why Businesses Choose NextPay</span></div>
+        <div class="ben-row">
+          <div class="bi">
+            <div class="ck"></div>
+            <div><div class="ti">Low / No Upfront Cost</div><div class="de">Affordable equipment options</div></div>
+          </div>
+          <div class="bi hl">
+            <div class="ck"></div>
+            <div><div class="ti">Merchant Rewards</div><div class="de">Earn points on every dollar</div></div>
+          </div>
+          <div class="bi">
+            <div class="ck"></div>
+            <div><div class="ti">Next‑Day Funding</div><div class="de">Fast access to your money</div></div>
+          </div>
+          <div class="bi">
+            <div class="ck"></div>
+            <div><div class="ti">No Long‑Term Contracts</div><div class="de">Flexible, no-pressure options</div></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Funding band -->
+      <section class="funding">
+        <div class="fund-strip">
+          <span class="tag">Get Funded</span>
+          <span class="msg">Need working capital to grow? <b>Fast approvals, flexible terms, funds in days.</b> Ask me how.</span>
+        </div>
+        <div class="fund-strip">
+          <span class="tag">Buy or Sell</span>
+          <span class="msg">Looking to <b>buy, sell, or expand</b> your business? We help you make the right move.</span>
+        </div>
+        <div class="fund-strip">
+          <span class="tag">Payroll &amp; HR</span>
+          <span class="msg">Simplify <b>payroll and workers’ comp</b> — one less thing to manage.</span>
+        </div>
+      </section>
+
+      <!-- Footer -->
+      <footer class="footer">
+        <div class="footer-main">
+          <div class="person">
+            <div class="nm">Domenico Marsocci</div>
+            <div class="rl">Relationship Manager</div>
+            <div class="pw">Powered by NextPay Business Solutions</div>
+          </div>
+          <div class="contact">
+            <div class="ci"><span class="lbl">Call</span><span class="val">585‑303‑2769</span></div>
+            <div class="ci"><span class="lbl">Email</span><span class="val">dom@nextpaypos.com</span></div>
+            <div class="ci"><span class="lbl">Web</span><span class="val">www.nextpaypos.com</span></div>
+          </div>
+          <div class="qr">
+            <img src="assets/marketing/plem-qr.png" alt="Scan for a custom quote">
+            <div class="qtxt">
+              <div class="s">Scan for your<br><span>custom quote</span></div>
+              <div class="q">Takes 60 seconds — see your savings</div>
+            </div>
+          </div>
+        </div>
+        <div class="fineprint">Authorized Payments &amp; Rewards Specialist</div>
+      </footer>
+
+    </div>
+  </div></div>
       <div class="tip">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4M12 8h.01"/></svg>
-        <p><b>Printing:</b> click Print / Save PDF, set margins to <b>None</b> and scale to <b>100%</b> (uncheck &ldquo;Fit to page&rdquo;). Postcard prints on 6&times;4 stock; &ldquo;Full page&rdquo; fills a landscape letter sheet. <b>Note:</b> the QR code is a sample &mdash; ask the office for your own quote QR before sending in volume.</p>
+        <p><b>Printing:</b> click Print / Save PDF, set margins to <b>None</b> and scale to <b>100%</b> (uncheck &ldquo;Fit to page&rdquo;). Each format sets its own page size automatically. <b>Note:</b> the QR code is a sample &mdash; ask the office for your own quote QR before sending in volume.</p>
       </div>
     </div>
 
@@ -374,7 +544,7 @@
 </main>
 
 <footer class="hub-foot"><div class="wrap">
-  <span>NextPay Sales Hub &middot; Pay Less. Earn More. postcard &middot; Internal use only.</span>
+  <span>NextPay Sales Hub &middot; Pay Less. Earn More. &middot; Internal use only.</span>
   <span><a href="Sales Hub - Request Access.html#suggest">&#128161; Suggest / Request</a> &middot; <a href="Sales Hub - Marketing Assets.html">&larr; Marketing assets</a></span>
 </div></footer>
 
@@ -383,15 +553,17 @@ var KEY='np_rep_profile';
 function load(){ try{ return JSON.parse(localStorage.getItem(KEY))||{}; }catch(e){ return {}; } }
 function save(p){ try{ localStorage.setItem(KEY, JSON.stringify(p)); }catch(e){} }
 var prof=load();
-var stage=document.getElementById('stage');
+var stage=document.getElementById('stage'), stageP=document.getElementById('stageP');
 
-function q(sel){ return document.querySelector('#stage '+sel); }
+function setAll(sel, val){ document.querySelectorAll(sel).forEach(function(el){ el.textContent=val; }); }
 function applyProfile(){
-  q('.person .nm').textContent = prof.name || 'Your Name';
-  q('.person .rl').textContent = prof.title || 'Relationship Manager';
-  var vals=document.querySelectorAll('#stage .contact .ci .val');
-  if(vals[0]) vals[0].textContent = prof.cell  || 'Your phone';
-  if(vals[1]) vals[1].textContent = prof.email || 'you@nextpaypos.com';
+  setAll('#stage .person .nm, #stageP .person .nm', prof.name || 'Your Name');
+  setAll('#stage .person .rl, #stageP .person .rl', prof.title || 'Relationship Manager');
+  [stage,stageP].forEach(function(st){
+    var v=st.querySelectorAll('.contact .ci .val');
+    if(v[0]) v[0].textContent = prof.cell  || 'Your phone';
+    if(v[1]) v[1].textContent = prof.email || 'you@nextpaypos.com';
+  });
 }
 var map={name:'f-name',title:'f-title',cell:'f-cell',email:'f-email'};
 Object.keys(map).forEach(function(k){
@@ -401,30 +573,29 @@ Object.keys(map).forEach(function(k){
 });
 applyProfile();
 
-/* fit the 1500x1000 stage into the preview box */
-function fit(){
-  var box=document.querySelector('.flbox');
-  if(!box) return;
-  var w=box.clientWidth; var s=w/1500;
-  stage.style.transform='scale('+s+')';
-  box.style.height=(1000*s)+'px';
+function fitOne(st, boxSel, w0, h0){
+  var box=document.querySelector(boxSel); if(!box||box.offsetParent===null) return;
+  var w=box.clientWidth; var s=w/w0;
+  st.style.transform='scale('+s+')'; box.style.height=(h0*s)+'px';
 }
+function fit(){ fitOne(stage,'.flbox',1500,1000); fitOne(stageP,'.flboxP',1500,1941); }
 window.addEventListener('resize',fit);
 window.addEventListener('load',fit);
 fit();
 
-/* print size */
-function setPrintSize(v){
-  var pc=document.getElementById('printCfg');
-  if(v==='flyer'){
-    pc.textContent='@media print{@page{size:11in 8.5in;margin:0}#stage{position:fixed;left:.25in;top:.75in;transform:scale(.672) !important;transform-origin:top left}}';
-  }else{
-    pc.textContent='@media print{@page{size:6in 4in;margin:0}#stage{position:fixed;left:0;top:0;transform:scale(.384) !important;transform-origin:top left}}';
-  }
+var PRINT={
+  postcard:'@media print{@page{size:6in 4in;margin:0}#stage{position:fixed;left:0;top:0;transform:scale(.384) !important;transform-origin:top left}}',
+  fullpage:'@media print{@page{size:11in 8.5in;margin:0}#stage{position:fixed;left:.25in;top:.75in;transform:scale(.672) !important;transform-origin:top left}}',
+  flyer:'@media print{@page{size:8.5in 11in;margin:0}#stageP{position:fixed;left:0;top:0;transform:scale(.544) !important;transform-origin:top left}}'
+};
+function setFmt(v){
+  document.body.className='fmt-'+v;
+  document.getElementById('printCfg').textContent=PRINT[v]||PRINT.postcard;
+  fit();
 }
 var sizeSel=document.getElementById('f-size');
-sizeSel.addEventListener('change',function(){ setPrintSize(sizeSel.value); });
-setPrintSize('postcard');
+sizeSel.addEventListener('change',function(){ setFmt(sizeSel.value); });
+setFmt('postcard');
 
 document.getElementById('printBtn').addEventListener('click',function(){ window.print(); });
 document.getElementById('clearBtn').addEventListener('click',function(){
