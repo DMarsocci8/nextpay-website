@@ -36,6 +36,15 @@
 .field label{display:block;font-size:13px;font-weight:700;color:var(--ink);margin-bottom:6px}
 .field input,.field select{width:100%;border:1px solid var(--line);border-radius:10px;padding:11px 13px;font-family:inherit;font-size:15px;color:var(--ink);background:#fff}
 .field input:focus,.field select:focus{outline:2px solid var(--teal)}
+/* make the flyer picker obviously a dropdown */
+.pick-field{margin-bottom:18px;background:rgba(20,161,140,.05);border:1px solid rgba(20,161,140,.22);border-radius:14px;padding:14px 14px 16px}
+.pick-field .pick-cap{display:flex;align-items:center;gap:7px;font-size:13.5px;font-weight:800;color:var(--teal-dark);margin-bottom:8px}
+.pick-field .pick-cap svg{width:17px;height:17px}
+.pick-field .pick-hint{font-size:12px;color:var(--slate);margin-top:7px}
+#f-flyer{width:100%;border-radius:10px;padding:12px 44px 12px 13px;font-family:inherit;font-size:15px;appearance:none;-webkit-appearance:none;-moz-appearance:none;cursor:pointer;border:2px solid var(--teal);background-color:#fff;font-weight:700;color:var(--navy);
+  background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%2314A18C' stroke-width='2.6' stroke-linecap='round' stroke-linejoin='round'><path d='M6 9l6 6 6-6'/></svg>");
+  background-repeat:no-repeat;background-position:right 14px center;background-size:18px}
+#f-flyer:hover{border-color:var(--teal-dark);background-color:rgba(20,161,140,.06)}
 .field .suffixed{display:flex;align-items:stretch}
 .field .suffixed input{border-top-right-radius:0;border-bottom-right-radius:0;border-right:0}
 .field .suffixed .suffix{display:flex;align-items:center;padding:0 12px;background:var(--bg-soft-2);border:1px solid var(--line);border-left:0;border-top-right-radius:10px;border-bottom-right-radius:10px;font-size:13.5px;font-weight:700;color:var(--slate)}
@@ -133,9 +142,13 @@
       <h2>Personalize</h2>
       <p class="hint">Choose a flyer and fill in your details — the preview updates as you type.</p>
 
-      <div class="field">
-        <label for="f-flyer">Flyer</label>
+      <div class="pick-field">
+        <label class="pick-cap" for="f-flyer">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M8 6h13M8 12h13M8 18h13M3 6h.01M3 12h.01M3 18h.01"/></svg>
+          Step 1 — choose a flyer
+        </label>
         <select id="f-flyer"></select>
+        <div class="pick-hint">▾ Tap to pick which flyer to personalize — the preview updates instantly.</div>
       </div>
       <div class="field"><label for="f-name">Full name</label><input id="f-name" type="text" placeholder="" autocomplete="name"></div>
       <div class="field"><label for="f-cell">Phone</label><input id="f-cell" type="tel" placeholder="" autocomplete="tel"></div>
