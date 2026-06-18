@@ -36,6 +36,13 @@
 .brandcloud{display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:24px 40px}
 .brandcloud img{height:30px;width:auto;max-width:120px;opacity:.8;filter:grayscale(.2)}
 .brandcloud .txt{font-size:19px;font-weight:800;color:var(--navy);opacity:.65}
+.brandcloud .txt.ss{display:inline-flex;align-items:center;gap:8px;opacity:.85}
+.brandcloud .txt.ss img{height:24px;width:auto;max-width:none;opacity:1;filter:none}
+/* zero-fee highlight pill (hero) */
+.zerofee-pill{display:inline-flex;align-items:center;gap:10px;background:linear-gradient(100deg,var(--teal),var(--teal-bright));color:#fff;font-weight:700;font-size:14.5px;padding:8px 16px 8px 8px;border-radius:999px;margin:0 0 18px;box-shadow:0 12px 28px -12px rgba(20,161,140,.95);transition:.16s}
+.zerofee-pill:hover{transform:translateY(-1px);box-shadow:0 16px 32px -12px rgba(20,161,140,1);color:#fff}
+.zerofee-pill .zf-badge{flex:none;background:#fff;color:var(--teal-dark);font-weight:800;font-size:13px;height:26px;padding:0 10px;border-radius:999px;display:inline-flex;align-items:center;letter-spacing:-.02em}
+.zerofee-pill svg{width:16px;height:16px;flex:none}
 /* industries */
 .ind4{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
 .ind-tile{position:relative;border-radius:var(--radius);overflow:hidden;border:1px solid var(--line);box-shadow:var(--shadow-sm);background:#fff;transition:.18s}
@@ -61,6 +68,7 @@
   <div class="wrap">
     <div class="home-grid">
       <div>
+        <a class="zerofee-pill" href="Fee Programs.html"><span class="zf-badge">$0</span>Zero-Fee Processing — pass card fees on &amp; keep 100%<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
         <span class="tag tag-teal">Smarter Solutions. Stronger Businesses.</span>
         <h1><span class="l1">Payments &amp; tools to</span><br><em>run and grow</em> your business.</h1>
         <p class="lead">NextPay brings POS systems, card terminals, online gateways, invoicing, payroll, funding, and growth tools together under one account — with transparent processing we'll match or beat.</p>
@@ -154,7 +162,7 @@
       <span class="txt">PAX</span>
       <img src="assets/logos/shift4.png" alt="Shift4" style="filter:none">
       <img src="assets/logos/quantic-tight.png" alt="Quantic">
-      <span class="txt">SwipeSimple</span>
+      <span class="txt ss"><img src="assets/logos/swipesimple.png" alt="">SwipeSimple</span>
     </div>
   </div>
 </section>
