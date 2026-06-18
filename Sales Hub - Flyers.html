@@ -190,6 +190,9 @@
                  align : 'center' | 'left'   (row alignment)
                  onDark: true if the band is dark (controls icon/text color via the inline color you pass)
    =========================================================== */
+/* shared contact placement for the industry flyers — drops into the
+   brand-teal oval at the bottom-left (oval: right tip ~3.48in, centered ~9.86in) */
+var OVAL = { style:'left:.45in;top:9.32in;width:2.55in;color:#fff', align:'left' };
 var FLYERS = [
   {
     id:'sample-savings',
@@ -213,16 +216,23 @@ var FLYERS = [
       + '<div class="s-offer"><div class="big">$500</div><div><h3>Switch Guarantee</h3><p>Ask how we make switching risk-free — free onboarding, install &amp; training included.</p></div></div>'
       + '</div>'
   }
-  /* ---- example: a Canva PNG flyer, categorized by industry ----
-  , {
-    id:'attorneys-faster-payments',
-    label:'Attorneys — Faster Payments & Bigger Profits',
-    cat:'Professional Services',
-    type:'img',
-    img:'assets/flyers/attorneys-faster-payments.png',
-    // contact block sits in the teal oval, bottom-left of this flyer:
-    contact:{ style:'left:.55in;bottom:.7in;width:3.3in;color:#fff;text-align:center', align:'center' }
-  } */
+
+  /* ---- Industry "Faster Payments & Bigger Profits" flyers (Canva PNG, new brand logo,
+          brand teal, agent contact drops into the teal oval bottom-left) ---- */
+  , { id:'eye-doctors',     label:'Eye Doctors — Faster Payments & Bigger Profits',     cat:'Healthcare & Medical',   type:'img', img:'assets/flyers/eye-doctors.png',     contact:OVAL }
+  , { id:'dentists',        label:'Dentists — Faster Payments & Bigger Profits',        cat:'Healthcare & Medical',   type:'img', img:'assets/flyers/dentists.png',        contact:OVAL }
+  , { id:'plumbers',        label:'Plumbers — Faster Payments & Bigger Profits',        cat:'Services',               type:'img', img:'assets/flyers/plumbers.png',        contact:OVAL }
+  , { id:'electricians',    label:'Electricians — Faster Payments & Bigger Profits',    cat:'Services',               type:'img', img:'assets/flyers/electricians.png',    contact:OVAL }
+  , { id:'hvac',            label:'HVAC Technicians — Faster Payments & Bigger Profits', cat:'Services',              type:'img', img:'assets/flyers/hvac.png',            contact:OVAL }
+  , { id:'painters',        label:'Painters — Faster Payments & Bigger Profits',        cat:'Services',               type:'img', img:'assets/flyers/painters.png',        contact:OVAL }
+  , { id:'landscapers',     label:'Landscapers — Faster Payments & Bigger Profits',     cat:'Services',               type:'img', img:'assets/flyers/landscapers.png',     contact:OVAL }
+  , { id:'fire-protection', label:'Fire Protection — Faster Payments & Bigger Profits', cat:'Services',               type:'img', img:'assets/flyers/fire-protection.png', contact:OVAL }
+  , { id:'movers',          label:'Movers — Faster Payments & Bigger Profits',          cat:'Services',               type:'img', img:'assets/flyers/movers.png',          contact:OVAL }
+  , { id:'mechanics',       label:'Mechanics — Faster Payments & Bigger Profits',       cat:'Services',               type:'img', img:'assets/flyers/mechanics.png',       contact:OVAL }
+  , { id:'auto',            label:'Auto Dealerships — Faster Payments & Bigger Profits', cat:'Services',              type:'img', img:'assets/flyers/auto.png',            contact:OVAL }
+  , { id:'accountants',     label:'Accountants — Faster Payments & Bigger Profits',     cat:'Professional Services',  type:'img', img:'assets/flyers/accountants.png',     contact:OVAL }
+  , { id:'b2b',             label:'B2B — Faster Payments & Bigger Profits',             cat:'Professional Services',  type:'img', img:'assets/flyers/b2b.png',             contact:OVAL }
+  , { id:'smoke-shops',     label:'Smoke Shops — Save BIG on Processing Fees',          cat:'High Risk & Specialty',  type:'img', img:'assets/flyers/smoke-shops.png',     contact:OVAL }
 ];
 
 /* shared rep profile — same key as the business card maker */
@@ -252,6 +262,12 @@ var CAT_ORDER=['General','Retail','Food & Beverage','Services','Professional Ser
     groups[c].forEach(function(i){ var o=document.createElement('option'); o.value=i; o.textContent=FLYERS[i].label; og.appendChild(o); });
     picker.appendChild(og);
   });
+})();
+/* deep-link: open straight to a flyer via ?flyer=<id> (used by the Document Library) */
+(function deepLink(){
+  var m=(location.search+location.hash).match(/[?&#]flyer=([\w-]+)/);
+  if(!m) return;
+  for(var i=0;i<FLYERS.length;i++){ if(FLYERS[i].id===m[1]){ idx=i; picker.value=i; break; } }
 })();
 picker.addEventListener('change', function(){ idx=+picker.value; render(); });
 
