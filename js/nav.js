@@ -133,7 +133,7 @@
         <div><h4>Company</h4>
           <a href="Why NextPay.html">Why NextPay</a><a href="Pricing.html">Pricing</a><a href="Resources.html">Resources</a><a href="Contact.html">Contact</a></div>
       </div>
-      <div class="foot-bottom"><span>© 2026 NextPay. All rights reserved.</span><span><a href="Agent Portal.html" target="_blank" rel="noopener" style="color:#8497a8">Agent Login</a> · nextpaypos.com</span></div>
+      <div class="foot-bottom"><span>© 2026 NextPay. All rights reserved.</span><span><a href="https://hub.nextpaypos.com/Sales%20Hub" style="color:#8497a8">Agent Login</a> · nextpaypos.com</span></div>
     </div>
   </footer>`;
 
