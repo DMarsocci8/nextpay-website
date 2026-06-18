@@ -60,7 +60,8 @@ main.wrap{padding:30px 0 10px}
   <p class="lead">Word-for-word scripts organized by product, plus ready-to-send text and email templates. Pick a tab, personalize the <b>[brackets]</b>, and go. Every script follows the same flow — open, get to the decision maker, ask leading questions, close for the appointment, handle objections.</p>
   <div class="tabs">
     <button class="active" data-s="cash">Cash Discount</button>
-    <button data-s="nextpay">NextPay POS</button>
+    <button data-s="rewards">Rewards</button>
+    <button data-s="chively">Chively POS</button>
     <button data-s="square">Square Switch</button>
     <button data-s="clover">Clover</button>
     <button data-s="dine">Shift4 Dine</button>
@@ -133,17 +134,48 @@ main.wrap{padding:30px 0 10px}
     </div>
   </div>
 
-  <!-- NEXTPAY POS (CHIVELY) -->
-  <div class="script" id="nextpay">
+  <!-- REWARDS (NextPay Rewards, powered by Tuzo) -->
+  <div class="script" id="rewards">
+    <div class="blk"><h2>Opening</h2>
+      <p class="say"><span class="who">Agent:</span> "Hi, this is [your name] with NextPay Business Solutions — am I speaking with the owner or the person who handles the payments?"</p>
+      <p class="cond">If gatekeeper:</p>
+      <p class="say"><span class="who">Agent:</span> "Could you put me through for a quick minute? I help owners earn rewards on money they're already running through the business — it's worth their time."</p>
+    </div>
+    <div class="blk"><h2>Once with the decision maker</h2>
+      <p class="say"><span class="who">Agent:</span> "Thanks for the minute — and I'm not calling about your rate today. Quick question: are you earning any points or rewards on your sales right now? Almost no one is. You run thousands through the business every month and get nothing back for it. With NextPay Rewards you earn points on every dollar you process — like a travel credit card — redeemable for travel, gift cards, even statement credit. Worth a look?"</p>
+      <p class="cond">If they show interest:</p>
+      <p class="say"><span class="who">Agent:</span> "Perfect. It rides on top of your payments — every sale earns points automatically, and you redeem them whenever you want. Roughly how much are you processing a month? That tells me about what you'd be earning."</p>
+    </div>
+    <div class="blk"><h2>Leading questions</h2>
+      <ul class="qs">
+        <li>"Are you earning any points or rewards on your business sales today?"</li>
+        <li>"About how much are you processing in a month?"</li>
+        <li>"If every dollar of sales earned you travel or cash-back rewards — at no extra cost — is that worth 15 minutes?"</li>
+      </ul>
+    </div>
+    <div class="blk"><h2>Close</h2>
+      <p class="say"><span class="who">Agent:</span> "Let me run a quick rewards estimate so you can see what you'd be earning each month — five minutes. Later today or tomorrow?"</p>
+      <p class="cond">Internal: run the live estimate in the <a href="Sales Hub - Statements.html#calculators" style="color:var(--teal-dark);font-weight:700">NextPay Rewards Calculator</a> (powered by Tuzo).</p>
+    </div>
+    <div class="blk"><h2>Objections &amp; responses</h2>
+      <div class="obj"><div class="o">"I already have a rewards credit card."</div><div class="r">"That earns on money going out. This earns on money coming in — your sales. They stack: keep your card, and now earn on every dollar your customers pay you, too."</div></div>
+      <div class="obj"><div class="o">"Does it cost extra?"</div><div class="r">"No added cost to start earning — it's built into your NextPay account. I'll show you the numbers side by side so there's no surprise."</div></div>
+      <div class="obj"><div class="o">"I'm happy with my processor."</div><div class="r">"Keep them if you like them — the real question is whether they're paying you back in rewards. If not, you're leaving money on the table every month. Let me just show you what you'd be earning."</div></div>
+      <div class="obj"><div class="o">"Sounds too good to be true."</div><div class="r">"I hear you — it's a real merchant loyalty program (powered by Tuzo). Let me run your actual numbers and you decide. No pressure."</div></div>
+    </div>
+  </div>
+
+  <!-- CHIVELY POS (NextPay's custom POS) -->
+  <div class="script" id="chively">
     <div class="blk"><h2>Opening</h2>
       <p class="say"><span class="who">Agent:</span> "Hi, this is [your name] with NextPay Business Solutions — am I speaking with the owner or whoever runs your point-of-sale and payments?"</p>
       <p class="cond">If gatekeeper:</p>
       <p class="say"><span class="who">Agent:</span> "Could you put me through for two minutes? I help businesses like yours run on one system and stop overpaying on card fees."</p>
     </div>
     <div class="blk"><h2>Once with the decision maker</h2>
-      <p class="say"><span class="who">Agent:</span> "Thanks for the minute. Quick reason for the call — most owners I talk to are running their register, their payments and their reporting on three different systems and still getting nickel-and-dimed on processing. We put all of that on one NextPay POS and we either match or beat what you're paying now. Worth a look?"</p>
+      <p class="say"><span class="who">Agent:</span> "Thanks for the minute. Quick reason for the call — most owners I talk to are running their register, their payments and their reporting on three different systems and still getting nickel-and-dimed on processing. We put all of that on one POS — Chively, our custom platform — and we either match or beat what you're paying now. Worth a look?"</p>
       <p class="cond">If they show interest:</p>
-      <p class="say"><span class="who">Agent:</span> "Perfect. Our POS handles checkout, inventory, staff and reporting — and it's brand-agnostic, so you're never locked to one processor. What are you running today, and roughly what are you processing a month?"</p>
+      <p class="say"><span class="who">Agent:</span> "Perfect. Chively handles checkout, inventory, staff and reporting — and it's brand-agnostic, so you're never locked to one processor. What are you running today, and roughly what are you processing a month?"</p>
     </div>
     <div class="blk"><h2>Leading questions</h2>
       <ul class="qs">
