@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="robots" content="noindex, nofollow">
-<title>PAYS POS — Value Proposition — NextPay Sales Hub</title>
+<title>Competitor Battlecards — NextPay Sales Hub</title>
 <link rel="icon" href="assets/favicon.ico" sizes="any">
 <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
 <link rel="stylesheet" href="css/nextpay.css">
@@ -39,6 +39,31 @@ table.cmp .big{font-size:16px;font-weight:800;color:var(--navy)}
 .win{display:flex;gap:13px;align-items:flex-start;background:rgba(20,161,140,.08);border:1px solid rgba(20,161,140,.25);border-radius:12px;padding:15px 18px;margin-top:22px}
 .win svg{width:18px;height:18px;color:var(--teal-dark);flex:none;margin-top:2px}
 .win p{font-size:14px;color:var(--ink);line-height:1.55}.win b{color:var(--teal-dark)}
+/* tabs + battlecards */
+.tabs{display:flex;flex-wrap:wrap;gap:9px;margin-top:20px}
+.tabs button{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.16);border-radius:999px;padding:9px 16px;font-size:13.5px;font-weight:700;color:#eaf1f6;cursor:pointer;font-family:inherit}
+.tabs button.active{background:var(--teal);border-color:var(--teal);color:#fff}
+.bc{display:none}.bc.show{display:block}
+.bc-angle{font-size:14.5px;color:var(--slate);line-height:1.6;background:var(--bg-soft);border:1px solid var(--line);border-radius:12px;padding:13px 16px;margin-bottom:16px}
+.bc-angle b{color:var(--navy)}
+.bc-cols{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+@media(max-width:760px){.bc-cols{grid-template-columns:1fr}}
+.bc-box{border:1px solid var(--line);border-radius:14px;padding:16px 18px;background:#fff;box-shadow:var(--shadow-sm)}
+.bc-box h3{font-size:13px;font-weight:800;letter-spacing:.05em;text-transform:uppercase;margin-bottom:11px}
+.bc-box.weak h3{color:#b9741a}.bc-box.win-box h3{color:var(--teal-dark)}
+.bc-box ul{list-style:none;margin:0;padding:0}
+.bc-box li{position:relative;padding-left:24px;font-size:14px;color:var(--ink);line-height:1.5;margin-bottom:9px}
+.bc-box li:last-child{margin-bottom:0}
+.bc-box li:before{position:absolute;left:0;top:0;font-weight:800}
+.bc-box.weak li:before{content:'\2715';color:#c2410c}
+.bc-box.win-box li:before{content:'\2713';color:var(--teal-dark)}
+.duels{margin-top:20px}
+.duels h3{font-size:13px;font-weight:800;letter-spacing:.05em;text-transform:uppercase;color:var(--navy);margin-bottom:10px}
+.duel{border:1px solid var(--line);border-radius:11px;padding:12px 15px;margin-bottom:10px;background:#fff;box-shadow:var(--shadow-sm)}
+.duel .t{font-size:14px;font-weight:800;color:var(--navy)}
+.duel .t:before{content:'They say: ';color:var(--slate-2);font-weight:700}
+.duel .y{font-size:14px;color:var(--ink);line-height:1.55;margin-top:5px}
+.duel .y:before{content:'You say: ';color:var(--teal-dark);font-weight:800}
 .hub-foot{background:var(--navy);color:#9fb1c2;padding:30px 0;margin-top:46px;font-size:13.5px}
 .hub-foot .wrap{display:flex;justify-content:space-between;gap:18px;flex-wrap:wrap}
 .hub-foot a{color:#cdd8e2;font-weight:600}.hub-foot a:hover{color:#fff}
@@ -51,45 +76,221 @@ table.cmp .big{font-size:16px;font-weight:800;color:var(--navy)}
   <div class="right"><a href="Sales Hub.html">← Hub home</a></div>
 </div></div>
 <header class="pg-head"><div class="wrap">
-  <div class="crumbs"><a href="Sales Hub.html">Sales Hub</a><span class="sep">/</span><span>PAYS POS — Value Proposition</span></div>
-  <div class="htop">
-    <span class="plogo"><img src="assets/logos/pays.svg" alt="PAYS"></span>
-    <div>
-      <h1>PAYS POS — Value Proposition</h1>
-      <p class="lead">How PAYS stacks up against Clover and Toast — lower cost in, lower monthly, no contract, free shipping, and a dedicated account manager.</p>
-    </div>
+  <div class="crumbs"><a href="Sales Hub.html">Sales Hub</a><span class="sep">/</span><span>Competitor Battlecards</span></div>
+  <h1>Competitor Battlecards</h1>
+  <p class="lead">How we win against the systems you'll run into most — where each competitor is weak, how NextPay beats them, and exactly what to say. Pick a competitor.</p>
+  <div class="tabs">
+    <button class="active" data-s="hardware">Hardware &amp; price</button>
+    <button data-s="square">Square</button>
+    <button data-s="toast">Toast</button>
+    <button data-s="stripe">Stripe</button>
+    <button data-s="bigproc">Heartland / Fiserv</button>
+    <button data-s="bank">Local Bank / ISO</button>
   </div>
 </div></header>
 <main class="wrap">
-  <div class="cmp-wrap">
-    <table class="cmp">
-      <thead><tr><th></th><th class="pays">PAYS</th><th>Clover</th><th>Toast</th></tr></thead>
-      <tbody>
-        <tr><td>POS Station + Credit Card Reader</td>
-            <td class="pays"><span class="strike">$1,200</span><br><span class="promo">$999 (ISO promo price)</span></td>
-            <td class="big">$2,200</td><td class="big">$4,000</td></tr>
-        <tr><td>Software</td>
-            <td class="pays">$79/mo — all inclusive<br><span style="color:var(--teal-dark);font-weight:800">Volume discounts available</span></td>
-            <td>$150+/mo + add-ons</td><td>$250+/mo + add-ons</td></tr>
-        <tr><td>Processing</td>
-            <td class="pays">ISO Processing</td>
-            <td>3.00% + 15¢ per transaction</td><td>3.50% + 15¢ per transaction</td></tr>
-        <tr><td>Contract</td>
-            <td class="pays">No contract</td><td>1-year contract</td><td>2-year contract</td></tr>
-        <tr><td>Shipping</td>
-            <td class="pays">FREE</td><td>Billable</td><td>Billable</td></tr>
-        <tr><td>Support</td>
-            <td class="pays">Dedicated account manager</td><td>Call center</td><td>Call center</td></tr>
-      </tbody>
-    </table>
+
+  <!-- HARDWARE & PRICE: our POS vs Clover vs Toast -->
+  <div class="bc show" id="hardware">
+    <p class="bc-angle"><b>Use this when:</b> the merchant is pricing out a new POS and weighing Clover or Toast. It's the cost to get in the door and run each month.</p>
+    <div class="cmp-wrap">
+      <table class="cmp">
+        <thead><tr><th></th><th class="pays">NextPay POS</th><th>Clover</th><th>Toast</th></tr></thead>
+        <tbody>
+          <tr><td>POS Station + Credit Card Reader</td>
+              <td class="pays"><span class="strike">$1,200</span><br><span class="promo">$999 (ISO promo price)</span></td>
+              <td class="big">$2,200</td><td class="big">$4,000</td></tr>
+          <tr><td>Software</td>
+              <td class="pays">$79/mo — all inclusive<br><span style="color:var(--teal-dark);font-weight:800">Volume discounts available</span></td>
+              <td>$150+/mo + add-ons</td><td>$250+/mo + add-ons</td></tr>
+          <tr><td>Processing</td>
+              <td class="pays">ISO Processing — dual pricing available</td>
+              <td>3.00% + 15¢ per transaction</td><td>3.50% + 15¢ per transaction</td></tr>
+          <tr><td>Contract</td>
+              <td class="pays">No contract</td><td>1-year contract</td><td>2-year contract</td></tr>
+          <tr><td>Shipping</td>
+              <td class="pays">FREE</td><td>Billable</td><td>Billable</td></tr>
+          <tr><td>Support</td>
+              <td class="pays">Dedicated account manager</td><td>Call center</td><td>Call center</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="win">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>
+      <p><b>What to say:</b> "For a fraction of what Clover or Toast charges to get in the door, you're up and running on our POS — $79 a month all-inclusive, no long contract, free shipping, and a dedicated account manager instead of a call center."</p>
+    </div>
   </div>
-  <div class="win">
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>
-    <p><b>What to say:</b> "For a fraction of what Clover or Toast charges to get in the door, you're up and running on PAYS — $79 a month all-inclusive, no long contract, free shipping, and a dedicated account manager instead of a call center."</p>
+
+  <!-- SQUARE -->
+  <div class="bc" id="square">
+    <p class="bc-angle"><b>Why merchants use Square:</b> dead-simple setup, a free POS app, and an all-in-one ecosystem — it's the easy default for new and small businesses.</p>
+    <div class="bc-cols">
+      <div class="bc-box weak"><h3>Where Square falls short</h3>
+        <ul>
+          <li>Flat fees that get expensive at volume (~2.6% + 10¢ in person, 2.9% + 30¢ online) — and there's no rate to negotiate.</li>
+          <li>Account holds, reserves and sudden deactivations are a well-known risk — your deposits can freeze with little warning.</li>
+          <li>Support is mostly self-serve; no dedicated rep when something breaks.</li>
+          <li>No real dual-pricing/surcharge program to eliminate fees the way we do.</li>
+          <li>You're locked to Square's processing — you can't shop the rate.</li>
+        </ul>
+      </div>
+      <div class="bc-box win-box"><h3>How NextPay wins</h3>
+        <ul>
+          <li>Match or beat the rate, and dual pricing can take processing to near zero.</li>
+          <li>Brand-agnostic hardware — you're not locked into one ecosystem.</li>
+          <li>A dedicated specialist on your account, not a help center.</li>
+          <li>Stable banking relationships — no surprise holds on your money.</li>
+          <li>Keep the simple checkout feel, lose the fees.</li>
+        </ul>
+      </div>
+    </div>
+    <div class="win">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>
+      <p><b>What to say:</b> "Keep everything you like about Square — lose the fees and the held funds. Same easy checkout, a real rate we can match or beat, and an actual person on your account."</p>
+    </div>
+    <div class="duels"><h3>They'll say → you say</h3>
+      <div class="duel"><div class="t">"Square is free."</div><div class="y">"The app is — the processing isn't. That 2.6% adds up fast, and with dual pricing we can take it close to zero."</div></div>
+      <div class="duel"><div class="t">"I've never had a problem with it."</div><div class="y">"Most people don't, until they do — a hold on your deposits at the wrong time can be brutal. We give you stability and a rep to call."</div></div>
+    </div>
   </div>
+
+  <!-- TOAST -->
+  <div class="bc" id="toast">
+    <p class="bc-angle"><b>Why restaurants use Toast:</b> a purpose-built restaurant platform — KDS, online ordering, handhelds and solid reporting on Android hardware.</p>
+    <div class="bc-cols">
+      <div class="bc-box weak"><h3>Where Toast falls short</h3>
+        <ul>
+          <li>Long contracts (often multi-year) with early-termination fees.</li>
+          <li>Proprietary hardware that's pricey, plus software modules that stack up fast.</li>
+          <li>Added order-processing and service fees, and steady rate creep.</li>
+          <li>Locked to Toast Payments — you can't shop your processing rate.</li>
+          <li>Online ordering and add-ons are billed as separate line items.</li>
+        </ul>
+      </div>
+      <div class="bc-box win-box"><h3>How NextPay wins</h3>
+        <ul>
+          <li>Shift4 Dine delivers the same restaurant toolkit — KDS, online ordering, handhelds, offline mode.</li>
+          <li>No multi-year lock-in and a lower all-in monthly.</li>
+          <li>Dual pricing / fee programs to cut processing to near zero.</li>
+          <li>A <b>$5,000 switch incentive</b> to offset leaving their current system.</li>
+          <li>Dedicated support, not a ticket queue.</li>
+        </ul>
+      </div>
+    </div>
+    <div class="win">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>
+      <p><b>What to say:</b> "You can get the same restaurant tools without a multi-year contract or Toast's stacking fees — and we'll put $5,000 toward your switch."</p>
+    </div>
+    <div class="duels"><h3>They'll say → you say</h3>
+      <div class="duel"><div class="t">"Toast is built for restaurants."</div><div class="y">"So is Shift4 Dine — KDS, online ordering, handhelds, offline mode — without the 2-3 year contract or the new order fees."</div></div>
+      <div class="duel"><div class="t">"Switching mid-contract is a pain."</div><div class="y">"We help you time it, and the $5k incentive offsets the exit. Let's map out when it makes sense."</div></div>
+    </div>
+  </div>
+
+  <!-- STRIPE -->
+  <div class="bc" id="stripe">
+    <p class="bc-angle"><b>Why merchants use Stripe:</b> developer-first with best-in-class APIs — a favorite for online, SaaS and marketplace businesses.</p>
+    <div class="bc-cols">
+      <div class="bc-box weak"><h3>Where Stripe falls short</h3>
+        <ul>
+          <li>2.9% + 30¢ flat with little room to negotiate at the SMB level.</li>
+          <li>Ticket-based support, and account freezes/holds are common.</li>
+          <li>Overkill for main-street and in-person businesses; in-person Terminal is clunky for non-developers.</li>
+          <li>You shoulder a lot of the compliance and dispute work yourself.</li>
+          <li>Limited built-in surcharging / dual pricing for everyday merchants.</li>
+        </ul>
+      </div>
+      <div class="bc-box win-box"><h3>How NextPay wins</h3>
+        <ul>
+          <li>Modern gateways — FluidPay, NMI, Authorize.net — with similar capabilities at a lower, negotiated rate.</li>
+          <li>Dual pricing / surcharge built in to cut fees.</li>
+          <li>A real human for setup, disputes and support.</li>
+          <li>Better fit for businesses that also take in-person payments.</li>
+        </ul>
+      </div>
+    </div>
+    <div class="win">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>
+      <p><b>What to say:</b> "If you're not a software company, you're paying Stripe's premium for tools you don't need. We give you the gateway power, a lower rate, and real support."</p>
+    </div>
+    <div class="duels"><h3>They'll say → you say</h3>
+      <div class="duel"><div class="t">"My developer loves Stripe."</div><div class="y">"Great — NMI and Authorize.net are just as developer-friendly and cost less. We confirm compatibility before anything moves."</div></div>
+      <div class="duel"><div class="t">"Stripe just works."</div><div class="y">"Until a hold hits, or you scale and the 2.9% really stings. Let's compare the real cost side by side."</div></div>
+    </div>
+  </div>
+
+  <!-- HEARTLAND / FISERV -->
+  <div class="bc" id="bigproc">
+    <p class="bc-angle"><b>Why merchants are on Heartland / Fiserv (First Data):</b> big, well-known processors with broad product lines, often bundled through their bank.</p>
+    <div class="bc-cols">
+      <div class="bc-box weak"><h3>Where the big processors fall short</h3>
+        <ul>
+          <li>Tiered / bundled pricing that's hard to read — and creeps up over time.</li>
+          <li>Long contracts, early-termination fees, and equipment leases that trap you.</li>
+          <li>Call-center support — you're an account number, not a relationship.</li>
+          <li>Statements designed to obscure your true effective rate.</li>
+        </ul>
+      </div>
+      <div class="bc-box win-box"><h3>How NextPay wins</h3>
+        <ul>
+          <li>Transparent pricing, match-or-beat, and dual pricing to eliminate fees.</li>
+          <li>No equipment leases, fair terms, and a dedicated rep.</li>
+          <li>A free statement analysis that exposes exactly what they're padding.</li>
+        </ul>
+      </div>
+    </div>
+    <div class="win">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>
+      <p><b>What to say:</b> "These big processors bury the real rate in a confusing statement and a multi-year contract. Let me read your statement and show you what you're actually paying."</p>
+    </div>
+    <div class="duels"><h3>They'll say → you say</h3>
+      <div class="duel"><div class="t">"I've been with them for years."</div><div class="y">"That's exactly why it's worth a look — long-tenured accounts get the most rate creep. The review is free."</div></div>
+    </div>
+  </div>
+
+  <!-- LOCAL BANK / ISO -->
+  <div class="bc" id="bank">
+    <p class="bc-angle"><b>Why merchants use their bank:</b> trust and convenience — one relationship, a banker they already know, everything in one place.</p>
+    <div class="bc-cols">
+      <div class="bc-box weak"><h3>Where the bank falls short</h3>
+        <ul>
+          <li>Banks resell someone else's processing (often Fiserv/First Data) at a marked-up rate.</li>
+          <li>Generic terminals, little POS depth, and no dual-pricing expertise.</li>
+          <li>Support routes to the processor's call center anyway.</li>
+          <li>Your banker isn't a payments specialist.</li>
+        </ul>
+      </div>
+      <div class="bc-box win-box"><h3>How NextPay wins</h3>
+        <ul>
+          <li>A payments specialist focused only on this — better hardware and POS options.</li>
+          <li>Dual pricing and match-or-beat rates the bank can't touch.</li>
+          <li>Keep the bank for banking; let us handle the payments.</li>
+        </ul>
+      </div>
+    </div>
+    <div class="win">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>
+      <p><b>What to say:</b> "Your bank is great for banking — but they're reselling someone else's processing at a markup. Keep that relationship, and let a specialist handle the payments and save you the fees."</p>
+    </div>
+    <div class="duels"><h3>They'll say → you say</h3>
+      <div class="duel"><div class="t">"I like keeping everything at my bank."</div><div class="y">"Totally — and this doesn't touch your banking. It's only the card processing, and we usually beat the bank's rate handily."</div></div>
+    </div>
+  </div>
+
 </main>
+<script>
+document.querySelectorAll('.tabs button').forEach(function(b){
+  b.addEventListener('click',function(){
+    document.querySelectorAll('.tabs button').forEach(function(x){x.classList.remove('active');});
+    b.classList.add('active');
+    document.querySelectorAll('.bc').forEach(function(s){s.classList.remove('show');});
+    document.getElementById(b.getAttribute('data-s')).classList.add('show');
+    window.scrollTo({top:0,behavior:'smooth'});
+  });
+});
+</script>
 <footer class="hub-foot"><div class="wrap">
-  <span>NextPay Sales Hub · PAYS POS Value Proposition · Internal use only.</span>
+  <span>NextPay Sales Hub · Competitor Battlecards · Internal use only.</span>
   <span><a href="Sales Hub - Request Access.html#suggest">💡 Suggest / Request</a> · <a href="Sales Hub.html">← Back to hub</a></span>
 </div></footer>
 </body>
