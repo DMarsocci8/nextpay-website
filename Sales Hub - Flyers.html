@@ -54,12 +54,12 @@
 .preview .ptitle{font-size:15px;letter-spacing:.04em;text-transform:uppercase;color:var(--slate);margin-bottom:14px}
 .stage-wrap{display:flex;justify-content:center}
 .stage{transform-origin:top center}
-@media screen and (min-width:981px){.stage{transform:scale(.62)}.stage-wrap{height:calc(11in * .62)}}
-@media screen and (max-width:980px){.stage{transform:scale(.52)}.stage-wrap{height:calc(11in * .52)}}
-@media screen and (max-width:560px){.stage{transform:scale(.40)}.stage-wrap{height:calc(11in * .40)}}
+/* stage scale + wrap height are set in JS (sizeStage) so the preview adapts to
+   each flyer's size — 8.5×11 flyers and 5×7 postcards */
 
-/* ---- the flyer (true 8.5 x 11) ---- */
+/* ---- the flyer (true 8.5 x 11; .pc = 5×7 postcard, landscape) ---- */
 .flyer{position:relative;width:8.5in;height:11in;background:#fff;overflow:hidden;box-shadow:0 10px 40px rgba(12,27,42,.22);font-family:inherit}
+.flyer.pc{width:7in;height:5in}
 .flyer .flyer-art{position:absolute;inset:0;width:100%;height:100%}
 .flyer img.flyer-art{object-fit:cover;display:block}
 
@@ -78,7 +78,9 @@
 .fl-sample .s-top{display:flex;align-items:center;justify-content:space-between;padding:.6in .7in 0}
 .fl-sample .s-top img{height:.62in;width:auto}
 .fl-sample .s-top .s-kick{font-size:9.5pt;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:var(--teal-dark)}
-.fl-sample .s-body{flex:1;padding:.35in .7in 0}
+.fl-sample .s-hero{margin:.26in .7in 0;height:1.95in;border-radius:.18in;overflow:hidden}
+.fl-sample .s-hero img{width:100%;height:100%;object-fit:cover;object-position:center 25%;display:block}
+.fl-sample .s-body{flex:1;min-height:0;padding:.3in .7in 0}
 .fl-sample h1{font-size:38pt;line-height:1.02;letter-spacing:-.02em;color:var(--navy);font-weight:800}
 .fl-sample h1 .em{color:var(--teal-dark)}
 .fl-sample .s-sub{font-size:13.5pt;color:var(--slate);line-height:1.45;margin-top:.18in;max-width:6.2in}
@@ -88,10 +90,32 @@
 .fl-sample .s-feat .fi svg{width:.26in;height:.26in;color:var(--teal-dark)}
 .fl-sample .s-feat h3{font-size:13pt;font-weight:800;color:var(--navy);letter-spacing:-.01em}
 .fl-sample .s-feat p{font-size:10.5pt;color:var(--slate);line-height:1.4;margin-top:.02in}
-.fl-sample .s-offer{margin:.42in .7in 0;background:linear-gradient(100deg,var(--navy),var(--navy-2));color:#fff;border-radius:.18in;padding:.3in .4in;display:flex;align-items:center;gap:.3in}
+.fl-sample .s-trust{display:flex;flex-wrap:wrap;gap:.16in .42in;margin-top:.34in}
+.fl-sample .s-trust span{display:flex;align-items:center;gap:.1in;font-size:11pt;font-weight:700;color:var(--navy)}
+.fl-sample .s-trust span:before{content:'✓';color:var(--teal-dark);font-weight:800}
+.fl-sample .s-offer{margin:.28in .7in 1.05in;background:linear-gradient(100deg,var(--navy),var(--navy-2));color:#fff;border-radius:.18in;padding:.3in .4in;display:flex;align-items:center;gap:.3in}
 .fl-sample .s-offer .big{font-size:30pt;font-weight:800;color:var(--teal-bright,#1FC2A6);line-height:1;letter-spacing:-.02em;flex:none}
 .fl-sample .s-offer h3{font-size:15pt;font-weight:800;letter-spacing:-.01em}
 .fl-sample .s-offer p{font-size:10.5pt;color:#c4d0db;margin-top:.04in;line-height:1.4}
+
+/* ---------- SAMPLE POSTCARD (5×7, HTML) ---------- */
+.pc-sample{position:absolute;inset:0;display:flex;background:#fff;color:var(--navy)}
+.pc-sample .pc-photo{width:2.7in;flex:none;overflow:hidden}
+.pc-sample .pc-photo img{width:100%;height:100%;object-fit:cover;display:block}
+.pc-sample .pc-main{flex:1;min-width:0;padding:.32in .4in .82in .42in;display:flex;flex-direction:column;background:
+  radial-gradient(120% 90% at 100% 0%, rgba(31,194,166,.12), transparent 60%),#fff}
+.pc-sample .pc-logo{height:.46in;width:auto;align-self:flex-start;margin-bottom:.16in}
+.pc-sample h2{font-size:23pt;line-height:1.04;letter-spacing:-.02em;font-weight:800;color:var(--navy)}
+.pc-sample h2 span{color:var(--teal-dark)}
+.pc-sample .pc-points{list-style:none;margin:.2in 0 0;padding:0}
+.pc-sample .pc-points li{position:relative;padding-left:.3in;font-size:11pt;font-weight:600;color:var(--ink);line-height:1.3;margin-bottom:.12in}
+.pc-sample .pc-points li:before{content:'✓';position:absolute;left:0;top:0;color:var(--teal-dark);font-weight:800}
+.pc-sample .pc-offer{margin-top:auto;background:rgba(20,161,140,.12);border:1px solid rgba(20,161,140,.32);border-radius:.12in;padding:.13in .16in;font-size:10.5pt;color:var(--navy);line-height:1.35}
+.pc-sample .pc-offer b{color:var(--teal-dark)}
+/* postcard contact bar sizing */
+.flyer.pc .cb-name{font-size:13pt}
+.flyer.pc .cb-rows{font-size:9pt;gap:.04in .2in;margin-top:.04in}
+.flyer.pc .cb-rows .cbi svg{width:.14in;height:.14in}
 
 .tip{display:flex;gap:12px;align-items:flex-start;background:var(--bg-soft);border:1px solid var(--line);border-radius:12px;padding:14px 16px;margin-top:26px;max-width:600px}
 .tip svg{width:18px;height:18px;color:var(--teal-dark);flex:none;margin-top:2px}
@@ -108,10 +132,10 @@
   .hub-bar,.pg-head,.form-card,.preview .ptitle,.tip,.addnote,.hub-foot,.actions{display:none !important}
   body{background:#fff}
   .layout{display:block;padding:0}
-  .stage-wrap{height:auto;display:block}
-  .stage{transform:none}
+  .stage-wrap{height:auto !important;display:block}
+  .stage{transform:none !important}
   .flyer{box-shadow:none;margin:0}
-  @page{size:8.5in 11in;margin:0}
+  /* @page size is set per-flyer in JS (#printPage) */
 }
 </style>
 </head>
@@ -130,7 +154,7 @@
   <div class="wrap">
     <div class="crumbs"><a href="Sales Hub.html">Sales Hub</a><span class="sep">/</span><span>Flyers &amp; One-Pagers</span></div>
     <h1>Flyers &amp; One-Pagers — Personalize &amp; Print</h1>
-    <p class="lead">Pick a flyer, add your name and contact info once, and print it yourself — full 8.5″ × 11″, ready for any printer. Your details are saved on this device and shared with your business card, so you only type them once.</p>
+    <p class="lead">Pick a flyer or postcard, add your name and contact info once, and print it yourself — full-size 8.5″ × 11″ flyers and 5″ × 7″ postcards, ready for any printer. Your details are saved on this device and shared with your business card, so you only type them once.</p>
   </div>
 </header>
 
@@ -212,10 +236,11 @@ var FLYERS = [
     label:'Sample — Savings & Growth (built-in demo)',
     cat:'General',
     type:'html',
-    contact:{ style:'left:0;right:0;bottom:0;background:var(--navy);color:#fff;padding:.34in .7in;text-align:center', align:'center' },
+    contact:{ style:'left:0;right:0;bottom:0;background:var(--navy);color:#fff;padding:.26in .7in;text-align:center', align:'center' },
     html:
       '<div class="fl-sample">'
       + '<div class="s-top"><img src="assets/logos/nextpay.png" alt="NextPay"><span class="s-kick">NextPay Business Solutions</span></div>'
+      + '<div class="s-hero"><img src="assets/lifestyle/pos-counter.jpg" alt=""></div>'
       + '<div class="s-body">'
       +   '<h1>Stop overpaying to <span class="em">accept payments.</span></h1>'
       +   '<p class="s-sub">A modern POS, transparent processing, and a real partner for every stage of your business — with a switch that pays for itself.</p>'
@@ -225,8 +250,33 @@ var FLYERS = [
       +     '<div class="s-feat"><div class="fi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><path d="M22 4L12 14.01l-3-3"/></svg></div><div><h3>Never goes down</h3><p>Offline mode keeps you selling even when the internet drops.</p></div></div>'
       +     '<div class="s-feat"><div class="fi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 12v9H4v-9M2 7h20v5H2zM12 22V7M12 7H7.5a2.5 2.5 0 010-5C11 2 12 7 12 7z"/></svg></div><div><h3>Earn rewards</h3><p>NextPay Rewards turns everyday processing into real perks.</p></div></div>'
       +   '</div>'
+      +   '<div class="s-trust"><span>Free onboarding</span><span>Free install</span><span>Free training</span><span>No long-term contract</span></div>'
       + '</div>'
       + '<div class="s-offer"><div class="big">$500</div><div><h3>Switch Guarantee</h3><p>Ask how we make switching risk-free — free onboarding, install &amp; training included.</p></div></div>'
+      + '</div>'
+  }
+
+  /* ---- Sample 5×7 postcard (built-in demo, hero photo) ---- */
+  , {
+    id:'sample-postcard',
+    label:'Sample Postcard — Stop Overpaying (5×7 demo)',
+    cat:'General',
+    type:'html',
+    size:'5x7',
+    contact:{ style:'left:0;right:0;bottom:0;background:var(--navy);color:#fff;padding:.16in .4in;text-align:center', align:'center' },
+    html:
+      '<div class="pc-sample">'
+      + '<div class="pc-photo"><img src="assets/lifestyle/card-tap.jpg" alt=""></div>'
+      + '<div class="pc-main">'
+      +   '<img class="pc-logo" src="assets/logos/nextpay.png" alt="NextPay">'
+      +   '<h2>Stop overpaying to <span>accept payments.</span></h2>'
+      +   '<ul class="pc-points">'
+      +     '<li>Lower fees — match or beat your current rate</li>'
+      +     '<li>Modern POS — Shift4, Square, Clover &amp; more</li>'
+      +     '<li>Earn rewards on every transaction</li>'
+      +   '</ul>'
+      +   '<div class="pc-offer"><b>$500 Switch Guarantee</b> — free install &amp; training, no long-term contract.</div>'
+      + '</div>'
       + '</div>'
   }
 
@@ -305,14 +355,36 @@ function buildContact(f){
 }
 function esc(s){ return String(s).replace(/[&<>"]/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c];}); }
 
+var DPI=96;
+function dims(f){ var pc=f.size==='5x7'; return { w: pc?7:8.5, h: pc?5:11 }; }
+function sizeStage(){
+  var d=dims(FLYERS[idx]);
+  var wrap=stage.parentElement;                 // .stage-wrap
+  var avail=wrap.clientWidth||700;
+  var vw=window.innerWidth;
+  var maxScale = vw>980 ? 0.64 : (vw>560 ? 0.54 : 0.42);
+  var scale=Math.min(maxScale, avail/(d.w*DPI));
+  stage.style.transform='scale('+scale+')';
+  wrap.style.height=Math.ceil(d.h*DPI*scale)+'px';
+}
+function setPrintSize(){
+  var d=dims(FLYERS[idx]);
+  var pp=document.getElementById('printPage');
+  if(!pp){ pp=document.createElement('style'); pp.id='printPage'; document.head.appendChild(pp); }
+  pp.textContent='@media print{@page{size:'+d.w+'in '+d.h+'in;margin:0}}';
+}
 function render(){
   var f=FLYERS[idx];
+  var sizeCls=f.size==='5x7'?' pc':'';
   var art = f.type==='img'
     ? '<img class="flyer-art" src="'+f.img+'" alt="">'
     : '<div class="flyer-art">'+f.html+'</div>';
   var cstyle = (f.contact&&f.contact.style)||'left:0;right:0;bottom:0;padding:.3in .6in;color:#0C1B2A';
-  stage.innerHTML='<div class="flyer">'+art+'<div class="contact-block" style="'+cstyle+'">'+buildContact(f)+'</div></div>';
+  stage.innerHTML='<div class="flyer'+sizeCls+'">'+art+'<div class="contact-block" style="'+cstyle+'">'+buildContact(f)+'</div></div>';
+  sizeStage();
+  setPrintSize();
 }
+window.addEventListener('resize', sizeStage);
 
 function update(){
   var p=load();
