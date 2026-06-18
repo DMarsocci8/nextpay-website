@@ -116,10 +116,6 @@
     <div class="wrap">
       <div class="footcards"><span class="fc-eyebrow">We accept every major card</span><div class="fc-row"><img src="assets/cards/card-1.png" alt="Visa"><img src="assets/cards/card-2.png" alt="Mastercard"><img src="assets/cards/card-3.png" alt="American Express"><img src="assets/cards/card-4.png" alt="Discover"><img src="assets/cards/card-5.png" alt="JCB"><img src="assets/cards/card-6.png" alt="UnionPay"><img src="assets/cards/card-7.png" alt="Link"></div></div>
       <div class="foot-grid">
-        <div>
-          <a class="brand" href="index.html" aria-label="NextPay home"><img src="assets/logos/nextpay-nav.png" alt="NextPay Business Solutions" style="height:40px;width:auto;display:block"></a>
-          <p style="margin-top:12px;max-width:280px;color:#aebccb">Smarter Solutions. Stronger Businesses. All the tools to run and grow your business — connected to one account.</p>
-        </div>
         <div><h4>Accept Payments</h4>
           <a href="POS Systems.html">POS Systems</a><a href="Credit Card Terminals.html">Credit Card Terminals</a><a href="Invoicing.html">Online Payments &amp; Invoicing</a><a href="Integrations.html">Integrations</a></div>
         <div><h4>Run Your Business</h4>
@@ -132,6 +128,10 @@
           <a href="Partners.html">Partner with NextPay</a><a href="Affiliate Program.html">Affiliate Program</a><a href="Agent Program.html">Agent Program</a></div>
         <div><h4>Company</h4>
           <a href="Why NextPay.html">Why NextPay</a><a href="Pricing.html">Pricing</a><a href="Resources.html">Resources</a><a href="Contact.html">Contact</a></div>
+      </div>
+      <div class="foot-brand">
+        <a class="brand" href="index.html" aria-label="NextPay home"><img src="assets/logos/nextpay-nav.png" alt="NextPay Business Solutions" style="height:40px;width:auto;display:block"></a>
+        <p>Smarter Solutions. Stronger Businesses. All the tools to run and grow your business — connected to one account.</p>
       </div>
       <div class="foot-bottom"><span>© 2026 NextPay. All rights reserved.</span><span>nextpaypos.com</span></div>
     </div>

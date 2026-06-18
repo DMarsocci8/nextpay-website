@@ -175,13 +175,15 @@ button{font-family:inherit;cursor:pointer}
 
 /* ---------- footer ---------- */
 .foot{background:var(--navy);color:#cdd8e2;padding:72px 0 34px}
-.foot-grid{display:grid;grid-template-columns:1.5fr 1fr 1fr 1fr 1fr 1fr;gap:34px}
+.foot-grid{display:grid;grid-template-columns:repeat(6,1fr);gap:34px}
 .foot h4{color:#fff;font-size:14px;letter-spacing:.08em;text-transform:uppercase;margin-bottom:18px;font-weight:800}
 .foot a{display:block;color:#aebccb;padding:6px 0;font-size:15px}
 .foot a:hover{color:#fff}
 .foot .brand{font-size:24px;font-weight:800;color:#fff}
 .foot .brand span{color:var(--teal-bright)}
-.foot-bottom{border-top:1px solid rgba(255,255,255,.12);margin-top:48px;padding-top:24px;display:flex;justify-content:space-between;font-size:14px;color:#8497a8}
+.foot-brand{margin-top:46px}
+.foot-brand p{margin-top:12px;max-width:480px;color:#aebccb;font-size:15px;line-height:1.55}
+.foot-bottom{border-top:1px solid rgba(255,255,255,.12);margin-top:30px;padding-top:24px;display:flex;justify-content:space-between;font-size:14px;color:#8497a8}
 
 /* ---------- product / option cards ---------- */
 .pcard{display:flex;flex-direction:column;background:#fff;border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow-sm);overflow:hidden;transition:.18s}
