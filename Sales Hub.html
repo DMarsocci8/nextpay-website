@@ -122,6 +122,12 @@
 .hub-sec-head{display:flex;align-items:flex-end;justify-content:space-between;gap:20px;flex-wrap:wrap;margin-bottom:2px}
 .hub-sec-head h2{font-size:26px;letter-spacing:-.02em}
 .hub-sec-head .eyebrow{margin:0 0 6px}
+/* grouped sections on the hub grid */
+.hub-group{padding-top:30px}
+.hub-group .hub-sec-head{border-top:1px solid var(--line);padding-top:24px}
+.hub-group:first-child{padding-top:4px}
+.hub-group:first-child .hub-sec-head{border-top:0;padding-top:0}
+.hub-group .hub-sec-head .eyebrow{color:var(--teal-dark)}
 .hub-empty{display:none;text-align:center;padding:50px 20px;color:var(--slate)}
 .hub-empty.show{display:block}
 
@@ -227,39 +233,12 @@
   </div>
 
   <!-- SECTION GRID -->
-  <div class="hub-grid" id="hubGrid">
+  <div id="hubGrid">
 
-    <!-- Agent Knowledge Base -->
-    <a class="hub-card" href="Sales Hub - Knowledge Base.html"
-       data-stage="learn pitch quote submit support" data-type="pos terminals gateways invoicing" data-resource="training"
-       data-text="agent knowledge base new agent onboarding reference guide platform overview tech stack google drive chat freshsales crm products placement quiz shift4 square solutions in payments sip call flow prospecting incentives nextlink pay plan schedule a residual">
-      <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5A2.5 2.5 0 016.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 014 19.5v-15A2.5 2.5 0 016.5 2z"/></svg></div>
-      <h3>Agent Knowledge Base</h3>
-      <p>The complete new-agent reference guide — platform overview, your 4-step onboarding, tech stack, product placement, Shift4 / Square / SIP portals, call flow, prospecting and incentives. Start here on day one.</p>
-      <span class="go">Open the knowledge base <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
-    </a>
+  <section class="hub-group">
+    <div class="hub-sec-head"><div><span class="eyebrow">New to the team</span><h2>Start here</h2></div></div>
+    <div class="hub-grid">
 
-    <!-- Agent Quiz -->
-    <a class="hub-card" href="Sales Hub - Quiz.html"
-       data-stage="learn" data-type="pos terminals gateways invoicing" data-resource="training"
-       data-text="agent quiz knowledge check test yourself questions answers product training certification study platform onboarding tech stack shift4 square sip call flow incentives review">
-      <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9.5 9a2.5 2.5 0 113.5 2.3c-.9.4-1.5 1.2-1.5 2.2"/><path d="M12 17h.01"/><circle cx="12" cy="12" r="9"/></svg></div>
-      <h3>Agent Quiz &amp; Knowledge Checks</h3>
-      <p>Test what you know — interactive questions for every Knowledge Base section plus a product-training bank. Instant right/wrong feedback, explanations and live scoring. Ace it before your first day in the field.</p>
-      <span class="go">Take the quiz <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
-    </a>
-
-    <!-- Quick Reference Guide -->
-    <a class="hub-card" href="Sales Hub - Quick Reference Guide.html"
-       data-stage="learn pitch quote" data-type="pos terminals gateways invoicing" data-resource="tools"
-       data-text="quick reference guide best processor by merchant type industry clover square shift4 swipesimple nextpay custom which product fits hotels motels restaurants retail specialty trade convenience field services professional">
-      <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 5h18M3 12h18M3 19h18M8 5v14"/></svg></div>
-      <h3>Quick Reference Guide</h3>
-      <p>Best-fit processor for every merchant type at a glance — Clover, Square, Shift4, SwipeSimple or NextPay Custom. Match the business to the right product fast.</p>
-      <span class="go">Open the guide <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
-    </a>
-
-    <!-- My Dashboard -->
     <a class="hub-card" href="Sales Hub - My Dashboard.html"
        data-stage="learn pitch quote submit support" data-type="pos terminals gateways invoicing" data-resource="tools"
        data-text="my dashboard progress checklist onboarding what to complete ramp growth steps to do tasks">
@@ -269,77 +248,30 @@
       <span class="go">Open my dashboard <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
     </a>
 
-    <!-- Current Promotions -->
-    <a class="hub-card" href="Sales Hub - Promotions.html"
-       data-stage="pitch quote" data-type="pos terminals gateways invoicing" data-resource="tools"
-       data-text="promotions incentives current offers deals shift4 5000 switch clover placement square financing no upfront free install specials">
-      <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 12v9H4v-9M2 7h20v5H2zM12 22V7M12 7H7.5a2.5 2.5 0 010-5C11 2 12 7 12 7zM12 7h4.5a2.5 2.5 0 000-5C13 2 12 7 12 7z"/></svg></div>
-      <h3>Current Promotions</h3>
-      <p>Active offers to win the deal now — Shift4 Dine's $5K switch incentive, Clover placement, and Square financing. Lead with these to kill the cost objection.</p>
-      <span class="go">See current offers <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+    <a class="hub-card" href="Sales Hub - Knowledge Base.html"
+       data-stage="learn pitch quote submit support" data-type="pos terminals gateways invoicing" data-resource="training"
+       data-text="agent knowledge base new agent onboarding reference guide platform overview tech stack google drive chat freshsales crm products placement quiz shift4 square solutions in payments sip call flow prospecting incentives nextlink pay plan schedule a residual">
+      <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5A2.5 2.5 0 016.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 014 19.5v-15A2.5 2.5 0 016.5 2z"/></svg></div>
+      <h3>Agent Knowledge Base</h3>
+      <p>The complete new-agent reference guide — platform overview, your 4-step onboarding, tech stack, product placement, Shift4 / Square / SIP portals, call flow, prospecting and incentives. Start here on day one.</p>
+      <span class="go">Open the knowledge base <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
     </a>
 
-    <!-- Pricing & Fee Programs -->
-    <a class="hub-card" href="Sales Hub - Pricing.html"
-       data-stage="quote" data-type="pos terminals gateways invoicing" data-resource="pricing"
-       data-text="pricing fee programs dual pricing cash discount surcharge interchange flat rate how to pitch sell savings">
-      <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 1v22M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"/></svg></div>
-      <h3>Pricing &amp; Fee Programs <span class="pill pill-live">Live</span></h3>
-      <p>The fee programs you pitch — dual pricing, cash discount, surcharge, IC+ and flat rate. What each is, how it saves the merchant, and exactly how to sell it.</p>
-      <span class="go">Open pricing center <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+    <a class="hub-card" href="Sales Hub - Quiz.html"
+       data-stage="learn" data-type="pos terminals gateways invoicing" data-resource="training"
+       data-text="agent quiz knowledge check test yourself questions answers product training certification study platform onboarding tech stack shift4 square sip call flow incentives review product industry quizzes">
+      <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9.5 9a2.5 2.5 0 113.5 2.3c-.9.4-1.5 1.2-1.5 2.2"/><path d="M12 17h.01"/><circle cx="12" cy="12" r="9"/></svg></div>
+      <h3>Agent Quiz &amp; Knowledge Checks</h3>
+      <p>Test what you know — interactive questions for every Knowledge Base section plus a product-training bank. Instant right/wrong feedback, explanations and live scoring. Ace it before your first day in the field.</p>
+      <span class="go">Take the quiz <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
     </a>
+    </div>
+  </section>
 
-    <!-- Submit a Deal & Processes -->
-    <a class="hub-card" href="Sales Hub - Submit a Deal.html"
-       data-stage="submit" data-type="pos terminals gateways invoicing" data-resource="forms"
-       data-text="submit a deal order forms how to place orders submission process where to send who to call boarding application mpa onboarding turnaround portal">
-      <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11"/></svg></div>
-      <h3>Submit a Deal &amp; Processes</h3>
-      <p>Per-product playbook: where the order form lives, the exact steps to submit, what to have ready, turnaround, and who to call. Built product-by-product since every one submits differently.</p>
-      <span class="go">Open the playbook <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
-    </a>
+  <section class="hub-group">
+    <div class="hub-sec-head"><div><span class="eyebrow">Pitch &amp; close</span><h2>In front of the merchant</h2></div></div>
+    <div class="hub-grid">
 
-    <!-- Build Your Marketing Assets (business card + flyers + postcards + one-pagers) -->
-    <a class="hub-card" href="Sales Hub - Marketing Assets.html"
-       data-stage="pitch learn" data-type="pos terminals gateways invoicing" data-resource="docs"
-       data-text="build marketing assets print personalize business card flyers postcards one pagers spec sheets template add your name contact email cell phone self serve print pdf 8.5 x 11 5 x 7 leave behind industry vertical create your own">
-      <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9V2h12v7M6 18H4a2 2 0 01-2-2v-5a2 2 0 012-2h16a2 2 0 012 2v5a2 2 0 01-2 2h-2M6 14h12v8H6z"/></svg></div>
-      <h3>Build Your Marketing Assets</h3>
-      <p>Make what you hand a prospect — business card, industry flyers and postcards — in minutes. Add your name and contact info once, then print or save a PDF yourself. Personalized one-pagers coming next.</p>
-      <span class="go">Build my assets <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
-    </a>
-
-    <!-- Brand Assets -->
-    <a class="hub-card" href="Sales Hub - Brand Assets.html"
-       data-stage="learn pitch" data-type="pos terminals gateways invoicing" data-resource="docs"
-       data-text="brand assets logo kit download logos colors hex social avatars favicon apparel print transparent png white navy mono email signature">
-      <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="13.5" cy="6.5" r="2.5"/><circle cx="6.5" cy="11.5" r="2.5"/><circle cx="16.5" cy="14.5" r="2.5"/><path d="M3 21h18"/></svg></div>
-      <h3>Brand Assets &amp; Logo Kit</h3>
-      <p>Official NextPay logos for web, social, email, print, flyers and apparel — color, white and mono versions, social avatars and favicons. Grab the right file or download the whole kit.</p>
-      <span class="go">Open brand assets <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
-    </a>
-
-    <!-- Competitor Battlecards -->
-    <a class="hub-card" href="Sales Hub - PAYS.html"
-       data-stage="pitch" data-type="pos terminals gateways" data-resource="training"
-       data-text="competitor battlecards pays value proposition vs clover vs toast comparison win against price contract support">
-      <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3l8 3v6c0 5-3.5 8-8 9-4.5-1-8-4-8-9V6z"/><path d="M9 12l2 2 4-4"/></svg></div>
-      <h3>Competitor Battlecards <span class="pill pill-live">Live</span></h3>
-      <p>Head-to-head comparisons — where we win and what to say. First up: <b>PAYS vs Clover vs Toast</b> (price, software, contract, support). More cards coming.</p>
-      <span class="go">Open battlecards <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
-    </a>
-
-    <!-- Objection Handling -->
-    <a class="hub-card" href="Sales Hub - Objections.html"
-       data-stage="pitch" data-type="pos terminals gateways invoicing" data-resource="training"
-       data-text="objection handling rebuttals i already have a processor too expensive contract cancellation fee scripts talk track happy with my service local bank">
-      <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg></div>
-      <h3>Objection Handling <span class="pill pill-live">Live</span></h3>
-      <p>The top objections reps hear — "I'm happy with my service," "I'm in a contract," "I work with my bank" — with proven rebuttals to answer every one.</p>
-      <span class="go">Open objection handling <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
-    </a>
-
-    <!-- Prospecting Questions -->
     <a class="hub-card" href="Sales Hub - Questions.html"
        data-stage="pitch learn" data-type="pos terminals gateways invoicing" data-resource="training"
        data-text="prospecting questions discovery top 10 questions to ask a merchant pain points cost savings">
@@ -349,7 +281,171 @@
       <span class="go">Open the questions <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
     </a>
 
-    <!-- Agent Mindset -->
+    <a class="hub-card" href="Sales Hub - Scripts.html"
+       data-stage="pitch learn" data-type="pos terminals gateways invoicing" data-resource="training"
+       data-text="prospecting scripts cold call opener voicemail walk in door approach talk track by product square clover shift4 gateway invoicing rebuttal close phone email">
+      <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 5a2 2 0 012-2h3l2 5-2.5 1.5a11 11 0 005 5L17 12l5 2v3a2 2 0 01-2 2A16 16 0 013 5z"/></svg></div>
+      <h3>Prospecting Scripts</h3>
+      <p>Word-for-word openers, voicemails and walk-in talk-tracks — building out per product so you always know what to say first. Cold call, door and follow-up scripts in one place.</p>
+      <span class="go">Open the scripts <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+    </a>
+
+    <a class="hub-card" href="Sales Hub - Objections.html"
+       data-stage="pitch" data-type="pos terminals gateways invoicing" data-resource="training"
+       data-text="objection handling rebuttals i already have a processor too expensive contract cancellation fee scripts talk track happy with my service local bank">
+      <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg></div>
+      <h3>Objection Handling <span class="pill pill-live">Live</span></h3>
+      <p>The top objections reps hear — "I'm happy with my service," "I'm in a contract," "I work with my bank" — with proven rebuttals to answer every one.</p>
+      <span class="go">Open objection handling <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+    </a>
+
+    <a class="hub-card" href="Sales Hub - PAYS.html"
+       data-stage="pitch" data-type="pos terminals gateways" data-resource="training"
+       data-text="competitor battlecards pays value proposition vs clover vs toast comparison win against price contract support">
+      <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3l8 3v6c0 5-3.5 8-8 9-4.5-1-8-4-8-9V6z"/><path d="M9 12l2 2 4-4"/></svg></div>
+      <h3>Competitor Battlecards <span class="pill pill-live">Live</span></h3>
+      <p>Head-to-head comparisons — where we win and what to say. First up: <b>PAYS vs Clover vs Toast</b> (price, software, contract, support). More cards coming.</p>
+      <span class="go">Open battlecards <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+    </a>
+
+    <a class="hub-card" href="Sales Hub - Promotions.html"
+       data-stage="pitch quote" data-type="pos terminals gateways invoicing" data-resource="tools"
+       data-text="promotions incentives current offers deals shift4 5000 switch clover placement square financing no upfront free install specials">
+      <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 12v9H4v-9M2 7h20v5H2zM12 22V7M12 7H7.5a2.5 2.5 0 010-5C11 2 12 7 12 7zM12 7h4.5a2.5 2.5 0 000-5C13 2 12 7 12 7z"/></svg></div>
+      <h3>Current Promotions</h3>
+      <p>Active offers to win the deal now — Shift4 Dine's $5K switch incentive, Clover placement, and Square financing. Lead with these to kill the cost objection.</p>
+      <span class="go">See current offers <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+    </a>
+    </div>
+  </section>
+
+  <section class="hub-group">
+    <div class="hub-sec-head"><div><span class="eyebrow">Product, service &amp; pricing</span><h2>Know what you sell</h2></div></div>
+    <div class="hub-grid">
+
+    <a class="hub-card" href="Sales Hub - Quick Reference Guide.html"
+       data-stage="learn pitch quote" data-type="pos terminals gateways invoicing" data-resource="tools"
+       data-text="quick reference guide best processor by merchant type industry clover square shift4 swipesimple nextpay custom which product fits hotels motels restaurants retail specialty trade convenience field services professional">
+      <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 5h18M3 12h18M3 19h18M8 5v14"/></svg></div>
+      <h3>Quick Reference Guide</h3>
+      <p>Best-fit processor for every merchant type at a glance — Clover, Square, Shift4, SwipeSimple or NextPay Custom. Match the business to the right product fast.</p>
+      <span class="go">Open the guide <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+    </a>
+
+    <a class="hub-card" href="Sales Hub - Pricing.html"
+       data-stage="quote" data-type="pos terminals gateways invoicing" data-resource="pricing"
+       data-text="pricing fee programs dual pricing cash discount surcharge interchange flat rate how to pitch sell savings">
+      <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 1v22M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"/></svg></div>
+      <h3>Pricing &amp; Fee Programs <span class="pill pill-live">Live</span></h3>
+      <p>The fee programs you pitch — dual pricing, cash discount, surcharge, IC+ and flat rate. What each is, how it saves the merchant, and exactly how to sell it.</p>
+      <span class="go">Open pricing center <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+    </a>
+
+    <a class="hub-card" href="POS Systems.html" target="_blank" rel="noopener"
+       data-stage="learn" data-type="pos terminals gateways invoicing" data-resource="docs"
+       data-text="product catalog browse by type pos terminals gateways invoicing all products hardware compare">
+      <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5"/><rect x="14" y="14" width="7" height="7" rx="1.5"/></svg></div>
+      <h3>Product Catalog <span class="pill pill-live">Live</span></h3>
+      <p>Browse the full lineup by product type — POS, terminals, gateways, invoicing — with the existing compare engine and spec pages your customers see.</p>
+      <span class="go">Browse catalog <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+    </a>
+    </div>
+  </section>
+
+  <section class="hub-group">
+    <div class="hub-sec-head"><div><span class="eyebrow">Analyzers &amp; calculators</span><h2>Quote the deal</h2></div></div>
+    <div class="hub-grid">
+
+    <a class="hub-card" href="Sales Hub - Statements.html#statements"
+       data-stage="quote" data-type="pos terminals gateways invoicing" data-resource="tools"
+       data-text="statement analyzers find a statement upload rate review current effective rate beat match proposal clover statement guide decoder competitor statement how to read">
+      <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 16V4M7 9l5-5 5 5M5 20h14"/></svg></div>
+      <h3>Statement Analyzers <span class="pill pill-live">Live</span></h3>
+      <p>Find and read a prospect's current statement, then surface their effective rate — the Clover statement guide, rate analyzer and statement decoder, all in one place.</p>
+      <span class="go">Open statement analyzers <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+    </a>
+
+    <a class="hub-card" href="Sales Hub - Statements.html#calculators"
+       data-stage="quote" data-type="pos terminals gateways invoicing" data-resource="tools"
+       data-text="calculators profitability calculator shift4 flat rate plus nextpay rewards calculator excel estimate savings points earn qualify price the deal margin">
+      <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="2" width="16" height="20" rx="2"/><path d="M8 6h8M8 10h2M14 10h2M8 14h2M14 14h2M8 18h2M14 18h2"/></svg></div>
+      <h3>Calculators <span class="pill pill-live">Live</span></h3>
+      <p>Price the deal and show the upside — the profitability calculator, Shift4 Flat Rate Plus calculator and the NextPay Rewards calculator, together in one spot.</p>
+      <span class="go">Open calculators <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+    </a>
+    </div>
+  </section>
+
+  <section class="hub-group">
+    <div class="hub-sec-head"><div><span class="eyebrow">Get it boarded</span><h2>Submit &amp; paperwork</h2></div></div>
+    <div class="hub-grid">
+
+    <a class="hub-card" href="Sales Hub - Submit a Deal.html"
+       data-stage="submit" data-type="pos terminals gateways invoicing" data-resource="forms"
+       data-text="submit a deal order forms how to place orders submission process where to send who to call boarding application mpa onboarding turnaround portal">
+      <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11"/></svg></div>
+      <h3>Submit a Deal &amp; Processes</h3>
+      <p>Per-product playbook: where the order form lives, the exact steps to submit, what to have ready, turnaround, and who to call. Built product-by-product since every one submits differently.</p>
+      <span class="go">Open the playbook <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+    </a>
+
+    <a class="hub-card" href="Sales Hub - Document Library.html"
+       data-stage="learn pitch quote submit support" data-type="pos terminals gateways invoicing" data-resource="docs"
+       data-text="document library downloads pdf decks contracts flyers brochures forms applications upload files assets google drive links">
+      <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 7a2 2 0 012-2h4l2 2h8a2 2 0 012 2v8a2 2 0 01-2 2H5a2 2 0 01-2-2z"/></svg></div>
+      <h3>Document Library</h3>
+      <p>One organized shelf for every PDF, deck, flyer, application, script and form — sorted by product and type. Filterable and searchable; we add files and links one at a time as you send them.</p>
+      <span class="go">Open the library <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+    </a>
+    </div>
+  </section>
+
+  <section class="hub-group">
+    <div class="hub-sec-head"><div><span class="eyebrow">Look the part</span><h2>Marketing &amp; brand</h2></div></div>
+    <div class="hub-grid">
+
+    <a class="hub-card" href="Sales Hub - Marketing Assets.html"
+       data-stage="pitch learn" data-type="pos terminals gateways invoicing" data-resource="docs"
+       data-text="build marketing assets print personalize business card flyers postcards one pagers spec sheets template add your name contact email cell phone self serve print pdf 8.5 x 11 5 x 7 leave behind industry vertical create your own">
+      <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9V2h12v7M6 18H4a2 2 0 01-2-2v-5a2 2 0 012-2h16a2 2 0 012 2v5a2 2 0 01-2 2h-2M6 14h12v8H6z"/></svg></div>
+      <h3>Build Your Marketing Assets</h3>
+      <p>Make what you hand a prospect — business card, industry flyers and postcards — in minutes. Add your name and contact info once, then print or save a PDF yourself. Personalized one-pagers coming next.</p>
+      <span class="go">Build my assets <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+    </a>
+
+    <a class="hub-card" href="Sales Hub - Brand Assets.html"
+       data-stage="learn pitch" data-type="pos terminals gateways invoicing" data-resource="docs"
+       data-text="brand assets logo kit download logos colors hex social avatars favicon apparel print transparent png white navy mono email signature">
+      <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="13.5" cy="6.5" r="2.5"/><circle cx="6.5" cy="11.5" r="2.5"/><circle cx="16.5" cy="14.5" r="2.5"/><path d="M3 21h18"/></svg></div>
+      <h3>Brand Assets &amp; Logo Kit</h3>
+      <p>Official NextPay logos for web, social, email, print, flyers and apparel — color, white and mono versions, social avatars and favicons. Grab the right file or download the whole kit.</p>
+      <span class="go">Open brand assets <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+    </a>
+
+    <a class="hub-card" href="Sales Hub - Lead Generation.html"
+       data-stage="learn pitch" data-type="pos terminals gateways invoicing" data-resource="tools training docs"
+       data-text="lead generation marketing scripts proposals flyers assets live transfers warm email lists paid ads nextlink linkedin sales navigator outreach seat resell enhanced resources agent pricing">
+      <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 11l18-5v12L3 13v6H1v-8z"/><path d="M11 8v6"/></svg></div>
+      <h3>Lead Generation &amp; Marketing</h3>
+      <p>Standard resources for every rep — scripts, proposals, flyers and marketing assets — plus optional Enhanced tools at agent pricing: live transfers, warm lists, paid ads and NextLink.</p>
+      <span class="go">Open lead gen &amp; marketing <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+    </a>
+    </div>
+  </section>
+
+  <section class="hub-group">
+    <div class="hub-sec-head"><div><span class="eyebrow">Get better, sell more</span><h2>Grow your skills &amp; pipeline</h2></div></div>
+    <div class="hub-grid">
+
+    <a class="hub-card" href="Sales Hub - Training.html"
+       data-stage="learn" data-type="pos terminals gateways invoicing" data-resource="training"
+       data-text="nextpay training academy branded lessons modules videos quizzes courses our own training progress sales skills how to sell">
+      <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 10L12 5 2 10l10 5 10-5z"/><path d="M6 12v5c0 1 2.7 3 6 3s6-2 6-3v-5"/><path d="M22 10v6"/></svg></div>
+      <h3>NextPay Training Academy</h3>
+      <p>Our own branded sales training — a 6-week curriculum of lessons and quizzes on how to sell, with progress tracking. Skills and technique, not product specs.</p>
+      <span class="go">Enter the Academy <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+    </a>
+
     <a class="hub-card" href="Sales Hub - Mindset.html"
        data-stage="learn" data-type="pos terminals gateways invoicing" data-resource="training"
        data-text="agent mindset self talk discipline pipeline funnel daily reminder motivation consistency">
@@ -359,87 +455,6 @@
       <span class="go">Open the mindset reminder <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
     </a>
 
-    <!-- NextPay Training Academy -->
-    <a class="hub-card" href="Sales Hub - Training.html"
-       data-stage="learn" data-type="pos terminals gateways invoicing" data-resource="training"
-       data-text="nextpay training academy branded lessons modules videos quizzes courses our own training progress">
-      <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 10L12 5 2 10l10 5 10-5z"/><path d="M6 12v5c0 1 2.7 3 6 3s6-2 6-3v-5"/><path d="M22 10v6"/></svg></div>
-      <h3>NextPay Training Academy</h3>
-      <p>Our own branded training — modules, lessons, videos and quizzes with progress tracking. Built fresh and filled with NextPay content as we add it.</p>
-      <span class="go">Enter the Academy <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
-    </a>
-
-    <!-- Industry Training -->
-    <a class="hub-card is-soon" href="#" onclick="return false"
-       data-stage="learn" data-type="pos terminals gateways invoicing" data-resource="training"
-       data-text="industry training restaurants retail salons auto repair healthcare verticals how to sell to talk track per industry">
-      <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 21h18M5 21V7l8-4 8 4v14M9 9h.01M9 13h.01M9 17h.01M15 9h.01M15 13h.01M15 17h.01"/></svg></div>
-      <h3>Industry Training <span class="pill pill-soon">Coming soon</span></h3>
-      <p>How to sell into each vertical — restaurants, retail, salons, auto, healthcare — pain points, the right stack, and the language that lands.</p>
-      <span class="go">Coming soon <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
-    </a>
-
-    <!-- NextPay Rewards Calculator -->
-    <a class="hub-card" href="https://app.tuzorewards.com/auth/nextpaybusinesssolutions/iso-calculator/" target="_blank" rel="noopener"
-       data-stage="quote" data-type="pos terminals gateways invoicing" data-resource="tools"
-       data-text="nextpay rewards calculator merchant rewards points earn estimate volume processing calculate savings qualify qualifying">
-      <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="2" width="16" height="20" rx="2"/><path d="M8 6h8M8 10h2M14 10h2M8 14h2M14 14h2M8 18h2M14 18h2"/></svg></div>
-      <h3>NextPay Rewards Calculator <span class="pill pill-live">Live</span></h3>
-      <p>Run it with a prospect to show what they could be earning and qualifying for through NextPay Rewards — a live close tool you can use right on the call.</p>
-      <span class="go">Open the calculator <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
-    </a>
-
-    <!-- Statement Rate Analyzer -->
-    <a class="hub-card" href="Statement Upload.html" target="_blank" rel="noopener"
-       data-stage="quote" data-type="pos terminals gateways invoicing" data-resource="tools"
-       data-text="statement analyzer upload rate review current rate effective rate beat match proposal savings competitor statement">
-      <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 16V4M7 9l5-5 5 5M5 20h14"/></svg></div>
-      <h3>Statement Rate Analyzer <span class="pill pill-live">Live</span></h3>
-      <p>Upload a prospect's current statement, surface their effective rate, then build a proposal to beat or match it. (Existing rate-review flow — we'll grow it into a full in-hub calculator.)</p>
-      <span class="go">Open analyzer <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
-    </a>
-
-    <!-- Product & Industry Quizzes -->
-    <a class="hub-card is-soon" href="#" onclick="return false"
-       data-stage="learn" data-type="pos terminals gateways invoicing" data-resource="training"
-       data-text="quizzes product knowledge industry knowledge test reps certification check learning">
-      <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 9a3 3 0 116 0c0 2-3 2.5-3 5M12 19h.01"/><circle cx="12" cy="12" r="10"/></svg></div>
-      <h3>Product &amp; Industry Quizzes <span class="pill pill-soon">Coming soon</span></h3>
-      <p>Short knowledge checks on products and verticals so reps prove they know the stack before they pitch it. Track who's certified.</p>
-      <span class="go">Coming soon <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
-    </a>
-
-    <!-- Lead Generation & Marketing -->
-    <a class="hub-card" href="Sales Hub - Lead Generation.html"
-       data-stage="learn pitch" data-type="pos terminals gateways invoicing" data-resource="tools training docs"
-       data-text="lead generation marketing scripts proposals flyers assets live transfers warm email lists paid ads nextlink linkedin sales navigator outreach seat resell enhanced resources agent pricing">
-      <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 11l18-5v12L3 13v6H1v-8z"/><path d="M11 8v6"/></svg></div>
-      <h3>Lead Generation &amp; Marketing</h3>
-      <p>Standard resources for every rep — scripts, proposals, flyers and marketing assets — plus optional Enhanced tools at agent pricing: live transfers, warm lists, paid ads and NextLink.</p>
-      <span class="go">Open lead gen &amp; marketing <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
-    </a>
-
-    <!-- Networking & Partnerships -->
-    <a class="hub-card is-soon" href="#" onclick="return false"
-       data-stage="learn" data-type="pos terminals gateways invoicing" data-resource="training"
-       data-text="networking partnerships who to partner with referral partners bookkeepers pos resellers chambers bni grow network build relationships">
-      <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="6" cy="6" r="3"/><circle cx="18" cy="18" r="3"/><circle cx="18" cy="6" r="3"/><path d="M9 6h6M8.5 8.5l7 7"/></svg></div>
-      <h3>Networking &amp; Partnerships <span class="pill pill-soon">Coming soon</span></h3>
-      <p>How to network and who to partner with — referral partners, complementary businesses, and local groups that feed you deals. Build your pipeline beyond cold outreach.</p>
-      <span class="go">Coming soon <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
-    </a>
-
-    <!-- Grow Your Portfolio -->
-    <a class="hub-card" href="Sales Hub - My Dashboard.html#grow"
-       data-stage="learn" data-type="pos terminals gateways invoicing" data-resource="training"
-       data-text="grow your portfolio immediate steps growth referrals follow up pipeline book of business actions habits drive growth">
-      <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 17l6-6 4 4 7-7M21 8v5h-5"/></svg></div>
-      <h3>Grow Your Portfolio <span class="pill pill-live">Live</span></h3>
-      <p>Immediate, high-leverage steps to drive growth — referrals, follow-ups, partnerships and outreach habits that compound. Track them on your dashboard.</p>
-      <span class="go">See growth steps <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
-    </a>
-
-    <!-- Field Sales Action Plan -->
     <a class="hub-card" href="Sales Hub - Field Plan.html"
        data-stage="learn pitch" data-type="pos terminals gateways invoicing" data-resource="training"
        data-text="field sales action plan territory mapping route daily goals walk-ins kpi targets zone rotation cadence prospecting">
@@ -449,37 +464,27 @@
       <span class="go">Open the plan <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
     </a>
 
-    <!-- Statements & Calculators -->
-    <a class="hub-card" href="Sales Hub - Statements.html"
-       data-stage="quote" data-type="pos terminals gateways invoicing" data-resource="tools"
-       data-text="statements calculators tools how to find a statement clover statement profitability calculator shift4 flat rate pricing rate review excel rewards">
-      <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="2" width="16" height="20" rx="2"/><path d="M8 6h8M8 10h2M14 10h2M8 14h2M14 14h2M8 18h6"/></svg></div>
-      <h3>Statements &amp; Calculators</h3>
-      <p>Find a merchant's statement, then price the deal — the Clover statement guide, the rate analyzer, and the profitability, Shift4 Flat Rate Plus and NextPay Rewards calculators.</p>
-      <span class="go">Open statements &amp; calculators <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+    <a class="hub-card" href="Sales Hub - My Dashboard.html#grow"
+       data-stage="learn" data-type="pos terminals gateways invoicing" data-resource="training"
+       data-text="grow your portfolio immediate steps growth referrals follow up pipeline book of business actions habits drive growth">
+      <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 17l6-6 4 4 7-7M21 8v5h-5"/></svg></div>
+      <h3>Grow Your Portfolio <span class="pill pill-live">Live</span></h3>
+      <p>Immediate, high-leverage steps to drive growth — referrals, follow-ups, partnerships and outreach habits that compound. Track them on your dashboard.</p>
+      <span class="go">See growth steps <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
     </a>
 
-    <!-- Document Library -->
-    <a class="hub-card" href="Sales Hub - Document Library.html"
-       data-stage="learn pitch quote submit support" data-type="pos terminals gateways invoicing" data-resource="docs"
-       data-text="document library downloads pdf decks contracts flyers brochures forms applications upload files assets google drive links">
-      <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 7a2 2 0 012-2h4l2 2h8a2 2 0 012 2v8a2 2 0 01-2 2H5a2 2 0 01-2-2z"/></svg></div>
-      <h3>Document Library</h3>
-      <p>One organized shelf for every PDF, deck, flyer, application, script and form — sorted by product and type. Filterable and searchable; we add files and links one at a time as you send them.</p>
-      <span class="go">Open the library <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+    <a class="hub-card is-soon" href="#" onclick="return false"
+       data-stage="learn" data-type="pos terminals gateways invoicing" data-resource="training"
+       data-text="networking partnerships who to partner with referral partners bookkeepers pos resellers chambers bni grow network build relationships">
+      <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="6" cy="6" r="3"/><circle cx="18" cy="18" r="3"/><circle cx="18" cy="6" r="3"/><path d="M9 6h6M8.5 8.5l7 7"/></svg></div>
+      <h3>Networking &amp; Partnerships <span class="pill pill-soon">Coming soon</span></h3>
+      <p>How to network and who to partner with — referral partners, complementary businesses, and local groups that feed you deals. Build your pipeline beyond cold outreach.</p>
+      <span class="go">Coming soon <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
     </a>
+    </div>
+  </section>
 
-    <!-- Product Catalog -->
-    <a class="hub-card" href="POS Systems.html" target="_blank" rel="noopener"
-       data-stage="learn" data-type="pos terminals gateways invoicing" data-resource="docs"
-       data-text="product catalog browse by type pos terminals gateways invoicing all products hardware compare">
-      <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5"/><rect x="14" y="14" width="7" height="7" rx="1.5"/></svg></div>
-      <h3>Product Catalog <span class="pill pill-live">Live</span></h3>
-      <p>Browse the full lineup by product type — POS, terminals, gateways, invoicing — with the existing compare engine and spec pages your customers see.</p>
-      <span class="go">Browse catalog <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
-    </a>
-
-  </div>
+  </div><!-- /#hubGrid -->
 
   <div class="hub-empty" id="hubEmpty">
     <p>No resources match that yet — try another search or clear the filters. New material gets added here as it's created.</p>
@@ -538,6 +543,11 @@
         (!q || text.indexOf(q)!==-1);
       card.style.display = ok ? '' : 'none';
       if(ok) shown++;
+    });
+    // hide a section header when none of its cards are showing
+    Array.prototype.forEach.call(grid.querySelectorAll('.hub-group'), function(g){
+      var any = Array.prototype.some.call(g.querySelectorAll('.hub-card'), function(c){ return c.style.display !== 'none'; });
+      g.style.display = any ? '' : 'none';
     });
     empty.classList.toggle('show', shown===0);
     var dirty = state.stage!=='all' || state.product!=='all' || state.resource!=='all' || q!=='';
