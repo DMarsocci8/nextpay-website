@@ -46,6 +46,8 @@ main.wrap{padding:26px 0 10px}
 .doc .ft{width:44px;height:44px;border-radius:11px;display:grid;place-items:center;font-size:11px;font-weight:800;color:#fff;flex:none;letter-spacing:.02em}
 .doc .dlogo{width:100%;height:108px;border-radius:14px;background:var(--bg-soft);border:1px solid var(--line);display:grid;place-items:center;padding:18px;margin-bottom:2px}
 .doc .dlogo img{max-width:80%;max-height:72px;object-fit:contain;display:block}
+.doc .dlogo.thumb{height:140px;padding:0;overflow:hidden;background:var(--navy)}
+.doc .dlogo.thumb img{max-width:none;max-height:none;width:100%;height:100%;object-fit:cover}
 .ft.pdf{background:#d6453b}.ft.doc{background:#2b6cb0}.ft.img{background:var(--teal-dark)}.ft.xls{background:#1f8a5b}.ft.link{background:var(--slate)}
 .doc h3{font-size:16px;letter-spacing:-.01em;line-height:1.25}
 .doc .tags{display:flex;gap:6px;flex-wrap:wrap}
@@ -356,8 +358,13 @@ function card(d){
   var ext = (d.type||'link').toLowerCase();
   var prodLabel = {pos:'POS',terminals:'Terminals',gateways:'Gateways',invoicing:'Invoicing',general:'General'}[d.product]||d.product;
   var catLabel = {pricing:'Pricing',script:'Script',proposal:'Proposal',flyer:'Flyer',onepager:'One-Pager',deck:'Presentation',form:'Form',contract:'Contract',training:'Training',statement:'Statement',tool:'Calculator',portal:'Portal'}[d.category]||d.category;
+  var thumb=null;
+  if(d.category==='flyer'){ var m=(d.href||'').match(/flyer=([\w-]+)/); if(m) thumb='assets/flyers/thumbs/'+m[1]+'.jpg'; }
+  var media = thumb
+    ? '<span class="dlogo thumb"><img src="'+thumb+'" alt=""></span>'
+    : '<span class="dlogo"><img src="assets/logos/'+logoFor(d)+'" alt=""></span>';
   return '<div class="doc">'
-    + '<span class="dlogo"><img src="assets/logos/'+logoFor(d)+'" alt=""></span>'
+    + media
     + '<h3>'+d.title+'</h3>'
     + '<div class="tags"><span class="t prod">'+prodLabel+'</span><span class="t">'+catLabel+'</span><span class="t">'+(FT[ext]||'FILE')+'</span></div>'
     + (d.note?'<p class="dn">'+d.note+'</p>':'<p class="dn"></p>')
