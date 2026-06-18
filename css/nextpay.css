@@ -181,8 +181,9 @@ button{font-family:inherit;cursor:pointer}
 .foot a:hover{color:#fff}
 .foot .brand{font-size:24px;font-weight:800;color:#fff}
 .foot .brand span{color:var(--teal-bright)}
-.foot-brand{margin-top:46px}
-.foot-brand p{margin-top:12px;max-width:480px;color:#aebccb;font-size:15px;line-height:1.55}
+.foot-brand{margin-top:46px;text-align:center}
+.foot-brand .brand{display:inline-block}
+.foot-brand p{margin:12px auto 0;max-width:480px;color:#aebccb;font-size:15px;line-height:1.55}
 .foot-bottom{border-top:1px solid rgba(255,255,255,.12);margin-top:30px;padding-top:24px;display:flex;justify-content:space-between;font-size:14px;color:#8497a8}
 
 /* ---------- product / option cards ---------- */
