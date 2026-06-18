@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="robots" content="noindex, nofollow">
-<title>Request Portal Access — NextPay Sales Hub</title>
+<title>Requests &amp; Suggestions — NextPay Sales Hub</title>
 <link rel="icon" href="assets/favicon.ico" sizes="any">
 <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
 <link rel="stylesheet" href="css/nextpay.css">
@@ -26,7 +26,11 @@
 .pg-head p.lead{color:#c4d0db;margin-top:10px;max-width:600px;font-size:16px;line-height:1.55}
 
 main.wrap{padding:32px 0 10px;max-width:680px}
+.stack{display:flex;flex-direction:column;gap:24px}
 .req-form{background:#fff;border:1px solid var(--line);border-radius:var(--radius-lg);box-shadow:var(--shadow-sm);padding:26px}
+.req-form .sec-title{font-size:19px;font-weight:800;color:var(--navy);letter-spacing:-.01em;margin-bottom:4px;display:flex;align-items:center;gap:10px}
+.req-form .sec-title svg{width:20px;height:20px;color:var(--teal-dark)}
+.req-form .sec-sub{font-size:13.5px;color:var(--slate);line-height:1.5;margin-bottom:18px}
 .field{margin-bottom:16px}
 .field label{display:block;font-size:13px;font-weight:700;color:var(--ink);margin-bottom:6px}
 .req-form input,.req-form select,.req-form textarea{width:100%;border:1px solid var(--line);border-radius:10px;padding:12px 13px;font-family:inherit;font-size:15px;color:var(--ink);background:#fff}
@@ -51,87 +55,138 @@ main.wrap{padding:32px 0 10px;max-width:680px}
     <a href="Sales Hub.html" style="display:flex;align-items:center" aria-label="Sales Hub home"><img class="logo" src="assets/logos/nextpay-nav.png" alt="NextPay"></a>
     <span class="pipe"></span>
     <span class="hub-tag">Sales Hub <span class="badge">Internal</span></span>
-    <div class="right"><a href="Sales Hub - Submit a Deal.html">← Submit a Deal</a></div>
+    <div class="right"><a href="Sales Hub.html">← Hub home</a></div>
   </div>
 </div>
 
 <header class="pg-head">
   <div class="wrap">
-    <div class="crumbs"><a href="Sales Hub.html">Sales Hub</a><span class="sep">/</span><a href="Sales Hub - Submit a Deal.html">Submit a Deal</a><span class="sep">/</span><span>Request Access</span></div>
-    <h1>Request portal access</h1>
-    <p class="lead">Don't have access to a portal yet? Send a quick request — it goes straight to our team and they'll get you set up.</p>
+    <div class="crumbs"><a href="Sales Hub.html">Sales Hub</a><span class="sep">/</span><span>Requests &amp; Suggestions</span></div>
+    <h1>Requests &amp; Suggestions</h1>
+    <p class="lead">Need access to a portal, a tool or resource, or have an idea to make the hub better? Send it here — it goes straight to our team.</p>
   </div>
 </header>
 
 <main class="wrap">
-  <form id="accessForm" class="req-form" novalidate>
-    <div class="field">
-      <label for="portal">Which portal do you need access to?</label>
-      <select id="portal" name="portal">
-        <option>Solutions in Payments Portal</option>
-        <option>Shift4 Partner Portal</option>
-        <option>Square</option>
-        <option>Other</option>
-      </select>
-    </div>
-    <div class="field"><label for="name">Your name</label><input id="name" name="name" type="text" autocomplete="name" required></div>
-    <div class="field"><label for="email">Your email</label><input id="email" name="email" type="email" autocomplete="email" required></div>
-    <div class="field"><label for="phone">Your cell <span style="color:var(--slate-2);font-weight:500">(optional)</span></label><input id="phone" name="phone" type="tel" autocomplete="tel"></div>
-    <div class="field"><label for="message">Anything else? <span style="color:var(--slate-2);font-weight:500">(optional)</span></label><textarea id="message" name="message" rows="3"></textarea></div>
-    <div class="actions">
-      <button type="submit" class="btn btn-primary">Send access request</button>
-      <span class="req-note">Goes to our team — they'll set up your access.</span>
-    </div>
-  </form>
-  <div id="accessDone" class="lead-done"></div>
+  <div class="stack">
+
+    <!-- PORTAL ACCESS -->
+    <section class="req-form" id="access">
+      <div class="sec-title"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg>Request portal access</div>
+      <p class="sec-sub">Don't have a login yet? Tell us which portal and we'll get you set up.</p>
+      <form id="accessForm" novalidate>
+        <div class="field">
+          <label for="portal">Which portal do you need access to?</label>
+          <select id="portal" name="portal">
+            <option>Solutions in Payments Portal</option>
+            <option>Shift4 Partner Portal</option>
+            <option>Square</option>
+            <option>Other</option>
+          </select>
+        </div>
+        <div class="field"><label for="name">Your name</label><input id="name" name="name" type="text" autocomplete="name" required></div>
+        <div class="field"><label for="email">Your email</label><input id="email" name="email" type="email" autocomplete="email" required></div>
+        <div class="field"><label for="phone">Your cell <span style="color:var(--slate-2);font-weight:500">(optional)</span></label><input id="phone" name="phone" type="tel" autocomplete="tel"></div>
+        <div class="field"><label for="message">Anything else? <span style="color:var(--slate-2);font-weight:500">(optional)</span></label><textarea id="message" name="message" rows="3"></textarea></div>
+        <div class="actions">
+          <button type="submit" class="btn btn-primary">Send access request</button>
+          <span class="req-note">Goes to our team — they'll set up your access.</span>
+        </div>
+      </form>
+      <div id="accessDone" class="lead-done"></div>
+    </section>
+
+    <!-- SUGGESTION / REQUEST BOX -->
+    <section class="req-form" id="suggest">
+      <div class="sec-title"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18h6M10 22h4M12 2a7 7 0 00-4 12.7c.6.5 1 1.3 1 2.3h6c0-1 .4-1.8 1-2.3A7 7 0 0012 2z"/></svg>Suggest something or request anything</div>
+      <p class="sec-sub">Need a tool, a flyer, a training topic, a script, a portal — or have an idea to make the hub better? Tell us what you're looking for and it goes straight to the team.</p>
+      <form id="suggestForm" novalidate>
+        <div class="field">
+          <label for="s-cat">What's this about?</label>
+          <select id="s-cat" name="category">
+            <option>An idea or suggestion</option>
+            <option>A tool or resource I need</option>
+            <option>A training topic</option>
+            <option>A flyer or marketing piece</option>
+            <option>A script or template</option>
+            <option>Something's wrong or needs fixing</option>
+            <option>Something else</option>
+          </select>
+        </div>
+        <div class="field"><label for="s-name">Your name</label><input id="s-name" name="name" type="text" autocomplete="name" required></div>
+        <div class="field"><label for="s-email">Your email</label><input id="s-email" name="email" type="email" autocomplete="email" required></div>
+        <div class="field"><label for="s-msg">What do you need or want to suggest?</label><textarea id="s-msg" name="message" rows="4" required placeholder="The more detail the better — what you're looking for, why it'd help, and any examples."></textarea></div>
+        <div class="actions">
+          <button type="submit" class="btn btn-primary">Send it</button>
+          <span class="req-note">Every suggestion reaches the team.</span>
+        </div>
+      </form>
+      <div id="suggestDone" class="lead-done"></div>
+    </section>
+
+  </div>
 </main>
 
 <footer class="hub-foot">
   <div class="wrap">
-    <span>NextPay Sales Hub · Request Access · Internal use only.</span>
-    <span><a href="Sales Hub - Submit a Deal.html">← Back to Submit a Deal</a></span>
+    <span>NextPay Sales Hub · Requests &amp; Suggestions · Internal use only.</span>
+    <span><a href="Sales Hub.html">← Back to hub</a></span>
   </div>
 </footer>
 
 <script>
+function esc(s){ return (s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;'); }
+
 // pre-select the portal from ?portal=...
 (function(){
   try{
     var p=new URLSearchParams(location.search).get('portal');
     if(p){ var sel=document.getElementById('portal');
       for(var i=0;i<sel.options.length;i++){ if(sel.options[i].value===p){ sel.selectedIndex=i; return; } }
-      // not in list -> add it
       var o=document.createElement('option'); o.text=p; o.value=p; sel.add(o,0); sel.selectedIndex=0;
     }
   }catch(e){}
 })();
 
-(function(){
-  var form=document.getElementById('accessForm');
+function wireForm(opts){
+  var form=document.getElementById(opts.form), done=document.getElementById(opts.done);
+  if(!form) return;
   form.addEventListener('submit',function(e){
     e.preventDefault();
+    if(!form.checkValidity()){ form.reportValidity(); return; }
     var fd=new FormData(form);
-    var name=fd.get('name')||'there', portal=fd.get('portal')||'a portal';
+    var name=fd.get('name')||'there';
     fd.append('access_key','ee318ebf-e50a-4aaf-a11c-5efd7dd86a8b');
-    fd.append('subject','Portal access request — '+portal+' — '+(fd.get('name')||'Agent'));
+    fd.append('subject',opts.subject(fd));
     fd.append('from_name','NextPay Sales Hub');
     fd.append('cc','alexander@nextpaypos.com');
-    fd.append('Source','Sales Hub — Request portal access');
-    var btn=form.querySelector('button[type=submit]'); if(btn){btn.disabled=true;btn.textContent='Sending…';}
-    var d=document.getElementById('accessDone');
+    fd.append('Source',opts.source);
+    var btn=form.querySelector('button[type=submit]'), orig=btn?btn.textContent:'';
+    if(btn){btn.disabled=true;btn.textContent='Sending…';}
     function finish(ok,msg){
-      if(ok){ form.style.display='none';
-        d.innerHTML='<h3>Request sent, '+name+' ✅</h3><p>Our team will set up your access to <b>'+portal+'</b> and follow up by email.</p>';
-      } else { if(btn){btn.disabled=false;btn.textContent='Send access request';}
-        d.innerHTML='<h3 style="color:#c0392b">That didn&rsquo;t send</h3><p>'+(msg||'Please try again in a moment.')+'</p>'; }
-      d.classList.add('show'); d.scrollIntoView({behavior:'smooth',block:'center'});
+      if(ok){ form.style.display='none'; done.innerHTML=opts.success(esc(name),fd); }
+      else { if(btn){btn.disabled=false;btn.textContent=orig;}
+        done.innerHTML='<h3 style="color:#c0392b">That didn&rsquo;t send</h3><p>'+(msg||'Please try again in a moment.')+'</p>'; }
+      done.classList.add('show'); done.scrollIntoView({behavior:'smooth',block:'center'});
     }
     fetch('https://api.web3forms.com/submit',{method:'POST',headers:{'Accept':'application/json'},body:fd})
       .then(function(r){return r.json();})
       .then(function(res){ finish(res && res.success, res && res.message); })
       .catch(function(){ finish(false,'Network error. Please try again.'); });
   });
-})();
+}
+
+wireForm({
+  form:'accessForm', done:'accessDone', source:'Sales Hub — Request portal access',
+  subject:function(fd){ return 'Portal access request — '+(fd.get('portal')||'a portal')+' — '+(fd.get('name')||'Agent'); },
+  success:function(name,fd){ return '<h3>Request sent, '+name+' ✅</h3><p>Our team will set up your access to <b>'+esc(fd.get('portal')||'the portal')+'</b> and follow up by email.</p>'; }
+});
+
+wireForm({
+  form:'suggestForm', done:'suggestDone', source:'Sales Hub — Suggestion / Request',
+  subject:function(fd){ return 'Suggestion / Request — '+(fd.get('category')||'General')+' — '+(fd.get('name')||'Agent'); },
+  success:function(name,fd){ return '<h3>Got it, '+name+' ✅</h3><p>Thanks — your suggestion went straight to the team. If it needs a follow-up, we&rsquo;ll reach out by email.</p>'; }
+});
 </script>
 </body>
 </html>

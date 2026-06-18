@@ -81,14 +81,14 @@ h2.sec{font-size:20px;letter-spacing:-.02em;margin:28px 0 12px;color:var(--navy)
     <a class="lk" href="Sales Hub - Submit a Deal.html" target="_blank" rel="noopener"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11"/></svg></span><span><b>Submit a Deal</b><span>How &amp; where</span></span></a>
     <a class="lk" href="Sales Hub - Pricing.html" target="_blank" rel="noopener"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 1v22M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"/></svg></span><span><b>Pricing &amp; Fees</b><span>Programs &amp; rates</span></span></a>
     <a class="lk" href="Sales Hub - FAQ.html" target="_blank" rel="noopener"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M9.1 9a3 3 0 015.8 1c0 2-3 3-3 3M12 17h.01"/></svg></span><span><b>Fee FAQ</b><span>Statement questions</span></span></a>
-    <a class="lk" href="Sales Hub - Request Access.html" target="_blank" rel="noopener"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg></span><span><b>Request Access</b><span>Portals &amp; logins</span></span></a>
+    <a class="lk" href="Sales Hub - Request Access.html" target="_blank" rel="noopener"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg></span><span><b>Requests &amp; Suggestions</b><span>Access, tools &amp; ideas</span></span></a>
     <a class="lk" href="Sales Hub - Document Library.html" target="_blank" rel="noopener"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 7a2 2 0 012-2h4l2 2h6a2 2 0 012 2v8a2 2 0 01-2 2H4z"/></svg></span><span><b>Document Library</b><span>Every file</span></span></a>
   </div>
 
   <h2 class="sec">Common questions</h2>
   <div id="faq"></div>
 
-  <div class="callout"><span style="font-size:18px">🛠️</span><div><b>Something on the hub broken or wrong?</b> Tell the team (above) what page and what you saw, and we'll fix it fast. This hub is built for you — feedback makes it better.</div></div>
+  <div class="callout"><span style="font-size:18px">🛠️</span><div><b>Something on the hub broken or wrong — or want something added?</b> Tell the team (above), or drop it in the <a href="Sales Hub - Request Access.html#suggest" target="_blank" rel="noopener" style="color:var(--teal-dark);font-weight:700">suggestion &amp; request box</a>. This hub is built for you — feedback makes it better.</div></div>
 
 </main>
 <footer class="hub-foot"><div class="wrap">
@@ -102,7 +102,8 @@ var FAQ=[
  {q:"How do I get portal access (SIP, Shift4, Square, Clover)?",a:"Use <a href=\"Sales Hub - Request Access.html\" target=\"_blank\" rel=\"noopener\">Request Access</a> to ask the team for logins, or contact the team above."},
  {q:"A merchant is asking what a fee on their statement is.",a:"Open the <a href=\"Sales Hub - FAQ.html\" target=\"_blank\" rel=\"noopener\">Merchant Account Fee FAQ</a> for plain-English answers, and remember fees vary by processor."},
  {q:"Where are scripts, flyers and one-pagers?",a:"Scripts &amp; templates live on the <a href=\"Sales Hub - Scripts.html\" target=\"_blank\" rel=\"noopener\">Scripts</a> page; personalized flyers &amp; business cards are in <a href=\"Sales Hub - Flyers.html\" target=\"_blank\" rel=\"noopener\">Flyers</a> and <a href=\"Sales Hub - Business Card.html\" target=\"_blank\" rel=\"noopener\">Print &amp; Personalize</a>."},
- {q:"I'm brand new — where do I start?",a:"Read the <a href=\"Sales Hub - Knowledge Base.html\" target=\"_blank\" rel=\"noopener\">Agent Knowledge Base</a> (start-here guide), then test yourself with the <a href=\"Sales Hub - Quiz.html\" target=\"_blank\" rel=\"noopener\">Agent Quiz</a>."}
+ {q:"I'm brand new — where do I start?",a:"Read the <a href=\"Sales Hub - Knowledge Base.html\" target=\"_blank\" rel=\"noopener\">Agent Knowledge Base</a> (start-here guide), then test yourself with the <a href=\"Sales Hub - Quiz.html\" target=\"_blank\" rel=\"noopener\">Agent Quiz</a>."},
+ {q:"I need a tool, flyer or training topic that isn't here — or have an idea.",a:"Use the <a href=\"Sales Hub - Request Access.html#suggest\" target=\"_blank\" rel=\"noopener\">Suggestion &amp; Request box</a> — tell us what you're looking for and it goes straight to the team. Anything that would help you sell, just ask."}
 ];
 document.getElementById('faq').innerHTML=FAQ.map(function(o){
  return '<div class="faq"><button class="faq-head" type="button"><span class="q">'+o.q+'</span><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg></button><div class="faq-body"><p>'+o.a+'</p></div></div>';

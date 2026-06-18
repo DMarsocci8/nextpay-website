@@ -14,6 +14,8 @@
 /shift4    /Sales%20Hub%20-%20Shift4                    302
 /statements /Sales%20Hub%20-%20Statements               302
 /access    /Sales%20Hub%20-%20Request%20Access          302
+/requests  /Sales%20Hub%20-%20Request%20Access          302
+/suggest   /Sales%20Hub%20-%20Request%20Access#suggest   302
 /objections /Sales%20Hub%20-%20Objections                302
 /questions /Sales%20Hub%20-%20Questions                  302
 /mindset   /Sales%20Hub%20-%20Mindset                    302
