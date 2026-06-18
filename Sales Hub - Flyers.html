@@ -62,6 +62,10 @@
 .flyer.pc{width:7in;height:5in}
 .flyer .flyer-art{position:absolute;inset:0;width:100%;height:100%}
 .flyer img.flyer-art{object-fit:cover;display:block}
+/* the industry flyer PNGs are full-bleed (teal runs to the edge); frame the
+   image with a clean white safe-margin so it prints without the teal bleeding
+   off the page. Image flyers only — the built-in HTML flyers manage their own. */
+.flyer.has-img::after{content:'';position:absolute;inset:0;border:.16in solid #fff;pointer-events:none;z-index:2}
 
 /* injected contact block */
 .contact-block{position:absolute;box-sizing:border-box}
@@ -379,8 +383,9 @@ function render(){
   var art = f.type==='img'
     ? '<img class="flyer-art" src="'+f.img+'" alt="">'
     : '<div class="flyer-art">'+f.html+'</div>';
+  var imgCls = f.type==='img' ? ' has-img' : '';
   var cstyle = (f.contact&&f.contact.style)||'left:0;right:0;bottom:0;padding:.3in .6in;color:#0C1B2A';
-  stage.innerHTML='<div class="flyer'+sizeCls+'">'+art+'<div class="contact-block" style="'+cstyle+'">'+buildContact(f)+'</div></div>';
+  stage.innerHTML='<div class="flyer'+sizeCls+imgCls+'">'+art+'<div class="contact-block" style="'+cstyle+'">'+buildContact(f)+'</div></div>';
   sizeStage();
   setPrintSize();
 }
