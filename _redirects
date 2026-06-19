@@ -1,5 +1,7 @@
 # Cloudflare Pages redirects — clean shortcuts to the Sales Hub
 # (Cloudflare serves clean URLs without the .html extension)
+# Root of the hub domain lands on the Sales Hub home (not the marketing homepage)
+/          /Sales%20Hub                                 302
 /hub       /Sales%20Hub                                 302
 /submit    /Sales%20Hub%20-%20Submit%20a%20Deal         302
 /library   /Sales%20Hub%20-%20Document%20Library        302
