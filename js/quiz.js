@@ -205,7 +205,9 @@
       wrap.appendChild(sg);
     }
     const cta=el('div','quiz-res-cta');
-    cta.innerHTML='<a class="btn btn-primary" target="_blank" rel="noopener" href="Contact.html">Get my custom quote '+ARROW+'</a><a class="btn btn-outline" target="_blank" rel="noopener" href="Contact.html">Talk to a specialist</a><button class="btn btn-ghost-dark" type="button" id="quiz-restart">Start over</button>';
+    var picks=cards.map(function(c){return c.name+(c.top?' (top pick)':'');}).join(', ');
+    var quoteHref='Contact.html?topic=quote&msg='+encodeURIComponent('I took the quiz and would like a custom quote. My recommended stack: '+picks+'.');
+    cta.innerHTML='<a class="btn btn-primary" href="'+quoteHref+'">Get my custom quote '+ARROW+'</a><a class="btn btn-outline" href="Contact.html?topic=specialist">Talk to a specialist</a><button class="btn btn-ghost-dark" type="button" id="quiz-restart">Start over</button>';
     wrap.appendChild(cta);
     root.appendChild(wrap);
     document.getElementById('quiz-restart').onclick=()=>{ answers={}; idx=0; save(); render(); };
