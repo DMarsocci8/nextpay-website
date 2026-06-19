@@ -159,7 +159,7 @@ function wireForm(opts){
     fd.append('access_key','ee318ebf-e50a-4aaf-a11c-5efd7dd86a8b');
     fd.append('subject',opts.subject(fd));
     fd.append('from_name','NextPay Sales Hub');
-    fd.append('cc','alexander@nextpaypos.com');
+    fd.append('cc','dom@nextpaypos.com,alexander@nextpaypos.com');
     fd.append('Source',opts.source);
     var btn=form.querySelector('button[type=submit]'), orig=btn?btn.textContent:'';
     if(btn){btn.disabled=true;btn.textContent='Sending…';}
