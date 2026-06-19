@@ -233,6 +233,7 @@ body.fmt-flyer .flboxP{display:block}
 #stage,#stageP{transform-origin:top left;will-change:transform}
 
 @media print{
+  *{-webkit-print-color-adjust:exact !important;print-color-adjust:exact !important}
   body{background:#fff}
   .hub-bar,.pg-head,.form-card,.preview h2,.tip,.hub-foot,.actions{display:none !important}
   .layout{display:block;padding:0}

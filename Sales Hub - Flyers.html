@@ -58,7 +58,7 @@
    each flyer's size — 8.5×11 flyers and 5×7 postcards */
 
 /* ---- the flyer (true 8.5 x 11; .pc = 5×7 postcard, landscape) ---- */
-.flyer{position:relative;width:8.5in;height:11in;background:#fff;overflow:hidden;box-shadow:0 10px 40px rgba(12,27,42,.22);font-family:inherit}
+.flyer{position:relative;width:8.5in;height:11in;background:#fff;overflow:hidden;box-shadow:0 10px 40px rgba(12,27,42,.22);font-family:inherit;-webkit-print-color-adjust:exact;print-color-adjust:exact}
 .flyer.pc{width:7in;height:5in}
 .flyer .flyer-art{position:absolute;inset:0;width:100%;height:100%}
 .flyer img.flyer-art{object-fit:cover;display:block}
@@ -181,11 +181,15 @@
 .hub-foot a{color:#cdd8e2;font-weight:600}.hub-foot a:hover{color:#fff}
 
 @media print{
+  *{-webkit-print-color-adjust:exact !important;print-color-adjust:exact !important}
   .hub-bar,.pg-head,.form-card,.preview .ptitle,.tip,.addnote,.hub-foot,.actions{display:none !important}
-  body{background:#fff}
-  .layout{display:block;padding:0}
-  .stage-wrap{height:auto !important;display:block}
-  .stage{transform:none !important}
+  html,body{background:#fff;margin:0;padding:0;width:auto;height:auto}
+  .wrap{max-width:none;margin:0;padding:0}
+  main.wrap{padding:0}
+  .layout{display:block;padding:0;margin:0}
+  .preview{margin:0}
+  .stage-wrap{height:auto !important;display:block;justify-content:flex-start}
+  .stage{transform:none !important;transform-origin:top left !important}
   .flyer{box-shadow:none;margin:0}
   /* @page size is set per-flyer in JS (#printPage) */
 }
