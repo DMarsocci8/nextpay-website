@@ -112,8 +112,11 @@
   // ---- state + render ----
   const root=document.getElementById('quiz');
   let answers={}; try{ answers=JSON.parse(localStorage.getItem('np_quiz')||'{}'); }catch(e){}
-  let idx=0;
+  let idx=0, firstPaint=true;
   function visible(){ return STEPS.filter(s=>!s.when||s.when(answers)); }
+  // bring the quiz card just below the sticky nav so the question is fully
+  // visible after each step (instead of jumping to the top of the page)
+  function scrollToQuiz(){ try{ var y=root.getBoundingClientRect().top+(window.pageYOffset||document.documentElement.scrollTop||0)-92; window.scrollTo({top:y<0?0:y,behavior:'smooth'}); }catch(e){} }
   function save(){ try{ localStorage.setItem('np_quiz',JSON.stringify(answers)); }catch(e){} }
 
   function render(){
@@ -175,7 +178,7 @@
     }
     card.appendChild(nav);
     root.appendChild(card);
-    root.scrollIntoView?null:null; window.scrollTo({top:0,behavior:'smooth'});
+    if(!firstPaint) scrollToQuiz(); firstPaint=false;
   }
 
   function renderResults(){
@@ -211,7 +214,7 @@
     wrap.appendChild(cta);
     root.appendChild(wrap);
     document.getElementById('quiz-restart').onclick=()=>{ answers={}; idx=0; save(); render(); };
-    window.scrollTo({top:0,behavior:'smooth'});
+    firstPaint=false; scrollToQuiz();
   }
 
   function el(tag,cls){ const e=document.createElement(tag); if(cls)e.className=cls; return e; }
