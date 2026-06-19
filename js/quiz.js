@@ -146,8 +146,8 @@
           answers[step.id]=arr; save(); render();
         } else {
           answers[step.id]=o.v; save();
-          // prune now-hidden answers downstream
-          idx++; render();
+          // mark the selection; the agent advances with the Continue button
+          render();
         }
       };
       opts.appendChild(b);
@@ -159,13 +159,19 @@
     back.disabled=idx===0; if(idx===0) back.style.visibility='hidden';
     back.onclick=()=>{ idx=Math.max(0,idx-1); render(); };
     nav.appendChild(back);
+    const last=idx===vis.length-1;
     if(step.type==='multi'){
       const next=el('button','btn btn-primary'); next.type='button';
-      next.innerHTML=(Array.isArray(sel)&&sel.length? 'Continue ':'Skip ')+ARROW;
+      next.innerHTML=(last?'See my results ':(Array.isArray(sel)&&sel.length?'Continue ':'Skip '))+ARROW;
       next.onclick=()=>{ idx++; render(); };
       nav.appendChild(next);
     } else {
-      const hint=el('span','quiz-hint'); hint.textContent='Pick one to continue'; nav.appendChild(hint);
+      const next=el('button','btn btn-primary'); next.type='button';
+      next.innerHTML=(last?'See my results ':'Continue ')+ARROW;
+      const hasSel=sel!==undefined&&sel!==null&&sel!=='';
+      if(!hasSel){ next.disabled=true; next.style.opacity='.45'; next.style.cursor='not-allowed'; }
+      next.onclick=()=>{ if(answers[step.id]===undefined) return; idx++; render(); };
+      nav.appendChild(next);
     }
     card.appendChild(nav);
     root.appendChild(card);
