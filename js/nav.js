@@ -144,17 +144,22 @@
   if(document.readyState==='loading') document.addEventListener('DOMContentLoaded',mount);
   else mount();
 
-  // Open target="_blank" links in a new tab on the live site, but fall back to
-  // normal same-tab navigation when the environment blocks popups (e.g. the
-  // sandboxed editor preview, where window.open returns null).
+  // Keep prospects on one continuous journey: links to our own pages open in
+  // the SAME tab (no popups). Only genuinely external (third-party) links open
+  // in a new tab, so people don't lose the NextPay site behind them.
   document.addEventListener('click',function(e){
     if(e.defaultPrevented||e.button!==0||e.metaKey||e.ctrlKey||e.shiftKey||e.altKey) return;
     const a=e.target.closest&&e.target.closest('a[target="_blank"]');
     if(!a) return;
     const href=a.getAttribute('href');
     if(!href||href.charAt(0)==='#'||/^(mailto:|tel:|javascript:)/i.test(href)) return;
-    let w=null;
-    try{ w=window.open(href,'_blank','noopener'); }catch(err){}
-    if(!w){ e.preventDefault(); window.location.href=href; }
+    let url; try{ url=new URL(href,window.location.href); }catch(err){ return; }
+    if(url.origin===window.location.origin){
+      // our own page — stay in this tab (strip the new-window behavior)
+      a.removeAttribute('target');
+      e.preventDefault();
+      window.location.href=href;
+    }
+    // external link: do nothing — the browser opens it in a new tab natively
   },true);
 })();
