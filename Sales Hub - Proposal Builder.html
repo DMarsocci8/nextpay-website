@@ -62,9 +62,9 @@
   font-family:inherit;padding:.55in .6in;display:flex;flex-direction:column;-webkit-print-color-adjust:exact;print-color-adjust:exact}
 .pp-head{display:flex;align-items:center;justify-content:space-between;border-bottom:2px solid #16A085;padding-bottom:.16in}
 .pp-head .np img{height:.5in;width:auto;display:block}
-.pp-head .pl{height:.6in;min-width:1.1in;max-width:2in;border:1px solid #e3e9ed;border-radius:.1in;background:#fff;display:flex;align-items:center;justify-content:center;padding:.06in .12in}
-.pp-head .pl.dark{background:#0C1B2A;border-color:#0C1B2A}
-.pp-head .pl img{max-height:.46in;max-width:1.7in;width:auto;object-fit:contain}
+.pp-head .pl{height:.6in;max-width:2in;display:flex;align-items:center;justify-content:flex-end}
+.pp-head .pl.dark{background:#0C1B2A;border-radius:.1in;padding:.06in .12in;justify-content:center}
+.pp-head .pl img{max-height:.5in;max-width:1.9in;width:auto;object-fit:contain}
 .pp-title{display:flex;align-items:flex-end;justify-content:space-between;margin-top:.2in}
 .pp-title h1{font-size:28pt;font-weight:800;letter-spacing:-.02em;color:#0C1B2A;line-height:1}
 .pp-title .meta{text-align:right;font-size:9.5pt;color:#5b6b73;line-height:1.5}
@@ -140,7 +140,7 @@
 
       <div class="fg"><label for="f-product">Product</label><select id="f-product"></select></div>
       <div class="f2col">
-        <div class="fg"><label for="f-biz">Business name</label><input id="f-biz" type="text" placeholder="Tokyo Sushi"></div>
+        <div class="fg"><label for="f-biz">Business name</label><input id="f-biz" type="text" placeholder="Business Name"></div>
         <div class="fg"><label for="f-contact">Contact name</label><input id="f-contact" type="text" placeholder="Owner / manager"></div>
       </div>
 
@@ -150,6 +150,14 @@
       <div class="addrow">
         <button type="button" id="addMonthly">+ Add line</button>
         <select id="addonPick"><option value="">+ Add‑on…</option></select>
+      </div>
+
+      <div class="sect">Upfront costs <span style="font-weight:600;text-transform:none;letter-spacing:0;color:var(--slate)">(hardware — purchased or waived)</span></div>
+      <p class="hint" style="margin:-4px 0 8px">Hardware bought outright goes here. If hardware is <b>waived</b>, leave this empty and add the monthly hardware cost up top instead.</p>
+      <div class="row-h"><span>Item</span><span>$</span><span>Qty</span><span></span></div>
+      <div class="rows" id="upfrontRows"></div>
+      <div class="addrow">
+        <button type="button" id="addUpfront">+ Add line</button>
       </div>
 
       <div class="sect">One‑time costs</div>
@@ -265,10 +273,11 @@ function fnum(v){ var x=parseFloat(v); return isFinite(x)?x:0; }
 var stage=document.getElementById('ppstage');
 var picker=document.getElementById('f-product');
 var monthlyRows=document.getElementById('monthlyRows');
+var upfrontRows=document.getElementById('upfrontRows');
 var onetimeRows=document.getElementById('onetimeRows');
 var addonPick=document.getElementById('addonPick');
 var otPick=document.getElementById('otPick');
-var OT_GENERIC=[{d:'Installation',a:''},{d:'Delivery / Shipping',a:''},{d:'Menu / Programming',a:''},{d:'Cash drawer',a:94.80},{d:'Setup fee',a:''}];
+var OT_GENERIC=[{d:'Installation',a:''},{d:'Delivery / Shipping',a:''},{d:'Menu / Programming',a:''},{d:'Setup fee',a:''}];
 var curOT=[];
 
 (function(){ var cats={}; PRODUCTS.forEach(function(p){ (cats[p.cat]=cats[p.cat]||[]).push(p); });
@@ -293,6 +302,7 @@ function rowEl(kind,d,amt,q){
   return div;
 }
 function addMonthly(d,amt,q){ monthlyRows.appendChild(rowEl('m',d,amt,q)); }
+function addUpfront(d,amt,q){ upfrontRows.appendChild(rowEl('u',d,amt,q)); }
 function addOnetime(d,amt,q){ onetimeRows.appendChild(rowEl('o',d,amt,q)); }
 function readRows(container){
   var out=[];
@@ -307,7 +317,7 @@ function readRows(container){
 
 function seedProduct(){
   var c=PCONF[prod().id]||{base:{d:'',m:''},addons:[],program:'',rate:''};
-  monthlyRows.innerHTML=''; onetimeRows.innerHTML='';
+  monthlyRows.innerHTML=''; upfrontRows.innerHTML=''; onetimeRows.innerHTML='';
   addMonthly(c.base.d, c.base.m, 1);
   document.getElementById('f-program').value=c.program||'';
   document.getElementById('f-rate').value=c.rate||'';
@@ -326,8 +336,9 @@ function render(){
   var name=pr.name||'Your Name', phone=pr.cell||'', email=pr.email||'';
   var biz=val('f-biz')||'________________', contact=val('f-contact');
   var date=new Date().toLocaleDateString('en-US',{year:'numeric',month:'long',day:'numeric'});
-  var mItems=readRows(monthlyRows), oItems=readRows(onetimeRows);
+  var mItems=readRows(monthlyRows), uItems=readRows(upfrontRows), oItems=readRows(onetimeRows);
   var mTot=0; mItems.forEach(function(it){ mTot+=it.a*it.q; });
+  var uTot=0; uItems.forEach(function(it){ uTot+=it.a*it.q; });
   var oSub=0; oItems.forEach(function(it){ oSub+=it.a*it.q; });
   var credL=val('f-credit-l'), credA=fnum(val('f-credit-a'));
   var oTot=oSub-credA;
@@ -338,6 +349,12 @@ function render(){
     mItems.forEach(function(it){ mh+='<tr><td>'+esc(it.d)+'</td><td>'+money(it.a)+'/mo</td><td>'+it.q+'</td><td>'+money(it.a*it.q)+'/mo</td></tr>'; });
     mh+='<tr class="tot"><td>Total monthly cost</td><td></td><td></td><td>'+money(mTot)+'/mo</td></tr></tbody></table>';
     costHtml+=mh;
+  }
+  if(uItems.length){
+    var uh='<div class="pp-sec-h">Upfront costs</div><table class="pp-table"><thead><tr><th>Item</th><th>Amount</th><th>Qty</th><th>Total</th></tr></thead><tbody>';
+    uItems.forEach(function(it){ uh+='<tr><td>'+esc(it.d)+'</td><td>'+money(it.a)+'</td><td>'+it.q+'</td><td>'+money(it.a*it.q)+'</td></tr>'; });
+    uh+='<tr class="tot"><td>Upfront total</td><td></td><td></td><td>'+money(uTot)+'</td></tr></tbody></table>';
+    costHtml+=uh;
   }
   if(oItems.length||credA){
     var oh='<div class="pp-sec-h">One‑time costs</div><table class="pp-table"><thead><tr><th>Item</th><th>Amount</th><th>Qty</th><th>Total</th></tr></thead><tbody>';
@@ -372,6 +389,7 @@ window.addEventListener('resize', sizeStage);
 
 picker.addEventListener('change', function(){ seedProduct(); render(); });
 document.getElementById('addMonthly').addEventListener('click', function(){ addMonthly('',''); render(); });
+document.getElementById('addUpfront').addEventListener('click', function(){ addUpfront('',''); render(); });
 document.getElementById('addOnetime').addEventListener('click', function(){ addOnetime('',''); render(); });
 addonPick.addEventListener('change', function(){ var c=PCONF[prod().id]; var a=c&&c.addons[this.value]; if(a){ addMonthly(a.d,a.m,1); render(); } this.value=''; });
 otPick.addEventListener('change', function(){ var o=curOT[this.value]; if(o){ addOnetime(o.d, (o.a===''||o.a==null)?'':o.a, 1); render(); } this.value=''; });
@@ -381,6 +399,7 @@ otPick.addEventListener('change', function(){ var o=curOT[this.value]; if(o){ ad
   document.getElementById('savedNote').textContent=(p.name||p.email)?'✓ Saved on this device — shared with your card & flyers':''; render(); }); });
 document.getElementById('resetBtn').addEventListener('click', function(){
   ['f-biz','f-contact','f-credit-l','f-credit-a','f-notes'].forEach(function(id){ document.getElementById(id).value=''; });
+  upfrontRows.innerHTML='';
   seedProduct(); render();
 });
 
