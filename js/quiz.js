@@ -14,7 +14,8 @@
       {v:'pos',t:'A full POS system',d:'Software + hardware to run checkout, ordering, and back office.'},
       {v:'terminal',t:'A standalone terminal',d:'Just a device to take cards — no full POS needed.'},
       {v:'online',t:'Gateway / software only',d:'Online payments, invoicing, virtual terminal — no hardware.'},
-      {v:'combo',t:'A combination',d:'POS + online, or terminal + invoicing software.'}]},
+      {v:'combo',t:'A combination',d:'POS + online, or terminal + invoicing software.'},
+      {v:'other',t:'Not payments — other services',d:'Payroll, HR, bookkeeping, financing, rewards, outreach & marketing.'}]},
     {id:'industry',q:'What industry are you in?',sub:'This drives the core recommendations.',type:'single',opts:[
       {v:'fnb',t:'Food & Beverage',d:'Restaurant, bar, café, food truck, QSR, catering.'},
       {v:'retail',t:'Retail',d:'Clothing, specialty, gift shop, general retail.'},
@@ -37,12 +38,14 @@
       when:a=>a.industry==='services'||a.industry==='home',opts:[
       {v:'yes',t:'Yes — payments from my phone',d:'At a customer site, field work, or away from a fixed location.'},
       {v:'no',t:'No — mostly fixed location',d:'Counter, desk, or office-based checkout.'}]},
-    {id:'volume',q:'Monthly card volume?',sub:'Helps match the right pricing model.',type:'single',opts:[
+    {id:'volume',q:'Monthly card volume?',sub:'Helps match the right pricing model.',type:'single',
+      when:a=>a.need!=='other',opts:[
       {v:'a',t:'Under $20,000 / month',d:'Early stage or lower-volume.'},
       {v:'b',t:'$20,000 – $60,000 / month',d:'Growing with steady card volume.'},
       {v:'c',t:'$60,000 – $120,000 / month',d:'Established with strong volume.'},
       {v:'d',t:'$120,000+ / month',d:'High-volume — custom pricing.'}]},
-    {id:'ticket',q:'Average transaction size?',sub:'Affects which pricing model benefits you most.',type:'single',opts:[
+    {id:'ticket',q:'Average transaction size?',sub:'Affects which pricing model benefits you most.',type:'single',
+      when:a=>a.need!=='other',opts:[
       {v:'a',t:'Under $20',d:'Quick service, low-cost items.'},
       {v:'b',t:'$20 – $40',d:'Moderate services or retail purchases.'},
       {v:'c',t:'$40 – $80',d:'Professional services, specialty products.'},
@@ -62,6 +65,15 @@
   function C(name,role,why,price,href){return {name,role,why,price,href,top:role.indexOf('Top')===0};}
   function recCards(a){
     const I=a.industry,need=a.need,hw=a.hardware,offset=(a.addons||[]).includes('offset');
+    if(need==='other') return [
+      C('Payroll & Workers Comp','Service','Full-service payroll, tax filing & workers comp coverage.','See details','Payroll - Workers Comp.html'),
+      C('Bookkeeping','Service','Reconciliation, reports & tax-ready books.','See details','Bookkeeping.html'),
+      C('Business Financing','Service','Working capital, equipment loans & cash advances.','See details','Business Financing.html'),
+      C('NextLink — Outreach & Marketing','Service','Reviews, reputation & automated client outreach.','See details','Client Automation Outreach.html'),
+      C('Merchant Rewards','Service','Earn points on every dollar you process.','See details','Merchant Rewards.html'),
+      C('HR & Compliance','Service','HR tools & compliance for growing teams.','See details','HR - Compliance.html'),
+      C('Business Brokerage','Service','Buy, sell, or get a business valuation.','See details','Business Brokerage.html')
+    ];
     function pos(){
       const lease=hw==='lease';
       if(I==='fnb') return lease
