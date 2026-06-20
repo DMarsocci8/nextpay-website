@@ -25,6 +25,7 @@
       ]],
       ['Quote', [
         ['Pricing & Fee Programs','Sales Hub - Pricing.html'],
+        ['Proposal Builder','Sales Hub - Proposal Builder.html'],
         ['Statement Analyzers','Sales Hub - Statements.html#statements'],
         ['Calculators','Sales Hub - Statements.html#calculators']
       ]],

@@ -215,6 +215,28 @@ var PRODUCTS=[
   {id:'ipospays',    name:'iPOSPays',              cat:'Online & Gateways',  logo:'ipospays.png'},
   {id:'luqra',       name:'Luqra / LQPay',         cat:'Online & Gateways',  logo:'luqra.png'}
 ];
+/* Starting numbers seeded from the POS Systems page pricing — all editable.
+   Only the product-tied fields (software/program/rate) get set on product change;
+   deal-specific costs (hardware, install, menu, delivery) stay as the agent enters. */
+var DEFAULTS={
+  chively:{software:'',program:'Dual Pricing',rate:'0% with dual pricing — match or beat'},
+  square:{software:'0',program:'Flat Rate',rate:'2.6% + 10¢ in person'},
+  clover:{software:'45',program:'Dual Pricing',rate:'0% with dual pricing'},
+  shift4:{software:'29.99',program:'Dual Pricing',rate:'0% with dual pricing'},
+  quantic:{software:'60',program:'Dual Pricing',rate:'0% with dual pricing'},
+  korona:{software:'59',program:'Dual Pricing',rate:'0% with dual pricing'},
+  nrs:{software:'49.95',program:'Cash Discount',rate:'$49.95/mo flat · $0 per transaction'},
+  dejapay:{software:'59',program:'Dual Pricing',rate:'0% with dual pricing'},
+  pax:{software:'',program:'Dual Pricing',rate:'0% with dual pricing'},
+  dejavoo:{software:'',program:'Dual Pricing',rate:'0% with dual pricing'},
+  valor:{software:'',program:'Dual Pricing',rate:'0% with dual pricing'},
+  swipesimple:{software:'25',program:'Interchange-Plus',rate:'IC+ — set per card mix'},
+  fluidpay:{software:'25',program:'Interchange-Plus',rate:'IC+ — set per card mix'},
+  nmi:{software:'25',program:'Interchange-Plus',rate:'IC+ — set per card mix'},
+  authnet:{software:'25',program:'Interchange-Plus',rate:'IC+ — set per card mix'},
+  ipospays:{software:'25',program:'Dual Pricing',rate:'0% with dual pricing'},
+  luqra:{software:'25',program:'Interchange-Plus',rate:'IC+ — set per card mix'}
+};
 var LINES=[
   {k:'hardware', label:'Hardware',            freq:'one'},
   {k:'install',  label:'Installation',        freq:'one'},
@@ -251,6 +273,12 @@ var prof=load();
 [['name','name'],['cell','cell'],['email','email']].forEach(function(p){ if(prof[p[1]]) document.getElementById('f-'+p[0]).value=prof[p[1]]; });
 
 function prod(){ var id=picker.value||PRODUCTS[0].id; for(var i=0;i<PRODUCTS.length;i++){ if(PRODUCTS[i].id===id) return PRODUCTS[i]; } return PRODUCTS[0]; }
+function applyDefaults(){
+  var d=DEFAULTS[prod().id]||{};
+  document.getElementById('f-software').value=('software' in d)?d.software:'';
+  document.getElementById('f-program').value=d.program||'';
+  document.getElementById('f-rate').value=d.rate||'';
+}
 
 function render(){
   var p=prod(), pr=load();
@@ -306,7 +334,7 @@ function sizeStage(){
 window.addEventListener('resize', sizeStage);
 
 /* wire inputs */
-picker.addEventListener('change', render);
+picker.addEventListener('change', function(){ applyDefaults(); render(); });
 ['f-biz','f-hardware','f-software','f-install','f-menu','f-delivery','f-program','f-rate','f-notes'].forEach(function(id){
   document.getElementById(id).addEventListener('input', render);
 });
@@ -318,11 +346,12 @@ picker.addEventListener('change', render);
   });
 });
 document.getElementById('clearBtn').addEventListener('click', function(){
-  ['f-biz','f-hardware','f-software','f-install','f-menu','f-delivery','f-rate','f-notes'].forEach(function(id){ document.getElementById(id).value=''; });
-  document.getElementById('f-program').value='';
+  ['f-biz','f-hardware','f-install','f-menu','f-delivery','f-notes'].forEach(function(id){ document.getElementById(id).value=''; });
+  applyDefaults();
   render();
 });
 
+applyDefaults();
 render();
 </script>
 <script src="js/hub-nav.js"></script>
