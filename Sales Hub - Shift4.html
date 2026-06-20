@@ -54,6 +54,28 @@ main.wrap{padding:30px 0 10px}
 .rcard a.go{display:inline-flex;align-items:center;gap:7px;font-weight:700;font-size:13.5px;color:var(--teal-dark)}
 .rcard a.go svg{width:15px;height:15px}
 
+/* Battlecards */
+.bc-grid{display:grid;gap:12px}
+details.bc{background:#fff;border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow-sm);overflow:hidden}
+details.bc>summary{list-style:none;cursor:pointer;display:flex;align-items:center;gap:12px;padding:16px 20px;font-weight:800;font-size:16px;color:var(--navy)}
+details.bc>summary::-webkit-details-marker{display:none}
+details.bc>summary .vs{font-size:11px;font-weight:800;letter-spacing:.06em;text-transform:uppercase;color:var(--teal-dark)}
+details.bc>summary .chev{margin-left:auto;width:18px;height:18px;color:var(--slate);transition:transform .2s}
+details.bc[open]>summary .chev{transform:rotate(90deg)}
+.bc-body{padding:2px 20px 20px;border-top:1px solid var(--line)}
+.bc-over{font-size:13.5px;color:var(--slate);line-height:1.55;margin:14px 0 4px}
+.bc-price{font-size:13px;color:var(--ink);margin:6px 0 14px}
+.bc-price b{color:var(--navy)}
+.bc-cols{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+@media(max-width:680px){.bc-cols{grid-template-columns:1fr}}
+.bc-col h4{font-size:12px;letter-spacing:.05em;text-transform:uppercase;margin-bottom:8px}
+.bc-col.str h4{color:var(--teal-dark)}
+.bc-col.weak h4{color:#c0392b}
+.bc-col ul,.bc-win ul{margin:0;padding-left:18px;display:flex;flex-direction:column;gap:6px}
+.bc-col li,.bc-win li{font-size:13px;color:var(--ink);line-height:1.45}
+.bc-win{margin-top:16px;background:rgba(20,161,140,.07);border:1px solid rgba(20,161,140,.22);border-radius:12px;padding:14px 16px}
+.bc-win h4{font-size:12px;letter-spacing:.05em;text-transform:uppercase;color:var(--teal-dark);margin-bottom:8px}
+
 .submit-block{background:linear-gradient(135deg,var(--navy),var(--navy-2));color:#fff;border-radius:var(--radius-lg);padding:28px;box-shadow:var(--shadow)}
 .submit-block h2{color:#fff;font-size:23px;margin-bottom:6px}
 .submit-block p{color:#c4d0db;font-size:14.5px;line-height:1.55;max-width:660px}
@@ -91,6 +113,7 @@ main.wrap{padding:30px 0 10px}
     </div>
     <div class="jump">
       <a href="#price">How to price</a>
+      <a href="#battlecards">Battlecards</a>
       <a href="#resources">Resources</a>
       <a class="sub" href="#submit">Submit a Shift4 deal →</a>
     </div>
@@ -130,6 +153,229 @@ main.wrap{padding:30px 0 10px}
         <p>The proposal to present to the prospect — what's included and the offer.</p>
         <a class="go" href="assets/docs/shift4-dine-skytab-proposal.pdf" target="_blank" rel="noopener">Open proposal <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
       </div>
+    </div>
+  </section>
+
+  <!-- BATTLECARDS -->
+  <section class="sec" id="battlecards">
+    <h2>Battlecards — Shift4 vs the competition</h2>
+    <p class="sub">Quick reference for head-to-head deals. Tap a competitor for their strengths, weak spots, and how to win the deal with Shift4.</p>
+    <div class="bc-grid">
+
+      <details class="bc">
+        <summary><span class="vs">vs</span> Toast <svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M9 6l6 6-6 6"/></svg></summary>
+        <div class="bc-body">
+          <p class="bc-over">Bar &amp; restaurant cloud POS that grew fast on VC funding, a 2021 IPO, a direct sales team, and aggressive marketing. Proprietary Android hardware and software with bundled payments, aimed at more complex restaurants.</p>
+          <p class="bc-price"><b>Pricing:</b> Setup + monthly + per-feature processing fees. Gets costly once a merchant adds all the modules and integrations. Add-ons are available flat-rate in the in-POS shop without sales support.</p>
+          <div class="bc-cols">
+            <div class="bc-col str"><h4>Their strengths</h4><ul>
+              <li>Mature cloud product — handles complex modifiers and workflows.</li>
+              <li>Fast development and frequent product iterations.</li>
+              <li>"Sticky" model — easy on-ramp, then hard to leave.</li>
+              <li>Strong brand awareness and marketing; cash from IPO.</li>
+            </ul></div>
+            <div class="bc-col weak"><h4>Their weak spots</h4><ul>
+              <li>Monthly fees for third-party integrations push up total cost.</li>
+              <li>Base SaaS + processing, then every add-on module is monetized separately.</li>
+              <li>Direct-sales model = inefficient, mostly-remote install and support.</li>
+            </ul></div>
+          </div>
+          <div class="bc-win"><h4>How to win with Shift4</h4><ul>
+            <li>End-to-end payments unlock a long list of features free of charge — both setup and monthly (contactless ordering, online ordering built in).</li>
+            <li>Own processing means rates by card type, which can beat a flat rate depending on the customer mix.</li>
+            <li>Marketplace and enhanced Lighthouse Business Manager features at no extra charge — pay only for partner services.</li>
+            <li>Mature reseller network with local install/training/support, plus a dedicated direct team.</li>
+          </ul></div>
+        </div>
+      </details>
+
+      <details class="bc">
+        <summary><span class="vs">vs</span> Clover <svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M9 6l6 6-6 6"/></svg></summary>
+        <div class="bc-body">
+          <p class="bc-over">Cloud POS software, hardware, and payment processing owned by Fiserv. A general-purpose system used by restaurants, retailers, salons, and more.</p>
+          <p class="bc-price"><b>Pricing:</b> $60–$80 per month + $9.95 per additional device. Hardware and processing rates vary widely by the sales channel it's bought through.</p>
+          <div class="bc-cols">
+            <div class="bc-col str"><h4>Their strengths</h4><ul>
+              <li>Great hardware and reliable payments; strong brand recognition.</li>
+              <li>Backed by a Fortune 500 company (Fiserv).</li>
+              <li>Low software prices relative to Toast; can have low processing rates depending on channel.</li>
+              <li>Extensive reseller network.</li>
+            </ul></div>
+            <div class="bc-col weak"><h4>Their weak spots</h4><ul>
+              <li>Not mature or tailored for sophisticated restaurants.</li>
+              <li>App-market model drives up the real price — features cost extra.</li>
+              <li>Hardware can be expensive, and processing rates are highly variable.</li>
+              <li>Minimal innovation in the restaurant space.</li>
+            </ul></div>
+          </div>
+          <div class="bc-win"><h4>How to win with Shift4</h4><ul>
+            <li>Purpose-built for restaurants — Clover is one-size-fits-all and slow to innovate in F&amp;B.</li>
+            <li>Lower total cost: no app-market add-ons stacking up, and hardware is included.</li>
+            <li>Watch for high reseller rate schedules on Clover deals — point to the real all-in cost.</li>
+            <li>Roughly a third of restaurants in North America already run on Shift4.</li>
+          </ul></div>
+        </div>
+      </details>
+
+      <details class="bc">
+        <summary><span class="vs">vs</span> Heartland <svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M9 6l6 6-6 6"/></svg></summary>
+        <div class="bc-body">
+          <p class="bc-over">A subsidiary of Global Payments. Its restaurant POS came from the MobileBytes acquisition (now Heartland Restaurant POS). Mostly dealer-exclusive, with some direct sales through CSMs in select markets.</p>
+          <p class="bc-price"><b>Pricing:</b> Priced by terminal + monthly software; $75/month for the mobile app. Two models — SaaS + upfront, or PaaS (everything in one monthly rate).</p>
+          <div class="bc-cols">
+            <div class="bc-col str"><h4>Their strengths</h4><ul>
+              <li>Cheaper to bundle POS + payments together; good eGift, free integrated online ordering, native kiosk.</li>
+              <li>Easy setup, simplified UI; low-power Bluetooth "skip the line" and tableside QR ordering.</li>
+              <li>Loyalty with spend history; good for small/quick-serve; mobile EMV tableside; free open-API integrations.</li>
+            </ul></div>
+            <div class="bc-col weak"><h4>Their weak spots</h4><ul>
+              <li>Reliance on iOS/iCloud causes problems; not commercial-grade hardware.</li>
+              <li>Critical features (pre-auth, offline mode, SMS, cash discount) are unavailable if you don't process with Heartland.</li>
+              <li>Hidden/junk fees — EMV Failover Fee and a $125/month Compliance Fee; surcharge program works poorly.</li>
+              <li>Frequent updates cause version drift; limited feature set; support is a pain point.</li>
+            </ul></div>
+          </div>
+          <div class="bc-win"><h4>How to win with Shift4</h4><ul>
+            <li>All features stay unlocked on Shift4's end-to-end payments — no holding functionality hostage to processing.</li>
+            <li>Transparent pricing — no EMV failover or monthly compliance "junk" fees.</li>
+            <li>Commercial-grade hardware included with the service, plus offline mode for card payments during outages.</li>
+            <li>Reseller + direct support network instead of a dealer-only support chain.</li>
+          </ul></div>
+        </div>
+      </details>
+
+      <details class="bc">
+        <summary><span class="vs">vs</span> Lightspeed <svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M9 6l6 6-6 6"/></svg></summary>
+        <div class="bc-body">
+          <p class="bc-over">Canadian company offering cloud POS, eCommerce, payments, accounting, and multi-location management. Public on the NYSE and TSX.</p>
+          <p class="bc-price"><b>Pricing:</b> Essentials $29/mo · Plus $119/mo · Pro $289/mo · Enterprise at a contracted rate. Hardware is non-proprietary.</p>
+          <div class="bc-cols">
+            <div class="bc-col str"><h4>Their strengths</h4><ul>
+              <li>Diversified portfolio (payments, retail, restaurant, golf/resort, eCommerce) — resilient in tough markets.</li>
+              <li>Owns Lightspeed Payments plus other processing options — flexible on deals.</li>
+              <li>Flexible, non-proprietary hardware; can reuse equipment from a prior system.</li>
+            </ul></div>
+            <div class="bc-col weak"><h4>Their weak spots</h4><ul>
+              <li>Many config options and add-ons mean a steep learning curve to set up and train.</li>
+              <li>Add-ons priced separately — you need a custom quote to know the real cost.</li>
+              <li>Offline mode (LiteServer) still can't run credit, debit, or gift cards or third-party integrations.</li>
+            </ul></div>
+          </div>
+          <div class="bc-win"><h4>How to win with Shift4</h4><ul>
+            <li>End-to-end payments unlock features free of charge at both setup and monthly — less dependent on software/hardware.</li>
+            <li>Automatic offline mode queues card transactions and processes them when the connection returns.</li>
+            <li>Predictable service-based pricing; Marketplace and Lighthouse Business Manager included.</li>
+            <li>Focused investment in the U.S. bar &amp; restaurant market.</li>
+          </ul></div>
+        </div>
+      </details>
+
+      <details class="bc">
+        <summary><span class="vs">vs</span> Revel <svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M9 6l6 6-6 6"/></svg></summary>
+        <div class="bc-body">
+          <p class="bc-over">An iPad-based POS and cloud pioneer. Since 2018 it focuses on multi-location quick-serve restaurants (QSR) and no longer targets single-location merchants — a fit for established, multi-channel operations.</p>
+          <p class="bc-price"><b>Pricing:</b> Essentials/Enterprise contracted; Advantage is flat-rate processing. POS terminal $99/mo (two-terminal minimum, three-year contract); implementation starts at $674.</p>
+          <div class="bc-cols">
+            <div class="bc-col str"><h4>Their strengths</h4><ul>
+              <li>Strong enterprise management — deep configuration that scales as the merchant grows.</li>
+              <li>Multi-channel: drive-thru, delivery, and online ordering with order tracking and customer texts.</li>
+              <li>Various integrations available.</li>
+            </ul></div>
+            <div class="bc-col weak"><h4>Their weak spots</h4><ul>
+              <li>High cost — customizable features require custom quotes.</li>
+              <li>Best pricing needs a three-year agreement and a two-terminal minimum.</li>
+              <li>Everything is SaaS (KDS, CDS, online ordering) — hundreds of dollars in monthly fees.</li>
+              <li>iOS-only hardware.</li>
+            </ul></div>
+          </div>
+          <div class="bc-win"><h4>How to win with Shift4</h4><ul>
+            <li>The Shift4 ecosystem (Mobile, Online, Glass, CDS, KDS) lets merchants grow into features over time.</li>
+            <li>End-to-end payments include features free of charge instead of stacking SaaS fees.</li>
+            <li>Standard service pricing — end the contract as needed; custom enterprise agreements available.</li>
+            <li>Expanding Android hardware options, not iOS-locked.</li>
+          </ul></div>
+        </div>
+      </details>
+
+      <details class="bc">
+        <summary><span class="vs">vs</span> SpotOn <svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M9 6l6 6-6 6"/></svg></summary>
+        <div class="bc-body">
+          <p class="bc-over">A mix-and-match restaurant POS covering sales/inventory, analytics, and online ordering, with paid add-ons (loyalty, reservations) to build out a personalized system.</p>
+          <p class="bc-price"><b>Pricing:</b> POS with processing $25/mo · without processing $195/mo · Restaurant $65/mo + hardware · Poynt $15/mo + setup · Loyalty $65/mo · Website $65/mo. Processing 1.99% + $0.20 (2.99% + $0.20 if not on their payments).</p>
+          <div class="bc-cols">
+            <div class="bc-col str"><h4>Their strengths</h4><ul>
+              <li>Easy, restaurant-specific platform with detailed modifiers and web-based access.</li>
+              <li>Marketing and website-building tools, loyalty, and a wide range of reporting.</li>
+              <li>24/7 chat, phone, and email support; low processing at 1.99% + $0.20.</li>
+            </ul></div>
+            <div class="bc-col weak"><h4>Their weak spots</h4><ul>
+              <li>Pushes its own touchscreen hardware with a monthly fee.</li>
+              <li>No standard pricing — every deal needs a quote.</li>
+              <li>Add-on fees (loyalty, etc.) stack up quickly.</li>
+              <li>Processing gets expensive (2.99% + $0.20) if the merchant isn't on SpotOn payments.</li>
+            </ul></div>
+          </div>
+          <div class="bc-win"><h4>How to win with Shift4</h4><ul>
+            <li>Lighthouse Business Manager + Marketplace include free Shift4 features — Online, QR, loyalty, email marketing, reputation, and social.</li>
+            <li>Hardware is free with the POS service rather than a monthly hardware fee.</li>
+            <li>Competitive end-to-end payments with straightforward, predictable monthly costs.</li>
+            <li>Custom enterprise agreements available.</li>
+          </ul></div>
+        </div>
+      </details>
+
+      <details class="bc">
+        <summary><span class="vs">vs</span> Square <svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M9 6l6 6-6 6"/></svg></summary>
+        <div class="bc-body">
+          <p class="bc-over">A mobile payments company offering business software, POS systems, and payment hardware. Its free base POS and no fixed monthly cost create a very low barrier to entry; the brand was built on retail mobile card readers.</p>
+          <p class="bc-price"><b>Pricing:</b> Free $0 / 2.5% + $0.10 · Plus $60 / 2.9% + $0.30 · Premium at a contracted rate.</p>
+          <div class="bc-cols">
+            <div class="bc-col str"><h4>Their strengths</h4><ul>
+              <li>Free entry-level option — very low commitment, with room to grow into paid tiers.</li>
+              <li>Extremely easy to set up and use with minimal hardware.</li>
+              <li>Strong brand awareness backed by traditional advertising.</li>
+            </ul></div>
+            <div class="bc-col weak"><h4>Their weak spots</h4><ul>
+              <li>Not practical for multi-channel or multi-location restaurants — lacks advanced modifiers and channels.</li>
+              <li>Built for iOS with limited hardware and KDS options.</li>
+              <li>Relies heavily on remote, merchant self-installation — less on-site support.</li>
+            </ul></div>
+          </div>
+          <div class="bc-win"><h4>How to win with Shift4</h4><ul>
+            <li>End-to-end payments include features and hardware free of charge.</li>
+            <li>Built for food &amp; beverage — advanced modifiers and integrations that grow with the merchant across locations.</li>
+            <li>Mature reseller network plus a direct team to install, train, and support — not self-install.</li>
+            <li>Expanding Android hardware options; Shift4 brand visibility (SpaceX, St. Jude partnerships).</li>
+          </ul></div>
+        </div>
+      </details>
+
+      <details class="bc">
+        <summary><span class="vs">vs</span> Tabit <svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M9 6l6 6-6 6"/></svg></summary>
+        <div class="bc-body">
+          <p class="bc-over">An Israeli-founded, mobile-first iPad POS now headquartered in Aventura, FL. Payment-agnostic with no direct sales — its strategy is to convert resellers with partner programs that let them keep payments revenue.</p>
+          <p class="bc-price"><b>Pricing:</b> Variable dealer-to-dealer (some bundle networking gear, which obscures the price). Generally about $49/month per mobile device.</p>
+          <div class="bc-cols">
+            <div class="bc-col str"><h4>Their strengths</h4><ul>
+              <li>Mobile-first — every device is a full POS station, speeding kitchen communication.</li>
+              <li>Cloud-based central database linking online ordering, reservations, and more.</li>
+              <li>Reseller-focused partner programs; rich native ecosystem (ordering, delivery, reservations, BI, KDS).</li>
+            </ul></div>
+            <div class="bc-col weak"><h4>Their weak spots</h4><ul>
+              <li>No offline mode yet — needs a redundant WAN connection at extra cost or transactions stop.</li>
+              <li>Inconsistent experience — no direct implementation/support and no remote support.</li>
+              <li>Clunky back end, complex setup, and heavy partner training required.</li>
+            </ul></div>
+          </div>
+          <div class="bc-win"><h4>How to win with Shift4</h4><ul>
+            <li>Shift4 POS is also cloud-based, with a robust integrated ecosystem that includes payments.</li>
+            <li>Offline mode keeps processing card payments during an outage — no redundant-WAN workaround.</li>
+            <li>Support agents can remote into terminals; intuitive back office and on-POS configuration.</li>
+            <li>Reseller + direct support model for consistent install, training, and service.</li>
+          </ul></div>
+        </div>
+      </details>
+
     </div>
   </section>
 
