@@ -157,13 +157,7 @@
       <div class="rows" id="onetimeRows"></div>
       <div class="addrow">
         <button type="button" id="addOnetime">+ Add line</button>
-        <select id="otPick"><option value="">+ Common…</option>
-          <option data-amt="">Installation</option>
-          <option data-amt="">Delivery / Shipping</option>
-          <option data-amt="">Menu / Programming</option>
-          <option data-amt="94.80">Cash drawer</option>
-          <option data-amt="">Setup fee</option>
-        </select>
+        <select id="otPick"><option value="">+ Common…</option></select>
       </div>
 
       <div class="sect">Incentive / credit <span style="font-weight:600;text-transform:none;letter-spacing:0;color:var(--slate)">(optional)</span></div>
@@ -243,7 +237,7 @@ var PRODUCTS=[
    Numbers seeded from the POS Systems page + the Clover & SkyTab pricing sheets — all editable. */
 var PCONF={
   chively:{base:{d:'NextPay POS (Chively) — software',m:''},addons:[],program:'Dual Pricing',rate:'0% with dual pricing — match or beat'},
-  square:{base:{d:'Square POS — Free plan',m:0},addons:[{d:'Square Plus plan',m:49}],program:'Flat Rate',rate:'2.6% + 10¢ in person'},
+  square:{base:{d:'Square POS — Free plan',m:0},addons:[{d:'Square Plus plan',m:49}],onetime:[{d:'Implementation — Plus Package',a:699},{d:'Implementation — Premium',a:1499},{d:'Implementation — Onsite',a:2199},{d:'Payroll Implementation',a:250},{d:'Optimization Call',a:159},{d:'Menu Build',a:149},{d:'Gift Card Migration',a:149},{d:'Loyalty Migration',a:149},{d:'Product Catalog Import',a:149},{d:'Square Online Site Copy',a:149}],program:'Flat Rate',rate:'2.6% + 10¢ in person'},
   clover:{base:{d:'Clover Station — placement',m:45},addons:[{d:'Clover Mini — placement',m:25},{d:'Clover Flex — placement',m:20},{d:'Clover Pocket — placement',m:18},{d:'Clover KDS',m:25},{d:'Clover Kiosk',m:34.95},{d:'Software — Restaurant Growth (1st device)',m:89.95},{d:'Software — Services Growth (1st device)',m:84.95},{d:'Software — Retail Growth (1st device)',m:29.95},{d:'Software — each additional device',m:19.95}],program:'Dual Pricing',rate:'0% with dual pricing'},
   shift4:{base:{d:'SkyTab POS Workstation',m:29.99},addons:[{d:'SkyTab Air',m:29.99},{d:'SkyTab Mobile',m:20},{d:'SkyTab Glass',m:29.99},{d:'SkyTab Kiosk',m:29.99},{d:'Kitchen Display System',m:29.99},{d:'Customer-Facing Display',m:29.99},{d:'EMV/NFC PIN Pad',m:9.99},{d:'Remote Printer',m:9.99},{d:'Label Printer',m:19.99},{d:'Digital Scale',m:39.99},{d:'2-D Barcode Scanner',m:9.99},{d:'Caller ID — 2-line',m:9.99},{d:'Caller ID — 4-line',m:19.99}],program:'Dual Pricing',rate:'0% with dual pricing'},
   quantic:{base:{d:'Quantic POS — first terminal',m:60},addons:[{d:'Additional terminal',m:50},{d:'Kitchen Display System',m:0}],program:'Dual Pricing',rate:'0% with dual pricing'},
@@ -273,6 +267,9 @@ var picker=document.getElementById('f-product');
 var monthlyRows=document.getElementById('monthlyRows');
 var onetimeRows=document.getElementById('onetimeRows');
 var addonPick=document.getElementById('addonPick');
+var otPick=document.getElementById('otPick');
+var OT_GENERIC=[{d:'Installation',a:''},{d:'Delivery / Shipping',a:''},{d:'Menu / Programming',a:''},{d:'Cash drawer',a:94.80},{d:'Setup fee',a:''}];
+var curOT=[];
 
 (function(){ var cats={}; PRODUCTS.forEach(function(p){ (cats[p.cat]=cats[p.cat]||[]).push(p); });
   ['POS Systems','Terminals','Online & Gateways'].forEach(function(c){ if(!cats[c])return;
@@ -318,6 +315,10 @@ function seedProduct(){
   addonPick.innerHTML='<option value="">+ Add‑on…</option>';
   (c.addons||[]).forEach(function(a,i){ var o=document.createElement('option'); o.value=i; o.textContent=a.d+' — '+money(a.m)+'/mo'; addonPick.appendChild(o); });
   addonPick.style.display=(c.addons&&c.addons.length)?'':'none';
+  // rebuild one-time preset picker (product-specific first, then generic)
+  curOT=(c.onetime||[]).concat(OT_GENERIC);
+  otPick.innerHTML='<option value="">+ Common…</option>';
+  curOT.forEach(function(o,i){ var op=document.createElement('option'); op.value=i; op.textContent=o.d+(o.a?(' — '+money(o.a)):''); otPick.appendChild(op); });
 }
 
 function render(){
@@ -373,7 +374,7 @@ picker.addEventListener('change', function(){ seedProduct(); render(); });
 document.getElementById('addMonthly').addEventListener('click', function(){ addMonthly('',''); render(); });
 document.getElementById('addOnetime').addEventListener('click', function(){ addOnetime('',''); render(); });
 addonPick.addEventListener('change', function(){ var c=PCONF[prod().id]; var a=c&&c.addons[this.value]; if(a){ addMonthly(a.d,a.m,1); render(); } this.value=''; });
-document.getElementById('otPick').addEventListener('change', function(){ var o=this.options[this.selectedIndex]; if(this.value!==''){ addOnetime(o.textContent, o.getAttribute('data-amt')||'', 1); render(); } this.selectedIndex=0; });
+otPick.addEventListener('change', function(){ var o=curOT[this.value]; if(o){ addOnetime(o.d, (o.a===''||o.a==null)?'':o.a, 1); render(); } this.value=''; });
 ['f-biz','f-contact','f-credit-l','f-credit-a','f-program','f-rate','f-notes'].forEach(function(id){ document.getElementById(id).addEventListener('input', render); });
 ['name','cell','email'].forEach(function(k){ document.getElementById('f-'+k).addEventListener('input', function(){
   var p=load(); p.name=val('f-name'); p.cell=val('f-cell'); p.email=val('f-email'); save(p);
