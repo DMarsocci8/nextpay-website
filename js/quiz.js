@@ -110,14 +110,23 @@
     else cards=pos();
     if(offset && (need==='pos'||need==='combo') && (I==='fnb'||I==='retail'||I==='services'))
       cards.push(C('PAYS POS','Add-on','Dual-pricing specialist — 0% processing.','custom',POS));
-    // Deep-link each "View" to the exact brand section so it jumps right to it
-    // (the .bsec sections have scroll-margin so the sticky header stays in view).
-    var POS_A={'Square POS':'square','Clover POS':'clover','Shift4 POS':'shift4','KORONA POS':'korona','PAYS POS':'pays'};
-    var GW_A={'NMI Gateway':'nmi','Authorize.net':'authnet','Valor Gateway':'valor','FluidPay':'fluidpay','iPOSpays by Dejavoo':'ipospays'};
-    cards.forEach(function(c){
-      if(c.href===POS && POS_A[c.name]) c.href=POS+'#'+POS_A[c.name];
-      else if(c.href===GW && GW_A[c.name]) c.href=GW+'#'+GW_A[c.name];
-    });
+    // Send every "View" to where that product actually lives — a brand section
+    // (the .bsec sections have scroll-margin so the sticky header stays in view)
+    // or its own page — so a result never just dumps you at the top of a page.
+    var DEST={
+      'Square POS':'POS Systems.html#square','Clover POS':'POS Systems.html#clover',
+      'Shift4 POS':'POS Systems.html#shift4','KORONA POS':'POS Systems.html#korona',
+      'PAYS POS':'POS Systems.html#pays','SwipeSimple':'SwipeSimple.html',
+      'Dejavoo Terminals':'Credit Card Terminals.html#dejavoo','Clover Flex & Go':'Credit Card Terminals.html#clover',
+      'Square Terminal':'Credit Card Terminals.html#square','Valor PayTech':'Credit Card Terminals.html#valor',
+      'PAX Terminals':'Credit Card Terminals.html#pax',
+      'NMI Gateway':'Online Gateways.html#nmi','Authorize.net':'Online Gateways.html#authnet',
+      'Valor Gateway':'Online Gateways.html#valor','FluidPay':'Online Gateways.html#fluidpay',
+      'iPOSpays by Dejavoo':'Online Gateways.html#ipospays',
+      'Square Online & Invoicing':'Square.html','Square Online':'Square.html',
+      'Field Work':'Invoicing.html','LQpay':'Luqra Gateway.html'
+    };
+    cards.forEach(function(c){ if(DEST[c.name]) c.href=DEST[c.name]; });
     return cards;
   }
   function services(a){
