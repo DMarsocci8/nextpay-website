@@ -110,6 +110,14 @@
     else cards=pos();
     if(offset && (need==='pos'||need==='combo') && (I==='fnb'||I==='retail'||I==='services'))
       cards.push(C('PAYS POS','Add-on','Dual-pricing specialist — 0% processing.','custom',POS));
+    // Deep-link each "View" to the exact brand section so it jumps right to it
+    // (the .bsec sections have scroll-margin so the sticky header stays in view).
+    var POS_A={'Square POS':'square','Clover POS':'clover','Shift4 POS':'shift4','KORONA POS':'korona','PAYS POS':'pays'};
+    var GW_A={'NMI Gateway':'nmi','Authorize.net':'authnet','Valor Gateway':'valor','FluidPay':'fluidpay','iPOSpays by Dejavoo':'ipospays'};
+    cards.forEach(function(c){
+      if(c.href===POS && POS_A[c.name]) c.href=POS+'#'+POS_A[c.name];
+      else if(c.href===GW && GW_A[c.name]) c.href=GW+'#'+GW_A[c.name];
+    });
     return cards;
   }
   function services(a){
