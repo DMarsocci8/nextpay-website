@@ -71,6 +71,7 @@
 @media(max-width:1000px){
   .shero-grid,.ssplit,.sform-wrap{grid-template-columns:1fr;gap:32px}
   .shero-media image-slot{height:300px}
+  .shero h1{white-space:normal}
   .sfeat,.ssteps{grid-template-columns:1fr 1fr}
   .sband{padding:40px 24px}
   .ssec{padding:64px 0}
