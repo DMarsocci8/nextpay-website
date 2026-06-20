@@ -41,6 +41,16 @@
 .pick-field .pick-cap{display:flex;align-items:center;gap:7px;font-size:13.5px;font-weight:800;color:var(--teal-dark);margin-bottom:8px}
 .pick-field .pick-cap svg{width:17px;height:17px}
 .pick-field .pick-hint{font-size:12px;color:var(--slate);margin-top:7px}
+.plem-cta{display:flex;align-items:center;gap:12px;margin:-4px 0 18px;padding:13px 14px;border-radius:14px;text-decoration:none;
+  background:linear-gradient(120deg,var(--navy),var(--navy-2));color:#fff;border:1px solid rgba(20,161,140,.5);box-shadow:var(--shadow-sm);transition:transform .15s,box-shadow .15s}
+.plem-cta:hover{transform:translateY(-2px);box-shadow:var(--shadow)}
+.plem-cta .plem-cta-ic{flex:none;width:38px;height:38px;border-radius:10px;background:rgba(31,194,166,.18);display:grid;place-items:center}
+.plem-cta .plem-cta-ic svg{width:20px;height:20px;color:var(--teal-bright,#1FC2A6)}
+.plem-cta .plem-cta-tx{display:flex;flex-direction:column;gap:3px;min-width:0}
+.plem-cta .plem-cta-tx b{font-size:13.5px;font-weight:800;letter-spacing:-.01em;display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+.plem-cta .plem-cta-tx span{font-size:11.5px;color:#c4d0db;line-height:1.4}
+.plem-cta .plem-tag{font-size:9px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;background:var(--teal);color:#fff;padding:3px 7px;border-radius:999px}
+.plem-cta .plem-cta-go{flex:none;width:18px;height:18px;color:var(--teal-bright,#1FC2A6)}
 #f-flyer{width:100%;border-radius:10px;padding:12px 44px 12px 13px;font-family:inherit;font-size:15px;appearance:none;-webkit-appearance:none;-moz-appearance:none;cursor:pointer;border:2px solid var(--teal);background-color:#fff;font-weight:700;color:var(--navy);
   background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%2314A18C' stroke-width='2.6' stroke-linecap='round' stroke-linejoin='round'><path d='M6 9l6 6 6-6'/></svg>");
   background-repeat:no-repeat;background-position:right 14px center;background-size:18px}
@@ -230,6 +240,17 @@
         <select id="f-flyer"></select>
         <div class="pick-hint">▾ Tap to pick which flyer to personalize — the preview updates instantly.</div>
       </div>
+
+      <a class="plem-cta" href="Sales Hub - Pay Less Earn More.html?fmt=fullpage">
+        <span class="plem-cta-ic">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="5" width="20" height="14" rx="2"/><path d="M2 10h20M6 14h5"/></svg>
+        </span>
+        <span class="plem-cta-tx">
+          <b>“Pay Less. Earn More.” — full landscape flyer <span class="plem-tag">Featured</span></b>
+          <span>The all-in-one value flyer with the POS lineup, $0 badge &amp; QR. Opens in its own personalizer (landscape 11×8.5) — same saved name &amp; contact.</span>
+        </span>
+        <svg class="plem-cta-go" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+      </a>
       <div class="field"><label for="f-name">Full name</label><input id="f-name" type="text" placeholder="" autocomplete="name"></div>
       <div class="field"><label for="f-cell">Phone</label><input id="f-cell" type="tel" placeholder="" autocomplete="tel"></div>
       <div class="field"><label for="f-email">Email</label><input id="f-email" type="email" placeholder="" autocomplete="email"></div>
