@@ -33,6 +33,9 @@ main.wrap{padding:30px 0 10px}
 .pk-cat{align-self:flex-start;font-size:10.5px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:var(--teal-dark);background:rgba(20,161,140,.12);padding:4px 9px;border-radius:999px}
 .pk-card h3{font-size:18px;letter-spacing:-.01em;color:var(--navy)}
 .pk-card h3 .pk-sub{font-size:13px;font-weight:600;color:var(--slate-2)}
+.pk-prop{margin-top:6px;align-self:flex-start;display:inline-flex;align-items:center;gap:6px;font-weight:700;font-size:13px;color:var(--teal-dark);border:1px solid rgba(20,161,140,.32);background:rgba(20,161,140,.06);padding:7px 13px;border-radius:999px;transition:.16s;text-decoration:none}
+.pk-prop:hover{background:var(--teal);color:#fff;border-color:var(--teal)}
+.pk-prop svg{width:13px;height:13px}
 .pk-fit{font-size:13.5px;color:var(--slate);line-height:1.5}.pk-fit b{color:var(--ink)}
 .pk-feat{list-style:none;margin:2px 0 0;padding:0}
 .pk-feat li{position:relative;padding-left:20px;font-size:13.5px;color:var(--ink);line-height:1.45;margin-bottom:6px}
@@ -329,6 +332,37 @@ document.querySelectorAll('.tabs button').forEach(function(b){
     });
   });
 });
+/* add a "Build a proposal" deep-link to each product that exists in the Proposal Builder */
+(function(){
+  var MAP=[
+    [/ipospays/i,'ipospays'],            /* match before the generic Dejavoo rule */
+    [/chively|nextpay pos/i,'chively'],
+    [/shift4/i,'shift4'],
+    [/clover/i,'clover'],
+    [/quantic/i,'quantic'],
+    [/korona/i,'korona'],
+    [/\bnrs\b/i,'nrs'],
+    [/dejapay/i,'dejapay'],
+    [/\bpax\b/i,'pax'],
+    [/dejavoo/i,'dejavoo'],
+    [/fluidpay/i,'fluidpay'],
+    [/\bnmi\b/i,'nmi'],
+    [/authorize/i,'authnet'],
+    [/valor/i,'valor'],
+    [/lqpay|luqra/i,'luqra']
+  ];
+  document.querySelectorAll('.pk-card').forEach(function(card){
+    var h=card.querySelector('h3'); if(!h) return;
+    var name=h.textContent, id=null;
+    for(var i=0;i<MAP.length;i++){ if(MAP[i][0].test(name)){ id=MAP[i][1]; break; } }
+    if(!id) return;  /* invoicing items aren't in the builder yet */
+    var a=document.createElement('a');
+    a.className='pk-prop';
+    a.href='Sales Hub - Proposal Builder.html?product='+id;
+    a.innerHTML='Build a proposal <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg>';
+    card.appendChild(a);
+  });
+})();
 </script>
 <script src="js/hub-nav.js"></script>
 </body>
