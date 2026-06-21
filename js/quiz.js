@@ -14,7 +14,8 @@
       {v:'pos',t:'A full POS system',d:'Software + hardware to run checkout, ordering, and back office.'},
       {v:'terminal',t:'A standalone terminal',d:'Just a device to take cards — no full POS needed.'},
       {v:'online',t:'Gateway / software only',d:'Online payments, invoicing, virtual terminal — no hardware.'},
-      {v:'combo',t:'A combination',d:'POS + online, or terminal + invoicing software.'}]},
+      {v:'combo',t:'A combination',d:'POS + online, or terminal + invoicing software.'},
+      {v:'other',t:'Not payments — other services',d:'Payroll, HR, bookkeeping, financing, rewards, outreach & marketing.'}]},
     {id:'industry',q:'What industry are you in?',sub:'This drives the core recommendations.',type:'single',opts:[
       {v:'fnb',t:'Food & Beverage',d:'Restaurant, bar, café, food truck, QSR, catering.'},
       {v:'retail',t:'Retail',d:'Clothing, specialty, gift shop, general retail.'},
@@ -37,12 +38,14 @@
       when:a=>a.industry==='services'||a.industry==='home',opts:[
       {v:'yes',t:'Yes — payments from my phone',d:'At a customer site, field work, or away from a fixed location.'},
       {v:'no',t:'No — mostly fixed location',d:'Counter, desk, or office-based checkout.'}]},
-    {id:'volume',q:'Monthly card volume?',sub:'Helps match the right pricing model.',type:'single',opts:[
+    {id:'volume',q:'Monthly card volume?',sub:'Helps match the right pricing model.',type:'single',
+      when:a=>a.need!=='other',opts:[
       {v:'a',t:'Under $20,000 / month',d:'Early stage or lower-volume.'},
       {v:'b',t:'$20,000 – $60,000 / month',d:'Growing with steady card volume.'},
       {v:'c',t:'$60,000 – $120,000 / month',d:'Established with strong volume.'},
       {v:'d',t:'$120,000+ / month',d:'High-volume — custom pricing.'}]},
-    {id:'ticket',q:'Average transaction size?',sub:'Affects which pricing model benefits you most.',type:'single',opts:[
+    {id:'ticket',q:'Average transaction size?',sub:'Affects which pricing model benefits you most.',type:'single',
+      when:a=>a.need!=='other',opts:[
       {v:'a',t:'Under $20',d:'Quick service, low-cost items.'},
       {v:'b',t:'$20 – $40',d:'Moderate services or retail purchases.'},
       {v:'c',t:'$40 – $80',d:'Professional services, specialty products.'},
@@ -62,6 +65,15 @@
   function C(name,role,why,price,href){return {name,role,why,price,href,top:role.indexOf('Top')===0};}
   function recCards(a){
     const I=a.industry,need=a.need,hw=a.hardware,offset=(a.addons||[]).includes('offset');
+    if(need==='other') return [
+      C('Payroll & Workers Comp','Service','Full-service payroll, tax filing & workers comp coverage.','See details','Payroll - Workers Comp.html'),
+      C('Bookkeeping','Service','Reconciliation, reports & tax-ready books.','See details','Bookkeeping.html'),
+      C('Business Financing','Service','Working capital, equipment loans & cash advances.','See details','Business Financing.html'),
+      C('NextLink — Outreach & Marketing','Service','Reviews, reputation & automated client outreach.','See details','Client Automation Outreach.html'),
+      C('Merchant Rewards','Service','Earn points on every dollar you process.','See details','Merchant Rewards.html'),
+      C('HR & Compliance','Service','HR tools & compliance for growing teams.','See details','HR - Compliance.html'),
+      C('Business Brokerage','Service','Buy, sell, or get a business valuation.','See details','Business Brokerage.html')
+    ];
     function pos(){
       const lease=hw==='lease';
       if(I==='fnb') return lease
@@ -98,6 +110,23 @@
     else cards=pos();
     if(offset && (need==='pos'||need==='combo') && (I==='fnb'||I==='retail'||I==='services'))
       cards.push(C('PAYS POS','Add-on','Dual-pricing specialist — 0% processing.','custom',POS));
+    // Send every "View" to where that product actually lives — a brand section
+    // (the .bsec sections have scroll-margin so the sticky header stays in view)
+    // or its own page — so a result never just dumps you at the top of a page.
+    var DEST={
+      'Square POS':'POS Systems.html#square','Clover POS':'POS Systems.html#clover',
+      'Shift4 POS':'POS Systems.html#shift4','KORONA POS':'POS Systems.html#korona',
+      'PAYS POS':'POS Systems.html#pays','SwipeSimple':'SwipeSimple.html',
+      'Dejavoo Terminals':'Credit Card Terminals.html#dejavoo','Clover Flex & Go':'Credit Card Terminals.html#clover',
+      'Square Terminal':'Credit Card Terminals.html#square','Valor PayTech':'Credit Card Terminals.html#valor',
+      'PAX Terminals':'Credit Card Terminals.html#pax',
+      'NMI Gateway':'Online Gateways.html#nmi','Authorize.net':'Online Gateways.html#authnet',
+      'Valor Gateway':'Online Gateways.html#valor','FluidPay':'Online Gateways.html#fluidpay',
+      'iPOSpays by Dejavoo':'Online Gateways.html#ipospays',
+      'Square Online & Invoicing':'Square.html','Square Online':'Square.html',
+      'Field Work':'Invoicing.html','LQpay':'Luqra Gateway.html'
+    };
+    cards.forEach(function(c){ if(DEST[c.name]) c.href=DEST[c.name]; });
     return cards;
   }
   function services(a){
@@ -112,8 +141,11 @@
   // ---- state + render ----
   const root=document.getElementById('quiz');
   let answers={}; try{ answers=JSON.parse(localStorage.getItem('np_quiz')||'{}'); }catch(e){}
-  let idx=0;
+  let idx=0, firstPaint=true;
   function visible(){ return STEPS.filter(s=>!s.when||s.when(answers)); }
+  // bring the quiz card just below the sticky nav so the question is fully
+  // visible after each step (instead of jumping to the top of the page)
+  function scrollToQuiz(){ try{ var y=root.getBoundingClientRect().top+(window.pageYOffset||document.documentElement.scrollTop||0)-92; window.scrollTo({top:y<0?0:y,behavior:'smooth'}); }catch(e){} }
   function save(){ try{ localStorage.setItem('np_quiz',JSON.stringify(answers)); }catch(e){} }
 
   function render(){
@@ -146,8 +178,8 @@
           answers[step.id]=arr; save(); render();
         } else {
           answers[step.id]=o.v; save();
-          // prune now-hidden answers downstream
-          idx++; render();
+          // mark the selection; the agent advances with the Continue button
+          render();
         }
       };
       opts.appendChild(b);
@@ -159,17 +191,23 @@
     back.disabled=idx===0; if(idx===0) back.style.visibility='hidden';
     back.onclick=()=>{ idx=Math.max(0,idx-1); render(); };
     nav.appendChild(back);
+    const last=idx===vis.length-1;
     if(step.type==='multi'){
       const next=el('button','btn btn-primary'); next.type='button';
-      next.innerHTML=(Array.isArray(sel)&&sel.length? 'Continue ':'Skip ')+ARROW;
+      next.innerHTML=(last?'See my results ':(Array.isArray(sel)&&sel.length?'Continue ':'Skip '))+ARROW;
       next.onclick=()=>{ idx++; render(); };
       nav.appendChild(next);
     } else {
-      const hint=el('span','quiz-hint'); hint.textContent='Pick one to continue'; nav.appendChild(hint);
+      const next=el('button','btn btn-primary'); next.type='button';
+      next.innerHTML=(last?'See my results ':'Continue ')+ARROW;
+      const hasSel=sel!==undefined&&sel!==null&&sel!=='';
+      if(!hasSel){ next.disabled=true; next.style.opacity='.45'; next.style.cursor='not-allowed'; }
+      next.onclick=()=>{ if(answers[step.id]===undefined) return; idx++; render(); };
+      nav.appendChild(next);
     }
     card.appendChild(nav);
     root.appendChild(card);
-    root.scrollIntoView?null:null; window.scrollTo({top:0,behavior:'smooth'});
+    if(!firstPaint) scrollToQuiz(); firstPaint=false;
   }
 
   function renderResults(){
@@ -199,11 +237,13 @@
       wrap.appendChild(sg);
     }
     const cta=el('div','quiz-res-cta');
-    cta.innerHTML='<a class="btn btn-primary" target="_blank" rel="noopener" href="Contact.html">Get my custom quote '+ARROW+'</a><a class="btn btn-outline" target="_blank" rel="noopener" href="Contact.html">Talk to a specialist</a><button class="btn btn-ghost-dark" type="button" id="quiz-restart">Start over</button>';
+    var picks=cards.map(function(c){return c.name+(c.top?' (top pick)':'');}).join(', ');
+    var quoteHref='Contact.html?topic=quote&msg='+encodeURIComponent('I took the quiz and would like a custom quote. My recommended stack: '+picks+'.');
+    cta.innerHTML='<a class="btn btn-primary" href="'+quoteHref+'">Get my custom quote '+ARROW+'</a><a class="btn btn-outline" href="Contact.html?topic=specialist">Talk to a specialist</a><button class="btn btn-ghost-dark" type="button" id="quiz-restart">Start over</button>';
     wrap.appendChild(cta);
     root.appendChild(wrap);
     document.getElementById('quiz-restart').onclick=()=>{ answers={}; idx=0; save(); render(); };
-    window.scrollTo({top:0,behavior:'smooth'});
+    firstPaint=false; scrollToQuiz();
   }
 
   function el(tag,cls){ const e=document.createElement(tag); if(cls)e.className=cls; return e; }

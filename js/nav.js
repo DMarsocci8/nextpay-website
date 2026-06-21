@@ -105,9 +105,53 @@
             <a href="Contact.html"><b>Contact Us</b><span>Talk to our team</span></a>
           </div>
         </div>
-        <a class="nav-cta" href="quiz.html" target="_blank" rel="noopener">Take the Quiz
+        <a class="nav-cta" href="quiz.html">Take the Quiz
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
       </div>
+      <button class="nav-burger" type="button" aria-label="Menu" aria-expanded="false">
+        <svg class="bars" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
+        <svg class="x" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M6 6l12 12M18 6L6 18"/></svg>
+      </button>
+    </div>
+    <div class="nav-mobile">
+      <div class="nm-sec">
+        <button class="nm-head" type="button">Solutions <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg></button>
+        <div class="nm-body">
+          <a href="POS Systems.html">POS Systems</a>
+          <a href="Credit Card Terminals.html">Credit Card Terminals</a>
+          <a href="Invoicing.html">Online Payments &amp; Invoicing</a>
+          <a href="Integrations.html">Integrations</a>
+          <a href="Payroll - Workers Comp.html">Payroll &amp; Workers Comp</a>
+          <a href="Fee Programs.html">Zero Fee Programs</a>
+          <a href="Business Financing.html">Business Financing</a>
+          <a href="Merchant Rewards.html">Merchant Rewards</a>
+        </div>
+      </div>
+      <div class="nm-sec">
+        <button class="nm-head" type="button">Industries <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg></button>
+        <div class="nm-body">
+          <a href="Industries.html">View All Industries</a>
+          <a href="Industries.html#retail">Retail</a>
+          <a href="Industries.html#services">Services</a>
+          <a href="Industries.html#food-beverage">Food &amp; Beverage</a>
+          <a href="Industries.html#healthcare">Healthcare &amp; Medical</a>
+          <a href="High Risk and Specialty.html">High Risk &amp; Specialty</a>
+        </div>
+      </div>
+      <div class="nm-sec">
+        <button class="nm-head" type="button">Partners <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg></button>
+        <div class="nm-body">
+          <a href="Partners.html">Partner with NextPay</a>
+          <a href="Affiliate Program.html">Affiliate Program</a>
+          <a href="Agent Program.html">Agent Program</a>
+        </div>
+      </div>
+      <a class="nm-link" href="Pricing.html">Pricing</a>
+      <a class="nm-link" href="Resources.html">Resources</a>
+      <a class="nm-link" href="Why NextPay.html">Why NextPay</a>
+      <a class="nm-link" href="Contact.html">Contact</a>
+      <a class="nm-cta btn btn-primary" href="quiz.html">Take the Quiz
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
     </div>
   </nav>`;
 
@@ -116,10 +160,6 @@
     <div class="wrap">
       <div class="footcards"><span class="fc-eyebrow">We accept every major card</span><div class="fc-row"><img src="assets/cards/card-1.png" alt="Visa"><img src="assets/cards/card-2.png" alt="Mastercard"><img src="assets/cards/card-3.png" alt="American Express"><img src="assets/cards/card-4.png" alt="Discover"><img src="assets/cards/card-5.png" alt="JCB"><img src="assets/cards/card-6.png" alt="UnionPay"><img src="assets/cards/card-7.png" alt="Link"></div></div>
       <div class="foot-grid">
-        <div>
-          <a class="brand" href="index.html" aria-label="NextPay home"><img src="assets/logos/nextpay-nav.png" alt="NextPay Business Solutions" style="height:40px;width:auto;display:block"></a>
-          <p style="margin-top:12px;max-width:280px;color:#aebccb">Smarter Solutions. Stronger Businesses. All the tools to run and grow your business — connected to one account.</p>
-        </div>
         <div><h4>Accept Payments</h4>
           <a href="POS Systems.html">POS Systems</a><a href="Credit Card Terminals.html">Credit Card Terminals</a><a href="Invoicing.html">Online Payments &amp; Invoicing</a><a href="Integrations.html">Integrations</a></div>
         <div><h4>Run Your Business</h4>
@@ -133,7 +173,11 @@
         <div><h4>Company</h4>
           <a href="Why NextPay.html">Why NextPay</a><a href="Pricing.html">Pricing</a><a href="Resources.html">Resources</a><a href="Contact.html">Contact</a></div>
       </div>
-      <div class="foot-bottom"><span>© 2026 NextPay. All rights reserved.</span><span><a href="Agent Portal.html" target="_blank" rel="noopener" style="color:#8497a8">Agent Login</a> · nextpaypos.com</span></div>
+      <div class="foot-brand">
+        <a class="brand" href="index.html" aria-label="NextPay home"><img src="assets/logos/nextpay-nav.png" alt="NextPay Business Solutions" style="height:40px;width:auto;display:block"></a>
+        <p>Smarter Solutions. Stronger Businesses.<br>All the tools to run and grow your business — connected to one account.</p>
+      </div>
+      <div class="foot-bottom"><span>© 2026 NextPay. All rights reserved.</span><span><a href="https://hub.nextpaypos.com/Sales%20Hub" style="color:var(--teal-bright);font-weight:700">Agent Login</a> nextpaypos.com</span></div>
     </div>
   </footer>`;
 
@@ -144,22 +188,39 @@
   if(document.readyState==='loading') document.addEventListener('DOMContentLoaded',mount);
   else mount();
 
-  // Open target="_blank" links in a new tab on the live site, but fall back to
-  // normal same-tab navigation when the environment blocks popups (e.g. the
-  // sandboxed editor preview, where window.open returns null).
+  // Keep prospects on one continuous journey: links to our own pages open in
+  // the SAME tab (no popups). Only genuinely external (third-party) links open
+  // in a new tab, so people don't lose the NextPay site behind them.
   document.addEventListener('click',function(e){
     if(e.defaultPrevented||e.button!==0||e.metaKey||e.ctrlKey||e.shiftKey||e.altKey) return;
     const a=e.target.closest&&e.target.closest('a[target="_blank"]');
     if(!a) return;
     const href=a.getAttribute('href');
     if(!href||href.charAt(0)==='#'||/^(mailto:|tel:|javascript:)/i.test(href)) return;
-    e.preventDefault();
-    // Don't pass 'noopener' in the features string: window.open then returns
-    // null even when the tab opens, which made the fallback below fire too and
-    // navigate the current page. Sever opener on the handle instead.
-    let w=null;
-    try{ w=window.open(href,'_blank'); }catch(err){}
-    if(w){ try{ w.opener=null; }catch(err){} }
-    else window.location.href=href;
+    let url; try{ url=new URL(href,window.location.href); }catch(err){ return; }
+    if(url.origin===window.location.origin){
+      // our own page — stay in this tab (strip the new-window behavior)
+      a.removeAttribute('target');
+      e.preventDefault();
+      window.location.href=href;
+    }
+    // external link: do nothing — the browser opens it in a new tab natively
   },true);
+
+  // Mobile menu: hamburger toggles the slide-in panel; section headers
+  // expand/collapse as accordions. Tapping a real link navigates (and the
+  // page reload resets the menu).
+  document.addEventListener('click',function(e){
+    var burger=e.target.closest&&e.target.closest('.nav-burger');
+    if(burger){
+      e.preventDefault();
+      var nav=burger.closest('.nav');
+      if(nav){ var open=nav.classList.toggle('open');
+        document.body.classList.toggle('nav-open',open);
+        burger.setAttribute('aria-expanded',open?'true':'false'); }
+      return;
+    }
+    var head=e.target.closest&&e.target.closest('.nm-head');
+    if(head){ e.preventDefault(); var sec=head.closest('.nm-sec'); if(sec) sec.classList.toggle('open'); return; }
+  });
 })();
