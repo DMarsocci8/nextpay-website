@@ -234,10 +234,10 @@ body.fmt-flyer .flboxP{display:block}
 
 @media print{
   *{-webkit-print-color-adjust:exact !important;print-color-adjust:exact !important}
-  body{background:#fff}
+  html,body{margin:0 !important;padding:0 !important;background:#fff !important}
   .hub-bar,.pg-head,.form-card,.preview h2,.tip,.hub-foot,.actions{display:none !important}
-  .layout{display:block;padding:0}
-  .flbox,.flboxP{box-shadow:none;border-radius:0;overflow:visible !important;height:auto !important}
+  .layout{display:block;padding:0;margin:0}
+  .flbox,.flboxP{box-shadow:none;border-radius:0;overflow:visible !important;height:auto !important;width:auto !important;max-width:none !important}
   body.fmt-flyer .flbox{display:none !important}
   body:not(.fmt-flyer) .flboxP{display:none !important}
 }
@@ -270,8 +270,8 @@ body.fmt-flyer .flboxP{display:block}
       <div class="field"><label for="f-email">Email</label><input id="f-email" type="email" autocomplete="email"></div>
       <div class="field"><label for="f-size">Format</label>
         <select id="f-size">
-          <option value="postcard">Postcard &mdash; 6 &times; 4 (horizontal)</option>
-          <option value="fullpage">Full page &mdash; landscape letter</option>
+          <option value="postcard">Postcard &mdash; 6 &times; 4 (landscape)</option>
+          <option value="fullpage">Full page &mdash; 11 &times; 8.5 (landscape)</option>
           <option value="flyer">Flyer &mdash; 8.5 &times; 11 (portrait)</option>
         </select>
       </div>
@@ -537,7 +537,7 @@ body.fmt-flyer .flboxP{display:block}
   </div></div>
       <div class="tip">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4M12 8h.01"/></svg>
-        <p><b>Printing:</b> click Print / Save PDF, set margins to <b>None</b> and scale to <b>100%</b> (uncheck &ldquo;Fit to page&rdquo;). Each format sets its own page size automatically. <b>Note:</b> the QR code is a sample &mdash; ask the office for your own quote QR before sending in volume.</p>
+        <p><b>Printing:</b> just click <b>Print / Save PDF</b> and pick <b>&ldquo;Save as PDF.&rdquo;</b> Each size sets its own page automatically &mdash; you don&rsquo;t need to touch the margins or scale. (If your browser ever drops the background colors, turn on <b>&ldquo;Background graphics&rdquo;</b> in the print dialog.) <b>Note:</b> the QR code is a sample &mdash; ask the office for your own quote QR before sending in volume.</p>
       </div>
     </div>
 
@@ -586,7 +586,7 @@ fit();
 
 var PRINT={
   postcard:'@media print{@page{size:6in 4in;margin:0}#stage{position:fixed;left:0;top:0;transform:scale(.384) !important;transform-origin:top left}}',
-  fullpage:'@media print{@page{size:11in 8.5in;margin:0}#stage{position:fixed;left:.25in;top:.75in;transform:scale(.672) !important;transform-origin:top left}}',
+  fullpage:'@media print{@page{size:11in 8.5in;margin:0}#stage{position:fixed;left:0;top:.583in;transform:scale(.704) !important;transform-origin:top left}}',
   flyer:'@media print{@page{size:8.5in 11in;margin:0}#stageP{position:fixed;left:0;top:0;transform:scale(.544) !important;transform-origin:top left}}'
 };
 function setFmt(v){
