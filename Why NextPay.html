@@ -49,6 +49,12 @@
 .wcompare td .ck{color:var(--teal);font-weight:800}
 .wcompare td .x{color:#c2402e;font-weight:800}
 .wcompare tr:last-child th,.wcompare tr:last-child td{border-bottom:0}
+@media(max-width:600px){
+  .wcompare table{table-layout:fixed}
+  .wcompare th,.wcompare td{padding:12px 10px;font-size:12.5px;word-break:break-word;hyphens:auto}
+  .wcompare thead th{font-size:11.5px}
+  .wcompare tbody th{width:34%}
+}
 /* values */
 .wvals{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
 .wvals .fc .fic{margin-bottom:16px}
