@@ -175,7 +175,7 @@
       </div>
       <div class="foot-brand">
         <a class="brand" href="index.html" aria-label="NextPay home"><img src="assets/logos/nextpay-nav.png" alt="NextPay Business Solutions" style="height:40px;width:auto;display:block"></a>
-        <p>Smarter Solutions. Stronger Businesses. All the tools to run and grow your business — connected to one account.</p>
+        <p>Smarter Solutions. Stronger Businesses.<br>All the tools to run and grow your business — connected to one account.</p>
       </div>
       <div class="foot-bottom"><span>© 2026 NextPay. All rights reserved.</span><span><a href="https://hub.nextpaypos.com/Sales%20Hub" style="color:var(--teal-bright);font-weight:700">Agent Login</a> nextpaypos.com</span></div>
     </div>
