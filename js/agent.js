@@ -68,7 +68,7 @@
     }
     calcCM();
 
-    // SkyTab / Shift4 Flat Rate Plus
+    // Shift4 Dine Flat Rate Plus
     ['s4-vol','s4-tx','s4-fees','s4-rate','s4-tf'].forEach(id=>{ var el=document.getElementById(id); if(el) el.addEventListener('input',calcS4); });
     function calcS4(){
       const vol=num('s4-vol'), tx=num('s4-tx'), cur=num('s4-fees'), rate=num('s4-rate')/100, tf=num('s4-tf');
