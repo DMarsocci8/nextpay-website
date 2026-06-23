@@ -235,7 +235,7 @@
 
 <script>
 var PRODUCTS=[
-  {id:'chively',     name:'NextPay POS (Chively)', cat:'POS Systems',        logo:'chively-white.png', dark:true},
+  {id:'chively',     name:'Chively',               cat:'POS Systems',        logo:'chively-white.png', dark:true},
   {id:'square',      name:'Square POS',            cat:'POS Systems',        logo:'square.svg'},
   {id:'clover',      name:'Clover POS',            cat:'POS Systems',        logo:'clover.png'},
   {id:'shift4',      name:'Shift4 Dine',           cat:'POS Systems',        logo:'shift4.png'},
@@ -251,12 +251,13 @@ var PRODUCTS=[
   {id:'nmi',         name:'NMI Gateway',           cat:'Online & Gateways',  logo:'nmi.png'},
   {id:'authnet',     name:'Authorize.net',         cat:'Online & Gateways',  logo:'authnet.png'},
   {id:'ipospays',    name:'iPOSPays',              cat:'Online & Gateways',  logo:'ipospays.png'},
-  {id:'luqra',       name:'Luqra / LQPay',         cat:'Online & Gateways',  logo:'luqra.png'}
+  {id:'luqra',       name:'Luqra',                 cat:'Online & Gateways',  logo:'luqra.png'},
+  {id:'lqpay',       name:'LQPay',                 cat:'Invoicing',          logo:'lqpay.png'}
 ];
 /* per-product: base monthly line, optional add-ons (monthly), and processing defaults.
    Numbers seeded from the POS Systems page + the Clover & SkyTab pricing sheets — all editable. */
 var PCONF={
-  chively:{base:{d:'NextPay POS (Chively) — software',m:''},addons:[],program:'Dual Pricing',rate:'0% with dual pricing — match or beat'},
+  chively:{base:{d:'Chively — software',m:''},addons:[],program:'Dual Pricing',rate:'0% with dual pricing'},
   square:{base:{d:'Square POS — Free plan',m:0},addons:[{d:'Square Plus plan',m:49}],onetime:[{d:'Implementation — Plus Package',a:699},{d:'Implementation — Premium',a:1499},{d:'Implementation — Onsite',a:2199},{d:'Payroll Implementation',a:250},{d:'Optimization Call',a:159},{d:'Menu Build',a:149},{d:'Gift Card Migration',a:149},{d:'Loyalty Migration',a:149},{d:'Product Catalog Import',a:149},{d:'Square Online Site Copy',a:149}],program:'Flat Rate',rate:'2.6% + 10¢ in person'},
   clover:{base:{d:'Clover Station — placement',m:45},addons:[{d:'Clover Mini — placement',m:25},{d:'Clover Flex — placement',m:20},{d:'Clover Pocket — placement',m:18},{d:'Clover KDS',m:25},{d:'Clover Kiosk',m:34.95},{d:'Software — Restaurant Growth (1st device)',m:89.95},{d:'Software — Services Growth (1st device)',m:84.95},{d:'Software — Retail Growth (1st device)',m:29.95},{d:'Software — each additional device',m:19.95}],program:'Dual Pricing',rate:'0% with dual pricing'},
   shift4:{base:{d:'Workstation',m:29.99},addons:[{d:'Air',m:29.99},{d:'Tablet',m:29.99},{d:'Mobile',m:20},{d:'KDS',m:29.99},{d:'Kiosk',m:29.99},{d:'Customer-Facing Display',m:29.99},{d:'EMV/NFC PIN Pad',m:9.99},{d:'Receipt Thermal Printer',m:9.99},{d:'Label Printer',m:19.99},{d:'Digital Scale',m:39.99},{d:'Barcode Scanner',m:9.99},{d:'Caller ID (2-line)',m:9.99},{d:'Caller ID (4-line)',m:19.99}],program:'Dual Pricing',rate:'0% with dual pricing',incentive:{l:'$5,000 switch incentive',a:5000,t:'Paid after 90 days — process two full months with credit card sales above $30,000/month to qualify.'}},
@@ -272,7 +273,8 @@ var PCONF={
   nmi:{base:{d:'NMI gateway',m:25},addons:[],program:'Interchange-Plus',rate:'IC+ — set per card mix'},
   authnet:{base:{d:'Authorize.net gateway',m:25},addons:[],program:'Interchange-Plus',rate:'IC+ — set per card mix'},
   ipospays:{base:{d:'iPOSPays',m:25},addons:[],program:'Dual Pricing',rate:'0% with dual pricing'},
-  luqra:{base:{d:'Luqra / LQPay',m:25},addons:[],program:'Interchange-Plus',rate:'IC+ — set per card mix'}
+  luqra:{base:{d:'Luqra gateway',m:25},addons:[],program:'Interchange-Plus',rate:'IC+ — set per card mix'},
+  lqpay:{base:{d:'LQPay',m:''},addons:[],program:'Dual Pricing',rate:'0% with dual pricing'}
 };
 var KEY='np_rep_profile';
 function load(){ try{ return JSON.parse(localStorage.getItem(KEY))||{}; }catch(e){ return {}; } }
@@ -293,7 +295,7 @@ var OT_GENERIC=[{d:'Installation',a:''},{d:'Delivery / Shipping',a:''},{d:'Menu 
 var curOT=[];
 
 (function(){ var cats={}; PRODUCTS.forEach(function(p){ (cats[p.cat]=cats[p.cat]||[]).push(p); });
-  ['POS Systems','Terminals','Online & Gateways'].forEach(function(c){ if(!cats[c])return;
+  ['POS Systems','Terminals','Online & Gateways','Invoicing'].forEach(function(c){ if(!cats[c])return;
     var og=document.createElement('optgroup'); og.label=c;
     cats[c].forEach(function(p){ var o=document.createElement('option'); o.value=p.id; o.textContent=p.name; og.appendChild(o); }); picker.appendChild(og); }); })();
 (function(){ var m=(location.search+location.hash).match(/[?&#]product=([\w-]+)/); if(m){ for(var i=0;i<PRODUCTS.length;i++){ if(PRODUCTS[i].id===m[1]){ picker.value=m[1]; break; } } } })();

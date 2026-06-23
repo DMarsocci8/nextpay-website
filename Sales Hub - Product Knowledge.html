@@ -349,7 +349,8 @@ document.querySelectorAll('.tabs button').forEach(function(b){
     [/\bnmi\b/i,'nmi'],
     [/authorize/i,'authnet'],
     [/valor/i,'valor'],
-    [/lqpay|luqra/i,'luqra']
+    [/lqpay/i,'lqpay'],
+    [/luqra/i,'luqra']
   ];
   document.querySelectorAll('.pk-card').forEach(function(card){
     var h=card.querySelector('h3'); if(!h) return;
