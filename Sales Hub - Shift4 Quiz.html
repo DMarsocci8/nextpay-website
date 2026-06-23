@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="robots" content="noindex, nofollow">
-<title>Shift4 Dine — Product Training Quiz — NextPay Sales Hub</title>
+<title>Shift4 Dine 101 — NextPay Sales Hub</title>
 <link rel="icon" href="assets/favicon.ico" sizes="any">
 <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
 <link rel="stylesheet" href="css/nextpay.css">
@@ -97,8 +97,8 @@ main.wrap{padding:30px 0 10px;max-width:920px}
 
 <header class="pg-head">
   <div class="wrap">
-    <div class="crumbs"><a href="Sales Hub.html">Sales Hub</a><span class="sep">/</span><a href="Sales Hub - Shift4.html">Shift4 Dine</a><span class="sep">/</span><span>Product Training Quiz</span></div>
-    <h1>Shift4 Dine — <em>product training quiz</em></h1>
+    <div class="crumbs"><a href="Sales Hub.html">Sales Hub</a><span class="sep">/</span><a href="Sales Hub - Shift4.html">Shift4 Dine</a><span class="sep">/</span><span>Shift4 Dine 101</span></div>
+    <h1>Shift4 Dine <em>101</em></h1>
     <p class="lead">Test your Shift4 Dine product knowledge. Answer every question, then submit to see your score with the correct answers and explanations. Retake it as many times as you like.</p>
   </div>
 </header>
@@ -137,14 +137,24 @@ main.wrap{padding:30px 0 10px;max-width:920px}
    type: 'tf' (answer:true/false) · 'single' (one correct) · 'multi' (select all)
    Add more by appending objects here. */
 var QUIZ=[
+  { type:'single',
+    q:'This feature of Shift4 Dine assists in improving the speed and accuracy of Pick Up orders over time as cashiers can quickly recall customers by entering their phone number.',
+    options:[
+      {t:'Customer Database', correct:true},
+      {t:'Cash Drawer management'},
+      {t:'Fast Pay'},
+      {t:'Online Ordering'}
+    ],
+    explain:'Customer Database — cashiers recall a customer by phone number, which speeds up and improves the accuracy of Pick Up orders over time.' },
+
   { type:'tf', answer:true,
-    q:'SkyTab POS allows merchants to manage their POS system remotely with Lighthouse Business Manager.',
+    q:'Shift4 Dine allows merchants to manage their POS system remotely with Lighthouse Business Manager.',
     explain:'True — Lighthouse Business Manager lets a merchant manage their POS system remotely.' },
 
   { type:'single',
     q:'Lighthouse gives a merchant the ability to view reports online, make changes to their menu remotely, and manage their employees from anywhere. Which tool below is linked to Lighthouse and allows a merchant to view business data via an app?',
     options:[
-      {t:'SkyTab Mobile'},
+      {t:'Shift4 Dine Mobile'},
       {t:"Shift4's InCharge", correct:true},
       {t:'Host Mode view'},
       {t:'All of the above'}
@@ -152,7 +162,7 @@ var QUIZ=[
     explain:"Shift4's InCharge app is linked to Lighthouse and lets merchants view their business data on the go." },
 
   { type:'tf', answer:true,
-    q:"When a merchant's SkyTab device goes offline, it will not communicate the failure to other terminals or devices.",
+    q:"When a merchant's Shift4 Dine device goes offline, it will not communicate the failure to other terminals or devices.",
     explain:'True — an offline device does not broadcast the failure to the other terminals.' },
 
   { type:'tf', answer:false,
