@@ -86,6 +86,11 @@
 .pp-proc .rate{text-align:right}.pp-proc .rate b{color:#0E8473}
 .pp-notes{margin-top:.18in}
 .pp-notes p{font-size:10pt;color:#3c4a52;line-height:1.5;white-space:pre-wrap}
+.pp-incentive{margin-top:.2in;background:rgba(20,161,140,.08);border:1px solid rgba(20,161,140,.32);border-radius:.13in;padding:.15in .18in;display:flex;align-items:center;gap:.2in}
+.pp-incentive .pi-amt{font-size:22pt;font-weight:800;color:#0E8473;letter-spacing:-.02em;white-space:nowrap;line-height:1}
+.pp-incentive .pi-body b{display:block;font-size:11pt;font-weight:800;color:#0C1B2A}
+.pp-incentive .pi-body .pi-tag{font-size:7.5pt;font-weight:800;letter-spacing:.07em;text-transform:uppercase;color:#0E8473;margin-bottom:2px}
+.pp-incentive .pi-body p{font-size:9pt;color:#5b6b73;line-height:1.4;margin-top:3px}
 .pp-foot{margin-top:auto;padding-top:.2in;border-top:1px solid #e3e9ed;display:flex;justify-content:space-between;align-items:flex-end;gap:.2in}
 .pp-foot .rep b{font-size:11.5pt;font-weight:800;color:#0C1B2A}
 .pp-foot .rep .rows2{display:flex;flex-wrap:wrap;gap:.03in .24in;margin-top:.05in;font-size:9pt;color:#5b6b73;font-weight:600}
@@ -168,11 +173,18 @@
         <select id="otPick"><option value="">+ Common…</option></select>
       </div>
 
-      <div class="sect">Incentive / credit <span style="font-weight:600;text-transform:none;letter-spacing:0;color:var(--slate)">(optional)</span></div>
+      <div class="sect">Credit / discount <span style="font-weight:600;text-transform:none;letter-spacing:0;color:var(--slate)">(reduces the quote)</span></div>
       <div class="f2col">
         <div class="fg"><label for="f-credit-l">Label</label><input id="f-credit-l" type="text" placeholder="e.g. Switch credit"></div>
         <div class="fg"><label for="f-credit-a">Amount ($)</label><input id="f-credit-a" type="number" min="0" step="0.01" inputmode="decimal" placeholder="0.00"></div>
       </div>
+
+      <div class="sect">Earned incentive <span style="font-weight:600;text-transform:none;letter-spacing:0;color:var(--slate)">(paid to the merchant — doesn't reduce the quote)</span></div>
+      <div class="f2col">
+        <div class="fg"><label for="f-inc-l">Label</label><input id="f-inc-l" type="text" placeholder="e.g. $5,000 switch incentive"></div>
+        <div class="fg"><label for="f-inc-a">Amount ($)</label><input id="f-inc-a" type="number" min="0" step="0.01" inputmode="decimal" placeholder="0.00"></div>
+      </div>
+      <div class="fg"><label for="f-inc-t">How they qualify</label><input id="f-inc-t" type="text" placeholder="e.g. Paid after 90 days; 2 full months of $30k+/mo card sales"></div>
 
       <div class="sect">Processing</div>
       <div class="fg"><label for="f-program">Program</label><select id="f-program">
@@ -247,7 +259,7 @@ var PCONF={
   chively:{base:{d:'NextPay POS (Chively) — software',m:''},addons:[],program:'Dual Pricing',rate:'0% with dual pricing — match or beat'},
   square:{base:{d:'Square POS — Free plan',m:0},addons:[{d:'Square Plus plan',m:49}],onetime:[{d:'Implementation — Plus Package',a:699},{d:'Implementation — Premium',a:1499},{d:'Implementation — Onsite',a:2199},{d:'Payroll Implementation',a:250},{d:'Optimization Call',a:159},{d:'Menu Build',a:149},{d:'Gift Card Migration',a:149},{d:'Loyalty Migration',a:149},{d:'Product Catalog Import',a:149},{d:'Square Online Site Copy',a:149}],program:'Flat Rate',rate:'2.6% + 10¢ in person'},
   clover:{base:{d:'Clover Station — placement',m:45},addons:[{d:'Clover Mini — placement',m:25},{d:'Clover Flex — placement',m:20},{d:'Clover Pocket — placement',m:18},{d:'Clover KDS',m:25},{d:'Clover Kiosk',m:34.95},{d:'Software — Restaurant Growth (1st device)',m:89.95},{d:'Software — Services Growth (1st device)',m:84.95},{d:'Software — Retail Growth (1st device)',m:29.95},{d:'Software — each additional device',m:19.95}],program:'Dual Pricing',rate:'0% with dual pricing'},
-  shift4:{base:{d:'Workstation',m:29.99},addons:[{d:'Air',m:29.99},{d:'Tablet',m:29.99},{d:'Mobile',m:20},{d:'KDS',m:29.99},{d:'Kiosk',m:29.99},{d:'Customer-Facing Display',m:29.99},{d:'EMV/NFC PIN Pad',m:9.99},{d:'Receipt Thermal Printer',m:9.99},{d:'Label Printer',m:19.99},{d:'Digital Scale',m:39.99},{d:'Barcode Scanner',m:9.99},{d:'Caller ID (2-line)',m:9.99},{d:'Caller ID (4-line)',m:19.99}],program:'Dual Pricing',rate:'0% with dual pricing'},
+  shift4:{base:{d:'Workstation',m:29.99},addons:[{d:'Air',m:29.99},{d:'Tablet',m:29.99},{d:'Mobile',m:20},{d:'KDS',m:29.99},{d:'Kiosk',m:29.99},{d:'Customer-Facing Display',m:29.99},{d:'EMV/NFC PIN Pad',m:9.99},{d:'Receipt Thermal Printer',m:9.99},{d:'Label Printer',m:19.99},{d:'Digital Scale',m:39.99},{d:'Barcode Scanner',m:9.99},{d:'Caller ID (2-line)',m:9.99},{d:'Caller ID (4-line)',m:19.99}],program:'Dual Pricing',rate:'0% with dual pricing',incentive:{l:'$5,000 switch incentive',a:5000,t:'Paid after 90 days — process two full months with credit card sales above $30,000/month to qualify.'}},
   quantic:{base:{d:'Quantic POS — first terminal',m:60},addons:[{d:'Additional terminal',m:50},{d:'Kitchen Display System',m:0}],program:'Dual Pricing',rate:'0% with dual pricing'},
   korona:{base:{d:'Korona POS — per register (Core)',m:59},addons:[{d:'Retail plan',m:79},{d:'Plus plan',m:99}],program:'Dual Pricing',rate:'0% with dual pricing'},
   nrs:{base:{d:'NRS POS — cash discount (flat)',m:49.95},addons:[],program:'Cash Discount',rate:'$49.95/mo flat · $0 per transaction'},
@@ -321,6 +333,11 @@ function seedProduct(){
   addMonthly(c.base.d, c.base.m, 1);
   document.getElementById('f-program').value=c.program||'';
   document.getElementById('f-rate').value=c.rate||'';
+  // seed earned incentive (informational — never reduces totals)
+  var inc=c.incentive||{l:'',a:'',t:''};
+  document.getElementById('f-inc-l').value=inc.l||'';
+  document.getElementById('f-inc-a').value=(inc.a===''||inc.a==null)?'':inc.a;
+  document.getElementById('f-inc-t').value=inc.t||'';
   // rebuild add-on picker
   addonPick.innerHTML='<option value="">+ Add‑on…</option>';
   (c.addons||[]).forEach(function(a,i){ var o=document.createElement('option'); o.value=i; o.textContent=a.d+' — '+money(a.m)+'/mo'; addonPick.appendChild(o); });
@@ -342,6 +359,7 @@ function render(){
   var oSub=0; oItems.forEach(function(it){ oSub+=it.a*it.q; });
   var credL=val('f-credit-l'), credA=fnum(val('f-credit-a'));
   var oTot=oSub-credA;
+  var incL=val('f-inc-l'), incA=fnum(val('f-inc-a')), incT=val('f-inc-t');
 
   var costHtml='';
   if(mItems.length){
@@ -364,6 +382,13 @@ function render(){
     costHtml+=oh;
   }
 
+  var incHtml='';
+  if(incA||incL){
+    incHtml='<div class="pp-incentive">'
+      +(incA?'<div class="pi-amt">$'+Math.round(incA).toLocaleString('en-US')+'</div>':'')
+      +'<div class="pi-body"><div class="pi-tag">Earned incentive · paid to you</div><b>'+(esc(incL)||'Switch incentive')+'</b>'+(incT?'<p>'+esc(incT)+'</p>':'')+'</div>'
+      +'</div>';
+  }
   var prog=val('f-program'), rate=val('f-rate');
   var procHtml=(prog||rate)?'<div class="pp-proc"><div><span class="l">Processing program</span><b>'+(esc(prog)||'—')+'</b></div><div class="rate"><span class="l">Rate</span><b>'+(esc(rate)||'—')+'</b></div></div>':'';
   var notes=val('f-notes');
@@ -376,7 +401,7 @@ function render(){
     +'<div class="pp-head"><span class="np"><img src="assets/logos/nextpay.png" alt="NextPay"></span>'+pbox+'</div>'
     +'<div class="pp-title"><h1>Proposal</h1><div class="meta">'+forLine+'<br>Prepared by '+esc(name)+'<br>'+date+'</div></div>'
     +'<div class="pp-prod">Solution: <b>'+esc(p.name)+'</b> · '+esc(p.cat)+'</div>'
-    +costHtml+procHtml+notesHtml
+    +costHtml+incHtml+procHtml+notesHtml
     +'<div class="pp-foot"><div class="rep"><b>'+esc(name)+'</b><div class="rows2">'+repRows+'</div></div>'
     +'<div class="dis">Pricing is an estimate, valid 30 days, and subject to underwriting, card mix, and final agreement. Not a binding offer.</div></div>'
     +'</div>';
@@ -393,7 +418,7 @@ document.getElementById('addUpfront').addEventListener('click', function(){ addU
 document.getElementById('addOnetime').addEventListener('click', function(){ addOnetime('',''); render(); });
 addonPick.addEventListener('change', function(){ var c=PCONF[prod().id]; var a=c&&c.addons[this.value]; if(a){ addMonthly(a.d,a.m,1); render(); } this.value=''; });
 otPick.addEventListener('change', function(){ var o=curOT[this.value]; if(o){ addOnetime(o.d, (o.a===''||o.a==null)?'':o.a, 1); render(); } this.value=''; });
-['f-biz','f-contact','f-credit-l','f-credit-a','f-program','f-rate','f-notes'].forEach(function(id){ document.getElementById(id).addEventListener('input', render); });
+['f-biz','f-contact','f-credit-l','f-credit-a','f-inc-l','f-inc-a','f-inc-t','f-program','f-rate','f-notes'].forEach(function(id){ document.getElementById(id).addEventListener('input', render); });
 ['name','cell','email'].forEach(function(k){ document.getElementById('f-'+k).addEventListener('input', function(){
   var p=load(); p.name=val('f-name'); p.cell=val('f-cell'); p.email=val('f-email'); save(p);
   document.getElementById('savedNote').textContent=(p.name||p.email)?'✓ Saved on this device — shared with your card & flyers':''; render(); }); });
