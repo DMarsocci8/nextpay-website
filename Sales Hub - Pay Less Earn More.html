@@ -61,7 +61,7 @@ body.fmt-flyer .flboxP{display:block}
   .flyer{
     width:1500px;height:1000px;background:#fff;overflow:hidden;position:relative;
     display:grid;
-    grid-template-rows:88px 216px 262px 136px 142px 156px;
+    grid-template-rows:88px 194px 276px 144px 142px 156px;
     color:var(--ink);
   }
 
@@ -77,9 +77,9 @@ body.fmt-flyer .flboxP{display:block}
     radial-gradient(circle at 88% 18%, rgba(62,168,166,.22), transparent 42%);}
   .hero-left{position:relative;z-index:1;}
   .eyebrow{font-family:'Figtree';font-weight:600;font-size:17px;letter-spacing:.22em;text-transform:uppercase;color:var(--teal-bright);margin-bottom:12px;}
-  .headline{font-family:'Poppins',sans-serif;font-weight:800;font-size:74px;line-height:1.0;letter-spacing:-.02em;color:#fff;}
+  .headline{font-family:'Poppins',sans-serif;font-weight:800;font-size:74px;line-height:1.15;letter-spacing:-.02em;color:#fff;}
   .headline .t{color:var(--teal-bright);}
-  .subhead{font-size:18px;line-height:1.36;color:rgba(255,255,255,.82);margin-top:16px;max-width:920px;font-weight:400;white-space:nowrap;}
+  .subhead{font-size:18px;line-height:1.36;color:rgba(255,255,255,.82);margin-top:18px;max-width:920px;font-weight:400;white-space:nowrap;}
   .subhead .hl{color:var(--teal-bright);font-weight:700;white-space:nowrap;}
 
   .zero{position:relative;z-index:1;justify-self:end;width:430px;height:170px;display:flex;align-items:center;gap:18px;
@@ -116,7 +116,7 @@ body.fmt-flyer .flboxP{display:block}
   .pos-card.accent .csub{font-family:'Figtree',sans-serif;font-weight:700;font-size:10.5px;color:#fff;text-align:center;letter-spacing:.01em;line-height:1.2;padding:0 6px;text-shadow:0 1px 2px rgba(0,0,0,.18);}  .pos-card.accent .pos-name{color:#fff;border-top-color:rgba(255,255,255,.3);position:relative;z-index:1;}
   .pos-card.accent .cqr{width:78px;height:78px;border-radius:10px;background:#fff;padding:5px;display:block;box-shadow:0 5px 14px -5px rgba(0,0,0,.45);position:relative;z-index:1;}
   /* Incentive note under lineup */
-  .pos-note{flex:none;text-align:center;font-family:'Figtree',sans-serif;font-size:14.5px;color:#5b6b73;letter-spacing:.01em;margin:20px 0 6px;}
+  .pos-note{flex:none;text-align:center;font-family:'Figtree',sans-serif;font-size:14.5px;color:#5b6b73;letter-spacing:.01em;margin:30px 0 6px;}
   .pos-note b{color:var(--navy);font-weight:700;}
   .pos-note .hl5k{display:inline-block;background:rgba(62,168,166,.16);color:#1f7d7a;font-weight:800;padding:3px 12px;border-radius:999px;}
   /* SkyTab switch incentive badge */
@@ -143,8 +143,8 @@ body.fmt-flyer .flboxP{display:block}
   .nrs .hint{font-family:ui-monospace,'SF Mono',Menlo,monospace;font-size:10.5px;color:#8a979d;position:absolute;bottom:46px;left:0;right:0;text-align:center;}
 
   /* ---- Benefits (applies to ALL systems) ---- */
-  .benefits{padding:16px 50px 18px;display:flex;flex-direction:column;}
-  .ben-head{display:flex;align-items:center;gap:20px;margin-bottom:15px;}
+  .benefits{padding:30px 50px 16px;display:flex;flex-direction:column;}
+  .ben-head{display:flex;align-items:center;gap:20px;margin-bottom:14px;}
   .ben-head span{font-family:'Poppins',sans-serif;font-weight:700;font-size:16px;letter-spacing:.2em;text-transform:uppercase;color:var(--navy);white-space:nowrap;}
   .ben-head::before,.ben-head::after{content:"";flex:1;height:1px;background:var(--line);}
   .ben-row{flex:1;display:grid;grid-template-columns:repeat(4,1fr);align-items:center;}
@@ -155,7 +155,8 @@ body.fmt-flyer .flboxP{display:block}
   .bi .ti{font-family:'Poppins',sans-serif;font-weight:700;font-size:18px;color:var(--navy);line-height:1.05;}
   .bi .de{font-size:13.5px;color:#566;line-height:1.2;margin-top:3px;}
   /* Highlighted benefit tile */
-  .bi.hl{background:linear-gradient(160deg,var(--teal),#2f8f8d);border-left:none;border-radius:13px;justify-self:center;align-self:center;width:max-content;max-width:none;margin:0;padding:12px 24px;box-shadow:0 9px 22px -9px rgba(62,168,166,.85);}
+  .bi.hl{background:var(--teal);border-left:none;border-radius:13px;justify-self:center;align-self:center;width:max-content;max-width:none;margin:0;padding:12px 26px;box-shadow:0 9px 22px -9px rgba(62,168,166,.85);}
+  .bi.hl>div:last-child{text-align:center;}
   .bi.hl+.bi{border-left:none;}
   .bi.hl .ck{background:#fff;}
   .bi.hl .ck::before{color:var(--teal);}
@@ -325,8 +326,8 @@ body.fmt-flyer .flboxP{display:block}
             <div class="pos-name">Square</div>
           </div>
           <div class="pos-card">
-            <div class="imgwrap"><img src="assets/marketing/plem-skytab.png" alt="SkyTab POS"></div>
-            <div class="pos-name">SkyTab</div>
+            <div class="imgwrap"><img src="assets/marketing/plem-skytab.png" alt="Shift4 POS"></div>
+            <div class="pos-name">Shift4</div>
           </div>
           <div class="pos-card">
             <div class="imgwrap"><img src="assets/marketing/plem-clover.webp" alt="Clover POS"></div>
@@ -451,8 +452,8 @@ body.fmt-flyer .flboxP{display:block}
             <div class="pos-name">Square</div>
           </div>
           <div class="pos-card">
-            <div class="imgwrap"><img src="assets/marketing/plem-skytab.png" alt="SkyTab POS"></div>
-            <div class="pos-name">SkyTab</div>
+            <div class="imgwrap"><img src="assets/marketing/plem-skytab.png" alt="Shift4 POS"></div>
+            <div class="pos-name">Shift4</div>
           </div>
           <div class="pos-card">
             <div class="imgwrap"><img src="assets/marketing/plem-clover.webp" alt="Clover POS"></div>
