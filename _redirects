@@ -1,5 +1,7 @@
-# Clean shareable URLs -> existing HTML files (rewrite, keeps pretty URL).
-# Mirrors vercel.json for when Cloudflare Pages serves the site.
+# Clean URLs for Cloudflare Pages (mirrors vercel.json).
+# 200 = serve page at the pretty path; 301 = send old .html/%20 links to it.
+
+# --- pretty path serves the page (rewrite, URL stays clean) ---
 /accept-payments /Accept%20Payments.html 200
 /affiliate /Affiliate%20Program.html 200
 /agent-portal /Agent%20Portal.html 200
@@ -81,3 +83,87 @@
 /vision-care /Vision%20Care.html 200
 /wellness /Wellness%20Centers.html 200
 /why-nextpay /Why%20NextPay.html 200
+
+# --- old .html / %20 links redirect to the clean path ---
+/Accept%20Payments.html /accept-payments 301
+/Affiliate%20Program.html /affiliate 301
+/Agent%20Portal.html /agent-portal 301
+/Agent%20Program.html /agent-program 301
+/Authorize.net%20Gateway.html /authorize-net 301
+/Auto%20Repair%20and%20Automotive.html /auto-repair 301
+/Bakeries%20Delis%20and%20Markets.html /bakeries 301
+/Bars%20and%20Nightclubs.html /bars 301
+/blog-chargebacks-101.html /blog/chargebacks-101 301
+/blog-choosing-a-pos.html /blog/choosing-a-pos 301
+/blog-dual-pricing-explained.html /blog/dual-pricing-explained 301
+/blog-lower-processing-fees.html /blog/lower-processing-fees 301
+/blog-merchant-rewards-guide.html /blog/merchant-rewards-guide 301
+/blog-read-your-statement.html /blog/read-your-statement 301
+/blog-restaurant-payments.html /blog/restaurant-payments 301
+/Bookkeeping.html /bookkeeping 301
+/Boutique%20and%20Clothing.html /boutique 301
+/Business%20Brokerage.html /brokerage 301
+/Chargeback%20Protection.html /chargeback-protection 301
+/Chiropractic%20and%20PT.html /chiropractic 301
+/Chively.html /chively 301
+/Cleaning%20Services.html /cleaning 301
+/Clover.html /clover 301
+/Contact.html /contact 301
+/Convenience%20and%20Grocery.html /convenience 301
+/DejaPay%20Pro.html /dejapay 301
+/Dejavoo%20Terminals.html /dejavoo 301
+/Dental.html /dental 301
+/Dermatology.html /dermatology 301
+/Fee%20Programs.html /fee-programs 301
+/Business%20Financing.html /financing 301
+/Fine%20Dining.html /fine-dining 301
+/Fitness%20and%20Gyms.html /fitness 301
+/FluidPay%20Gateway.html /fluidpay 301
+/Food%20Trucks.html /food-trucks 301
+/Online%20Gateways.html /gateways 301
+/Grow%20Your%20Business.html /grow 301
+/High%20Risk%20and%20Specialty.html /high-risk 301
+/Home%20Services.html /home-services 301
+/HR%20-%20Compliance.html /hr-compliance 301
+/Image%20Guide.html /image-guide 301
+/Industries.html /industries 301
+/Ingenico%20Terminals.html /ingenico 301
+/Integrations.html /integrations 301
+/Invoicing.html /invoicing 301
+/iPOSPays%20Gateway.html /ipospays 301
+/Jewelry%20Stores.html /jewelry 301
+/Korona.html /korona 301
+/Liquor%20Stores.html /liquor 301
+/Luqra%20Gateway.html /luqra 301
+/Mental%20Health.html /mental-health 301
+/Merchant%20Rewards.html /merchant-rewards 301
+/NMI%20Gateway.html /nmi 301
+/NRS.html /nrs 301
+/Client%20Automation%20Outreach.html /outreach 301
+/Partners.html /partners 301
+/PAX%20Terminals.html /pax 301
+/Payroll%20-%20Workers%20Comp.html /payroll 301
+/PAYS%20POS.html /pays-pos 301
+/Pizzerias.html /pizzerias 301
+/POS%20Systems.html /pos-systems 301
+/Pricing.html /pricing 301
+/Professional%20Services.html /professional-services 301
+/QSR%20Cafes%20and%20Coffee%20Shops.html /qsr-cafes 301
+/Quantic.html /quantic 301
+/quiz.html /quiz 301
+/Resources.html /resources 301
+/Run%20Your%20Business.html /run-your-business 301
+/Salons%20and%20Spas.html /salons 301
+/Shift4%20Dine.html /shift4-dine 301
+/Specialty%20Retail.html /specialty-retail 301
+/Square.html /square 301
+/Square%20Features.html /square-features 301
+/Statement%20Upload.html /statement-upload 301
+/SwipeSimple.html /swipesimple 301
+/Credit%20Card%20Terminals.html /terminals 301
+/Valor%20Gateway.html /valor-gateway 301
+/Valor%20Terminals.html /valor-terminals 301
+/Vision%20Care.html /vision-care 301
+/Wellness%20Centers.html /wellness 301
+/Why%20NextPay.html /why-nextpay 301
+/index.html / 301
