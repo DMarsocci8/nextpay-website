@@ -1,0 +1,294 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Shift4 Dine — KDS Practice Quiz — NextPay Sales Hub</title>
+<link rel="icon" href="assets/favicon.ico" sizes="any">
+<link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+<link rel="stylesheet" href="css/nextpay.css">
+<style>
+.hub-bar{position:sticky;top:0;z-index:60;background:var(--navy);color:#fff;border-bottom:1px solid rgba(255,255,255,.10)}
+.hub-bar-inner{display:flex;align-items:center;gap:18px;height:66px;max-width:var(--maxw);margin:0 auto;padding:0 28px}
+.hub-bar img.logo{height:34px;width:auto;display:block}
+.hub-bar .pipe{width:1px;height:26px;background:rgba(255,255,255,.18)}
+.hub-bar .hub-tag{font-weight:800;font-size:15px;color:#fff;display:flex;align-items:center;gap:9px}
+.hub-bar .hub-tag .badge{font-size:10.5px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;background:var(--teal);color:#fff;padding:4px 9px;border-radius:999px}
+.hub-bar .right{margin-left:auto;display:flex;align-items:center;gap:20px}
+.hub-bar .right a{color:#cdd8e2;font-weight:600;font-size:14.5px}.hub-bar .right a:hover{color:#fff}
+
+.pg-head{background:linear-gradient(180deg,var(--navy),var(--navy-2));color:#fff}
+.pg-head .wrap{padding:30px 0 32px}
+.crumbs{display:flex;gap:8px;align-items:center;font-size:13.5px;color:#9fb1c2;padding-bottom:14px;flex-wrap:wrap}
+.crumbs a{color:#cdd8e2;font-weight:600}.crumbs a:hover{color:#fff}.crumbs .sep{opacity:.5}
+.pg-head h1{font-size:clamp(26px,3.6vw,38px);color:#fff;letter-spacing:-.02em}
+.pg-head h1 em{color:var(--teal-bright);font-style:normal}
+.pg-head p.lead{color:#c4d0db;margin-top:10px;max-width:660px;font-size:16px;line-height:1.55}
+
+main.wrap{padding:30px 0 10px;max-width:920px}
+
+/* score bar */
+.scorebar{display:none;align-items:center;gap:18px;border-radius:var(--radius-lg);padding:20px 24px;margin-bottom:24px;box-shadow:var(--shadow-sm);border:1px solid var(--line);background:#fff}
+.scorebar.show{display:flex}
+.scorebar.pass{background:rgba(20,161,140,.08);border-color:rgba(20,161,140,.35)}
+.scorebar.fail{background:rgba(192,57,46,.06);border-color:rgba(192,57,46,.3)}
+.scorebar .pct{font-size:34px;font-weight:800;letter-spacing:-.02em;line-height:1;white-space:nowrap}
+.scorebar.pass .pct{color:var(--teal-dark)}.scorebar.fail .pct{color:#c0392b}
+.scorebar .st b{font-size:16px;color:var(--navy)}
+.scorebar .st p{font-size:13.5px;color:var(--slate);margin-top:2px}
+
+/* question */
+.q{background:#fff;border:1px solid var(--line);border-radius:var(--radius-lg);box-shadow:var(--shadow-sm);padding:24px 26px;margin-bottom:18px;overflow:hidden}
+.q .qhead{display:flex;gap:12px;align-items:flex-start;margin-bottom:16px}
+.q .qnum{flex:none;font-weight:800;color:var(--teal-dark);font-size:16px}
+.q .qtext{font-size:16.5px;font-weight:700;color:var(--navy);line-height:1.4}
+.q .qtype{font-size:12px;font-weight:700;color:var(--slate-2)}
+.opts{display:flex;flex-direction:column;gap:10px}
+.opt{display:flex;align-items:center;gap:12px;border:1px solid var(--line);border-radius:12px;padding:13px 16px;cursor:pointer;transition:.14s;font-size:15px;color:var(--ink)}
+.opt:hover{border-color:var(--teal);background:rgba(20,161,140,.04)}
+.opt input{appearance:none;-webkit-appearance:none;width:20px;height:20px;flex:none;border:2px solid var(--slate-2);background:#fff;cursor:pointer;position:relative}
+.opt input[type=radio]{border-radius:50%}
+.opt input[type=checkbox]{border-radius:5px}
+.opt input:checked{border-color:var(--teal);background:var(--teal)}
+.opt input:checked::after{content:"";position:absolute;inset:0;display:grid;place-items:center}
+.opt input[type=radio]:checked::after{width:8px;height:8px;border-radius:50%;background:#fff;margin:4px}
+.opt input[type=checkbox]:checked::after{content:"\2713";color:#fff;font-size:13px;font-weight:800;display:flex;align-items:center;justify-content:center}
+/* graded states */
+.q.graded .opt{cursor:default}.q.graded .opt:hover{border-color:var(--line);background:#fff}
+.q.graded .opt input{cursor:default}
+.opt.is-correct{border-color:var(--teal);background:rgba(20,161,140,.09)}
+.opt.is-correct .label{color:var(--teal-dark);font-weight:700}
+.opt.is-wrong{border-color:#e0867c;background:rgba(192,57,46,.06)}
+.opt.is-wrong .label{color:#c0392b}
+.opt .mk{margin-left:auto;font-size:12px;font-weight:800;letter-spacing:.03em;text-transform:uppercase;display:none}
+.opt.is-correct .mk.ok{display:inline;color:var(--teal-dark)}
+.opt.is-wrong .mk.no{display:inline;color:#c0392b}
+.qresult{display:none;margin-top:16px;border-radius:12px;padding:13px 16px;font-weight:800;font-size:14.5px;align-items:center;gap:10px}
+.qresult.show{display:flex}
+.qresult svg{width:18px;height:18px;flex:none}
+.qresult.ok{background:rgba(20,161,140,.1);color:var(--teal-dark)}
+.qresult.no{background:rgba(192,57,46,.08);color:#c0392b}
+.qexplain{display:none;margin-top:10px;font-size:14px;color:var(--slate);line-height:1.55;padding-left:2px}
+.qexplain.show{display:block}
+
+.actions{display:flex;gap:12px;flex-wrap:wrap;margin:8px 0 10px}
+.btn-quiz{display:inline-flex;align-items:center;gap:8px;border:none;border-radius:999px;padding:13px 26px;font-family:inherit;font-size:15px;font-weight:800;cursor:pointer;transition:.16s}
+.btn-quiz.primary{background:var(--teal);color:#fff}.btn-quiz.primary:hover{background:var(--teal-dark)}
+.btn-quiz.ghost{background:#fff;color:var(--teal-dark);border:1px solid var(--line)}.btn-quiz.ghost:hover{border-color:var(--teal)}
+.note{font-size:13px;color:var(--slate);background:var(--bg-soft);border:1px solid var(--line);border-radius:12px;padding:14px 16px;margin-top:18px;line-height:1.55}
+.note a{color:var(--teal-dark);font-weight:700}
+
+.hub-foot{background:var(--navy);color:#9fb1c2;padding:30px 0;margin-top:46px;font-size:13.5px}
+.hub-foot .wrap{display:flex;justify-content:space-between;gap:18px;flex-wrap:wrap;max-width:var(--maxw)}
+.hub-foot a{color:#cdd8e2;font-weight:600}.hub-foot a:hover{color:#fff}
+</style>
+</head>
+<body>
+
+<div class="hub-bar">
+  <div class="hub-bar-inner">
+    <a href="Sales Hub.html" style="display:flex;align-items:center" aria-label="Sales Hub home"><img class="logo" src="assets/logos/nextpay-nav.png" alt="NextPay"></a>
+    <span class="pipe"></span>
+    <span class="hub-tag">Sales Hub <span class="badge">Internal</span></span>
+    <div class="right"><a href="Sales Hub - Shift4 KDS.html">← KDS guide</a><a href="Sales Hub.html">Hub home</a></div>
+  </div>
+</div>
+
+<header class="pg-head">
+  <div class="wrap">
+    <div class="crumbs"><a href="Sales Hub.html">Sales Hub</a><span class="sep">/</span><a href="Sales Hub - Shift4 KDS.html">KDS</a><span class="sep">/</span><span>KDS practice quiz</span></div>
+    <h1>KDS <em>practice quiz</em></h1>
+    <p class="lead">Check your Kitchen Display System knowledge before the real assessment. Answer every question, then submit to see your score with the correct answers and explanations. Retake it as many times as you like.</p>
+  </div>
+</header>
+
+<main class="wrap">
+
+  <div class="scorebar" id="scorebar">
+    <div class="pct" id="scorePct">0%</div>
+    <div class="st"><b id="scoreMsg"></b><p id="scoreSub"></p></div>
+  </div>
+
+  <div id="quiz"></div>
+
+  <div class="actions">
+    <button class="btn-quiz primary" id="submitBtn" type="button">Submit answers</button>
+    <button class="btn-quiz ghost" id="retryBtn" type="button" style="display:none">Retake quiz</button>
+  </div>
+
+  <div class="note" id="warn" style="display:none;color:#c0392b;border-color:#e0867c;background:rgba(192,57,46,.05)">Please answer every question before submitting.</div>
+
+  <div class="note">
+    These questions mirror the Shift4 Dine product knowledge check. For the full course and certification, use the <a href="https://shift4partneracademy.learnupon.com/users/sign_in?next=%2Fmy-learning" target="_blank" rel="noopener">Shift4 Partner Academy</a>.
+  </div>
+
+</main>
+
+<footer class="hub-foot">
+  <div class="wrap">
+    <span>NextPay Sales Hub · Shift4 Dine KDS Practice Quiz · Internal use only.</span>
+    <span><a href="Sales Hub - Request Access.html#suggest">💡 Suggest / Request</a> · <a href="Sales Hub.html">← Back to hub</a></span>
+  </div>
+</footer>
+
+<script>
+/* ===== Quiz questions =====
+   type: 'tf' (answer:true/false) · 'single' (one correct) · 'multi' (select all)
+   Add more by appending objects here. */
+var QUIZ=[
+  { type:'single',
+    q:'What are the benefits of a restaurant using a KDS?',
+    options:[
+      {t:'Reduces wasted paper'},
+      {t:'Eliminates lost tickets'},
+      {t:'Allows businesses to easily organize and sort orders for kitchen staff'},
+      {t:'All of the above', correct:true}
+    ],
+    explain:'All of the above — a KDS replaces paper tickets, prevents lost/illegible tickets, and organizes & sorts orders for the kitchen.' },
+
+  { type:'multi',
+    q:'Users can use which of the below functions to look through pages of tickets on the KDS? (Select all that apply)',
+    options:[
+      {t:'Scroll functions at the bottom right of the display', correct:true},
+      {t:'Swiping the screen', correct:true},
+      {t:'Using the bump bar located at counter height'},
+      {t:"Typing in a server's name to look up their ticket page"}
+    ],
+    explain:'You page through tickets by swiping the screen or using the scroll controls at the bottom-right of the display.' },
+
+  { type:'tf', answer:true,
+    q:"Shift4's KDS works offline and isn't dependent on the internet to function.",
+    explain:'True — it provides a stable, reliable system that works offline.' },
+
+  { type:'single',
+    q:"How much is Shift4's KDS?",
+    options:[
+      {t:'$12 / month'},
+      {t:'$29.99 / month', correct:true},
+      {t:'$99 / month'},
+      {t:'$600 one-time, no monthly fee'}
+    ],
+    explain:"Shift4's KDS is $29.99 / month." },
+
+  { type:'single',
+    q:"What size is Shift4's KDS touchscreen?",
+    options:[
+      {t:'10 inch'},
+      {t:'15 inch'},
+      {t:'22 inch', correct:true},
+      {t:'27 inch'}
+    ],
+    explain:"It's a 22-inch Android touchscreen (1920×1080)." },
+
+  { type:'multi',
+    q:"Which ticket views can Shift4's KDS display? (Select all that apply)",
+    options:[
+      {t:'Column', correct:true},
+      {t:'Tile', correct:true},
+      {t:'List', correct:true},
+      {t:'Grid', correct:true},
+      {t:'Carousel'}
+    ],
+    explain:'Tickets can display in Column, Tile, List or Grid views. There is no Carousel view.' },
+
+  { type:'tf', answer:false,
+    q:'When using Clear All, the cleared tickets are still counted toward the KDS KPI metrics.',
+    explain:'False — tickets cleared with Clear All are NOT counted toward existing KPI metrics.' },
+
+  { type:'single',
+    q:'How do you merge two tickets from the same order on the KDS?',
+    options:[
+      {t:'Long-press the ticket header and select the additional ticket(s)', correct:true},
+      {t:'Tap Group along the bottom of the screen'},
+      {t:'Tap Complete on both tickets'},
+      {t:'Swipe one ticket onto the other'}
+    ],
+    explain:'Long-press the ticket header, then select the additional ticket(s) to merge. (Group only changes how items are displayed.)' }
+];
+
+/* normalize tf into options */
+QUIZ.forEach(function(q){
+  if(q.type==='tf'){ q.options=[{t:'TRUE',correct:q.answer===true},{t:'FALSE',correct:q.answer===false}]; }
+});
+
+var CHECK='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6"><path d="M5 13l4 4L19 7"/></svg>';
+var XMARK='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6"><path d="M18 6L6 18M6 6l12 12"/></svg>';
+
+var quizEl=document.getElementById('quiz');
+var graded=false;
+
+function build(){
+  graded=false;
+  quizEl.innerHTML=QUIZ.map(function(q,qi){
+    var multi=q.type==='multi';
+    var typeLbl=multi?'Select all that apply':(q.type==='tf'?'True / False':'Choose one');
+    var opts=q.options.map(function(o,oi){
+      var inp='<input type="'+(multi?'checkbox':'radio')+'" name="q'+qi+'" value="'+oi+'">';
+      return '<label class="opt" data-q="'+qi+'" data-o="'+oi+'">'+inp+'<span class="label">'+o.t+'</span>'
+        +'<span class="mk ok">Correct</span><span class="mk no">Your pick</span></label>';
+    }).join('');
+    return '<div class="q" id="q'+qi+'"><div class="qhead"><span class="qnum">'+(qi+1)+'.</span>'
+      +'<div><div class="qtext">'+q.q+'</div><div class="qtype">'+typeLbl+'</div></div></div>'
+      +'<div class="opts">'+opts+'</div>'
+      +'<div class="qresult" id="r'+qi+'"></div><div class="qexplain" id="e'+qi+'"></div></div>';
+  }).join('');
+  document.getElementById('scorebar').className='scorebar';
+  document.getElementById('warn').style.display='none';
+  document.getElementById('submitBtn').style.display='';
+  document.getElementById('retryBtn').style.display='none';
+}
+
+function selected(qi){
+  var out=[];
+  document.querySelectorAll('input[name="q'+qi+'"]').forEach(function(inp,oi){ if(inp.checked) out.push(oi); });
+  return out;
+}
+
+function grade(){
+  // require all answered
+  for(var i=0;i<QUIZ.length;i++){ if(selected(i).length===0){
+    document.getElementById('warn').style.display='block';
+    document.getElementById('q'+i).scrollIntoView({behavior:'smooth',block:'center'});
+    return;
+  }}
+  document.getElementById('warn').style.display='none';
+  graded=true;
+  var correct=0;
+  QUIZ.forEach(function(q,qi){
+    var sel=selected(qi);
+    var correctSet=[]; q.options.forEach(function(o,oi){ if(o.correct) correctSet.push(oi); });
+    var qcard=document.getElementById('q'+qi); qcard.classList.add('graded');
+    q.options.forEach(function(o,oi){
+      var lab=qcard.querySelector('.opt[data-o="'+oi+'"]');
+      var picked=sel.indexOf(oi)>-1;
+      if(o.correct) lab.classList.add('is-correct');
+      if(picked && !o.correct) lab.classList.add('is-wrong');
+      var inp=lab.querySelector('input'); inp.disabled=true;
+    });
+    var isRight = sel.length===correctSet.length && sel.every(function(x){return correctSet.indexOf(x)>-1;});
+    if(isRight) correct++;
+    var r=document.getElementById('r'+qi);
+    r.className='qresult show '+(isRight?'ok':'no');
+    r.innerHTML=(isRight?CHECK+' Correct':XMARK+' Incorrect');
+    if(q.explain){ var e=document.getElementById('e'+qi); e.textContent=q.explain; e.className='qexplain show'; }
+  });
+  var pct=Math.round(correct/QUIZ.length*100);
+  var pass=pct>=80;
+  var sb=document.getElementById('scorebar');
+  sb.className='scorebar show '+(pass?'pass':'fail');
+  document.getElementById('scorePct').textContent=pct+'%';
+  document.getElementById('scoreMsg').textContent=(pass?'Nice — you passed.':'Keep studying.')+' '+correct+' of '+QUIZ.length+' correct.';
+  document.getElementById('scoreSub').textContent=pass?'Review any misses below, then you’re ready to pitch Shift4 Dine.':'Review the correct answers below and retake the quiz (80% to pass).';
+  document.getElementById('submitBtn').style.display='none';
+  document.getElementById('retryBtn').style.display='';
+  sb.scrollIntoView({behavior:'smooth',block:'center'});
+}
+
+document.getElementById('submitBtn').addEventListener('click', grade);
+document.getElementById('retryBtn').addEventListener('click', function(){ build(); window.scrollTo({top:0,behavior:'smooth'}); });
+build();
+</script>
+<script src="js/hub-nav.js"></script>
+</body>
+</html>

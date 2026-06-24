@@ -1,0 +1,236 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Shift4 Dine — Kitchen Display System (KDS) — NextPay Sales Hub</title>
+<link rel="icon" href="assets/favicon.ico" sizes="any">
+<link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+<link rel="stylesheet" href="css/nextpay.css">
+<style>
+.hub-bar{position:sticky;top:0;z-index:60;background:var(--navy);color:#fff;border-bottom:1px solid rgba(255,255,255,.10)}
+.hub-bar-inner{display:flex;align-items:center;gap:18px;height:66px;max-width:var(--maxw);margin:0 auto;padding:0 28px}
+.hub-bar img.logo{height:34px;width:auto;display:block}
+.hub-bar .pipe{width:1px;height:26px;background:rgba(255,255,255,.18)}
+.hub-bar .hub-tag{font-weight:800;font-size:15px;color:#fff;display:flex;align-items:center;gap:9px}
+.hub-bar .hub-tag .badge{font-size:10.5px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;background:var(--teal);color:#fff;padding:4px 9px;border-radius:999px}
+.hub-bar .right{margin-left:auto;display:flex;align-items:center;gap:20px}
+.hub-bar .right a{color:#cdd8e2;font-weight:600;font-size:14.5px}.hub-bar .right a:hover{color:#fff}
+
+.pg-head{background:linear-gradient(180deg,var(--navy),var(--navy-2));color:#fff}
+.pg-head .wrap{padding:30px 0 32px}
+.crumbs{display:flex;gap:8px;align-items:center;font-size:13.5px;color:#9fb1c2;padding-bottom:14px;flex-wrap:wrap}
+.crumbs a{color:#cdd8e2;font-weight:600}.crumbs a:hover{color:#fff}.crumbs .sep{opacity:.5}
+.pg-head h1{font-size:clamp(26px,3.6vw,38px);color:#fff;letter-spacing:-.02em}
+.pg-head h1 em{color:var(--teal-bright);font-style:normal}
+.pg-head p.lead{color:#c4d0db;margin-top:10px;max-width:680px;font-size:16px;line-height:1.55}
+.jump{display:flex;gap:9px;flex-wrap:wrap;margin-top:20px}
+.jump a{display:inline-flex;align-items:center;gap:7px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.16);border-radius:999px;padding:8px 14px;font-size:13px;font-weight:700;color:#eaf1f6}
+.jump a:hover{background:rgba(31,194,166,.18);border-color:var(--teal-bright);color:#fff}
+
+main.wrap{padding:30px 0 10px;max-width:980px}
+.sec{margin-bottom:34px;scroll-margin-top:84px}
+.sec h2{font-size:22px;letter-spacing:-.02em;margin-bottom:6px}
+.sec .sub{font-size:14.5px;color:var(--slate);margin-bottom:16px;max-width:780px;line-height:1.6}
+.sec p.body{font-size:15px;color:var(--ink);line-height:1.65;margin-bottom:12px;max-width:820px}
+
+.why{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+@media(max-width:700px){.why{grid-template-columns:1fr}}
+.wcard{background:#fff;border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow-sm);padding:18px 20px;display:flex;gap:14px;align-items:flex-start}
+.wcard .n{width:30px;height:30px;border-radius:9px;background:var(--teal);color:#fff;display:grid;place-items:center;font-weight:800;font-size:14px;flex:none}
+.wcard b{font-size:15.5px;color:var(--navy)}
+.wcard p{font-size:13.5px;color:var(--slate);line-height:1.5;margin-top:3px}
+
+.specbox{background:#fff;border:1px solid var(--line);border-radius:var(--radius-lg);box-shadow:var(--shadow-sm);padding:22px 24px}
+.spec-price{display:inline-block;font-size:13px;font-weight:800;letter-spacing:.03em;text-transform:uppercase;background:rgba(20,161,140,.12);color:var(--teal-dark);padding:5px 12px;border-radius:999px;margin-bottom:14px}
+.cols2{display:grid;grid-template-columns:1fr 1fr;gap:6px 30px}
+@media(max-width:700px){.cols2{grid-template-columns:1fr}}
+.cols2 li{display:flex;gap:9px;align-items:flex-start;font-size:14px;color:var(--ink);line-height:1.5;padding:5px 0}
+.cols2 li svg{width:15px;height:15px;flex:none;margin-top:3px;color:var(--teal)}
+.cols2{list-style:none;margin:0;padding:0}
+.note{font-size:13.5px;color:var(--slate);background:var(--bg-soft);border:1px solid var(--line);border-radius:12px;padding:14px 17px;margin-top:16px;line-height:1.55}
+.note a{color:var(--teal-dark);font-weight:700}
+
+/* competitor */
+.cmp{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+@media(max-width:820px){.cmp{grid-template-columns:1fr 1fr}}
+@media(max-width:520px){.cmp{grid-template-columns:1fr}}
+.ccard{background:#fff;border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow-sm);padding:16px 18px}
+.ccard h4{font-size:15px;color:var(--navy);margin-bottom:8px}
+.ccard ul{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:6px}
+.ccard li{display:flex;gap:8px;align-items:flex-start;font-size:13px;color:var(--ink);line-height:1.4}
+.ccard li svg{width:14px;height:14px;flex:none;margin-top:2px;color:var(--slate-2)}
+
+.hub-foot{background:var(--navy);color:#9fb1c2;padding:30px 0;margin-top:46px;font-size:13.5px}
+.hub-foot .wrap{display:flex;justify-content:space-between;gap:18px;flex-wrap:wrap;max-width:var(--maxw)}
+.hub-foot a{color:#cdd8e2;font-weight:600}.hub-foot a:hover{color:#fff}
+</style>
+</head>
+<body>
+
+<div class="hub-bar">
+  <div class="hub-bar-inner">
+    <a href="Sales Hub.html" style="display:flex;align-items:center" aria-label="Sales Hub home"><img class="logo" src="assets/logos/nextpay-nav.png" alt="NextPay"></a>
+    <span class="pipe"></span>
+    <span class="hub-tag">Sales Hub <span class="badge">Internal</span></span>
+    <div class="right"><a href="Sales Hub - Shift4.html">← Shift4</a><a href="Sales Hub.html">Hub home</a></div>
+  </div>
+</div>
+
+<header class="pg-head">
+  <div class="wrap">
+    <div class="crumbs"><a href="Sales Hub.html">Sales Hub</a><span class="sep">/</span><a href="Sales Hub - Shift4.html">Shift4 Dine</a><span class="sep">/</span><span>Kitchen Display System</span></div>
+    <h1>Kitchen Display System <em>(KDS)</em></h1>
+    <p class="lead">What a KDS is, why Shift4's KDS stands out, the specs and features, and how it compares to other systems — everything you need to pitch the kitchen.</p>
+    <div class="jump">
+      <a href="#what">What is a KDS</a>
+      <a href="#shift4">Shift4's KDS</a>
+      <a href="#specs">Specs</a>
+      <a href="#features">Features</a>
+      <a href="#views">Ticket views</a>
+      <a href="#use">Day-to-day</a>
+      <a href="#settings">Settings</a>
+      <a href="#compare">Compare</a>
+    </div>
+  </div>
+</header>
+
+<main class="wrap">
+
+  <!-- WHAT -->
+  <section class="sec" id="what">
+    <h2>What is a Kitchen Display System?</h2>
+    <p class="body">A <b>Kitchen Display System (KDS)</b> is a digital order-view system that has replaced handwritten and printed ticket orders. It's used in restaurant kitchens and communicates with the restaurant's <b>Point of Sale (POS)</b>.</p>
+    <p class="body">Most kitchens are hot, loud and chaotic — it's easy for a printed or handwritten ticket to get lost, damaged or rendered illegible. KDS screens communicate with each other to display <b>real-time updates</b> on item / ticket status, keeping communication clear in a busy kitchen.</p>
+    <p class="body">Changes like <b>ticket merges, recalls, and item / ticket completions</b> are all shared across the KDS environment, so every kitchen station stays up to speed on a ticket from creation to completion.</p>
+  </section>
+
+  <!-- SHIFT4'S KDS -->
+  <section class="sec" id="shift4">
+    <h2>Shift4's KDS — why it stands out</h2>
+    <div class="why">
+      <div class="wcard"><span class="n">1</span><div><b>Easy to implement</b><p>Native design means it's easy to install and support.</p></div></div>
+      <div class="wcard"><span class="n">2</span><div><b>Easy to use</b><p>Modern UI/UX with vibrant colors and a responsive touchscreen.</p></div></div>
+      <div class="wcard"><span class="n">3</span><div><b>Works offline</b><p>A stable, reliable system that isn't dependent on the internet to function.</p></div></div>
+      <div class="wcard"><span class="n">4</span><div><b>Real-time analytics</b><p>Quick display of average ticket time and longest ticket time.</p></div></div>
+      <div class="wcard"><span class="n">5</span><div><b>Omni-channel fulfillment</b><p>Route and fulfill multiple order types from multiple screens simultaneously.</p></div></div>
+    </div>
+  </section>
+
+  <!-- SPECS -->
+  <section class="sec" id="specs">
+    <h2>Specifications</h2>
+    <div class="specbox">
+      <span class="spec-price">$29.99 / month</span>
+      <ul class="cols2">
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg>22&Prime; Android touchscreen</li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg>RK3288 Quad-Core Cortex A17 — 1.6&nbsp;GHz (embedded)</li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg>Modern interface</li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg>RAM: 2&nbsp;GB DDR3 (embedded)</li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg>TCP/IP configuration</li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg>Storage: 16&nbsp;GB eMMC (embedded)</li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg>Wi-Fi or Ethernet compatible</li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg>22&Prime; LCD, 250-nit LED backlight, 50K hrs, 1920×1080</li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg>Wall mount kit</li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg>22&Prime; projective capacitive touch — 10-point</li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg>Table stand kit</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- FEATURES -->
+  <section class="sec" id="features">
+    <h2>Features available today</h2>
+    <div class="specbox">
+      <ul class="cols2">
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg>Clear by item</li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg>Group items</li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg>Clear by order</li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg>Warning status</li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg>Recall orders</li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg>Real-time analytics</li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg>Route by order type</li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg>Settings by display</li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg>Color coding by order types</li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg>Page scrolling</li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg>Production views</li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg>Text notifications to customer</li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg>Printing on DONE</li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg>Prep times</li>
+      </ul>
+      <div class="note">Tickets display in four view types — <b>Column, Tile, List and Grid</b> — so each station can use the layout that fits its workflow.</div>
+    </div>
+  </section>
+
+  <!-- TICKET VIEWS -->
+  <section class="sec" id="views">
+    <h2>Ticket views</h2>
+    <p class="sub">Shift4's KDS can display tickets in four arrangements — each station picks what fits its workflow.</p>
+    <div class="why">
+      <div class="wcard"><span class="n" style="border-radius:9px;background:var(--navy)">▦</span><div><b>Column view</b><p>Tickets display in columns. Regardless of how many items are on the order, the ticket begins and ends within one column.</p></div></div>
+      <div class="wcard"><span class="n" style="border-radius:9px;background:var(--navy)">▣</span><div><b>Tile view</b><p>Tickets display as varying-sized tiles, squeezing each order's items into all the available display space.</p></div></div>
+      <div class="wcard"><span class="n" style="border-radius:9px;background:var(--navy)">≣</span><div><b>List view</b><p>Items are arranged in lines and rows below a header line with the ticket info; staff scroll vertically between tickets.</p></div></div>
+      <div class="wcard"><span class="n" style="border-radius:9px;background:var(--navy)">⊞</span><div><b>Grid view</b><p>Tickets arranged horizontally in two rows of fixed columns — best for simple tickets with minor item modifications.</p></div></div>
+    </div>
+    <div class="note"><b>Ticket breakdown.</b> Every ticket shows the order type (Dine In / Pickup / Delivery / Bar), table or guest count, ticket number &amp; server name, the clock time and the elapsed timer, then the items with modifiers, allergies, temps and seat numbers (S1, S2…).</div>
+  </section>
+
+  <!-- DAY TO DAY -->
+  <section class="sec" id="use">
+    <h2>Using the KDS day-to-day</h2>
+    <div class="why">
+      <div class="wcard"><span class="n">✓</span><div><b>Clearing items &amp; orders</b><p><b>Clear by Item</b> — tap items to mark them fulfilled (turn green); when the last is marked, the ticket bumps. Best for prep/line cooks. <b>Clear by Order</b> — tap <b>Complete</b> at the end of the item list (great for expeditors / QSR). <b>Clear All</b> — clears the whole screen (e.g., after a rush) — note: tickets cleared this way are <b>not</b> counted toward KPI metrics.</p></div></div>
+      <div class="wcard"><span class="n">✓</span><div><b>Filter by order type</b><p>Tap a color-coded order-type name in the upper right (Dine In, Delivery, Pickup, Bar) to filter; tap another to build a custom filter; tap <b>ALL</b> to return to the main view. (Order-type colors are set in Lighthouse.)</p></div></div>
+      <div class="wcard"><span class="n">✓</span><div><b>Group similar items</b><p>The <b>Group</b> button merges similar items on screen to save space. It doesn't change the order — it just helps a station view the ticket to streamline fulfillment.</p></div></div>
+      <div class="wcard"><span class="n">✓</span><div><b>Merge tickets</b><p>Tickets from the same order can appear separately (e.g., when items are added after the first send). <b>Long-press the ticket header</b> and select the additional ticket(s) to merge.</p></div></div>
+      <div class="wcard"><span class="n">✓</span><div><b>Scroll between pages</b><p>Swipe the screen or use the scroll controls at the bottom-right to move through pages of tickets.</p></div></div>
+      <div class="wcard"><span class="n">✓</span><div><b>Recall</b><p>Bring back a cleared ticket with <b>Recall</b> / <b>Recall Last</b> from the bottom toolbar.</p></div></div>
+    </div>
+  </section>
+
+  <!-- SETTINGS -->
+  <section class="sec" id="settings">
+    <h2>Settings</h2>
+    <p class="sub">Each display has its own settings — so one kitchen can run different rules per station.</p>
+    <div class="specbox">
+      <ul class="cols2">
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg><b>Refresh data</b> — pull the latest from the POS</li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg><b>Clear ticket</b> — choose Clear by Item or Clear by Order</li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg><b>Ticket timers</b> — Warning (default 5 min) &amp; Alert (default 10 min) change the status-bar color as time passes</li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg><b>Only if all items fulfilled</b> — with Clear by Order, requires every item fulfilled before <b>Complete</b> works</li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg><b>Bump Station</b> — broadcasts item/ticket progress to other stations (e.g., a prep KDS broadcasting status to an <b>Expo</b> station)</li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg><b>IP address</b> — the display's network address for setup</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- COMPARE -->
+  <section class="sec" id="compare">
+    <h2>How other KDS options stack up</h2>
+    <p class="sub">Quick reference for what competitors offer when a prospect is weighing kitchen displays. (Pros shown; some cons were cut off in the source — ask if you want them completed.)</p>
+    <div class="cmp">
+      <div class="ccard"><h4>Toast</h4><ul><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg>User-friendly interface</li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg>Built-in SMS &amp; email messaging</li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg>Quick reporting access; multiple order types</li></ul></div>
+      <div class="ccard"><h4>Revel</h4><ul><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg>Targeted for QSR / enterprise</li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg>SMS messaging &amp; solid order routing</li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg>Large- &amp; small-screen offerings</li></ul></div>
+      <div class="ccard"><h4>PAR / Brink</h4><ul><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg>Enterprise focus</li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg>Simple interface, easy to configure</li><li><svg viewBox="0 0 24 24" fill="none" stroke="#c0392b" stroke-width="2.5"><path d="M18 6L6 18M6 6l12 12"/></svg>Outdated hardware &amp; UI</li></ul></div>
+      <div class="ccard"><h4>Lightspeed</h4><ul><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg>Typical UI/UX</li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg>Touchscreen &amp; bump bar</li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg>Averages ~$12/mo</li></ul></div>
+      <div class="ccard"><h4>MobileBytes</h4><ul><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg>Touchscreen only</li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg>Multiple display types incl. Expo</li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg>Visual order indicators (Rush/Hold/Void)</li></ul></div>
+      <div class="ccard"><h4>Xenial</h4><ul><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg>Touchscreen with bump bar</li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg>Supports large chains (Burger King, Dutch Bros)</li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg>Offline mode; cloud remote status &amp; analytics</li></ul></div>
+      <div class="ccard"><h4>Square</h4><ul><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg>Easy to set up &amp; use</li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg>Reasonably priced for smaller businesses</li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg>Works with many 3rd-party apps (Uber Eats, Chowly, DoorDash)</li></ul></div>
+      <div class="ccard"><h4>Qu</h4><ul><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg>Cloud-based, real-time ticket visibility</li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg>Touchscreen &amp; bump bar</li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg>Two viewing modes (kitchen &amp; expo)</li></ul></div>
+      <div class="ccard"><h4>TouchBistro</h4><ul><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg>No monthly software fee</li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg>Touchscreen &amp; bump bar</li><li><svg viewBox="0 0 24 24" fill="none" stroke="#c0392b" stroke-width="2.5"><path d="M18 6L6 18M6 6l12 12"/></svg>iPad only</li></ul></div>
+    </div>
+    <div class="note">Ready to test yourself? Take the <a href="Sales Hub - Shift4 KDS Quiz.html">KDS practice quiz</a> · back to the <a href="Sales Hub - Shift4.html">Shift4 Dine page</a>.</div>
+  </section>
+
+</main>
+
+<footer class="hub-foot">
+  <div class="wrap">
+    <span>NextPay Sales Hub · Shift4 Dine — Kitchen Display System · Internal use only.</span>
+    <span><a href="Sales Hub - Request Access.html#suggest">💡 Suggest / Request</a> · <a href="Sales Hub.html">← Back to hub</a></span>
+  </div>
+</footer>
+<script src="js/hub-nav.js"></script>
+</body>
+</html>
