@@ -1,0 +1,147 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Shift4 Dine Settings — Customer Hub — NextPay Sales Hub</title>
+<link rel="icon" href="assets/favicon.ico" sizes="any">
+<link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+<link rel="stylesheet" href="css/nextpay.css">
+<style>
+.hub-bar{position:sticky;top:0;z-index:60;background:var(--navy);color:#fff;border-bottom:1px solid rgba(255,255,255,.10)}
+.hub-bar-inner{display:flex;align-items:center;gap:18px;height:66px;max-width:var(--maxw);margin:0 auto;padding:0 28px}
+.hub-bar img.logo{height:34px;width:auto;display:block}
+.hub-bar .pipe{width:1px;height:26px;background:rgba(255,255,255,.18)}
+.hub-bar .hub-tag{font-weight:800;font-size:15px;color:#fff;display:flex;align-items:center;gap:9px}
+.hub-bar .hub-tag .badge{font-size:10.5px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;background:var(--teal);color:#fff;padding:4px 9px;border-radius:999px}
+.hub-bar .right{margin-left:auto;display:flex;align-items:center;gap:20px}
+.hub-bar .right a{color:#cdd8e2;font-weight:600;font-size:14.5px}.hub-bar .right a:hover{color:#fff}
+
+.pg-head{background:linear-gradient(180deg,var(--navy),var(--navy-2));color:#fff}
+.pg-head .wrap{padding:30px 0 32px}
+.crumbs{display:flex;gap:8px;align-items:center;font-size:13.5px;color:#9fb1c2;padding-bottom:14px;flex-wrap:wrap}
+.crumbs a{color:#cdd8e2;font-weight:600}.crumbs a:hover{color:#fff}.crumbs .sep{opacity:.5}
+.pg-head h1{font-size:clamp(26px,3.6vw,38px);color:#fff;letter-spacing:-.02em}
+.pg-head h1 em{color:var(--teal-bright);font-style:normal}
+.pg-head p.lead{color:#c4d0db;margin-top:10px;max-width:680px;font-size:16px;line-height:1.55}
+.jump{display:flex;gap:9px;flex-wrap:wrap;margin-top:20px}
+.jump a{display:inline-flex;align-items:center;gap:7px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.16);border-radius:999px;padding:8px 14px;font-size:13px;font-weight:700;color:#eaf1f6}
+.jump a:hover{background:rgba(31,194,166,.18);border-color:var(--teal-bright);color:#fff}
+
+main.wrap{padding:30px 0 10px;max-width:920px}
+.draft{display:flex;gap:12px;align-items:flex-start;background:rgba(242,163,60,.12);border:1px solid rgba(242,163,60,.4);border-radius:12px;padding:14px 17px;margin-bottom:26px}
+.draft svg{width:18px;height:18px;color:#b9741a;flex:none;margin-top:2px}
+.draft p{font-size:13.5px;color:var(--ink);line-height:1.55}.draft b{color:#b9741a}
+
+.dsec{background:#fff;border:1px solid var(--line);border-radius:var(--radius-lg);box-shadow:var(--shadow-sm);padding:24px 26px;margin-bottom:18px;scroll-margin-top:84px}
+.dsec .dh{display:flex;align-items:center;gap:12px;margin-bottom:10px}
+.dsec .ic{width:42px;height:42px;border-radius:11px;background:rgba(20,161,140,.12);display:grid;place-items:center;color:var(--teal-dark);flex:none}
+.dsec .ic svg{width:21px;height:21px}
+.dsec h2{font-size:19px;color:var(--navy);letter-spacing:-.01em}
+.dsec .controls{font-size:13px;color:var(--slate-2);font-weight:700}
+.dsec p{font-size:14.5px;color:var(--ink);line-height:1.6;margin-bottom:10px}
+.dsec ul{list-style:none;margin:0 0 6px;padding:0;display:flex;flex-direction:column;gap:7px}
+.dsec li{display:flex;gap:9px;align-items:flex-start;font-size:14px;color:var(--ink);line-height:1.45}
+.dsec li svg{width:15px;height:15px;flex:none;margin-top:3px;color:var(--teal)}
+.todo{font-size:12.5px;color:#b9741a;background:rgba(242,163,60,.1);border:1px dashed rgba(242,163,60,.5);border-radius:9px;padding:9px 12px;margin-top:8px;font-weight:600}
+
+.note{font-size:13.5px;color:var(--slate);background:var(--bg-soft);border:1px solid var(--line);border-radius:12px;padding:15px 17px;margin-top:18px;line-height:1.55}
+.note a{color:var(--teal-dark);font-weight:700}
+
+.hub-foot{background:var(--navy);color:#9fb1c2;padding:30px 0;margin-top:46px;font-size:13.5px}
+.hub-foot .wrap{display:flex;justify-content:space-between;gap:18px;flex-wrap:wrap;max-width:var(--maxw)}
+.hub-foot a{color:#cdd8e2;font-weight:600}.hub-foot a:hover{color:#fff}
+</style>
+</head>
+<body>
+
+<div class="hub-bar">
+  <div class="hub-bar-inner">
+    <a href="Sales Hub.html" style="display:flex;align-items:center" aria-label="Sales Hub home"><img class="logo" src="assets/logos/nextpay-nav.png" alt="NextPay"></a>
+    <span class="pipe"></span>
+    <span class="hub-tag">Sales Hub <span class="badge">Internal</span></span>
+    <div class="right"><a href="Sales Hub - Shift4 Customer Hub.html">← Customer Hub</a><a href="Sales Hub.html">Hub home</a></div>
+  </div>
+</div>
+
+<header class="pg-head">
+  <div class="wrap">
+    <div class="crumbs"><a href="Sales Hub.html">Sales Hub</a><span class="sep">/</span><a href="Sales Hub - Shift4 Customer Hub.html">Customer Hub</a><span class="sep">/</span><span>Shift4 Dine Settings</span></div>
+    <h1>Shift4 Dine <em>Settings</em></h1>
+    <p class="lead">The <b>Shift4 Dine</b> section of Customer Hub is where a merchant configures their POS remotely from a PC or smartphone. This guide breaks down each settings area and what it controls on the Workstation.</p>
+    <div class="jump">
+      <a href="#menu">Menu</a>
+      <a href="#payments">Payments</a>
+      <a href="#loyalty">Loyalty</a>
+      <a href="#accounting">Accounting</a>
+      <a href="#reservations">Reservations</a>
+      <a href="#table">Table Layout</a>
+    </div>
+  </div>
+</header>
+
+<main class="wrap">
+
+  <div class="draft">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 9v4M12 17h.01M10.3 3.9l-8 14A1.5 1.5 0 003.7 20h16.6a1.5 1.5 0 001.3-2.2l-8-14a1.5 1.5 0 00-2.6 0z"/></svg>
+    <p><b>Working draft.</b> The section headers and what we already know are in place. Send the Shift4 Help Center article (or screenshots) for each area and I'll fill in the details, steps and notes in NextPay's voice.</p>
+  </div>
+
+  <!-- MENU -->
+  <section class="dsec" id="menu">
+    <div class="dh"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 3h10l4 4v14H3V7z"/><path d="M9 8h6M9 12h6M9 16h4"/></svg></span><div><h2>Menu</h2><div class="controls">Items · categories · modifiers · pricing</div></div></div>
+    <p>Build and edit the restaurant's menu remotely — items, categories, modifiers and pricing — and push changes to the Workstation without touching the device.</p>
+    <div class="todo">▸ To fill in: how to add/edit items &amp; categories, modifier groups, pricing &amp; availability, pushing changes live.</div>
+  </section>
+
+  <!-- PAYMENTS -->
+  <section class="dsec" id="payments">
+    <div class="dh"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="5" width="20" height="14" rx="2"/><path d="M2 10h20"/></svg></span><div><h2>Payments</h2><div class="controls">Tenders · processing options</div></div></div>
+    <p>Configure how the merchant accepts payment and which tenders are enabled at checkout.</p>
+    <div class="todo">▸ To fill in: tender types, dual pricing / surcharge display, tipping, receipt &amp; checkout options.</div>
+  </section>
+
+  <!-- LOYALTY -->
+  <section class="dsec" id="loyalty">
+    <div class="dh"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3l2.9 6 6.6.9-4.8 4.6 1.2 6.5L12 18.8 5.9 21l1.2-6.5L2.3 9.9 8.9 9z"/></svg></span><div><h2>Loyalty</h2><div class="controls">Rewards program setup</div></div></div>
+    <p>Set up and manage the restaurant's loyalty program — how customers earn and redeem.</p>
+    <div class="todo">▸ To fill in: enrolling, earn/redeem rules, how it appears at the Workstation &amp; for the customer.</div>
+  </section>
+
+  <!-- ACCOUNTING -->
+  <section class="dsec" id="accounting">
+    <div class="dh"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="2" width="16" height="20" rx="2"/><path d="M8 6h8M8 10h2M14 10h2M8 14h2M14 14h2M8 18h2M14 18h2"/></svg></span><div><h2>Accounting</h2><div class="controls">Taxes · revenue classes · gratuities</div></div></div>
+    <p>Configure and edit the <b>Taxes</b>, <b>Revenue Classes</b> and <b>Gratuities</b> that appear on the Workstation.</p>
+    <div class="todo">▸ To fill in: creating/editing tax rates, revenue class mapping, gratuity setup &amp; auto-gratuity rules.</div>
+  </section>
+
+  <!-- RESERVATIONS -->
+  <section class="dsec" id="reservations">
+    <div class="dh"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="17" rx="2"/><path d="M8 2v4M16 2v4M3 10h18"/></svg></span><div><h2>Reservations</h2><div class="controls">Booking &amp; guest management</div></div></div>
+    <p>Manage reservation settings for the restaurant.</p>
+    <div class="todo">▸ To fill in: availability, party sizes, booking rules, how reservations flow to the floor.</div>
+  </section>
+
+  <!-- TABLE LAYOUT -->
+  <section class="dsec" id="table">
+    <div class="dh"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg></span><div><h2>Table Layout</h2><div class="controls">Floor plan · sections</div></div></div>
+    <p>Build and edit the restaurant's floor plan and table layout that servers use on the Workstation.</p>
+    <div class="todo">▸ To fill in: adding tables/sections, naming &amp; numbering, multiple floor plans, assigning servers.</div>
+  </section>
+
+  <div class="note">
+    Part of the <a href="Sales Hub - Shift4 Customer Hub.html">Shift4 Dine Customer Hub</a> guide. Test your knowledge with the <a href="Sales Hub - Shift4 Customer Hub Quiz.html">Customer Hub assessment</a> and <a href="Sales Hub - Shift4 Quiz.html">Shift4 Dine 101 quiz</a>.
+  </div>
+
+</main>
+
+<footer class="hub-foot">
+  <div class="wrap">
+    <span>NextPay Sales Hub · Shift4 Dine Settings · Internal use only.</span>
+    <span><a href="Sales Hub - Request Access.html#suggest">💡 Suggest / Request</a> · <a href="Sales Hub.html">← Back to hub</a></span>
+  </div>
+</footer>
+<script src="js/hub-nav.js"></script>
+</body>
+</html>
