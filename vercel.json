@@ -1,0 +1,330 @@
+{
+  "cleanUrls": true,
+  "trailingSlash": false,
+  "rewrites": [
+    {
+      "source": "/accept-payments",
+      "destination": "/Accept%20Payments"
+    },
+    {
+      "source": "/affiliate",
+      "destination": "/Affiliate%20Program"
+    },
+    {
+      "source": "/agent-portal",
+      "destination": "/Agent%20Portal"
+    },
+    {
+      "source": "/agent-program",
+      "destination": "/Agent%20Program"
+    },
+    {
+      "source": "/authorize-net",
+      "destination": "/Authorize.net%20Gateway"
+    },
+    {
+      "source": "/auto-repair",
+      "destination": "/Auto%20Repair%20and%20Automotive"
+    },
+    {
+      "source": "/bakeries",
+      "destination": "/Bakeries%20Delis%20and%20Markets"
+    },
+    {
+      "source": "/bars",
+      "destination": "/Bars%20and%20Nightclubs"
+    },
+    {
+      "source": "/blog/chargebacks-101",
+      "destination": "/blog-chargebacks-101"
+    },
+    {
+      "source": "/blog/choosing-a-pos",
+      "destination": "/blog-choosing-a-pos"
+    },
+    {
+      "source": "/blog/dual-pricing-explained",
+      "destination": "/blog-dual-pricing-explained"
+    },
+    {
+      "source": "/blog/lower-processing-fees",
+      "destination": "/blog-lower-processing-fees"
+    },
+    {
+      "source": "/blog/merchant-rewards-guide",
+      "destination": "/blog-merchant-rewards-guide"
+    },
+    {
+      "source": "/blog/read-your-statement",
+      "destination": "/blog-read-your-statement"
+    },
+    {
+      "source": "/blog/restaurant-payments",
+      "destination": "/blog-restaurant-payments"
+    },
+    {
+      "source": "/bookkeeping",
+      "destination": "/Bookkeeping"
+    },
+    {
+      "source": "/boutique",
+      "destination": "/Boutique%20and%20Clothing"
+    },
+    {
+      "source": "/brokerage",
+      "destination": "/Business%20Brokerage"
+    },
+    {
+      "source": "/chargeback-protection",
+      "destination": "/Chargeback%20Protection"
+    },
+    {
+      "source": "/chiropractic",
+      "destination": "/Chiropractic%20and%20PT"
+    },
+    {
+      "source": "/chively",
+      "destination": "/Chively"
+    },
+    {
+      "source": "/cleaning",
+      "destination": "/Cleaning%20Services"
+    },
+    {
+      "source": "/clover",
+      "destination": "/Clover"
+    },
+    {
+      "source": "/contact",
+      "destination": "/Contact"
+    },
+    {
+      "source": "/convenience",
+      "destination": "/Convenience%20and%20Grocery"
+    },
+    {
+      "source": "/dejapay",
+      "destination": "/DejaPay%20Pro"
+    },
+    {
+      "source": "/dejavoo",
+      "destination": "/Dejavoo%20Terminals"
+    },
+    {
+      "source": "/dental",
+      "destination": "/Dental"
+    },
+    {
+      "source": "/dermatology",
+      "destination": "/Dermatology"
+    },
+    {
+      "source": "/fee-programs",
+      "destination": "/Fee%20Programs"
+    },
+    {
+      "source": "/financing",
+      "destination": "/Business%20Financing"
+    },
+    {
+      "source": "/fine-dining",
+      "destination": "/Fine%20Dining"
+    },
+    {
+      "source": "/fitness",
+      "destination": "/Fitness%20and%20Gyms"
+    },
+    {
+      "source": "/fluidpay",
+      "destination": "/FluidPay%20Gateway"
+    },
+    {
+      "source": "/food-trucks",
+      "destination": "/Food%20Trucks"
+    },
+    {
+      "source": "/gateways",
+      "destination": "/Online%20Gateways"
+    },
+    {
+      "source": "/grow",
+      "destination": "/Grow%20Your%20Business"
+    },
+    {
+      "source": "/high-risk",
+      "destination": "/High%20Risk%20and%20Specialty"
+    },
+    {
+      "source": "/home-services",
+      "destination": "/Home%20Services"
+    },
+    {
+      "source": "/hr-compliance",
+      "destination": "/HR%20-%20Compliance"
+    },
+    {
+      "source": "/image-guide",
+      "destination": "/Image%20Guide"
+    },
+    {
+      "source": "/industries",
+      "destination": "/Industries"
+    },
+    {
+      "source": "/ingenico",
+      "destination": "/Ingenico%20Terminals"
+    },
+    {
+      "source": "/integrations",
+      "destination": "/Integrations"
+    },
+    {
+      "source": "/invoicing",
+      "destination": "/Invoicing"
+    },
+    {
+      "source": "/ipospays",
+      "destination": "/iPOSPays%20Gateway"
+    },
+    {
+      "source": "/jewelry",
+      "destination": "/Jewelry%20Stores"
+    },
+    {
+      "source": "/korona",
+      "destination": "/Korona"
+    },
+    {
+      "source": "/liquor",
+      "destination": "/Liquor%20Stores"
+    },
+    {
+      "source": "/luqra",
+      "destination": "/Luqra%20Gateway"
+    },
+    {
+      "source": "/mental-health",
+      "destination": "/Mental%20Health"
+    },
+    {
+      "source": "/merchant-rewards",
+      "destination": "/Merchant%20Rewards"
+    },
+    {
+      "source": "/nmi",
+      "destination": "/NMI%20Gateway"
+    },
+    {
+      "source": "/nrs",
+      "destination": "/NRS"
+    },
+    {
+      "source": "/outreach",
+      "destination": "/Client%20Automation%20Outreach"
+    },
+    {
+      "source": "/partners",
+      "destination": "/Partners"
+    },
+    {
+      "source": "/pax",
+      "destination": "/PAX%20Terminals"
+    },
+    {
+      "source": "/payroll",
+      "destination": "/Payroll%20-%20Workers%20Comp"
+    },
+    {
+      "source": "/pays-pos",
+      "destination": "/PAYS%20POS"
+    },
+    {
+      "source": "/pizzerias",
+      "destination": "/Pizzerias"
+    },
+    {
+      "source": "/pos-systems",
+      "destination": "/POS%20Systems"
+    },
+    {
+      "source": "/pricing",
+      "destination": "/Pricing"
+    },
+    {
+      "source": "/professional-services",
+      "destination": "/Professional%20Services"
+    },
+    {
+      "source": "/qsr-cafes",
+      "destination": "/QSR%20Cafes%20and%20Coffee%20Shops"
+    },
+    {
+      "source": "/quantic",
+      "destination": "/Quantic"
+    },
+    {
+      "source": "/quiz",
+      "destination": "/quiz"
+    },
+    {
+      "source": "/resources",
+      "destination": "/Resources"
+    },
+    {
+      "source": "/run-your-business",
+      "destination": "/Run%20Your%20Business"
+    },
+    {
+      "source": "/salons",
+      "destination": "/Salons%20and%20Spas"
+    },
+    {
+      "source": "/shift4-dine",
+      "destination": "/Shift4%20Dine"
+    },
+    {
+      "source": "/specialty-retail",
+      "destination": "/Specialty%20Retail"
+    },
+    {
+      "source": "/square",
+      "destination": "/Square"
+    },
+    {
+      "source": "/square-features",
+      "destination": "/Square%20Features"
+    },
+    {
+      "source": "/statement-upload",
+      "destination": "/Statement%20Upload"
+    },
+    {
+      "source": "/swipesimple",
+      "destination": "/SwipeSimple"
+    },
+    {
+      "source": "/terminals",
+      "destination": "/Credit%20Card%20Terminals"
+    },
+    {
+      "source": "/valor-gateway",
+      "destination": "/Valor%20Gateway"
+    },
+    {
+      "source": "/valor-terminals",
+      "destination": "/Valor%20Terminals"
+    },
+    {
+      "source": "/vision-care",
+      "destination": "/Vision%20Care"
+    },
+    {
+      "source": "/wellness",
+      "destination": "/Wellness%20Centers"
+    },
+    {
+      "source": "/why-nextpay",
+      "destination": "/Why%20NextPay"
+    }
+  ]
+}
