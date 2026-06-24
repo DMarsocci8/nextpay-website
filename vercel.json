@@ -1,6 +1,728 @@
 {
   "cleanUrls": true,
   "trailingSlash": false,
+  "redirects": [
+    {
+      "source": "/Accept Payments.html",
+      "destination": "/accept-payments",
+      "permanent": true
+    },
+    {
+      "source": "/Accept Payments",
+      "destination": "/accept-payments",
+      "permanent": true
+    },
+    {
+      "source": "/Affiliate Program.html",
+      "destination": "/affiliate",
+      "permanent": true
+    },
+    {
+      "source": "/Affiliate Program",
+      "destination": "/affiliate",
+      "permanent": true
+    },
+    {
+      "source": "/Agent Portal.html",
+      "destination": "/agent-portal",
+      "permanent": true
+    },
+    {
+      "source": "/Agent Portal",
+      "destination": "/agent-portal",
+      "permanent": true
+    },
+    {
+      "source": "/Agent Program.html",
+      "destination": "/agent-program",
+      "permanent": true
+    },
+    {
+      "source": "/Agent Program",
+      "destination": "/agent-program",
+      "permanent": true
+    },
+    {
+      "source": "/Authorize.net Gateway.html",
+      "destination": "/authorize-net",
+      "permanent": true
+    },
+    {
+      "source": "/Authorize.net Gateway",
+      "destination": "/authorize-net",
+      "permanent": true
+    },
+    {
+      "source": "/Auto Repair and Automotive.html",
+      "destination": "/auto-repair",
+      "permanent": true
+    },
+    {
+      "source": "/Auto Repair and Automotive",
+      "destination": "/auto-repair",
+      "permanent": true
+    },
+    {
+      "source": "/Bakeries Delis and Markets.html",
+      "destination": "/bakeries",
+      "permanent": true
+    },
+    {
+      "source": "/Bakeries Delis and Markets",
+      "destination": "/bakeries",
+      "permanent": true
+    },
+    {
+      "source": "/Bars and Nightclubs.html",
+      "destination": "/bars",
+      "permanent": true
+    },
+    {
+      "source": "/Bars and Nightclubs",
+      "destination": "/bars",
+      "permanent": true
+    },
+    {
+      "source": "/blog-chargebacks-101.html",
+      "destination": "/blog/chargebacks-101",
+      "permanent": true
+    },
+    {
+      "source": "/blog-chargebacks-101",
+      "destination": "/blog/chargebacks-101",
+      "permanent": true
+    },
+    {
+      "source": "/blog-choosing-a-pos.html",
+      "destination": "/blog/choosing-a-pos",
+      "permanent": true
+    },
+    {
+      "source": "/blog-choosing-a-pos",
+      "destination": "/blog/choosing-a-pos",
+      "permanent": true
+    },
+    {
+      "source": "/blog-dual-pricing-explained.html",
+      "destination": "/blog/dual-pricing-explained",
+      "permanent": true
+    },
+    {
+      "source": "/blog-dual-pricing-explained",
+      "destination": "/blog/dual-pricing-explained",
+      "permanent": true
+    },
+    {
+      "source": "/blog-lower-processing-fees.html",
+      "destination": "/blog/lower-processing-fees",
+      "permanent": true
+    },
+    {
+      "source": "/blog-lower-processing-fees",
+      "destination": "/blog/lower-processing-fees",
+      "permanent": true
+    },
+    {
+      "source": "/blog-merchant-rewards-guide.html",
+      "destination": "/blog/merchant-rewards-guide",
+      "permanent": true
+    },
+    {
+      "source": "/blog-merchant-rewards-guide",
+      "destination": "/blog/merchant-rewards-guide",
+      "permanent": true
+    },
+    {
+      "source": "/blog-read-your-statement.html",
+      "destination": "/blog/read-your-statement",
+      "permanent": true
+    },
+    {
+      "source": "/blog-read-your-statement",
+      "destination": "/blog/read-your-statement",
+      "permanent": true
+    },
+    {
+      "source": "/blog-restaurant-payments.html",
+      "destination": "/blog/restaurant-payments",
+      "permanent": true
+    },
+    {
+      "source": "/blog-restaurant-payments",
+      "destination": "/blog/restaurant-payments",
+      "permanent": true
+    },
+    {
+      "source": "/Bookkeeping.html",
+      "destination": "/bookkeeping",
+      "permanent": true
+    },
+    {
+      "source": "/Boutique and Clothing.html",
+      "destination": "/boutique",
+      "permanent": true
+    },
+    {
+      "source": "/Boutique and Clothing",
+      "destination": "/boutique",
+      "permanent": true
+    },
+    {
+      "source": "/Business Brokerage.html",
+      "destination": "/brokerage",
+      "permanent": true
+    },
+    {
+      "source": "/Business Brokerage",
+      "destination": "/brokerage",
+      "permanent": true
+    },
+    {
+      "source": "/Chargeback Protection.html",
+      "destination": "/chargeback-protection",
+      "permanent": true
+    },
+    {
+      "source": "/Chargeback Protection",
+      "destination": "/chargeback-protection",
+      "permanent": true
+    },
+    {
+      "source": "/Chiropractic and PT.html",
+      "destination": "/chiropractic",
+      "permanent": true
+    },
+    {
+      "source": "/Chiropractic and PT",
+      "destination": "/chiropractic",
+      "permanent": true
+    },
+    {
+      "source": "/Chively.html",
+      "destination": "/chively",
+      "permanent": true
+    },
+    {
+      "source": "/Cleaning Services.html",
+      "destination": "/cleaning",
+      "permanent": true
+    },
+    {
+      "source": "/Cleaning Services",
+      "destination": "/cleaning",
+      "permanent": true
+    },
+    {
+      "source": "/Clover.html",
+      "destination": "/clover",
+      "permanent": true
+    },
+    {
+      "source": "/Contact.html",
+      "destination": "/contact",
+      "permanent": true
+    },
+    {
+      "source": "/Convenience and Grocery.html",
+      "destination": "/convenience",
+      "permanent": true
+    },
+    {
+      "source": "/Convenience and Grocery",
+      "destination": "/convenience",
+      "permanent": true
+    },
+    {
+      "source": "/DejaPay Pro.html",
+      "destination": "/dejapay",
+      "permanent": true
+    },
+    {
+      "source": "/DejaPay Pro",
+      "destination": "/dejapay",
+      "permanent": true
+    },
+    {
+      "source": "/Dejavoo Terminals.html",
+      "destination": "/dejavoo",
+      "permanent": true
+    },
+    {
+      "source": "/Dejavoo Terminals",
+      "destination": "/dejavoo",
+      "permanent": true
+    },
+    {
+      "source": "/Dental.html",
+      "destination": "/dental",
+      "permanent": true
+    },
+    {
+      "source": "/Dermatology.html",
+      "destination": "/dermatology",
+      "permanent": true
+    },
+    {
+      "source": "/Fee Programs.html",
+      "destination": "/fee-programs",
+      "permanent": true
+    },
+    {
+      "source": "/Fee Programs",
+      "destination": "/fee-programs",
+      "permanent": true
+    },
+    {
+      "source": "/Business Financing.html",
+      "destination": "/financing",
+      "permanent": true
+    },
+    {
+      "source": "/Business Financing",
+      "destination": "/financing",
+      "permanent": true
+    },
+    {
+      "source": "/Fine Dining.html",
+      "destination": "/fine-dining",
+      "permanent": true
+    },
+    {
+      "source": "/Fine Dining",
+      "destination": "/fine-dining",
+      "permanent": true
+    },
+    {
+      "source": "/Fitness and Gyms.html",
+      "destination": "/fitness",
+      "permanent": true
+    },
+    {
+      "source": "/Fitness and Gyms",
+      "destination": "/fitness",
+      "permanent": true
+    },
+    {
+      "source": "/FluidPay Gateway.html",
+      "destination": "/fluidpay",
+      "permanent": true
+    },
+    {
+      "source": "/FluidPay Gateway",
+      "destination": "/fluidpay",
+      "permanent": true
+    },
+    {
+      "source": "/Food Trucks.html",
+      "destination": "/food-trucks",
+      "permanent": true
+    },
+    {
+      "source": "/Food Trucks",
+      "destination": "/food-trucks",
+      "permanent": true
+    },
+    {
+      "source": "/Online Gateways.html",
+      "destination": "/gateways",
+      "permanent": true
+    },
+    {
+      "source": "/Online Gateways",
+      "destination": "/gateways",
+      "permanent": true
+    },
+    {
+      "source": "/Grow Your Business.html",
+      "destination": "/grow",
+      "permanent": true
+    },
+    {
+      "source": "/Grow Your Business",
+      "destination": "/grow",
+      "permanent": true
+    },
+    {
+      "source": "/High Risk and Specialty.html",
+      "destination": "/high-risk",
+      "permanent": true
+    },
+    {
+      "source": "/High Risk and Specialty",
+      "destination": "/high-risk",
+      "permanent": true
+    },
+    {
+      "source": "/Home Services.html",
+      "destination": "/home-services",
+      "permanent": true
+    },
+    {
+      "source": "/Home Services",
+      "destination": "/home-services",
+      "permanent": true
+    },
+    {
+      "source": "/HR - Compliance.html",
+      "destination": "/hr-compliance",
+      "permanent": true
+    },
+    {
+      "source": "/HR - Compliance",
+      "destination": "/hr-compliance",
+      "permanent": true
+    },
+    {
+      "source": "/Image Guide.html",
+      "destination": "/image-guide",
+      "permanent": true
+    },
+    {
+      "source": "/Image Guide",
+      "destination": "/image-guide",
+      "permanent": true
+    },
+    {
+      "source": "/Industries.html",
+      "destination": "/industries",
+      "permanent": true
+    },
+    {
+      "source": "/Ingenico Terminals.html",
+      "destination": "/ingenico",
+      "permanent": true
+    },
+    {
+      "source": "/Ingenico Terminals",
+      "destination": "/ingenico",
+      "permanent": true
+    },
+    {
+      "source": "/Integrations.html",
+      "destination": "/integrations",
+      "permanent": true
+    },
+    {
+      "source": "/Invoicing.html",
+      "destination": "/invoicing",
+      "permanent": true
+    },
+    {
+      "source": "/iPOSPays Gateway.html",
+      "destination": "/ipospays",
+      "permanent": true
+    },
+    {
+      "source": "/iPOSPays Gateway",
+      "destination": "/ipospays",
+      "permanent": true
+    },
+    {
+      "source": "/Jewelry Stores.html",
+      "destination": "/jewelry",
+      "permanent": true
+    },
+    {
+      "source": "/Jewelry Stores",
+      "destination": "/jewelry",
+      "permanent": true
+    },
+    {
+      "source": "/Korona.html",
+      "destination": "/korona",
+      "permanent": true
+    },
+    {
+      "source": "/Liquor Stores.html",
+      "destination": "/liquor",
+      "permanent": true
+    },
+    {
+      "source": "/Liquor Stores",
+      "destination": "/liquor",
+      "permanent": true
+    },
+    {
+      "source": "/Luqra Gateway.html",
+      "destination": "/luqra",
+      "permanent": true
+    },
+    {
+      "source": "/Luqra Gateway",
+      "destination": "/luqra",
+      "permanent": true
+    },
+    {
+      "source": "/Mental Health.html",
+      "destination": "/mental-health",
+      "permanent": true
+    },
+    {
+      "source": "/Mental Health",
+      "destination": "/mental-health",
+      "permanent": true
+    },
+    {
+      "source": "/Merchant Rewards.html",
+      "destination": "/merchant-rewards",
+      "permanent": true
+    },
+    {
+      "source": "/Merchant Rewards",
+      "destination": "/merchant-rewards",
+      "permanent": true
+    },
+    {
+      "source": "/NMI Gateway.html",
+      "destination": "/nmi",
+      "permanent": true
+    },
+    {
+      "source": "/NMI Gateway",
+      "destination": "/nmi",
+      "permanent": true
+    },
+    {
+      "source": "/NRS.html",
+      "destination": "/nrs",
+      "permanent": true
+    },
+    {
+      "source": "/Client Automation Outreach.html",
+      "destination": "/outreach",
+      "permanent": true
+    },
+    {
+      "source": "/Client Automation Outreach",
+      "destination": "/outreach",
+      "permanent": true
+    },
+    {
+      "source": "/Partners.html",
+      "destination": "/partners",
+      "permanent": true
+    },
+    {
+      "source": "/PAX Terminals.html",
+      "destination": "/pax",
+      "permanent": true
+    },
+    {
+      "source": "/PAX Terminals",
+      "destination": "/pax",
+      "permanent": true
+    },
+    {
+      "source": "/Payroll - Workers Comp.html",
+      "destination": "/payroll",
+      "permanent": true
+    },
+    {
+      "source": "/Payroll - Workers Comp",
+      "destination": "/payroll",
+      "permanent": true
+    },
+    {
+      "source": "/PAYS POS.html",
+      "destination": "/pays-pos",
+      "permanent": true
+    },
+    {
+      "source": "/PAYS POS",
+      "destination": "/pays-pos",
+      "permanent": true
+    },
+    {
+      "source": "/Pizzerias.html",
+      "destination": "/pizzerias",
+      "permanent": true
+    },
+    {
+      "source": "/POS Systems.html",
+      "destination": "/pos-systems",
+      "permanent": true
+    },
+    {
+      "source": "/POS Systems",
+      "destination": "/pos-systems",
+      "permanent": true
+    },
+    {
+      "source": "/Pricing.html",
+      "destination": "/pricing",
+      "permanent": true
+    },
+    {
+      "source": "/Professional Services.html",
+      "destination": "/professional-services",
+      "permanent": true
+    },
+    {
+      "source": "/Professional Services",
+      "destination": "/professional-services",
+      "permanent": true
+    },
+    {
+      "source": "/QSR Cafes and Coffee Shops.html",
+      "destination": "/qsr-cafes",
+      "permanent": true
+    },
+    {
+      "source": "/QSR Cafes and Coffee Shops",
+      "destination": "/qsr-cafes",
+      "permanent": true
+    },
+    {
+      "source": "/Quantic.html",
+      "destination": "/quantic",
+      "permanent": true
+    },
+    {
+      "source": "/quiz.html",
+      "destination": "/quiz",
+      "permanent": true
+    },
+    {
+      "source": "/Resources.html",
+      "destination": "/resources",
+      "permanent": true
+    },
+    {
+      "source": "/Run Your Business.html",
+      "destination": "/run-your-business",
+      "permanent": true
+    },
+    {
+      "source": "/Run Your Business",
+      "destination": "/run-your-business",
+      "permanent": true
+    },
+    {
+      "source": "/Salons and Spas.html",
+      "destination": "/salons",
+      "permanent": true
+    },
+    {
+      "source": "/Salons and Spas",
+      "destination": "/salons",
+      "permanent": true
+    },
+    {
+      "source": "/Shift4 Dine.html",
+      "destination": "/shift4-dine",
+      "permanent": true
+    },
+    {
+      "source": "/Shift4 Dine",
+      "destination": "/shift4-dine",
+      "permanent": true
+    },
+    {
+      "source": "/Specialty Retail.html",
+      "destination": "/specialty-retail",
+      "permanent": true
+    },
+    {
+      "source": "/Specialty Retail",
+      "destination": "/specialty-retail",
+      "permanent": true
+    },
+    {
+      "source": "/Square.html",
+      "destination": "/square",
+      "permanent": true
+    },
+    {
+      "source": "/Square Features.html",
+      "destination": "/square-features",
+      "permanent": true
+    },
+    {
+      "source": "/Square Features",
+      "destination": "/square-features",
+      "permanent": true
+    },
+    {
+      "source": "/Statement Upload.html",
+      "destination": "/statement-upload",
+      "permanent": true
+    },
+    {
+      "source": "/Statement Upload",
+      "destination": "/statement-upload",
+      "permanent": true
+    },
+    {
+      "source": "/SwipeSimple.html",
+      "destination": "/swipesimple",
+      "permanent": true
+    },
+    {
+      "source": "/Credit Card Terminals.html",
+      "destination": "/terminals",
+      "permanent": true
+    },
+    {
+      "source": "/Credit Card Terminals",
+      "destination": "/terminals",
+      "permanent": true
+    },
+    {
+      "source": "/Valor Gateway.html",
+      "destination": "/valor-gateway",
+      "permanent": true
+    },
+    {
+      "source": "/Valor Gateway",
+      "destination": "/valor-gateway",
+      "permanent": true
+    },
+    {
+      "source": "/Valor Terminals.html",
+      "destination": "/valor-terminals",
+      "permanent": true
+    },
+    {
+      "source": "/Valor Terminals",
+      "destination": "/valor-terminals",
+      "permanent": true
+    },
+    {
+      "source": "/Vision Care.html",
+      "destination": "/vision-care",
+      "permanent": true
+    },
+    {
+      "source": "/Vision Care",
+      "destination": "/vision-care",
+      "permanent": true
+    },
+    {
+      "source": "/Wellness Centers.html",
+      "destination": "/wellness",
+      "permanent": true
+    },
+    {
+      "source": "/Wellness Centers",
+      "destination": "/wellness",
+      "permanent": true
+    },
+    {
+      "source": "/Why NextPay.html",
+      "destination": "/why-nextpay",
+      "permanent": true
+    },
+    {
+      "source": "/Why NextPay",
+      "destination": "/why-nextpay",
+      "permanent": true
+    },
+    {
+      "source": "/index.html",
+      "destination": "/",
+      "permanent": true
+    }
+  ],
   "rewrites": [
     {
       "source": "/accept-payments",
