@@ -61,18 +61,18 @@
   ];
 
   // ---- recommendation engine ----
-  const POS='POS Systems.html', TERM='Credit Card Terminals.html', GW='Online Gateways.html', INV='Invoicing.html';
+  const POS='/pos-systems', TERM='/terminals', GW='/gateways', INV='/invoicing';
   function C(name,role,why,price,href){return {name,role,why,price,href,top:role.indexOf('Top')===0};}
   function recCards(a){
     const I=a.industry,need=a.need,hw=a.hardware,offset=(a.addons||[]).includes('offset');
     if(need==='other') return [
-      C('Payroll & Workers Comp','Service','Full-service payroll, tax filing & workers comp coverage.','See details','Payroll - Workers Comp.html'),
-      C('Bookkeeping','Service','Reconciliation, reports & tax-ready books.','See details','Bookkeeping.html'),
-      C('Business Financing','Service','Working capital, equipment loans & cash advances.','See details','Business Financing.html'),
-      C('NextLink — Outreach & Marketing','Service','Reviews, reputation & automated client outreach.','See details','Client Automation Outreach.html'),
-      C('Merchant Rewards','Service','Earn points on every dollar you process.','See details','Merchant Rewards.html'),
-      C('HR & Compliance','Service','HR tools & compliance for growing teams.','See details','HR - Compliance.html'),
-      C('Business Brokerage','Service','Buy, sell, or get a business valuation.','See details','Business Brokerage.html')
+      C('Payroll & Workers Comp','Service','Full-service payroll, tax filing & workers comp coverage.','See details','/payroll'),
+      C('Bookkeeping','Service','Reconciliation, reports & tax-ready books.','See details','/bookkeeping'),
+      C('Business Financing','Service','Working capital, equipment loans & cash advances.','See details','/financing'),
+      C('NextLink — Outreach & Marketing','Service','Reviews, reputation & automated client outreach.','See details','/outreach'),
+      C('Merchant Rewards','Service','Earn points on every dollar you process.','See details','/merchant-rewards'),
+      C('HR & Compliance','Service','HR tools & compliance for growing teams.','See details','/hr-compliance'),
+      C('Business Brokerage','Service','Buy, sell, or get a business valuation.','See details','/brokerage')
     ];
     function pos(){
       const lease=hw==='lease';
@@ -114,27 +114,27 @@
     // (the .bsec sections have scroll-margin so the sticky header stays in view)
     // or its own page — so a result never just dumps you at the top of a page.
     var DEST={
-      'Square POS':'POS Systems.html#square','Clover POS':'POS Systems.html#clover',
-      'Shift4 POS':'POS Systems.html#shift4','KORONA POS':'POS Systems.html#korona',
-      'PAYS POS':'POS Systems.html#pays','SwipeSimple':'SwipeSimple.html',
-      'Dejavoo Terminals':'Credit Card Terminals.html#dejavoo','Clover Flex & Go':'Credit Card Terminals.html#clover',
-      'Square Terminal':'Credit Card Terminals.html#square','Valor PayTech':'Credit Card Terminals.html#valor',
-      'PAX Terminals':'Credit Card Terminals.html#pax',
-      'NMI Gateway':'Online Gateways.html#nmi','Authorize.net':'Online Gateways.html#authnet',
-      'Valor Gateway':'Online Gateways.html#valor','FluidPay':'Online Gateways.html#fluidpay',
-      'iPOSpays by Dejavoo':'Online Gateways.html#ipospays',
-      'Square Online & Invoicing':'Square.html','Square Online':'Square.html',
-      'Field Work':'Invoicing.html','LQpay':'Luqra Gateway.html'
+      'Square POS':'/pos-systems#square','Clover POS':'/pos-systems#clover',
+      'Shift4 POS':'/pos-systems#shift4','KORONA POS':'/pos-systems#korona',
+      'PAYS POS':'/pos-systems#pays','SwipeSimple':'/swipesimple',
+      'Dejavoo Terminals':'/terminals#dejavoo','Clover Flex & Go':'/terminals#clover',
+      'Square Terminal':'/terminals#square','Valor PayTech':'/terminals#valor',
+      'PAX Terminals':'/terminals#pax',
+      'NMI Gateway':'/gateways#nmi','Authorize.net':'/gateways#authnet',
+      'Valor Gateway':'/gateways#valor','FluidPay':'/gateways#fluidpay',
+      'iPOSpays by Dejavoo':'/gateways#ipospays',
+      'Square Online & Invoicing':'/square','Square Online':'/square',
+      'Field Work':'/invoicing','LQpay':'/luqra'
     };
     cards.forEach(function(c){ if(DEST[c.name]) c.href=DEST[c.name]; });
     return cards;
   }
   function services(a){
     const s=[], add=a.addons||[];
-    if(add.includes('financing')) s.push({name:'NextFund — Business Financing',d:'Working capital, equipment financing, and merchant cash advances — fast approval based on processing history.',href:'Business Financing.html'});
-    if(add.includes('payroll')) s.push({name:'Payroll & Workers Comp',d:'Full-service payroll, direct deposit, tax filing, and workers comp — managed in one place.',href:'Payroll - Workers Comp.html'});
-    if(add.includes('marketing')) s.push({name:'NextLink — Network & Growth',d:'Digital outreach, reputation management, and campaign support to grow demand.',href:'Client Automation Outreach.html'});
-    s.push({name:'Business Brokerage',d:"Looking to buy, expand, or sell? NextPay's brokerage connections help you navigate growth and transition.",href:'Business Brokerage.html'});
+    if(add.includes('financing')) s.push({name:'NextFund — Business Financing',d:'Working capital, equipment financing, and merchant cash advances — fast approval based on processing history.',href:'/financing'});
+    if(add.includes('payroll')) s.push({name:'Payroll & Workers Comp',d:'Full-service payroll, direct deposit, tax filing, and workers comp — managed in one place.',href:'/payroll'});
+    if(add.includes('marketing')) s.push({name:'NextLink — Network & Growth',d:'Digital outreach, reputation management, and campaign support to grow demand.',href:'/outreach'});
+    s.push({name:'Business Brokerage',d:"Looking to buy, expand, or sell? NextPay's brokerage connections help you navigate growth and transition.",href:'/brokerage'});
     return s;
   }
 
@@ -238,8 +238,8 @@
     }
     const cta=el('div','quiz-res-cta');
     var picks=cards.map(function(c){return c.name+(c.top?' (top pick)':'');}).join(', ');
-    var quoteHref='Contact.html?topic=quote&msg='+encodeURIComponent('I took the quiz and would like a custom quote. My recommended stack: '+picks+'.');
-    cta.innerHTML='<a class="btn btn-primary" href="'+quoteHref+'">Get my custom quote '+ARROW+'</a><a class="btn btn-outline" href="Contact.html?topic=specialist">Talk to a specialist</a><button class="btn btn-ghost-dark" type="button" id="quiz-restart">Start over</button>';
+    var quoteHref='/contact?topic=quote&msg='+encodeURIComponent('I took the quiz and would like a custom quote. My recommended stack: '+picks+'.');
+    cta.innerHTML='<a class="btn btn-primary" href="'+quoteHref+'">Get my custom quote '+ARROW+'</a><a class="btn btn-outline" href="/contact?topic=specialist">Talk to a specialist</a><button class="btn btn-ghost-dark" type="button" id="quiz-restart">Start over</button>';
     wrap.appendChild(cta);
     root.appendChild(wrap);
     document.getElementById('quiz-restart').onclick=()=>{ answers={}; idx=0; save(); render(); };

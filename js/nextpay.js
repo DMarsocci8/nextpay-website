@@ -187,10 +187,10 @@
       +'<div class="pspecs np-detail-specs">'+specs+'</div>'
       +(price?'<div class="np-detail-price">'+price+'</div>':'')
       +'<div class="np-detail-pricing'+(focusPricing?' focus':'')+'"><b>Custom processing rate</b><span>We\u2019ll match or beat your current rate \u2014 get a quote for your exact pricing on this device.</span></div>'
-      +'<div class="np-detail-cta"><a class="btn btn-primary" target="_blank" rel="noopener" href="Statement Upload.html">Get a quote '+NPARROW+'</a>'
-      +'<a class="btn btn-outline" target="_blank" rel="noopener" href="Statement Upload.html">Upload a statement</a>'
+      +'<div class="np-detail-cta"><a class="btn btn-primary" target="_blank" rel="noopener" href="/statement-upload">Get a quote '+NPARROW+'</a>'
+      +'<a class="btn btn-outline" target="_blank" rel="noopener" href="/statement-upload">Upload a statement</a>'
       +(cmp?'<button class="btn btn-compare" data-compare="'+cmp+'"><span class="cmp-label">Add to compare</span></button>':'')
-      +'<a class="btn btn-outline" href="quiz.html">Take the quiz</a></div>';
+      +'<a class="btn btn-outline" href="/quiz">Take the quiz</a></div>';
     m.appendChild(body);
     ov.appendChild(m); document.body.appendChild(ov);
     ov.onclick=e=>{ if(e.target===ov) ov.remove(); };
