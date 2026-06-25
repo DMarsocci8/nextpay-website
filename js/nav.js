@@ -105,6 +105,7 @@
             <a href="/contact"><b>Contact Us</b><span>Talk to our team</span></a>
           </div>
         </div>
+        <a class="nav-cta alt" href="/quick-application">Apply Now</a>
         <a class="nav-cta" href="/quiz">Take the Quiz
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
       </div>
@@ -150,6 +151,7 @@
       <a class="nm-link" href="/resources">Resources</a>
       <a class="nm-link" href="/why-nextpay">Why NextPay</a>
       <a class="nm-link" href="/contact">Contact</a>
+      <a class="nm-cta btn btn-outline" href="/quick-application" style="margin-bottom:10px">Apply Now</a>
       <a class="nm-cta btn btn-primary" href="/quiz">Take the Quiz
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
     </div>
@@ -171,7 +173,7 @@
         <div><h4>Partners</h4>
           <a href="/partners">Partner with NextPay</a><a href="/affiliate">Affiliate Program</a><a href="/agent-program">Agent Program</a></div>
         <div><h4>Company</h4>
-          <a href="/why-nextpay">Why NextPay</a><a href="/pricing">Pricing</a><a href="/resources">Resources</a><a href="/contact">Contact</a></div>
+          <a href="/why-nextpay">Why NextPay</a><a href="/pricing">Pricing</a><a href="/resources">Resources</a><a href="/quick-application">Quick Application</a><a href="/contact">Contact</a></div>
       </div>
       <div class="foot-brand">
         <a class="brand" href="/" aria-label="NextPay home"><img src="assets/logos/nextpay-nav.png" alt="NextPay Business Solutions" style="height:40px;width:auto;display:block"></a>
