@@ -5,12 +5,12 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Upload Your Statement — NextPay</title>
 <meta name="description" content="POS systems, card terminals, online payments, invoicing, payroll, funding &amp; growth tools — one account, transparent processing we&#x27;ll match or beat.">
-<link rel="canonical" href="https://www.nextpaypos.com/Statement%20Upload.html">
+<link rel="canonical" href="https://www.nextpaypos.com/statement-upload">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="NextPay Business Solutions">
 <meta property="og:title" content="Upload Your Statement — NextPay">
 <meta property="og:description" content="POS systems, card terminals, online payments, invoicing, payroll, funding &amp; growth tools — one account, transparent processing we&#x27;ll match or beat.">
-<meta property="og:url" content="https://www.nextpaypos.com/Statement%20Upload.html">
+<meta property="og:url" content="https://www.nextpaypos.com/statement-upload">
 <meta property="og:image" content="https://www.nextpaypos.com/assets/og/nextpay-og.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
@@ -119,7 +119,7 @@
       </form>
       <div class="nostmt">
         <span>Don't have a statement handy?</span>
-        <a class="link-teal" href="Contact.html" target="_blank" rel="noopener">Contact us instead
+        <a class="link-teal" href="/contact" target="_blank" rel="noopener">Contact us instead
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
       </div>
     </div>
@@ -148,7 +148,7 @@
     fd.append('Statement file', file.files[0] ? file.files[0].name+' (merchant will email/send file separately)' : 'not attached');
     const btn=form.querySelector('button[type=submit]'); if(btn){btn.disabled=true;btn.textContent='Sending…';}
     function finish(){
-      document.getElementById('scard').innerHTML='<div class="sdone"><div class="sdico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 13l4 4L19 7"/></svg></div><h2>Thanks, '+first+' \u2014 we\u2019re on it.</h2><p>A NextPay specialist will review your statement and reach out within one business day with a clear, side-by-side breakdown of your savings. Keep an eye on your inbox and phone.</p><div class="ssubmit" style="margin-top:24px"><a class="btn btn-outline" href="Credit Card Terminals.html">Back to terminals</a></div></div>';
+      document.getElementById('scard').innerHTML='<div class="sdone"><div class="sdico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 13l4 4L19 7"/></svg></div><h2>Thanks, '+first+' \u2014 we\u2019re on it.</h2><p>A NextPay specialist will review your statement and reach out within one business day with a clear, side-by-side breakdown of your savings. Keep an eye on your inbox and phone.</p><div class="ssubmit" style="margin-top:24px"><a class="btn btn-outline" href="/terminals">Back to terminals</a></div></div>';
       window.scrollTo({top:0,behavior:'smooth'});
     }
     fetch('https://formsubmit.co/ajax/dom@nextpaypos.com',{method:'POST',headers:{'Accept':'application/json'},body:fd})

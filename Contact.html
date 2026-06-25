@@ -5,12 +5,12 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Contact NextPay</title>
 <meta name="description" content="POS systems, card terminals, online payments, invoicing, payroll, funding &amp; growth tools — one account, transparent processing we&#x27;ll match or beat.">
-<link rel="canonical" href="https://www.nextpaypos.com/Contact.html">
+<link rel="canonical" href="https://www.nextpaypos.com/contact">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="NextPay Business Solutions">
 <meta property="og:title" content="Contact NextPay">
 <meta property="og:description" content="POS systems, card terminals, online payments, invoicing, payroll, funding &amp; growth tools — one account, transparent processing we&#x27;ll match or beat.">
-<meta property="og:url" content="https://www.nextpaypos.com/Contact.html">
+<meta property="og:url" content="https://www.nextpaypos.com/contact">
 <meta property="og:image" content="https://www.nextpaypos.com/assets/og/nextpay-og.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
@@ -54,7 +54,7 @@
         <div class="sband" style="margin-top:28px;padding:30px">
           <h2 style="font-size:22px">Prefer to explore first?</h2>
           <p>Take the 2-minute quiz for a tailored recommendation, or send a statement for a free rate review.</p>
-          <div class="shero-cta"><a class="btn btn-primary" href="quiz.html" target="_blank" rel="noopener">Take the Quiz <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a><a class="btn btn-ghost" href="Statement Upload.html" target="_blank" rel="noopener">Free rate review</a></div>
+          <div class="shero-cta"><a class="btn btn-primary" href="/quiz" target="_blank" rel="noopener">Take the Quiz <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a><a class="btn btn-ghost" href="/statement-upload" target="_blank" rel="noopener">Free rate review</a></div>
         </div>
       </div>
       <form class="sform" data-subject="New contact request">
@@ -80,6 +80,6 @@
 <script src="js/nav.js"></script>
 <script src="js/image-slot.js"></script>
 <script>(function(){var p=new URLSearchParams(location.search);var t=p.get('topic'),m=p.get('msg');var map={quote:'Pricing / quote',rate:'Free rate review',financing:'Business financing',payroll:'Payroll & HR',rewards:'Merchant rewards'};var titles={quote:'Get your custom quote',rate:'Get your free rate review',financing:'Explore business financing',payroll:'Payroll & HR — let’s talk',rewards:'Set up Merchant Rewards'};if(t&&titles[t]){var h=document.getElementById('cform-title');if(h)h.textContent=titles[t];}var form=document.querySelector('form.sform');if(!form)return;if(t&&map[t]){var s=form.querySelector('select[name=topic]');if(s){for(var i=0;i<s.options.length;i++){if(s.options[i].text===map[t]){s.selectedIndex=i;break;}}}}if(m){var ta=form.querySelector('textarea[name=message]');if(ta&&!ta.value)ta.value=m;}})();</script>
-<script>document.querySelectorAll("form.sform").forEach(function(f){f.addEventListener("submit",function(e){e.preventDefault();var fd=new FormData(f);var nm=(fd.get("name")||"there").split(" ")[0];fd.append("_subject",f.getAttribute("data-subject"));fd.append("_cc","payments@nextpaypos.com,alexander@nextpaypos.com");fd.append("_template","table");var b=f.querySelector("button[type=submit]");if(b){b.disabled=true;b.textContent="Sending…";}function done(){f.innerHTML='<div style="text-align:center;padding:18px 6px"><div style="width:64px;height:64px;border-radius:50%;background:rgba(20,161,140,.12);display:grid;place-items:center;color:var(--teal-dark);margin:0 auto 16px"><svg viewBox="0 0 24 24" width="34" height="34" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 13l4 4L19 7"/></svg></div><h3>Thanks, '+nm+' \u2014 we\u2019ll be in touch.</h3><p class="sf-sub" style="font-size:15px;margin-top:10px">A NextPay specialist will reach out within one business day.</p><a class="btn btn-outline btn-sm" href="index.html" style="margin-top:20px;display:inline-flex;align-items:center;gap:8px">← Back to home</a></div>';}fetch("https://formsubmit.co/ajax/dom@nextpaypos.com",{method:"POST",headers:{Accept:"application/json"},body:fd}).then(function(r){return r.json();}).then(done).catch(done);});});</script>
+<script>document.querySelectorAll("form.sform").forEach(function(f){f.addEventListener("submit",function(e){e.preventDefault();var fd=new FormData(f);var nm=(fd.get("name")||"there").split(" ")[0];fd.append("_subject",f.getAttribute("data-subject"));fd.append("_cc","payments@nextpaypos.com,alexander@nextpaypos.com");fd.append("_template","table");var b=f.querySelector("button[type=submit]");if(b){b.disabled=true;b.textContent="Sending…";}function done(){f.innerHTML='<div style="text-align:center;padding:18px 6px"><div style="width:64px;height:64px;border-radius:50%;background:rgba(20,161,140,.12);display:grid;place-items:center;color:var(--teal-dark);margin:0 auto 16px"><svg viewBox="0 0 24 24" width="34" height="34" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 13l4 4L19 7"/></svg></div><h3>Thanks, '+nm+' \u2014 we\u2019ll be in touch.</h3><p class="sf-sub" style="font-size:15px;margin-top:10px">A NextPay specialist will reach out within one business day.</p><a class="btn btn-outline btn-sm" href="/" style="margin-top:20px;display:inline-flex;align-items:center;gap:8px">← Back to home</a></div>';}fetch("https://formsubmit.co/ajax/dom@nextpaypos.com",{method:"POST",headers:{Accept:"application/json"},body:fd}).then(function(r){return r.json();}).then(done).catch(done);});});</script>
 </body>
 </html>
