@@ -1,0 +1,171 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Shift4 Dine — Business Intelligence — NextPay Sales Hub</title>
+<link rel="icon" href="assets/favicon.ico" sizes="any">
+<link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+<link rel="stylesheet" href="css/nextpay.css">
+<style>
+.hub-bar{position:sticky;top:0;z-index:60;background:var(--navy);color:#fff;border-bottom:1px solid rgba(255,255,255,.10)}
+.hub-bar-inner{display:flex;align-items:center;gap:18px;height:66px;max-width:var(--maxw);margin:0 auto;padding:0 28px}
+.hub-bar img.logo{height:34px;width:auto;display:block}
+.hub-bar .pipe{width:1px;height:26px;background:rgba(255,255,255,.18)}
+.hub-bar .hub-tag{font-weight:800;font-size:15px;color:#fff;display:flex;align-items:center;gap:9px}
+.hub-bar .hub-tag .badge{font-size:10.5px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;background:var(--teal);color:#fff;padding:4px 9px;border-radius:999px}
+.hub-bar .right{margin-left:auto;display:flex;align-items:center;gap:20px}
+.hub-bar .right a{color:#cdd8e2;font-weight:600;font-size:14.5px}.hub-bar .right a:hover{color:#fff}
+
+.pg-head{background:linear-gradient(180deg,var(--navy),var(--navy-2));color:#fff}
+.pg-head .wrap{padding:30px 0 32px}
+.crumbs{display:flex;gap:8px;align-items:center;font-size:13.5px;color:#9fb1c2;padding-bottom:14px;flex-wrap:wrap}
+.crumbs a{color:#cdd8e2;font-weight:600}.crumbs a:hover{color:#fff}.crumbs .sep{opacity:.5}
+.pg-head h1{font-size:clamp(26px,3.6vw,38px);color:#fff;letter-spacing:-.02em}
+.pg-head h1 em{color:var(--teal-bright);font-style:normal}
+.pg-head p.lead{color:#c4d0db;margin-top:10px;max-width:700px;font-size:16px;line-height:1.55}
+.jump{display:flex;gap:9px;flex-wrap:wrap;margin-top:20px}
+.jump a{display:inline-flex;align-items:center;gap:7px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.16);border-radius:999px;padding:8px 14px;font-size:13px;font-weight:700;color:#eaf1f6}
+.jump a:hover{background:rgba(31,194,166,.18);border-color:var(--teal-bright);color:#fff}
+
+main.wrap{padding:30px 0 10px;max-width:940px}
+.sec{margin-bottom:34px;scroll-margin-top:84px}
+.sec h2{font-size:22px;letter-spacing:-.02em;margin-bottom:6px}
+.sec .sub{font-size:14.5px;color:var(--slate);margin-bottom:16px;max-width:800px;line-height:1.6}
+.sec p.body{font-size:15px;color:var(--ink);line-height:1.65;margin-bottom:12px;max-width:840px}
+.sec p.body b{color:var(--navy)}
+
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+@media(max-width:820px){.grid{grid-template-columns:1fr 1fr}}
+@media(max-width:560px){.grid{grid-template-columns:1fr}}
+.card{background:#fff;border:1px solid var(--line);border-radius:var(--radius-lg);box-shadow:var(--shadow-sm);padding:22px;display:flex;flex-direction:column;gap:8px}
+.card .ic{width:46px;height:46px;border-radius:12px;background:rgba(20,161,140,.12);display:grid;place-items:center;color:var(--teal-dark)}
+.card .ic svg{width:23px;height:23px}
+.card h3{font-size:16.5px;color:var(--navy)}
+.card p{font-size:13.5px;color:var(--slate);line-height:1.5}
+.adv{display:flex;flex-direction:column;gap:9px}
+.adv li{display:flex;gap:10px;align-items:flex-start;font-size:14.5px;color:var(--ink);line-height:1.45;list-style:none}
+.adv li svg{width:17px;height:17px;flex:none;margin-top:2px;color:var(--teal)}
+.adv{margin:0;padding:0}
+
+.steps{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+@media(max-width:560px){.steps{grid-template-columns:1fr}}
+.step{background:#fff;border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow-sm);padding:18px 20px}
+.step b{font-size:15px;color:var(--navy);display:block;margin-bottom:4px}
+.step p{font-size:13.5px;color:var(--slate);line-height:1.5}
+.warn{display:flex;gap:11px;align-items:flex-start;background:rgba(242,163,60,.12);border:1px solid rgba(242,163,60,.4);border-radius:12px;padding:13px 16px;margin-top:14px}
+.warn svg{width:18px;height:18px;color:#b9741a;flex:none;margin-top:2px}
+.warn p{font-size:13.5px;color:var(--ink);line-height:1.55}.warn b{color:#b9741a}
+
+.note{font-size:13.5px;color:var(--slate);background:var(--bg-soft);border:1px solid var(--line);border-radius:12px;padding:15px 17px;margin-top:16px;line-height:1.55}
+.note a{color:var(--teal-dark);font-weight:700}
+
+.hub-foot{background:var(--navy);color:#9fb1c2;padding:30px 0;margin-top:46px;font-size:13.5px}
+.hub-foot .wrap{display:flex;justify-content:space-between;gap:18px;flex-wrap:wrap;max-width:var(--maxw)}
+.hub-foot a{color:#cdd8e2;font-weight:600}.hub-foot a:hover{color:#fff}
+</style>
+</head>
+<body>
+
+<div class="hub-bar">
+  <div class="hub-bar-inner">
+    <a href="Sales Hub.html" style="display:flex;align-items:center" aria-label="Sales Hub home"><img class="logo" src="assets/logos/nextpay-nav.png" alt="NextPay"></a>
+    <span class="pipe"></span>
+    <span class="hub-tag">Sales Hub <span class="badge">Internal</span></span>
+    <div class="right"><a href="Sales Hub - Shift4.html">← Shift4</a><a href="Sales Hub.html">Hub home</a></div>
+  </div>
+</div>
+
+<header class="pg-head">
+  <div class="wrap">
+    <div class="crumbs"><a href="Sales Hub.html">Sales Hub</a><span class="sep">/</span><a href="Sales Hub - Shift4.html">Shift4 Dine</a><span class="sep">/</span><span>Business Intelligence</span></div>
+    <h1>Business <em>Intelligence</em></h1>
+    <p class="lead">Shift4's analytics tool (SkyTab Business Intelligence / STBI) gives merchants complete data transparency — accessed right inside the Shift4 Dine Customer Hub. Here's what it does, why it wins, and how to get it turned on.</p>
+    <div class="jump">
+      <a href="#what">What it is</a>
+      <a href="#advantages">Advantages</a>
+      <a href="#features">Key features</a>
+      <a href="#enable">Enabling it</a>
+    </div>
+  </div>
+</header>
+
+<main class="wrap">
+
+  <!-- WHAT -->
+  <section class="sec" id="what">
+    <h2>What it is</h2>
+    <p class="body"><b>Business Intelligence (BI)</b> — <i>SkyTab Business Intelligence (STBI)</i> — is Shift4's analytics platform. It goes beyond traditional reporting to give merchants <b>complete data transparency</b> with fast, interactive dashboards. Merchants reach it directly through the <a href="Sales Hub - Shift4 Customer Hub.html">Shift4 Dine Customer Hub</a>.</p>
+  </section>
+
+  <!-- ADVANTAGES -->
+  <section class="sec" id="advantages">
+    <h2>Three competitive advantages</h2>
+    <div class="card" style="max-width:640px">
+      <ul class="adv">
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg><b>Unparalleled data transparency and speed</b></li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg><b>Easily configurable dashboards</b></li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg><b>Group By and Drill To</b> features to improve data mining</li>
+      </ul>
+      <p style="font-size:12.5px;color:var(--slate-2);margin-top:4px">It is <b>not</b> "traditional reporting" — that's the trap answer.</p>
+    </div>
+  </section>
+
+  <!-- FEATURES -->
+  <section class="sec" id="features">
+    <h2>Key features</h2>
+    <div class="grid">
+      <div class="card">
+        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 3v18h18"/><path d="M7 14l3-4 4 3 5-7"/></svg></div>
+        <h3>KPIs</h3>
+        <p><b>KPI = Key Performance Indicator</b> — the metrics merchants track to measure business performance.</p>
+      </div>
+      <div class="card">
+        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg></div>
+        <h3>Group By</h3>
+        <p>Changes the <b>entire view</b> of the report being examined, organized by the group data the merchant specifies.</p>
+      </div>
+      <div class="card">
+        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3M11 8v6M8 11h6"/></svg></div>
+        <h3>Drill To</h3>
+        <p>Lets a merchant focus on <b>a single line of data</b> within a report for a closer look.</p>
+      </div>
+      <div class="card">
+        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 7h18M6 12h12M9 17h6"/></svg></div>
+        <h3>Hierarchies</h3>
+        <p>Merchants can use <b>up to 3 hierarchies</b> to structure how their data rolls up.</p>
+      </div>
+      <div class="card">
+        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3l8 3v6c0 5-3.5 8-8 9-4.5-1-8-4-8-9V6z"/><path d="M9 12l2 2 4-4"/></svg></div>
+        <h3>Data transparency</h3>
+        <p>BI has <b>complete data transparency</b> — a core advantage over traditional reporting.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ENABLE -->
+  <section class="sec" id="enable">
+    <h2>Enabling it for a merchant</h2>
+    <div class="steps">
+      <div class="step"><b>Submit the request form</b><p>To get BI enabled in <b>LBM (Lighthouse Business Manager)</b>, complete the <b>SkyTab BI Merchant Request form</b> for each merchant. It is <b>not</b> added automatically.</p></div>
+      <div class="step"><b>Access via Customer Hub</b><p>Once enabled, the merchant accesses Business Intelligence through their <b>Shift4 Dine Customer Hub</b>.</p></div>
+    </div>
+    <div class="warn">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 9v4M12 17h.01M10.3 3.9l-8 14A1.5 1.5 0 003.7 20h16.6a1.5 1.5 0 001.3-2.2l-8-14a1.5 1.5 0 00-2.6 0z"/></svg>
+      <p><b>Do not share the demo login.</b> The login information for the demo version of <b>STBI</b> must <b>not</b> be shared with merchants.</p>
+    </div>
+    <div class="note">The <b>Quick Setup Merchant Guide</b> lives in the <b>Knowledge Base within Business Intelligence</b>. Ready to test yourself? Take the <a href="Sales Hub - Shift4 BI Quiz.html">Business Intelligence quiz</a> · back to the <a href="Sales Hub - Shift4.html">Shift4 Dine page</a>.</div>
+  </section>
+
+</main>
+
+<footer class="hub-foot">
+  <div class="wrap">
+    <span>NextPay Sales Hub · Shift4 Dine — Business Intelligence · Internal use only.</span>
+    <span><a href="Sales Hub - Request Access.html#suggest">💡 Suggest / Request</a> · <a href="Sales Hub.html">← Back to hub</a></span>
+  </div>
+</footer>
+<script src="js/hub-nav.js"></script>
+</body>
+</html>
