@@ -95,8 +95,8 @@ a,button,input,select,textarea,label,summary,[role="button"],.nm-head,.nm-link,.
 .nav-cta{background:var(--teal);color:#fff;padding:13px 22px;border-radius:999px;font-weight:700;font-size:15.5px;display:inline-flex;align-items:center;gap:8px;white-space:nowrap;flex:none}
 .nav-cta svg{width:16px;height:16px;flex:none}
 .nav-cta:hover{background:var(--teal-dark)}
-.nav-cta.alt{background:transparent;color:var(--navy);border:1.5px solid var(--line);padding:11.5px 18px}
-.nav-cta.alt:hover{background:rgba(20,161,140,.07);border-color:var(--teal);color:var(--teal-dark)}
+.nav-cta.alt{background:transparent;color:#fff;border:1.5px solid rgba(255,255,255,.32);padding:11.5px 18px}
+.nav-cta.alt:hover{background:rgba(255,255,255,.10);border-color:var(--teal-bright);color:#fff}
 /* dropdown */
 .nav-drop{position:relative}
 .nav-menu{
