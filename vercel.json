@@ -643,6 +643,16 @@
       "permanent": true
     },
     {
+      "source": "/Quick Application.html",
+      "destination": "/quick-application",
+      "permanent": true
+    },
+    {
+      "source": "/Quick Application",
+      "destination": "/quick-application",
+      "permanent": true
+    },
+    {
       "source": "/Statement Upload.html",
       "destination": "/statement-upload",
       "permanent": true
@@ -1015,6 +1025,10 @@
     {
       "source": "/square-features",
       "destination": "/Square%20Features"
+    },
+    {
+      "source": "/quick-application",
+      "destination": "/Quick%20Application"
     },
     {
       "source": "/statement-upload",
