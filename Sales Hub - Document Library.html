@@ -467,7 +467,7 @@ function card(d){
   var prodLabel = {pos:'POS',terminals:'Terminals',gateways:'Gateways',invoicing:'Invoicing',general:'General'}[d.product]||d.product;
   var catLabel = {pricing:'Pricing',script:'Script',proposal:'Proposal',battlecard:'Battlecard',flyer:'Flyer',onepager:'One-Pager',deck:'Presentation',form:'Form',contract:'Contract',training:'Training',statement:'Statement',tool:'Calculator',portal:'Portal'}[d.category]||d.category;
   var thumb=null;
-  if(d.category==='flyer'){ var m=(d.href||'').match(/flyer=([\w-]+)/); if(m) thumb='assets/flyers/thumbs/'+m[1]+'.jpg'; }
+  if(d.category==='flyer'){ var m=(d.href||'').match(/flyer=([\w-]+)/); if(m){ var fid=m[1].replace(/-(dual|rewards)$/,''); var TMAP={'eye-care':'eye-doctors','dental':'dentists'}; fid=TMAP[fid]||fid; thumb='assets/flyers/thumbs/'+fid+'.jpg'; } }
   var media = thumb
     ? '<span class="dlogo thumb"><img src="'+thumb+'" alt="" onerror="this.onerror=null;this.parentNode.classList.remove(\'thumb\');this.src=\'assets/logos/'+logoFor(d)+'\'"></span>'
     : '<span class="dlogo"><img src="assets/logos/'+logoFor(d)+'" alt=""></span>';
