@@ -194,8 +194,25 @@
         {id:'s4-scanner',cat:'accessory',name:'2D Barcode Scanner (Honeywell Voyager 1400g)',mo:9.99}
       ]
     }
+    ,
+    square:{ label:'Square', logo:'assets/logos/square.svg', modes:['buy'],
+      proc:"Square's published rates apply (2.6% + 10¢ in person, 2.9% + 30¢ online, 3.5% + 15¢ keyed). NextPay reviews your statement to match or beat your effective rate.",
+      cats:[{key:'base',label:'Hardware',type:'qty'},{key:'software',label:'Software plan',type:'single'},{key:'accessory',label:'Accessories',type:'qty'}],
+      items:[
+        {id:'sq-terminal',cat:'base',name:'Square Terminal',sub:'all-in-one terminal',buy:299,fin:'or $27/mo (12 mo)'},
+        {id:'sq-station',cat:'base',name:'Square Station',sub:'all-in-one register',buy:899,fin:'or $44/mo (24 mo)'},
+        {id:'sq-handheld',cat:'base',name:'Square Handheld',sub:'tableside, tap to pay',buy:399,fin:'or $37/mo (12 mo)'},
+        {id:'sq-stand',cat:'base',name:'Square Stand',sub:'iPad POS stand (iPad sold separately)',buy:149},
+        {id:'sq-reader',cat:'base',name:'Square Reader',sub:'mobile contactless + chip',buy:59,fin:'or $21/mo (12 mo)'},
+        {id:'sq-kioskstand',cat:'base',name:'Square Kiosk Stand',sub:'iPad kiosk (iPad sold separately)',buy:149},
+        {id:'sq-free',cat:'software',name:'Square Free Plan',mo:0},
+        {id:'sq-plus',cat:'software',name:'Square Plus Plan',sub:'Retail or Restaurant',mo:49},
+        {id:'sq-ipad',cat:'accessory',name:'iPad',sub:'for Stand / Kiosk — add or bring your own',buy:349},
+        {id:'sq-kiosksw',cat:'accessory',name:'Square Kiosk Software',mo:89}
+      ]
+    }
   };
-  var ORDER=['clover','shift4'];
+  var ORDER=['clover','shift4','square'];
 
   var state={ brand:'clover', mode:'placement', qty:{} };
   // deep-link ?brand=
@@ -211,7 +228,7 @@
     if(it.buy!=null && it.mo!=null) return state.mode==='placement'?it.mo:0; // togglable hardware
     return it.mo!=null?it.mo:0; // software / monthly-only
   }
-  function unitUpfront(it){ if(it.buy!=null && it.mo!=null) return state.mode==='buy'?it.buy:0; return 0; }
+  function unitUpfront(it){ if(it.buy!=null && it.mo!=null) return state.mode==='buy'?it.buy:0; if(it.buy!=null) return it.buy; return 0; }
 
   var brandpick=document.getElementById('brandpick');
   var modebar=document.getElementById('modebar');
@@ -239,7 +256,8 @@
   }
   function priceLabel(it){
     if(it.cat==='software') return money(it.mo)+'<small>/mo'+(it.addl?' · +'+money(it.addl)+'/addl device':'')+'</small>';
-    if(isHardware(it)) return state.mode==='buy'? money(it.buy)+'<small>one-time</small>' : money(it.mo)+'<small>/mo placement</small>';
+    if(it.buy!=null && it.mo!=null) return state.mode==='buy'? money(it.buy)+'<small>one-time</small>' : money(it.mo)+'<small>/mo placement</small>';
+    if(it.buy!=null) return money(it.buy)+'<small>'+(it.fin||'one-time')+'</small>';
     return money(it.mo)+'<small>/mo</small>';
   }
   function renderCatalog(){
