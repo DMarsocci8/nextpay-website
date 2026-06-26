@@ -1,0 +1,315 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Build Your Solution — NextPay</title>
+<meta name="description" content="Build your POS setup and see an instant estimate — pick your system, software and accessories, choose buy or low-cost placement, then get your exact quote.">
+<link rel="canonical" href="https://www.nextpaypos.com/build">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="NextPay Business Solutions">
+<meta property="og:title" content="Build Your Solution — NextPay">
+<meta property="og:description" content="Pick your system, software and accessories and see an instant cost estimate. Buy outright or $0-down placement.">
+<meta property="og:url" content="https://www.nextpaypos.com/build">
+<meta property="og:image" content="https://www.nextpaypos.com/assets/og/nextpay-og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Build Your Solution — NextPay">
+<meta name="twitter:description" content="Pick your system, software and accessories and see an instant cost estimate.">
+<meta name="twitter:image" content="https://www.nextpaypos.com/assets/og/nextpay-og.png">
+<link rel="icon" href="/assets/icons/favicon.ico">
+<link rel="apple-touch-icon" href="/assets/icons/apple-touch-icon-180.png">
+<link rel="stylesheet" href="css/nextpay.css">
+<style>
+.bpage{background:var(--bg-soft);min-height:calc(100vh - 78px)}
+.btop{background:var(--navy);color:#fff;position:relative;overflow:hidden;padding:40px 0 30px}
+.btop::after{content:"";position:absolute;right:-120px;top:-140px;width:480px;height:480px;border-radius:50%;background:radial-gradient(circle,rgba(20,161,140,.22),transparent 70%)}
+.btop .wrap{position:relative;z-index:2}
+.btop .eyebrow{color:var(--teal-bright)}
+.btop h1{font-size:clamp(28px,4vw,42px);color:#fff;margin-top:8px}
+.btop p{color:#c4d0db;margin:12px 0 0;max-width:600px;font-size:17px;line-height:1.55}
+
+.bhold{max-width:var(--maxw);margin:0 auto;padding:26px 24px 80px}
+/* brand picker */
+.brandpick{display:flex;gap:12px;flex-wrap:wrap;margin-bottom:8px}
+.brandpick button{display:flex;align-items:center;gap:10px;background:#fff;border:1.5px solid var(--line);border-radius:14px;padding:12px 18px;cursor:pointer;font-family:inherit;font-weight:800;font-size:15px;color:var(--navy);transition:.15s}
+.brandpick button img{height:22px;width:auto;display:block}
+.brandpick button:hover{border-color:var(--teal)}
+.brandpick button.on{border-color:var(--teal);box-shadow:0 0 0 1.5px var(--teal);background:rgba(20,161,140,.05)}
+.pickhint{font-size:13.5px;color:var(--slate);margin:0 0 20px}
+
+.blayout{display:grid;grid-template-columns:1fr 360px;gap:26px;align-items:start}
+@media(max-width:920px){.blayout{grid-template-columns:1fr}}
+
+/* mode toggle */
+.modebar{display:flex;align-items:center;gap:14px;flex-wrap:wrap;background:#fff;border:1px solid var(--line);border-radius:14px;padding:14px 18px;margin-bottom:18px;box-shadow:var(--shadow-sm)}
+.modebar .mb-label{font-weight:800;font-size:14px;color:var(--navy)}
+.modeseg{display:inline-flex;background:var(--bg-soft);border:1px solid var(--line);border-radius:999px;padding:3px}
+.modeseg button{border:none;background:none;font-family:inherit;font-weight:700;font-size:13.5px;color:var(--slate);padding:8px 16px;border-radius:999px;cursor:pointer}
+.modeseg button.on{background:var(--teal);color:#fff}
+.modebar .mb-note{font-size:12.5px;color:var(--slate);margin-left:auto}
+
+/* catalog */
+.bcat{margin-bottom:24px}
+.bcat h2{font-size:15px;font-weight:800;letter-spacing:.04em;text-transform:uppercase;color:var(--teal-dark);margin-bottom:12px;display:flex;align-items:center;gap:9px}
+.bcat h2::after{content:"";flex:1;height:1px;background:var(--line)}
+.bitem{display:flex;align-items:center;gap:14px;background:#fff;border:1px solid var(--line);border-radius:13px;padding:14px 16px;margin-bottom:10px;box-shadow:var(--shadow-sm)}
+.bitem.sel{border-color:var(--teal);box-shadow:0 0 0 1.5px var(--teal)}
+.bitem .bi-main{flex:1;min-width:0}
+.bitem .bi-name{font-weight:700;font-size:15px;color:var(--navy)}
+.bitem .bi-sub{font-size:12.5px;color:var(--slate-2);margin-top:2px}
+.bitem .bi-price{font-weight:800;font-size:14.5px;color:var(--teal-dark);white-space:nowrap;text-align:right;min-width:96px}
+.bitem .bi-price small{display:block;font-size:11.5px;color:var(--slate-2);font-weight:600}
+/* qty stepper */
+.qty{display:inline-flex;align-items:center;gap:0;border:1.5px solid var(--line);border-radius:999px;overflow:hidden;flex:none}
+.qty button{width:34px;height:34px;border:none;background:#fff;font-size:19px;line-height:1;color:var(--teal-dark);cursor:pointer;font-family:inherit}
+.qty button:hover{background:var(--bg-soft)}
+.qty span{min-width:30px;text-align:center;font-weight:800;font-size:15px;color:var(--navy)}
+/* single-select pick */
+.pickbtn{flex:none;border:1.5px solid var(--line);background:#fff;border-radius:999px;padding:8px 18px;font-family:inherit;font-weight:800;font-size:13.5px;color:var(--teal-dark);cursor:pointer}
+.pickbtn:hover{border-color:var(--teal)}
+.bitem.sel .pickbtn{background:var(--teal);color:#fff;border-color:var(--teal)}
+
+/* summary */
+.summary{position:sticky;top:96px;background:#fff;border:1px solid var(--line);border-radius:18px;box-shadow:var(--shadow);overflow:hidden}
+.summary .sm-head{background:var(--navy);color:#fff;padding:16px 20px;font-weight:800;font-size:16px;display:flex;align-items:center;gap:8px}
+.summary .sm-body{padding:18px 20px}
+.sm-empty{font-size:14px;color:var(--slate);text-align:center;padding:18px 6px;line-height:1.5}
+.sm-line{display:flex;justify-content:space-between;gap:10px;font-size:13.5px;padding:7px 0;border-bottom:1px dashed var(--line)}
+.sm-line .sl-name{color:var(--ink)}.sm-line .sl-name b{color:var(--navy)}
+.sm-line .sl-amt{font-weight:700;color:var(--navy);white-space:nowrap}
+.sm-tot{margin-top:14px;border-top:2px solid var(--line);padding-top:14px}
+.sm-tot .row{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:6px}
+.sm-tot .row .k{font-size:13.5px;color:var(--slate)}
+.sm-tot .row .v{font-weight:800;color:var(--navy);font-size:15px}
+.sm-tot .row.big .k{font-size:15px;font-weight:800;color:var(--navy)}
+.sm-tot .row.big .v{font-size:24px;color:var(--teal-dark)}
+.sm-proc{font-size:12.5px;color:var(--slate);background:var(--bg-soft);border-radius:10px;padding:11px 13px;margin-top:14px;line-height:1.5}
+.sm-cta{display:flex;flex-direction:column;gap:10px;margin-top:16px}
+.sm-cta .btn{justify-content:center}
+.sm-disc{font-size:11.5px;color:var(--slate-2);margin-top:12px;line-height:1.5}
+
+.trustrow{display:flex;gap:18px;flex-wrap:wrap;margin-top:18px}
+.trustrow span{display:inline-flex;align-items:center;gap:7px;font-size:13px;color:var(--slate);font-weight:600}
+.trustrow svg{width:15px;height:15px;color:var(--teal)}
+@media(max-width:920px){.summary{position:static;margin-top:8px}}
+</style>
+</head>
+<body data-page="build">
+<div id="np-nav"></div>
+<div class="bpage">
+  <header class="btop">
+    <div class="wrap">
+      <span class="eyebrow">Build your solution</span>
+      <h1>Spec your setup, see your cost.</h1>
+      <p>Pick your system, software and accessories — get an instant estimate, then we'll dial in your exact quote with match-or-beat processing. No obligation.</p>
+    </div>
+  </header>
+
+  <div class="bhold">
+    <div class="brandpick" id="brandpick"></div>
+    <p class="pickhint">Choose a platform to start. Accessories shown are the ones compatible with your selection.</p>
+
+    <div class="blayout">
+      <div>
+        <div class="modebar" id="modebar"></div>
+        <div id="catalog"></div>
+      </div>
+
+      <aside class="summary">
+        <div class="sm-head"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 3h2l2.4 12.3a1 1 0 001 .7h9.7a1 1 0 001-.8L22 7H6"/><circle cx="9" cy="20" r="1"/><circle cx="18" cy="20" r="1"/></svg> Your build</div>
+        <div class="sm-body">
+          <div id="smItems"></div>
+          <div class="sm-tot" id="smTot" style="display:none"></div>
+          <div class="sm-proc" id="smProc" style="display:none"></div>
+          <div class="sm-cta" id="smCta" style="display:none">
+            <a class="btn btn-primary" id="quoteBtn" href="#">Get my exact quote
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+            <a class="btn btn-outline" href="/contact" target="_blank" rel="noopener">Talk to a specialist</a>
+          </div>
+          <p class="sm-disc">Estimate is for hardware &amp; software only and may vary by configuration. Card processing is quoted separately. Not a binding quote.</p>
+        </div>
+      </aside>
+    </div>
+
+    <div class="trustrow">
+      <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg>No obligation</span>
+      <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg>Match or beat your current rate</span>
+      <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg>Free install &amp; training</span>
+    </div>
+  </div>
+</div>
+<div id="np-footer"></div>
+
+<script src="js/nav.js"></script>
+<script>
+(function(){
+  var CATALOG={
+    clover:{ label:'Clover', logo:'assets/logos/clover.png', modes:['placement','buy'],
+      proc:'Processing is quoted separately — dual pricing available for 0% card fees, or we match/beat your rate. A $5/mo Clover platform fee per location also applies.',
+      cats:[{key:'base',label:'Base systems',type:'qty'},{key:'software',label:'Software plan',type:'single'},{key:'accessory',label:'Accessories & peripherals',type:'qty'}],
+      items:[
+        {id:'cl-duo',cat:'base',name:'Clover Station Duo',buy:2078,mo:55},
+        {id:'cl-duob',cat:'base',name:'Clover Station Duo Bundle',sub:'tablet, printer, terminal, starter kit, cash drawer',buy:2172.80,mo:60},
+        {id:'cl-solo',cat:'base',name:'Clover Station Solo',buy:1766,mo:45},
+        {id:'cl-solob',cat:'base',name:'Clover Station Solo Bundle',sub:'tablet, printer, starter kit, cash drawer',buy:1860.80,mo:50},
+        {id:'cl-mini',cat:'base',name:'Clover Mini',buy:937,mo:25},
+        {id:'cl-flex',cat:'base',name:'Clover Flex (Gen 4)',buy:758,mo:20},
+        {id:'cl-pocket',cat:'base',name:'Clover Pocket',buy:449,mo:18},
+        {id:'cl-kiosk',cat:'base',name:'Clover Kiosk',sub:'24" display, Kiosk Mini, printer, frame',buy:3587,mo:90},
+        {id:'sw-healthcare',cat:'software',name:'Clover for Healthcare',mo:0,addl:11.95},
+        {id:'sw-starter',cat:'software',name:'Starter',mo:0,addl:11.95},
+        {id:'sw-essentials',cat:'software',name:'Essentials',sub:'includes Clover Go',mo:29.95,addl:11.95},
+        {id:'sw-retail',cat:'software',name:'Retail Growth',mo:84.95,addl:19.95},
+        {id:'sw-services',cat:'software',name:'Services Growth',mo:84.95,addl:19.95},
+        {id:'sw-restaurant',cat:'software',name:'Restaurant Growth',mo:89.95,addl:19.95},
+        {id:'ac-kds14',cat:'accessory',name:'Clover KDS 14" (screen)',buy:531,mo:14},
+        {id:'ac-kds24',cat:'accessory',name:'Clover KDS 24" (screen)',buy:722,mo:24},
+        {id:'ac-kdswall',cat:'accessory',name:'KDS Wall Mount',buy:53,mo:2},
+        {id:'ac-kdsstand',cat:'accessory',name:'KDS Countertop Stand',buy:80,mo:3},
+        {id:'ac-kioskfloor',cat:'accessory',name:'Kiosk Floor Stand',buy:549,mo:25},
+        {id:'ac-kioskwall',cat:'accessory',name:'Kiosk Wall Mount',buy:54,mo:3},
+        {id:'ac-zebra9308',cat:'accessory',name:'Zebra DS 9308 Scanner',buy:233.22,mo:8},
+        {id:'ac-zebra2208',cat:'accessory',name:'Zebra DS 2208 Scanner',buy:164.22,mo:6},
+        {id:'ac-starimpact',cat:'accessory',name:'STAR Impact Kitchen Printer',buy:539.22,mo:20},
+        {id:'ac-starthermal',cat:'accessory',name:'STAR Thermal Kitchen Printer',buy:365.22,mo:15},
+        {id:'ac-cashdrawer',cat:'accessory',name:'Cash Drawer',buy:79,mo:5}
+      ]
+    },
+    shift4:{ label:'Shift4 Dine', logo:'assets/logos/shift4.png', modes:['placement'],
+      proc:'No upfront cost — dual pricing available for 0% card fees. Processing is quoted separately.',
+      cats:[{key:'base',label:'Base system',type:'qty'},{key:'accessory',label:'Add-ons & peripherals',type:'qty'}],
+      items:[
+        {id:'s4-base',cat:'base',name:'SkyTab POS Base Package',sub:'POS Terminal, 10 Employee Cards, Receipt Printer, Cash Drawer',mo:29.99},
+        {id:'s4-glass',cat:'accessory',name:'SkyTab Glass',sub:'tablet with full POS software',mo:29.99},
+        {id:'s4-kds',cat:'accessory',name:'Kitchen Display System (KDS)',mo:29.99},
+        {id:'s4-cfd',cat:'accessory',name:'Customer-Facing Display',mo:29.99},
+        {id:'s4-mobile',cat:'accessory',name:'SkyTab Mobile',mo:20},
+        {id:'s4-caller2',cat:'accessory',name:'Caller ID (2-line)',mo:9.99},
+        {id:'s4-caller4',cat:'accessory',name:'Caller ID (4-line)',mo:19.99},
+        {id:'s4-scale',cat:'accessory',name:'Digital Scale (CAS PD-II)',mo:39.99},
+        {id:'s4-thermal',cat:'accessory',name:'Remote Thermal Printer (M335A)',mo:9.99},
+        {id:'s4-dotmatrix',cat:'accessory',name:'Remote Dot Matrix Printer (TM-U220)',mo:9.99},
+        {id:'s4-scanner',cat:'accessory',name:'2D Barcode Scanner (Honeywell Voyager 1400g)',mo:9.99}
+      ]
+    }
+  };
+  var ORDER=['clover','shift4'];
+
+  var state={ brand:'clover', mode:'placement', qty:{} };
+  // deep-link ?brand=
+  var bm=(location.search).match(/[?&]brand=([\w-]+)/);
+  if(bm && CATALOG[bm[1]]) state.brand=bm[1];
+  state.mode=CATALOG[state.brand].modes[0];
+
+  function money(n){ if(n==null) return ''; var s=Math.round(n*100)/100;
+    return '$'+s.toLocaleString('en-US',{minimumFractionDigits:(s%1?2:0),maximumFractionDigits:2}); }
+  function item(id){ var b=CATALOG[state.brand]; for(var i=0;i<b.items.length;i++){ if(b.items[i].id===id) return b.items[i]; } return null; }
+  function isHardware(it){ return it.buy!=null && it.mo!=null; }
+  function unitMonthly(it){ // monthly contribution of one unit in current mode
+    if(it.buy!=null && it.mo!=null) return state.mode==='placement'?it.mo:0; // togglable hardware
+    return it.mo!=null?it.mo:0; // software / monthly-only
+  }
+  function unitUpfront(it){ if(it.buy!=null && it.mo!=null) return state.mode==='buy'?it.buy:0; return 0; }
+
+  var brandpick=document.getElementById('brandpick');
+  var modebar=document.getElementById('modebar');
+  var catEl=document.getElementById('catalog');
+
+  function renderBrand(){
+    brandpick.innerHTML=ORDER.map(function(k){ var b=CATALOG[k];
+      return '<button data-b="'+k+'" class="'+(k===state.brand?'on':'')+'"><img src="'+b.logo+'" alt="'+b.label+'">'+b.label+'</button>';
+    }).join('');
+    brandpick.querySelectorAll('button').forEach(function(btn){ btn.onclick=function(){
+      state.brand=btn.getAttribute('data-b'); state.qty={}; state.mode=CATALOG[state.brand].modes[0]; renderAll();
+    };});
+  }
+  function renderMode(){
+    var b=CATALOG[state.brand];
+    if(b.modes.length<2){ modebar.style.display='none'; return; }
+    modebar.style.display='flex';
+    modebar.innerHTML='<span class="mb-label">Pricing</span>'
+      +'<div class="modeseg">'
+      +'<button data-m="placement" class="'+(state.mode==='placement'?'on':'')+'">Placement · $0 down</button>'
+      +'<button data-m="buy" class="'+(state.mode==='buy'?'on':'')+'">Buy outright</button>'
+      +'</div>'
+      +'<span class="mb-note">'+(state.mode==='placement'?'Low monthly, nothing upfront — unlimited replacements, no contract.':'Own the hardware — one-time cost, software still billed monthly.')+'</span>';
+    modebar.querySelectorAll('button').forEach(function(btn){ btn.onclick=function(){ state.mode=btn.getAttribute('data-m'); renderAll(); };});
+  }
+  function priceLabel(it){
+    if(it.cat==='software') return money(it.mo)+'<small>/mo'+(it.addl?' · +'+money(it.addl)+'/addl device':'')+'</small>';
+    if(isHardware(it)) return state.mode==='buy'? money(it.buy)+'<small>one-time</small>' : money(it.mo)+'<small>/mo placement</small>';
+    return money(it.mo)+'<small>/mo</small>';
+  }
+  function renderCatalog(){
+    var b=CATALOG[state.brand]; var html='';
+    b.cats.forEach(function(c){
+      var items=b.items.filter(function(x){return x.cat===c.key;});
+      if(!items.length) return;
+      html+='<div class="bcat"><h2>'+c.label+'</h2>';
+      items.forEach(function(it){
+        var q=state.qty[it.id]||0; var sel=q>0;
+        var ctrl;
+        if(c.type==='single'){
+          ctrl='<button class="pickbtn" data-pick="'+it.id+'">'+(sel?'Selected ✓':'Select')+'</button>';
+        } else {
+          ctrl='<div class="qty"><button data-dec="'+it.id+'" aria-label="Remove one">−</button><span>'+q+'</span><button data-inc="'+it.id+'" aria-label="Add one">+</button></div>';
+        }
+        html+='<div class="bitem'+(sel?' sel':'')+'"><div class="bi-main"><div class="bi-name">'+it.name+'</div>'
+          +(it.sub?'<div class="bi-sub">'+it.sub+'</div>':'')+'</div>'
+          +'<div class="bi-price">'+priceLabel(it)+'</div>'+ctrl+'</div>';
+      });
+      html+='</div>';
+    });
+    catEl.innerHTML=html;
+    catEl.querySelectorAll('[data-inc]').forEach(function(b){ b.onclick=function(){ var id=b.getAttribute('data-inc'); state.qty[id]=(state.qty[id]||0)+1; renderAll(); };});
+    catEl.querySelectorAll('[data-dec]').forEach(function(b){ b.onclick=function(){ var id=b.getAttribute('data-dec'); state.qty[id]=Math.max(0,(state.qty[id]||0)-1); if(!state.qty[id])delete state.qty[id]; renderAll(); };});
+    catEl.querySelectorAll('[data-pick]').forEach(function(b){ b.onclick=function(){ var id=b.getAttribute('data-pick');
+      var grp=CATALOG[state.brand].items.filter(function(x){return x.cat===item(id).cat;});
+      var was=state.qty[id]>0; grp.forEach(function(x){ delete state.qty[x.id]; }); if(!was) state.qty[id]=1; renderAll(); };});
+  }
+
+  function buildLines(){
+    var b=CATALOG[state.brand]; var lines=[];
+    b.items.forEach(function(it){ var q=state.qty[it.id]||0; if(q>0) lines.push({it:it,q:q}); });
+    return lines;
+  }
+  function renderSummary(){
+    var lines=buildLines();
+    var itemsEl=document.getElementById('smItems');
+    var totEl=document.getElementById('smTot');
+    var procEl=document.getElementById('smProc');
+    var ctaEl=document.getElementById('smCta');
+    if(!lines.length){
+      itemsEl.innerHTML='<div class="sm-empty">Add a base system, software and accessories to see your estimate.</div>';
+      totEl.style.display='none'; procEl.style.display='none'; ctaEl.style.display='none'; return;
+    }
+    var mo=0, up=0;
+    itemsEl.innerHTML=lines.map(function(L){
+      var lm=unitMonthly(L.it)*L.q, lu=unitUpfront(L.it)*L.q; mo+=lm; up+=lu;
+      var amt = lu>0 ? money(lu) : (lm>0?money(lm)+'/mo':'$0');
+      return '<div class="sm-line"><span class="sl-name"><b>'+L.q+'×</b> '+L.it.name+'</span><span class="sl-amt">'+amt+'</span></div>';
+    }).join('');
+    var b=CATALOG[state.brand];
+    var rows='';
+    rows+='<div class="row big"><span class="k">Estimated monthly</span><span class="v">'+money(mo)+'/mo</span></div>';
+    rows+='<div class="row"><span class="k">'+(state.mode==='buy'?'Hardware upfront':'Upfront')+'</span><span class="v">'+(state.mode==='buy'?money(up):'$0 down')+'</span></div>';
+    totEl.innerHTML=rows; totEl.style.display='block';
+    procEl.textContent=b.proc; procEl.style.display='block';
+    ctaEl.style.display='flex';
+
+    // build summary string for the quote handoff
+    var parts=lines.map(function(L){ return L.q+'× '+L.it.name; });
+    var modeTxt=(b.modes.length<2)?'monthly':(state.mode==='buy'?'buy outright':'placement ($0 down)');
+    var summary=b.label+' build ('+modeTxt+'): '+parts.join(', ')
+      +' — Est. '+money(mo)+'/mo'+(state.mode==='buy'&&up>0?' + '+money(up)+' upfront':'');
+    document.getElementById('quoteBtn').href='/quick-application?brand='+state.brand+'&build='+encodeURIComponent(summary);
+  }
+
+  function renderAll(){ renderBrand(); renderMode(); renderCatalog(); renderSummary(); }
+  renderAll();
+})();
+</script>
+</body>
+</html>

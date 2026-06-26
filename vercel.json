@@ -643,6 +643,16 @@
       "permanent": true
     },
     {
+      "source": "/Build Your Solution.html",
+      "destination": "/build",
+      "permanent": true
+    },
+    {
+      "source": "/Build Your Solution",
+      "destination": "/build",
+      "permanent": true
+    },
+    {
       "source": "/Quick Application.html",
       "destination": "/quick-application",
       "permanent": true
@@ -1025,6 +1035,10 @@
     {
       "source": "/square-features",
       "destination": "/Square%20Features"
+    },
+    {
+      "source": "/build",
+      "destination": "/Build%20Your%20Solution"
     },
     {
       "source": "/quick-application",
