@@ -195,15 +195,15 @@
       ]
     }
     ,
-    square:{ label:'Square', logo:'assets/logos/square.svg', modes:['buy'],
+    square:{ label:'Square', logo:'assets/logos/square.svg', modes:['buy','finance'],
       proc:"Square's published rates apply (2.6% + 10¢ in person, 2.9% + 30¢ online, 3.5% + 15¢ keyed). NextPay reviews your statement to match or beat your effective rate.",
       cats:[{key:'base',label:'Hardware',type:'qty'},{key:'software',label:'Software plan',type:'single'},{key:'accessory',label:'Accessories',type:'qty'}],
       items:[
-        {id:'sq-terminal',cat:'base',name:'Square Terminal',sub:'all-in-one terminal',buy:299,fin:'or $27/mo (12 mo)'},
-        {id:'sq-station',cat:'base',name:'Square Station',sub:'all-in-one register',buy:899,fin:'or $44/mo (24 mo)'},
-        {id:'sq-handheld',cat:'base',name:'Square Handheld',sub:'tableside, tap to pay',buy:399,fin:'or $37/mo (12 mo)'},
+        {id:'sq-terminal',cat:'base',name:'Square Terminal',sub:'all-in-one terminal',buy:299,mo:27,term:'12 mo'},
+        {id:'sq-station',cat:'base',name:'Square Station',sub:'all-in-one register',buy:899,mo:44,term:'24 mo'},
+        {id:'sq-handheld',cat:'base',name:'Square Handheld',sub:'tableside, tap to pay',buy:399,mo:37,term:'12 mo'},
         {id:'sq-stand',cat:'base',name:'Square Stand',sub:'iPad POS stand (iPad sold separately)',buy:149},
-        {id:'sq-reader',cat:'base',name:'Square Reader',sub:'mobile contactless + chip',buy:59,fin:'or $21/mo (12 mo)'},
+        {id:'sq-reader',cat:'base',name:'Square Reader',sub:'mobile contactless + chip',buy:59,mo:21,term:'12 mo'},
         {id:'sq-kioskstand',cat:'base',name:'Square Kiosk Stand',sub:'iPad kiosk (iPad sold separately)',buy:149},
         {id:'sq-free',cat:'software',name:'Square Free Plan',mo:0},
         {id:'sq-plus',cat:'software',name:'Square Plus Plan',sub:'Retail or Restaurant',mo:49},
@@ -225,7 +225,7 @@
   function item(id){ var b=CATALOG[state.brand]; for(var i=0;i<b.items.length;i++){ if(b.items[i].id===id) return b.items[i]; } return null; }
   function isHardware(it){ return it.buy!=null && it.mo!=null; }
   function unitMonthly(it){ // monthly contribution of one unit in current mode
-    if(it.buy!=null && it.mo!=null) return state.mode==='placement'?it.mo:0; // togglable hardware
+    if(it.buy!=null && it.mo!=null) return state.mode==='buy'?0:it.mo; // togglable: monthly unless buying outright
     return it.mo!=null?it.mo:0; // software / monthly-only
   }
   function unitUpfront(it){ if(it.buy!=null && it.mo!=null) return state.mode==='buy'?it.buy:0; if(it.buy!=null) return it.buy; return 0; }
@@ -242,22 +242,28 @@
       state.brand=btn.getAttribute('data-b'); state.qty={}; state.mode=CATALOG[state.brand].modes[0]; renderAll();
     };});
   }
+  var MODEINFO={
+    placement:{label:'Placement · $0 down', note:'Low monthly, nothing upfront — unlimited replacements, no contract.'},
+    buy:{label:'Buy outright', note:'Own the hardware — one-time cost. Software is still billed monthly.'},
+    finance:{label:'Finance monthly', note:'Prefer not to pay upfront? Spread the hardware over 12–24 months, then you own it. Software billed monthly.'}
+  };
   function renderMode(){
     var b=CATALOG[state.brand];
     if(b.modes.length<2){ modebar.style.display='none'; return; }
     modebar.style.display='flex';
-    modebar.innerHTML='<span class="mb-label">Pricing</span>'
-      +'<div class="modeseg">'
-      +'<button data-m="placement" class="'+(state.mode==='placement'?'on':'')+'">Placement · $0 down</button>'
-      +'<button data-m="buy" class="'+(state.mode==='buy'?'on':'')+'">Buy outright</button>'
-      +'</div>'
-      +'<span class="mb-note">'+(state.mode==='placement'?'Low monthly, nothing upfront — unlimited replacements, no contract.':'Own the hardware — one-time cost, software still billed monthly.')+'</span>';
+    var segs=b.modes.map(function(m){ return '<button data-m="'+m+'" class="'+(state.mode===m?'on':'')+'">'+MODEINFO[m].label+'</button>'; }).join('');
+    modebar.innerHTML='<span class="mb-label">Pricing</span><div class="modeseg">'+segs+'</div>'
+      +'<span class="mb-note">'+(MODEINFO[state.mode]?MODEINFO[state.mode].note:'')+'</span>';
     modebar.querySelectorAll('button').forEach(function(btn){ btn.onclick=function(){ state.mode=btn.getAttribute('data-m'); renderAll(); };});
   }
   function priceLabel(it){
     if(it.cat==='software') return money(it.mo)+'<small>/mo'+(it.addl?' · +'+money(it.addl)+'/addl device':'')+'</small>';
-    if(it.buy!=null && it.mo!=null) return state.mode==='buy'? money(it.buy)+'<small>one-time</small>' : money(it.mo)+'<small>/mo placement</small>';
-    if(it.buy!=null) return money(it.buy)+'<small>'+(it.fin||'one-time')+'</small>';
+    if(it.buy!=null && it.mo!=null){
+      if(state.mode==='buy') return money(it.buy)+'<small>one-time</small>';
+      var suf = state.mode==='finance' ? ('/mo'+(it.term?' · '+it.term:'')) : '/mo placement';
+      return money(it.mo)+'<small>'+suf+'</small>';
+    }
+    if(it.buy!=null) return money(it.buy)+'<small>one-time</small>';
     return money(it.mo)+'<small>/mo</small>';
   }
   function renderCatalog(){
@@ -312,16 +318,16 @@
     var b=CATALOG[state.brand];
     var rows='';
     rows+='<div class="row big"><span class="k">Estimated monthly</span><span class="v">'+money(mo)+'/mo</span></div>';
-    rows+='<div class="row"><span class="k">'+(state.mode==='buy'?'Hardware upfront':'Upfront')+'</span><span class="v">'+(state.mode==='buy'?money(up):'$0 down')+'</span></div>';
+    rows+='<div class="row"><span class="k">'+(state.mode==='buy'?'Hardware upfront':'Upfront')+'</span><span class="v">'+(up>0?money(up):'$0 down')+'</span></div>';
     totEl.innerHTML=rows; totEl.style.display='block';
     procEl.textContent=b.proc; procEl.style.display='block';
     ctaEl.style.display='flex';
 
     // build summary string for the quote handoff
     var parts=lines.map(function(L){ return L.q+'× '+L.it.name; });
-    var modeTxt=(b.modes.length<2)?'monthly':(state.mode==='buy'?'buy outright':'placement ($0 down)');
+    var modeTxt={buy:'buy outright',placement:'placement, $0 down',finance:'financed monthly'}[state.mode]||state.mode;
     var summary=b.label+' build ('+modeTxt+'): '+parts.join(', ')
-      +' — Est. '+money(mo)+'/mo'+(state.mode==='buy'&&up>0?' + '+money(up)+' upfront':'');
+      +' — Est. '+money(mo)+'/mo'+(up>0?' + '+money(up)+' upfront':'');
     document.getElementById('quoteBtn').href='/quick-application?brand='+state.brand+'&build='+encodeURIComponent(summary);
   }
 
