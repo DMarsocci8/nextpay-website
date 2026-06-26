@@ -239,7 +239,7 @@
       if(notes){ notes.value='My build from the estimator: '+build; }
     }
     if(brand){
-      var map={clover:'Clover',shift4:'Shift4 Dine'};
+      var map={clover:'Clover',shift4:'Shift4 Dine',square:'Square'};
       var want=map[brand]; if(!want) return;
       var sel=document.querySelector('select[name="solution"]');
       if(sel){ for(var i=0;i<sel.options.length;i++){ if(sel.options[i].text.indexOf(want)>-1){ sel.selectedIndex=i; break; } } }
