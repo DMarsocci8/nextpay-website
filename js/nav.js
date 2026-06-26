@@ -173,7 +173,7 @@
         <div><h4>Partners</h4>
           <a href="/partners">Partner with NextPay</a><a href="/affiliate">Affiliate Program</a><a href="/agent-program">Agent Program</a></div>
         <div><h4>Company</h4>
-          <a href="/why-nextpay">Why NextPay</a><a href="/pricing">Pricing</a><a href="/resources">Resources</a><a href="/quick-application">Quick Application</a><a href="/contact">Contact</a></div>
+          <a href="/why-nextpay">Why NextPay</a><a href="/pricing">Pricing</a><a href="/build">Build Your Solution</a><a href="/resources">Resources</a><a href="/quick-application">Quick Application</a><a href="/contact">Contact</a></div>
       </div>
       <div class="foot-brand">
         <a class="brand" href="/" aria-label="NextPay home"><img src="assets/logos/nextpay-nav.png" alt="NextPay Business Solutions" style="height:40px;width:auto;display:block"></a>

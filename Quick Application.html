@@ -230,6 +230,21 @@
 <script src="js/nav.js"></script>
 <script>
 (function(){
+  /* prefill from the Build Your Solution estimator (?build=... &brand=...) */
+  (function prefillFromBuild(){
+    var qs=new URLSearchParams(location.search);
+    var build=qs.get('build'), brand=qs.get('brand');
+    if(build){
+      var notes=document.querySelector('textarea[name="notes"]');
+      if(notes){ notes.value='My build from the estimator: '+build; }
+    }
+    if(brand){
+      var map={clover:'Clover',shift4:'Shift4 Dine'};
+      var want=map[brand]; if(!want) return;
+      var sel=document.querySelector('select[name="solution"]');
+      if(sel){ for(var i=0;i<sel.options.length;i++){ if(sel.options[i].text.indexOf(want)>-1){ sel.selectedIndex=i; break; } } }
+    }
+  })();
   document.getElementById('aform').addEventListener('submit',function(e){
     e.preventDefault();
     const form=e.target;
