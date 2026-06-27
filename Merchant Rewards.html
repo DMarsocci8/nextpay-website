@@ -190,8 +190,13 @@
   .stat-row{grid-template-columns:1fr}
 }
 @media(max-width:620px){
-  .chain,.steps4,.earn-grid,.rail,.co-grid,.sf-row{grid-template-columns:1fr}
+  .chain,.steps4,.earn-grid,.rail,.sf-row{grid-template-columns:1fr}
   .earn-grid,.rail{grid-template-columns:1fr 1fr}
+  .calc-out .co-grid{grid-template-columns:1fr}   /* match specificity so the override actually applies */
+  .calc-in,.calc-out{padding:28px 22px}
+  .calc-in h3{font-size:24px}
+  .calc-in .ci-sub{font-size:14.5px}
+  .co-stat .co-n{font-size:30px}
 }
 </style>
 </head>
