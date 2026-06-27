@@ -34,16 +34,14 @@
     const fill  = root.querySelector('#rc-fill');
     const out   = root.querySelector('#rc-out');
 
-    function setVol(v){
-      v = Math.max(2000, Math.min(500000, Math.round(v)));
-      range.value = Math.min(250000, v);
-      numWrap.value = fmt(v);
-      const mo = v*RATE, yr = mo*12;
+    // Update slider + points/output for a value WITHOUT touching the text the user is typing.
+    function render(v){
+      const slid = Math.max(2000, Math.min(250000, v||2000));
+      range.value = slid;
+      fill.style.width = ((slid-2000)/(250000-2000)*100)+'%';
+      const mo = (v||0)*RATE, yr = mo*12;
       ptsMo.textContent = fmt(mo);
       ptsYr.textContent = fmt(yr);
-      const pct = (Math.min(250000,v)-2000)/(250000-2000)*100;
-      fill.style.width = pct+'%';
-
       const gc = giftCardsPerYear(yr);
       const best = bestReachable(yr);
       let html = '<div class="rc-out-row"><span class="rc-out-pts">'+fmt(yr)+'</span> points a year</div>';
@@ -52,10 +50,19 @@
       html += ' \u2014 just for running the sales you already make.</p>';
       out.innerHTML = html;
     }
+    // Clamp to range, format with commas, and render \u2014 for the slider, quick buttons and on blur.
+    function setVol(v){
+      v = Math.max(2000, Math.min(500000, Math.round(v||0)));
+      numWrap.value = fmt(v);
+      render(v);
+    }
 
     range.addEventListener('input',()=>setVol(+range.value));
-    numWrap.addEventListener('input',()=>{ const n=+numWrap.value.replace(/[^0-9]/g,''); if(!isNaN(n)) setVol(n); });
-    numWrap.addEventListener('blur',()=>setVol(+numWrap.value.replace(/[^0-9]/g,'')||50000));
+    // While typing: live-update the results from the raw digits, but leave the field exactly as typed
+    // (no min-clamp, no comma reformatting) so you can clear it and type a full amount.
+    numWrap.addEventListener('input',()=>{ render(+numWrap.value.replace(/[^0-9]/g,'') || 0); });
+    // On blur: finalize \u2014 clamp to the allowed range and add commas.
+    numWrap.addEventListener('blur',()=>setVol(+numWrap.value.replace(/[^0-9]/g,'') || 2000));
     root.querySelectorAll('[data-vol]').forEach(b=>b.addEventListener('click',()=>setVol(+b.getAttribute('data-vol'))));
     setVol(50000);
   }
