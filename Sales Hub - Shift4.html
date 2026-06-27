@@ -88,6 +88,20 @@ details.bc[open]>summary .chev{transform:rotate(90deg)}
 .hub-foot{background:var(--navy);color:#9fb1c2;padding:30px 0;margin-top:46px;font-size:13.5px}
 .hub-foot .wrap{display:flex;justify-content:space-between;gap:18px;flex-wrap:wrap}
 .hub-foot a{color:#cdd8e2;font-weight:600}.hub-foot a:hover{color:#fff}
+
+/* discovery call script */
+.dscript{display:flex;flex-direction:column;gap:14px;counter-reset:step;max-width:880px}
+.dstep{position:relative;background:#fff;border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow-sm);padding:20px 22px 20px 60px}
+.dstep::before{counter-increment:step;content:counter(step);position:absolute;left:18px;top:20px;width:28px;height:28px;border-radius:50%;background:var(--teal);color:#fff;font-weight:800;font-size:14px;display:grid;place-items:center}
+.dstep h3{font-size:16.5px;color:var(--navy);margin-bottom:10px}
+.dsay{display:block;font-size:14.5px;color:var(--ink);line-height:1.6;border-left:3px solid var(--teal);background:var(--bg-soft);border-radius:0 10px 10px 0;padding:10px 14px;margin:0 0 10px}
+.dsay + .dsay{margin-top:-2px}
+.dhint{font-size:13px;color:var(--slate);font-style:italic;margin:0 0 10px;display:block}
+.dql{list-style:none;margin:4px 0 0;padding:0;display:flex;flex-direction:column;gap:9px}
+.dql li{font-size:14px;color:var(--ink);line-height:1.5;padding-left:16px;position:relative}
+.dql li::before{content:"";position:absolute;left:0;top:8px;width:6px;height:6px;border-radius:50%;background:var(--teal)}
+.dql li b{color:var(--navy)}
+.dtip{font-size:13px;color:#b9741a;background:rgba(242,163,60,.12);border:1px solid rgba(242,163,60,.32);border-radius:10px;padding:11px 14px;margin-top:6px;line-height:1.5}
 </style>
 </head>
 <body>
@@ -113,6 +127,7 @@ details.bc[open]>summary .chev{transform:rotate(90deg)}
     </div>
     <div class="jump">
       <a href="#price">How to price</a>
+      <a href="#discovery">Discovery script</a>
       <a href="#battlecards">Battlecards</a>
       <a href="#resources">Resources</a>
       <a class="sub" href="#submit">Submit a Shift4 deal →</a>
@@ -153,6 +168,61 @@ details.bc[open]>summary .chev{transform:rotate(90deg)}
         <p>The proposal to present to the prospect — what's included and the offer.</p>
         <a class="go" href="assets/docs/shift4-dine-skytab-proposal.pdf" target="_blank" rel="noopener">Open proposal <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
       </div>
+    </div>
+  </section>
+
+  <!-- DISCOVERY CALL SCRIPT -->
+  <section class="sec" id="discovery">
+    <h2>Shift4 discovery call script</h2>
+    <p class="sub">SDR discovery call template — work through it live. <b>Teal blocks</b> are what you say; <i>italics</i> are coaching cues. You can introduce yourself as NextPay, Shift4, or SkyTab (the old name).</p>
+    <div class="dscript">
+
+      <div class="dstep">
+        <h3>Friendly introduction</h3>
+        <span class="dsay">"Hi [Merchant's Name], this is [Your Name] from NextPay. How's your day going so far?"</span>
+        <span class="dhint">Wait for their response and acknowledge it.</span>
+        <span class="dsay">"I noticed you recently showed some interest in upgrading your point-of-sale system through one of our ads. I wanted to take a few minutes to better understand your current setup and see if we might be able to help improve your operations and save you some money. Does that sound good?"</span>
+      </div>
+
+      <div class="dstep">
+        <h3>Discovery questions</h3>
+        <span class="dsay">"Great! Let's dive in. I just have a few quick questions to get a better picture of your current setup."</span>
+        <ul class="dql">
+          <li><b>Current POS hardware:</b> "Do you currently have cutting-edge POS hardware, or an older system? What's the name of the system you're using?"</li>
+          <li><b>Tableside ordering:</b> "Are you quick-service or sit-down dining? Do your servers use handhelds for tableside ordering, or is everything at a central POS station? Is that something you'd like to implement?"</li>
+          <li><b>Kitchen display units:</b> "Are you using kitchen display units to streamline front-to-back-of-house communication? Do you use remote printers?"</li>
+          <li><b>Reservations system:</b> "Do you have an integrated reservations system? How are you taking reservations today?"</li>
+          <li><b>Gift card program:</b> "Do you offer a gift card program to your customers?"</li>
+          <li><b>Loyalty program:</b> "Are you running a loyalty program to keep customers coming back?"</li>
+          <li><b>Cloud-based reporting:</b> "Are you using cloud-based reporting to track sales and key metrics? Do you have an app to manage your business?"</li>
+          <li><b>Company website:</b> "Do you have a website that integrates with your POS for online orders or reservations?"</li>
+          <li><b>Online ordering:</b> "Are you offering online ordering, and is it integrated with your POS?"</li>
+          <li><b>Delivery integration:</b> "Are you partnered with delivery services like Uber Eats or DoorDash? How are those integrated today?"</li>
+          <li><b>QR code ordering &amp; payments:</b> "Have you implemented QR code ordering or payment options for your customers?"</li>
+          <li><b>EMV &amp; cash advantage:</b> "Are you taking advantage of EMV tap-to-pay terminals? Are you using a dual pricing or cash discount program to eliminate card processing fees?"</li>
+        </ul>
+      </div>
+
+      <div class="dstep">
+        <h3>Identify pain points &amp; opportunities</h3>
+        <span class="dsay">"Thanks for sharing that with me! Based on what you've mentioned, it sounds like there might be some opportunities to improve efficiency and possibly reduce costs."</span>
+        <span class="dhint">Based on their answers, pinpoint the key areas where Shift4 Dine adds value (gaps in tableside, KDS, reservations, loyalty, online ordering, dual pricing, etc.).</span>
+      </div>
+
+      <div class="dstep">
+        <h3>Close &amp; CTA</h3>
+        <span class="dsay">"I think we have some solutions that could really benefit your business — especially in [mention the specific areas they're lacking or could improve]. I'd love to set up a quick demo so you can see firsthand how everything works and how it streamlines your operations. Does [specific day/time] work to hop on a quick call with one of our specialists?"</span>
+        <span class="dhint">If they hesitate, offer an alternative time or ask for their preferred time.</span>
+        <span class="dsay">"If you're ready to move forward, I can get that demo scheduled right now and send you the details. What do you think?"</span>
+        <div class="dtip"><b>Don't forget:</b> add your own email address on the booking form so you get notified of the appointment!</div>
+      </div>
+
+      <div class="dstep">
+        <h3>Thank you &amp; follow-up</h3>
+        <span class="dsay">"Perfect, I've got you down for [confirmed date/time]. You'll receive a confirmation email shortly with all the details. Thanks again for your time today, [Merchant's Name] — looking forward to our next call!"</span>
+        <span class="dhint">If they don't want to schedule right away, ask if it's okay to follow up, and thank them for their time regardless.</span>
+      </div>
+
     </div>
   </section>
 
