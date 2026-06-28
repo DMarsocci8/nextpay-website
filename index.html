@@ -72,7 +72,18 @@
 .why-item .n{font-size:34px;font-weight:800;color:var(--teal-dark);letter-spacing:-.02em;line-height:1}
 .why-item h4{font-size:17px}
 .why-item p{font-size:14px;color:var(--slate);line-height:1.5}
-@media(max-width:1000px){.home-grid{grid-template-columns:1fr;gap:32px;padding:40px 0 60px}.home-media image-slot{height:300px}.sol3,.why4{grid-template-columns:1fr}.ind4{grid-template-columns:1fr 1fr}}
+/* NextLink spotlight */
+.nlband{background:linear-gradient(120deg,var(--navy),var(--navy-3));border-radius:26px;padding:52px;position:relative;overflow:hidden;color:#fff}
+.nlband::after{content:"";position:absolute;right:-100px;top:-120px;width:460px;height:460px;border-radius:50%;background:radial-gradient(circle,rgba(31,194,166,.28),transparent 70%);pointer-events:none}
+.nlband-text{position:relative;z-index:2;max-width:680px}
+.nlband-logo{height:34px;width:auto;display:block;margin-bottom:14px}
+.nlband-tag{display:inline-block;color:var(--teal-bright);font-weight:800;font-size:13px;letter-spacing:.08em;text-transform:uppercase;margin-bottom:10px}
+.nlband h2{font-size:clamp(26px,3.2vw,38px);color:#fff;line-height:1.12}
+.nlband p{color:#c4d0db;margin-top:14px;font-size:17px;line-height:1.6;max-width:600px}
+.nlband-chips{display:flex;flex-wrap:wrap;gap:10px;margin-top:22px}
+.nlband-chips span{display:inline-flex;align-items:center;gap:7px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.16);border-radius:999px;padding:8px 14px;font-size:13.5px;font-weight:600;color:#dbe5ee}
+.nlband .home-cta{margin-top:26px}
+@media(max-width:1000px){.home-grid{grid-template-columns:1fr;gap:32px;padding:40px 0 60px}.home-media image-slot{height:300px}.sol3,.why4{grid-template-columns:1fr}.ind4{grid-template-columns:1fr 1fr}.nlband{padding:36px 26px}}
 @media(max-width:700px){.home-hero h1{font-size:clamp(25px,8.2vw,34px)}}
 </style>
 </head>
@@ -161,6 +172,29 @@
       <div class="sol-card"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3l8 3v6c0 5-3.5 8-8 9-4.5-1-8-4-8-9V6z"/><path d="M9 12l2 2 4-4"/></svg></div><h3>Chargeback Protection</h3><p>Real-time dispute alerts and automated evidence that win back revenue.</p><div class="links"><a href="/chargeback-protection">Learn more <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></div></div>
       <div class="sol-card"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 7l9-4 9 4v10l-9 4-9-4z"/><path d="M3 7l9 4 9-4M12 11v10"/></svg></div><h3>Business Financing</h3><p>NextFund — working capital, equipment, and real-estate financing, funded fast.</p><div class="links"><a href="/financing">Learn more <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></div></div>
       <div class="sol-card"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 15l6-6M10 6l1-1a4 4 0 015 5l-1 1M14 18l-1 1a4 4 0 01-5-5l1-1"/></svg></div><h3>Client Automation</h3><p>NextLink — outreach, reputation, and campaigns that bring in new business.</p><div class="links"><a href="/outreach">Learn more <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- NEXTLINK SPOTLIGHT -->
+<section class="ssec">
+  <div class="wrap">
+    <div class="nlband">
+      <div class="nlband-text">
+        <img class="nlband-logo" src="assets/logos/nextlink-white.svg" alt="NextLink">
+        <span class="nlband-tag">Client engagement &amp; outreach</span>
+        <h2>Turn happy customers into reviews, referrals &amp; repeat business</h2>
+        <p>NextLink automates the follow-up that grows your business — review &amp; reputation requests, referral and win-back campaigns, and email, SMS &amp; voicemail outreach, all connected to your NextPay account.</p>
+        <div class="nlband-chips">
+          <span>★ Reviews &amp; reputation</span>
+          <span>Referral &amp; win-back campaigns</span>
+          <span>Email · SMS · voicemail drops</span>
+        </div>
+        <div class="home-cta">
+          <a class="btn btn-primary" href="/outreach">Explore NextLink
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+        </div>
+      </div>
     </div>
   </div>
 </section>
