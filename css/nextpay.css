@@ -188,7 +188,11 @@ a,button,input,select,textarea,label,summary,[role="button"],.nm-head,.nm-link,.
 .foot-brand{margin-top:46px;text-align:center}
 .foot-brand .brand{display:inline-block}
 .foot-brand p{margin:12px auto 0;max-width:480px;color:#aebccb;font-size:15px;line-height:1.55}
-.foot-bottom{border-top:1px solid rgba(255,255,255,.12);margin-top:30px;padding-top:24px;display:flex;justify-content:space-between;font-size:14px;color:#8497a8}
+.foot-bottom{border-top:1px solid rgba(255,255,255,.12);margin-top:30px;padding-top:24px;display:flex;flex-wrap:wrap;gap:8px 18px;align-items:center;justify-content:space-between;font-size:14px;color:#8497a8}
+.foot-bottom a{display:inline;font-size:14px;padding:0}
+@media(max-width:640px){.foot-bottom{flex-direction:column;gap:6px;text-align:center}}
+/* keep form controls from overflowing their container (e.g. long <select> options) */
+input,select,textarea{max-width:100%}
 
 /* ---------- product / option cards ---------- */
 .pcard{display:flex;flex-direction:column;background:#fff;border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow-sm);overflow:hidden;transition:.18s}
