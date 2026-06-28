@@ -118,13 +118,21 @@
       <div class="nm-sec">
         <button class="nm-head" type="button">Solutions <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg></button>
         <div class="nm-body">
+          <span class="nm-grp">Accept Payments</span>
           <a href="/pos-systems">POS Systems</a>
           <a href="/terminals">Credit Card Terminals</a>
           <a href="/invoicing">Online Payments &amp; Invoicing</a>
           <a href="/integrations">Integrations</a>
+          <span class="nm-grp">Run Your Business</span>
           <a href="/payroll">Payroll &amp; Workers Comp</a>
+          <a href="/hr-compliance">HR &amp; Compliance</a>
+          <a href="/bookkeeping">Bookkeeping</a>
           <a href="/fee-programs">Zero Fee Programs</a>
+          <a href="/chargeback-protection">Fraud &amp; Chargeback Protection</a>
+          <span class="nm-grp">Grow Your Business</span>
+          <a class="nm-feat" href="/outreach"><b>NextLink — Client Engagement &amp; Outreach</b><span>Reviews, referrals &amp; automated outreach</span></a>
           <a href="/financing">Business Financing</a>
+          <a href="/brokerage">Business Brokerage</a>
           <a href="/merchant-rewards">Merchant Rewards</a>
         </div>
       </div>
