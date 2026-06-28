@@ -174,6 +174,12 @@
     const price=g('.pprice')?g('.pprice').innerHTML:'';
     const logoEl=g('.cardbrand-img');
     const cmpEl=g('[data-compare]'); const cmp=cmpEl?cmpEl.getAttribute('data-compare'):null;
+    // map this device's brand to a Build Your Solution slug (only brands the builder supports)
+    const brandTxt=((card.getAttribute('data-brand')||'')+' '+name).toLowerCase();
+    let buildSlug=null;
+    if(brandTxt.indexOf('shift4')>-1||brandTxt.indexOf('skytab')>-1) buildSlug='shift4';
+    else if(brandTxt.indexOf('square')>-1) buildSlug='square';
+    else if(brandTxt.indexOf('clover')>-1) buildSlug='clover';
     let ov=document.querySelector('.np-modal-ov'); if(ov) ov.remove();
     ov=document.createElement('div'); ov.className='np-modal-ov';
     const m=document.createElement('div'); m.className='np-modal np-detail';
@@ -187,7 +193,9 @@
       +'<div class="pspecs np-detail-specs">'+specs+'</div>'
       +(price?'<div class="np-detail-price">'+price+'</div>':'')
       +'<div class="np-detail-pricing'+(focusPricing?' focus':'')+'"><b>Custom processing rate</b><span>We\u2019ll match or beat your current rate \u2014 get a quote for your exact pricing on this device.</span></div>'
-      +'<div class="np-detail-cta"><a class="btn btn-primary" target="_blank" rel="noopener" href="/quick-application">Get a quote '+NPARROW+'</a>'
+      +'<div class="np-detail-cta">'
+      +(buildSlug?'<a class="btn btn-primary" href="/build?brand='+buildSlug+'">Build your system '+NPARROW+'</a>':'')
+      +'<a class="'+(buildSlug?'btn btn-outline':'btn btn-primary')+'" target="_blank" rel="noopener" href="/quick-application">Get a quote '+NPARROW+'</a>'
       +'<a class="btn btn-outline" target="_blank" rel="noopener" href="/statement-upload">Upload a statement</a>'
       +(cmp?'<button class="btn btn-compare" data-compare="'+cmp+'"><span class="cmp-label">Add to compare</span></button>':'')
       +'<a class="btn btn-outline" href="/quiz">Take the quiz</a></div>';
