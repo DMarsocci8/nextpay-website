@@ -293,6 +293,18 @@ body.np-cmp-pad{padding-bottom:150px}
 .np-crlabel.alt{background:var(--bg-soft)}
 .np-crcell{padding:14px 16px;font-size:14px;border-left:1px solid var(--line);border-top:1px solid var(--line);display:flex;align-items:center;justify-content:center;text-align:center;line-height:1.4}
 .np-crcell.alt{background:var(--bg-soft)}
+@media(max-width:680px){
+  .np-ctable{min-width:0}
+  .np-chcell{padding:14px 9px 13px}
+  .np-chimg{width:84px;height:66px}
+  .np-chname{font-size:13.5px}
+  .np-chbrand-logo,.np-brandcell{height:16px}
+  .np-crlabel{font-size:12px;padding:12px 9px}
+  .np-crcell{font-size:12.5px;padding:12px 9px}
+  .np-ccorner,.np-crlabel{box-shadow:6px 0 8px -6px rgba(8,17,28,.18)}
+  .np-chcta .btn{padding:8px 12px;font-size:12.5px}
+  .np-chx{top:5px;right:5px;width:23px;height:23px;font-size:15px}
+}
 .np-dash{color:var(--slate-2)}
 
 /* device detail modal */
