@@ -106,7 +106,9 @@
 
     const scroll=document.createElement('div'); scroll.className='np-modal-scroll';
     const table=document.createElement('div'); table.className='np-ctable';
-    table.style.gridTemplateColumns='200px repeat('+tray.length+',minmax(190px,1fr))';
+    const mob=window.matchMedia('(max-width:680px)').matches;
+    const labelW=mob?116:200, colW=mob?150:190;
+    table.style.gridTemplateColumns=labelW+'px repeat('+tray.length+',minmax('+colW+'px,1fr))';
 
     // header row: product cards
     const corner=document.createElement('div'); corner.className='np-ccorner'; table.appendChild(corner);
