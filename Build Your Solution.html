@@ -54,6 +54,7 @@
 .bcat{margin-bottom:24px}
 .bcat h2{font-size:15px;font-weight:800;letter-spacing:.04em;text-transform:uppercase;color:var(--teal-dark);margin-bottom:12px;display:flex;align-items:center;gap:9px}
 .bcat h2::after{content:"";flex:1;height:1px;background:var(--line)}
+.bcat-hint{font-size:12.5px;color:var(--slate);margin:-6px 0 12px}
 .bitem{display:flex;align-items:center;gap:14px;background:#fff;border:1px solid var(--line);border-radius:13px;padding:14px 16px;margin-bottom:10px;box-shadow:var(--shadow-sm)}
 .bitem.sel{border-color:var(--teal);box-shadow:0 0 0 1.5px var(--teal)}
 .bitem .bi-main{flex:1;min-width:0}
@@ -273,6 +274,7 @@
       var items=b.items.filter(function(x){return x.cat===c.key;});
       if(!items.length) return;
       html+='<div class="bcat"><h2>'+c.label+'</h2>';
+      if(c.type==='single') html+='<p class="bcat-hint">Choose one plan — it covers every device in your build (extra devices billed at the lower per-device rate).</p>';
       items.forEach(function(it){
         var q=state.qty[it.id]||0; var sel=q>0;
         var ctrl;
@@ -311,10 +313,21 @@
       totEl.style.display='none'; procEl.style.display='none'; ctaEl.style.display='none'; return;
     }
     var mo=0, up=0;
+    // count base "devices" so per-device software pricing can scale
+    var devices=0; lines.forEach(function(L){ if(L.it.cat==='base') devices+=L.q; });
     itemsEl.innerHTML=lines.map(function(L){
-      var lm=unitMonthly(L.it)*L.q, lu=unitUpfront(L.it)*L.q; mo+=lm; up+=lu;
+      var lu=unitUpfront(L.it)*L.q, lm, label;
+      if(L.it.cat==='software'){
+        var extra=(L.it.addl && devices>1)?(devices-1)*L.it.addl:0;
+        lm=(L.it.mo||0)+extra;
+        label=L.it.name+((L.it.addl && devices>1)?' <span style="color:var(--slate-2)">('+devices+' devices)</span>':'');
+      } else {
+        lm=unitMonthly(L.it)*L.q;
+        label='<b>'+L.q+'×</b> '+L.it.name;
+      }
+      mo+=lm; up+=lu;
       var amt = lu>0 ? money(lu) : (lm>0?money(lm)+'/mo':'$0');
-      return '<div class="sm-line"><span class="sl-name"><b>'+L.q+'×</b> '+L.it.name+'</span><span class="sl-amt">'+amt+'</span></div>';
+      return '<div class="sm-line"><span class="sl-name">'+label+'</span><span class="sl-amt">'+amt+'</span></div>';
     }).join('');
     var b=CATALOG[state.brand];
     var rows='';
