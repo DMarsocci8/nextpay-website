@@ -117,15 +117,23 @@
     <div class="nav-mobile">
       <div class="nm-sec">
         <button class="nm-head" type="button">Solutions <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg></button>
-        <div class="nm-body">
-          <a href="/pos-systems">POS Systems</a>
-          <a href="/terminals">Credit Card Terminals</a>
-          <a href="/invoicing">Online Payments &amp; Invoicing</a>
-          <a href="/integrations">Integrations</a>
-          <a href="/payroll">Payroll &amp; Workers Comp</a>
-          <a href="/fee-programs">Zero Fee Programs</a>
-          <a href="/financing">Business Financing</a>
-          <a href="/merchant-rewards">Merchant Rewards</a>
+        <div class="nm-body nm-sol">
+          <span class="nm-grp">Accept Payments</span>
+          <a class="nm-rich" href="/pos-systems"><b>Point of Sale Systems</b><span>Clover, Shift4Dine, Square &amp; more</span></a>
+          <a class="nm-rich" href="/terminals"><b>Credit Card Terminals</b><span>PAX, Dejavoo, SwipeSimple &amp; more</span></a>
+          <a class="nm-rich" href="/invoicing"><b>Online Payments &amp; Invoicing</b><span>Gateways, invoicing &amp; recurring billing</span></a>
+          <a class="nm-rich" href="/integrations"><b>Integrations</b><span>QuickBooks, FieldPulse, CRMs &amp; more</span></a>
+          <span class="nm-grp">Run Your Business</span>
+          <a class="nm-rich" href="/payroll"><b>Payroll &amp; Workers Comp</b><span>Pay your team, stay covered</span></a>
+          <a class="nm-rich" href="/hr-compliance"><b>HR &amp; Compliance</b><span>HR tools for growing teams</span></a>
+          <a class="nm-rich" href="/bookkeeping"><b>Bookkeeping</b><span>Reconciliation, reports &amp; tax-ready books</span></a>
+          <a class="nm-rich" href="/fee-programs"><b>Zero Fee Programs</b><span>Dual pricing, cash discount &amp; surcharge</span></a>
+          <a class="nm-rich" href="/chargeback-protection"><b>Fraud &amp; Chargeback Protection</b><span>Fraud screening &amp; dispute management</span></a>
+          <span class="nm-grp">Grow Your Business</span>
+          <a class="nm-rich nm-feat" href="/outreach"><b>NextLink — Client Automation Outreach</b><span>LinkedIn, email &amp; voicemail drops</span></a>
+          <a class="nm-rich" href="/financing"><b>Business Financing</b><span>Working capital &amp; cash advances</span></a>
+          <a class="nm-rich" href="/brokerage"><b>Business Brokerage</b><span>Buy, sell, or get a valuation</span></a>
+          <a class="nm-rich" href="/merchant-rewards"><b>Merchant Rewards</b><span>Earn points on every dollar processed</span></a>
         </div>
       </div>
       <div class="nm-sec">
