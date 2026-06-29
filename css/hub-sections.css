@@ -47,3 +47,22 @@
 .sec-h .ltr, .mod-head .mnum, .phase-head .pn{
   color:#1FC2A6 !important;
 }
+
+/* ---- page-unique section dividers (verified collision-free) ---- */
+/* Mindset — numbered mantras (.m > h2); Shift4 Dine Settings — setting
+   groups (.dsec .dh). NOTE: .step is intentionally NOT here — it's used
+   for sub-steps on 8 other pages; Statement Decoder bands its own .step
+   via a page-scoped rule. */
+.m > h2,
+.dsec .dh{
+  background:#0C1B2A !important;
+  color:#fff !important;
+  border:0 !important;
+  border-radius:14px !important;
+  padding:16px 22px !important;
+  margin:0 0 18px !important;
+  box-shadow:0 6px 18px rgba(12,27,42,.14);
+}
+.dsec .dh h2{ color:#fff !important; }
+.m > h2 .n, .dsec .dh .ic{ color:#1FC2A6 !important; }
+.dsec .dh .controls{ color:#c4d0db !important; }
