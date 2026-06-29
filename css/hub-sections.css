@@ -1,0 +1,49 @@
+/* ============================================================
+   Sales Hub — navy section bands (INTERNAL hub pages only)
+   Linked only from "Sales Hub*.html"; the public site never
+   loads this file, so it can't affect nextpaypos.com.
+
+   Goal: break each page into clearly separated sections by
+   giving the real section-divider headings a navy band with
+   white title + bright-teal eyebrow — matching the hub home.
+
+   Deliberately targets ONLY genuine section dividers:
+   - section.sec > h2        (dominant content-page template)
+   - .sec-head / .sec-h      (KB, statement guides, lead gen)
+   - .prog-head              (Pricing programs)
+   - .mod-head               (Training modules)
+   - .ben-head               (Pay Less Earn More)
+   - .phase-head             (My Dashboard)
+   It intentionally leaves alone: accordion buttons (.obj-head,
+   .faq-head), table headers (.row-h, .t-head), the printed
+   proposal header (.pp-head), workflow steps (.flow-head),
+   page heroes (.pg-head), and Scripts' .blk cards.
+   ============================================================ */
+
+.sec > h2,
+.sec-head,
+.sec-h,
+.prog-head,
+.mod-head,
+.ben-head,
+.phase-head{
+  background:#0C1B2A !important;
+  color:#fff !important;
+  border:0 !important;
+  border-radius:14px !important;
+  padding:16px 22px !important;
+  margin:0 0 18px !important;
+  box-shadow:0 6px 18px rgba(12,27,42,.14);
+}
+
+/* keep titles white inside the banded wrappers */
+.sec-head h2, .sec-h h2, .prog-head h2, .mod-head h2,
+.ben-head h2, .ben-head span, .phase-head h2{
+  color:#fff !important;
+}
+
+/* eyebrows / small labels go bright teal for contrast on navy */
+.sec-head .eyebrow, .sec-h .eyebrow,
+.sec-h .ltr, .mod-head .mnum, .phase-head .pn{
+  color:#1FC2A6 !important;
+}
