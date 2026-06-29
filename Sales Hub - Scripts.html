@@ -60,7 +60,8 @@ main.wrap{padding:30px 0 10px}
   <p class="lead">Word-for-word scripts organized by product, plus ready-to-send text and email templates. Pick a tab, personalize the <b>[brackets]</b>, and go. Every script follows the same flow — open, get to the decision maker, ask leading questions, close for the appointment, handle objections.</p>
   <p style="margin-top:14px"><a href="Sales Hub - Discovery Playbook.html" style="display:inline-flex;align-items:center;gap:8px;background:var(--teal);color:#fff;font-weight:700;font-size:14px;border-radius:999px;padding:10px 18px">📋 New: Discovery Call Playbook — how to approach &amp; what to ask first <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></p>
   <div class="tabs">
-    <button class="active" data-s="cash">Cash Discount</button>
+    <button class="active" data-s="situations">Situations</button>
+    <button data-s="cash">Cash Discount</button>
     <button data-s="rewards">Rewards</button>
     <button data-s="chively">Chively POS</button>
     <button data-s="square">Square Switch</button>
@@ -81,7 +82,49 @@ main.wrap{padding:30px 0 10px}
 <main class="wrap">
 
   <!-- CASH DISCOUNT SCRIPT -->
-  <div class="script show" id="cash">
+  <!-- SITUATIONS (cross-product, payments-first) -->
+  <div class="script show" id="situations">
+    <p class="tpl-intro">Scenario scripts for <b>any</b> situation — written payments-first (lower fees / free rate review). Get the foot in the door, then layer on the product script for what they actually want. <b>[brackets]</b> = personalize.</p>
+    <div class="blk"><h2>Cold call — savings opener</h2>
+      <p class="say"><span class="who">Agent:</span> "Hi [name], [your name] with NextPay Business Solutions. I'll keep it quick — I help [business type] owners pay less to accept cards, and most are surprised once we actually look. Are you the right person to talk processing with?"</p>
+      <p class="cond">Goal: a yes to a free rate review or a 10-minute call. Don't pitch a product yet.</p>
+    </div>
+    <div class="blk"><h2>Voicemail</h2>
+      <p class="say"><span class="who">Agent:</span> "Hi [name], [your name] with NextPay — I help local businesses lower what they pay to accept cards, and I think there's room to save you money. No pressure; I'll send a quick text too. Reach me at [number]. Thanks!"</p>
+      <p class="cond">Under 15 seconds. Always follow a voicemail with a text.</p>
+    </div>
+    <div class="blk"><h2>Walk-in / door (in person)</h2>
+      <p class="say"><span class="who">Agent:</span> "Hey, I'm [your name] — I work with businesses on the block to cut card processing costs. I'm not here to sell you anything today; grab a recent statement and I'll tell you in two minutes whether I can save you money or not. Who handles that here?"</p>
+      <p class="cond">Disarm first. Ask for the statement or the owner's best time — don't pitch in the doorway.</p>
+    </div>
+    <div class="blk"><h2>Gatekeeper</h2>
+      <p class="say"><span class="who">Agent:</span> "Hi, maybe you can help me — I work with businesses on lowering their card fees. Who's the best person for that, and is now an okay time to reach them?"</p>
+      <p class="cond">Friendly and brief. Treat the gatekeeper as an ally, not an obstacle.</p>
+    </div>
+    <div class="blk"><h2>Follow-up — no response / no-show</h2>
+      <p class="say"><span class="who">Agent:</span> "Hi [name] — we hadn't connected, which usually means the timing's off or it slipped down the list. Totally fine either way. Should I close it out, or is it worth a quick look at lowering your fees in [month]? Either answer helps."</p>
+      <p class="cond">Negative-reverse re-engage — giving permission to say no often gets a real reply.</p>
+    </div>
+    <div class="blk"><h2>Referral introduction</h2>
+      <p class="say"><span class="who">Agent:</span> "Hi [name] — [referrer] over at [business] thought we should connect. I helped them [lower their fees / set up their POS], and they figured it'd be worth showing you the same. Open to a quick look?"</p>
+      <p class="cond">Lead with the referrer's name and result. Warmest intro you'll get — book the time fast.</p>
+    </div>
+    <div class="blk"><h2>Inbound lead (they reached out)</h2>
+      <p class="say"><span class="who">Agent:</span> "Hi [name], thanks for reaching out! Quick so I point you right — what made you start looking: the fees, the system, support, or something else? … Got it. Let me ask a couple quick questions and I'll bring the right options."</p>
+      <p class="cond">They're warm — don't over-pitch. Find the trigger, then run discovery.</p>
+    </div>
+    <div class="blk"><h2>"Let me think about it" — the save</h2>
+      <p class="say"><span class="who">Agent:</span> "Totally fair. Usually when someone says that it's one of three things — price, timing, or you're just not sure it's worth the switch. Which is closest? I'd rather solve the real concern than chase you."</p>
+      <p class="cond">Isolate the real objection instead of accepting the stall, then handle that one thing.</p>
+    </div>
+    <div class="blk"><h2>Text / DM follow-up</h2>
+      <p class="say"><span class="who">Agent:</span> "Hi [name], [your name] from NextPay — you'd asked me to follow up. No pressure; if now's not the time just say so. If it is, I'll keep it to 10 minutes and bring a couple options that fit. [number]"</p>
+      <p class="cond">Short, low-pressure, single ask. Pair with a voicemail or after a missed call.</p>
+    </div>
+  </div>
+
+  <!-- CASH DISCOUNT SCRIPT -->
+  <div class="script" id="cash">
     <div class="blk"><h2>Opening</h2>
       <p class="say"><span class="who">Agent:</span> "Hi, this is [your name] with NextPay Business Solutions. Quick question — am I speaking with the owner or the person who handles your credit card processing?"</p>
       <p class="cond">If yes → proceed. If gatekeeper:</p>
