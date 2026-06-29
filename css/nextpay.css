@@ -31,6 +31,8 @@
 
 *{box-sizing:border-box}
 html{scroll-behavior:smooth}
+/* anchor jumps clear the sticky 78px nav so section tops aren't hidden underneath */
+[id]{scroll-margin-top:90px}
 body{
   margin:0;font-family:var(--font);color:var(--ink);background:var(--bg);
   -webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;
