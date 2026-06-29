@@ -88,7 +88,7 @@
       <div class="steps3">
         <div class="step3"><span class="n">1</span><b>Apply</b><span>Share your business basics &amp; what you're interested in.</span></div>
         <div class="step3"><span class="n">2</span><b>We review</b><span>A specialist matches you to the right solution &amp; pricing.</span></div>
-        <div class="step3"><span class="n">3</span><b>We reach out</b><span>We follow up within 1-2 business days to finish setup.</span></div>
+        <div class="step3"><span class="n">3</span><b>We reach out</b><span>We follow up within 24-48 hours to finish setup.</span></div>
       </div>
 
       <form id="aform">
@@ -217,7 +217,7 @@
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
           <div class="trustrow">
             <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg>No obligation</span>
-            <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg>1-2 day follow-up</span>
+            <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg>24-48 hour response</span>
             <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg>Transparent pricing</span>
           </div>
         </div>
@@ -266,7 +266,7 @@
     fd.append('Lead source','Quick Application page');
     const btn=form.querySelector('button[type=submit]'); if(btn){btn.disabled=true;btn.textContent='Submitting…';}
     function finish(){
-      document.getElementById('scard').innerHTML='<div class="sdone"><div class="sdico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 13l4 4L19 7"/></svg></div><h2>Thanks, '+first+' — we got it.</h2><p>A NextPay specialist will review your application and reach out within 1-2 business days to match you to the right solution and finish setup. Keep an eye on your inbox and phone.</p><div class="ssubmit" style="margin-top:24px"><a class="btn btn-outline" href="/">Back to home</a></div></div>';
+      document.getElementById('scard').innerHTML='<div class="sdone"><div class="sdico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 13l4 4L19 7"/></svg></div><h2>Thanks, '+first+' — we got it.</h2><p>A NextPay specialist will review your application and reach out within 24-48 hours to match you to the right solution and finish setup. Keep an eye on your inbox and phone.</p><div class="ssubmit" style="margin-top:24px"><a class="btn btn-outline" href="/">Back to home</a></div></div>';
       window.scrollTo({top:0,behavior:'smooth'});
     }
     fetch('https://formsubmit.co/ajax/dom@nextpaypos.com',{method:'POST',headers:{'Accept':'application/json'},body:fd})

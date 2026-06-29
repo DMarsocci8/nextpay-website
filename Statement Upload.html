@@ -87,7 +87,7 @@
       <div class="steps3">
         <div class="step3"><span class="n">1</span><b>Upload</b><span>Drop a recent statement (PDF or photo).</span></div>
         <div class="step3"><span class="n">2</span><b>We analyze</b><span>A specialist reviews your effective rate &amp; fees.</span></div>
-        <div class="step3"><span class="n">3</span><b>We contact you</b><span>Get a clear side-by-side within one business day.</span></div>
+        <div class="step3"><span class="n">3</span><b>We contact you</b><span>Get a clear side-by-side within 24-48 hours.</span></div>
       </div>
       <form id="sform">
         <label class="drop" id="drop">
@@ -112,7 +112,7 @@
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
           <div class="trustrow">
             <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg>No obligation</span>
-            <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg>1-2 day turnaround</span>
+            <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg>24-48 hour response</span>
             <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg>We match or beat your rate</span>
           </div>
         </div>
@@ -148,7 +148,7 @@
     fd.append('Statement file', file.files[0] ? file.files[0].name+' (merchant will email/send file separately)' : 'not attached');
     const btn=form.querySelector('button[type=submit]'); if(btn){btn.disabled=true;btn.textContent='Sending…';}
     function finish(){
-      document.getElementById('scard').innerHTML='<div class="sdone"><div class="sdico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 13l4 4L19 7"/></svg></div><h2>Thanks, '+first+' \u2014 we\u2019re on it.</h2><p>A NextPay specialist will review your statement and reach out within one business day with a clear, side-by-side breakdown of your savings. Keep an eye on your inbox and phone.</p><div class="ssubmit" style="margin-top:24px"><a class="btn btn-outline" href="/terminals">Back to terminals</a></div></div>';
+      document.getElementById('scard').innerHTML='<div class="sdone"><div class="sdico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 13l4 4L19 7"/></svg></div><h2>Thanks, '+first+' \u2014 we\u2019re on it.</h2><p>A NextPay specialist will review your statement and reach out within 24-48 hours with a clear, side-by-side breakdown of your savings. Keep an eye on your inbox and phone.</p><div class="ssubmit" style="margin-top:24px"><a class="btn btn-outline" href="/terminals">Back to terminals</a></div></div>';
       window.scrollTo({top:0,behavior:'smooth'});
     }
     fetch('https://formsubmit.co/ajax/dom@nextpaypos.com',{method:'POST',headers:{'Accept':'application/json'},body:fd})
