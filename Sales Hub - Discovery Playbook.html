@@ -1,0 +1,273 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Discovery Call Playbook — NextPay Sales Hub</title>
+<link rel="icon" href="assets/favicon.ico" sizes="any">
+<link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+<link rel="stylesheet" href="css/nextpay.css">
+<style>
+.hub-bar{position:sticky;top:0;z-index:60;background:var(--navy);color:#fff;border-bottom:1px solid rgba(255,255,255,.10)}
+.hub-bar-inner{display:flex;align-items:center;gap:18px;height:66px;max-width:var(--maxw);margin:0 auto;padding:0 28px}
+.hub-bar img.logo{height:34px;width:auto;display:block}
+.hub-bar .pipe{width:1px;height:26px;background:rgba(255,255,255,.18)}
+.hub-bar .hub-tag{font-weight:800;font-size:15px;color:#fff;display:flex;align-items:center;gap:9px}
+.hub-bar .hub-tag .badge{font-size:10.5px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;background:var(--teal);color:#fff;padding:4px 9px;border-radius:999px}
+.hub-bar .right{margin-left:auto;display:flex;align-items:center;gap:20px}
+.hub-bar .right a{color:#cdd8e2;font-weight:600;font-size:14.5px}.hub-bar .right a:hover{color:#fff}
+
+.pg-head{background:linear-gradient(180deg,var(--navy),var(--navy-2));color:#fff}
+.pg-head .wrap{padding:30px 0 32px}
+.crumbs{display:flex;gap:8px;align-items:center;font-size:13.5px;color:#9fb1c2;padding-bottom:14px;flex-wrap:wrap}
+.crumbs a{color:#cdd8e2;font-weight:600}.crumbs a:hover{color:#fff}.crumbs .sep{opacity:.5}
+.pg-head h1{font-size:clamp(26px,3.6vw,38px);color:#fff;letter-spacing:-.02em}
+.pg-head h1 em{color:var(--teal-bright);font-style:normal}
+.pg-head p.lead{color:#c4d0db;margin-top:10px;max-width:720px;font-size:16px;line-height:1.55}
+.jump{display:flex;gap:9px;flex-wrap:wrap;margin-top:20px}
+.jump a{display:inline-flex;align-items:center;gap:7px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.16);border-radius:999px;padding:8px 14px;font-size:13px;font-weight:700;color:#eaf1f6}
+.jump a:hover{background:rgba(31,194,166,.18);border-color:var(--teal-bright);color:#fff}
+
+main.wrap{padding:30px 0 10px;max-width:920px}
+.sec{margin-bottom:36px;scroll-margin-top:84px}
+.sec h2{font-size:22px;letter-spacing:-.02em;margin-bottom:6px}
+.sec .sub{font-size:14.5px;color:var(--slate);margin-bottom:18px;max-width:820px;line-height:1.6}
+.sec p.body{font-size:15px;color:var(--ink);line-height:1.65;margin-bottom:12px;max-width:840px}
+.sec p.body b{color:var(--navy)}
+.quote{font-size:18px;font-weight:800;color:var(--navy);letter-spacing:-.01em;line-height:1.4;border-left:3px solid var(--teal);padding:8px 0 8px 18px;margin:4px 0 16px;max-width:780px}
+.quote span{display:block;font-size:13px;font-weight:600;color:var(--slate);margin-top:6px}
+
+/* principle cards */
+.pcards{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+@media(max-width:640px){.pcards{grid-template-columns:1fr}}
+.pcard{background:#fff;border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow-sm);padding:18px 20px}
+.pcard h3{font-size:15.5px;color:var(--navy);margin-bottom:6px;display:flex;align-items:center;gap:9px}
+.pcard h3 .n{flex:none;width:24px;height:24px;border-radius:7px;background:rgba(20,161,140,.14);color:var(--teal-dark);font-size:13px;font-weight:800;display:grid;place-items:center}
+.pcard p{font-size:13.8px;color:var(--slate);line-height:1.55}
+
+/* question list */
+.qcards{display:flex;flex-direction:column;gap:11px}
+.qcard{background:#fff;border:1px solid var(--line);border-radius:13px;box-shadow:var(--shadow-sm);padding:15px 18px}
+.qcard b{display:block;font-size:15px;color:var(--navy);margin-bottom:3px}
+.qcard p{font-size:13.5px;color:var(--slate);line-height:1.5}
+.qcard .why{font-size:12.5px;color:var(--teal-dark);font-weight:700;margin-top:5px}
+
+/* scripts */
+.dscript{display:flex;flex-direction:column;gap:14px}
+.dstep{background:#fff;border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow-sm);padding:18px 20px}
+.dstep h3{font-size:16px;color:var(--navy);margin-bottom:10px}
+.dsay{display:block;font-size:14.5px;color:var(--ink);line-height:1.6;border-left:3px solid var(--teal);background:var(--bg-soft);border-radius:0 10px 10px 0;padding:11px 15px;margin:0 0 10px}
+.dhint{font-size:13px;color:var(--slate);font-style:italic;margin:0 0 6px;display:block}
+
+/* email examples */
+.eg-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+@media(max-width:720px){.eg-grid{grid-template-columns:1fr}}
+.eg{border-radius:var(--radius);border:1px solid var(--line);box-shadow:var(--shadow-sm);overflow:hidden;background:#fff}
+.eg .eg-h{padding:11px 16px;font-weight:800;font-size:13px;letter-spacing:.04em;text-transform:uppercase;display:flex;align-items:center;gap:8px}
+.eg.bad .eg-h{background:rgba(192,57,46,.08);color:#c0392b}
+.eg.good .eg-h{background:rgba(20,161,140,.1);color:var(--teal-dark)}
+.eg .eg-b{padding:15px 17px;font-size:13.5px;color:var(--ink);line-height:1.55;white-space:pre-line}
+.eg .eg-b b{color:var(--navy)}
+
+/* do/don't */
+.dd-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+@media(max-width:640px){.dd-grid{grid-template-columns:1fr}}
+.dd{border-radius:var(--radius);padding:18px 20px;border:1px solid var(--line)}
+.dd.do{background:rgba(20,161,140,.06);border-color:rgba(20,161,140,.3)}
+.dd.dont{background:rgba(192,57,46,.05);border-color:rgba(192,57,46,.25)}
+.dd h3{font-size:15px;margin-bottom:10px;display:flex;align-items:center;gap:8px}
+.dd.do h3{color:var(--teal-dark)}.dd.dont h3{color:#c0392b}
+.dd ul{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:9px}
+.dd li{font-size:13.8px;color:var(--ink);line-height:1.5;padding-left:18px;position:relative}
+.dd.do li::before{content:"✓";position:absolute;left:0;color:var(--teal-dark);font-weight:800}
+.dd.dont li::before{content:"✕";position:absolute;left:0;color:#c0392b;font-weight:800}
+
+.note{font-size:13.5px;color:var(--slate);background:var(--bg-soft);border:1px solid var(--line);border-radius:12px;padding:15px 17px;margin-top:18px;line-height:1.55}
+.note a{color:var(--teal-dark);font-weight:700}
+
+.hub-foot{background:var(--navy);color:#9fb1c2;padding:30px 0;margin-top:46px;font-size:13.5px}
+.hub-foot .wrap{display:flex;justify-content:space-between;gap:18px;flex-wrap:wrap;max-width:var(--maxw)}
+.hub-foot a{color:#cdd8e2;font-weight:600}.hub-foot a:hover{color:#fff}
+</style>
+</head>
+<body>
+
+<div class="hub-bar">
+  <div class="hub-bar-inner">
+    <a href="Sales Hub.html" style="display:flex;align-items:center" aria-label="Sales Hub home"><img class="logo" src="assets/logos/nextpay-nav.png" alt="NextPay"></a>
+    <span class="pipe"></span>
+    <span class="hub-tag">Sales Hub <span class="badge">Internal</span></span>
+    <div class="right"><a href="Sales Hub - Scripts.html">Scripts</a><a href="Sales Hub.html">Hub home</a></div>
+  </div>
+</div>
+
+<header class="pg-head">
+  <div class="wrap">
+    <div class="crumbs"><a href="Sales Hub.html">Sales Hub</a><span class="sep">/</span><span>Discovery Call Playbook</span></div>
+    <h1>Discovery Call <em>Playbook</em></h1>
+    <p class="lead">How to approach a merchant, what to ask first, and the mini-scripts to get your foot in the door — for any product. The big idea: <b>discover before you pitch, keep it simple, and get in front of them.</b></p>
+    <div class="jump">
+      <a href="#mindset">The mindset</a>
+      <a href="#questions">What to ask first</a>
+      <a href="#scripts">Mini-scripts</a>
+      <a href="#email">Email: lean vs too much</a>
+      <a href="#fit">Match the product</a>
+      <a href="#dodont">Do / Don't</a>
+    </div>
+  </div>
+</header>
+
+<main class="wrap">
+
+  <!-- MINDSET -->
+  <section class="sec" id="mindset">
+    <h2>The mindset — get your foot in the door</h2>
+    <p class="quote">"Get your foot in the door. Don't oversell. Don't sell him a full POS if he didn't tell you that's what he's looking for. Get the account and the processing, and upsell later — if he even needs it."</p>
+    <p class="body">Most deals are lost by giving <b>too much, too soon</b>. When you dump every feature on a merchant, they think <i>"man, I'd have to change everything"</i> — and they either stay where they are or just switch to another processor. Your job on the first interaction isn't to pitch the whole catalog; it's to <b>learn enough to point them in one direction</b> and earn the next conversation.</p>
+    <div class="pcards">
+      <div class="pcard"><h3><span class="n">1</span>Lead with their reason, not your products</h3><p>Think about <b>why they entertained you in the first place</b>. There's a pain or a trigger — anchor everything to that, not to your feature list.</p></div>
+      <div class="pcard"><h3><span class="n">2</span>Discover before you pitch</h3><p>If your email or pitch is getting long, it's a sign you <b>don't know enough yet</b>. Get the details first; the right solution becomes obvious once you do.</p></div>
+      <div class="pcard"><h3><span class="n">3</span>Get in front of them</h3><p>Discovery questions land far better on a <b>call or in person</b> than in a long email. "Send me an email" often means a slow ghost — push for 10 minutes live.</p></div>
+      <div class="pcard"><h3><span class="n">4</span>Keep it simple</h3><p>Especially with old-school owners. Don't open complex cans of worms (inventory, integrations) unless it's a real pain point they asked you to solve.</p></div>
+    </div>
+    <div class="note"><b>Foot-in-the-door ladder:</b> get the <b>account &amp; processing</b> first → prove you're easy to work with → <b>upsell hardware/POS and add-ons later</b>, only if and when they need them. A standalone-terminal merchant doesn't need a full POS pitch on day one.</div>
+  </section>
+
+  <!-- QUESTIONS -->
+  <section class="sec" id="questions">
+    <h2>What to ask first — the short list</h2>
+    <p class="sub">You only need a handful of answers to know where to take it. Get these (ideally live), and <b>save the deep stuff for later</b>.</p>
+    <div class="qcards">
+      <div class="qcard"><b>What are you using now?</b><p>Standalone card terminal, or a full POS system? Who's your current processor?</p><p class="why">Why: tells you if this is a simple processing switch or a system sale. Old-school + a big bank usually = just a terminal.</p></div>
+      <div class="qcard"><b>What made you open to a conversation?</b><p>What's the pain or trigger — fees, fraud, a clunky system, bad support?</p><p class="why">Why: that pain is your whole pitch. Solve it; don't bury it under features.</p></div>
+      <div class="qcard"><b>Terminal or full system?</b><p>Are you just looking to take payments, or do you want a full POS?</p><p class="why">Why: if they only want a terminal, all the feature/integration questions don't matter yet — don't ask them.</p></div>
+      <div class="qcard"><b>Do you want to eliminate your processing fees?</b><p>Would you rather keep paying fees, or pass them to the customer (dual pricing / cash discount) and get to 0%?</p><p class="why">Why: this single question shapes the whole proposal and is a strong reason to switch.</p></div>
+      <div class="qcard"><b>Can I see a recent statement?</b><p>To match or beat your current rate, I'll take a quick look at a statement.</p><p class="why">Why: gets you the real numbers and a clear, no-risk reason for the next touch.</p></div>
+    </div>
+    <div class="note"><b>Only after they say they want a full system</b> do you go deeper: which features matter most (reporting, inventory, scheduling, loyalty, online ordering, integrations), buy vs. $0-down placement, etc. Don't lead with these — they overwhelm.</div>
+  </section>
+
+  <!-- SCRIPTS -->
+  <section class="sec" id="scripts">
+    <h2>Mini-scripts</h2>
+    <p class="sub"><b>Teal blocks</b> are what you say; <i>italics</i> are the coaching note. Swap in the merchant's name and their actual pain.</p>
+    <div class="dscript">
+
+      <div class="dstep">
+        <h3>Opener (in person / phone)</h3>
+        <span class="dsay">"Quick question — how are you taking cards right now? … Got it. What made you open to looking at something different?"</span>
+        <span class="dhint">Curiosity first. Let them name the pain. You're qualifying, not pitching.</span>
+      </div>
+
+      <div class="dstep">
+        <h3>When they say "just email me"</h3>
+        <span class="dsay">"Happy to. Honestly, to point you the right way instead of sending a wall of options, the fastest thing is 10 minutes on the phone — are you around [day/time]? I'll come with one or two ideas that actually fit."</span>
+        <span class="dhint">"Send me an email" is often a soft ghost. Always try to convert it to a live conversation. If they still want email, send the lean one below.</span>
+      </div>
+
+      <div class="dstep">
+        <h3>Anchor to their pain (not your catalog)</h3>
+        <span class="dsay">"You mentioned [their pain — e.g., getting burned on keyed-in charges]. The right setup fixes exactly that, and ideally we get you a better rate than you've got now. Let me ask a couple quick things so I don't oversell you."</span>
+        <span class="dhint">One sentence of value tied to their words. Then back to discovery.</span>
+      </div>
+
+      <div class="dstep">
+        <h3>Keep it simple / don't overwhelm</h3>
+        <span class="dsay">"If what you've got works, we don't need to reinvent it — let's just fix the part that's costing you and make sure you're not overpaying. We can always add more later."</span>
+        <span class="dhint">Reassure the change-averse owner. Low-commitment beats a big rip-and-replace pitch.</span>
+      </div>
+
+      <div class="dstep">
+        <h3>Lock the next step</h3>
+        <span class="dsay">"Tell you what — send me a recent statement and let's grab 10 minutes [day/time]. I'll show you exactly where I can help and what it'd look like. No pressure either way."</span>
+        <span class="dhint">Always leave with a concrete next action: a call booked and/or a statement coming.</span>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- EMAIL -->
+  <section class="sec" id="email">
+    <h2>The email: lean vs. too much</h2>
+    <p class="sub">If they insist on email, keep it short, anchor to their pain, ask <b>two</b> questions max, and push for a call. The long version below feels thorough — but it makes the merchant feel like they have to change everything.</p>
+    <div class="eg-grid">
+      <div class="eg bad">
+        <div class="eg-h">⚠ Too much — overwhelms</div>
+        <div class="eg-b">Hi Peter,
+
+A few systems come to mind that offer 3D Secure… <b>but then a long list:</b> full POS vs terminal? customer-facing display, handheld, cash drawer, printer, barcode scanner? buy or $0-down placement? reporting, invoicing, inventory, label printing, scheduling/payroll, website, advertising, loyalty, gift cards? any third-party integrations? cash discount or surcharge? …
+
+<i>Result: he doesn't know enough to answer all that, feels like a big project, and goes quiet.</i></div>
+      </div>
+      <div class="eg good">
+        <div class="eg-h">✓ Lean — gets you the next step</div>
+        <div class="eg-b">Subject: Great meeting you, Peter
+
+Hi Peter — great meeting you. You mentioned getting hit on a couple of keyed-in charges; the right setup locks that down with built-in 3-D Secure, and I'd aim to beat what you're paying now.
+
+Two quick things so I point you the right way:
+1) Are you running a standalone terminal, or a full POS today?
+2) Want to keep paying card fees, or look at eliminating them (customer covers the fee)?
+
+Fastest path is 10 minutes by phone — are you around [day/time]? I'll keep it simple and bring one or two options that fit.
+
+Best, [Name]</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FIT -->
+  <section class="sec" id="fit">
+    <h2>Match the product to the merchant</h2>
+    <p class="sub">Read the room, then point — don't present everything. A few signals:</p>
+    <div class="pcards">
+      <div class="pcard"><h3>Old-school / wants simple</h3><p>Lead with an <b>easy, familiar</b> system and a clean signup. Simpler is better — fewer decisions, less to learn.</p></div>
+      <div class="pcard"><h3>Specific pain (fraud, fees, support)</h3><p>Solve <b>that one thing</b> first (e.g., 3-D Secure for keyed-in fraud, dual pricing for fees). Everything else is secondary.</p></div>
+      <div class="pcard"><h3>Just needs to take payments</h3><p>A <b>terminal + processing</b> is the foot in the door. Don't sell a full POS unless they ask. Upsell later.</p></div>
+      <div class="pcard"><h3>Genuinely wants a full system</h3><p>Now go feature-deep — and use the tools: <a href="../quick-application" style="color:var(--teal-dark);font-weight:700">Build a config</a> or run the <a href="../quiz" style="color:var(--teal-dark);font-weight:700">quiz</a> to match them.</p></div>
+    </div>
+    <div class="note"><b>Prep tip:</b> create your own merchant application and run through it once so the signup is second nature when you're live with a prospect. Then link the rest of what we offer from the website rather than listing it in the room.</div>
+  </section>
+
+  <!-- DO / DONT -->
+  <section class="sec" id="dodont">
+    <h2>Do / Don't</h2>
+    <div class="dd-grid">
+      <div class="dd do">
+        <h3>Do</h3>
+        <ul>
+          <li>Ask why they're open to looking — anchor to that pain</li>
+          <li>Get them on a call or in person</li>
+          <li>Keep it simple; offer the smallest thing that solves the problem</li>
+          <li>Get the account &amp; processing first, then upsell</li>
+          <li>Ask if they want to eliminate processing fees (dual pricing)</li>
+          <li>Always leave with a next step (call booked / statement coming)</li>
+        </ul>
+      </div>
+      <div class="dd dont">
+        <h3>Don't</h3>
+        <ul>
+          <li>Dump the whole feature list in a long email</li>
+          <li>Sell a full POS to someone who only wanted a terminal</li>
+          <li>Open complex cans of worms (inventory, integrations) too early</li>
+          <li>Lead with rates if they care more about safety/ease</li>
+          <li>Rely on "I'll email you" — that's where deals go to ghost</li>
+          <li>Make a change-averse owner feel they must replace everything</li>
+        </ul>
+      </div>
+    </div>
+    <div class="note">Pair this with the <a href="Sales Hub - Shift4.html#discovery">Shift4 discovery script</a> for a product-specific question set, and the <a href="Sales Hub - Scripts.html">Scripts</a> library for openers and objections.</div>
+  </section>
+
+</main>
+
+<footer class="hub-foot">
+  <div class="wrap">
+    <span>NextPay Sales Hub · Discovery Call Playbook · Internal use only.</span>
+    <span><a href="Sales Hub - Request Access.html#suggest">💡 Suggest / Request</a> · <a href="Sales Hub.html">← Back to hub</a></span>
+  </div>
+</footer>
+<script src="js/hub-nav.js"></script>
+</body>
+</html>
