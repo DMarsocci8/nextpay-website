@@ -143,7 +143,7 @@
       <h2>Build the proposal</h2>
       <p class="hint">The preview updates as you type. Picking a product seeds its base line &amp; add‑ons.</p>
 
-      <div class="fg"><label for="f-product">Product</label><select id="f-product"></select></div>
+      <div class="fg"><label for="f-product">Product</label><select id="f-product"><option value="">Select a product…</option></select></div>
       <div class="f2col">
         <div class="fg"><label for="f-biz">Business name</label><input id="f-biz" type="text" placeholder="Business Name"></div>
         <div class="fg"><label for="f-contact">Contact name</label><input id="f-contact" type="text" placeholder="Owner / manager"></div>
@@ -235,13 +235,13 @@
 
 <script>
 var PRODUCTS=[
-  {id:'chively',     name:'Chively',               cat:'POS Systems',        logo:'chively-white.png', dark:true},
-  {id:'square',      name:'Square POS',            cat:'POS Systems',        logo:'square.svg'},
   {id:'clover',      name:'Clover POS',            cat:'POS Systems',        logo:'clover.png'},
   {id:'shift4',      name:'Shift4 Dine',           cat:'POS Systems',        logo:'shift4.png'},
+  {id:'square',      name:'Square POS',            cat:'POS Systems',        logo:'square.svg'},
   {id:'quantic',     name:'Quantic POS',           cat:'POS Systems',        logo:'quantic.svg'},
   {id:'korona',      name:'Korona POS',            cat:'POS Systems',        logo:'korona.png'},
   {id:'nrs',         name:'NRS POS',               cat:'POS Systems',        logo:'nrs.png'},
+  {id:'chively',     name:'Chively',               cat:'POS Systems',        logo:'chively-white.png', dark:true},
   {id:'dejapay',     name:'DejaPay Pro',           cat:'POS Systems',        logo:'dejapay.webp'},
   {id:'pax',         name:'PAX Terminal',          cat:'Terminals',          logo:'pax.svg'},
   {id:'dejavoo',     name:'Dejavoo Terminal',      cat:'Terminals',          logo:'dejavoo.png'},
@@ -294,16 +294,18 @@ var otPick=document.getElementById('otPick');
 var OT_GENERIC=[{d:'Installation',a:''},{d:'Delivery / Shipping',a:''},{d:'Menu / Programming',a:''},{d:'Setup fee',a:''}];
 var curOT=[];
 
-(function(){ var cats={}; PRODUCTS.forEach(function(p){ (cats[p.cat]=cats[p.cat]||[]).push(p); });
+(function(){ picker.innerHTML='<option value="">Select a product…</option>';
+  var cats={}; PRODUCTS.forEach(function(p){ (cats[p.cat]=cats[p.cat]||[]).push(p); });
   ['POS Systems','Terminals','Online & Gateways','Invoicing'].forEach(function(c){ if(!cats[c])return;
     var og=document.createElement('optgroup'); og.label=c;
-    cats[c].forEach(function(p){ var o=document.createElement('option'); o.value=p.id; o.textContent=p.name; og.appendChild(o); }); picker.appendChild(og); }); })();
+    cats[c].forEach(function(p){ var o=document.createElement('option'); o.value=p.id; o.textContent=p.name; og.appendChild(o); }); picker.appendChild(og); });
+  picker.value=''; })();
 (function(){ var m=(location.search+location.hash).match(/[?&#]product=([\w-]+)/); if(m){ for(var i=0;i<PRODUCTS.length;i++){ if(PRODUCTS[i].id===m[1]){ picker.value=m[1]; break; } } } })();
 
 var prof=load();
 [['name','name'],['cell','cell'],['email','email']].forEach(function(p){ if(prof[p[1]]) document.getElementById('f-'+p[0]).value=prof[p[1]]; });
 
-function prod(){ var id=picker.value||PRODUCTS[0].id; for(var i=0;i<PRODUCTS.length;i++){ if(PRODUCTS[i].id===id) return PRODUCTS[i]; } return PRODUCTS[0]; }
+function prod(){ var id=picker.value; if(!id) return null; for(var i=0;i<PRODUCTS.length;i++){ if(PRODUCTS[i].id===id) return PRODUCTS[i]; } return null; }
 
 function rowEl(kind,d,amt,q){
   var div=document.createElement('div'); div.className='row';
@@ -330,8 +332,19 @@ function readRows(container){
 }
 
 function seedProduct(){
-  var c=PCONF[prod().id]||{base:{d:'',m:''},addons:[],program:'',rate:''};
+  var p=prod();
   monthlyRows.innerHTML=''; upfrontRows.innerHTML=''; onetimeRows.innerHTML='';
+  if(!p){
+    document.getElementById('f-program').value='';
+    document.getElementById('f-rate').value='';
+    document.getElementById('f-inc-l').value=''; document.getElementById('f-inc-a').value=''; document.getElementById('f-inc-t').value='';
+    addonPick.innerHTML='<option value="">+ Add‑on…</option>'; addonPick.style.display='none';
+    curOT=OT_GENERIC.slice();
+    otPick.innerHTML='<option value="">+ Common…</option>';
+    curOT.forEach(function(o,i){ var op=document.createElement('option'); op.value=i; op.textContent=o.d+(o.a?(' — '+money(o.a)):''); otPick.appendChild(op); });
+    return;
+  }
+  var c=PCONF[p.id]||{base:{d:'',m:''},addons:[],program:'',rate:''};
   addMonthly(c.base.d, c.base.m, 1);
   document.getElementById('f-program').value=c.program||'';
   document.getElementById('f-rate').value=c.rate||'';
@@ -396,13 +409,14 @@ function render(){
   var notes=val('f-notes');
   var notesHtml=notes?'<div class="pp-notes"><div class="pp-sec-h">Additional comments</div><p>'+esc(notes)+'</p></div>':'';
   var repRows=''; if(phone) repRows+='<span>'+esc(phone)+'</span>'; if(email) repRows+='<span>'+esc(email)+'</span>'; repRows+='<span>www.nextpaypos.com</span>';
-  var pbox='<div class="pl'+(p.dark?' dark':'')+'"><img src="/assets/logos/'+p.logo+'" alt="'+esc(p.name)+'"></div>';
+  var pbox=p?'<div class="pl'+(p.dark?' dark':'')+'"><img src="/assets/logos/'+p.logo+'" alt="'+esc(p.name)+'"></div>':'';
+  var prodHtml=p?'<div class="pp-prod">Solution: <b>'+esc(p.name)+'</b> · '+esc(p.cat)+'</div>':'<div class="pp-prod">Solution: <b>—</b></div>';
   var forLine='<b>'+esc(biz)+'</b>'+(contact?' · '+esc(contact):'');
 
   stage.innerHTML='<div class="sheet">'
     +'<div class="pp-head"><span class="np"><img src="/assets/logos/nextpay.png" alt="NextPay"></span>'+pbox+'</div>'
     +'<div class="pp-title"><h1>Proposal</h1><div class="meta">'+forLine+'<br>Prepared by '+esc(name)+'<br>'+date+'</div></div>'
-    +'<div class="pp-prod">Solution: <b>'+esc(p.name)+'</b> · '+esc(p.cat)+'</div>'
+    +prodHtml
     +costHtml+incHtml+procHtml+notesHtml
     +'<div class="pp-foot"><div class="rep"><b>'+esc(name)+'</b><div class="rows2">'+repRows+'</div></div>'
     +'<div class="dis">Pricing is an estimate, valid 30 days, and subject to underwriting, card mix, and final agreement. Not a binding offer.</div></div>'
@@ -418,7 +432,7 @@ picker.addEventListener('change', function(){ seedProduct(); render(); });
 document.getElementById('addMonthly').addEventListener('click', function(){ addMonthly('',''); render(); });
 document.getElementById('addUpfront').addEventListener('click', function(){ addUpfront('',''); render(); });
 document.getElementById('addOnetime').addEventListener('click', function(){ addOnetime('',''); render(); });
-addonPick.addEventListener('change', function(){ var c=PCONF[prod().id]; var a=c&&c.addons[this.value]; if(a){ addMonthly(a.d,a.m,1); render(); } this.value=''; });
+addonPick.addEventListener('change', function(){ var pp=prod(); var c=pp&&PCONF[pp.id]; var a=c&&c.addons[this.value]; if(a){ addMonthly(a.d,a.m,1); render(); } this.value=''; });
 otPick.addEventListener('change', function(){ var o=curOT[this.value]; if(o){ addOnetime(o.d, (o.a===''||o.a==null)?'':o.a, 1); render(); } this.value=''; });
 ['f-biz','f-contact','f-credit-l','f-credit-a','f-inc-l','f-inc-a','f-inc-t','f-program','f-rate','f-notes'].forEach(function(id){ document.getElementById(id).addEventListener('input', render); });
 ['name','cell','email'].forEach(function(k){ document.getElementById('f-'+k).addEventListener('input', function(){

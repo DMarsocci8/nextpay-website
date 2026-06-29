@@ -118,16 +118,16 @@
 .hub-recent .rd{font-size:13px;color:var(--slate)}
 .hub-recent .rmeta{margin-left:auto;font-size:12.5px;color:var(--slate-2);font-weight:600;white-space:nowrap}
 
-/* section heading */
-.hub-sec-head{display:flex;align-items:flex-end;justify-content:space-between;gap:20px;flex-wrap:wrap;margin-bottom:2px}
-.hub-sec-head h2{font-size:26px;letter-spacing:-.02em}
-.hub-sec-head .eyebrow{margin:0 0 6px}
+/* section heading — navy band to break up sections */
+.hub-sec-head{display:flex;align-items:flex-end;justify-content:space-between;gap:20px;flex-wrap:wrap;background:#0C1B2A;border-radius:14px;padding:18px 24px;margin:0 0 20px;box-shadow:0 6px 18px rgba(12,27,42,.14)}
+.hub-sec-head h2{font-size:26px;letter-spacing:-.02em;color:#fff}
+.hub-sec-head .eyebrow{margin:0 0 6px;color:#1FC2A6}
 /* grouped sections on the hub grid */
 .hub-group{padding-top:30px}
-.hub-group .hub-sec-head{border-top:1px solid var(--line);padding-top:24px}
 .hub-group:first-child{padding-top:4px}
-.hub-group:first-child .hub-sec-head{border-top:0;padding-top:0}
-.hub-group .hub-sec-head .eyebrow{color:var(--teal-dark)}
+.hub-group .hub-sec-head{border-top:0;padding-top:18px}
+.hub-group:first-child .hub-sec-head{padding-top:18px}
+.hub-group .hub-sec-head .eyebrow{color:#1FC2A6}
 .hub-empty{display:none;text-align:center;padding:50px 20px;color:var(--slate)}
 .hub-empty.show{display:block}
 
