@@ -98,9 +98,9 @@
           <div class="fsec-h">Business</div>
           <div class="frow">
             <div class="field full"><label>Legal business name</label><input required name="legal_business" placeholder="Legal business name"></div>
-            <div class="field full"><label>DBA / business name <span class="opt">(if different)</span></label><input name="dba" placeholder="DBA / business name"></div>
-            <div class="field"><label>Business type / industry <span class="opt">(optional)</span></label>
-              <select name="industry">
+            <div class="field full"><label>DBA / business name</label><input required name="dba" placeholder="DBA / business name"></div>
+            <div class="field"><label>Business type / industry</label>
+              <select required name="industry">
                 <option value="">Select one</option>
                 <option>Retail</option>
                 <option>Restaurant / Food &amp; Beverage</option>
@@ -109,8 +109,8 @@
                 <option>High Risk &amp; Specialty</option>
                 <option>Other</option>
               </select></div>
-            <div class="field"><label>Approx. monthly card volume <span class="opt">(optional)</span></label>
-              <select name="volume">
+            <div class="field"><label>Approx. monthly card volume</label>
+              <select required name="volume">
                 <option value="">Select a range</option>
                 <option>Under $20,000</option>
                 <option>$20,000 – $60,000</option>
@@ -128,8 +128,8 @@
             <div class="field"><label>Last name</label><input required name="last" placeholder="Last name"></div>
             <div class="field"><label>Email</label><input required type="email" name="email" placeholder="Email address"></div>
             <div class="field"><label>Phone</label><input required type="tel" name="phone" placeholder="Phone number"></div>
-            <div class="field"><label>City <span class="opt">(optional)</span></label><input name="city" placeholder="City"></div>
-            <div class="field"><label>State <span class="opt">(optional)</span></label><input name="state" placeholder="State"></div>
+            <div class="field"><label>City</label><input required name="city" placeholder="City"></div>
+            <div class="field"><label>State</label><input required name="state" placeholder="State"></div>
           </div>
         </div>
 
@@ -183,14 +183,14 @@
                 </optgroup>
               </select>
             </div>
-            <div class="field full"><label>How many units / devices do you need? <span class="opt">(optional)</span></label>
-              <input type="number" min="0" name="units" placeholder="Number of units / devices">
+            <div class="field full"><label>How many units / devices do you need?</label>
+              <input required type="number" min="1" name="units" placeholder="Number of units / devices">
               <span class="hint">Stations, terminals or licenses you'd want to start with.</span></div>
           </div>
 
           <div class="field full" style="margin-top:16px">
-            <label>What other or additional solutions are you interested in, if any?</label>
-            <span class="hint" style="margin-bottom:4px">Select all that apply.</span>
+            <label>What other or additional solutions are you interested in?</label>
+            <span class="hint" style="margin-bottom:4px">Select at least one (choose "No other solutions" if none apply).</span>
             <div class="checks">
               <label class="chk"><input type="checkbox" name="additional" value="Client Engagement / Outreach">Client Engagement</label>
               <label class="chk"><input type="checkbox" name="additional" value="Business Brokerage">Brokerage</label>
@@ -206,8 +206,8 @@
         <div class="fsec">
           <div class="fsec-h">A few more details</div>
           <div class="frow">
-            <div class="field full"><label>Current processor / POS <span class="opt">(optional)</span></label><input name="current_processor" placeholder="Current processor / POS"></div>
-            <div class="field full"><label>Anything else we should know? <span class="opt">(optional)</span></label><textarea name="notes" placeholder="Anything else we should know?"></textarea></div>
+            <div class="field full"><label>Current processor / POS</label><input required name="current_processor" placeholder="Current processor / POS"></div>
+            <div class="field full"><label>Anything else we should know?</label><textarea required name="notes" placeholder="Anything else we should know?"></textarea></div>
           </div>
         </div>
 
@@ -245,13 +245,20 @@
       if(sel){ for(var i=0;i<sel.options.length;i++){ if(sel.options[i].text.indexOf(want)>-1){ sel.selectedIndex=i; break; } } }
     }
   })();
+  // clear the "select at least one" error as soon as a box is ticked
+  document.querySelectorAll('input[name="additional"]').forEach(function(c){
+    c.addEventListener('change',function(){ var f=document.querySelector('input[name="additional"]'); if(f) f.setCustomValidity(''); });
+  });
   document.getElementById('aform').addEventListener('submit',function(e){
     e.preventDefault();
     const form=e.target;
+    // require at least one "additional solutions" checkbox
+    const adds=Array.from(form.querySelectorAll('input[name="additional"]:checked')).map(c=>c.value);
+    const firstChk=form.querySelector('input[name="additional"]');
+    if(firstChk){ firstChk.setCustomValidity(adds.length?'':'Please select at least one option (or "No other solutions").'); }
+    if(!form.reportValidity()){ return; }
     const fd=new FormData(form);
     const first=fd.get('first')||'there';
-    // collect additional solutions (checkboxes) into one readable field
-    const adds=fd.getAll('additional');
     fd.append('Additional solutions', adds.length?adds.join(', '):'none selected');
     fd.append('_subject','New Quick Application — '+(fd.get('legal_business')||fd.get('dba')||'NextPay'));
     fd.append('_cc','payments@nextpaypos.com,alexander@nextpaypos.com');
