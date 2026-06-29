@@ -62,6 +62,7 @@ main.wrap{padding:30px 0 10px}
   <div class="tabs">
     <button class="active" data-s="situations">Situations</button>
     <button data-s="openers">Product Openers</button>
+    <button data-s="rebuttals">Rebuttals</button>
     <button data-s="cash">Cash Discount</button>
     <button data-s="rewards">Rewards</button>
     <button data-s="chively">Chively POS</button>
@@ -69,6 +70,11 @@ main.wrap{padding:30px 0 10px}
     <button data-s="clover">Clover</button>
     <button data-s="dine">Shift4 Dine</button>
     <button data-s="retail">Retail POS</button>
+    <button data-s="quantic">Quantic</button>
+    <button data-s="korona">Korona</button>
+    <button data-s="nrs">NRS</button>
+    <button data-s="dejapay">DejaPay Pro</button>
+    <button data-s="pays">PAYS</button>
     <button data-s="gateways">Gateways</button>
     <button data-s="terminals">Terminals</button>
     <button data-s="invoicing">Invoicing</button>
@@ -188,6 +194,43 @@ main.wrap{padding:30px 0 10px}
     <div class="blk"><h2>Invoicing</h2>
       <p class="say"><span class="who">Agent:</span> "Hi [name] — if you bill customers with invoices or recurring charges, I help you get paid faster with pay-by-link that settles to one account. How do you invoice and collect right now?"</p>
       <p class="cond">Best when: services, contractors, B2B, subscriptions.</p>
+    </div>
+  </div>
+
+  <!-- REBUTTALS (objection library) -->
+  <div class="script" id="rebuttals">
+    <p class="tpl-intro">Rebuttals for what you'll hear most — universal first, then product-specific. The move: <b>agree → reframe → ask</b>. Isolate the real concern instead of accepting the stall.</p>
+    <div class="blk"><h2>Price &amp; rate</h2>
+      <div class="obj"><div class="o">"Your rate isn't lower than what I have."</div><div class="r">"Then I'm not the right call — and I'll tell you straight. But most owners compare the homepage rate, not their effective rate. Send me a statement; if I can't beat it, I'll say so."</div></div>
+      <div class="obj"><div class="o">"It's only a small savings."</div><div class="r">"Fair — but it's the same money every month for years, and we can stack rewards or get you to 0% with dual pricing. Small per month, real per year."</div></div>
+      <div class="obj"><div class="o">"Are there fees to switch?"</div><div class="r">"No switch fees on our side, and we cover onboarding, install and training. The only thing that changes is you keep more of every sale."</div></div>
+    </div>
+    <div class="blk"><h2>Happy / not interested</h2>
+      <div class="obj"><div class="o">"We're not interested."</div><div class="r">"Totally fair — most owners say that before they see the numbers. If I could show you found money in five minutes, worth it? If not, I'll leave you alone."</div></div>
+      <div class="obj"><div class="o">"We're happy with our processor."</div><div class="r">"Good — keep them if you like them. The real question is whether they're paying you back in rewards or getting you to 0%. If not, you're leaving money on the table. Quick look?"</div></div>
+      <div class="obj"><div class="o">"We just signed a contract."</div><div class="r">"Makes sense to let it settle. Let me do a free review now so you know where you stand, and I'll circle back before renewal. No pressure."</div></div>
+    </div>
+    <div class="blk"><h2>Timing &amp; effort</h2>
+      <div class="obj"><div class="o">"It's not a good time / too busy."</div><div class="r">"That's exactly why I keep it to 10 minutes and do the heavy lifting. When's calmer — early morning or end of day?"</div></div>
+      <div class="obj"><div class="o">"I don't want the hassle of switching."</div><div class="r">"We handle setup, migration and training, and you run as-is until the new one's ready. No downtime, no scramble."</div></div>
+      <div class="obj"><div class="o">"Just send me some info."</div><div class="r">"Happy to — but a generic email won't tell you your numbers. Give me 10 minutes and I'll send something built for your business. Around [day/time]?"</div></div>
+    </div>
+    <div class="blk"><h2>Trust &amp; skepticism</h2>
+      <div class="obj"><div class="o">"Sounds too good to be true."</div><div class="r">"I get it — it's not magic, it's [dual pricing / a real rewards program / interchange-plus]. Let me run your actual numbers and you decide."</div></div>
+      <div class="obj"><div class="o">"I've been burned by a processor before."</div><div class="r">"Then you'll appreciate this: transparent pricing, no long-term contract, and a real person — me — you can call. Let me earn it on a small first step."</div></div>
+    </div>
+    <div class="blk"><h2>Dual pricing concerns</h2>
+      <div class="obj"><div class="o">"My customers will be upset about a fee."</div><div class="r">"Most aren't — it's a small difference, posted clearly, and plenty pay cash or debit. Shops around you already do it. We give you the signage and compliant receipts so it's done right."</div></div>
+      <div class="obj"><div class="o">"Is dual pricing even legal?"</div><div class="r">"Yes — done correctly with proper signage and both prices shown. We set it up compliantly so you're covered."</div></div>
+      <div class="obj"><div class="o">"I don't want to lose card sales."</div><div class="r">"You won't — people still pay by card all day; the fee just stops coming out of your pocket. We can even ease in with a smaller card-fee program."</div></div>
+    </div>
+    <div class="blk"><h2>Product-specific</h2>
+      <div class="obj"><div class="o">Square — "I can just sign up myself."</div><div class="r">"You can — on their standard rate with no one in your corner. With us it's the same Square, plus a real rep, a rate review and rewards on top. Same system, better deal."</div></div>
+      <div class="obj"><div class="o">Clover — "I don't want a monthly payment for hardware."</div><div class="r">"That's the beauty of placement — $0 down, low monthly, with unlimited replacements and no restocking fees. You're never stuck with dead equipment."</div></div>
+      <div class="obj"><div class="o">Shift4 Dine — "We don't want to retrain staff."</div><div class="r">"It's point-and-click and we train your team for free, plus do the menu programming. Most teams are up to speed the same day — and $5,000 to switch makes the hour worth it."</div></div>
+      <div class="obj"><div class="o">NRS / Retail — "My register works fine."</div><div class="r">"Keep what works — but if it's not scanning fast, tracking inventory, verifying age, or earning you anything, it's costing you quietly. Let me show you the difference for your store."</div></div>
+      <div class="obj"><div class="o">Terminal — "I just need something simple."</div><div class="r">"Perfect — that's exactly what this is: tap, chip, swipe, nothing to learn. And I lower your rate while I'm at it. Want me to get one out to you?"</div></div>
+      <div class="obj"><div class="o">Rewards — "Is there a catch or extra cost?"</div><div class="r">"No added cost to start earning — it's built into your account, powered by Tuzo. I'll show the numbers side by side so there's no surprise."</div></div>
     </div>
   </div>
 
@@ -458,6 +501,151 @@ main.wrap{padding:30px 0 10px}
       <div class="obj"><div class="o">"I already use QuickBooks."</div><div class="r">"Perfect — we integrate with it, so you keep your books and just get faster payments and lower fees on top."</div></div>
       <div class="obj"><div class="o">"My customers pay by check."</div><div class="r">"Many still will — this just makes card and ACH easy and surcharge-friendly for the ones who want it, so you get paid quicker."</div></div>
       <div class="obj"><div class="o">"I'm not very techy."</div><div class="r">"These are built for the field, not the office — and we set it all up and train you. You'll send your first invoice the same day."</div></div>
+    </div>
+  </div>
+
+  <!-- QUANTIC -->
+  <div class="script" id="quantic">
+    <div class="blk"><h2>Opening</h2>
+      <p class="say"><span class="who">Agent:</span> "Hi, [your name] with NextPay — am I speaking with the owner or whoever runs your point-of-sale?"</p>
+    </div>
+    <div class="blk"><h2>Insight opener (Challenger)</h2>
+      <p class="say"><span class="who">Agent:</span> "A lot of owners are stuck on a clunky register or paying a fortune for an iPad system that drops the second the internet hiccups. I set restaurants and retailers up on Quantic — modern cloud POS that runs on iPad and keeps working offline. What are you on now?"</p>
+    </div>
+    <div class="blk"><h2>Discovery (SPIN)</h2>
+      <ul class="qs">
+        <li><b>Situation:</b> "Restaurant, retail, or convenience? One location or more? What's at the counter today?"</li>
+        <li><b>Problem:</b> "Where does the current system fall short — speed, reporting, going down, the cost?"</li>
+        <li><b>Implication:</b> "When it goes down mid-rush or you can't pull a real report, what does that cost you?"</li>
+        <li><b>Need-payoff:</b> "If you had a cloud system that runs offline, gives real reporting, and pairs with 0% processing, worth a look?"</li>
+      </ul>
+    </div>
+    <div class="blk"><h2>The value bridge</h2>
+      <p class="say"><span class="who">Agent:</span> "Quantic runs on iPad and smart terminals, works offline, and handles restaurant and retail — and we pair it with dual pricing so your processing goes to zero. Software starts at $60/mo, $50 each additional terminal, with a discount if you prepay the year."</p>
+    </div>
+    <div class="blk"><h2>Close</h2>
+      <p class="say"><span class="who">Agent:</span> "Let me do a 15-minute demo on your business — today or tomorrow?"</p>
+    </div>
+    <div class="blk"><h2>Objections &amp; responses</h2>
+      <div class="obj"><div class="o">"We already have an iPad POS."</div><div class="r">"Then you know the upside — this is the same ease plus offline reliability and 0% processing on top. Worth a side-by-side?"</div></div>
+      <div class="obj"><div class="o">"Sounds expensive."</div><div class="r">"It's $60/mo and pays for itself once your processing drops to zero. Let me show the math on your volume."</div></div>
+      <div class="obj"><div class="o">"We're not very techy."</div><div class="r">"It's built to be simple, and we set it up, build your menu, and train you. You'll be running it day one."</div></div>
+    </div>
+  </div>
+
+  <!-- KORONA -->
+  <div class="script" id="korona">
+    <div class="blk"><h2>Opening</h2>
+      <p class="say"><span class="who">Agent:</span> "Hi, [your name] with NextPay — are you the owner or the person who runs the registers?"</p>
+    </div>
+    <div class="blk"><h2>Insight opener (Challenger)</h2>
+      <p class="say"><span class="who">Agent:</span> "For convenience, grocery and multi-location retail, most owners fight their POS on inventory and reporting — and overpay on processing. I set stores up on Korona: cloud POS built for high-volume retail, with real inventory and age verification. What are you running now?"</p>
+    </div>
+    <div class="blk"><h2>Discovery (SPIN)</h2>
+      <ul class="qs">
+        <li><b>Situation:</b> "How many locations and registers? Roughly how many SKUs? Do you sell age-restricted items?"</li>
+        <li><b>Problem:</b> "Where's the pain — inventory counts, shrink, multi-location reporting, speed at checkout?"</li>
+        <li><b>Implication:</b> "What does bad inventory or a slow line cost you over a month — shrink, walkouts, hours?"</li>
+        <li><b>Need-payoff:</b> "If you had accurate inventory across locations, fast checkout, and 0% processing, what would that be worth?"</li>
+      </ul>
+    </div>
+    <div class="blk"><h2>The value bridge</h2>
+      <p class="say"><span class="who">Agent:</span> "Korona is built for exactly this — deep inventory, multi-location, age verification, even ticketing and high-risk — on a cloud platform, paired with transparent or 0% processing. Plans run from $59/mo per register."</p>
+    </div>
+    <div class="blk"><h2>Close</h2>
+      <p class="say"><span class="who">Agent:</span> "Let me walk you through it on your store — 15 minutes. Today or tomorrow?"</p>
+    </div>
+    <div class="blk"><h2>Objections &amp; responses</h2>
+      <div class="obj"><div class="o">"Switching registers sounds like a nightmare."</div><div class="r">"We migrate your items and set it up, and you keep running until it's ready. No gap at the counter."</div></div>
+      <div class="obj"><div class="o">"My system handles inventory fine."</div><div class="r">"Great — does it do it across all locations in real time, with processing dropped to zero? If not, there's room. Let me show you."</div></div>
+      <div class="obj"><div class="o">"I'm high-risk, no one will take me."</div><div class="r">"That's a niche we actually work in — let me see what we can do for you specifically."</div></div>
+    </div>
+  </div>
+
+  <!-- NRS -->
+  <div class="script" id="nrs">
+    <div class="blk"><h2>Opening</h2>
+      <p class="say"><span class="who">Agent:</span> "Hi, [your name] with NextPay — are you the owner of the store?"</p>
+    </div>
+    <div class="blk"><h2>Insight opener (Challenger)</h2>
+      <p class="say"><span class="who">Agent:</span> "For convenience stores, bodegas, liquor and tobacco, most owners are paying card fees out of pocket and getting nothing back. I set stores up on NRS — purpose-built register for c-stores, with a free loyalty program and cash discount built in. What's at your counter now?"</p>
+    </div>
+    <div class="blk"><h2>Discovery (SPIN)</h2>
+      <ul class="qs">
+        <li><b>Situation:</b> "What kind of store, and what register are you using? Do you scan and verify age now?"</li>
+        <li><b>Problem:</b> "Where's the pain — slow checkout, no inventory, paying the card fees, no customer loyalty?"</li>
+        <li><b>Implication:</b> "What's it costing you to eat those fees every month and not bring customers back?"</li>
+        <li><b>Need-payoff:</b> "If you had a fast register with scanning, age verification, free loyalty, and 0% fees with cash discount, worth a look?"</li>
+      </ul>
+    </div>
+    <div class="blk"><h2>The value bridge</h2>
+      <p class="say"><span class="who">Agent:</span> "NRS is built for stores like yours — fast checkout, deep inventory, age verification, a built-in card reader, and a free loyalty program — paired with cash discount so your processing goes to zero."</p>
+    </div>
+    <div class="blk"><h2>Close</h2>
+      <p class="say"><span class="who">Agent:</span> "Let me get you set up or do a quick demo — what works, today or tomorrow?"</p>
+    </div>
+    <div class="blk"><h2>Objections &amp; responses</h2>
+      <div class="obj"><div class="o">"My old register is fine."</div><div class="r">"If it's not scanning, tracking inventory, verifying age or earning you loyalty, it's costing you quietly. And we get your card fees to zero. Worth five minutes."</div></div>
+      <div class="obj"><div class="o">"Customers won't like a card fee."</div><div class="r">"In c-stores it's standard now — posted clearly, and most pay cash anyway. We give you the signage so it's compliant."</div></div>
+      <div class="obj"><div class="o">"How much is it?"</div><div class="r">"Very low monthly, and the cash discount makes the processing pay for it. Let me show you the numbers for your volume."</div></div>
+    </div>
+  </div>
+
+  <!-- DEJAPAY PRO -->
+  <div class="script" id="dejapay">
+    <div class="blk"><h2>Opening</h2>
+      <p class="say"><span class="who">Agent:</span> "Hi, [your name] with NextPay — am I speaking with the owner?"</p>
+    </div>
+    <div class="blk"><h2>Insight opener (Challenger)</h2>
+      <p class="say"><span class="who">Agent:</span> "A lot of owners want a real POS but balk at the price tag. I set businesses up on DejaPay Pro — a low-cost Android system with dual pricing built in, so you get a modern setup and your processing drops to zero. What are you using now?"</p>
+    </div>
+    <div class="blk"><h2>Discovery (SPIN)</h2>
+      <ul class="qs">
+        <li><b>Situation:</b> "Counter service, mobile, card-present? What's your setup today?"</li>
+        <li><b>Problem:</b> "What's holding you back from upgrading — cost, complexity, contracts?"</li>
+        <li><b>Implication:</b> "What's the old setup costing you in fees and missed features each month?"</li>
+        <li><b>Need-payoff:</b> "If you could get a modern Android POS at low cost with 0% processing, would that work for you?"</li>
+      </ul>
+    </div>
+    <div class="blk"><h2>The value bridge</h2>
+      <p class="say"><span class="who">Agent:</span> "DejaPay Pro runs on Dejavoo Android hardware with the iPOSPays gateway and dual pricing built in — card-present, low cost, software around $59/mo, processing at 0%."</p>
+    </div>
+    <div class="blk"><h2>Close</h2>
+      <p class="say"><span class="who">Agent:</span> "Let me show you a quick demo and the numbers — today or tomorrow?"</p>
+    </div>
+    <div class="blk"><h2>Objections &amp; responses</h2>
+      <div class="obj"><div class="o">"I want something cheap."</div><div class="r">"That's the point — DejaPay Pro is built to be low cost, and dual pricing covers the processing. Let me show you."</div></div>
+      <div class="obj"><div class="o">"Is it reliable?"</div><div class="r">"It's Dejavoo hardware with a proven gateway — solid for card-present, and we support you directly."</div></div>
+      <div class="obj"><div class="o">"I'm not sure I need a POS."</div><div class="r">"Fair — if you just need to take cards we can start with a terminal and grow into it. Either way I get your rate down."</div></div>
+    </div>
+  </div>
+
+  <!-- PAYS -->
+  <div class="script" id="pays">
+    <div class="blk"><h2>Opening</h2>
+      <p class="say"><span class="who">Agent:</span> "Hi, [your name] with NextPay — are you the owner or who handles the POS?"</p>
+    </div>
+    <div class="blk"><h2>Insight opener (Challenger)</h2>
+      <p class="say"><span class="who">Agent:</span> "Most owners are locked into a POS contract and still paying card fees. I set businesses up on PAYS — all-in-one POS with dual pricing built in, no contract, free shipping, and a dedicated account manager. What are you running now?"</p>
+    </div>
+    <div class="blk"><h2>Discovery (SPIN)</h2>
+      <ul class="qs">
+        <li><b>Situation:</b> "Restaurant or retail? Counter, handheld, kiosk? What's your current system and are you in a contract?"</li>
+        <li><b>Problem:</b> "Where's the friction — fees, contract, support, missing features like kiosk or kitchen display?"</li>
+        <li><b>Implication:</b> "What's the contract and the fees costing you while you wait?"</li>
+        <li><b>Need-payoff:</b> "If you got an all-in-one POS, no contract, with 0% processing and a real account manager, worth a look?"</li>
+      </ul>
+    </div>
+    <div class="blk"><h2>The value bridge</h2>
+      <p class="say"><span class="who">Agent:</span> "PAYS is all-in-one — station, handheld, kiosk, kitchen display — with dual pricing for 0% fees, no contract, free shipping, and a dedicated account manager. Hardware around $999, or software from $59/mo."</p>
+    </div>
+    <div class="blk"><h2>Close</h2>
+      <p class="say"><span class="who">Agent:</span> "Let me put together what your setup would look like — 15 minutes today or tomorrow?"</p>
+    </div>
+    <div class="blk"><h2>Objections &amp; responses</h2>
+      <div class="obj"><div class="o">"I'm locked in a contract."</div><div class="r">"Let me do a free review now so you know the savings, and time the switch to your renewal. No contract on our side."</div></div>
+      <div class="obj"><div class="o">"I've had bad support before."</div><div class="r">"That's exactly why PAYS gives you a dedicated account manager — one person who knows your account. Big difference."</div></div>
+      <div class="obj"><div class="o">"What's the catch on 0%?"</div><div class="r">"It's dual pricing — the card fee passes to the customer, posted clearly and compliantly. We set up the signage so it's done right."</div></div>
     </div>
   </div>
 
