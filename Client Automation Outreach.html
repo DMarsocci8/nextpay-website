@@ -476,7 +476,7 @@
       </div>
       <form class="nlform" id="nlform">
         <h3>Talk to us about NextLink</h3>
-        <p class="nf-sub">We'll reach out within one business day.</p>
+        <p class="nf-sub">We'll reach out within 24-48 hours.</p>
         <div class="nf-row">
           <div class="field full"><label>Full name</label><input required name="name" placeholder="Full name"></div>
           <div class="field"><label>Company</label><input required name="company" placeholder="Business name"></div>
@@ -509,7 +509,7 @@ document.getElementById('nlform').addEventListener('submit',function(e){
   fd.append('Lead source','NextLink — Client Automation & Outreach page');
   var btn=form.querySelector('button[type=submit]'); if(btn){btn.disabled=true;btn.textContent='Sending…';}
   function done(){
-    form.innerHTML='<div style="text-align:center;padding:18px 6px"><div style="width:64px;height:64px;border-radius:50%;background:rgba(20,161,140,.12);display:grid;place-items:center;color:var(--teal-dark);margin:0 auto 16px"><svg viewBox="0 0 24 24" width="34" height="34" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 13l4 4L19 7"/></svg></div><h3>Thanks, '+name+' — message received.</h3><p class="nf-sub" style="font-size:15px;margin-top:10px;max-width:360px;margin-left:auto;margin-right:auto">A NextLink specialist will reach out within one business day to map the right outreach workflow for your business.</p></div>';
+    form.innerHTML='<div style="text-align:center;padding:18px 6px"><div style="width:64px;height:64px;border-radius:50%;background:rgba(20,161,140,.12);display:grid;place-items:center;color:var(--teal-dark);margin:0 auto 16px"><svg viewBox="0 0 24 24" width="34" height="34" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 13l4 4L19 7"/></svg></div><h3>Thanks, '+name+' — message received.</h3><p class="nf-sub" style="font-size:15px;margin-top:10px;max-width:360px;margin-left:auto;margin-right:auto">A NextLink specialist will reach out within 24-48 hours to map the right outreach workflow for your business.</p></div>';
   }
   fetch('https://formsubmit.co/ajax/dom@nextpaypos.com',{method:'POST',headers:{'Accept':'application/json'},body:fd})
     .then(function(r){return r.json();}).then(done).catch(done);
