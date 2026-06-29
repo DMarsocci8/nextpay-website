@@ -61,6 +61,7 @@ main.wrap{padding:30px 0 10px}
   <p style="margin-top:14px"><a href="Sales Hub - Discovery Playbook.html" style="display:inline-flex;align-items:center;gap:8px;background:var(--teal);color:#fff;font-weight:700;font-size:14px;border-radius:999px;padding:10px 18px">📋 New: Discovery Call Playbook — how to approach &amp; what to ask first <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></p>
   <div class="tabs">
     <button class="active" data-s="situations">Situations</button>
+    <button data-s="openers">Product Openers</button>
     <button data-s="cash">Cash Discount</button>
     <button data-s="rewards">Rewards</button>
     <button data-s="chively">Chively POS</button>
@@ -84,7 +85,7 @@ main.wrap{padding:30px 0 10px}
   <!-- CASH DISCOUNT SCRIPT -->
   <!-- SITUATIONS (cross-product, payments-first) -->
   <div class="script show" id="situations">
-    <p class="tpl-intro"><b>Two ways to open:</b> lead with <b>savings</b> (lower fees / free rate review) or lead with <b>rewards</b> (earn points on sales they already make). Rewards is a positive, easy-yes hook — you're offering to <i>give</i> them something, not asking them to switch. Get the foot in the door, then layer on the product script. <b>[brackets]</b> = personalize.</p>
+    <p class="tpl-intro"><b>Three ways to open:</b> lead with <b>savings</b> (beat their current rate), <b>rewards</b> (earn points on sales they already make), or <b>dual pricing</b> (get to 0% fees — pass the card fee to the customer, compliantly). Pick the hook that fits the merchant. Get the foot in the door, then layer on the product script. <b>[brackets]</b> = personalize.</p>
 
     <div class="blk"><h2>Cold call — rewards-first</h2>
       <p class="say"><span class="who">Agent:</span> "Hi [name], [your name] with NextPay. Quick question — are you earning any points or cash back on your business sales right now? Almost nobody is. You run thousands through every month and get nothing for it. I help owners turn that into travel and rewards — like a card, but on the money coming in. Worth two minutes?"</p>
@@ -98,6 +99,13 @@ main.wrap{padding:30px 0 10px}
       <p class="say"><span class="who">Agent (text/DM):</span> "Hi [name], [your name] from NextPay — quick one: you're probably running thousands in card sales a month and earning zero rewards on it. We fix that — travel/cash back on your sales. Worth a 10-min look? [number]"</p>
     </div>
 
+    <div class="blk"><h2>Dual-pricing-first openers</h2>
+      <p class="say"><span class="who">Cold call:</span> "Hi [name], [your name] with NextPay. Quick question — are you still paying credit card fees out of pocket? A lot of [business type] owners switched to dual pricing, where the card fee passes to the customer and your processing drops to basically zero — fully compliant, with the signage and receipts to back it. Worth two minutes?"</p>
+      <p class="say"><span class="who">Voicemail:</span> "Hi [name], [your name] with NextPay — I help businesses get to 0% processing fees with a compliant dual-pricing program, so card fees stop coming out of your pocket. I'll text you too — [number]."</p>
+      <p class="say"><span class="who">Walk-in:</span> "Hey, I'm [your name] with NextPay — are you eating the card fees here, or passing them to the customer? Most owners don't realize they can legally get to zero with dual pricing. I can show you in five minutes. Who handles payments?"</p>
+      <p class="say"><span class="who">Text/DM:</span> "Hi [name], [your name] from NextPay — still paying card processing fees out of pocket? We get businesses to 0% with compliant dual pricing. Worth a 10-min look? [number]"</p>
+      <p class="cond">Why it works: "zero fees" is the strongest hook there is — just be ready to confirm it's done compliantly (signage + receipts), which we handle.</p>
+    </div>
     <div class="blk"><h2>Cold call — savings opener</h2>
       <p class="say"><span class="who">Agent:</span> "Hi [name], [your name] with NextPay Business Solutions. I'll keep it quick — I help [business type] owners pay less to accept cards, and most are surprised once we actually look. Are you the right person to talk processing with?"</p>
       <p class="cond">Goal: a yes to a free rate review or a 10-minute call. Don't pitch a product yet.</p>
@@ -113,16 +121,19 @@ main.wrap{padding:30px 0 10px}
     <div class="blk"><h2>Gatekeeper</h2>
       <p class="say"><span class="who">Savings angle:</span> "Hi, maybe you can help me — I work with businesses on lowering their card fees. Who's the best person for that, and is now an okay time to reach them?"</p>
       <p class="say"><span class="who">Rewards angle:</span> "Hi, maybe you can help me — I help businesses earn points and cash back on the sales they already make. Who's the best person to talk to, and is now an okay time?"</p>
+      <p class="say"><span class="who">Dual-pricing angle:</span> "Hi, maybe you can help me — I help businesses get to 0% on card processing with dual pricing. Who's the best person for that, and is now an okay time?"</p>
       <p class="cond">Friendly and brief. Treat the gatekeeper as an ally, not an obstacle.</p>
     </div>
     <div class="blk"><h2>Follow-up — no response / no-show</h2>
       <p class="say"><span class="who">Savings angle:</span> "Hi [name] — we hadn't connected, which usually means the timing's off or it slipped down the list. Totally fine either way. Should I close it out, or is it worth a quick look at lowering your fees in [month]? Either answer helps."</p>
       <p class="say"><span class="who">Rewards angle:</span> "Hi [name] — never connected, no worries. Quick one: you're running thousands in sales a month and earning nothing back on it. Worth 10 minutes to see what you'd be earning — or should I close it out?"</p>
+      <p class="say"><span class="who">Dual-pricing angle:</span> "Hi [name] — never connected, no worries. Quick one: are you still paying card fees out of pocket? We can get you to 0% with dual pricing. Worth 10 minutes, or should I close it out?"</p>
       <p class="cond">Negative-reverse re-engage — giving permission to say no often gets a real reply.</p>
     </div>
     <div class="blk"><h2>Referral introduction</h2>
       <p class="say"><span class="who">Savings angle:</span> "Hi [name] — [referrer] over at [business] thought we should connect. I helped them [lower their fees / set up their POS], and they figured it'd be worth showing you the same. Open to a quick look?"</p>
       <p class="say"><span class="who">Rewards angle:</span> "Hi [name] — [referrer] at [business] thought we should connect. I got them earning points and cash back on their sales, and they figured you'd want the same. Open to a quick look?"</p>
+      <p class="say"><span class="who">Dual-pricing angle:</span> "Hi [name] — [referrer] at [business] thought we should connect. I got them to 0% processing fees with dual pricing, and they figured you'd want the same. Open to a quick look?"</p>
       <p class="cond">Lead with the referrer's name and result. Warmest intro you'll get — book the time fast.</p>
     </div>
     <div class="blk"><h2>Inbound lead (they reached out)</h2>
@@ -136,6 +147,47 @@ main.wrap{padding:30px 0 10px}
     <div class="blk"><h2>Text / DM follow-up</h2>
       <p class="say"><span class="who">Agent:</span> "Hi [name], [your name] from NextPay — you'd asked me to follow up. No pressure; if now's not the time just say so. If it is, I'll keep it to 10 minutes and bring a couple options that fit. [number]"</p>
       <p class="cond">Short, low-pressure, single ask. Pair with a voicemail or after a missed call.</p>
+    </div>
+  </div>
+
+  <!-- PRODUCT OPENERS (one distinctive hook per product) -->
+  <div class="script" id="openers">
+    <p class="tpl-intro">One distinctive opener per product — lead with that product's <b>#1 hook</b>. Use after you know what they want (or to test interest). Then open the full product script. <b>[brackets]</b> = personalize.</p>
+    <div class="blk"><h2>Square</h2>
+      <p class="say"><span class="who">Agent:</span> "Hi [name], [your name] with NextPay. Are you taking cards on something older right now, or thinking about an upgrade? I set businesses up on Square — simple, familiar, signs up fast — and pair it so you're not overpaying. Worth a quick look?"</p>
+      <p class="cond">Best when: owner wants simple and easy, small/medium operation, low learning curve.</p>
+    </div>
+    <div class="blk"><h2>Clover</h2>
+      <p class="say"><span class="who">Agent:</span> "Hi [name] — I help businesses get a full Clover POS with $0 down; you pay a low monthly placement instead of buying it outright. What are you running at the counter now?"</p>
+      <p class="cond">Best when: wants a real POS but not a big upfront hardware bill. Lead with the placement program.</p>
+    </div>
+    <div class="blk"><h2>Shift4 Dine</h2>
+      <p class="say"><span class="who">Agent:</span> "Hi [name], am I speaking with the owner? I help restaurants upgrade to Shift4 Dine with no upfront cost, $5,000 to switch, and 0% fees with dual pricing — handhelds, online ordering, the works. What POS is the restaurant on now?"</p>
+      <p class="cond">Best when: full-service or growing restaurant. The $5k switch incentive is the hook.</p>
+    </div>
+    <div class="blk"><h2>Chively (NextPay POS)</h2>
+      <p class="say"><span class="who">Agent:</span> "Hi [name] — we actually have our own POS, Chively, built around match-or-beat processing and dual pricing, so the system and the rate come from one place. What are you using now?"</p>
+      <p class="cond">Best when: wants one accountable partner for POS + processing.</p>
+    </div>
+    <div class="blk"><h2>Retail POS (Korona / NRS)</h2>
+      <p class="say"><span class="who">Agent:</span> "Hi [name] — for convenience and retail I set up registers built for fast, high-volume checkout: scanning, inventory, age verification, all with transparent processing. What's at your counter today?"</p>
+      <p class="cond">Best when: c-store, liquor, grocery, high SKU count, age-restricted sales.</p>
+    </div>
+    <div class="blk"><h2>Quantic</h2>
+      <p class="say"><span class="who">Agent:</span> "Hi [name] — I help restaurants and retailers run on Quantic, a cloud POS that works on iPad and keeps running even offline. What system are you on now?"</p>
+      <p class="cond">Best when: wants a modern cloud/iPad POS, multi-location, offline reliability.</p>
+    </div>
+    <div class="blk"><h2>Terminals (PAX / Dejavoo)</h2>
+      <p class="say"><span class="who">Agent:</span> "Hi [name] — if you just need a simple, secure card terminal (tap, chip, swipe), I can get you set up and lower your rate at the same time. Are you on a terminal now, or a full system?"</p>
+      <p class="cond">Best when: small/simple operation that just needs to take cards — easiest foot in the door for processing.</p>
+    </div>
+    <div class="blk"><h2>Gateways (FluidPay / NMI)</h2>
+      <p class="say"><span class="who">Agent:</span> "Hi [name] — if you take payments online, by phone, or by invoice, I help businesses run it through a modern gateway with lower fees and better fraud tools. How are you handling card-not-present payments today?"</p>
+      <p class="cond">Best when: e-commerce, B2B, phone/mail order, recurring billing.</p>
+    </div>
+    <div class="blk"><h2>Invoicing</h2>
+      <p class="say"><span class="who">Agent:</span> "Hi [name] — if you bill customers with invoices or recurring charges, I help you get paid faster with pay-by-link that settles to one account. How do you invoice and collect right now?"</p>
+      <p class="cond">Best when: services, contractors, B2B, subscriptions.</p>
     </div>
   </div>
 
