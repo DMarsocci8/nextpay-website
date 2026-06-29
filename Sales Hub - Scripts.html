@@ -435,6 +435,13 @@ document.querySelectorAll('.tabs button').forEach(function(b){
     document.getElementById(b.getAttribute('data-s')).classList.add('show');
   });
 });
+/* deep-link to a specific script tab via ?s=clover or #clover */
+(function(){
+  var key=(location.hash.replace('#','')||(new URLSearchParams(location.search).get('s')||'')).toLowerCase();
+  if(!key) return;
+  var btn=document.querySelector('.tabs button[data-s="'+key+'"]');
+  if(btn){ btn.click(); btn.scrollIntoView({block:'nearest',inline:'center'}); }
+})();
 document.querySelectorAll('.copy').forEach(function(b){
   b.addEventListener('click',function(){
     var t=b.closest('.tpl').querySelector('.tpl-body').innerText;
