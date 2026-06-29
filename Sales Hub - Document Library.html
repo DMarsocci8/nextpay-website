@@ -5,9 +5,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="robots" content="noindex, nofollow">
 <title>Document Library — NextPay Sales Hub</title>
-<link rel="icon" href="assets/favicon.ico" sizes="any">
-<link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
-<link rel="stylesheet" href="css/nextpay.css">
+<link rel="icon" href="/assets/favicon.ico" sizes="any">
+<link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
+<link rel="stylesheet" href="/css/nextpay.css">
 <style>
 .hub-bar{position:sticky;top:0;z-index:60;background:var(--navy);color:#fff;border-bottom:1px solid rgba(255,255,255,.10)}
 .hub-bar-inner{display:flex;align-items:center;gap:18px;height:66px;max-width:var(--maxw);margin:0 auto;padding:0 28px}
@@ -81,16 +81,16 @@ main.wrap{padding:26px 0 10px}
 
 <div class="hub-bar">
   <div class="hub-bar-inner">
-    <a href="Sales Hub.html" style="display:flex;align-items:center" aria-label="Sales Hub home"><img class="logo" src="assets/logos/nextpay-nav.png" alt="NextPay"></a>
+    <a href="/SalesHub" style="display:flex;align-items:center" aria-label="Sales Hub home"><img class="logo" src="/assets/logos/nextpay-nav.png" alt="NextPay"></a>
     <span class="pipe"></span>
     <span class="hub-tag">Sales Hub <span class="badge">Internal</span></span>
-    <div class="right"><a href="Sales Hub.html">← Hub home</a></div>
+    <div class="right"><a href="/SalesHub">← Hub home</a></div>
   </div>
 </div>
 
 <header class="pg-head">
   <div class="wrap">
-    <div class="crumbs"><a href="Sales Hub.html">Sales Hub</a><span class="sep">/</span><span>Document Library</span></div>
+    <div class="crumbs"><a href="/SalesHub">Sales Hub</a><span class="sep">/</span><span>Document Library</span></div>
     <h1>Document Library</h1>
     <p class="lead">One organized shelf for every PDF, deck, flyer, application, script and form — sorted by product, company and type. Filter or search to find what you need fast.</p>
     <div class="pg-search">
@@ -155,7 +155,7 @@ main.wrap{padding:26px 0 10px}
 <footer class="hub-foot">
   <div class="wrap">
     <span>NextPay Sales Hub · Document Library · Internal use only.</span>
-    <span><a href="Sales Hub - Request Access.html#suggest">💡 Suggest / Request</a> · <a href="Sales Hub.html">← Back to hub</a></span>
+    <span><a href="/SalesHub/RequestAccess#suggest">💡 Suggest / Request</a> · <a href="/SalesHub">← Back to hub</a></span>
   </div>
 </footer>
 
@@ -171,77 +171,77 @@ main.wrap{padding:26px 0 10px}
      note     – short description (optional)
    Example:
      {title:"NextPay POS Flyer", product:"pos", category:"flyer", type:"pdf",
-      href:"assets/docs/nextpay-pos-flyer.pdf", note:"One-page handout for retail."}
+      href:"/assets/docs/nextpay-pos-flyer.pdf", note:"One-page handout for retail."}
    =========================================================== */
 var DOCS = [
   {title:"Quick Reference Guide — Best Processor by Merchant Type", product:"general", category:"onepager", type:"pdf",
-   href:"assets/docs/nextpay-quick-reference-guide.pdf",
+   href:"/assets/docs/nextpay-quick-reference-guide.pdf",
    note:"At-a-glance: which processor fits each merchant type — Clover, Square, Shift4, SwipeSimple or NextPay Custom. Also live in the hub under Quick Reference Guide."},
 
   /* ---- Personalize & print tools ---- */
   {title:"Proposal Builder — Co-branded & Personalized", product:"general", category:"proposal", type:"link",
-   href:"Sales Hub - Proposal Builder.html", note:"Build a printable NextPay + product proposal: hardware, software, install, menu programming and delivery costs, the processing program & rate, and notes — branded with your name and contact. Shares your saved profile."},
+   href:"/SalesHub/ProposalBuilder", note:"Build a printable NextPay + product proposal: hardware, software, install, menu programming and delivery costs, the processing program & rate, and notes — branded with your name and contact. Shares your saved profile."},
   {title:"Pay Less. Earn More. — Personalized Postcard & Flyer", product:"general", category:"flyer", type:"link",
-   href:"Sales Hub - Pay Less Earn More.html", note:"Full NextPay value pitch. Add your name/phone/email, then print as a 6×4 postcard, a landscape full page, or an 8.5×11 portrait flyer. Shares your saved business-card profile."},
+   href:"/SalesHub/PayLessEarnMore", note:"Full NextPay value pitch. Add your name/phone/email, then print as a 6×4 postcard, a landscape full page, or an 8.5×11 portrait flyer. Shares your saved business-card profile."},
   /* DUAL PRICING — zero-fee flyers (one per trade) */
   {title:"Movers — Dual Pricing Flyer", product:"general", category:"flyer", type:"link",
-   href:"Sales Hub - Flyers.html?flyer=movers-dual", note:"Zero-fee dual-pricing flyer for moving companies. Opens in the Flyers tool — add your name/phone/email and print 8.5×11."},
+   href:"/SalesHub/Flyers?flyer=movers-dual", note:"Zero-fee dual-pricing flyer for moving companies. Opens in the Flyers tool — add your name/phone/email and print 8.5×11."},
   {title:"Plumbers — Dual Pricing Flyer", product:"general", category:"flyer", type:"link",
-   href:"Sales Hub - Flyers.html?flyer=plumbers-dual", note:"Zero-fee dual-pricing flyer for plumbers. Personalize and print 8.5×11."},
+   href:"/SalesHub/Flyers?flyer=plumbers-dual", note:"Zero-fee dual-pricing flyer for plumbers. Personalize and print 8.5×11."},
   {title:"Electricians — Dual Pricing Flyer", product:"general", category:"flyer", type:"link",
-   href:"Sales Hub - Flyers.html?flyer=electricians-dual", note:"Zero-fee dual-pricing flyer for electricians. Personalize and print 8.5×11."},
+   href:"/SalesHub/Flyers?flyer=electricians-dual", note:"Zero-fee dual-pricing flyer for electricians. Personalize and print 8.5×11."},
   {title:"HVAC Pros — Dual Pricing Flyer", product:"general", category:"flyer", type:"link",
-   href:"Sales Hub - Flyers.html?flyer=hvac-dual", note:"Zero-fee dual-pricing flyer for HVAC contractors. Personalize and print 8.5×11."},
+   href:"/SalesHub/Flyers?flyer=hvac-dual", note:"Zero-fee dual-pricing flyer for HVAC contractors. Personalize and print 8.5×11."},
   {title:"Painters — Dual Pricing Flyer", product:"general", category:"flyer", type:"link",
-   href:"Sales Hub - Flyers.html?flyer=painters-dual", note:"Zero-fee dual-pricing flyer for painters. Personalize and print 8.5×11."},
+   href:"/SalesHub/Flyers?flyer=painters-dual", note:"Zero-fee dual-pricing flyer for painters. Personalize and print 8.5×11."},
   {title:"Landscapers — Dual Pricing Flyer", product:"general", category:"flyer", type:"link",
-   href:"Sales Hub - Flyers.html?flyer=landscapers-dual", note:"Zero-fee dual-pricing flyer for landscapers. Personalize and print 8.5×11."},
+   href:"/SalesHub/Flyers?flyer=landscapers-dual", note:"Zero-fee dual-pricing flyer for landscapers. Personalize and print 8.5×11."},
   {title:"Cleaning Services — Dual Pricing Flyer", product:"general", category:"flyer", type:"link",
-   href:"Sales Hub - Flyers.html?flyer=cleaning-dual", note:"Zero-fee dual-pricing flyer for cleaning companies. Personalize and print 8.5×11."},
+   href:"/SalesHub/Flyers?flyer=cleaning-dual", note:"Zero-fee dual-pricing flyer for cleaning companies. Personalize and print 8.5×11."},
   {title:"Auto Repair Shops — Dual Pricing Flyer", product:"general", category:"flyer", type:"link",
-   href:"Sales Hub - Flyers.html?flyer=mechanics-dual", note:"Zero-fee dual-pricing flyer for auto-repair shops. Personalize and print 8.5×11."},
+   href:"/SalesHub/Flyers?flyer=mechanics-dual", note:"Zero-fee dual-pricing flyer for auto-repair shops. Personalize and print 8.5×11."},
   {title:"Auto Dealerships — Dual Pricing Flyer", product:"general", category:"flyer", type:"link",
-   href:"Sales Hub - Flyers.html?flyer=auto-dual", note:"Zero-fee dual-pricing flyer for auto dealerships. Personalize and print 8.5×11."},
+   href:"/SalesHub/Flyers?flyer=auto-dual", note:"Zero-fee dual-pricing flyer for auto dealerships. Personalize and print 8.5×11."},
   {title:"Accountants — Dual Pricing Flyer", product:"general", category:"flyer", type:"link",
-   href:"Sales Hub - Flyers.html?flyer=accountants-dual", note:"Zero-fee dual-pricing flyer for accounting firms. Personalize and print 8.5×11."},
+   href:"/SalesHub/Flyers?flyer=accountants-dual", note:"Zero-fee dual-pricing flyer for accounting firms. Personalize and print 8.5×11."},
   {title:"B2B & Consultants — Dual Pricing Flyer", product:"general", category:"flyer", type:"link",
-   href:"Sales Hub - Flyers.html?flyer=b2b-dual", note:"Zero-fee dual-pricing flyer for B2B businesses. Personalize and print 8.5×11."},
+   href:"/SalesHub/Flyers?flyer=b2b-dual", note:"Zero-fee dual-pricing flyer for B2B businesses. Personalize and print 8.5×11."},
   {title:"Eye Care Practices — Dual Pricing Flyer", product:"general", category:"flyer", type:"link",
-   href:"Sales Hub - Flyers.html?flyer=eye-care-dual", note:"Zero-fee dual-pricing flyer for eye care / optometry. Personalize and print 8.5×11."},
+   href:"/SalesHub/Flyers?flyer=eye-care-dual", note:"Zero-fee dual-pricing flyer for eye care / optometry. Personalize and print 8.5×11."},
   {title:"Dental Practices — Dual Pricing Flyer", product:"general", category:"flyer", type:"link",
-   href:"Sales Hub - Flyers.html?flyer=dental-dual", note:"Zero-fee dual-pricing flyer for dental practices. Personalize and print 8.5×11."},
+   href:"/SalesHub/Flyers?flyer=dental-dual", note:"Zero-fee dual-pricing flyer for dental practices. Personalize and print 8.5×11."},
   {title:"Smoke & Vape Shops — Dual Pricing Flyer", product:"general", category:"flyer", type:"link",
-   href:"Sales Hub - Flyers.html?flyer=smoke-shops-dual", note:"Zero-fee dual-pricing flyer for smoke & vape shops. Personalize and print 8.5×11."},
+   href:"/SalesHub/Flyers?flyer=smoke-shops-dual", note:"Zero-fee dual-pricing flyer for smoke & vape shops. Personalize and print 8.5×11."},
 
   /* IC+/REWARDS — leads with the rewards customers earn (one per trade) */
   {title:"Movers — IC+/Rewards Flyer", product:"general", category:"flyer", type:"link",
-   href:"Sales Hub - Flyers.html?flyer=movers-rewards", note:"IC+/Rewards flyer for moving companies — leads with the rewards earned on every sale. Personalize and print 8.5×11."},
+   href:"/SalesHub/Flyers?flyer=movers-rewards", note:"IC+/Rewards flyer for moving companies — leads with the rewards earned on every sale. Personalize and print 8.5×11."},
   {title:"Plumbers — IC+/Rewards Flyer", product:"general", category:"flyer", type:"link",
-   href:"Sales Hub - Flyers.html?flyer=plumbers-rewards", note:"IC+/Rewards flyer for plumbers — leads with rewards on every sale. Personalize and print 8.5×11."},
+   href:"/SalesHub/Flyers?flyer=plumbers-rewards", note:"IC+/Rewards flyer for plumbers — leads with rewards on every sale. Personalize and print 8.5×11."},
   {title:"Electricians — IC+/Rewards Flyer", product:"general", category:"flyer", type:"link",
-   href:"Sales Hub - Flyers.html?flyer=electricians-rewards", note:"IC+/Rewards flyer for electricians — leads with rewards on every sale. Personalize and print 8.5×11."},
+   href:"/SalesHub/Flyers?flyer=electricians-rewards", note:"IC+/Rewards flyer for electricians — leads with rewards on every sale. Personalize and print 8.5×11."},
   {title:"HVAC Pros — IC+/Rewards Flyer", product:"general", category:"flyer", type:"link",
-   href:"Sales Hub - Flyers.html?flyer=hvac-rewards", note:"IC+/Rewards flyer for HVAC contractors — leads with rewards on every sale. Personalize and print 8.5×11."},
+   href:"/SalesHub/Flyers?flyer=hvac-rewards", note:"IC+/Rewards flyer for HVAC contractors — leads with rewards on every sale. Personalize and print 8.5×11."},
   {title:"Painters — IC+/Rewards Flyer", product:"general", category:"flyer", type:"link",
-   href:"Sales Hub - Flyers.html?flyer=painters-rewards", note:"IC+/Rewards flyer for painters — leads with rewards on every sale. Personalize and print 8.5×11."},
+   href:"/SalesHub/Flyers?flyer=painters-rewards", note:"IC+/Rewards flyer for painters — leads with rewards on every sale. Personalize and print 8.5×11."},
   {title:"Landscapers — IC+/Rewards Flyer", product:"general", category:"flyer", type:"link",
-   href:"Sales Hub - Flyers.html?flyer=landscapers-rewards", note:"IC+/Rewards flyer for landscapers — leads with rewards on every sale. Personalize and print 8.5×11."},
+   href:"/SalesHub/Flyers?flyer=landscapers-rewards", note:"IC+/Rewards flyer for landscapers — leads with rewards on every sale. Personalize and print 8.5×11."},
   {title:"Cleaning Services — IC+/Rewards Flyer", product:"general", category:"flyer", type:"link",
-   href:"Sales Hub - Flyers.html?flyer=cleaning-rewards", note:"IC+/Rewards flyer for cleaning companies — leads with rewards on every sale. Personalize and print 8.5×11."},
+   href:"/SalesHub/Flyers?flyer=cleaning-rewards", note:"IC+/Rewards flyer for cleaning companies — leads with rewards on every sale. Personalize and print 8.5×11."},
   {title:"Auto Repair Shops — IC+/Rewards Flyer", product:"general", category:"flyer", type:"link",
-   href:"Sales Hub - Flyers.html?flyer=mechanics-rewards", note:"IC+/Rewards flyer for auto-repair shops — leads with rewards on every sale. Personalize and print 8.5×11."},
+   href:"/SalesHub/Flyers?flyer=mechanics-rewards", note:"IC+/Rewards flyer for auto-repair shops — leads with rewards on every sale. Personalize and print 8.5×11."},
   {title:"Auto Dealerships — IC+/Rewards Flyer", product:"general", category:"flyer", type:"link",
-   href:"Sales Hub - Flyers.html?flyer=auto-rewards", note:"IC+/Rewards flyer for auto dealerships — leads with rewards on every sale. Personalize and print 8.5×11."},
+   href:"/SalesHub/Flyers?flyer=auto-rewards", note:"IC+/Rewards flyer for auto dealerships — leads with rewards on every sale. Personalize and print 8.5×11."},
   {title:"Accountants — IC+/Rewards Flyer", product:"general", category:"flyer", type:"link",
-   href:"Sales Hub - Flyers.html?flyer=accountants-rewards", note:"IC+/Rewards flyer for accounting firms — leads with rewards on every sale. Personalize and print 8.5×11."},
+   href:"/SalesHub/Flyers?flyer=accountants-rewards", note:"IC+/Rewards flyer for accounting firms — leads with rewards on every sale. Personalize and print 8.5×11."},
   {title:"B2B & Consultants — IC+/Rewards Flyer", product:"general", category:"flyer", type:"link",
-   href:"Sales Hub - Flyers.html?flyer=b2b-rewards", note:"IC+/Rewards flyer for B2B businesses — leads with rewards on every sale. Personalize and print 8.5×11."},
+   href:"/SalesHub/Flyers?flyer=b2b-rewards", note:"IC+/Rewards flyer for B2B businesses — leads with rewards on every sale. Personalize and print 8.5×11."},
   {title:"Eye Care Practices — IC+/Rewards Flyer", product:"general", category:"flyer", type:"link",
-   href:"Sales Hub - Flyers.html?flyer=eye-care-rewards", note:"IC+/Rewards flyer for eye care / optometry — leads with rewards on every sale. Personalize and print 8.5×11."},
+   href:"/SalesHub/Flyers?flyer=eye-care-rewards", note:"IC+/Rewards flyer for eye care / optometry — leads with rewards on every sale. Personalize and print 8.5×11."},
   {title:"Dental Practices — IC+/Rewards Flyer", product:"general", category:"flyer", type:"link",
-   href:"Sales Hub - Flyers.html?flyer=dental-rewards", note:"IC+/Rewards flyer for dental practices — leads with rewards on every sale. Personalize and print 8.5×11."},
+   href:"/SalesHub/Flyers?flyer=dental-rewards", note:"IC+/Rewards flyer for dental practices — leads with rewards on every sale. Personalize and print 8.5×11."},
   {title:"Smoke & Vape Shops — IC+/Rewards Flyer", product:"general", category:"flyer", type:"link",
-   href:"Sales Hub - Flyers.html?flyer=smoke-shops-rewards", note:"IC+/Rewards flyer for smoke & vape shops — leads with rewards on every sale. Personalize and print 8.5×11."},
+   href:"/SalesHub/Flyers?flyer=smoke-shops-rewards", note:"IC+/Rewards flyer for smoke & vape shops — leads with rewards on every sale. Personalize and print 8.5×11."},
   {title:"Shift4 Partner Academy — Training", product:"general", category:"training", type:"link",
    href:"https://shift4partneracademy.learnupon.com/users/sign_in?next=%2Fmy-learning",
    note:"Shift4's LearnUpon partner academy — product courses & training. Sign in with your partner academy login."},
@@ -255,52 +255,52 @@ var DOCS = [
    href:"https://www.youtube.com/@Shift4DineTraining",
    note:"Video training resources for Shift4 Dine."},
   {title:"Shift4 Dine 101 — Product Training Quiz", product:"pos", category:"training", type:"link", brand:"shift4",
-   href:"Sales Hub - Shift4 Quiz.html",
+   href:"/SalesHub/Shift4Quiz",
    note:"Interactive Shift4 Dine product-knowledge quiz — instant scoring with the correct answers and explanations. Retake as many times as you like."},
   {title:"Shift4 Dine — Customer Hub Guide", product:"pos", category:"training", type:"link", brand:"shift4",
-   href:"Sales Hub - Shift4 Customer Hub.html",
+   href:"/SalesHub/Shift4CustomerHub",
    note:"What the merchant gets after the sale: Customer Hub onboarding to go-live, then running the restaurant remotely — settings, employees/workforce, transactions, online presence, Marketplace apps. URL lh.shift4.com."},
   {title:"Shift4 Dine — Customer Hub Assessment", product:"pos", category:"training", type:"link", brand:"shift4",
-   href:"Sales Hub - Shift4 Customer Hub Quiz.html",
+   href:"/SalesHub/Shift4CustomerHubQuiz",
    note:"8-question Customer Hub knowledge check — reports, social scheduling, accounting, remote Workstation management, Workforce, Marketplace, bulk editing. Instant scoring with answers & explanations."},
   {title:"Shift4 Dine — Settings Guide (Customer Hub)", product:"pos", category:"training", type:"link", brand:"shift4",
-   href:"Sales Hub - Shift4 Dine Settings.html",
+   href:"/SalesHub/Shift4DineSettings",
    note:"How a merchant configures the POS remotely from Customer Hub — Menu, Payments, Loyalty, Accounting (taxes/revenue classes/gratuities), Reservations and Table Layout. Working draft; expanding as source material comes in."},
   {title:"Shift4 Dine — Kitchen Display System (KDS) Guide", product:"pos", category:"training", type:"link", brand:"shift4",
-   href:"Sales Hub - Shift4 KDS.html",
+   href:"/SalesHub/Shift4KDS",
    note:"What a KDS is, Shift4's KDS benefits/specs/features, the four ticket views, day-to-day actions (clear, group, merge, filter), settings (timers, bump station) and a competitor comparison."},
   {title:"Shift4 Dine — KDS Practice Quiz", product:"pos", category:"training", type:"link", brand:"shift4",
-   href:"Sales Hub - Shift4 KDS Quiz.html",
+   href:"/SalesHub/Shift4KDSQuiz",
    note:"8-question Kitchen Display System knowledge check — benefits, paging, offline, specs, ticket views, Clear All KPIs, merging. Instant scoring with answers & explanations."},
   {title:"Shift4 Dine — Online Ordering Guide", product:"pos", category:"training", type:"link", brand:"shift4",
-   href:"Sales Hub - Shift4 Online Ordering.html",
+   href:"/SalesHub/Shift4OnlineOrdering",
    note:"Why online ordering matters (discovery tool, history), terms to know (ghost kitchen, food delivery app, gig worker), and managing online menus in Lighthouse — Menu Manager, Online Price, Schedules."},
   {title:"Shift4 Dine — Online Ordering Quiz", product:"pos", category:"training", type:"link", brand:"shift4",
-   href:"Sales Hub - Shift4 Online Ordering Quiz.html",
+   href:"/SalesHub/Shift4OnlineOrderingQuiz",
    note:"10-question Online Ordering knowledge check — ghost kitchens, food delivery apps, gig workers, Menu Manager, Online Price, Schedules. Instant scoring with answers & explanations."},
   {title:"Shift4 Dine — Business Intelligence Guide", product:"pos", category:"training", type:"link", brand:"shift4",
-   href:"Sales Hub - Shift4 Business Intelligence.html",
+   href:"/SalesHub/Shift4BusinessIntelligence",
    note:"Shift4's analytics tool (SkyTab BI/STBI): complete data transparency, the three competitive advantages, KPIs, Group By, Drill To, up to 3 hierarchies, and how to enable it in LBM via the SkyTab BI Merchant Request form."},
   {title:"Shift4 Dine — Business Intelligence Quiz", product:"pos", category:"training", type:"link", brand:"shift4",
-   href:"Sales Hub - Shift4 BI Quiz.html",
+   href:"/SalesHub/Shift4BIQuiz",
    note:"11-question Business Intelligence knowledge check — advantages, Drill To/Group By, KPI, hierarchies, enabling in LBM, demo-login rules. Instant scoring with answers & explanations."},
   {title:"Shift4 Dine — Product Introduction & Hardware Guide", product:"pos", category:"training", type:"link", brand:"shift4",
-   href:"Sales Hub - Shift4 Hardware.html",
+   href:"/SalesHub/Shift4Hardware",
    note:"The value proposition, integrated-payments advantage, the $29.99/mo base package (POS Terminal, 10 Employee Cards, Receipt Printer, Cash Drawer), and the SkyTab device lineup — Workstation, Customer-Facing Display, Glass and Mobile — with add-on pricing."},
   {title:"Shift4 Dine — Hardware Quiz", product:"pos", category:"training", type:"link", brand:"shift4",
-   href:"Sales Hub - Shift4 Hardware Quiz.html",
+   href:"/SalesHub/Shift4HardwareQuiz",
    note:"6-question hardware knowledge check — Glass vs Mobile, base-package contents, $29.99/mo add-ons (Glass, KDS, Customer-Facing Display), and CFD/KDS features. Instant scoring with answers & explanations."},
   {title:"Shift4 Dine — Gift Card Program Guide", product:"pos", category:"training", type:"link", brand:"shift4",
-   href:"Sales Hub - Shift4 Gift Card Program.html",
+   href:"/SalesHub/Shift4GiftCardProgram",
    note:"The IYC→TCC migration (Jan 2022), the Gift Card Setup Wizard in Lighthouse BMS, accepting cards (MSR/QR code/online), e-gift vs physical, designing & ordering cards (10–15 day shipping), pricing (60-day trial → $12.95/mo + $0.20/txn) and merchant benefits."},
   {title:"Shift4 Dine — Gift Card Program Quiz", product:"pos", category:"training", type:"link", brand:"shift4",
-   href:"Sales Hub - Shift4 Gift Card Program Quiz.html",
+   href:"/SalesHub/Shift4GiftCardProgramQuiz",
    note:"6-question Gift Card Program knowledge check — where orders are placed, e-gift vs physical fulfillment, accepting cards online & in person, and merchant benefits. Instant scoring with answers & explanations."},
   {title:"Shift4 Dine — SDR Discovery Call Script", product:"pos", category:"script", type:"link", brand:"shift4",
-   href:"Sales Hub - Shift4.html#discovery",
+   href:"/SalesHub/Shift4#discovery",
    note:"Full SDR discovery call template — intro, 12 discovery questions (POS, tableside, KDS, reservations, gift cards, loyalty, reporting, online ordering, delivery, QR, EMV/dual pricing), pain-point identification, demo close/CTA, and follow-up."},
   {title:"Discovery Call Playbook (any product)", product:"general", category:"script", type:"link",
-   href:"Sales Hub - Discovery Playbook.html",
+   href:"/SalesHub/DiscoveryPlaybook",
    note:"How to approach a merchant and what to ask first — get your foot in the door, discover before you pitch, keep it simple. Mindset, the short list of discovery questions, mini-scripts (opener, 'just email me' pivot, pain anchor, next step), a lean-vs-too-much email example, product-fit cues, and a Do/Don't reference."},
   {title:"NextPay Rewards Portal", product:"general", category:"portal", type:"link",
    href:"https://app.tuzorewards.com/login/nextpaybusinesssolutions/",
@@ -312,7 +312,7 @@ var DOCS = [
    href:"https://nextpayllc.myfreshworks.com/crm/sales/my_dashboards?tab=353503",
    note:"NextPay CRM (Freshsales) — track your leads, deals and pipeline. Access required — ask your team for your login."},
   {title:"Square Agent Reseller Guide", product:"pos", category:"training", type:"pdf",
-   href:"assets/docs/square-agent-reseller-guide.pdf",
+   href:"/assets/docs/square-agent-reseller-guide.pdf",
    note:"How to resell Square as an agent — program details and how it works."},
   {title:"Square — YouTube Channel", product:"pos", category:"training", type:"link",
    href:"https://www.youtube.com/square",
@@ -321,7 +321,7 @@ var DOCS = [
    href:"https://docs.google.com/spreadsheets/d/1c5fABFs3DypowMQJjS05p29IFaaT7O59YLrhGnIizEI/edit?gid=0#gid=0",
    note:"Square reseller pricing sheet."},
   {title:"Square Services — Implementation Pricing", product:"pos", category:"pricing", type:"pdf",
-   href:"assets/docs/square-services-pricing.pdf",
+   href:"/assets/docs/square-services-pricing.pdf",
    note:"Square implementation/onboarding packages (Plus $699, Premium $1,499, Onsite $2,199), payroll, migrations & menu build — one-time service costs. Wired into the Proposal Builder's Square one-time presets."},
   {title:"Square Hardware Lineup", product:"terminals", category:"onepager", type:"link",
    href:"https://squareup.com/us/en/hardware",
@@ -342,80 +342,80 @@ var DOCS = [
    href:"https://paymentknowledge.help/courses",
    note:"A full library of merchant sales training courses and payments-knowledge resources."},
   {title:"Shift4 Dine Proposal", product:"pos", category:"proposal", type:"pdf",
-   href:"assets/docs/shift4-dine-skytab-proposal.pdf",
+   href:"/assets/docs/shift4-dine-skytab-proposal.pdf",
    note:"Sample Shift4 Dine proposal to present to prospects."},
   {title:"Battlecard — Shift4 vs Toast", product:"pos", category:"battlecard", type:"pdf", brand:"shift4",
-   href:"assets/docs/SkyTab%20POS_Battlecard_Toast.pdf",
+   href:"/assets/docs/SkyTab%20POS_Battlecard_Toast.pdf",
    note:"Head-to-head battlecard: Toast's strengths and weak spots and how to win the deal with Shift4. Also on the Shift4 deal-info page."},
   {title:"Battlecard — Shift4 vs Clover", product:"pos", category:"battlecard", type:"pdf", brand:"shift4",
-   href:"assets/docs/SkyTabPOSBattlecard_Clover.pdf",
+   href:"/assets/docs/SkyTabPOSBattlecard_Clover.pdf",
    note:"Head-to-head battlecard: Clover's strengths and weak spots and how to win the deal with Shift4. Also on the Shift4 deal-info page."},
   {title:"Battlecard — Shift4 vs Heartland", product:"pos", category:"battlecard", type:"pdf", brand:"shift4",
-   href:"assets/docs/SkyTabPOSBattlecard_Heartland.pdf",
+   href:"/assets/docs/SkyTabPOSBattlecard_Heartland.pdf",
    note:"Head-to-head battlecard: Heartland's strengths, junk-fee weak spots and how to win the deal with Shift4. Also on the Shift4 deal-info page."},
   {title:"Battlecard — Shift4 vs Lightspeed", product:"pos", category:"battlecard", type:"pdf", brand:"shift4",
-   href:"assets/docs/SkyTabPOSBattlecard_Lightspeed.pdf",
+   href:"/assets/docs/SkyTabPOSBattlecard_Lightspeed.pdf",
    note:"Head-to-head battlecard: Lightspeed's strengths and weak spots and how to win the deal with Shift4. Also on the Shift4 deal-info page."},
   {title:"Battlecard — Shift4 vs Revel", product:"pos", category:"battlecard", type:"pdf", brand:"shift4",
-   href:"assets/docs/SkyTabPOSBattlecard_Revel.pdf",
+   href:"/assets/docs/SkyTabPOSBattlecard_Revel.pdf",
    note:"Head-to-head battlecard: Revel's strengths, SaaS-fee weak spots and how to win the deal with Shift4. Also on the Shift4 deal-info page."},
   {title:"Battlecard — Shift4 vs SpotOn", product:"pos", category:"battlecard", type:"pdf", brand:"shift4",
-   href:"assets/docs/SkyTabPOSBattlecard_SpotOn.pdf",
+   href:"/assets/docs/SkyTabPOSBattlecard_SpotOn.pdf",
    note:"Head-to-head battlecard: SpotOn's strengths and weak spots and how to win the deal with Shift4. Also on the Shift4 deal-info page."},
   {title:"Battlecard — Shift4 vs Square", product:"pos", category:"battlecard", type:"pdf", brand:"shift4",
-   href:"assets/docs/SkyTabPOSBattlecard_Square.pdf",
+   href:"/assets/docs/SkyTabPOSBattlecard_Square.pdf",
    note:"Head-to-head battlecard: Square's strengths and weak spots and how to win the deal with Shift4. Also on the Shift4 deal-info page."},
   {title:"Battlecard — Shift4 vs Tabit", product:"pos", category:"battlecard", type:"pdf", brand:"shift4",
-   href:"assets/docs/SkyTabPOSBattlecard_Tabit.pdf",
+   href:"/assets/docs/SkyTabPOSBattlecard_Tabit.pdf",
    note:"Head-to-head battlecard: Tabit's strengths and weak spots and how to win the deal with Shift4. Also on the Shift4 deal-info page."},
   {title:"Clover Hardware & Software Pricing", product:"pos", category:"pricing", type:"pdf",
-   href:"assets/docs/clover-hardware-software-pricing.pdf",
+   href:"/assets/docs/clover-hardware-software-pricing.pdf",
    note:"Official Clover hardware (buy + deployment) and SaaS software plan pricing — devices, peripherals, Clover Care, fees. Also summarized on the Clover deal-info page."},
   {title:"Clover Statement Guide", product:"pos", category:"statement", type:"pdf",
-   href:"assets/docs/clover-statement-guide.pdf",
+   href:"/assets/docs/clover-statement-guide.pdf",
    note:"How to find and read a Clover statement, then run a rate review."},
   {title:"Profitability Calculator", product:"general", category:"tool", type:"xls",
-   href:"assets/docs/profitability-calculator.xlsx",
+   href:"/assets/docs/profitability-calculator.xlsx",
    note:"Price out deals and calculate profitability. (Excel download.)"},
   {title:"Shift4 Flat Rate Plus Calculator", product:"pos", category:"tool", type:"xls",
-   href:"assets/docs/shift4-flat-rate-plus-calculator.xlsx",
+   href:"/assets/docs/shift4-flat-rate-plus-calculator.xlsx",
    note:"Price out Shift4 deals — Flat Rate Plus, with proposal. (Excel download.)"},
   {title:"Pitch Deck Template", product:"general", category:"deck", type:"pdf",
-   href:"assets/docs/pitch-deck-template.pdf",
+   href:"/assets/docs/pitch-deck-template.pdf",
    note:"A modern, editable pitch deck template to build your own presentation for prospects."},
   {title:"Sandler — Sales Cheat Sheet", product:"general", category:"training", type:"pdf",
-   href:"assets/docs/sandler-cheat-sheet.pdf",
+   href:"/assets/docs/sandler-cheat-sheet.pdf",
    note:"The Sandler selling system at a glance — a popular sales methodology."},
   {title:"The Challenger Sale — Summary", product:"general", category:"training", type:"pdf",
-   href:"assets/docs/challenger-sale-summary.pdf",
+   href:"/assets/docs/challenger-sale-summary.pdf",
    note:"Summary of The Challenger Sale methodology — teach, tailor, take control."},
   {title:"Sandler — Shortening the Sales Cycle", product:"general", category:"training", type:"pdf",
-   href:"assets/docs/sandler-shortening-sales-cycle.pdf",
+   href:"/assets/docs/sandler-shortening-sales-cycle.pdf",
    note:"Sandler guide to moving deals faster and shortening the sales cycle."},
   {title:"Dejavoo QD2 / QD4 / QD5", product:"terminals", category:"onepager", type:"pdf",
-   href:"assets/docs/dejavoo-qd2-qd4-qd5.pdf", note:"Dejavoo QD-line terminal spec sheet."},
+   href:"/assets/docs/dejavoo-qd2-qd4-qd5.pdf", note:"Dejavoo QD-line terminal spec sheet."},
   {title:"Dejavoo P1 / P3 / P5", product:"terminals", category:"onepager", type:"pdf",
-   href:"assets/docs/dejavoo-p1-p3-p5.pdf", note:"Dejavoo P-line terminal spec sheet."},
+   href:"/assets/docs/dejavoo-p1-p3-p5.pdf", note:"Dejavoo P-line terminal spec sheet."},
   {title:"Dejavoo Apple Tap to Pay", product:"terminals", category:"onepager", type:"pdf",
-   href:"assets/docs/dejavoo-apple-tap-to-pay.pdf", note:"Dejavoo Apple Tap to Pay overview."},
+   href:"/assets/docs/dejavoo-apple-tap-to-pay.pdf", note:"Dejavoo Apple Tap to Pay overview."},
   {title:"Dejavoo P-Line — Fee Programs (QRG)", product:"terminals", category:"pricing", type:"pdf",
-   href:"assets/docs/dejavoo-p-line-fee-programs.pdf", note:"Dejavoo P-line quick reference — all fee programs."},
+   href:"/assets/docs/dejavoo-p-line-fee-programs.pdf", note:"Dejavoo P-line quick reference — all fee programs."},
   {title:"iPOSPays Gateway Pricing", product:"gateways", category:"pricing", type:"pdf",
-   href:"assets/docs/ipospays-gateway-pricing.pdf", note:"iPOSPays gateway pricing — Schedule G."},
+   href:"/assets/docs/ipospays-gateway-pricing.pdf", note:"iPOSPays gateway pricing — Schedule G."},
   {title:"Choosing What to Sell", product:"general", category:"training", type:"pdf",
-   href:"assets/docs/choosing-what-to-sell.pdf", note:"Guide to matching the right product/solution to each merchant."},
+   href:"/assets/docs/choosing-what-to-sell.pdf", note:"Guide to matching the right product/solution to each merchant."},
   {title:"Visa Interchange Reimbursement Fees", product:"general", category:"pricing", type:"pdf",
-   href:"assets/docs/visa-interchange-reimbursement-fees.pdf", note:"Visa's published interchange rates (public). Released annually — check the date and grab the latest from Visa if needed."},
+   href:"/assets/docs/visa-interchange-reimbursement-fees.pdf", note:"Visa's published interchange rates (public). Released annually — check the date and grab the latest from Visa if needed."},
   {title:"SS-4 Example (EIN proof)", product:"general", category:"form", type:"pdf",
-   href:"assets/docs/ss4-example.pdf", note:"Sample SS-4 document showing the EIN — the kind of EIN proof needed to submit a deal."},
+   href:"/assets/docs/ss4-example.pdf", note:"Sample SS-4 document showing the EIN — the kind of EIN proof needed to submit a deal."},
   {title:"Statement Decoder Script", product:"general", category:"statement", type:"link",
-   href:"Sales Hub - Statement Decoder.html", note:"3-minute script for reading a merchant statement and bridging into savings."},
+   href:"/SalesHub/StatementDecoder", note:"3-minute script for reading a merchant statement and bridging into savings."},
   {title:"Merchant Account Fee FAQ", product:"general", category:"training", type:"link",
-   href:"Sales Hub - FAQ.html", note:"Plain-English answers to common statement fee questions — for confident, transparent conversations."},
+   href:"/SalesHub/FAQ", note:"Plain-English answers to common statement fee questions — for confident, transparent conversations."},
   {title:"Cold Call Scripts & Outreach Templates", product:"general", category:"script", type:"link",
-   href:"Sales Hub - Scripts.html", note:"Cash Discount & Shift4 Dine cold-call scripts, a pitch script, plus text and email templates with copy buttons."},
+   href:"/SalesHub/Scripts", note:"Cash Discount & Shift4 Dine cold-call scripts, a pitch script, plus text and email templates with copy buttons."},
   {title:"Field Sales Action Plan", product:"general", category:"training", type:"link",
-   href:"Sales Hub - Field Plan.html", note:"Territory mapping, daily/weekly targets, zone rotations and cadence for field agents."}
+   href:"/SalesHub/FieldPlan", note:"Territory mapping, daily/weekly targets, zone rotations and cadence for field agents."}
 ];
 
 var grid=document.getElementById('libGrid'), empty=document.getElementById('libEmpty'),
@@ -473,10 +473,10 @@ function card(d){
   var prodLabel = {pos:'POS',terminals:'Terminals',gateways:'Gateways',invoicing:'Invoicing',general:'General'}[d.product]||d.product;
   var catLabel = {pricing:'Pricing',script:'Script',proposal:'Proposal',battlecard:'Battlecard',flyer:'Flyer',onepager:'One-Pager',deck:'Presentation',form:'Form',contract:'Contract',training:'Training',statement:'Statement',tool:'Calculator',portal:'Portal'}[d.category]||d.category;
   var thumb=null;
-  if(d.category==='flyer'){ var m=(d.href||'').match(/flyer=([\w-]+)/); if(m){ var fid=m[1].replace(/-(dual|rewards)$/,''); var TMAP={'eye-care':'eye-doctors','dental':'dentists'}; fid=TMAP[fid]||fid; thumb='assets/flyers/thumbs/'+fid+'.jpg'; } }
+  if(d.category==='flyer'){ var m=(d.href||'').match(/flyer=([\w-]+)/); if(m){ var fid=m[1].replace(/-(dual|rewards)$/,''); var TMAP={'eye-care':'eye-doctors','dental':'dentists'}; fid=TMAP[fid]||fid; thumb='/assets/flyers/thumbs/'+fid+'.jpg'; } }
   var media = thumb
-    ? '<span class="dlogo thumb"><img src="'+thumb+'" alt="" onerror="this.onerror=null;this.parentNode.classList.remove(\'thumb\');this.src=\'assets/logos/'+logoFor(d)+'\'"></span>'
-    : '<span class="dlogo"><img src="assets/logos/'+logoFor(d)+'" alt=""></span>';
+    ? '<span class="dlogo thumb"><img src="'+thumb+'" alt="" onerror="this.onerror=null;this.parentNode.classList.remove(\'thumb\');this.src=\'/assets/logos/'+logoFor(d)+'\'"></span>'
+    : '<span class="dlogo"><img src="/assets/logos/'+logoFor(d)+'" alt=""></span>';
   return '<div class="doc">'
     + media
     + '<h3>'+d.title+'</h3>'
@@ -529,6 +529,6 @@ document.querySelectorAll('.fgroup').forEach(function(group){
 search.addEventListener('input', apply);
 apply();
 </script>
-<script src="js/hub-nav.js"></script>
+<script src="/js/hub-nav.js"></script>
 </body>
 </html>

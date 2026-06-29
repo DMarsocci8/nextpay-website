@@ -9,44 +9,44 @@
   try{
     var GROUPS = [
       ['Learn', [
-        ['Knowledge Base','Sales Hub - Knowledge Base.html'],
-        ['Agent Quiz','Sales Hub - Quiz.html'],
-        ['Training Academy','Sales Hub - Training.html'],
-        ['Product Knowledge','Sales Hub - Product Knowledge.html'],
-        ['Quick Reference','Sales Hub - Quick Reference Guide.html'],
-        ['Agent Mindset','Sales Hub - Mindset.html']
+        ['Knowledge Base','/SalesHub/KnowledgeBase'],
+        ['Agent Quiz','/SalesHub/Quiz'],
+        ['Training Academy','/SalesHub/Training'],
+        ['Product Knowledge','/SalesHub/ProductKnowledge'],
+        ['Quick Reference','/SalesHub/QuickReferenceGuide'],
+        ['Agent Mindset','/SalesHub/Mindset']
       ]],
       ['Sell', [
-        ['Prospecting Scripts','Sales Hub - Scripts.html'],
-        ['Objection Handling','Sales Hub - Objections.html'],
-        ['Competitor Battlecards','Sales Hub - PAYS.html'],
-        ['Prospecting Questions','Sales Hub - Questions.html'],
-        ['Current Promotions','Sales Hub - Promotions.html']
+        ['Prospecting Scripts','/SalesHub/Scripts'],
+        ['Objection Handling','/SalesHub/Objections'],
+        ['Competitor Battlecards','/SalesHub/PAYS'],
+        ['Prospecting Questions','/SalesHub/Questions'],
+        ['Current Promotions','/SalesHub/Promotions']
       ]],
       ['Quote', [
-        ['Pricing & Fee Programs','Sales Hub - Pricing.html'],
-        ['Proposal Builder','Sales Hub - Proposal Builder.html'],
-        ['Statement Analyzers','Sales Hub - Statements.html#statements'],
-        ['Calculators','Sales Hub - Statements.html#calculators']
+        ['Pricing & Fee Programs','/SalesHub/Pricing'],
+        ['Proposal Builder','/SalesHub/ProposalBuilder'],
+        ['Statement Analyzers','/SalesHub/Statements#statements'],
+        ['Calculators','/SalesHub/Statements#calculators']
       ]],
       ['Submit', [
-        ['Submit a Deal','Sales Hub - Submit a Deal.html'],
-        ['Document Library','Sales Hub - Document Library.html']
+        ['Submit a Deal','/SalesHub/SubmitADeal'],
+        ['Document Library','/SalesHub/DocumentLibrary']
       ]],
       ['Build', [
-        ['Marketing Assets','Sales Hub - Marketing Assets.html'],
-        ['Brand Assets','Sales Hub - Brand Assets.html'],
-        ['Lead Generation','Sales Hub - Lead Generation.html']
+        ['Marketing Assets','/SalesHub/MarketingAssets'],
+        ['Brand Assets','/SalesHub/BrandAssets'],
+        ['Lead Generation','/SalesHub/LeadGeneration']
       ]],
       ['Grow', [
-        ['My Dashboard','Sales Hub - My Dashboard.html'],
-        ['Field Sales Plan','Sales Hub - Field Plan.html']
+        ['My Dashboard','/SalesHub/MyDashboard'],
+        ['Field Sales Plan','/SalesHub/FieldPlan']
       ]]
     ];
 
     var here = '';
     try{ here = decodeURIComponent((location.pathname.split('/').pop()||'')).toLowerCase(); }catch(e){}
-    function b(h){ return h.split('#')[0].toLowerCase(); }
+    function b(h){ return (h.split('#')[0].split('?')[0].split('/').pop()||'').toLowerCase(); }
     function esc(s){ return String(s).replace(/&/g,'&amp;'); }
 
     function injectCSS(){

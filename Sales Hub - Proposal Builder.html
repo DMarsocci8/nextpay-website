@@ -5,9 +5,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="robots" content="noindex, nofollow">
 <title>Proposal Builder — NextPay Sales Hub</title>
-<link rel="icon" href="assets/favicon.ico" sizes="any">
-<link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
-<link rel="stylesheet" href="css/nextpay.css">
+<link rel="icon" href="/assets/favicon.ico" sizes="any">
+<link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
+<link rel="stylesheet" href="/css/nextpay.css">
 <style>
 .hub-bar{position:sticky;top:0;z-index:60;background:var(--navy);color:#fff;border-bottom:1px solid rgba(255,255,255,.10)}
 .hub-bar-inner{display:flex;align-items:center;gap:18px;height:66px;max-width:var(--maxw);margin:0 auto;padding:0 28px}
@@ -120,16 +120,16 @@
 
 <div class="hub-bar">
   <div class="hub-bar-inner">
-    <a href="Sales Hub.html" style="display:flex;align-items:center" aria-label="Sales Hub home"><img class="logo" src="assets/logos/nextpay-nav.png" alt="NextPay"></a>
+    <a href="/SalesHub" style="display:flex;align-items:center" aria-label="Sales Hub home"><img class="logo" src="/assets/logos/nextpay-nav.png" alt="NextPay"></a>
     <span class="pipe"></span>
     <span class="hub-tag">Sales Hub <span class="badge">Internal</span></span>
-    <div class="right"><a href="Sales Hub - Flyers.html">Flyers →</a><a href="Sales Hub.html">← Hub home</a></div>
+    <div class="right"><a href="/SalesHub/Flyers">Flyers →</a><a href="/SalesHub">← Hub home</a></div>
   </div>
 </div>
 
 <header class="pg-head">
   <div class="wrap">
-    <div class="crumbs"><a href="Sales Hub.html">Sales Hub</a><span class="sep">/</span><a href="Sales Hub - Marketing Assets.html">Marketing Assets</a><span class="sep">/</span><span>Proposal Builder</span></div>
+    <div class="crumbs"><a href="/SalesHub">Sales Hub</a><span class="sep">/</span><a href="/SalesHub/MarketingAssets">Marketing Assets</a><span class="sep">/</span><span>Proposal Builder</span></div>
     <h1>Proposal Builder</h1>
     <p class="lead">Pick a product, add the equipment lines and add‑ons, one‑time costs, processing rate and any credit — and print a clean, co‑branded proposal with your name and contact on it. Totals add up automatically. Your details are saved on this device and shared with your card &amp; flyers.</p>
   </div>
@@ -229,7 +229,7 @@
 <footer class="hub-foot">
   <div class="wrap">
     <span>NextPay Sales Hub · Proposal Builder · Internal use only.</span>
-    <span><a href="Sales Hub - Request Access.html#suggest">💡 Suggest / Request</a> · <a href="Sales Hub.html">← Back to hub</a></span>
+    <span><a href="/SalesHub/RequestAccess#suggest">💡 Suggest / Request</a> · <a href="/SalesHub">← Back to hub</a></span>
   </div>
 </footer>
 
@@ -396,11 +396,11 @@ function render(){
   var notes=val('f-notes');
   var notesHtml=notes?'<div class="pp-notes"><div class="pp-sec-h">Additional comments</div><p>'+esc(notes)+'</p></div>':'';
   var repRows=''; if(phone) repRows+='<span>'+esc(phone)+'</span>'; if(email) repRows+='<span>'+esc(email)+'</span>'; repRows+='<span>www.nextpaypos.com</span>';
-  var pbox='<div class="pl'+(p.dark?' dark':'')+'"><img src="assets/logos/'+p.logo+'" alt="'+esc(p.name)+'"></div>';
+  var pbox='<div class="pl'+(p.dark?' dark':'')+'"><img src="/assets/logos/'+p.logo+'" alt="'+esc(p.name)+'"></div>';
   var forLine='<b>'+esc(biz)+'</b>'+(contact?' · '+esc(contact):'');
 
   stage.innerHTML='<div class="sheet">'
-    +'<div class="pp-head"><span class="np"><img src="assets/logos/nextpay.png" alt="NextPay"></span>'+pbox+'</div>'
+    +'<div class="pp-head"><span class="np"><img src="/assets/logos/nextpay.png" alt="NextPay"></span>'+pbox+'</div>'
     +'<div class="pp-title"><h1>Proposal</h1><div class="meta">'+forLine+'<br>Prepared by '+esc(name)+'<br>'+date+'</div></div>'
     +'<div class="pp-prod">Solution: <b>'+esc(p.name)+'</b> · '+esc(p.cat)+'</div>'
     +costHtml+incHtml+procHtml+notesHtml
@@ -433,6 +433,6 @@ document.getElementById('resetBtn').addEventListener('click', function(){
 seedProduct();
 render();
 </script>
-<script src="js/hub-nav.js"></script>
+<script src="/js/hub-nav.js"></script>
 </body>
 </html>

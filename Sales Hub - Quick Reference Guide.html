@@ -5,9 +5,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="robots" content="noindex, nofollow">
 <title>Quick Reference Guide — NextPay Sales Hub</title>
-<link rel="icon" href="assets/favicon.ico" sizes="any">
-<link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
-<link rel="stylesheet" href="css/nextpay.css">
+<link rel="icon" href="/assets/favicon.ico" sizes="any">
+<link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
+<link rel="stylesheet" href="/css/nextpay.css">
 <style>
 .hub-bar{position:sticky;top:0;z-index:60;background:var(--navy);color:#fff;border-bottom:1px solid rgba(255,255,255,.10)}
 .hub-bar-inner{display:flex;align-items:center;gap:18px;height:66px;max-width:var(--maxw);margin:0 auto;padding:0 28px}
@@ -51,12 +51,12 @@ table.qrg td.custcol{background:rgba(20,161,140,.05)}
 </head>
 <body>
 <div class="hub-bar"><div class="hub-bar-inner">
-  <a href="Sales Hub.html" style="display:flex;align-items:center" aria-label="Sales Hub home"><img class="logo" src="assets/logos/nextpay-nav.png" alt="NextPay"></a>
+  <a href="/SalesHub" style="display:flex;align-items:center" aria-label="Sales Hub home"><img class="logo" src="/assets/logos/nextpay-nav.png" alt="NextPay"></a>
   <span class="pipe"></span><span class="hub-tag">Sales Hub <span class="badge">Internal</span></span>
-  <div class="right"><a href="Sales Hub.html">← Hub home</a></div>
+  <div class="right"><a href="/SalesHub">← Hub home</a></div>
 </div></div>
 <header class="pg-head"><div class="wrap">
-  <div class="crumbs"><a href="Sales Hub.html">Sales Hub</a><span class="sep">/</span><span>Quick Reference Guide</span></div>
+  <div class="crumbs"><a href="/SalesHub">Sales Hub</a><span class="sep">/</span><span>Quick Reference Guide</span></div>
   <h1>Quick Reference Guide</h1>
   <p class="lead">The best-fit processor for each merchant type, at a glance. Not sure? <b>NextPay Custom</b> can board nearly anyone — so when in doubt, lead there.</p>
 </div></header>
@@ -75,15 +75,15 @@ table.qrg td.custcol{background:rgba(20,161,140,.05)}
 </main>
 <footer class="hub-foot"><div class="wrap">
   <span>NextPay Sales Hub · Quick Reference Guide · Internal use only.</span>
-  <span><a href="Sales Hub - Request Access.html#suggest">💡 Suggest / Request</a> · <a href="Sales Hub.html">← Back to hub</a></span>
+  <span><a href="/SalesHub/RequestAccess#suggest">💡 Suggest / Request</a> · <a href="/SalesHub">← Back to hub</a></span>
 </div></footer>
 <script>
 var COLS=[
- {name:'Clover', logo:'assets/logos/clover.png'},
- {name:'Square', logo:'assets/logos/square.svg'},
- {name:'Shift4', logo:'assets/logos/shift4.png'},
- {name:'SwipeSimple', logo:'assets/logos/swipesimple.png'},
- {name:'NextPay Custom', logo:'assets/logos/nextpay-icon.png', custom:true}
+ {name:'Clover', logo:'/assets/logos/clover.png'},
+ {name:'Square', logo:'/assets/logos/square.svg'},
+ {name:'Shift4', logo:'/assets/logos/shift4.png'},
+ {name:'SwipeSimple', logo:'/assets/logos/swipesimple.png'},
+ {name:'NextPay Custom', logo:'/assets/logos/nextpay-icon.png', custom:true}
 ];
 // fit order: [Clover, Square, Shift4, SwipeSimple, Custom]
 var ROWS=[
@@ -114,6 +114,6 @@ document.getElementById('qrgBody').innerHTML=ROWS.map(function(r){
  return '<tr><td class="mtype">'+r.t+'</td>'+cells+'</tr>';
 }).join('');
 </script>
-<script src="js/hub-nav.js"></script>
+<script src="/js/hub-nav.js"></script>
 </body>
 </html>

@@ -5,9 +5,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="robots" content="noindex, nofollow">
 <title>My Journey — NextPay Sales Hub</title>
-<link rel="icon" href="assets/favicon.ico" sizes="any">
-<link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
-<link rel="stylesheet" href="css/nextpay.css">
+<link rel="icon" href="/assets/favicon.ico" sizes="any">
+<link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
+<link rel="stylesheet" href="/css/nextpay.css">
 <style>
 .hub-bar{position:sticky;top:0;z-index:60;background:var(--navy);color:#fff;border-bottom:1px solid rgba(255,255,255,.10)}
 .hub-bar-inner{display:flex;align-items:center;gap:18px;height:66px;max-width:var(--maxw);margin:0 auto;padding:0 28px}
@@ -74,16 +74,16 @@ main.wrap{padding:18px 0 10px}
 
 <div class="hub-bar">
   <div class="hub-bar-inner">
-    <a href="Sales Hub.html" style="display:flex;align-items:center" aria-label="Sales Hub home"><img class="logo" src="assets/logos/nextpay-nav.png" alt="NextPay"></a>
+    <a href="/SalesHub" style="display:flex;align-items:center" aria-label="Sales Hub home"><img class="logo" src="/assets/logos/nextpay-nav.png" alt="NextPay"></a>
     <span class="pipe"></span>
     <span class="hub-tag">Sales Hub <span class="badge">Internal</span></span>
-    <div class="right"><a href="Sales Hub.html">← Hub home</a></div>
+    <div class="right"><a href="/SalesHub">← Hub home</a></div>
   </div>
 </div>
 
 <header class="dash-head">
   <div class="wrap">
-    <div class="crumbs"><a href="Sales Hub.html">Sales Hub</a><span class="sep">/</span><span>My Journey</span></div>
+    <div class="crumbs"><a href="/SalesHub">Sales Hub</a><span class="sep">/</span><span>My Journey</span></div>
     <h1 id="greet">Welcome to the team 👋</h1>
     <p class="lead">Your step-by-step journey from setup to selling. Work the phases in order, check off each step, and your progress saves automatically on this device.</p>
     <div class="prog">
@@ -102,7 +102,7 @@ main.wrap{padding:18px 0 10px}
 <footer class="hub-foot">
   <div class="wrap">
     <span>NextPay Sales Hub · My Journey · Progress saved on this device.</span>
-    <span><a href="Sales Hub - Request Access.html#suggest">💡 Suggest / Request</a> · <a href="Sales Hub.html">← Back to hub</a></span>
+    <span><a href="/SalesHub/RequestAccess#suggest">💡 Suggest / Request</a> · <a href="/SalesHub">← Back to hub</a></span>
   </div>
 </footer>
 
@@ -120,9 +120,9 @@ var PHASES = [
     sub:"You've just been set up with your new NextPay email and everything you'll carry into the field. Get your kit ready.",
     items:[
       {id:"m1", t:"Set up your new NextPay email", d:"Confirm your @nextpaypos.com inbox is working on your phone and computer."},
-      {id:"m2", t:"Create your business card", d:"Add your name, title, cell and email — then print or save a PDF.", href:"Sales Hub - Business Card.html", link:"Make your card"},
-      {id:"m3", t:"Get your flyers", d:"Personalized print flyers to hand out and leave behind.", href:"Sales Hub - Lead Generation.html", link:"Marketing kit", soon:true},
-      {id:"m4", t:"Get your one-pagers", d:"Branded product sell-sheets you personalize and print.", href:"Sales Hub - Lead Generation.html", link:"Marketing kit", soon:true},
+      {id:"m2", t:"Create your business card", d:"Add your name, title, cell and email — then print or save a PDF.", href:"/SalesHub/BusinessCard", link:"Make your card"},
+      {id:"m3", t:"Get your flyers", d:"Personalized print flyers to hand out and leave behind.", href:"/SalesHub/LeadGeneration", link:"Marketing kit", soon:true},
+      {id:"m4", t:"Get your one-pagers", d:"Branded product sell-sheets you personalize and print.", href:"/SalesHub/LeadGeneration", link:"Marketing kit", soon:true},
       {id:"m5", t:"Save the Hub to your phone & desktop", d:"Bookmark the Hub so it's one tap away in the field."}
     ]
   },
@@ -131,10 +131,10 @@ var PHASES = [
     title:"Before You Hit the Field — Training & Learning",
     sub:"Know your stuff before you knock. Work through the training so you can speak with confidence.",
     items:[
-      {id:"t1", t:"Complete the Training Academy basics", d:"The NextPay pitch, payments foundations and core skills.", href:"Sales Hub - Training.html", link:"Open the Academy"},
-      {id:"t2", t:"Product training — know what you sell", d:"POS, terminals, gateways and invoicing — features and fit.", href:"Sales Hub - Document Library.html", link:"Product resources"},
-      {id:"t3", t:"Industry training — how to sell each vertical", d:"Restaurants, retail, services, healthcare — pain points and pitch.", href:"Sales Hub - Document Library.html", link:"Training library", soon:true},
-      {id:"t4", t:"Pricing & fee programs training", d:"Dual pricing, cash discount, surcharge, IC+ and how to pitch each.", href:"Sales Hub - Pricing.html", link:"Open pricing"},
+      {id:"t1", t:"Complete the Training Academy basics", d:"The NextPay pitch, payments foundations and core skills.", href:"/SalesHub/Training", link:"Open the Academy"},
+      {id:"t2", t:"Product training — know what you sell", d:"POS, terminals, gateways and invoicing — features and fit.", href:"/SalesHub/DocumentLibrary", link:"Product resources"},
+      {id:"t3", t:"Industry training — how to sell each vertical", d:"Restaurants, retail, services, healthcare — pain points and pitch.", href:"/SalesHub/DocumentLibrary", link:"Training library", soon:true},
+      {id:"t4", t:"Pricing & fee programs training", d:"Dual pricing, cash discount, surcharge, IC+ and how to pitch each.", href:"/SalesHub/Pricing", link:"Open pricing"},
       {id:"t5", t:"Pass a product quiz", d:"Prove you know the stack before you pitch it.", soon:true}
     ]
   },
@@ -143,11 +143,11 @@ var PHASES = [
     title:"Your Field Toolkit — What to Use in the Field",
     sub:"The tools you'll actually use every day, in front of merchants.",
     items:[
-      {id:"f1", t:"Your business cards", d:"Hand them out everywhere — your fastest brand builder.", href:"Sales Hub - Business Card.html", link:"Open card maker"},
-      {id:"f2", t:"One-pagers & leave-behinds", d:"Drop a branded sheet with every prospect you visit.", href:"Sales Hub - Lead Generation.html", link:"Marketing kit", soon:true},
+      {id:"f1", t:"Your business cards", d:"Hand them out everywhere — your fastest brand builder.", href:"/SalesHub/BusinessCard", link:"Open card maker"},
+      {id:"f2", t:"One-pagers & leave-behinds", d:"Drop a branded sheet with every prospect you visit.", href:"/SalesHub/LeadGeneration", link:"Marketing kit", soon:true},
       {id:"f3", t:"Google Maps — find & route local prospects", d:"Map your territory and plan efficient door-to-door runs.", href:"https://www.google.com/maps", link:"Open Maps", blank:true},
       {id:"f4", t:"The CRM — log every lead & deal", d:"Track conversations, follow-ups and your pipeline.", href:CRM, link:"Open CRM", blank:true},
-      {id:"f5", t:"Statement Rate Analyzer", d:"Run a rate review on the spot to show savings.", href:"Sales Hub - Statement Analyzer.html", link:"Open analyzer", blank:true}
+      {id:"f5", t:"Statement Rate Analyzer", d:"Run a rate review on the spot to show savings.", href:"/SalesHub/StatementAnalyzer", link:"Open analyzer", blank:true}
     ]
   },
   {
@@ -155,12 +155,12 @@ var PHASES = [
     title:"Build Your Pipeline — Lead Gen & Outreach",
     sub:"Fill your pipeline through every channel. Work several at once and stay consistent.",
     items:[
-      {id:"p1", t:"Explore the lead generation tools", d:"Live transfers, warm lists, paid ads and NextLink.", href:"Sales Hub - Lead Generation.html", link:"Lead gen tools"},
-      {id:"p2", t:"Set up cold email campaigns", d:"Use warm lists to run consistent outreach.", href:"Sales Hub - Lead Generation.html", link:"Get lists", soon:true},
-      {id:"p3", t:"LinkedIn outreach (NextLink)", d:"Grow your network and prospect with NextLink.", href:"Sales Hub - Lead Generation.html", link:"About NextLink"},
+      {id:"p1", t:"Explore the lead generation tools", d:"Live transfers, warm lists, paid ads and NextLink.", href:"/SalesHub/LeadGeneration", link:"Lead gen tools"},
+      {id:"p2", t:"Set up cold email campaigns", d:"Use warm lists to run consistent outreach.", href:"/SalesHub/LeadGeneration", link:"Get lists", soon:true},
+      {id:"p3", t:"LinkedIn outreach (NextLink)", d:"Grow your network and prospect with NextLink.", href:"/SalesHub/LeadGeneration", link:"About NextLink"},
       {id:"p4", t:"Create your Alignable profile", d:"Connect with local business owners on Alignable.", href:"https://www.alignable.com", link:"Open Alignable", blank:true},
-      {id:"p5", t:"Engage local Facebook business pages", d:"Join and post in local business & community groups.", worksheet:"assets/docs/worksheet-facebook.docx", wlabel:"Open worksheet"},
-      {id:"p6", t:"Make Chamber of Commerce connections", d:"Join your local chamber and work the networking events.", worksheet:"assets/docs/worksheet-chamber.docx", wlabel:"Open worksheet"}
+      {id:"p5", t:"Engage local Facebook business pages", d:"Join and post in local business & community groups.", worksheet:"/assets/docs/worksheet-facebook.docx", wlabel:"Open worksheet"},
+      {id:"p6", t:"Make Chamber of Commerce connections", d:"Join your local chamber and work the networking events.", worksheet:"/assets/docs/worksheet-chamber.docx", wlabel:"Open worksheet"}
     ]
   },
   {
@@ -168,11 +168,11 @@ var PHASES = [
     title:"Start Selling",
     sub:"Time to close — put it all together and get deals moving.",
     items:[
-      {id:"s1", t:"Build a list of 10 local prospects", d:"Businesses you can call or walk into this week.", worksheet:"assets/docs/worksheet-prospect-list.docx", wlabel:"Open prospect worksheet"},
-      {id:"s2", t:"Run your first rate review", d:"Use the analyzer to beat or match a prospect's rate.", href:"Sales Hub - Statement Analyzer.html", link:"Open analyzer", blank:true},
-      {id:"s3", t:"Lead with a current promotion", d:"Use an active offer to kill the cost-to-switch objection.", href:"Sales Hub - Promotions.html", link:"See offers"},
-      {id:"s4", t:"Submit your first deal", d:"Follow the product playbook end to end.", href:"Sales Hub - Submit a Deal.html", link:"How to submit"},
-      {id:"s5", t:"Book your first 3 appointments", d:"Get face time on the calendar.", worksheet:"assets/docs/worksheet-appointments.docx", wlabel:"Open appointments worksheet"}
+      {id:"s1", t:"Build a list of 10 local prospects", d:"Businesses you can call or walk into this week.", worksheet:"/assets/docs/worksheet-prospect-list.docx", wlabel:"Open prospect worksheet"},
+      {id:"s2", t:"Run your first rate review", d:"Use the analyzer to beat or match a prospect's rate.", href:"/SalesHub/StatementAnalyzer", link:"Open analyzer", blank:true},
+      {id:"s3", t:"Lead with a current promotion", d:"Use an active offer to kill the cost-to-switch objection.", href:"/SalesHub/Promotions", link:"See offers"},
+      {id:"s4", t:"Submit your first deal", d:"Follow the product playbook end to end.", href:"/SalesHub/SubmitADeal", link:"How to submit"},
+      {id:"s5", t:"Book your first 3 appointments", d:"Get face time on the calendar.", worksheet:"/assets/docs/worksheet-appointments.docx", wlabel:"Open appointments worksheet"}
     ]
   }
 ];
@@ -248,6 +248,6 @@ document.getElementById('resetBtn').addEventListener('click', function(){
 
 render();
 </script>
-<script src="js/hub-nav.js"></script>
+<script src="/js/hub-nav.js"></script>
 </body>
 </html>
