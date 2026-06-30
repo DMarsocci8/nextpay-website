@@ -40,6 +40,9 @@ section.kb{background:#fff;border:1px solid var(--line);border-radius:18px;box-s
 /* section — each section sets its own --accent color for a quick visual cue */
 section.kb{scroll-margin-top:80px;margin:0 0 34px;--accent:var(--teal)}
 section.kb{border-top:5px solid var(--accent)}
+/* calmer look: one uniform brand teal instead of per-section colors
+   (!important overrides the inline style="--accent:#..." on each section & TOC link) */
+.toc a, section.kb{--accent:#14A18C !important}
 .sec-h{display:flex;align-items:center;gap:13px;margin:0 0 4px}
 .sec-h .ltr{flex:none;width:40px;height:40px;border-radius:11px;background:var(--accent);color:#fff;font-weight:800;display:grid;place-items:center;font-size:18px}
 .sec-h .eyebrow{font-size:11.5px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:var(--accent)}
