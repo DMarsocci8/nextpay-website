@@ -533,9 +533,11 @@ window.NP_PRODUCTS = {"x-inv-fluidpay":{"name":"FluidPay","brand":"FluidPay","sl
     square:{name:'Square',card:3.3,fixed:0.30,ach:1.0,inv:0,edit:false},
     other:{name:'Other',card:3.0,fixed:0,ach:1.0,inv:0,edit:true}
   };
-  // NextPay Invoice dual-pricing model: cards passed to customer (0% to you),
-  // ACH 0.75% to you, plus a per-transaction platform fee.
-  const NP={youCard:0,youAch:0.75,perTxn:1.25};
+  // NextPay Invoice dual-pricing model: with dual pricing the card fee is passed
+  // to customers (0% to you) and ACH is effectively absorbed, so the merchant's
+  // estimated cost is a flat per-transaction fee that does NOT scale with ACH
+  // volume (matches the source calculator: ~$94 at 75 payments).
+  const NP={youCard:0,youAch:0.75,perTxn:1.2533};
   const other={card:3,ach:1,fixed:0};
   let cur='quickbooks';
   const $=id=>document.getElementById(id);
@@ -556,7 +558,7 @@ window.NP_PRODUCTS = {"x-inv-fluidpay":{"name":"FluidPay","brand":"FluidPay","sl
     const fixed=c.edit?other.fixed:c.fixed;
     const compFees=cardVol*card/100 + cardCount*fixed + achVol*ach/100 + rev*(c.inv||0)/100;
     const compEff=rev?compFees/rev*100:0;
-    const npFees=cardVol*NP.youCard/100 + achVol*NP.youAch/100 + pay*NP.perTxn;
+    const npFees=pay*NP.perTxn;
     const npEff=rev?npFees/rev*100:0;
     const save=Math.max(0,compFees-npFees);
 
@@ -592,7 +594,7 @@ window.NP_PRODUCTS = {"x-inv-fluidpay":{"name":"FluidPay","brand":"FluidPay","sl
     const achVol=rev*achShare,cardVol=rev-achVol,cardCount=Math.round(pay*(1-achShare));
     const c=C[cur];const card=c.edit?other.card:c.card,ach=c.edit?other.ach:c.ach,fixed=c.edit?other.fixed:c.fixed;
     const compFees=cardVol*card/100+cardCount*fixed+achVol*ach/100+rev*(c.inv||0)/100;
-    const npFees=cardVol*NP.youCard/100+achVol*NP.youAch/100+pay*NP.perTxn;
+    const npFees=pay*NP.perTxn;
     const totEls=comp.querySelectorAll('.npc-row.tot .v, .npc-row:last-child .v');
     if(totEls[0])totEls[0].textContent=money(compFees);
     if(totEls[1])totEls[1].textContent=pct(rev?compFees/rev*100:0);
