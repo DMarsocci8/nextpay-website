@@ -31,8 +31,9 @@ main.wrap{padding:30px 0 10px}
 .pk-card{background:#fff;border:1px solid var(--line);border-radius:var(--radius-lg);box-shadow:var(--shadow-sm);padding:20px 20px 18px;display:flex;flex-direction:column;gap:9px}
 .pk-card.hide{display:none}
 .pk-cat{align-self:flex-start;font-size:10.5px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:var(--teal-dark);background:rgba(20,161,140,.12);padding:4px 9px;border-radius:999px}
-.pk-card h3{font-size:18px;letter-spacing:-.01em;color:#fff;background:#0C1B2A;border-radius:10px;padding:10px 14px;margin:0}
+.pk-card h3{display:flex;align-items:center;gap:8px;font-size:18px;letter-spacing:-.01em;color:#fff;background:#0C1B2A;border-radius:10px;padding:10px 14px;margin:0}
 .pk-card h3 .pk-sub{font-size:13px;font-weight:600;color:#c4d0db}
+.pk-card .pk-logo{margin-left:auto;height:20px;width:auto;max-width:84px;object-fit:contain;filter:brightness(0) invert(1)}
 .pk-prop{margin-top:6px;align-self:flex-start;display:inline-flex;align-items:center;gap:6px;font-weight:700;font-size:13px;color:var(--teal-dark);border:1px solid rgba(20,161,140,.32);background:rgba(20,161,140,.06);padding:7px 13px;border-radius:999px;transition:.16s;text-decoration:none}
 .pk-prop:hover{background:var(--teal);color:#fff;border-color:var(--teal)}
 .pk-prop svg{width:13px;height:13px}
@@ -81,7 +82,7 @@ main.wrap{padding:30px 0 10px}
     <!-- ===== POS ===== -->
     <article class="pk-card" data-cat="pos">
       <span class="pk-cat">POS</span>
-      <h3>Square</h3>
+      <h3>Square<img class="pk-logo" src="/assets/logos/square.svg" alt="Square"></h3>
       <p class="pk-fit"><b>Best for:</b> retail, services &amp; smaller restaurants that want a familiar, easy-to-run system.</p>
       <ul class="pk-feat">
         <li>Fast to set up — staff already know how to use it</li>
@@ -94,7 +95,7 @@ main.wrap{padding:30px 0 10px}
 
     <article class="pk-card" data-cat="pos">
       <span class="pk-cat">POS</span>
-      <h3>Shift4 Dine</h3>
+      <h3>Shift4 Dine<img class="pk-logo" src="/assets/logos/shift4.png" alt="Shift4 Dine"></h3>
       <p class="pk-fit"><b>Best for:</b> restaurants, bars, cafes and pizzerias.</p>
       <ul class="pk-feat">
         <li>Full restaurant POS — KDS, online ordering, handhelds, offline mode</li>
@@ -107,7 +108,7 @@ main.wrap{padding:30px 0 10px}
 
     <article class="pk-card" data-cat="pos">
       <span class="pk-cat">POS</span>
-      <h3>Clover</h3>
+      <h3>Clover<img class="pk-logo" src="/assets/logos/clover.png" alt="Clover"></h3>
       <p class="pk-fit"><b>Best for:</b> retail &amp; restaurants that want a familiar app-based system.</p>
       <ul class="pk-feat">
         <li>Flexible app marketplace for any workflow</li>
@@ -120,7 +121,7 @@ main.wrap{padding:30px 0 10px}
 
     <article class="pk-card" data-cat="pos">
       <span class="pk-cat">POS</span>
-      <h3>Quantic</h3>
+      <h3>Quantic<img class="pk-logo" src="/assets/logos/quantic.svg" alt="Quantic"></h3>
       <p class="pk-fit"><b>Best for:</b> retail and full-service restaurants wanting a modern cloud POS.</p>
       <ul class="pk-feat">
         <li>Flexes between retail and restaurant</li>
@@ -133,7 +134,7 @@ main.wrap{padding:30px 0 10px}
 
     <article class="pk-card" data-cat="pos">
       <span class="pk-cat">POS</span>
-      <h3>Korona</h3>
+      <h3>Korona<img class="pk-logo" src="/assets/logos/korona.png" alt="Korona"></h3>
       <p class="pk-fit"><b>Best for:</b> high-SKU retail — liquor, convenience, grocery and ticketing.</p>
       <ul class="pk-feat">
         <li>Deep inventory &amp; vendor management</li>
@@ -146,7 +147,7 @@ main.wrap{padding:30px 0 10px}
 
     <article class="pk-card" data-cat="pos">
       <span class="pk-cat">POS</span>
-      <h3>NRS</h3>
+      <h3>NRS<img class="pk-logo" src="/assets/logos/nrs.png" alt="NRS"></h3>
       <p class="pk-fit"><b>Best for:</b> convenience stores and bodegas.</p>
       <ul class="pk-feat">
         <li>Convenience-focused POS with scale &amp; scanner support</li>
@@ -159,7 +160,7 @@ main.wrap{padding:30px 0 10px}
 
     <article class="pk-card" data-cat="pos">
       <span class="pk-cat">POS</span>
-      <h3>DejaPay Pro</h3>
+      <h3>DejaPay Pro<img class="pk-logo" src="/assets/logos/dejapay.webp" alt="DejaPay Pro"></h3>
       <p class="pk-fit"><b>Best for:</b> small retail &amp; service wanting a compact Android all-in-one.</p>
       <ul class="pk-feat">
         <li>Dejavoo Android smart POS</li>
@@ -172,7 +173,7 @@ main.wrap{padding:30px 0 10px}
 
     <article class="pk-card" data-cat="pos">
       <span class="pk-cat">POS</span>
-      <h3>Chively</h3>
+      <h3>Chively<img class="pk-logo" src="/assets/logos/chively-white.png" alt="Chively"></h3>
       <p class="pk-fit"><b>Best for:</b> any business that wants one connected system instead of three.</p>
       <ul class="pk-feat">
         <li>All-in-one checkout, inventory, staff &amp; reporting</li>
@@ -186,7 +187,7 @@ main.wrap{padding:30px 0 10px}
     <!-- ===== TERMINALS ===== -->
     <article class="pk-card" data-cat="terminals">
       <span class="pk-cat">Terminal</span>
-      <h3>PAX <span class="pk-sub">A920 · A77 · A800</span></h3>
+      <h3>PAX <span class="pk-sub">A920 · A77 · A800</span><img class="pk-logo" src="/assets/logos/pax.svg" alt="PAX"></h3>
       <p class="pk-fit"><b>Best for:</b> merchants who just need to take cards reliably — counter or mobile.</p>
       <ul class="pk-feat">
         <li>Android smart terminals, fast and reliable</li>
@@ -199,7 +200,7 @@ main.wrap{padding:30px 0 10px}
 
     <article class="pk-card" data-cat="terminals">
       <span class="pk-cat">Terminal</span>
-      <h3>Dejavoo <span class="pk-sub">P-line · QD line</span></h3>
+      <h3>Dejavoo <span class="pk-sub">P-line · QD line</span><img class="pk-logo" src="/assets/logos/dejavoo.png" alt="Dejavoo"></h3>
       <p class="pk-fit"><b>Best for:</b> countertop and portable card acceptance with cloud control.</p>
       <ul class="pk-feat">
         <li>P-series Android terminals and QD touchscreen line</li>
@@ -213,7 +214,7 @@ main.wrap{padding:30px 0 10px}
     <!-- ===== GATEWAYS ===== -->
     <article class="pk-card" data-cat="gateways">
       <span class="pk-cat">Gateway</span>
-      <h3>FluidPay</h3>
+      <h3>FluidPay<img class="pk-logo" src="/assets/logos/fluidpay.png" alt="FluidPay"></h3>
       <p class="pk-fit"><b>Best for:</b> software platforms, ISVs and subscription / e-commerce.</p>
       <ul class="pk-feat">
         <li>Cloud-native, API-first design</li>
@@ -226,7 +227,7 @@ main.wrap{padding:30px 0 10px}
 
     <article class="pk-card" data-cat="gateways">
       <span class="pk-cat">Gateway</span>
-      <h3>NMI</h3>
+      <h3>NMI<img class="pk-logo" src="/assets/logos/nmi.png" alt="NMI"></h3>
       <p class="pk-fit"><b>Best for:</b> businesses that want a proven, integration-rich gateway.</p>
       <ul class="pk-feat">
         <li>Huge integration ecosystem</li>
@@ -239,7 +240,7 @@ main.wrap{padding:30px 0 10px}
 
     <article class="pk-card" data-cat="gateways">
       <span class="pk-cat">Gateway</span>
-      <h3>Authorize.net</h3>
+      <h3>Authorize.net<img class="pk-logo" src="/assets/logos/authnet.png" alt="Authorize.net"></h3>
       <p class="pk-fit"><b>Best for:</b> established e-commerce that wants a trusted, widely-supported name.</p>
       <ul class="pk-feat">
         <li>Supported by nearly every shopping cart</li>
@@ -252,7 +253,7 @@ main.wrap{padding:30px 0 10px}
 
     <article class="pk-card" data-cat="gateways">
       <span class="pk-cat">Gateway</span>
-      <h3>iPOSPays <span class="pk-sub">(Dejavoo)</span></h3>
+      <h3>iPOSPays <span class="pk-sub">(Dejavoo)</span><img class="pk-logo" src="/assets/logos/ipospays.png" alt="iPOSPays"></h3>
       <p class="pk-fit"><b>Best for:</b> merchants who want a gateway and terminal management together.</p>
       <ul class="pk-feat">
         <li>Virtual terminal, invoicing and pay links</li>
@@ -265,7 +266,7 @@ main.wrap{padding:30px 0 10px}
 
     <article class="pk-card" data-cat="gateways">
       <span class="pk-cat">Gateway</span>
-      <h3>Valor</h3>
+      <h3>Valor<img class="pk-logo" src="/assets/logos/valor.png" alt="Valor"></h3>
       <p class="pk-fit"><b>Best for:</b> terminals plus a virtual terminal with strong dual-pricing tools.</p>
       <ul class="pk-feat">
         <li>Valor VL terminals and merchant portal</li>
@@ -279,7 +280,7 @@ main.wrap{padding:30px 0 10px}
     <!-- ===== INVOICING ===== -->
     <article class="pk-card" data-cat="invoicing">
       <span class="pk-cat">Invoicing</span>
-      <h3>FieldPulse</h3>
+      <h3>FieldPulse<img class="pk-logo" src="/assets/logos/fieldpulse.png" alt="FieldPulse"></h3>
       <p class="pk-fit"><b>Best for:</b> home services and contractors.</p>
       <ul class="pk-feat">
         <li>Scheduling, estimates, invoicing and CRM</li>
@@ -292,7 +293,7 @@ main.wrap{padding:30px 0 10px}
 
     <article class="pk-card" data-cat="invoicing">
       <span class="pk-cat">Invoicing</span>
-      <h3>Field Work</h3>
+      <h3>Field Work<img class="pk-logo" src="/assets/logos/fieldwork.png" alt="Field Work"></h3>
       <p class="pk-fit"><b>Best for:</b> field-service teams wanting a simple job-to-invoice flow.</p>
       <ul class="pk-feat">
         <li>Straightforward job management</li>
@@ -305,7 +306,7 @@ main.wrap{padding:30px 0 10px}
 
     <article class="pk-card" data-cat="invoicing">
       <span class="pk-cat">Invoicing</span>
-      <h3>LQPay</h3>
+      <h3>LQPay<img class="pk-logo" src="/assets/logos/lqpay.png" alt="LQPay"></h3>
       <p class="pk-fit"><b>Best for:</b> any business that wants modern invoicing and pay-by-link.</p>
       <ul class="pk-feat">
         <li>Invoices, pay links and QR codes</li>
@@ -318,7 +319,7 @@ main.wrap{padding:30px 0 10px}
 
     <article class="pk-card" data-cat="invoicing">
       <span class="pk-cat">Invoicing</span>
-      <h3>QuickBooks integration</h3>
+      <h3>QuickBooks integration<img class="pk-logo" src="/assets/logos/quickbooks.png" alt="QuickBooks"></h3>
       <p class="pk-fit"><b>Best for:</b> any business already running on QuickBooks.</p>
       <ul class="pk-feat">
         <li>Sync payments straight into QuickBooks</li>
