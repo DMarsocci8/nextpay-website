@@ -459,7 +459,7 @@ window.addEventListener('load',function(){document.querySelectorAll('img.brandlo
             </div>
             <div class="tour-media">
               <div class="tphone"><div class="tscreen">
-                <div class="tbiz"><span class="mk d-initials">S</span><b class="d-biz">Summit Services</b></div>
+                <div class="tbiz"><span class="mk"><svg viewBox="0 0 24 24" style="width:26px;height:26px"><circle cx="18" cy="8" r="2.3" fill="#1FC2A6"/><path d="M2 19.5L8.5 9l3.8 5.2L16 8.4l6 11.1z" fill="#fff"/></svg></span><b class="d-biz">Summit Services</b></div>
                 <div style="text-align:center"><div class="tprice"><sup>$</sup><span class="d-amt">449.00</span></div></div>
                 <div class="tline"></div>
                 <div class="trow"><span>Invoice #</span><b class="d-inv">9381540</b></div>
@@ -482,7 +482,7 @@ window.addEventListener('load',function(){document.querySelectorAll('img.brandlo
             </div>
             <div class="tour-media">
               <div class="tphone"><div class="tscreen">
-                <div class="tbiz"><span class="mk d-initials">S</span><b class="d-biz">Summit Services</b></div>
+                <div class="tbiz"><span class="mk"><svg viewBox="0 0 24 24" style="width:26px;height:26px"><circle cx="18" cy="8" r="2.3" fill="#1FC2A6"/><path d="M2 19.5L8.5 9l3.8 5.2L16 8.4l6 11.1z" fill="#fff"/></svg></span><b class="d-biz">Summit Services</b></div>
                 <div style="display:flex;align-items:center;justify-content:space-between"><div class="tprice"><sup>$</sup><span class="d-amt">449.00</span></div><span class="tpaid"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" style="width:17px;height:17px"><path d="M5 13l4 4L19 7"/></svg>PAID</span></div>
                 <div class="tline"></div>
                 <div class="trow"><span>Invoice #</span><b class="d-inv">9381540</b></div>
@@ -850,7 +850,6 @@ window.NP_PRODUCTS = {"x-inv-fluidpay":{"name":"FluidPay","brand":"FluidPay","sl
     set('d-biz',DEMO.business);set('d-cust',DEMO.customer);set('d-amt',money(DEMO.amount));
     set('d-inv',DEMO.invoice);set('d-phone',DEMO.phone);set('d-email',DEMO.email);
     set('d-desc',DEMO.description);set('d-due',DEMO.due);set('d-paidon',DEMO.paid);set('d-card',DEMO.card);
-    set('d-initials',(DEMO.business.trim()[0]||'').toUpperCase());
     const rec=tour.querySelector('#d-recent');
     if(rec)rec.innerHTML=DEMO.recent.map(r=>'<tr><td><span class="st">Sent</span></td><td>'+money(r.a)+'</td><td>'+r.n+'</td></tr>').join('');
   }
