@@ -24,7 +24,7 @@
 main.wrap{padding:24px 0 10px}
 .legend{display:flex;flex-wrap:wrap;gap:18px;margin-bottom:16px;font-size:13.5px;font-weight:600;color:var(--slate)}
 .legend span{display:inline-flex;align-items:center;gap:8px}
-.dot{width:22px;height:22px;border-radius:50%;display:grid;place-items:center;flex:none}
+.dot{width:22px;height:22px;border-radius:50%;display:flex;align-items:center;justify-content:center;flex:none}
 .dot svg{width:13px;height:13px;color:#fff}
 .dot.yes{background:var(--teal)}.dot.no{background:#E3E9ED}.dot.no svg{color:#9aa7b2}.dot.cust{background:var(--navy)}
 .tbl-wrap{overflow-x:auto;border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow-sm);background:#fff}
@@ -84,7 +84,7 @@ var COLS=[
  {name:'Square', logo:'/assets/logos/square.svg'},
  {name:'Shift4', logo:'/assets/logos/shift4.png'},
  {name:'SwipeSimple', logo:'/assets/logos/swipesimple.png'},
- {name:'NextPay Custom', logo:'/assets/logos/nextpay-icon.png', custom:true}
+ {name:'NextPay Custom', logo:'/assets/logos/nextpay-white.png', custom:true}
 ];
 // fit order: [Clover, Square, Shift4, SwipeSimple, Custom]
 var ROWS=[
