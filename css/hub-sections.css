@@ -44,9 +44,11 @@
 
 /* eyebrows / small labels go bright teal for contrast on navy */
 .sec-head .eyebrow, .sec-h .eyebrow,
-.sec-h .ltr, .mod-head .mnum, .phase-head .pn{
+.mod-head .mnum, .phase-head .pn{
   color:#1FC2A6 !important;
 }
+/* keep the letter badge glyph white (its background is the accent color) */
+.sec-h .ltr{ color:#fff !important; }
 
 /* ---- page-unique section dividers (verified collision-free) ---- */
 /* Mindset — numbered mantras (.m > h2); Shift4 Dine Settings — setting
