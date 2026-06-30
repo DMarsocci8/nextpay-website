@@ -66,3 +66,8 @@
 .dsec .dh h2{ color:#fff !important; }
 .m > h2 .n, .dsec .dh .ic{ color:#1FC2A6 !important; }
 .dsec .dh .controls{ color:#c4d0db !important; }
+
+/* brand logos that sit INSIDE a navy band were built for a light
+   background (dark artwork), so they vanish on navy — render them
+   white so they stay visible. Works for both PNG and SVG. */
+.sec-h .sec-logo{ filter:brightness(0) invert(1) !important; }
