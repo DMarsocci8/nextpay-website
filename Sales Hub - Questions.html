@@ -27,6 +27,12 @@ main.wrap{padding:30px 0 10px}
 .q .qt{font-size:15.5px;font-weight:700;color:var(--ink);line-height:1.45}
 .q .why{font-size:13.5px;color:var(--slate);line-height:1.5;margin-top:6px}
 .q .why b{color:var(--teal-dark)}
+/* category navy band */
+.qsec{margin-bottom:30px}
+.qcat{background:#0C1B2A;border-radius:14px;padding:16px 22px;margin:0 0 16px;box-shadow:0 6px 18px rgba(12,27,42,.14)}
+.qcat .eyebrow{display:block;font-size:11.5px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:#1FC2A6;margin-bottom:5px}
+.qcat h2{font-size:22px;letter-spacing:-.02em;color:#fff;margin:0}
+.qcat p{font-size:13.5px;color:#c4d0db;margin:6px 0 0;line-height:1.5}
 .hub-foot{background:var(--navy);color:#9fb1c2;padding:30px 0;margin-top:46px;font-size:13.5px}
 .hub-foot .wrap{display:flex;justify-content:space-between;gap:18px;flex-wrap:wrap}
 .hub-foot a{color:#cdd8e2;font-weight:600}.hub-foot a:hover{color:#fff}
@@ -41,8 +47,8 @@ main.wrap{padding:30px 0 10px}
 </div></div>
 <header class="pg-head"><div class="wrap">
   <div class="crumbs"><a href="/SalesHub">Sales Hub</a><span class="sep">/</span><span>Prospecting Questions</span></div>
-  <h1>Top 10 questions to ask a merchant</h1>
-  <p class="lead">Discovery questions that uncover pain and set up the cost-savings conversation. Ask, listen, and let them tell you their biggest problem in their own words.</p>
+  <h1>Prospecting Questions</h1>
+  <p class="lead">Discovery questions that uncover pain and set up the savings — and rewards — conversation. Start with the top 10, then reach for the bonus frameworks (Rewards, SPIN, Sandler, Challenger) when you need a sharper angle.</p>
 </div></header>
 <main class="wrap" id="list"></main>
 <footer class="hub-foot"><div class="wrap">
@@ -50,20 +56,52 @@ main.wrap{padding:30px 0 10px}
   <span><a href="/SalesHub/RequestAccess#suggest">💡 Suggest / Request</a> · <a href="/SalesHub">← Back to hub</a></span>
 </div></footer>
 <script>
-var Q=[
- {q:"What payment processing system are you currently using, and how long have you been with them?", w:"Gauges loyalty to — or frustration with — their current provider."},
- {q:"How satisfied are you with your processor's fees? Do you feel like you're paying too much?", w:"Uncovers pricing pain and sets up the cost-savings conversation."},
- {q:"Do you get your payouts same-day, next-day, or longer? Ever had a delay getting your funds?", w:"Slow-payout frustration makes faster funding very attractive."},
- {q:"Have you ever seen unexpected fees or rate increases from your processor?", w:"Surfaces hidden costs that may already be bugging them."},
- {q:"How easy is your current POS or terminal for your staff? Any training issues or glitches?", w:"User-friendliness is a big pain point, especially with staff turnover."},
- {q:"Does your system accept every payment type — contactless, mobile, QR, gift cards?", w:"Merchants missing modern options may be losing customers."},
- {q:"How well does your payment system integrate with your bookkeeping/POS software?", w:"If they reconcile manually, they'll value automation."},
- {q:"Have you ever had your account frozen or transactions flagged for no clear reason?", w:"Stripe / PayPal / Square users often have horror stories here."},
- {q:"If you could improve one thing about your payment setup, what would it be?", w:"Gets them to name their biggest pain point in their own words."},
- {q:"Would you be open to a quick cost-savings analysis to see how much we can keep in your pocket?", w:"The soft close — earns the statement and the next step."}
+var CATS=[
+ {eyebrow:"Discovery", title:"Top 10 questions to ask a merchant", sub:"Your go-to discovery set — uncover pain and set up the savings conversation.", items:[
+  {q:"What payment processing system are you currently using, and how long have you been with them?", w:"Gauges loyalty to — or frustration with — their current provider."},
+  {q:"How satisfied are you with your processor's fees? Do you feel like you're paying too much?", w:"Uncovers pricing pain and sets up the cost-savings conversation."},
+  {q:"Do you get your payouts same-day, next-day, or longer? Ever had a delay getting your funds?", w:"Slow-payout frustration makes faster funding very attractive."},
+  {q:"Have you ever seen unexpected fees or rate increases from your processor?", w:"Surfaces hidden costs that may already be bugging them."},
+  {q:"How easy is your current POS or terminal for your staff? Any training issues or glitches?", w:"User-friendliness is a big pain point, especially with staff turnover."},
+  {q:"Does your system accept every payment type — contactless, mobile, QR, gift cards?", w:"Merchants missing modern options may be losing customers."},
+  {q:"How well does your payment system integrate with your bookkeeping/POS software?", w:"If they reconcile manually, they'll value automation."},
+  {q:"Have you ever had your account frozen or transactions flagged for no clear reason?", w:"Stripe / PayPal / Square users often have horror stories here."},
+  {q:"If you could improve one thing about your payment setup, what would it be?", w:"Gets them to name their biggest pain point in their own words."},
+  {q:"Would you be open to a quick cost-savings analysis to see how much we can keep in your pocket?", w:"The soft close — earns the statement and the next step."}
+ ]},
+ {eyebrow:"Bonus · Rewards", title:"Lead with rewards", sub:"Open the rewards angle — earning points and cash back on the sales they already make.", items:[
+  {q:"Are you earning any points or cash back on the card sales you take every month?", w:"Almost no business is — it opens the rewards conversation instantly."},
+  {q:"You've got a rewards card for the money you spend — but what's rewarding you on the money coming in?", w:"Reframes rewards from spending to earning on their own sales."},
+  {q:"Roughly how much do you run in card sales a month?", w:"Sizes the opportunity and sets up the rewards estimate."},
+  {q:"Has any processor ever offered to pay you back, or do they just take their cut?", w:"Contrasts NextPay Rewards with every competitor."},
+  {q:"What would a few thousand points or dollars back a year mean for you — reinvest, travel, or bonus the team?", w:"Makes the reward tangible and personal."},
+  {q:"If I could show you how to earn on sales you're already making at no extra cost, is that worth five minutes?", w:"Soft close into the rewards estimate."}
+ ]},
+ {eyebrow:"Bonus · SPIN Selling", title:"Situation → Problem → Implication → Need-payoff", sub:"Walk them from their current setup to naming the value themselves.", items:[
+  {q:"Walk me through how you take payments today — what system, what processor, how long?", w:"Situation — establishes the current setup before you dig in."},
+  {q:"Where does your current setup frustrate you or your staff the most?", w:"Problem — surfaces a specific difficulty to build on."},
+  {q:"When fees creep up or payouts run slow, what does that cost you over a year — and what does it do to your cash flow?", w:"Implication — magnifies the pain so it feels worth fixing."},
+  {q:"If you could cut those fees and earn rewards on every sale, what would that do for the business?", w:"Need-payoff — they describe the value, so they sell themselves."}
+ ]},
+ {eyebrow:"Bonus · Sandler", title:"The pain funnel", sub:"Get past the surface complaint to the money and the emotion behind it.", items:[
+  {q:"Before we dig in — if this isn't a fit, are you comfortable telling me so? And if it is, are you open to a next step?", w:"Up-front contract — sets clear expectations and ends the chase."},
+  {q:"You said the fees bother you — tell me more about that.", w:"Pain funnel — 'tell me more' opens the wound."},
+  {q:"How long has that been going on?", w:"Pain funnel — establishes duration and urgency."},
+  {q:"What have you tried to fix it, and how did that work out?", w:"Pain funnel — past attempts that failed raise the stakes."},
+  {q:"How much do you think that's costing you — and how do you feel about that?", w:"Pain funnel — ties real money to emotion, the Sandler core."}
+ ]},
+ {eyebrow:"Bonus · Challenger", title:"Teach, tailor, take control", sub:"Reframe how they think about cost and rewards, then push the decision.", items:[
+  {q:"Most owners think their rate is the whole cost — but the real number is your effective rate plus what you're NOT earning in rewards. Ever looked at it that way?", w:"Teach — reframes how they measure the true cost."},
+  {q:"Businesses like yours usually lose money in two places: junk fees and zero rewards on sales. Which one would surprise you more?", w:"Tailor — makes it specific and creates productive tension."},
+  {q:"If the numbers show you're overpaying and missing rewards, the real question isn't whether to look — it's why wait another month. Fair?", w:"Take control — drives toward a decision."}
+ ]}
 ];
-document.getElementById('list').innerHTML=Q.map(function(o,i){
- return '<div class="q"><span class="n">'+(i+1)+'</span><div><div class="qt">'+o.q+'</div><div class="why"><b>Why:</b> '+o.w+'</div></div></div>';
+document.getElementById('list').innerHTML=CATS.map(function(c){
+ var head='<div class="qcat"><span class="eyebrow">'+c.eyebrow+'</span><h2>'+c.title+'</h2>'+(c.sub?'<p>'+c.sub+'</p>':'')+'</div>';
+ var items=c.items.map(function(o,i){
+  return '<div class="q"><span class="n">'+(i+1)+'</span><div><div class="qt">'+o.q+'</div>'+(o.w?'<div class="why"><b>Why:</b> '+o.w+'</div>':'')+'</div></div>';
+ }).join('');
+ return '<section class="qsec">'+head+items+'</section>';
 }).join('');
 </script>
 <script src="/js/hub-nav.js"></script>
