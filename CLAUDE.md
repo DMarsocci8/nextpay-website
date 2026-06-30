@@ -19,7 +19,10 @@
 - Then: Pricing, Why NextPay, Resources · right side: Contact, Take the Quiz (teal pill)
 
 ## Brand logos available (assets/logos/)
-- nextpay.png (full color, navy text — use on light bg)
+- **OFFICIAL NextPay logo — use on ALL new documents/pages/sections we create:**
+  - **nextpay-color.png** (navy + teal "NextPay Business Solutions" w/ globe-dollar mark) — use on LIGHT backgrounds. This is the canonical brand logo.
+  - **nextpay-white.png** (reversed/WHITE version) — use on DARK/navy backgrounds (or put nextpay-color.png on a white chip).
+  - Do NOT use the older nextpay.png variant (lighter teal + "Smarter Solutions…" tagline) on new work.
 - chively-white.png (WHITE — needs dark backing)
 - korona.png (color — works on light)
 - dejavoo-white.webp (WHITE/reversed — needs dark backing)
