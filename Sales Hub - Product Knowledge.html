@@ -356,6 +356,7 @@ document.querySelectorAll('.tabs button').forEach(function(b){
     [/ipospays/i,'ipospays'],            /* match before the generic Dejavoo rule */
     [/chively|nextpay pos/i,'chively'],
     [/shift4/i,'shift4'],
+    [/square/i,'square'],
     [/clover/i,'clover'],
     [/quantic/i,'quantic'],
     [/korona/i,'korona'],
@@ -374,10 +375,13 @@ document.querySelectorAll('.tabs button').forEach(function(b){
     var h=card.querySelector('h3'); if(!h) return;
     var name=h.textContent, id=null;
     for(var i=0;i<MAP.length;i++){ if(MAP[i][0].test(name)){ id=MAP[i][1]; break; } }
-    if(!id) return;  /* invoicing items aren't in the builder yet */
+    var href;
+    if(id){ href='/SalesHub/ProposalBuilder?product='+id; }
+    else if(/fieldpulse|field work/i.test(name)){ href='/SalesHub/ProposalBuilder'; }
+    else return;  /* other items not in the builder yet */
     var a=document.createElement('a');
     a.className='pk-prop';
-    a.href='/SalesHub/ProposalBuilder?product='+id;
+    a.href=href;
     a.innerHTML='Build a proposal <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg>';
     card.appendChild(a);
   });
