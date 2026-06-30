@@ -39,7 +39,7 @@
         ['Lead Generation','/SalesHub/LeadGeneration']
       ]],
       ['Grow', [
-        ['My Dashboard','/SalesHub/MyDashboard'],
+        ['My Dashboard','/SalesHub/MyDashboard',1],
         ['Field Sales Plan','/SalesHub/FieldPlan']
       ]]
     ];
@@ -65,6 +65,14 @@
       + '.hb-col a{display:block;padding:7px 9px;border-radius:8px;color:var(--ink,#0C1B2A);font-size:13.5px;font-weight:600;white-space:nowrap}'
       + '.hb-col a:hover{background:var(--bg-soft,#F3F7F8);color:var(--teal-dark,#0E8473)}'
       + '.hb-col a.cur{background:var(--bg-soft,#F3F7F8);color:var(--teal-dark,#0E8473)}'
+      + '.hb-col a.hl{color:var(--teal-dark,#0E8473);font-weight:800}'
+      + '.hb-col a .hb-tag{display:inline-block;margin-left:7px;font-size:9px;font-weight:800;letter-spacing:.06em;text-transform:uppercase;background:var(--teal,#14A18C);color:#fff;padding:2px 6px;border-radius:999px;vertical-align:middle}'
+      + '.hb-start{grid-column:1/-1;display:flex;align-items:center;gap:12px;margin-bottom:8px;padding:12px 14px;border-radius:11px;background:#0C1B2A;color:#fff;text-decoration:none;border:1px solid rgba(20,161,140,.45)}'
+      + '.hb-start:hover{border-color:var(--teal,#14A18C);background:#0e2230}'
+      + '.hb-start .hb-start-tag{flex:none;font-size:10px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;background:var(--teal,#14A18C);color:#fff;padding:4px 9px;border-radius:999px}'
+      + '.hb-start .hb-start-txt{flex:1;font-size:13px;color:#dce6ec;font-weight:600;white-space:normal;line-height:1.35}'
+      + '.hb-start .hb-start-txt b{color:#fff}'
+      + '.hb-start svg{width:16px;height:16px;flex:none;color:var(--teal-bright,#1FC2A6)}'
       + '@media(max-width:760px){.hb-mega{grid-template-columns:repeat(2,1fr);width:380px}}'
       + '@media(max-width:520px){.hb-browse{display:none}}';
       var st=document.createElement('style'); st.id='hubnav-css'; st.textContent=css;
@@ -79,7 +87,8 @@
       GROUPS.forEach(function(g){
         cols+='<div class="hb-col"><h6>'+esc(g[0])+'</h6>';
         g[1].forEach(function(it){
-          cols+='<a href="'+it[1]+'"'+(b(it[1])===here?' class="cur"':'')+'>'+esc(it[0])+'</a>';
+          var cls=[]; if(b(it[1])===here)cls.push('cur'); if(it[2])cls.push('hl');
+          cols+='<a href="'+it[1]+'"'+(cls.length?' class="'+cls.join(' ')+'"':'')+'>'+esc(it[0])+'</a>';
         });
         cols+='</div>';
       });
@@ -89,7 +98,7 @@
       nav.innerHTML=
         '<button type="button" aria-haspopup="true" aria-expanded="false">Browse the hub'
         + ' <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg></button>'
-        + '<div class="hb-mega">'+cols+'</div>';
+        + '<div class="hb-mega"><a class="hb-start" href="/SalesHub/MyDashboard"><span class="hb-start-tag">Start here</span><span class="hb-start-txt"><b>New to NextPay?</b> Open <b>My Dashboard</b> — your guided checklist &amp; Quick Start Package.</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>'+cols+'</div>';
 
       var right=inner.querySelector('.right');
       if(right) inner.insertBefore(nav, right); else inner.appendChild(nav);
