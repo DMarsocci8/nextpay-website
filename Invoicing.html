@@ -193,8 +193,12 @@
 .npc-tab:hover{color:var(--teal-dark)}
 .npc-tab.on{background:#fff;color:var(--ink);box-shadow:inset 0 3px 0 var(--teal)}
 .npc-card{border:1px solid var(--line);border-radius:0 14px 14px 14px;padding:24px;background:#fff;box-shadow:var(--shadow-sm)}
-.npc-brand{display:flex;align-items:center;justify-content:center;min-height:64px;margin-bottom:10px;font-size:25px;font-weight:800;letter-spacing:-.02em;color:var(--ink)}
+.npc-brand{display:flex;align-items:center;justify-content:center;gap:9px;min-height:64px;margin-bottom:10px;font-size:25px;font-weight:800;letter-spacing:-.02em;color:var(--ink)}
 .npc-brand img{height:40px;width:auto;display:block}
+.npc-clogo{width:auto;display:block}
+.npc-tlogo{height:15px;width:auto;max-width:80px;object-fit:contain;display:block}
+.npc-tlogo.ic{width:15px;max-width:15px}
+.npc-ticon{width:15px;height:15px;display:block;flex:none}
 .npc-brand .inv{color:var(--teal);margin-left:8px}
 .npc-row{display:flex;justify-content:space-between;align-items:center;gap:10px;padding:11px 0;border-top:1px solid var(--line);font-size:14.5px}
 .npc-row.head{border-top:0;color:var(--slate);font-weight:800;text-transform:uppercase;letter-spacing:.03em;align-items:end}
@@ -317,10 +321,10 @@ window.addEventListener('load',function(){document.querySelectorAll('img.brandlo
         <div>
           <div class="npc-colh">Compared with</div>
           <div class="npc-tabs" id="npc-tabs">
-            <button class="npc-tab on" data-c="quickbooks" type="button">QuickBooks</button>
-            <button class="npc-tab" data-c="stripe" type="button">Stripe</button>
-            <button class="npc-tab" data-c="square" type="button">Square</button>
-            <button class="npc-tab" data-c="other" type="button">Other</button>
+            <button class="npc-tab on" data-c="quickbooks" type="button"><img class="npc-tlogo" src="assets/logos/quickbooks-t.png" alt="QuickBooks"></button>
+            <button class="npc-tab" data-c="stripe" type="button"><img class="npc-tlogo ic" src="assets/logos/stripe.svg" alt=""><span>Stripe</span></button>
+            <button class="npc-tab" data-c="square" type="button"><img class="npc-tlogo ic" src="assets/logos/square.svg" alt=""><span>Square</span></button>
+            <button class="npc-tab" data-c="other" type="button"><svg class="npc-ticon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="5" y="3" width="14" height="18" rx="2"/><path d="M9 7h6M9 11h2M13 11h2M9 15h2M13 15h2"/></svg><span>Other</span></button>
           </div>
           <div class="npc-card" id="npc-comp"></div>
         </div>
@@ -538,6 +542,12 @@ window.NP_PRODUCTS = {"x-inv-fluidpay":{"name":"FluidPay","brand":"FluidPay","sl
   // estimated cost is a flat per-transaction fee that does NOT scale with ACH
   // volume (matches the source calculator: ~$94 at 75 payments).
   const NP={youCard:0,youAch:0.75,perTxn:1.2533};
+  // competitor brand logos shown in the comparison card
+  const BRAND={
+    quickbooks:{img:'assets/logos/quickbooks-t.png',h:30,text:'',color:''},
+    stripe:{img:'assets/logos/stripe.svg',h:30,text:'stripe',color:'#635BFF'},
+    square:{img:'assets/logos/square.svg',h:28,text:'Square',color:'#3E4348'}
+  };
   const other={card:3,ach:1,fixed:0};
   let cur='quickbooks';
   const $=id=>document.getElementById(id);
@@ -572,7 +582,9 @@ window.NP_PRODUCTS = {"x-inv-fluidpay":{"name":"FluidPay","brand":"FluidPay","sl
         <div class="npc-row"><span class="k">Effective Rate <em style="font-weight:400;color:var(--slate)">(est.)</em></span><span class="v">${pct(compEff)}</span></div>`;
     } else {
       const cardLabel=fixed?`${card}% + ${Math.round(fixed*100)}¢`:`${card}%`;
-      rows=`<div class="npc-brand">${c.name}</div>
+      const Br=BRAND[cur];
+      const brandHtml=Br?`<img class="npc-clogo" src="${Br.img}" alt="${c.name}" style="height:${Br.h}px" onerror="this.replaceWith(document.createTextNode('${c.name}'))">${Br.text?`<span style="font-weight:800;color:${Br.color};font-size:22px;letter-spacing:-.02em">${Br.text}</span>`:''}`:c.name;
+      rows=`<div class="npc-brand">${brandHtml}</div>
         <div class="npc-row"><span class="k">Cards</span><span class="v">${cardLabel}</span></div>
         <div class="npc-row"><span class="k">ACH</span><span class="v">${ach}%</span></div>
         ${c.inv?`<div class="npc-row"><span class="k">Invoicing</span><span class="v">${c.inv}%</span></div>`:''}
