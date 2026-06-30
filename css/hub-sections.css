@@ -23,6 +23,7 @@
 .sec > h2,
 .sec-head,
 .sec-h,
+.qsec-h,
 .prog-head,
 .mod-head,
 .ben-head,
@@ -37,7 +38,7 @@
 }
 
 /* keep titles white inside the banded wrappers */
-.sec-head h2, .sec-h h2, .prog-head h2, .mod-head h2,
+.sec-head h2, .sec-h h2, .qsec-h h2, .prog-head h2, .mod-head h2,
 .ben-head h2, .ben-head span, .phase-head h2{
   color:#fff !important;
 }

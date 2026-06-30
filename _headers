@@ -1,0 +1,8 @@
+# Cloudflare Pages headers (hub.nextpaypos.com). Vercel ignores this file,
+# so the public site's caching is unaffected.
+# Make stylesheets/scripts revalidate so CSS/JS edits show up right away
+# after a deploy instead of being served stale from cache.
+/css/*
+  Cache-Control: public, max-age=0, must-revalidate
+/js/*
+  Cache-Control: public, max-age=0, must-revalidate
