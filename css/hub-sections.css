@@ -45,7 +45,7 @@
 
 /* eyebrows / small labels go bright teal for contrast on navy */
 .sec-head .eyebrow, .sec-h .eyebrow,
-.mod-head .mnum, .phase-head .pn{
+.mod-head .mnum{
   color:#1FC2A6 !important;
 }
 /* keep the letter badge glyph white (its background is the accent color) */
