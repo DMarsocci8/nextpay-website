@@ -139,6 +139,82 @@
 @media(max-width:900px){.dual-invoice image-slot{height:300px}}
 
 #online-payments .pcard .pimg image-slot{width:62%;height:55%}
+
+/* ===== NextPay Invoice — featured invoicing platform ===== */
+.npinv{position:relative;overflow:hidden;background:linear-gradient(160deg,var(--navy),var(--navy-3))!important;color:#fff;border-bottom:0}
+.npinv::after{content:"";position:absolute;right:-160px;top:-160px;width:600px;height:600px;border-radius:50%;background:radial-gradient(circle,rgba(31,194,166,.20),transparent 70%);pointer-events:none}
+.npinv .wrap{position:relative;z-index:2}
+.npinv-top{display:grid;grid-template-columns:1.05fr .95fr;gap:48px;align-items:center}
+.npinv-badge{display:inline-flex;align-items:center;gap:8px;background:rgba(31,194,166,.14);border:1px solid rgba(31,194,166,.4);color:var(--teal-bright);font-size:12px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;padding:7px 14px;border-radius:999px}
+.npinv-wordmark{display:flex;align-items:center;gap:13px;margin:22px 0 0}
+.npinv-wordmark img{height:44px;width:auto;background:#fff;border-radius:11px;padding:9px 14px;display:block}
+.npinv-wordmark .lockup{font-size:27px;font-weight:800;letter-spacing:-.02em;color:#fff}
+.npinv-wordmark .lockup b{color:var(--teal-bright);font-weight:800}
+.npinv h2{font-size:clamp(28px,3.5vw,44px);color:#fff;margin:22px 0 0;line-height:1.06}
+.npinv h2 em{color:var(--teal-bright);font-style:normal}
+.npinv-lead{color:#c4d0db;font-size:17px;line-height:1.62;margin:16px 0 0;max-width:548px}
+.npinv-strip{display:flex;flex-wrap:wrap;gap:9px;margin-top:20px}
+.npinv-strip .tag{background:rgba(255,255,255,.08);color:#dfe7ee;border:1px solid rgba(255,255,255,.15)}
+.npinv-cta{display:flex;gap:13px;flex-wrap:wrap;margin-top:26px}
+.npinv-media{position:relative}
+.npinv-media image-slot{display:block;width:100%;height:430px;background:#fff;border-radius:20px;box-shadow:0 26px 64px rgba(0,0,0,.38)}
+.npinv-feats{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-top:48px}
+.npinv-feat{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);border-radius:16px;padding:20px;transition:.18s ease}
+.npinv-feat:hover{background:rgba(255,255,255,.08);border-color:rgba(31,194,166,.45);transform:translateY(-3px)}
+.npinv-feat .nf-ic{width:42px;height:42px;border-radius:11px;background:rgba(31,194,166,.16);color:var(--teal-bright);display:grid;place-items:center;margin-bottom:13px}
+.npinv-feat .nf-ic svg{width:21px;height:21px}
+.npinv-feat h4{color:#fff;font-size:15.5px;margin:0 0 5px;letter-spacing:-.01em}
+.npinv-feat p{color:#aebccb;font-size:13px;line-height:1.5;margin:0}
+.npinv-foot{display:flex;align-items:center;justify-content:space-between;gap:20px;flex-wrap:wrap;margin-top:34px;padding-top:26px;border-top:1px solid rgba(255,255,255,.12)}
+.npinv-foot p{color:#aebccb;font-size:14px;margin:0}
+.npinv-foot p b{color:#fff;font-weight:700}
+.npinv-foot .link-teal{color:var(--teal-bright)}
+@media(max-width:1000px){.npinv-top{grid-template-columns:1fr;gap:30px}.npinv-media image-slot{height:300px}.npinv-feats{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:560px){.npinv-feats{grid-template-columns:1fr}}
+
+/* ===== NextPay Invoice — savings calculator ===== */
+.npc{background:#fff;color:var(--ink);border-radius:24px;padding:clamp(24px,3vw,42px);margin-top:50px;box-shadow:0 26px 64px rgba(0,0,0,.34)}
+.npc-eyebrow{text-align:center;color:var(--teal)!important}
+.npinv .npc-title{font-size:clamp(26px,3.4vw,42px);text-align:center;color:var(--ink);line-height:1.05}
+.npinv .npc-title em{color:var(--teal);font-style:normal}
+.npc-inputs{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;max-width:780px;margin:28px auto 0}
+.npc-field label{font-size:12.5px;font-weight:700;color:var(--slate);display:block;margin-bottom:7px}
+.npc-ip{display:flex;align-items:center;gap:4px;border:1.5px solid var(--line);border-radius:12px;padding:11px 14px}
+.npc-ip:focus-within{border-color:var(--teal)}
+.npc-ip .pre{color:var(--teal-dark);font-weight:800;font-size:17px}
+.npc-ip input{border:0;outline:0;font-family:inherit;font-weight:800;font-size:17px;width:100%;color:var(--teal-dark);background:none}
+.npc-range{display:flex;align-items:center;gap:12px}
+.npc-range input[type=range]{flex:1;accent-color:var(--teal)}
+.npc-range .out{font-weight:800;font-size:17px;color:var(--teal-dark);min-width:46px}
+.npc-cols{display:grid;grid-template-columns:1fr 1fr;gap:26px;margin-top:34px;align-items:start}
+.npc-colh{font-size:16px;color:var(--ink);font-weight:800;margin-bottom:14px}
+.npc-tabs{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:-1px;position:relative;z-index:2}
+.npc-tab{display:inline-flex;align-items:center;gap:6px;background:var(--bg-soft);border:1px solid var(--line);border-bottom-color:transparent;border-radius:12px 12px 0 0;padding:9px 15px;font-family:inherit;font-weight:700;font-size:14px;color:var(--slate);cursor:pointer}
+.npc-tab:hover{color:var(--teal-dark)}
+.npc-tab.on{background:#fff;color:var(--ink);box-shadow:inset 0 3px 0 var(--teal)}
+.npc-card{border:1px solid var(--line);border-radius:0 14px 14px 14px;padding:24px;background:#fff;box-shadow:var(--shadow-sm)}
+.npc-brand{display:flex;align-items:center;justify-content:center;min-height:64px;margin-bottom:10px;font-size:25px;font-weight:800;letter-spacing:-.02em;color:var(--ink)}
+.npc-brand img{height:40px;width:auto;display:block}
+.npc-brand .inv{color:var(--teal);margin-left:8px}
+.npc-row{display:flex;justify-content:space-between;align-items:center;gap:10px;padding:11px 0;border-top:1px solid var(--line);font-size:14.5px}
+.npc-row.head{border-top:0;color:var(--slate);font-weight:800;text-transform:uppercase;letter-spacing:.03em;align-items:end}
+.npc-row.head .two b{font-size:10.5px;line-height:1.2;text-align:center}
+.npc-row .k{color:var(--ink);font-weight:600}
+.npc-row .v{font-weight:800;text-align:right}
+.npc-row.tot{border-top:1.5px solid var(--line);font-weight:800}
+.npc-row .two{display:grid;grid-template-columns:78px 56px;gap:10px;text-align:right}
+.npc-row .two b{font-weight:800}
+.npc-edit{width:62px;border:1.5px solid var(--line);border-radius:9px;padding:6px 8px;font-family:inherit;font-weight:700;font-size:13.5px;text-align:right;color:var(--teal-dark)}
+.npc-edit:focus{outline:0;border-color:var(--teal)}
+.npc-card.np{position:relative;overflow:hidden;border:2px solid var(--teal);box-shadow:0 0 0 1px var(--teal),var(--shadow);border-radius:14px}
+.npc-ribbon{position:absolute;top:20px;right:-46px;transform:rotate(45deg);background:linear-gradient(120deg,var(--teal),var(--teal-dark));color:#fff;font-size:11px;font-weight:800;letter-spacing:.07em;padding:6px 52px;text-transform:uppercase;box-shadow:0 4px 12px rgba(0,0,0,.18)}
+.npc-save{text-align:center;margin-top:22px;padding-top:20px;border-top:2px dashed var(--bg-soft-2)}
+.npc-save .lbl{font-size:15px;font-weight:800;color:var(--teal);letter-spacing:.04em;text-transform:uppercase}
+.npc-save .amt{font-size:clamp(34px,5.5vw,48px);font-weight:800;color:var(--teal-dark);letter-spacing:-.02em;line-height:1.05;margin-top:2px}
+.npc-save .amt span{font-size:18px;color:var(--slate);font-weight:700}
+.npc-save small{display:block;color:var(--slate);font-size:13px;margin-top:4px}
+.npc-disc{color:var(--slate);font-size:12px;text-align:center;margin-top:22px;max-width:680px;margin-left:auto;margin-right:auto;line-height:1.5}
+@media(max-width:760px){.npc-inputs{grid-template-columns:1fr}.npc-cols{grid-template-columns:1fr;gap:30px}}
 </style>
 <script>
 function npLogoFail(img){var b=img.getAttribute('data-brand');if(img.classList.contains('hdr')){img.parentElement.outerHTML='<div class="bname">'+b+'</div>';}else{img.outerHTML='<span class="pbrand">'+b+'</span>';}}
@@ -182,11 +258,99 @@ window.addEventListener('load',function(){document.querySelectorAll('img.brandlo
 <div class="brandnav" id="all">
   <div class="wrap">
     <span class="bn-label">On this page</span>
-    <a href="#online-payments" class="on">Gateways</a>
+    <a href="#nextpay-invoice" class="on">NextPay Invoice</a>
+    <a href="#savings">Savings Calculator</a>
+    <a href="#online-payments">Gateways</a>
     <a href="#recurring">Recurring Billing</a>
     <a href="#compare-help">Compare</a>
   </div>
 </div>
+
+<!-- NEXTPAY INVOICE — featured platform -->
+<section class="bsec npinv" id="nextpay-invoice">
+  <div class="wrap">
+    <div class="npinv-top">
+      <div>
+        <span class="npinv-badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" style="width:14px;height:14px"><path d="M5 13l4 4L19 7"/></svg>Our flagship invoicing platform</span>
+        <div class="npinv-wordmark">
+          <img src="assets/logos/nextpay.png" alt="NextPay" onerror="this.outerHTML='&lt;span class=\'lockup\'&gt;Next&lt;b&gt;Pay&lt;/b&gt;&lt;/span&gt;'">
+          <span class="lockup"><b>Invoice</b></span>
+        </div>
+        <h2>Get paid faster with <em>NextPay Invoice.</em></h2>
+        <p class="npinv-lead">Smart invoicing, automated reminders, recurring billing and dual pricing — all in one app. Send a professional invoice by email or text, let customers pay in a tap, and watch every payment settle straight to your NextPay account.</p>
+        <div class="npinv-strip">
+          <span class="tag">Smart invoicing</span><span class="tag">Text-to-Pay</span><span class="tag">Recurring billing</span><span class="tag">Dual pricing</span><span class="tag">QuickBooks · Xero</span>
+        </div>
+        <div class="npinv-cta">
+          <a class="btn btn-primary" href="https://demo.hyfin.app/" target="_blank" rel="noopener">View live demo <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M7 17L17 7M17 7H9M17 7v8"/></svg></a>
+          <a class="btn btn-ghost" href="/quick-application">Apply Now</a>
+          <a class="btn btn-ghost" href="#savings">See your savings</a>
+        </div>
+      </div>
+      <div class="npinv-media">
+        <image-slot id="x-npinv-hero" src="assets/invoicing/nextpay-invoice-app.jpg" shape="rounded" radius="20" fit="contain" placeholder="Drop a NextPay Invoice dashboard / app screenshot"></image-slot>
+      </div>
+    </div>
+
+    <div class="npinv-feats">
+      <div class="npinv-feat"><div class="nf-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 3h7l5 5v13H7z"/><path d="M14 3v5h5M9 13h6M9 17h4"/></svg></div><h4>Smart Invoicing</h4><p>Itemized invoices with automated reminders and live payment tracking — sent by email or text.</p></div>
+      <div class="npinv-feat"><div class="nf-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10 13a5 5 0 007 0l2-2a5 5 0 00-7-7l-1 1"/><path d="M14 11a5 5 0 00-7 0l-2 2a5 5 0 007 7l1-1"/></svg></div><h4>Instant Pay Links</h4><p>Send a pay-by-link and get paid in a tap — no app, no login, no friction for your customer.</p></div>
+      <div class="npinv-feat"><div class="nf-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="6" y="2" width="12" height="20" rx="2"/><path d="M11 18h2"/></svg></div><h4>Text-to-Pay</h4><p>SMS payment requests get seen and paid faster than email — reach customers right on their phone.</p></div>
+      <div class="npinv-feat"><div class="nf-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12a9 9 0 1015-6.7L21 8"/><path d="M21 3v5h-5"/></svg></div><h4>Recurring Billing</h4><p>Charge memberships, retainers and subscriptions automatically on the schedule you set.</p></div>
+      <div class="npinv-feat"><div class="nf-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="5" width="20" height="14" rx="2"/><path d="M2 10h20"/></svg></div><h4>Virtual Terminal</h4><p>Key in payments from any device — turn a phone or laptop into a card terminal, anywhere.</p></div>
+      <div class="npinv-feat"><div class="nf-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 9h18M7 15h4"/></svg></div><h4>Card on File</h4><p>Securely vault cards for repeat customers and one-tap rebilling on future invoices.</p></div>
+      <div class="npinv-feat"><div class="nf-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v20M6 7h9a3 3 0 010 6H9a3 3 0 000 6h9"/></svg></div><h4>Dual Pricing</h4><p>Let customers choose card or bank (ACH) — you keep the full invoice amount, every time.</p></div>
+      <div class="npinv-feat"><div class="nf-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 7c0-1.7 3.6-3 8-3s8 1.3 8 3-3.6 3-8 3-8-1.3-8-3z"/><path d="M4 7v10c0 1.7 3.6 3 8 3s8-1.3 8-3V7M4 12c0 1.7 3.6 3 8 3s8-1.3 8-3"/></svg></div><h4>Accounting Sync</h4><p>Two-way sync with QuickBooks, FreshBooks and Xero keeps your books reconciled automatically.</p></div>
+    </div>
+
+    <!-- SAVINGS CALCULATOR -->
+    <div class="npc" id="savings">
+      <span class="eyebrow npc-eyebrow">Dual pricing savings</span>
+      <h2 class="npc-title">See how much <em>you can save</em></h2>
+      <div class="npc-inputs">
+        <div class="npc-field"><label>$ Revenue / month</label><div class="npc-ip"><span class="pre">$</span><input type="text" inputmode="numeric" id="npc-rev" value="50,000"></div></div>
+        <div class="npc-field"><label># Payments / month</label><div class="npc-ip"><input type="number" id="npc-pay" value="75" min="0"></div></div>
+        <div class="npc-field"><label>% ACH Volume</label><div class="npc-range"><input type="range" id="npc-ach" min="0" max="100" value="0"><span class="out" id="npc-ach-out">0%</span></div></div>
+      </div>
+
+      <div class="npc-cols">
+        <div>
+          <div class="npc-colh">Compared with</div>
+          <div class="npc-tabs" id="npc-tabs">
+            <button class="npc-tab on" data-c="quickbooks" type="button">QuickBooks</button>
+            <button class="npc-tab" data-c="stripe" type="button">Stripe</button>
+            <button class="npc-tab" data-c="square" type="button">Square</button>
+            <button class="npc-tab" data-c="other" type="button">Other</button>
+          </div>
+          <div class="npc-card" id="npc-comp"></div>
+        </div>
+        <div>
+          <div class="npc-colh">How much can I save?</div>
+          <div class="npc-card np">
+            <span class="npc-ribbon">Huge Savings</span>
+            <div class="npc-brand"><img src="assets/logos/nextpay.png" alt="NextPay" onerror="this.outerHTML='Next&lt;span class=\'inv\'&gt;Pay&lt;/span&gt;'"><span class="inv">Invoice</span></div>
+            <div class="npc-row head"><span class="k">&nbsp;</span><span class="two"><b>Customer Pays</b><b>You Pay</b></span></div>
+            <div class="npc-row"><span class="k">Cards</span><span class="two"><b>3.75%</b><b>0%</b></span></div>
+            <div class="npc-row"><span class="k">ACH</span><span class="two"><b>0%</b><b>0.75%</b></span></div>
+            <div class="npc-row tot"><span class="k">Processing Fees <em style="font-weight:400;color:var(--slate)">(est.)</em></span><span class="v" id="npc-np-fees">$94</span></div>
+            <div class="npc-row"><span class="k">Effective Rate <em style="font-weight:400;color:var(--slate)">(est.)</em></span><span class="v" id="npc-np-eff">0.19%</span></div>
+            <div class="npc-save">
+              <div class="lbl">Save</div>
+              <div class="amt" id="npc-save-amt">$1,401 <span>/ month</span></div>
+              <small>on processing fees</small>
+            </div>
+          </div>
+        </div>
+      </div>
+      <p class="npc-disc">Estimates only, for illustration. Comparison rates are typical published rates for each provider; your actual rate depends on your card mix, ticket size and volume. With NextPay Invoice dual pricing, the card fee is passed to customers who choose to pay by card, so you keep the full invoice — your cost comes from ACH and per-transaction fees. A NextPay specialist confirms your exact rate.</p>
+    </div>
+
+    <div class="npinv-foot">
+      <p><b>Powered by NextPay.</b> One account for invoicing, recurring billing and in-person payments — settled together.</p>
+      <a class="link-teal" href="https://demo.hyfin.app/" target="_blank" rel="noopener">Explore the live demo <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M7 17L17 7M17 7H9M17 7v8"/></svg></a>
+    </div>
+  </div>
+</section>
 
 <section class="bsec" id="online-payments">
   <div class="wrap">
@@ -359,6 +523,93 @@ window.NP_PRODUCTS = {"x-inv-fluidpay":{"name":"FluidPay","brand":"FluidPay","sl
   const map=links.map(a=>({a,el:document.querySelector(a.getAttribute('href'))})).filter(x=>x.el);
   function upd(){let cur=map[0];for(const m of map){if(m.el.getBoundingClientRect().top<160)cur=m;}links.forEach(a=>a.classList.remove('on'));if(cur)cur.a.classList.add('on');}
   document.addEventListener('scroll',upd,{passive:true});upd();
+})();
+
+/* NextPay Invoice — savings calculator */
+(function(){
+  const C={
+    quickbooks:{name:'QuickBooks',card:2.99,fixed:0,ach:1.0,inv:0,edit:false},
+    stripe:{name:'Stripe',card:2.9,fixed:0.30,ach:1.2,inv:0.4,edit:false},
+    square:{name:'Square',card:3.3,fixed:0.30,ach:1.0,inv:0,edit:false},
+    other:{name:'Other',card:3.0,fixed:0,ach:1.0,inv:0,edit:true}
+  };
+  // NextPay Invoice dual-pricing model: cards passed to customer (0% to you),
+  // ACH 0.75% to you, plus a per-transaction platform fee.
+  const NP={youCard:0,youAch:0.75,perTxn:1.25};
+  const other={card:3,ach:1,fixed:0};
+  let cur='quickbooks';
+  const $=id=>document.getElementById(id);
+  const comp=$('npc-comp'); if(!comp) return;
+  const money=n=>'$'+Math.round(n).toLocaleString('en-US');
+  const pct=n=>(Math.round(n*100)/100)+'%';
+  const num=v=>{const n=parseFloat(String(v).replace(/[^0-9.]/g,''));return isNaN(n)?0:n;};
+
+  function calc(){
+    const rev=num($('npc-rev').value);
+    const pay=num($('npc-pay').value);
+    const achShare=num($('npc-ach').value)/100;
+    const achVol=rev*achShare, cardVol=rev-achVol;
+    const cardCount=Math.round(pay*(1-achShare));
+    const c=C[cur];
+    const card=c.edit?other.card:c.card;
+    const ach=c.edit?other.ach:c.ach;
+    const fixed=c.edit?other.fixed:c.fixed;
+    const compFees=cardVol*card/100 + cardCount*fixed + achVol*ach/100 + rev*(c.inv||0)/100;
+    const compEff=rev?compFees/rev*100:0;
+    const npFees=cardVol*NP.youCard/100 + achVol*NP.youAch/100 + pay*NP.perTxn;
+    const npEff=rev?npFees/rev*100:0;
+    const save=Math.max(0,compFees-npFees);
+
+    $('npc-ach-out').textContent=Math.round(achShare*100)+'%';
+    let rows;
+    if(c.edit){
+      rows=`<div class="npc-brand" style="font-size:19px;color:var(--teal-dark)">Current Processing Fees</div>
+        <div class="npc-row"><span class="k">Cards</span><span class="two"><input class="npc-edit" id="npc-ocard" type="number" step="0.01" value="${other.card}"><span style="align-self:center;color:var(--slate)">%</span></span></div>
+        <div class="npc-row"><span class="k">ACH</span><span class="two"><input class="npc-edit" id="npc-oach" type="number" step="0.01" value="${other.ach}"><span style="align-self:center;color:var(--slate)">%</span></span></div>
+        <div class="npc-row tot"><span class="k">Processing Fees <em style="font-weight:400;color:var(--slate)">(est.)</em></span><span class="v">${money(compFees)}</span></div>
+        <div class="npc-row"><span class="k">Effective Rate <em style="font-weight:400;color:var(--slate)">(est.)</em></span><span class="v">${pct(compEff)}</span></div>`;
+    } else {
+      const cardLabel=fixed?`${card}% + ${Math.round(fixed*100)}¢`:`${card}%`;
+      rows=`<div class="npc-brand">${c.name}</div>
+        <div class="npc-row"><span class="k">Cards</span><span class="v">${cardLabel}</span></div>
+        <div class="npc-row"><span class="k">ACH</span><span class="v">${ach}%</span></div>
+        ${c.inv?`<div class="npc-row"><span class="k">Invoicing</span><span class="v">${c.inv}%</span></div>`:''}
+        <div class="npc-row tot"><span class="k">Processing Fees <em style="font-weight:400;color:var(--slate)">(est.)</em></span><span class="v">${money(compFees)}</span></div>
+        <div class="npc-row"><span class="k">Effective Rate <em style="font-weight:400;color:var(--slate)">(est.)</em></span><span class="v">${pct(compEff)}</span></div>`;
+    }
+    comp.innerHTML=rows;
+    if(c.edit){
+      $('npc-ocard').addEventListener('input',e=>{other.card=num(e.target.value);recalcValues();});
+      $('npc-oach').addEventListener('input',e=>{other.ach=num(e.target.value);recalcValues();});
+    }
+    $('npc-np-fees').textContent=money(npFees);
+    $('npc-np-eff').textContent=pct(npEff);
+    $('npc-save-amt').innerHTML=money(save)+' <span>/ month</span>';
+  }
+  // light recompute that doesn't rebuild the editable inputs (keeps focus)
+  function recalcValues(){
+    const rev=num($('npc-rev').value),pay=num($('npc-pay').value),achShare=num($('npc-ach').value)/100;
+    const achVol=rev*achShare,cardVol=rev-achVol,cardCount=Math.round(pay*(1-achShare));
+    const c=C[cur];const card=c.edit?other.card:c.card,ach=c.edit?other.ach:c.ach,fixed=c.edit?other.fixed:c.fixed;
+    const compFees=cardVol*card/100+cardCount*fixed+achVol*ach/100+rev*(c.inv||0)/100;
+    const npFees=cardVol*NP.youCard/100+achVol*NP.youAch/100+pay*NP.perTxn;
+    const totEls=comp.querySelectorAll('.npc-row.tot .v, .npc-row:last-child .v');
+    if(totEls[0])totEls[0].textContent=money(compFees);
+    if(totEls[1])totEls[1].textContent=pct(rev?compFees/rev*100:0);
+    $('npc-np-fees').textContent=money(npFees);
+    $('npc-np-eff').textContent=pct(rev?npFees/rev*100:0);
+    $('npc-save-amt').innerHTML=money(Math.max(0,compFees-npFees))+' <span>/ month</span>';
+  }
+
+  $('npc-tabs').addEventListener('click',e=>{
+    const b=e.target.closest('.npc-tab'); if(!b) return;
+    cur=b.dataset.c;
+    $('npc-tabs').querySelectorAll('.npc-tab').forEach(t=>t.classList.toggle('on',t===b));
+    calc();
+  });
+  ['npc-rev','npc-pay','npc-ach'].forEach(id=>$(id).addEventListener('input',calc));
+  $('npc-rev').addEventListener('blur',()=>{const v=num($('npc-rev').value);$('npc-rev').value=v?v.toLocaleString('en-US'):'';calc();});
+  calc();
 })();
 </script>
 </body>
