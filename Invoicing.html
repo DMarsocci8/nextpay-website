@@ -219,6 +219,24 @@
 .npc-save small{display:block;color:var(--slate);font-size:13px;margin-top:4px}
 .npc-disc{color:var(--slate);font-size:12px;text-align:center;margin-top:22px;max-width:680px;margin-left:auto;margin-right:auto;line-height:1.5}
 @media(max-width:760px){.npc-inputs{grid-template-columns:1fr}.npc-cols{grid-template-columns:1fr;gap:30px}}
+
+/* ===== NextPay Invoice — see it in action (walkthrough) ===== */
+.npinv-demo{margin-top:52px}
+.npinv-demo .demo-head{display:flex;align-items:flex-end;justify-content:space-between;gap:22px;flex-wrap:wrap;margin-bottom:22px}
+.npinv-demo h3{color:#fff;font-size:clamp(22px,2.6vw,30px);margin-top:14px}
+.npinv-demo .demo-head p{color:#aebccb;font-size:15px;margin-top:8px;max-width:540px}
+.demo-frame{background:#0a1622;border:1px solid rgba(255,255,255,.12);border-radius:16px;overflow:hidden;box-shadow:0 24px 60px rgba(0,0,0,.42)}
+.demo-bar{display:flex;align-items:center;gap:8px;padding:11px 16px;background:rgba(255,255,255,.06);border-bottom:1px solid rgba(255,255,255,.08)}
+.demo-bar i{width:11px;height:11px;border-radius:50%;background:rgba(255,255,255,.22);display:block;flex:none}
+.demo-bar i.r{background:#ff5f57}.demo-bar i.y{background:#febc2e}.demo-bar i.g{background:#28c840}
+.demo-bar .url{margin-left:12px;font-size:12.5px;color:#8fa0b0;background:rgba(255,255,255,.06);border-radius:7px;padding:5px 14px;flex:1;max-width:440px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.demo-main image-slot{display:block;width:100%;height:520px;background:#fff}
+.demo-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:16px}
+.demo-shot{background:#0a1622;border:1px solid rgba(255,255,255,.1);border-radius:13px;overflow:hidden}
+.demo-shot image-slot{display:block;width:100%;height:184px;background:#fff}
+.demo-shot .cap{padding:11px 15px;font-size:13px;color:#cdd8e2;font-weight:600}
+.demo-shot .cap b{color:var(--teal-bright);margin-right:6px}
+@media(max-width:760px){.demo-main image-slot{height:300px}.demo-grid{grid-template-columns:1fr}}
 </style>
 <script>
 function npLogoFail(img){var b=img.getAttribute('data-brand');if(img.classList.contains('hdr')){img.parentElement.outerHTML='<div class="bname">'+b+'</div>';}else{img.outerHTML='<span class="pbrand">'+b+'</span>';}}
@@ -305,6 +323,27 @@ window.addEventListener('load',function(){document.querySelectorAll('img.brandlo
       <div class="npinv-feat"><div class="nf-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 9h18M7 15h4"/></svg></div><h4>Card on File</h4><p>Securely vault cards for repeat customers and one-tap rebilling on future invoices.</p></div>
       <div class="npinv-feat"><div class="nf-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v20M6 7h9a3 3 0 010 6H9a3 3 0 000 6h9"/></svg></div><h4>Dual Pricing</h4><p>Let customers choose card or bank (ACH) — you keep the full invoice amount, every time.</p></div>
       <div class="npinv-feat"><div class="nf-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 7c0-1.7 3.6-3 8-3s8 1.3 8 3-3.6 3-8 3-8-1.3-8-3z"/><path d="M4 7v10c0 1.7 3.6 3 8 3s8-1.3 8-3V7M4 12c0 1.7 3.6 3 8 3s8-1.3 8-3"/></svg></div><h4>Accounting Sync</h4><p>Two-way sync with QuickBooks, FreshBooks and Xero keeps your books reconciled automatically.</p></div>
+    </div>
+
+    <!-- SEE IT IN ACTION -->
+    <div class="npinv-demo">
+      <div class="demo-head">
+        <div>
+          <span class="npinv-badge">See it in action</span>
+          <h3>Take a tour of NextPay Invoice</h3>
+          <p>From building an invoice to getting paid — here's the platform you and your customers use every day.</p>
+        </div>
+        <a class="btn btn-primary" href="https://demo.hyfin.app/" target="_blank" rel="noopener">Open the full live demo <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M7 17L17 7M17 7H9M17 7v8"/></svg></a>
+      </div>
+      <div class="demo-frame">
+        <div class="demo-bar"><i class="r"></i><i class="y"></i><i class="g"></i><span class="url">app.nextpayinvoice.com/dashboard</span></div>
+        <div class="demo-main"><image-slot id="x-demo-main" src="assets/invoicing/demo-dashboard.jpg" fit="cover" radius="0" placeholder="Drop the main NextPay Invoice dashboard screenshot — or a short animated GIF walkthrough"></image-slot></div>
+      </div>
+      <div class="demo-grid">
+        <div class="demo-shot"><image-slot id="x-demo-1" src="assets/invoicing/demo-create.jpg" fit="cover" radius="0" placeholder="Create an invoice screen"></image-slot><div class="cap"><b>1</b>Create &amp; itemize an invoice</div></div>
+        <div class="demo-shot"><image-slot id="x-demo-2" src="assets/invoicing/demo-send.jpg" fit="cover" radius="0" placeholder="Send by text/email screen"></image-slot><div class="cap"><b>2</b>Send by text or email</div></div>
+        <div class="demo-shot"><image-slot id="x-demo-3" src="assets/invoicing/demo-paid.jpg" fit="cover" radius="0" placeholder="Customer payment screen"></image-slot><div class="cap"><b>3</b>Customer pays in a tap</div></div>
+      </div>
     </div>
 
     <!-- SAVINGS CALCULATOR -->
