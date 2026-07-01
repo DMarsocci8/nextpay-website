@@ -142,7 +142,18 @@
       };
     }
 
-    function currentHtml() { return LAYOUTS[layout](data()); }
+    // Wrap the signature in a forced-white "card" so it renders identically in
+    // light and dark email clients. Without this, dark-mode Gmail drops a dark
+    // canvas behind the signature and the navy logo text + navy Quiz button
+    // vanish. bgcolor attr + inline background + color-scheme:light keep it white.
+    function plate(inner) {
+      return '<table cellpadding="0" cellspacing="0" border="0" role="presentation" style="border-collapse:collapse; color-scheme:light only;">' +
+        '<tr><td bgcolor="#ffffff" style="background-color:#ffffff; padding:20px 22px; border-radius:14px;">' +
+        inner +
+        '</td></tr></table>';
+    }
+
+    function currentHtml() { return plate(LAYOUTS[layout](data())); }
 
     function render() { preview.innerHTML = currentHtml(); }
 
