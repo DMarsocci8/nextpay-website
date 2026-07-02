@@ -86,7 +86,7 @@
   <div class="wrap">
     <div class="crumbs"><a href="/SalesHub">Sales Hub</a><span class="sep">/</span><a href="/SalesHub/MarketingAssets">Marketing Assets</a><span class="sep">/</span><span>Email Signature Maker</span></div>
     <h1>Make your email signature</h1>
-    <p class="lead">Type your name, cell and email once, pick a style, and copy your NextPay Gmail signature. It's built to stay sharp in light <em>and</em> dark mode. Your details are saved on this device and shared with your business card and flyers.</p>
+    <p class="lead">Type your name, cell and email, pick a style, and copy your NextPay Gmail signature. It's built to stay sharp in light <em>and</em> dark mode — paste it into Gmail once and you're set.</p>
   </div>
 </header>
 
@@ -98,10 +98,9 @@
       <h2>Your details</h2>
       <p class="hint">The signature updates as you type.</p>
 
-      <div class="field"><label for="f-name">Full name</label><input id="f-name" type="text" autocomplete="name" placeholder="Sarah Bennett"></div>
-      <div class="field"><label for="f-cell">Cell phone</label><input id="f-cell" type="tel" autocomplete="tel" placeholder="585.555.1234"><div class="sub">Shown as you type it — we build the tap-to-call link automatically.</div></div>
-      <div class="field"><label for="f-email">Email</label><input id="f-email" type="email" autocomplete="email" placeholder="you@nextpaypos.com"></div>
-      <div class="saved-note" id="savedNote"></div>
+      <div class="field"><label for="f-name">Full name</label><input id="f-name" type="text" autocomplete="off" placeholder="Contact Name"></div>
+      <div class="field"><label for="f-cell">Cell phone</label><input id="f-cell" type="tel" autocomplete="off" placeholder="(555) 123-4567"><div class="sub">Shown as you type it — we build the tap-to-call link automatically.</div></div>
+      <div class="field"><label for="f-email">Email</label><input id="f-email" type="email" autocomplete="off" placeholder="name@nextpaypos.com"></div>
 
       <div class="locked">Everyone's title is <b>Payment &amp; Rewards Specialist</b> — company, tagline, logos and buttons are set for the whole team, so you only fill in the three fields above.</div>
 
@@ -216,46 +215,28 @@ function banner(d){
 }
 var LAYOUTS = { classic:classic, stacked:stacked, banner:banner };
 
-/* shared rep profile — same key the Business Card / flyers use */
-var KEY = 'np_rep_profile';
-function loadProf(){ try{ return JSON.parse(localStorage.getItem(KEY)) || {}; }catch(e){ return {}; } }
-function saveProf(p){ try{ localStorage.setItem(KEY, JSON.stringify(p)); }catch(e){} }
-
 var nameEl = document.getElementById('f-name');
 var cellEl = document.getElementById('f-cell');
 var emailEl = document.getElementById('f-email');
 var preview = document.getElementById('sig-preview');
 var copyNote = document.getElementById('copyNote');
-var savedNote = document.getElementById('savedNote');
 var layout = 'classic';
 
-var prof = loadProf();
-if(prof.name) nameEl.value = prof.name;
-if(prof.cell) cellEl.value = prof.cell;
-if(prof.email) emailEl.value = prof.email;
-
+/* NOTE: fields start empty — the preview shows a generic example, never a
+   real person's saved details. Reps type their own info. */
 function data(){
-  var phone = (cellEl.value||'').trim() || '585.555.1234';
+  var phone = (cellEl.value||'').trim() || '(555) 123-4567';
   return {
-    name: esc((nameEl.value||'').trim() || 'Your Name'),
+    name: esc((nameEl.value||'').trim() || 'Contact Name'),
     phone: esc(phone),
     digits: phone.replace(/\D/g,''),
-    email: esc((emailEl.value||'').trim() || 'you@nextpaypos.com')
+    email: esc((emailEl.value||'').trim() || 'name@nextpaypos.com')
   };
 }
 function currentHtml(){ return LAYOUTS[layout](data()); }
 function render(){ preview.innerHTML = currentHtml(); }
 
-function persist(){
-  var p = loadProf();
-  p.name = (nameEl.value||'').trim();
-  p.cell = (cellEl.value||'').trim();
-  p.email = (emailEl.value||'').trim();
-  saveProf(p);
-  savedNote.textContent = (p.name || p.email) ? '✓ Saved on this device — shared with your business card & flyers' : '';
-}
-
-[nameEl,cellEl,emailEl].forEach(function(el){ el.addEventListener('input', function(){ persist(); render(); }); });
+[nameEl,cellEl,emailEl].forEach(function(el){ el.addEventListener('input', render); });
 
 [].slice.call(document.querySelectorAll('.sig-layout')).forEach(function(b){
   b.addEventListener('click', function(){
@@ -299,7 +280,6 @@ function download(){
 document.getElementById('sig-copy').addEventListener('click', copyRich);
 document.getElementById('sig-download').addEventListener('click', download);
 
-persist();
 render();
 </script>
 <script src="/js/hub-nav.js"></script>
