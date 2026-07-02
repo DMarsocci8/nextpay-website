@@ -33,7 +33,7 @@
 /dermatology /Dermatology.html 200
 /fee-programs /Fee%20Programs.html 200
 /financing /Business%20Financing.html 200
-/fine-dining /Fine%20Dining.html 200
+/restaurants /Fine%20Dining.html 200
 /fitness /Fitness%20and%20Gyms.html 200
 /fluidpay /FluidPay%20Gateway.html 200
 /food-trucks /Food%20Trucks.html 200
@@ -142,8 +142,9 @@
 /Fee%20Programs /fee-programs 301
 /Business%20Financing.html /financing 301
 /Business%20Financing /financing 301
-/Fine%20Dining.html /fine-dining 301
-/Fine%20Dining /fine-dining 301
+/Fine%20Dining.html /restaurants 301
+/Fine%20Dining /restaurants 301
+/fine-dining /restaurants 301
 /Fitness%20and%20Gyms.html /fitness 301
 /Fitness%20and%20Gyms /fitness 301
 /FluidPay%20Gateway.html /fluidpay 301
