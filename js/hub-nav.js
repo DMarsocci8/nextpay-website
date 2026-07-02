@@ -1,3 +1,13 @@
+/* np-url-canon — old links land on "/Sales Hub..." (%20 in the URL). Once the page has
+   loaded, cosmetically swap the address bar to the clean "/SalesHub..." form. No server
+   redirect, no reload, no loop. Runs on every hub page (this file is loaded everywhere). */
+(function(){try{
+  var p=decodeURIComponent(location.pathname), clean=null;
+  if(/^\/sales hub\/?$/i.test(p)||/^\/sales hub\.html$/i.test(p)){clean="/SalesHub";}
+  else{var m=p.match(/^\/sales hub\s*-\s*(.+?)(?:\.html)?\/?$/i); if(m){clean="/SalesHub/"+m[1].replace(/\s+/g,"");}}
+  if(clean&&clean!==location.pathname){history.replaceState(null,"",clean+location.search+location.hash);}
+}catch(e){}})();
+
 /* ===========================================================
    NextPay Sales Hub — shared "Browse the hub" navigation
    Drop <script src="js/hub-nav.js"></script> before </body> on any hub page.
