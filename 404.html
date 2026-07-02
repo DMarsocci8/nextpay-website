@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Redirecting… — NextPay Sales Hub</title>
+<link rel="stylesheet" href="/css/nextpay.css">
+<style>body{margin:0;min-height:100vh;display:grid;place-items:center;background:var(--navy,#0C1B2A);color:#fff;font-family:Arial,Helvetica,sans-serif;text-align:center;padding:24px}.b{max-width:440px}.b img{height:34px;margin-bottom:18px}.b h1{font-size:22px;margin:0 0 8px}.b p{color:#9fb1c2;font-size:15px;line-height:1.55;margin:0 0 22px}.b a{display:inline-block;background:var(--teal,#14A18C);color:#fff;font-weight:700;text-decoration:none;padding:12px 24px;border-radius:999px}</style>
+<script>
+/* Case/format-insensitive router: any capitalization, spaces, dashes or %20 that
+   matches a real hub page is sent to its clean /SalesHub URL. */
+(function(){
+  try{
+    var MAP={"saleshub":"/SalesHub","saleshubbrandassets":"/SalesHub/BrandAssets","saleshubbusinesscard":"/SalesHub/BusinessCard","saleshubclover":"/SalesHub/Clover","saleshubdiscoveryplaybook":"/SalesHub/DiscoveryPlaybook","saleshubdocumentlibrary":"/SalesHub/DocumentLibrary","saleshubemailsignature":"/SalesHub/EmailSignature","saleshubfaq":"/SalesHub/FAQ","saleshubfieldplan":"/SalesHub/FieldPlan","saleshubflyers":"/SalesHub/Flyers","saleshubhelp":"/SalesHub/Help","saleshubknowledgebase":"/SalesHub/KnowledgeBase","saleshubleadgeneration":"/SalesHub/LeadGeneration","saleshubmarketingassets":"/SalesHub/MarketingAssets","saleshubmindset":"/SalesHub/Mindset","saleshubmydashboard":"/SalesHub/MyDashboard","saleshubnotes":"/SalesHub/Notes","saleshubobjections":"/SalesHub/Objections","saleshubpays":"/SalesHub/PAYS","saleshubpaylessearnmore":"/SalesHub/PayLessEarnMore","saleshubpricing":"/SalesHub/Pricing","saleshubproductknowledge":"/SalesHub/ProductKnowledge","saleshubpromotions":"/SalesHub/Promotions","saleshubproposalbuilder":"/SalesHub/ProposalBuilder","saleshubquestions":"/SalesHub/Questions","saleshubquickreferenceguide":"/SalesHub/QuickReferenceGuide","saleshubquiz":"/SalesHub/Quiz","saleshubrequestaccess":"/SalesHub/RequestAccess","saleshubscripts":"/SalesHub/Scripts","saleshubshift4":"/SalesHub/Shift4","saleshubshift4biquiz":"/SalesHub/Shift4BIQuiz","saleshubshift4businessintelligence":"/SalesHub/Shift4BusinessIntelligence","saleshubshift4customerhub":"/SalesHub/Shift4CustomerHub","saleshubshift4customerhubquiz":"/SalesHub/Shift4CustomerHubQuiz","saleshubshift4dinesettings":"/SalesHub/Shift4DineSettings","saleshubshift4giftcardprogram":"/SalesHub/Shift4GiftCardProgram","saleshubshift4giftcardprogramquiz":"/SalesHub/Shift4GiftCardProgramQuiz","saleshubshift4hardware":"/SalesHub/Shift4Hardware","saleshubshift4hardwarequiz":"/SalesHub/Shift4HardwareQuiz","saleshubshift4kds":"/SalesHub/Shift4KDS","saleshubshift4kdsquiz":"/SalesHub/Shift4KDSQuiz","saleshubshift4onlineordering":"/SalesHub/Shift4OnlineOrdering","saleshubshift4onlineorderingquiz":"/SalesHub/Shift4OnlineOrderingQuiz","saleshubshift4quiz":"/SalesHub/Shift4Quiz","saleshubshift4statementguide":"/SalesHub/Shift4StatementGuide","saleshubsquare":"/SalesHub/Square","saleshubsquarestatementguide":"/SalesHub/SquareStatementGuide","saleshubstatementanalyzer":"/SalesHub/StatementAnalyzer","saleshubstatementdecoder":"/SalesHub/StatementDecoder","saleshubstatements":"/SalesHub/Statements","saleshubsubmitadeal":"/SalesHub/SubmitADeal","saleshubtraining":"/SalesHub/Training"};
+    var k=decodeURIComponent(location.pathname).toLowerCase().replace(/[^a-z0-9]/g,'');
+    if(MAP[k]){ location.replace(MAP[k]+location.search+location.hash); return; }
+    // strip a leading "saleshub" if the whole thing still starts with it (e.g. trailing junk)
+    if(k && k!=='saleshub' && MAP[k]) { location.replace(MAP[k]); return; }
+  }catch(e){}
+})();
+</script>
+</head>
+<body>
+  <div class="b">
+    <img src="/assets/logos/nextpay-nav.png" alt="NextPay">
+    <h1>Page not found</h1>
+    <p>That link doesn't match a Sales Hub page. Head back to the hub home and use the menu or search.</p>
+    <a href="/SalesHub">Go to the Sales Hub</a>
+  </div>
+</body>
+</html>
