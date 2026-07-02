@@ -4,7 +4,7 @@
 # --- pretty path serves the page (rewrite, URL stays clean) ---
 /accept-payments /Accept%20Payments.html 200
 /affiliate /Affiliate%20Program.html 200
-/agent-portal /Agent%20Portal.html 200
+/agent-portal https://hub.nextpaypos.com/SalesHub 301
 /agent-program /Agent%20Program.html 200
 /authorize-net /Authorize.net%20Gateway.html 200
 /auto-repair /Auto%20Repair%20and%20Automotive.html 200
@@ -89,8 +89,8 @@
 /Accept%20Payments /accept-payments 301
 /Affiliate%20Program.html /affiliate 301
 /Affiliate%20Program /affiliate 301
-/Agent%20Portal.html /agent-portal 301
-/Agent%20Portal /agent-portal 301
+/Agent%20Portal.html https://hub.nextpaypos.com/SalesHub 301
+/Agent%20Portal https://hub.nextpaypos.com/SalesHub 301
 /Agent%20Program.html /agent-program 301
 /Agent%20Program /agent-program 301
 /Authorize.net%20Gateway.html /authorize-net 301
