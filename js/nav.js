@@ -52,7 +52,7 @@
               </div>
               <div class="ind-col">
                 <a class="ind-cat" href="/industries#food-beverage"><image-slot id="indcat-food" src="assets/industries/pizzeria.png" radius="12" placeholder="Food &amp; beverage photo"></image-slot><span class="ind-cat-lbl">Food &amp; Beverage</span></a>
-                <a class="ind-item" href="/fine-dining">Restaurants</a><a class="ind-item" href="/pizzerias">Pizzerias</a><a class="ind-item" href="/food-trucks">Food Trucks</a><a class="ind-item" href="/bars">Bars &amp; Nightclubs</a><a class="ind-item" href="/qsr-cafes">QSR, Cafes &amp; Coffee Shops</a><a class="ind-item" href="/bakeries">Bakeries, Delis &amp; Markets</a>
+                <a class="ind-item" href="/restaurants">Restaurants</a><a class="ind-item" href="/pizzerias">Pizzerias</a><a class="ind-item" href="/food-trucks">Food Trucks</a><a class="ind-item" href="/bars">Bars &amp; Nightclubs</a><a class="ind-item" href="/qsr-cafes">QSR, Cafes &amp; Coffee Shops</a><a class="ind-item" href="/bakeries">Bakeries, Delis &amp; Markets</a>
               </div>
               <div class="ind-col">
                 <a class="ind-cat" href="/industries#healthcare"><image-slot id="indcat-health" src="assets/industries/health.png" radius="12" placeholder="Healthcare photo"></image-slot><span class="ind-cat-lbl">Healthcare &amp; Medical</span></a>
