@@ -289,12 +289,17 @@
     },
     {
       "source": "/Fine Dining.html",
-      "destination": "/fine-dining",
+      "destination": "/restaurants",
       "permanent": true
     },
     {
       "source": "/Fine Dining",
-      "destination": "/fine-dining",
+      "destination": "/restaurants",
+      "permanent": true
+    },
+    {
+      "source": "/fine-dining",
+      "destination": "/restaurants",
       "permanent": true
     },
     {
@@ -875,7 +880,7 @@
       "destination": "/Business%20Financing"
     },
     {
-      "source": "/fine-dining",
+      "source": "/restaurants",
       "destination": "/Fine%20Dining"
     },
     {
