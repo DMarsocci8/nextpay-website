@@ -1,11 +1,13 @@
 # Cloudflare Pages — FLAT Sales Hub URLs
-# Every hub page lives at the root: hub.nextpaypos.com/<page> (200 rewrite,
-# so the short URL stays in the address bar). /saleshub (and /) = hub home.
-# Old /SalesHub/<Page> links 301 to the flat form. Short aliases 302 across.
+# The hub home IS index.html, served at hub.nextpaypos.com/ directly.
+# Every other page lives at the root: hub.nextpaypos.com/<page> (200 rewrite,
+# so the short URL stays in the address bar).
+# Old /SalesHub/<Page> and /saleshub links 301 across. Short aliases 302.
 
 # --- home & short aliases ---
-/                                  /saleshub                                      302
-/hub                               /saleshub                                      302
+/hub                               /                                              301
+/saleshub                          /                                              301
+/Sales%20Hub.html                  /                                              301
 /submit                            /submitadeal                                   302
 /library                           /documentlibrary                               302
 /dashboard                         /mydashboard                                   302
@@ -27,7 +29,6 @@
 /discovery                         /discoveryplaybook                             302
 
 # --- canonical flat URLs: rewrite (200) so the short URL stays put ---
-/saleshub                          /Sales%20Hub.html                              200
 /brandassets                       /Sales%20Hub%20-%20Brand%20Assets.html         200
 /businesscard                      /Sales%20Hub%20-%20Business%20Card.html        200
 /clover                            /Sales%20Hub%20-%20Clover.html                 200
@@ -83,8 +84,8 @@
 /training                          /Sales%20Hub%20-%20Training.html               200
 
 # --- back-compat: old /SalesHub/<Page> links 301 to the flat URL ---
-/SalesHub                          /saleshub                                      301
-/SalesHub/                         /saleshub                                      301
+/SalesHub                          /                                              301
+/SalesHub/                         /                                              301
 /SalesHub/BrandAssets              /brandassets                                   301
 /SalesHub/BusinessCard             /businesscard                                  301
 /SalesHub/Clover                   /clover                                        301
