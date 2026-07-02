@@ -72,6 +72,7 @@
 /run-your-business /Run%20Your%20Business.html 200
 /salons /Salons%20and%20Spas.html 200
 /shift4-dine /Shift4%20Dine.html 200
+/solutions /Solutions.html 200
 /specialty-retail /Specialty%20Retail.html 200
 /square /Square.html 200
 /square-features /Square%20Features.html 200
@@ -208,6 +209,7 @@
 /Salons%20and%20Spas /salons 301
 /Shift4%20Dine.html /shift4-dine 301
 /Shift4%20Dine /shift4-dine 301
+/Solutions.html /solutions 301
 /Specialty%20Retail.html /specialty-retail 301
 /Specialty%20Retail /specialty-retail 301
 /Square.html /square 301

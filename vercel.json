@@ -623,6 +623,11 @@
       "permanent": true
     },
     {
+      "source": "/Solutions.html",
+      "destination": "/solutions",
+      "permanent": true
+    },
+    {
       "source": "/Specialty Retail.html",
       "destination": "/specialty-retail",
       "permanent": true
@@ -1024,6 +1029,10 @@
     {
       "source": "/shift4-dine",
       "destination": "/Shift4%20Dine"
+    },
+    {
+      "source": "/solutions",
+      "destination": "/Solutions"
     },
     {
       "source": "/specialty-retail",
