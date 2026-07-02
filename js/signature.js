@@ -16,12 +16,12 @@
       return '<a href="https://www.nextpaypos.com/quiz" style="display:inline-block; background:#ffffff; color:#0C1B2A; font-size:11px; font-weight:bold; text-decoration:none; padding:7px 12px; border-radius:5px; margin-right:6px;">Quiz &rarr;</a>' +
         '<a href="https://www.nextpaypos.com/merchant-rewards#calculator" style="display:inline-block; background:#1FC2A6; color:#06231D; font-size:11px; font-weight:bold; text-decoration:none; padding:7px 12px; border-radius:5px;">Rewards &rarr;</a>';
     }
-    return '<a href="https://www.nextpaypos.com/quiz" style="display:inline-block; background:#0C1B2A; color:#ffffff; font-size:12px; font-weight:bold; text-decoration:none; padding:9px 16px; border-radius:6px; margin-right:14px;">Take the Quiz &rarr;</a>' +
-      '<a href="https://www.nextpaypos.com/merchant-rewards#calculator" style="display:inline-block; background:#1FC2A6; color:#06231D; font-size:12px; font-weight:bold; text-decoration:none; padding:9px 16px; border-radius:6px;">Calculate Rewards &rarr;</a>';
+    return '<a href="https://www.nextpaypos.com/quiz" style="display:inline-block; background:#0C1B2A; color:#ffffff; font-size:11px; font-weight:bold; text-decoration:none; padding:7px 13px; border-radius:5px; margin-right:10px;">Take the Quiz &rarr;</a>' +
+      '<a href="https://www.nextpaypos.com/merchant-rewards#calculator" style="display:inline-block; background:#1FC2A6; color:#06231D; font-size:11px; font-weight:bold; text-decoration:none; padding:7px 13px; border-radius:5px;">Calculate Rewards &rarr;</a>';
   }
 
   function nextlinkRow() {
-    return '<a href="https://app.nextlinks.co/" style="text-decoration:none; vertical-align:middle;"><img src="' + A.nextlink + '" width="94" alt="NextLink Client Engagement" style="display:inline-block; width:94px; height:auto; vertical-align:middle; border:0;"></a>' +
+    return '<a href="https://app.nextlinks.co/" style="text-decoration:none; vertical-align:middle;"><img src="' + A.nextlink + '" width="78" alt="NextLink Client Engagement" style="display:inline-block; width:78px; height:auto; vertical-align:middle; border:0;"></a>' +
       '<span style="vertical-align:middle; color:#9AA6B2; white-space:nowrap;">&nbsp;&nbsp;Client engagement &amp; outreach &rarr;</span>';
   }
 
@@ -30,23 +30,23 @@
     return '' +
 '<table cellpadding="0" cellspacing="0" border="0" style="font-family:Arial,Helvetica,sans-serif; border-collapse:collapse;">' +
   '<tr>' +
-    '<td style="padding-right:22px; border-right:2px solid #1FC2A6; vertical-align:middle;">' +
-      '<img src="' + A.nextpay + '" width="198" alt="NextPay Business Solutions" style="display:block; width:198px; height:auto; border:0;">' +
+    '<td style="padding-right:18px; border-right:2px solid #1FC2A6; vertical-align:middle;">' +
+      '<img src="' + A.nextpay + '" width="150" alt="NextPay Business Solutions" style="display:block; width:150px; height:auto; border:0;">' +
     '</td>' +
-    '<td style="padding-left:22px; vertical-align:middle;">' +
-      '<div style="font-size:19px; font-weight:bold; color:#0C1B2A; line-height:1.15;">' + d.name + '</div>' +
-      '<div style="font-size:13px; font-weight:bold; color:#15B49A; margin-top:3px;">Payment &amp; Rewards Specialist</div>' +
-      '<div style="font-size:12px; color:#5A6B7B; margin-top:2px;">NextPay Business Solutions</div>' +
-      '<div style="font-size:11px; font-style:italic; color:#9AA6B2; margin-top:7px;">Smarter Solutions. Stronger Businesses.</div>' +
-      '<div style="font-size:12px; color:#5A6B7B; margin-top:10px; line-height:1.6;">' +
+    '<td style="padding-left:18px; vertical-align:middle;">' +
+      '<div style="font-size:16px; font-weight:bold; color:#0C1B2A; line-height:1.15;">' + d.name + '</div>' +
+      '<div style="font-size:11.5px; font-weight:bold; color:#15B49A; margin-top:2px;">Payment &amp; Rewards Specialist</div>' +
+      '<div style="font-size:11px; color:#5A6B7B; margin-top:1px;">NextPay Business Solutions</div>' +
+      '<div style="font-size:10px; font-style:italic; color:#9AA6B2; margin-top:5px;">Smarter Solutions. Stronger Businesses.</div>' +
+      '<div style="font-size:11px; color:#5A6B7B; margin-top:8px; line-height:1.5;">' +
         '<a href="tel:+1' + d.digits + '" style="color:#5A6B7B; text-decoration:none;">' + d.phone + '</a>' +
         '<span style="color:#C4CCD4;">&nbsp;&middot;&nbsp;</span>' +
         '<a href="mailto:' + d.email + '" style="color:#5A6B7B; text-decoration:none;">' + d.email + '</a>' +
         '<span style="color:#C4CCD4;">&nbsp;&middot;&nbsp;</span>' +
         '<a href="https://www.nextpaypos.com" style="color:#15B49A; text-decoration:none; font-weight:bold;">www.nextpaypos.com</a>' +
       '</div>' +
-      '<div style="margin-top:14px; white-space:nowrap;">' + pills('lg') + '</div>' +
-      '<div style="margin-top:14px; padding-top:12px; border-top:1px solid #ECEFF2; font-size:11px; color:#9AA6B2; line-height:1; white-space:nowrap;">' + nextlinkRow() + '</div>' +
+      '<div style="margin-top:11px; white-space:nowrap;">' + pills('lg') + '</div>' +
+      '<div style="margin-top:11px; padding-top:9px; border-top:1px solid #ECEFF2; font-size:10.5px; color:#9AA6B2; line-height:1; white-space:nowrap;">' + nextlinkRow() + '</div>' +
     '</td>' +
   '</tr>' +
 '</table>';
@@ -57,20 +57,20 @@
 '<table cellpadding="0" cellspacing="0" border="0" style="font-family:Arial,Helvetica,sans-serif; border-collapse:collapse;">' +
   '<tr>' +
     '<td style="vertical-align:top;">' +
-      '<img src="' + A.nextpay + '" width="219" alt="NextPay Business Solutions" style="display:block; width:219px; height:auto; border:0;">' +
-      '<div style="width:330px; max-width:100%; height:3px; line-height:3px; font-size:3px; background:#1FC2A6; border-radius:2px; margin:16px 0 16px;">&nbsp;</div>' +
-      '<div style="font-size:19px; font-weight:bold; color:#0C1B2A; line-height:1.15;">' + d.name + '</div>' +
-      '<div style="font-size:13px; font-weight:bold; color:#15B49A; margin-top:3px;">Payment &amp; Rewards Specialist</div>' +
-      '<div style="font-size:12px; color:#0C1B2A; margin-top:2px;">NextPay Business Solutions</div>' +
-      '<div style="font-size:11px; font-style:italic; color:#9AA6B2; margin-top:7px;">Smarter Solutions. Stronger Businesses.</div>' +
-      '<div style="font-size:12px; color:#5A6B7B; margin-top:11px; line-height:1.8;">' +
+      '<img src="' + A.nextpay + '" width="170" alt="NextPay Business Solutions" style="display:block; width:170px; height:auto; border:0;">' +
+      '<div style="width:270px; max-width:100%; height:3px; line-height:3px; font-size:3px; background:#1FC2A6; border-radius:2px; margin:13px 0 13px;">&nbsp;</div>' +
+      '<div style="font-size:16px; font-weight:bold; color:#0C1B2A; line-height:1.15;">' + d.name + '</div>' +
+      '<div style="font-size:11.5px; font-weight:bold; color:#15B49A; margin-top:2px;">Payment &amp; Rewards Specialist</div>' +
+      '<div style="font-size:11px; color:#0C1B2A; margin-top:1px;">NextPay Business Solutions</div>' +
+      '<div style="font-size:10px; font-style:italic; color:#9AA6B2; margin-top:5px;">Smarter Solutions. Stronger Businesses.</div>' +
+      '<div style="font-size:11px; color:#5A6B7B; margin-top:9px; line-height:1.7;">' +
         '<a href="tel:+1' + d.digits + '" style="color:#5A6B7B; text-decoration:none;">M&nbsp; ' + d.phone + '</a><br>' +
         '<a href="mailto:' + d.email + '" style="color:#5A6B7B; text-decoration:none;">' + d.email + '</a>' +
         '<span style="color:#C4CCD4;">&nbsp;&middot;&nbsp;</span>' +
         '<a href="https://www.nextpaypos.com" style="color:#15B49A; text-decoration:none; font-weight:bold;">www.nextpaypos.com</a>' +
       '</div>' +
-      '<div style="margin-top:14px; white-space:nowrap;">' + pills('lg') + '</div>' +
-      '<div style="margin-top:14px; padding-top:12px; border-top:1px solid #ECEFF2; font-size:11px; color:#9AA6B2; line-height:1; white-space:nowrap;">' + nextlinkRow() + '</div>' +
+      '<div style="margin-top:11px; white-space:nowrap;">' + pills('lg') + '</div>' +
+      '<div style="margin-top:11px; padding-top:9px; border-top:1px solid #ECEFF2; font-size:10.5px; color:#9AA6B2; line-height:1; white-space:nowrap;">' + nextlinkRow() + '</div>' +
     '</td>' +
   '</tr>' +
 '</table>';
@@ -78,36 +78,36 @@
 
   function banner(d) {
     return '' +
-'<table cellpadding="0" cellspacing="0" border="0" style="font-family:Arial,Helvetica,sans-serif; border-collapse:collapse; width:466px;">' +
+'<table cellpadding="0" cellspacing="0" border="0" style="font-family:Arial,Helvetica,sans-serif; border-collapse:collapse; width:440px;">' +
   '<tr>' +
-    '<td style="vertical-align:middle; padding:0 0 16px 0;">' +
-      '<div style="font-size:19px; font-weight:bold; color:#0C1B2A; line-height:1.15;">' + d.name + '</div>' +
-      '<div style="font-size:13px; font-weight:bold; color:#15B49A; margin-top:3px;">Payment &amp; Rewards Specialist</div>' +
-      '<div style="font-size:12px; color:#5A6B7B; margin-top:2px;">NextPay Business Solutions</div>' +
-      '<div style="font-size:11px; font-style:italic; color:#9AA6B2; margin-top:7px;">Smarter Solutions. Stronger Businesses.</div>' +
+    '<td style="vertical-align:middle; padding:0 0 13px 0;">' +
+      '<div style="font-size:16px; font-weight:bold; color:#0C1B2A; line-height:1.15;">' + d.name + '</div>' +
+      '<div style="font-size:11.5px; font-weight:bold; color:#15B49A; margin-top:2px;">Payment &amp; Rewards Specialist</div>' +
+      '<div style="font-size:11px; color:#5A6B7B; margin-top:1px;">NextPay Business Solutions</div>' +
+      '<div style="font-size:10px; font-style:italic; color:#9AA6B2; margin-top:5px;">Smarter Solutions. Stronger Businesses.</div>' +
     '</td>' +
-    '<td style="vertical-align:middle; text-align:right; padding:0 0 16px 0;">' +
-      '<img src="' + A.nextpay + '" width="182" alt="NextPay Business Solutions" style="display:inline-block; width:182px; height:auto; border:0;">' +
+    '<td style="vertical-align:middle; text-align:right; padding:0 0 13px 0;">' +
+      '<img src="' + A.nextpay + '" width="145" alt="NextPay Business Solutions" style="display:inline-block; width:145px; height:auto; border:0;">' +
     '</td>' +
   '</tr>' +
   '<tr>' +
     '<td colspan="2" style="padding:0;">' +
-      '<table cellpadding="0" cellspacing="0" border="0" style="width:466px; border-collapse:separate; border-radius:8px; overflow:hidden;">' +
+      '<table cellpadding="0" cellspacing="0" border="0" style="width:440px; border-collapse:separate; border-radius:8px; overflow:hidden;">' +
         '<tr>' +
-          '<td style="background:#0C1B2A; padding:13px 18px; vertical-align:middle;">' +
-            '<a href="tel:+1' + d.digits + '" style="color:#C7D2DC; text-decoration:none; font-size:12px;">' + d.phone + '</a>' +
+          '<td style="background:#0C1B2A; padding:11px 15px; vertical-align:middle;">' +
+            '<a href="tel:+1' + d.digits + '" style="color:#C7D2DC; text-decoration:none; font-size:11px;">' + d.phone + '</a>' +
             '<span style="color:#3A4A5A;">&nbsp;&middot;&nbsp;</span>' +
-            '<a href="mailto:' + d.email + '" style="color:#C7D2DC; text-decoration:none; font-size:12px;">' + d.email + '</a>' +
+            '<a href="mailto:' + d.email + '" style="color:#C7D2DC; text-decoration:none; font-size:11px;">' + d.email + '</a>' +
             '<span style="color:#3A4A5A;">&nbsp;&middot;&nbsp;</span>' +
-            '<a href="https://www.nextpaypos.com" style="color:#2EE0C0; text-decoration:none; font-size:12px; font-weight:bold;">nextpaypos.com</a>' +
+            '<a href="https://www.nextpaypos.com" style="color:#2EE0C0; text-decoration:none; font-size:11px; font-weight:bold;">nextpaypos.com</a>' +
           '</td>' +
-          '<td style="background:#0C1B2A; padding:9px 14px 9px 0; vertical-align:middle; text-align:right; white-space:nowrap;">' + pills('sm') + '</td>' +
+          '<td style="background:#0C1B2A; padding:8px 12px 8px 0; vertical-align:middle; text-align:right; white-space:nowrap;">' + pills('sm') + '</td>' +
         '</tr>' +
       '</table>' +
     '</td>' +
   '</tr>' +
   '<tr>' +
-    '<td colspan="2" style="padding:11px 2px 0; font-size:11px; color:#9AA6B2; line-height:1;">' + nextlinkRow() + '</td>' +
+    '<td colspan="2" style="padding:9px 2px 0; font-size:10.5px; color:#9AA6B2; line-height:1;">' + nextlinkRow() + '</td>' +
   '</tr>' +
 '</table>';
   }
@@ -148,7 +148,7 @@
     // vanish. bgcolor attr + inline background + color-scheme:light keep it white.
     function plate(inner) {
       return '<table cellpadding="0" cellspacing="0" border="0" role="presentation" style="border-collapse:collapse; color-scheme:light only;">' +
-        '<tr><td bgcolor="#ffffff" style="background-color:#ffffff; padding:20px 22px; border-radius:14px;">' +
+        '<tr><td bgcolor="#ffffff" style="background-color:#ffffff; padding:16px 18px; border-radius:12px;">' +
         inner +
         '</td></tr></table>';
     }
