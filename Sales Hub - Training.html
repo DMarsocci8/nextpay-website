@@ -108,16 +108,16 @@ main.wrap{padding:30px 0 10px}
 
 <div class="hub-bar">
   <div class="hub-bar-inner">
-    <a href="/SalesHub" style="display:flex;align-items:center" aria-label="Sales Hub home"><img class="logo" src="/assets/logos/nextpay-nav.png" alt="NextPay"></a>
+    <a href="/saleshub" style="display:flex;align-items:center" aria-label="Sales Hub home"><img class="logo" src="/assets/logos/nextpay-nav.png" alt="NextPay"></a>
     <span class="pipe"></span>
     <span class="hub-tag">Sales Hub <span class="badge">Internal</span></span>
-    <div class="right"><a href="/SalesHub">← Hub home</a></div>
+    <div class="right"><a href="/saleshub">← Hub home</a></div>
   </div>
 </div>
 
 <header class="t-head">
   <div class="wrap">
-    <div class="crumbs"><a href="/SalesHub">Sales Hub</a><span class="sep">/</span><span>Training Academy</span></div>
+    <div class="crumbs"><a href="/saleshub">Sales Hub</a><span class="sep">/</span><span>Training Academy</span></div>
     <h1>NextPay Training Academy</h1>
     <p class="lead">The <b>6-Week Jumpstart Program</b> — original, NextPay-branded merchant-sales training. Work one week at a time: lessons, quizzes and (soon) videos. Your progress saves automatically.</p>
     <div class="prog">
@@ -158,7 +158,7 @@ main.wrap{padding:30px 0 10px}
 <footer class="hub-foot">
   <div class="wrap">
     <span>NextPay Sales Hub · Training Academy · Internal use only.</span>
-    <span><a href="/SalesHub/RequestAccess#suggest">💡 Suggest / Request</a> · <a href="/SalesHub">← Back to hub</a></span>
+    <span><a href="/requestaccess#suggest">💡 Suggest / Request</a> · <a href="/saleshub">← Back to hub</a></span>
   </div>
 </footer>
 
@@ -215,7 +215,7 @@ var MODULES = [
           +"<ul><li><b>Dual Pricing</b> — post a cash price and a card price; card customers cover the fee.</li>"
           +"<li><b>Cash Discount</b> — the card price is the shelf price; cash payers get a discount.</li>"
           +"<li><b>Surcharge</b> — a capped fee added to credit only (never debit); check state rules.</li></ul>"
-          +"<p>The pitch writes itself: <i>does it make more sense for you to pay $1,000 a month, or for the customers using cards to cover it?</i> Get the full details and wording on the <a href='/SalesHub/Pricing'>Pricing &amp; Fee Programs</a> page.</p>" }
+          +"<p>The pitch writes itself: <i>does it make more sense for you to pay $1,000 a month, or for the customers using cards to cover it?</i> Get the full details and wording on the <a href='/pricing'>Pricing &amp; Fee Programs</a> page.</p>" }
     ]
   },
   /* ===== WEEK 2 ===== */
@@ -229,7 +229,7 @@ var MODULES = [
           +"<li><b>Terminals</b> — simple countertop/wireless card machines for quick acceptance.</li>"
           +"<li><b>Gateways</b> — for online and virtual-terminal payments.</li>"
           +"<li><b>Mobile</b> — take payments on a phone or handheld anywhere.</li></ul>"
-          +"<p><b>Sell our solutions</b> — lead with NextPay&rsquo;s stack (Square, Clover, Shift4 and our terminals/gateways) and match the tool to how the business runs. See the <a href='/SalesHub/SubmitADeal'>product playbook</a>.</p>" },
+          +"<p><b>Sell our solutions</b> — lead with NextPay&rsquo;s stack (Square, Clover, Shift4 and our terminals/gateways) and match the tool to how the business runs. See the <a href='/submitadeal'>product playbook</a>.</p>" },
       { id:"w2l2", title:"EMV &amp; NFC, explained simply", duration:"4 min", video:"",
         body:"<p>Two terms every merchant asks about — keep it simple.</p>"
           +"<h4>EMV (chip)</h4><p>The chip card standard. It creates a unique code per transaction, so it is far harder to counterfeit. The big deal for merchants: accepting chip shifts <b>fraud liability</b> away from them.</p>"
@@ -246,7 +246,7 @@ var MODULES = [
         body:"<p>They sound alike but are not the same — know the difference cold.</p>"
           +"<ul><li><b>Cash discount</b> — the posted price includes card cost; cash payers get a discount. Applies to all cards.</li>"
           +"<li><b>Surcharge</b> — a fee added to <b>credit only</b> (never debit), capped by the brands, not allowed in a few states, and requires signage and registration.</li></ul>"
-          +"<p>When in doubt, dual pricing / cash discount is the simplest, most broadly compliant way to get the merchant to near-zero cost. Details on the <a href='/SalesHub/Pricing'>Pricing</a> page.</p>",
+          +"<p>When in doubt, dual pricing / cash discount is the simplest, most broadly compliant way to get the merchant to near-zero cost. Details on the <a href='/pricing'>Pricing</a> page.</p>",
         quiz:{ q:"Surcharging can be applied to:", options:["Debit cards only","Credit cards only","Cash","Any payment type"], answer:1 } }
     ]
   },
@@ -275,7 +275,7 @@ var MODULES = [
           +"<li><b>Referrals</b> — ask every happy merchant.</li>"
           +"<li><b>Networking</b> — Chamber of Commerce, Alignable, local groups.</li>"
           +"<li><b>Social &amp; lead gen</b> — a Facebook business presence, plus our tools (live transfers, warm lists, NextLink).</li></ul>"
-          +"<p>See the <a href='/SalesHub/LeadGeneration'>Lead Generation</a> page for the tools.</p>" }
+          +"<p>See the <a href='/leadgeneration'>Lead Generation</a> page for the tools.</p>" }
     ]
   },
   /* ===== WEEK 4 ===== */
@@ -293,12 +293,12 @@ var MODULES = [
           +"<ul><li>Get the merchant&rsquo;s current statement.</li>"
           +"<li>Find their <b>effective rate</b> (total fees &divide; total volume).</li>"
           +"<li>Build a proposal that beats or matches it — or eliminates it with a fee program.</li></ul>"
-          +"<p>Use the <a href='/SalesHub/StatementAnalyzer' target='_blank' rel='noopener'>Statement Rate Analyzer</a> to do this fast and show the savings in black and white.</p>" },
+          +"<p>Use the <a href='/statementanalyzer' target='_blank' rel='noopener'>Statement Rate Analyzer</a> to do this fast and show the savings in black and white.</p>" },
       { id:"w4l3", title:"Presenting the solution", duration:"4 min", video:"",
         body:"<p>Tie it together: <b>product + pricing + promotion</b> aimed at the owner&rsquo;s pain.</p>"
           +"<ul><li>Show the right hardware/software for how they operate.</li>"
           +"<li>Show the fee program and the dollars saved.</li>"
-          +"<li>Use a current offer to remove the cost of switching — see <a href='/SalesHub/Promotions'>Promotions</a>.</li></ul>"
+          +"<li>Use a current offer to remove the cost of switching — see <a href='/promotions'>Promotions</a>.</li></ul>"
           +"<p>Keep it about <b>their</b> numbers and outcomes, not features.</p>" }
     ]
   },
@@ -333,12 +333,12 @@ var MODULES = [
           +"<ul><li><b>Restaurants / pizza shops</b> — recommend a real restaurant POS such as <b>Shift4 Dine</b>, <b>Clover</b> or <b>Square</b> with tableside and online ordering. Always sell <b>our</b> solutions — not third-party POS we don&rsquo;t represent.</li>"
           +"<li><b>Retail</b> — fast checkout, inventory and dual pricing.</li>"
           +"<li><b>Services / mobile</b> — invoicing, virtual terminal, tap on phone.</li></ul>"
-          +"<p>Match the recommendation to how they run, and lead with NextPay&rsquo;s lineup. See <a href='/SalesHub/SubmitADeal'>products</a>.</p>" },
+          +"<p>Match the recommendation to how they run, and lead with NextPay&rsquo;s lineup. See <a href='/submitadeal'>products</a>.</p>" },
       { id:"w6l2", title:"Generating your own leads online", duration:"4 min", video:"",
         body:"<p>Build channels that bring leads to <b>you</b>.</p>"
           +"<ul><li><b>Local video / YouTube</b> — short helpful videos for local owners with a clear call to action.</li>"
           +"<li><b>Facebook business page</b> — post wins and tips; engage local business groups.</li>"
-          +"<li><b>LinkedIn</b> — grow your network and reach out (see NextLink on the <a href='/SalesHub/LeadGeneration'>Lead Gen</a> page).</li></ul>"
+          +"<li><b>LinkedIn</b> — grow your network and reach out (see NextLink on the <a href='/leadgeneration'>Lead Gen</a> page).</li></ul>"
           +"<p>Pick one, stay consistent, and let it compound.</p>" },
       { id:"w6l3", title:"Service starts with the sale", duration:"4 min", video:"",
         body:"<p>You build real income from <b>keeping</b> merchants, not just signing them. Losing a quarter of your book each year means starting over every year.</p>"

@@ -1,10 +1,10 @@
-/* np-url-canon — old links land on "/Sales Hub..." (%20 in the URL). Once the page has
-   loaded, cosmetically swap the address bar to the clean "/SalesHub..." form. No server
-   redirect, no reload, no loop. Runs on every hub page (this file is loaded everywhere). */
+/* np-url-canon — if a page is reached via its raw "/Sales Hub - X.html" filename
+   (spaces/%20 in the URL), cosmetically swap the address bar to the flat lowercase
+   "/x" form after load. No server redirect, no reload, no loop. Loaded everywhere. */
 (function(){try{
   var p=decodeURIComponent(location.pathname), clean=null;
-  if(/^\/sales hub\/?$/i.test(p)||/^\/sales hub\.html$/i.test(p)){clean="/SalesHub";}
-  else{var m=p.match(/^\/sales hub\s*-\s*(.+?)(?:\.html)?\/?$/i); if(m){clean="/SalesHub/"+m[1].replace(/\s+/g,"");}}
+  if(/^\/sales hub\/?$/i.test(p)||/^\/sales hub\.html$/i.test(p)){clean="/saleshub";}
+  else{var m=p.match(/^\/sales hub\s*-\s*(.+?)(?:\.html)?\/?$/i); if(m){clean="/"+m[1].replace(/\s+/g,"").toLowerCase();}}
   if(clean&&clean!==location.pathname){history.replaceState(null,"",clean+location.search+location.hash);}
 }catch(e){}})();
 
@@ -19,39 +19,39 @@
   try{
     var GROUPS = [
       ['Learn', [
-        ['Knowledge Base','/SalesHub/KnowledgeBase'],
-        ['Agent Quiz','/SalesHub/Quiz'],
-        ['Training Academy','/SalesHub/Training'],
-        ['Product Knowledge','/SalesHub/ProductKnowledge'],
-        ['Quick Reference','/SalesHub/QuickReferenceGuide'],
-        ['Agent Mindset','/SalesHub/Mindset']
+        ['Knowledge Base','/knowledgebase'],
+        ['Agent Quiz','/quiz'],
+        ['Training Academy','/training'],
+        ['Product Knowledge','/productknowledge'],
+        ['Quick Reference','/quickreferenceguide'],
+        ['Agent Mindset','/mindset']
       ]],
       ['Sell', [
-        ['Prospecting Scripts','/SalesHub/Scripts'],
-        ['Objection Handling','/SalesHub/Objections'],
-        ['Competitor Battlecards','/SalesHub/Battlecards'],
-        ['Prospecting Questions','/SalesHub/Prospecting'],
-        ['Current Promotions','/SalesHub/Promotions']
+        ['Prospecting Scripts','/scripts'],
+        ['Objection Handling','/objections'],
+        ['Competitor Battlecards','/battlecards'],
+        ['Prospecting Questions','/prospecting'],
+        ['Current Promotions','/promotions']
       ]],
       ['Quote', [
-        ['Pricing & Fee Programs','/SalesHub/Pricing'],
-        ['Proposal Builder','/SalesHub/ProposalBuilder'],
-        ['Statement Analyzers','/SalesHub/AnalyzeStatement'],
-        ['Calculators','/SalesHub/Calculators']
+        ['Pricing & Fee Programs','/pricing'],
+        ['Proposal Builder','/proposalbuilder'],
+        ['Statement Analyzers','/analyzestatement'],
+        ['Calculators','/calculators']
       ]],
       ['Submit', [
-        ['Submit a Deal','/SalesHub/SubmitADeal'],
-        ['Document Library','/SalesHub/DocumentLibrary']
+        ['Submit a Deal','/submitadeal'],
+        ['Document Library','/documentlibrary']
       ]],
       ['Build', [
-        ['Marketing Assets','/SalesHub/MarketingAssets'],
-        ['Email Signature','/SalesHub/EmailSignature'],
-        ['Brand Assets','/SalesHub/BrandAssets'],
-        ['Lead Generation','/SalesHub/LeadGeneration']
+        ['Marketing Assets','/marketingassets'],
+        ['Email Signature','/emailsignature'],
+        ['Brand Assets','/brandassets'],
+        ['Lead Generation','/leadgeneration']
       ]],
       ['Grow', [
-        ['My Dashboard','/SalesHub/MyDashboard',1],
-        ['Field Sales Plan','/SalesHub/FieldPlan']
+        ['My Dashboard','/mydashboard',1],
+        ['Field Sales Plan','/fieldplan']
       ]]
     ];
 
@@ -109,7 +109,7 @@
       nav.innerHTML=
         '<button type="button" aria-haspopup="true" aria-expanded="false">Browse the hub'
         + ' <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg></button>'
-        + '<div class="hb-mega"><a class="hb-start" href="/SalesHub/MyDashboard"><span class="hb-start-tag">Start here</span><span class="hb-start-txt"><b>New to NextPay?</b> Open <b>My Dashboard</b> — your guided checklist &amp; Quick Start Package.</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>'+cols+'</div>';
+        + '<div class="hb-mega"><a class="hb-start" href="/mydashboard"><span class="hb-start-tag">Start here</span><span class="hb-start-txt"><b>New to NextPay?</b> Open <b>My Dashboard</b> — your guided checklist &amp; Quick Start Package.</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>'+cols+'</div>';
 
       var right=inner.querySelector('.right');
       if(right) inner.insertBefore(nav, right); else inner.appendChild(nav);

@@ -63,16 +63,16 @@ main.wrap{padding:30px 0 10px}
 
 <div class="hub-bar">
   <div class="hub-bar-inner">
-    <a href="/SalesHub" style="display:flex;align-items:center" aria-label="Sales Hub home"><img class="logo" src="/assets/logos/nextpay-nav.png" alt="NextPay"></a>
+    <a href="/saleshub" style="display:flex;align-items:center" aria-label="Sales Hub home"><img class="logo" src="/assets/logos/nextpay-nav.png" alt="NextPay"></a>
     <span class="pipe"></span>
     <span class="hub-tag">Sales Hub <span class="badge">Internal</span></span>
-    <div class="right"><a href="/SalesHub">← Hub home</a></div>
+    <div class="right"><a href="/saleshub">← Hub home</a></div>
   </div>
 </div>
 
 <header class="pg-head">
   <div class="wrap">
-    <div class="crumbs"><a href="/SalesHub">Sales Hub</a><span class="sep">/</span><span>Statements &amp; Calculators</span></div>
+    <div class="crumbs"><a href="/saleshub">Sales Hub</a><span class="sep">/</span><span>Statements &amp; Calculators</span></div>
     <h1>Statements &amp; <em>calculators</em></h1>
     <p class="lead">Find a merchant's current statement, then price the deal. Statement guides per processor and the calculators you'll use to build proposals — all in one place.</p>
     <div class="jump">
@@ -101,28 +101,28 @@ main.wrap{padding:30px 0 10px}
         <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 16V4M7 9l5-5 5 5M5 20h14"/></svg></div>
         <h3>Statement Rate Analyzer <span class="pill pill-live">Live</span></h3>
         <p>Enter a merchant's monthly volume and fees to surface their effective rate and savings — run a rate review on the spot.</p>
-        <a class="go" href="/SalesHub/StatementAnalyzer">Open analyzer <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+        <a class="go" href="/statementanalyzer">Open analyzer <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
       </div>
 
       <div class="card">
         <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11"/></svg></div>
         <h3>Statement Decoder <span class="pill pill-live">Live</span></h3>
         <p>The 3-minute review script — find the effective rate, separate real costs from markup, and bridge into the savings talk.</p>
-        <a class="go" href="/SalesHub/StatementDecoder">Open the decoder <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+        <a class="go" href="/statementdecoder">Open the decoder <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
       </div>
 
       <div class="card">
         <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 3h7l5 5v13H7z"/><path d="M14 3v5h5M9 13h6M9 17h4"/></svg></div>
         <h3>Square Statement Guide <span class="pill pill-live">Live</span></h3>
         <p>Square keeps everything in the Dashboard — how to pull a prospect's fees and volume and find their real effective rate.</p>
-        <a class="go" href="/SalesHub/SquareStatementGuide">Open guide <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+        <a class="go" href="/squarestatementguide">Open guide <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
       </div>
 
       <div class="card">
         <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 3h7l5 5v13H7z"/><path d="M14 3v5h5M9 13h6M9 17h4"/></svg></div>
         <h3>Shift4 Statement Guide <span class="pill pill-live">Live</span></h3>
         <p>Where to find the Shift4 portal statement and how to separate true interchange from their markup and monthly fees.</p>
-        <a class="go" href="/SalesHub/Shift4StatementGuide">Open guide <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+        <a class="go" href="/shift4statementguide">Open guide <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
       </div>
 
     </div>
@@ -163,11 +163,11 @@ main.wrap{padding:30px 0 10px}
 <footer class="hub-foot">
   <div class="wrap">
     <span>NextPay Sales Hub · Statements &amp; Calculators · Internal use only.</span>
-    <span><a href="/SalesHub/RequestAccess#suggest">💡 Suggest / Request</a> · <a href="/SalesHub">← Back to hub</a></span>
+    <span><a href="/requestaccess#suggest">💡 Suggest / Request</a> · <a href="/saleshub">← Back to hub</a></span>
   </div>
 </footer>
 <script>
-/* Clean URLs /SalesHub/Calculators and /SalesHub/AnalyzeStatement both serve this
+/* Clean URLs /calculators and /analyzestatement both serve this
    page; jump to the matching section so the right half opens. */
 (function(){try{
   var p=decodeURIComponent(location.pathname).toLowerCase().replace(/[^a-z0-9]/g,'');
