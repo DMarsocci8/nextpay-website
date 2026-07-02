@@ -166,6 +166,16 @@ main.wrap{padding:30px 0 10px}
     <span><a href="/SalesHub/RequestAccess#suggest">💡 Suggest / Request</a> · <a href="/SalesHub">← Back to hub</a></span>
   </div>
 </footer>
+<script>
+/* Clean URLs /SalesHub/Calculators and /SalesHub/AnalyzeStatement both serve this
+   page; jump to the matching section so the right half opens. */
+(function(){try{
+  var p=decodeURIComponent(location.pathname).toLowerCase().replace(/[^a-z0-9]/g,'');
+  var id = p.indexOf('calculators')>-1 ? 'calculators'
+         : (p.indexOf('analyzestatement')>-1 ? 'statements' : (location.hash||'').replace('#',''));
+  if(id){ var el=document.getElementById(id); if(el){ requestAnimationFrame(function(){ el.scrollIntoView(); }); } }
+}catch(e){}})();
+</script>
 <script src="/js/hub-nav.js"></script>
 </body>
 </html>

@@ -29,15 +29,15 @@
       ['Sell', [
         ['Prospecting Scripts','/SalesHub/Scripts'],
         ['Objection Handling','/SalesHub/Objections'],
-        ['Competitor Battlecards','/SalesHub/PAYS'],
-        ['Prospecting Questions','/SalesHub/Questions'],
+        ['Competitor Battlecards','/SalesHub/Battlecards'],
+        ['Prospecting Questions','/SalesHub/Prospecting'],
         ['Current Promotions','/SalesHub/Promotions']
       ]],
       ['Quote', [
         ['Pricing & Fee Programs','/SalesHub/Pricing'],
         ['Proposal Builder','/SalesHub/ProposalBuilder'],
-        ['Statement Analyzers','/SalesHub/Statements#statements'],
-        ['Calculators','/SalesHub/Statements#calculators']
+        ['Statement Analyzers','/SalesHub/AnalyzeStatement'],
+        ['Calculators','/SalesHub/Calculators']
       ]],
       ['Submit', [
         ['Submit a Deal','/SalesHub/SubmitADeal'],
