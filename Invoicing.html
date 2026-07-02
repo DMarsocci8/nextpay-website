@@ -139,6 +139,169 @@
 @media(max-width:900px){.dual-invoice image-slot{height:300px}}
 
 #online-payments .pcard .pimg image-slot{width:62%;height:55%}
+
+/* ===== NextPay Invoice — featured invoicing platform ===== */
+.npinv{position:relative;overflow:hidden;background:linear-gradient(160deg,var(--navy),var(--navy-3))!important;color:#fff;border-bottom:0}
+.npinv::after{content:"";position:absolute;right:-160px;top:-160px;width:600px;height:600px;border-radius:50%;background:radial-gradient(circle,rgba(31,194,166,.20),transparent 70%);pointer-events:none}
+.npinv .wrap{position:relative;z-index:2}
+.npinv-top{display:grid;grid-template-columns:1.05fr .95fr;gap:48px;align-items:center}
+.npinv-badge{display:inline-flex;align-items:center;gap:8px;background:rgba(31,194,166,.14);border:1px solid rgba(31,194,166,.4);color:var(--teal-bright);font-size:12px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;padding:7px 14px;border-radius:999px}
+.npinv-wordmark{display:flex;align-items:center;gap:13px;margin:22px 0 0}
+.npinv-wordmark img{height:34px;width:auto;display:block}
+.npinv-wordmark .lockup{font-size:27px;font-weight:800;letter-spacing:-.02em;color:#fff}
+.npinv-wordmark .lockup b{color:var(--teal-bright);font-weight:800}
+.npinv h2{font-size:clamp(28px,3.5vw,44px);color:#fff;margin:22px 0 0;line-height:1.06}
+.npinv h2 em{color:var(--teal-bright);font-style:normal}
+.npinv-lead{color:#c4d0db;font-size:17px;line-height:1.62;margin:16px 0 0;max-width:548px}
+.npinv-strip{display:flex;flex-wrap:wrap;gap:9px;margin-top:20px}
+.npinv-strip .tag{background:rgba(255,255,255,.08);color:#dfe7ee;border:1px solid rgba(255,255,255,.15)}
+.npinv-cta{display:flex;gap:13px;flex-wrap:wrap;margin-top:26px}
+.npinv-media{position:relative}
+.npinv-mock{background:#fff;border-radius:20px;box-shadow:0 26px 64px rgba(0,0,0,.38);padding:30px 30px 26px;max-width:380px;margin:0 auto;font-family:inherit}
+.npinv-mock .npm-top{display:flex;align-items:center;gap:11px;padding-bottom:20px;border-bottom:1px solid #EEF2F5}
+.npinv-mock .npm-mark{width:38px;height:38px;border-radius:10px;background:var(--navy);color:#fff;font-weight:800;font-size:18px;display:grid;place-items:center}
+.npinv-mock .npm-biz{font-size:17px;font-weight:800;color:var(--navy)}
+.npinv-mock .npm-amt{font-size:38px;font-weight:800;color:var(--navy);letter-spacing:-.02em;margin:20px 0 18px;display:flex;align-items:baseline;gap:10px}
+.npinv-mock .npm-cur{font-size:22px;font-weight:700;color:var(--slate)}
+.npinv-mock .npm-paid{font-size:13px;font-weight:800;color:var(--teal-dark);background:rgba(20,161,140,.12);padding:5px 11px;border-radius:999px;letter-spacing:.02em;align-self:center}
+.npinv-mock .npm-row{display:flex;justify-content:space-between;align-items:center;padding:11px 0;border-bottom:1px solid #F1F4F6;font-size:14.5px}
+.npinv-mock .npm-row span{color:var(--slate)}
+.npinv-mock .npm-row b{color:var(--navy);font-weight:700}
+.npinv-mock .npm-receipt{display:flex;align-items:center;justify-content:center;gap:8px;margin-top:20px;background:rgba(20,161,140,.10);color:var(--teal-dark);font-weight:700;font-size:14px;padding:13px;border-radius:12px}
+.npinv-feats{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-top:48px}
+.npinv-feat{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);border-radius:16px;padding:20px;transition:.18s ease}
+.npinv-feat:hover{background:rgba(255,255,255,.08);border-color:rgba(31,194,166,.45);transform:translateY(-3px)}
+.npinv-feat .nf-ic{width:42px;height:42px;border-radius:11px;background:rgba(31,194,166,.16);color:var(--teal-bright);display:grid;place-items:center;margin-bottom:13px}
+.npinv-feat .nf-ic svg{width:21px;height:21px}
+.npinv-feat h4{color:#fff;font-size:15.5px;margin:0 0 5px;letter-spacing:-.01em}
+.npinv-feat p{color:#aebccb;font-size:13px;line-height:1.5;margin:0}
+.npinv-foot{display:flex;align-items:center;justify-content:space-between;gap:20px;flex-wrap:wrap;margin-top:34px;padding-top:26px;border-top:1px solid rgba(255,255,255,.12)}
+.npinv-foot p{color:#aebccb;font-size:14px;margin:0}
+.npinv-foot p b{color:#fff;font-weight:700}
+.npinv-foot .link-teal{color:var(--teal-bright)}
+@media(max-width:1000px){.npinv-top{grid-template-columns:1fr;gap:30px}.npinv-media image-slot{height:300px}.npinv-feats{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:560px){.npinv-feats{grid-template-columns:1fr}}
+
+/* ===== NextPay Invoice — savings calculator ===== */
+.npc{background:#fff;color:var(--ink);border-radius:24px;padding:clamp(24px,3vw,42px);margin-top:50px;box-shadow:0 26px 64px rgba(0,0,0,.34)}
+.npc-eyebrow{text-align:center;color:var(--teal)!important}
+.npinv .npc-title{font-size:clamp(26px,3.4vw,42px);text-align:center;color:var(--ink);line-height:1.05}
+.npinv .npc-title em{color:var(--teal);font-style:normal}
+.npc-inputs{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;max-width:780px;margin:28px auto 0}
+.npc-field label{font-size:12.5px;font-weight:700;color:var(--slate);display:block;margin-bottom:7px}
+.npc-ip{display:flex;align-items:center;gap:4px;border:1.5px solid var(--line);border-radius:12px;padding:11px 14px}
+.npc-ip:focus-within{border-color:var(--teal)}
+.npc-ip .pre{color:var(--teal-dark);font-weight:800;font-size:17px}
+.npc-ip input{border:0;outline:0;font-family:inherit;font-weight:800;font-size:17px;width:100%;color:var(--teal-dark);background:none}
+.npc-range{display:flex;align-items:center;gap:12px}
+.npc-range input[type=range]{flex:1;accent-color:var(--teal)}
+.npc-range .out{font-weight:800;font-size:17px;color:var(--teal-dark);min-width:46px}
+.npc-cols{display:grid;grid-template-columns:1fr 1fr;gap:26px;margin-top:34px;align-items:start}
+.npc-colh{font-size:16px;color:var(--ink);font-weight:800;margin-bottom:14px}
+.npc-tabs{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:-1px;position:relative;z-index:2}
+.npc-tab{display:inline-flex;align-items:center;gap:6px;background:var(--bg-soft);border:1px solid var(--line);border-bottom-color:transparent;border-radius:12px 12px 0 0;padding:9px 15px;font-family:inherit;font-weight:700;font-size:14px;color:var(--slate);cursor:pointer}
+.npc-tab:hover{color:var(--teal-dark)}
+.npc-tab.on{background:#fff;color:var(--ink);box-shadow:inset 0 3px 0 var(--teal)}
+.npc-card{border:1px solid var(--line);border-radius:0 14px 14px 14px;padding:24px;background:#fff;box-shadow:var(--shadow-sm)}
+.npc-brand{display:flex;align-items:center;justify-content:center;gap:9px;min-height:64px;margin-bottom:10px;font-size:25px;font-weight:800;letter-spacing:-.02em;color:var(--ink)}
+.npc-brand img{height:40px;width:auto;display:block}
+.npc-clogo{width:auto;display:block}
+.npc-tlogo{height:15px;width:auto;max-width:80px;object-fit:contain;display:block}
+.npc-tlogo.ic{width:15px;max-width:15px}
+.npc-ticon{width:15px;height:15px;display:block;flex:none}
+.npc-brand .inv{color:var(--teal);margin-left:8px}
+.npc-row{display:flex;justify-content:space-between;align-items:center;gap:10px;padding:11px 0;border-top:1px solid var(--line);font-size:14.5px}
+.npc-row.head{border-top:0;color:var(--slate);font-weight:800;text-transform:uppercase;letter-spacing:.03em;align-items:end}
+.npc-row.head .two b{font-size:10.5px;line-height:1.2;text-align:center}
+.npc-row .k{color:var(--ink);font-weight:600}
+.npc-row .v{font-weight:800;text-align:right}
+.npc-row.tot{border-top:1.5px solid var(--line);font-weight:800}
+.npc-row .two{display:grid;grid-template-columns:78px 56px;gap:10px;text-align:right}
+.npc-row .two b{font-weight:800}
+.npc-edit{width:62px;border:1.5px solid var(--line);border-radius:9px;padding:6px 8px;font-family:inherit;font-weight:700;font-size:13.5px;text-align:right;color:var(--teal-dark)}
+.npc-edit:focus{outline:0;border-color:var(--teal)}
+.npc-card.np{position:relative;overflow:hidden;border:2px solid var(--teal);box-shadow:0 0 0 1px var(--teal),var(--shadow);border-radius:14px}
+.npc-ribbon{position:absolute;top:20px;right:-46px;transform:rotate(45deg);background:linear-gradient(120deg,var(--teal),var(--teal-dark));color:#fff;font-size:11px;font-weight:800;letter-spacing:.07em;padding:6px 52px;text-transform:uppercase;box-shadow:0 4px 12px rgba(0,0,0,.18)}
+.npc-save{text-align:center;margin-top:22px;padding-top:20px;border-top:2px dashed var(--bg-soft-2)}
+.npc-save .lbl{font-size:15px;font-weight:800;color:var(--teal);letter-spacing:.04em;text-transform:uppercase}
+.npc-save .amt{font-size:clamp(34px,5.5vw,48px);font-weight:800;color:var(--teal-dark);letter-spacing:-.02em;line-height:1.05;margin-top:2px}
+.npc-save .amt span{font-size:18px;color:var(--slate);font-weight:700}
+.npc-save small{display:block;color:var(--slate);font-size:13px;margin-top:4px}
+.npc-disc{color:var(--slate);font-size:12px;text-align:center;margin-top:22px;max-width:680px;margin-left:auto;margin-right:auto;line-height:1.5}
+@media(max-width:760px){.npc-inputs{grid-template-columns:1fr}.npc-cols{grid-template-columns:1fr;gap:30px}}
+
+/* ===== NextPay Invoice — interactive walkthrough ===== */
+.npinv-tour{margin-top:52px}
+.tour-head{display:flex;align-items:flex-end;justify-content:space-between;gap:22px;flex-wrap:wrap;margin-bottom:22px}
+.tour-head h3{color:#fff;font-size:clamp(22px,2.7vw,32px);margin-top:14px}
+.tour-head p{color:#aebccb;font-size:15px;margin-top:8px;max-width:560px}
+.tour-stage{position:relative;overflow:hidden;background:linear-gradient(180deg,#f3f7f8,#fff);border-radius:20px;box-shadow:0 26px 64px rgba(0,0,0,.42)}
+.tour-track{display:flex;transition:transform .55s cubic-bezier(.4,0,.2,1)}
+.tour-slide{flex:0 0 100%;display:grid;grid-template-columns:.9fr 1.1fr;gap:26px;padding:42px 48px;align-items:center;min-height:548px;box-sizing:border-box}
+.tour-cap .np-mini{height:24px;display:block;margin-bottom:22px}
+.tour-cap .step-no{display:inline-flex;align-items:center;justify-content:center;width:34px;height:34px;border-radius:50%;background:var(--teal);color:#fff;font-weight:800;font-size:15px;margin-bottom:16px}
+.tour-cap h4{color:var(--ink);font-size:clamp(21px,2.3vw,29px);line-height:1.14}
+.tour-cap h4 em{color:var(--teal);font-style:normal}
+.tour-cap p{color:var(--slate);font-size:15.5px;margin-top:12px;line-height:1.55;max-width:330px}
+.tour-media{display:flex;align-items:center;justify-content:center;height:100%;min-width:0}
+/* phone mockup */
+.tphone{width:292px;max-width:100%;background:#fff;border:9px solid #0d1117;border-radius:38px;box-shadow:0 22px 50px rgba(12,27,42,.3);position:relative;overflow:hidden}
+.tphone::before{content:"";position:absolute;top:0;left:50%;transform:translateX(-50%);width:110px;height:20px;background:#0d1117;border-radius:0 0 13px 13px;z-index:4}
+.tscreen{padding:34px 20px 22px;min-height:474px;display:flex;flex-direction:column}
+.tbiz{text-align:center;margin-bottom:12px}
+.tbiz .mk{width:46px;height:46px;border-radius:13px;background:var(--navy);color:#fff;display:inline-grid;place-items:center;font-weight:800;font-size:21px;margin-bottom:8px}
+.tbiz b{display:block;color:var(--ink);font-size:17px;letter-spacing:.05em;font-weight:800}
+.tbiz span{display:block;color:var(--slate);font-size:10.5px;letter-spacing:.2em}
+.tprice{font-size:33px;font-weight:800;color:var(--navy);letter-spacing:-.02em;line-height:1}
+.tprice sup{font-size:16px;top:-.75em;font-weight:700}
+.trow{display:flex;justify-content:space-between;font-size:13.5px;padding:7px 0;color:var(--slate)}
+.trow b{color:var(--ink);font-weight:700}
+.tline{height:1px;background:var(--line);margin:10px 0}
+.tlabel{font-size:10.5px;color:var(--slate);letter-spacing:.08em;margin:12px 0 4px}
+.tpay{margin-top:auto;background:var(--teal);color:#fff;border-radius:12px;text-align:center;font-weight:800;padding:14px;font-size:15px}
+.tmethod{display:flex;align-items:center;gap:11px;padding:11px 2px;border-bottom:1px solid var(--line);font-size:13px;color:var(--ink)}
+.tmethod .ic{width:38px;height:26px;border-radius:5px;display:grid;place-items:center;font-size:9px;font-weight:800;color:#fff;flex:none;letter-spacing:.02em}
+.tmethod .mut{margin-left:auto;color:var(--slate);font-size:12px}
+.tpaid{display:inline-flex;align-items:center;gap:5px;color:var(--teal-dark);font-weight:800;font-size:15px;letter-spacing:.06em}
+.tsms{background:#eef1f4;border-radius:16px;padding:14px 16px;font-size:13.5px;color:var(--ink);line-height:1.5;margin-top:26px}
+.tsms a{color:var(--teal-dark);text-decoration:underline;word-break:break-all}
+.tsms .tt{display:block;text-align:center;color:var(--slate-2);font-size:11px;margin:-2px 0 12px}
+/* dashboard mockup */
+.tdash{width:100%;max-width:600px;background:#fff;border:1px solid var(--line);border-radius:14px;overflow:hidden;box-shadow:0 14px 36px rgba(12,27,42,.16);font-size:12px}
+.tdash-top{display:flex;align-items:center;justify-content:space-between;padding:11px 16px;border-bottom:1px solid var(--line)}
+.tdash-top img{height:19px;width:auto}
+.tdash-top .biz{color:var(--slate);font-weight:700;font-size:12px}
+.tdash-body{display:grid;grid-template-columns:128px 1fr}
+.tnav{border-right:1px solid var(--line);padding:14px 12px;color:var(--slate);font-size:11px}
+.tnav a{white-space:nowrap}
+.tnav .lbl{font-size:9px;letter-spacing:.12em;color:var(--slate-2);font-weight:800;margin-bottom:8px}
+.tnav a{display:flex;align-items:center;gap:8px;padding:6px 8px;border-radius:8px;color:var(--slate);font-weight:600;margin-bottom:1px}
+.tnav a.on{background:rgba(20,161,140,.1);color:var(--teal-dark);font-weight:800}
+.tnav a .d{width:6px;height:6px;border-radius:50%;background:currentColor;opacity:.55;flex:none}
+.tmain{padding:16px}
+.tmain h5{color:var(--teal-dark);font-size:14px;margin-bottom:12px}
+.ttable{width:100%;border-collapse:collapse}
+.ttable th{text-align:left;color:var(--slate);font-size:10px;font-weight:800;padding:7px 8px;border-bottom:1px solid var(--line)}
+.ttable td{padding:9px 8px;border-bottom:1px solid var(--line);color:var(--ink)}
+.ttable .st{background:#eef1f4;border-radius:20px;padding:2px 9px;font-size:10px;color:var(--slate);font-weight:700}
+.ttable .st.paid{background:rgba(20,161,140,.16);color:var(--teal-dark)}
+.ttable tr.new td{background:rgba(20,161,140,.08)}
+.tdash-3{grid-template-columns:max-content 160px minmax(0,1fr)!important}
+.tform{border-right:1px solid var(--line);padding:13px}
+.tform .fh{color:var(--teal-dark);font-size:12.5px;font-weight:800;margin-bottom:10px}
+.tform .f{display:flex;align-items:center;gap:7px;padding:6px 0;border-bottom:1px solid var(--line);color:var(--ink);font-size:11.5px}
+.tform .f .ic{color:var(--slate-2);font-weight:800;width:12px;text-align:center;flex:none}
+.tform .chk{display:flex;align-items:center;gap:7px;font-size:10.5px;color:var(--ink);padding:4px 0 4px 19px}
+.tform .chk i{width:13px;height:13px;border-radius:3px;background:var(--teal);display:grid;place-items:center;color:#fff;font-size:9px;font-style:normal;flex:none}
+.tform .req{margin-top:13px;background:var(--teal);color:#fff;text-align:center;font-weight:800;padding:10px;border-radius:9px;font-size:11.5px;letter-spacing:.05em}
+/* nav */
+.tour-nav{display:flex;align-items:center;justify-content:center;gap:16px;margin-top:20px}
+.tour-arrow{width:42px;height:42px;border-radius:50%;border:1.5px solid rgba(255,255,255,.3);background:rgba(255,255,255,.06);color:#fff;font-size:17px;display:grid;place-items:center;cursor:pointer;flex:none;font-family:inherit}
+.tour-arrow:hover{background:rgba(255,255,255,.14);border-color:var(--teal-bright)}
+.tour-dots{display:flex;gap:9px;align-items:center}
+.tour-dot{width:9px;height:9px;border-radius:50%;background:rgba(255,255,255,.25);border:0;cursor:pointer;padding:0;transition:.25s}
+.tour-dot.on{background:var(--teal-bright);width:26px;border-radius:5px}
+@media(max-width:820px){.tour-slide{grid-template-columns:1fr;gap:20px;padding:30px 22px;text-align:center;min-height:0}.tour-cap{order:1}.tour-media{order:2}.tour-cap p{margin-left:auto;margin-right:auto}.tour-cap .np-mini{margin-left:auto;margin-right:auto}}
 </style>
 <script>
 function npLogoFail(img){var b=img.getAttribute('data-brand');if(img.classList.contains('hdr')){img.parentElement.outerHTML='<div class="bname">'+b+'</div>';}else{img.outerHTML='<span class="pbrand">'+b+'</span>';}}
@@ -182,11 +345,237 @@ window.addEventListener('load',function(){document.querySelectorAll('img.brandlo
 <div class="brandnav" id="all">
   <div class="wrap">
     <span class="bn-label">On this page</span>
-    <a href="#online-payments" class="on">Gateways</a>
+    <a href="#nextpay-invoice" class="on">NextPay Invoice</a>
+    <a href="#savings">Savings Calculator</a>
+    <a href="#online-payments">Gateways</a>
     <a href="#recurring">Recurring Billing</a>
     <a href="#compare-help">Compare</a>
   </div>
 </div>
+
+<!-- NEXTPAY INVOICE — featured platform -->
+<section class="bsec npinv" id="nextpay-invoice">
+  <div class="wrap">
+    <div class="npinv-top">
+      <div>
+        <span class="npinv-badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" style="width:14px;height:14px"><path d="M5 13l4 4L19 7"/></svg>Our flagship invoicing platform</span>
+        <div class="npinv-wordmark">
+          <img src="assets/logos/nextpay-white.png" alt="NextPay" onerror="this.outerHTML='&lt;span class=\'lockup\'&gt;Next&lt;b&gt;Pay&lt;/b&gt;&lt;/span&gt;'">
+          <span class="lockup"><b>Invoice</b></span>
+        </div>
+        <h2>Get paid faster with <em>NextPay Invoice.</em></h2>
+        <p class="npinv-lead">Smart invoicing, automated reminders, recurring billing and dual pricing — all in one app. Send a professional invoice by email or text, let customers pay in a tap, and watch every payment settle straight to your NextPay account.</p>
+        <div class="npinv-strip">
+          <span class="tag">Smart invoicing</span><span class="tag">Text-to-Pay</span><span class="tag">Recurring billing</span><span class="tag">Dual pricing</span><span class="tag">QuickBooks · Xero</span>
+        </div>
+        <div class="npinv-cta">
+          <a class="btn btn-primary" href="/contact">Book a demo <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+          <a class="btn btn-ghost" href="/quick-application">Apply Now</a>
+          <a class="btn btn-ghost" href="#savings">See your savings</a>
+        </div>
+      </div>
+      <div class="npinv-media">
+        <div class="npinv-mock" aria-hidden="true">
+          <div class="npm-top"><span class="npm-mark">S</span><span class="npm-biz">Summit Services</span></div>
+          <div class="npm-amt"><span class="npm-cur">$</span>449.00 <span class="npm-paid">✓ Paid</span></div>
+          <div class="npm-rows">
+            <div class="npm-row"><span>Invoice #</span><b>9381540</b></div>
+            <div class="npm-row"><span>Customer</span><b>Joe Young</b></div>
+            <div class="npm-row"><span>Paid on</span><b>Feb 21, 2026</b></div>
+            <div class="npm-row"><span>Method</span><b>Visa •••• 1234</b></div>
+          </div>
+          <div class="npm-receipt"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" style="width:15px;height:15px"><path d="M5 13l4 4L19 7"/></svg> Receipt emailed</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="npinv-feats">
+      <div class="npinv-feat"><div class="nf-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 3h7l5 5v13H7z"/><path d="M14 3v5h5M9 13h6M9 17h4"/></svg></div><h4>Smart Invoicing</h4><p>Itemized invoices with automated reminders and live payment tracking — sent by email or text.</p></div>
+      <div class="npinv-feat"><div class="nf-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10 13a5 5 0 007 0l2-2a5 5 0 00-7-7l-1 1"/><path d="M14 11a5 5 0 00-7 0l-2 2a5 5 0 007 7l1-1"/></svg></div><h4>Instant Pay Links</h4><p>Send a pay-by-link and get paid in a tap — no app, no login, no friction for your customer.</p></div>
+      <div class="npinv-feat"><div class="nf-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="6" y="2" width="12" height="20" rx="2"/><path d="M11 18h2"/></svg></div><h4>Text-to-Pay</h4><p>SMS payment requests get seen and paid faster than email — reach customers right on their phone.</p></div>
+      <div class="npinv-feat"><div class="nf-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12a9 9 0 1015-6.7L21 8"/><path d="M21 3v5h-5"/></svg></div><h4>Recurring Billing</h4><p>Charge memberships, retainers and subscriptions automatically on the schedule you set.</p></div>
+      <div class="npinv-feat"><div class="nf-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="5" width="20" height="14" rx="2"/><path d="M2 10h20"/></svg></div><h4>Virtual Terminal</h4><p>Key in payments from any device — turn a phone or laptop into a card terminal, anywhere.</p></div>
+      <div class="npinv-feat"><div class="nf-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 9h18M7 15h4"/></svg></div><h4>Card on File</h4><p>Securely vault cards for repeat customers and one-tap rebilling on future invoices.</p></div>
+      <div class="npinv-feat"><div class="nf-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v20M6 7h9a3 3 0 010 6H9a3 3 0 000 6h9"/></svg></div><h4>Dual Pricing</h4><p>Let customers choose card or bank (ACH) — you keep the full invoice amount, every time.</p></div>
+      <div class="npinv-feat"><div class="nf-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 7c0-1.7 3.6-3 8-3s8 1.3 8 3-3.6 3-8 3-8-1.3-8-3z"/><path d="M4 7v10c0 1.7 3.6 3 8 3s8-1.3 8-3V7M4 12c0 1.7 3.6 3 8 3s8-1.3 8-3"/></svg></div><h4>Accounting Sync</h4><p>Two-way sync with QuickBooks, FreshBooks and Xero keeps your books reconciled automatically.</p></div>
+    </div>
+
+    <!-- SEE IT IN ACTION — interactive walkthrough -->
+    <div class="npinv-tour" id="how-it-works">
+      <div class="tour-head">
+        <div>
+          <span class="npinv-badge">See it in action</span>
+          <h3>In a few simple steps, you get paid</h3>
+          <p>Here's the exact flow you and your customers experience with NextPay Invoice.</p>
+        </div>
+        <a class="btn btn-primary" href="/contact">Book a demo <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+      </div>
+      <div class="tour-stage">
+        <div class="tour-track">
+
+          <!-- 1: create a request -->
+          <div class="tour-slide">
+            <div class="tour-cap">
+              <img class="np-mini" src="assets/logos/nextpay-color.png" alt="NextPay Invoice">
+              <div class="step-no">1</div>
+              <h4>Create a <em>payment request</em> in seconds</h4>
+              <p>Pick a customer, add the invoice and amount, then send it by text or email.</p>
+            </div>
+            <div class="tour-media">
+              <div class="tdash">
+                <div class="tdash-top"><img src="assets/logos/nextpay-color.png" alt="NextPay"><span class="biz"><span class="d-biz">Summit Services</span> ▾</span></div>
+                <div class="tdash-body tdash-3">
+                  <div class="tnav">
+                    <div class="lbl">FAVORITES</div>
+                    <a><span class="d"></span>Dashboard</a>
+                    <a><span class="d"></span>Invoices</a>
+                    <a class="on"><span class="d"></span>Payment Requests</a>
+                    <a><span class="d"></span>Subscriptions</a>
+                    <a><span class="d"></span>Virtual Terminal</a>
+                    <a><span class="d"></span>Customers</a>
+                  </div>
+                  <div class="tform">
+                    <div class="fh">Payment Requests</div>
+                    <div class="f"><span class="ic">&#128100;</span><span class="d-cust">Joe Young</span></div>
+                    <div class="chk"><i>&#10003;</i><span class="d-phone">704-999-2459</span></div>
+                    <div class="chk"><i>&#10003;</i><span class="d-email">jyoung@summit.com</span></div>
+                    <div class="f"><span class="ic">#</span><span class="d-inv">9381540</span></div>
+                    <div class="f"><span class="ic">&#9776;</span><span class="d-desc">Tax Filing</span></div>
+                    <div class="f"><span class="ic">$</span><span class="d-amt">449.00</span></div>
+                    <div class="req">REQUEST PAYMENT</div>
+                  </div>
+                  <div class="tmain">
+                    <table class="ttable">
+                      <tr><th>Status</th><th>Amount</th><th>Customer</th></tr>
+                      <tr class="new"><td><span class="st">Sent</span></td><td class="d-amt">449.00</td><td class="d-cust">Joe Young</td></tr>
+                      <tbody id="d-recent"></tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- 2: customer gets a text/email -->
+          <div class="tour-slide">
+            <div class="tour-cap">
+              <div class="step-no">2</div>
+              <h4>Your customer gets a <em>text or email</em></h4>
+              <p>A secure pay link lands right on their phone — no app and no account needed.</p>
+            </div>
+            <div class="tour-media">
+              <div class="tphone"><div class="tscreen">
+                <div class="tsms"><span class="tt">Today 10:00 AM</span>Thank you for your business with <span class="d-biz">Summit Services</span>. Click the link below to pay your invoice.<br><a href="#" onclick="return false">pay.nextpay.app/J3AC9F</a></div>
+              </div></div>
+            </div>
+          </div>
+
+          <!-- 3: they pay -->
+          <div class="tour-slide">
+            <div class="tour-cap">
+              <div class="step-no">3</div>
+              <h4>They tap the link and <em>pay the invoice</em></h4>
+              <p>Card, Apple Pay or bank transfer — your customer chooses and pays in a tap.</p>
+            </div>
+            <div class="tour-media">
+              <div class="tphone"><div class="tscreen">
+                <div class="tbiz"><span class="mk"><svg viewBox="0 0 24 24" style="width:26px;height:26px"><circle cx="18" cy="8" r="2.3" fill="#1FC2A6"/><path d="M2 19.5L8.5 9l3.8 5.2L16 8.4l6 11.1z" fill="#fff"/></svg></span><b class="d-biz">Summit Services</b></div>
+                <div style="text-align:center"><div class="tprice"><sup>$</sup><span class="d-amt">449.00</span></div></div>
+                <div class="tline"></div>
+                <div class="trow"><span>Invoice #</span><b class="d-inv">9381540</b></div>
+                <div class="trow"><span>Customer</span><b class="d-cust">Joe Young</b></div>
+                <div class="trow"><span>Due</span><b class="d-due">Feb 21, 2023</b></div>
+                <div class="tlabel">SELECT A PAYMENT METHOD</div>
+                <div class="tmethod"><span class="ic" style="background:#1a1f71">VISA</span>Visa <span class="mut">•••• 1234</span></div>
+                <div class="tmethod"><span class="ic" style="background:#000">Pay</span>Apple Pay</div>
+                <div class="tpay">Pay $<span class="d-amt">449.00</span></div>
+              </div></div>
+            </div>
+          </div>
+
+          <!-- 4: you get paid -->
+          <div class="tour-slide">
+            <div class="tour-cap">
+              <div class="step-no">4</div>
+              <h4>You <em>get paid</em> — instantly</h4>
+              <p>Funds settle to your NextPay account and the request is marked paid. 85% of requests are paid within a day.</p>
+            </div>
+            <div class="tour-media">
+              <div class="tphone"><div class="tscreen">
+                <div class="tbiz"><span class="mk"><svg viewBox="0 0 24 24" style="width:26px;height:26px"><circle cx="18" cy="8" r="2.3" fill="#1FC2A6"/><path d="M2 19.5L8.5 9l3.8 5.2L16 8.4l6 11.1z" fill="#fff"/></svg></span><b class="d-biz">Summit Services</b></div>
+                <div style="display:flex;align-items:center;justify-content:space-between"><div class="tprice"><sup>$</sup><span class="d-amt">449.00</span></div><span class="tpaid"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" style="width:17px;height:17px"><path d="M5 13l4 4L19 7"/></svg>PAID</span></div>
+                <div class="tline"></div>
+                <div class="trow"><span>Invoice #</span><b class="d-inv">9381540</b></div>
+                <div class="trow"><span>Customer</span><b class="d-cust">Joe Young</b></div>
+                <div class="trow"><span>Paid On</span><b class="d-paidon">Feb 21, 2023</b></div>
+                <div class="trow"><span>Method</span><b class="d-card">Visa •••• 1234</b></div>
+                <div class="tpay" style="background:var(--bg-soft);color:var(--teal-dark)">Receipt emailed ✓</div>
+              </div></div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+      <div class="tour-nav">
+        <button class="tour-arrow tour-prev" type="button" aria-label="Previous">‹</button>
+        <div class="tour-dots">
+          <button class="tour-dot on" type="button" aria-label="Step 1"></button>
+          <button class="tour-dot" type="button" aria-label="Step 2"></button>
+          <button class="tour-dot" type="button" aria-label="Step 3"></button>
+          <button class="tour-dot" type="button" aria-label="Step 4"></button>
+        </div>
+        <button class="tour-arrow tour-next" type="button" aria-label="Next">›</button>
+      </div>
+    </div>
+
+    <!-- SAVINGS CALCULATOR -->
+    <div class="npc" id="savings">
+      <span class="eyebrow npc-eyebrow">Dual pricing savings</span>
+      <h2 class="npc-title">See how much <em>you can save</em></h2>
+      <div class="npc-inputs">
+        <div class="npc-field"><label>$ Revenue / month</label><div class="npc-ip"><span class="pre">$</span><input type="text" inputmode="numeric" id="npc-rev" value="50,000"></div></div>
+        <div class="npc-field"><label># Payments / month</label><div class="npc-ip"><input type="number" id="npc-pay" value="75" min="0"></div></div>
+        <div class="npc-field"><label>% ACH Volume</label><div class="npc-range"><input type="range" id="npc-ach" min="0" max="100" value="0"><span class="out" id="npc-ach-out">0%</span></div></div>
+      </div>
+
+      <div class="npc-cols">
+        <div>
+          <div class="npc-colh">Compared with</div>
+          <div class="npc-tabs" id="npc-tabs">
+            <button class="npc-tab on" data-c="quickbooks" type="button"><img class="npc-tlogo" src="assets/logos/quickbooks-t.png" alt="QuickBooks"></button>
+            <button class="npc-tab" data-c="stripe" type="button"><img class="npc-tlogo ic" src="assets/logos/stripe.svg" alt=""><span>Stripe</span></button>
+            <button class="npc-tab" data-c="square" type="button"><img class="npc-tlogo ic" src="assets/logos/square.svg" alt=""><span>Square</span></button>
+            <button class="npc-tab" data-c="other" type="button"><svg class="npc-ticon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="5" y="3" width="14" height="18" rx="2"/><path d="M9 7h6M9 11h2M13 11h2M9 15h2M13 15h2"/></svg><span>Other</span></button>
+          </div>
+          <div class="npc-card" id="npc-comp"></div>
+        </div>
+        <div>
+          <div class="npc-colh">How much can I save?</div>
+          <div class="npc-card np">
+            <span class="npc-ribbon">Huge Savings</span>
+            <div class="npc-brand"><img src="assets/logos/nextpay-color.png" alt="NextPay" onerror="this.outerHTML='Next&lt;span class=\'inv\'&gt;Pay&lt;/span&gt;'"><span class="inv">Invoice</span></div>
+            <div class="npc-row head"><span class="k">&nbsp;</span><span class="two"><b>Customer Pays</b><b>You Pay</b></span></div>
+            <div class="npc-row"><span class="k">Cards</span><span class="two"><b>3.75%</b><b>0%</b></span></div>
+            <div class="npc-row"><span class="k">ACH</span><span class="two"><b>0%</b><b>0.75%</b></span></div>
+            <div class="npc-row tot"><span class="k">Processing Fees <em style="font-weight:400;color:var(--slate)">(est.)</em></span><span class="v" id="npc-np-fees">$94</span></div>
+            <div class="npc-row"><span class="k">Effective Rate <em style="font-weight:400;color:var(--slate)">(est.)</em></span><span class="v" id="npc-np-eff">0.19%</span></div>
+            <div class="npc-save">
+              <div class="lbl">Save</div>
+              <div class="amt" id="npc-save-amt">$1,401 <span>/ month</span></div>
+              <small>on processing fees</small>
+            </div>
+          </div>
+        </div>
+      </div>
+      <p class="npc-disc">Estimates only, for illustration. Comparison rates are typical published rates for each provider; your actual rate depends on your card mix, ticket size and volume. With NextPay Invoice dual pricing, the card fee is passed to customers who choose to pay by card, so you keep the full invoice — your cost comes from ACH and per-transaction fees. A NextPay specialist confirms your exact rate.</p>
+    </div>
+
+    <div class="npinv-foot">
+      <p><b>Powered by NextPay.</b> One account for invoicing, recurring billing and in-person payments — settled together.</p>
+      <a class="link-teal" href="/contact">Book a demo <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+    </div>
+  </div>
+</section>
 
 <section class="bsec" id="online-payments">
   <div class="wrap">
@@ -359,6 +748,145 @@ window.NP_PRODUCTS = {"x-inv-fluidpay":{"name":"FluidPay","brand":"FluidPay","sl
   const map=links.map(a=>({a,el:document.querySelector(a.getAttribute('href'))})).filter(x=>x.el);
   function upd(){let cur=map[0];for(const m of map){if(m.el.getBoundingClientRect().top<160)cur=m;}links.forEach(a=>a.classList.remove('on'));if(cur)cur.a.classList.add('on');}
   document.addEventListener('scroll',upd,{passive:true});upd();
+})();
+
+/* NextPay Invoice — savings calculator */
+(function(){
+  const C={
+    quickbooks:{name:'QuickBooks',card:2.99,fixed:0,ach:1.0,inv:0,edit:false},
+    stripe:{name:'Stripe',card:2.9,fixed:0.30,ach:1.2,inv:0.4,edit:false},
+    square:{name:'Square',card:3.3,fixed:0.30,ach:1.0,inv:0,edit:false},
+    other:{name:'Other',card:3.0,fixed:0,ach:1.0,inv:0,edit:true}
+  };
+  // NextPay Invoice dual-pricing model: with dual pricing the card fee is passed
+  // to customers (0% to you) and ACH is effectively absorbed, so the merchant's
+  // estimated cost is a flat per-transaction fee that does NOT scale with ACH
+  // volume (matches the source calculator: ~$94 at 75 payments).
+  const NP={youCard:0,youAch:0.75,perTxn:1.2533};
+  // competitor brand logos shown in the comparison card
+  const BRAND={
+    quickbooks:{img:'assets/logos/quickbooks-t.png',h:30,text:'',color:''},
+    stripe:{img:'assets/logos/stripe.svg',h:30,text:'stripe',color:'#635BFF'},
+    square:{img:'assets/logos/square.svg',h:28,text:'Square',color:'#3E4348'}
+  };
+  const other={card:3,ach:1,fixed:0};
+  let cur='quickbooks';
+  const $=id=>document.getElementById(id);
+  const comp=$('npc-comp'); if(!comp) return;
+  const money=n=>'$'+Math.round(n).toLocaleString('en-US');
+  const pct=n=>(Math.round(n*100)/100)+'%';
+  const num=v=>{const n=parseFloat(String(v).replace(/[^0-9.]/g,''));return isNaN(n)?0:n;};
+
+  function calc(){
+    const rev=num($('npc-rev').value);
+    const pay=num($('npc-pay').value);
+    const achShare=num($('npc-ach').value)/100;
+    const achVol=rev*achShare, cardVol=rev-achVol;
+    const cardCount=Math.round(pay*(1-achShare));
+    const c=C[cur];
+    const card=c.edit?other.card:c.card;
+    const ach=c.edit?other.ach:c.ach;
+    const fixed=c.edit?other.fixed:c.fixed;
+    const compFees=cardVol*card/100 + cardCount*fixed + achVol*ach/100 + rev*(c.inv||0)/100;
+    const compEff=rev?compFees/rev*100:0;
+    const npFees=pay*NP.perTxn;
+    const npEff=rev?npFees/rev*100:0;
+    const save=Math.max(0,compFees-npFees);
+
+    $('npc-ach-out').textContent=Math.round(achShare*100)+'%';
+    let rows;
+    if(c.edit){
+      rows=`<div class="npc-brand" style="font-size:19px;color:var(--teal-dark)">Current Processing Fees</div>
+        <div class="npc-row"><span class="k">Cards</span><span class="two"><input class="npc-edit" id="npc-ocard" type="number" step="0.01" value="${other.card}"><span style="align-self:center;color:var(--slate)">%</span></span></div>
+        <div class="npc-row"><span class="k">ACH</span><span class="two"><input class="npc-edit" id="npc-oach" type="number" step="0.01" value="${other.ach}"><span style="align-self:center;color:var(--slate)">%</span></span></div>
+        <div class="npc-row tot"><span class="k">Processing Fees <em style="font-weight:400;color:var(--slate)">(est.)</em></span><span class="v">${money(compFees)}</span></div>
+        <div class="npc-row"><span class="k">Effective Rate <em style="font-weight:400;color:var(--slate)">(est.)</em></span><span class="v">${pct(compEff)}</span></div>`;
+    } else {
+      const cardLabel=fixed?`${card}% + ${Math.round(fixed*100)}¢`:`${card}%`;
+      const Br=BRAND[cur];
+      const brandHtml=Br?`<img class="npc-clogo" src="${Br.img}" alt="${c.name}" style="height:${Br.h}px" onerror="this.replaceWith(document.createTextNode('${c.name}'))">${Br.text?`<span style="font-weight:800;color:${Br.color};font-size:22px;letter-spacing:-.02em">${Br.text}</span>`:''}`:c.name;
+      rows=`<div class="npc-brand">${brandHtml}</div>
+        <div class="npc-row"><span class="k">Cards</span><span class="v">${cardLabel}</span></div>
+        <div class="npc-row"><span class="k">ACH</span><span class="v">${ach}%</span></div>
+        ${c.inv?`<div class="npc-row"><span class="k">Invoicing</span><span class="v">${c.inv}%</span></div>`:''}
+        <div class="npc-row tot"><span class="k">Processing Fees <em style="font-weight:400;color:var(--slate)">(est.)</em></span><span class="v">${money(compFees)}</span></div>
+        <div class="npc-row"><span class="k">Effective Rate <em style="font-weight:400;color:var(--slate)">(est.)</em></span><span class="v">${pct(compEff)}</span></div>`;
+    }
+    comp.innerHTML=rows;
+    if(c.edit){
+      $('npc-ocard').addEventListener('input',e=>{other.card=num(e.target.value);recalcValues();});
+      $('npc-oach').addEventListener('input',e=>{other.ach=num(e.target.value);recalcValues();});
+    }
+    $('npc-np-fees').textContent=money(npFees);
+    $('npc-np-eff').textContent=pct(npEff);
+    $('npc-save-amt').innerHTML=money(save)+' <span>/ month</span>';
+  }
+  // light recompute that doesn't rebuild the editable inputs (keeps focus)
+  function recalcValues(){
+    const rev=num($('npc-rev').value),pay=num($('npc-pay').value),achShare=num($('npc-ach').value)/100;
+    const achVol=rev*achShare,cardVol=rev-achVol,cardCount=Math.round(pay*(1-achShare));
+    const c=C[cur];const card=c.edit?other.card:c.card,ach=c.edit?other.ach:c.ach,fixed=c.edit?other.fixed:c.fixed;
+    const compFees=cardVol*card/100+cardCount*fixed+achVol*ach/100+rev*(c.inv||0)/100;
+    const npFees=pay*NP.perTxn;
+    const totEls=comp.querySelectorAll('.npc-row.tot .v, .npc-row:last-child .v');
+    if(totEls[0])totEls[0].textContent=money(compFees);
+    if(totEls[1])totEls[1].textContent=pct(rev?compFees/rev*100:0);
+    $('npc-np-fees').textContent=money(npFees);
+    $('npc-np-eff').textContent=pct(rev?npFees/rev*100:0);
+    $('npc-save-amt').innerHTML=money(Math.max(0,compFees-npFees))+' <span>/ month</span>';
+  }
+
+  $('npc-tabs').addEventListener('click',e=>{
+    const b=e.target.closest('.npc-tab'); if(!b) return;
+    cur=b.dataset.c;
+    $('npc-tabs').querySelectorAll('.npc-tab').forEach(t=>t.classList.toggle('on',t===b));
+    calc();
+  });
+  ['npc-rev','npc-pay','npc-ach'].forEach(id=>$(id).addEventListener('input',calc));
+  $('npc-rev').addEventListener('blur',()=>{const v=num($('npc-rev').value);$('npc-rev').value=v?v.toLocaleString('en-US'):'';calc();});
+  calc();
+})();
+
+/* NextPay Invoice — walkthrough autoplay */
+(function(){
+  const tour=document.getElementById('how-it-works'); if(!tour) return;
+  // ---- Demo data: change these values and every screen updates in sync ----
+  const DEMO={
+    business:'Summit Services',
+    customer:'Joe Young',
+    phone:'704-999-2459',
+    email:'jyoung@summit.com',
+    invoice:'9381540',
+    description:'Tax Filing',
+    amount:449,
+    due:'Feb 21, 2023',
+    paid:'Feb 21, 2023',
+    card:'Visa •••• 1234',
+    recent:[{n:'Priya Nair',a:312.50},{n:'Marcus Bell',a:89},{n:'Tanya Brooks',a:540},{n:'Diego Ramos',a:127.75},{n:'Hannah Cole',a:215},{n:'Wesley Tan',a:64.20}]
+  };
+  const money=n=>Number(n).toLocaleString('en-US',{minimumFractionDigits:2,maximumFractionDigits:2});
+  function fill(){
+    const set=(c,v)=>tour.querySelectorAll('.'+c).forEach(e=>{e.textContent=v;});
+    set('d-biz',DEMO.business);set('d-cust',DEMO.customer);set('d-amt',money(DEMO.amount));
+    set('d-inv',DEMO.invoice);set('d-phone',DEMO.phone);set('d-email',DEMO.email);
+    set('d-desc',DEMO.description);set('d-due',DEMO.due);set('d-paidon',DEMO.paid);set('d-card',DEMO.card);
+    const rec=tour.querySelector('#d-recent');
+    if(rec)rec.innerHTML=DEMO.recent.map(r=>'<tr><td><span class="st">Sent</span></td><td>'+money(r.a)+'</td><td>'+r.n+'</td></tr>').join('');
+  }
+  fill();
+  const track=tour.querySelector('.tour-track');
+  const slides=[...tour.querySelectorAll('.tour-slide')];
+  const dots=[...tour.querySelectorAll('.tour-dot')];
+  let i=0,timer=null;
+  function go(n){i=(n+slides.length)%slides.length;track.style.transform='translateX(-'+(i*100)+'%)';dots.forEach((d,k)=>d.classList.toggle('on',k===i));}
+  function start(){stop();timer=setInterval(()=>go(i+1),4500);}
+  function stop(){if(timer){clearInterval(timer);timer=null;}}
+  tour.querySelector('.tour-next').addEventListener('click',()=>{go(i+1);start();});
+  tour.querySelector('.tour-prev').addEventListener('click',()=>{go(i-1);start();});
+  dots.forEach((d,k)=>d.addEventListener('click',()=>{go(k);start();}));
+  tour.querySelector('.tour-stage').addEventListener('mouseenter',stop);
+  tour.querySelector('.tour-stage').addEventListener('mouseleave',start);
+  go(0);start();
 })();
 </script>
 </body>
