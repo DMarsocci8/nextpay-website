@@ -23,13 +23,18 @@
       "permanent": true
     },
     {
+      "source": "/agent-portal",
+      "destination": "https://hub.nextpaypos.com/SalesHub",
+      "permanent": true
+    },
+    {
       "source": "/Agent Portal.html",
-      "destination": "/agent-portal",
+      "destination": "https://hub.nextpaypos.com/SalesHub",
       "permanent": true
     },
     {
       "source": "/Agent Portal",
-      "destination": "/agent-portal",
+      "destination": "https://hub.nextpaypos.com/SalesHub",
       "permanent": true
     },
     {
@@ -751,10 +756,6 @@
     {
       "source": "/affiliate",
       "destination": "/Affiliate%20Program"
-    },
-    {
-      "source": "/agent-portal",
-      "destination": "/Agent%20Portal"
     },
     {
       "source": "/agent-program",
