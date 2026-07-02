@@ -174,12 +174,12 @@
 
 <div class="hub-bar">
   <div class="hub-bar-inner">
-    <a href="/SalesHub" style="display:flex;align-items:center" aria-label="Sales Hub home"><img class="logo" src="/assets/logos/nextpay-nav.png" alt="NextPay"></a>
+    <a href="/saleshub" style="display:flex;align-items:center" aria-label="Sales Hub home"><img class="logo" src="/assets/logos/nextpay-nav.png" alt="NextPay"></a>
     <span class="pipe"></span>
     <span class="hub-tag">Sales Hub <span class="badge">Internal</span></span>
     <div class="right">
-      <a class="muted-hide" href="/SalesHub">← Hub home</a>
-      <a class="muted-hide" href="/SalesHub/Pricing">Pricing</a>
+      <a class="muted-hide" href="/saleshub">← Hub home</a>
+      <a class="muted-hide" href="/pricing">Pricing</a>
       <a href="https://www.nextpaypos.com/contact">Help</a>
     </div>
   </div>
@@ -187,7 +187,7 @@
 
 <header class="pg-head">
   <div class="wrap">
-    <div class="crumbs"><a href="/SalesHub">Sales Hub</a><span class="sep">/</span><span>Submit a Deal</span></div>
+    <div class="crumbs"><a href="/saleshub">Sales Hub</a><span class="sep">/</span><span>Submit a Deal</span></div>
     <h1>Submit a Deal — Order Forms &amp; Process</h1>
     <p class="lead">How to place and submit an order for each product: where the form lives, the exact steps, what you need to have ready, turnaround, and who to call. Submission is product-specific — pick the product and follow its playbook.</p>
     <div class="stepper">
@@ -216,13 +216,13 @@
         <span class="pnum">1</span>
         <h4>Solutions in Payments Portal</h4>
         <p>Submit and board <b>every product except Square, Clover and Shift4</b> here — terminals, gateways, invoicing and more. Your primary day-to-day portal.</p>        <a class="plink" style="white-space:nowrap;align-self:stretch;justify-content:center" href="https://solutionsinpaymentsportal.com/" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M14 3h7v7M21 3l-9 9M21 14v5a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h5"/></svg>Open Solutions in Payments Portal</a>
-        <a class="noaccess" href="/SalesHub/RequestAccess?portal=Solutions+in+Payments+Portal" target="_blank" rel="noopener">Don't have access? Click here →</a>
+        <a class="noaccess" href="/requestaccess?portal=Solutions+in+Payments+Portal" target="_blank" rel="noopener">Don't have access? Click here →</a>
       </div>
       <div class="portal">
         <span class="pnum">2</span>
         <h4>Shift4 Partner Portal</h4>
         <p><b>Shift4 Dine</b> and <b>Shift4 Terminals</b> are submitted here — log in and submit under the <b>Sales Center</b>. You'll get your own login.</p>        <a class="plink" style="white-space:nowrap;align-self:stretch;justify-content:center" href="https://link.shift4payments.com/auth/login?redirectUrl=https%3A%2F%2Fapi.dealer-portal.shift4.com%2Fapi%2Fauth%2Flink%3Fredirect%3Dhttps%253A%252F%252Fpartner-portal.shift4.com%252F%252F" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M14 3h7v7M21 3l-9 9M21 14v5a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h5"/></svg>Open Shift4 Partner Portal</a>
-        <a class="noaccess" href="/SalesHub/RequestAccess?portal=Shift4+Partner+Portal" target="_blank" rel="noopener">Don't have access? Click here →</a>
+        <a class="noaccess" href="/requestaccess?portal=Shift4+Partner+Portal" target="_blank" rel="noopener">Don't have access? Click here →</a>
       </div>
       <div class="portal">
         <span class="pnum">3</span>
@@ -295,7 +295,7 @@
 <footer class="hub-foot">
   <div class="wrap">
     <span>NextPay Sales Hub · Submit a Deal · Internal use only.</span>
-    <span><a href="/SalesHub/RequestAccess#suggest">💡 Suggest / Request</a> · <a href="/SalesHub">← Back to hub</a></span>
+    <span><a href="/requestaccess#suggest">💡 Suggest / Request</a> · <a href="/saleshub">← Back to hub</a></span>
   </div>
 </footer>
 
@@ -496,9 +496,9 @@
   function isReady(pr){ return !!(((pr.links && pr.links.length) || pr.form.url) && pr.steps.length); }
   function slug(s){ return (s||"").toLowerCase().replace(/[^a-z0-9]+/g,'-').replace(/^-|-$/g,''); }
   function dealPageFor(pr){ var s=((pr.name||'')+' '+(pr.brand||'')).toLowerCase();
-    if(s.indexOf('square')>-1) return '/SalesHub/Square';
-    if(s.indexOf('clover')>-1) return '/SalesHub/Clover';
-    if(s.indexOf('shift4')>-1) return '/SalesHub/Shift4';
+    if(s.indexOf('square')>-1) return '/square';
+    if(s.indexOf('clover')>-1) return '/clover';
+    if(s.indexOf('shift4')>-1) return '/shift4';
     return ''; }
 
   function render(){
@@ -545,7 +545,7 @@
       +  '</button>'
       +  '<div class="pbody">'
       +    dealbtn
-      +    (PROMO[pr.name] ? '<a class="promo-banner" href="/SalesHub/Promotions"><span class="pb-ic">🎁</span><span class="pb-txt"><b>Current offer:</b> '+esc(PROMO[pr.name])+'</span><span class="pb-go">View promotions →</span></a>' : '')
+      +    (PROMO[pr.name] ? '<a class="promo-banner" href="/promotions"><span class="pb-ic">🎁</span><span class="pb-txt"><b>Current offer:</b> '+esc(PROMO[pr.name])+'</span><span class="pb-go">View promotions →</span></a>' : '')
       +    '<div class="pgrid">'
       +    '<div class="block"><h4>How to submit</h4>'
       +      '<div class="platline"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M14 3h7v7M21 3l-9 9M21 14v5a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h5"/></svg>Submit via: '+esc(pr.platform||"")+'</div>'
