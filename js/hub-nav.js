@@ -35,6 +35,7 @@
       ]],
       ['Build', [
         ['Marketing Assets','/SalesHub/MarketingAssets'],
+        ['Email Signature','/SalesHub/EmailSignature'],
         ['Brand Assets','/SalesHub/BrandAssets'],
         ['Lead Generation','/SalesHub/LeadGeneration']
       ]],

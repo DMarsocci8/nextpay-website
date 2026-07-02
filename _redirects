@@ -29,6 +29,7 @@
 /scripts                           /SalesHub/Scripts                              302
 /fieldplan                         /SalesHub/FieldPlan                            302
 /card                              /SalesHub/BusinessCard                         302
+/signature                         /SalesHub/EmailSignature                       302
 /kb                                /SalesHub/KnowledgeBase                        302
 /quiz                              /SalesHub/Quiz                                 302
 /flyers                            /SalesHub/Flyers                               302
@@ -46,6 +47,7 @@
 /SalesHub/Clover                   /Sales%20Hub%20-%20Clover.html                 200
 /SalesHub/DiscoveryPlaybook        /Sales%20Hub%20-%20Discovery%20Playbook.html   200
 /SalesHub/DocumentLibrary          /Sales%20Hub%20-%20Document%20Library.html     200
+/SalesHub/EmailSignature           /Sales%20Hub%20-%20Email%20Signature.html      200
 /SalesHub/FAQ                      /Sales%20Hub%20-%20FAQ.html                    200
 /SalesHub/FieldPlan                /Sales%20Hub%20-%20Field%20Plan.html           200
 /SalesHub/Flyers                   /Sales%20Hub%20-%20Flyers.html                 200
