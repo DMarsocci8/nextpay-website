@@ -92,6 +92,13 @@
       return [C('PAX Terminals','Top pick','4G LTE, Wi-Fi, long battery, built-in printer.','processing only',TERM+'#pax'),C('Valor PayTech','Option','Dual pricing built-in, SMS marketing.','processing only',TERM+'#valor')];
     }
     function online(){
+      // Anything invoicing-related leads with NextPay's own invoicing product.
+      const list=onlineBase();
+      list.forEach(c=>{ if(c.top){ c.top=false; c.role='Option'; } });
+      list.unshift(C('NextPay Invoice','Top pick','Payment requests by text or email, recurring billing, card-on-file & QuickBooks sync.','custom',INV));
+      return list;
+    }
+    function onlineBase(){
       if(I==='fnb') return [C('Square Online & Invoicing','Top pick','Free tier, eCommerce, online ordering.','2.9% + 30¢',GW),C('iPOSpays by Dejavoo','Option','Dual pricing invoicing, ACH, 0% option.','from $25/mo',GW)];
       if(I==='retail') return [C('Authorize.net','Top pick','Invoicing, ACH, QuickBooks sync.','from $25/mo',GW),C('Square Online','Option','eCommerce store + invoicing, free tier.','free',GW)];
       if(I==='services') return [C('SwipeSimple','Top pick','Text-to-Pay, invoicing, mobile app.','from $25/mo',INV),C('iPOSpays by Dejavoo','Option','Dual pricing invoicing, virtual terminal.','from $25/mo',GW),C('FluidPay','Option','AI fraud, recurring billing, mobile.','from $25/mo',GW)];
@@ -124,7 +131,7 @@
       'Valor Gateway':'/gateways#valor','FluidPay':'/gateways#fluidpay',
       'iPOSpays by Dejavoo':'/gateways#ipospays',
       'Square Online & Invoicing':'/square','Square Online':'/square',
-      'Field Work':'/invoicing','LQpay':'/luqra'
+      'Field Work':'/invoicing','LQpay':'/luqra','NextPay Invoice':'/invoicing'
     };
     cards.forEach(function(c){ if(DEST[c.name]) c.href=DEST[c.name]; });
     return cards;
