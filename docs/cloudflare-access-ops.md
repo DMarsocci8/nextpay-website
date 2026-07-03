@@ -34,13 +34,14 @@ Deploy/maintain:
 1. **Workers & Pages → Create Worker** named `agent-login-digest`, paste the file's contents, Deploy.
 2. Worker → Settings → Variables and Secrets:
    - `CF_API_TOKEN` — API token with **Account → Access: Audit Logs → Read** (create under My Profile → API Tokens → Custom Token).
-   - `DIGEST_KEY` — any made-up password; protects the manual-test URL.
+   - `DIGEST_KEY` — any made-up password; protects the manual-test URL (currently `payments`).
+   - `RESEND_API_KEY` — API key from resend.com (account: dom@nextpaypos.com). Emails send via Resend; FormSubmit is only a fallback (it 429-rate-limits Workers).
 3. Worker → Settings → Triggers → Cron: `0 22 * * *` (~6pm ET daily).
 4. Test: `https://agent-login-digest.<subdomain>.workers.dev/?key=DIGEST_KEY&send=1` — returns JSON and sends the email.
 
 Behavior: emails only on days with ≥1 login (flip `SEND_WHEN_EMPTY` in the
 file to change); times shown in ET; account id and app domain are constants
-at the top of the file.
+at the top of the file. Verified working Jul 3 2026 (sent via Resend, status 200).
 
 ## Limits to remember
 - Access logs **authentications only** — not time spent inside the hub.
