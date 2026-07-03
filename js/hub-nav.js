@@ -51,6 +51,7 @@
       ]],
       ['Grow', [
         ['My Dashboard','/mydashboard',1],
+        ['Agent Pay Plan','/agentpayplan'],
         ['Field Sales Plan','/fieldplan']
       ]]
     ];
