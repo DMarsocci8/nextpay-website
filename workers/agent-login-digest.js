@@ -17,8 +17,11 @@
 
 const ACCOUNT_ID = '18d8222b69e682e0dc68c45bc43ad4f9';
 const APP_DOMAIN = 'hub.nextpaypos.com';
-const SEND_TO = 'dom@nextpaypos.com';
-const HOURS_BACK = 24;
+// Requires the nextpaypos.com domain to be verified in Resend before
+// multiple recipients / this from-address will work.
+const SEND_TO = ['dom@nextpaypos.com', 'alexander@nextpaypos.com'];
+const SEND_FROM = 'NextPay Sales Hub <digest@nextpaypos.com>';
+const HOURS_BACK = 168; // weekly — pair with cron 0 22 * * 5 (Fri ~6pm ET)
 const SEND_WHEN_EMPTY = false; // true = also email "no logins today"
 
 async function fetchLogins(env) {
@@ -54,15 +57,15 @@ function buildSummary(events) {
 }
 
 async function sendEmail(summary, env) {
-  const subject = `Sales Hub logins — ${summary.users} agent${summary.users === 1 ? '' : 's'}, ${summary.count} login${summary.count === 1 ? '' : 's'} today`;
+  const subject = `Sales Hub logins this week — ${summary.users} agent${summary.users === 1 ? '' : 's'}, ${summary.count} login${summary.count === 1 ? '' : 's'}`;
   // Preferred: Resend (reliable from Workers). Falls back to FormSubmit if no key.
   if (env && env.RESEND_API_KEY) {
     const r = await fetch('https://api.resend.com/emails', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json', Authorization: `Bearer ${env.RESEND_API_KEY}` },
       body: JSON.stringify({
-        from: 'Sales Hub Digest <onboarding@resend.dev>',
-        to: [SEND_TO],
+        from: SEND_FROM,
+        to: SEND_TO,
         subject,
         text: `Agents today: ${summary.users}
 Total logins: ${summary.count}
@@ -73,7 +76,7 @@ ${summary.text}`,
     const body = await r.text().catch(() => '');
     return { ok: r.ok, status: r.status, via: 'resend', detail: body.slice(0, 300) };
   }
-  const r = await fetch('https://formsubmit.co/ajax/' + SEND_TO, {
+  const r = await fetch('https://formsubmit.co/ajax/' + SEND_TO[0], {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
