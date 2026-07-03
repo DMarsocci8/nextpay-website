@@ -53,8 +53,26 @@ function buildSummary(events) {
   };
 }
 
-async function sendEmail(summary) {
+async function sendEmail(summary, env) {
   const subject = `Sales Hub logins — ${summary.users} agent${summary.users === 1 ? '' : 's'}, ${summary.count} login${summary.count === 1 ? '' : 's'} today`;
+  // Preferred: Resend (reliable from Workers). Falls back to FormSubmit if no key.
+  if (env && env.RESEND_API_KEY) {
+    const r = await fetch('https://api.resend.com/emails', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', Authorization: `Bearer ${env.RESEND_API_KEY}` },
+      body: JSON.stringify({
+        from: 'Sales Hub Digest <onboarding@resend.dev>',
+        to: [SEND_TO],
+        subject,
+        text: `Agents today: ${summary.users}
+Total logins: ${summary.count}
+
+${summary.text}`,
+      }),
+    });
+    const body = await r.text().catch(() => '');
+    return { ok: r.ok, status: r.status, via: 'resend', detail: body.slice(0, 300) };
+  }
   const r = await fetch('https://formsubmit.co/ajax/' + SEND_TO, {
     method: 'POST',
     headers: {
@@ -74,14 +92,14 @@ async function sendEmail(summary) {
     }),
   });
   const body = await r.text().catch(() => '');
-  return { ok: r.ok, status: r.status, detail: body.slice(0, 300) };
+  return { ok: r.ok, status: r.status, via: 'formsubmit', detail: body.slice(0, 300) };
 }
 
 async function runDigest(env, force) {
   const events = await fetchLogins(env);
   const summary = buildSummary(events);
   let email = { ok: false, status: 0, detail: 'not attempted' };
-  if (summary.count > 0 || SEND_WHEN_EMPTY || force) email = await sendEmail(summary);
+  if (summary.count > 0 || SEND_WHEN_EMPTY || force) email = await sendEmail(summary, env);
   return { ...summary, sent: email.ok, email };
 }
 
@@ -98,7 +116,7 @@ export default {
       const doSend = url.searchParams.get('send') === '1';
       const events = await fetchLogins(env);
       const summary = buildSummary(events);
-      if (doSend) { const email = await sendEmail(summary); summary.sent = email.ok; summary.email = email; }
+      if (doSend) { const email = await sendEmail(summary, env); summary.sent = email.ok; summary.email = email; }
       return new Response(JSON.stringify(summary, null, 2), { headers: { 'Content-Type': 'application/json' } });
     } catch (err) {
       return new Response('Error: ' + err.message, { status: 500 });
