@@ -26,9 +26,11 @@
 /brand                             /brandassets                                   302
 /guide                             /quickreferenceguide                           302
 /playbook                          /discoveryplaybook                             302
+/payplan                           /agentpayplan                                  302
 /discovery                         /discoveryplaybook                             302
 
 # --- canonical flat URLs: rewrite (200) so the short URL stays put ---
+/agentpayplan                      /Sales%20Hub%20-%20Agent%20Pay%20Plan.html     200
 /brandassets                       /Sales%20Hub%20-%20Brand%20Assets.html         200
 /businesscard                      /Sales%20Hub%20-%20Business%20Card.html        200
 /clover                            /Sales%20Hub%20-%20Clover.html                 200
@@ -86,6 +88,7 @@
 # --- back-compat: old /SalesHub/<Page> links 301 to the flat URL ---
 /SalesHub                          /                                              301
 /SalesHub/                         /                                              301
+/SalesHub/AgentPayPlan             /agentpayplan                                  301
 /SalesHub/BrandAssets              /brandassets                                   301
 /SalesHub/BusinessCard             /businesscard                                  301
 /SalesHub/Clover                   /clover                                        301
