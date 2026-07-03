@@ -234,3 +234,27 @@
     if(head){ e.preventDefault(); var sec=head.closest('.nm-sec'); if(sec) sec.classList.toggle('open'); return; }
   });
 })();
+
+/* np-hash-clean — keep #fragments out of the address bar.
+   Same-page anchor clicks scroll to the section without writing the hash;
+   arriving on a link that carries a #hash scrolls there, then strips it.
+   Sections keep their scroll position via CSS scroll-margin-top. */
+(function(){
+  function strip(){ try{ history.replaceState(null,'',location.pathname+location.search); }catch(e){} }
+  document.addEventListener('click',function(e){
+    var a=e.target.closest&&e.target.closest('a[href]');
+    if(!a||!a.hash) return;
+    if(a.origin!==location.origin||a.pathname!==location.pathname) return; // cross-page link: navigate normally
+    if(e.defaultPrevented){ setTimeout(strip,0); return; }                 // another handler scrolled already
+    var el=document.getElementById(a.hash.slice(1));
+    if(!el) return;
+    e.preventDefault();
+    el.scrollIntoView({behavior:'smooth',block:'start'});
+    strip();
+  });
+  if(location.hash){
+    var el=document.getElementById(location.hash.slice(1));
+    if(el){ setTimeout(function(){ el.scrollIntoView(); strip(); },60); }
+    else strip();
+  }
+})();
