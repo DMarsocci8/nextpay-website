@@ -32,3 +32,6 @@
 - Statement Upload.html + Merchant Rewards.html specialist form POST via FormSubmit AJAX to **dom@nextpaypos.com**, CC **payments@nextpaypos.com,alexander@nextpaypos.com**.
 - FormSubmit only delivers from a real web server (not the preview sandbox). First real submission from the live site sends a one-time activation link to dom@ — must be clicked once. Uploaded statement FILE is not relayed (only a filename note); real file handling waits for backend.
 - If forms ever need to work/test inside preview, switch to Web3Forms (needs an access key from web3forms.com).
+
+## Cloudflare Access ops (Sales Hub logins)
+- Hub login sessions, login logs, the daily agent-login-digest Worker, and login-page branding are documented in `docs/cloudflare-access-ops.md`.
