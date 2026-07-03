@@ -4,6 +4,14 @@ Quick reference for managing agent access to the Sales Hub. The hub is
 protected by **Cloudflare Access** (Zero Trust): agents verify their email
 (one-time PIN) before entering. Account: Dom@nextpaypos.com.
 
+## Direct links (account 18d8222b69e682e0dc68c45bc43ad4f9)
+
+- API tokens (for the digest Worker): <https://dash.cloudflare.com/profile/api-tokens>
+- Workers & Pages: <https://dash.cloudflare.com/18d8222b69e682e0dc68c45bc43ad4f9/workers-and-pages>
+- Zero Trust console: <https://dash.cloudflare.com/18d8222b69e682e0dc68c45bc43ad4f9/one>
+- Access applications: <https://dash.cloudflare.com/18d8222b69e682e0dc68c45bc43ad4f9/one/access-controls/apps>
+- Worker code: <https://github.com/DMarsocci8/nextpay-website/blob/main/workers/agent-login-digest.js>
+
 ## Where things live (new "Cloudflare One" console, 2026 layout)
 
 Start at **dash.cloudflare.com → Zero Trust** (or one.dash.cloudflare.com).
