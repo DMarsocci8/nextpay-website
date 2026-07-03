@@ -49,7 +49,8 @@ main.wrap{padding:32px 0 10px}
 .prog-head .tag{font-size:11px;font-weight:800;letter-spacing:.05em;text-transform:uppercase;padding:4px 10px;border-radius:999px;background:var(--bg-soft-2);color:var(--slate-2)}
 .prog .what{font-size:15px;color:var(--ink);line-height:1.6;margin-bottom:14px}
 .prog-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}
-@media(max-width:720px){.prog-grid{grid-template-columns:1fr}}
+.prog-grid.cols3{grid-template-columns:repeat(3,1fr)}
+@media(max-width:720px){.prog-grid,.prog-grid.cols3{grid-template-columns:1fr}}
 .cell h4{font-size:12px;font-weight:800;letter-spacing:.07em;text-transform:uppercase;color:var(--slate-2);margin-bottom:7px}
 .cell ul{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:7px}
 .cell ul li{display:flex;gap:9px;align-items:flex-start;font-size:14px;color:var(--ink);line-height:1.45}
@@ -151,9 +152,9 @@ table.cmp td:first-child{font-weight:800;color:var(--teal-dark);white-space:nowr
 
   <!-- LEAD PROGRAMS -->
   <section class="prog" id="leads">
-    <div class="prog-head"><h2>Lead programs</h2><span class="tag">Unlock after your first deal</span></div>
-    <p class="what">After your first closed deal, NextPay feeds you warm inside-sales leads. Choose one or both — and both are available out of pocket <b>before</b> your first deal at agent pricing (ask for current rates).</p>
-    <div class="prog-grid">
+    <div class="prog-head"><h2>Lead programs</h2><span class="tag">Available at agent pricing</span></div>
+    <p class="what">Every program below is <b>available at agent pricing</b> from day one (ask for current rates) — and warm leads go to closers first: <b>show us you're closing deals and you're at the top of the list</b>.</p>
+    <div class="prog-grid cols3">
       <div class="cell"><h4>1 · Live Transfer Program</h4><ul>
         <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg>Vetted, qualified, high-intent leads ready to buy</li>
         <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg>Transferred live to your phone — no cold dialing</li>
@@ -161,6 +162,11 @@ table.cmp td:first-child{font-weight:800;color:var(--teal-dark);white-space:nowr
       <div class="cell"><h4>2 · LinkedIn Program</h4><ul>
         <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg>Multichannel outbound: LinkedIn, email, voice &amp; video</li>
         <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg>Averages 30–60 new lead conversations a day</li>
+      </ul></div>
+      <div class="cell"><h4>3 · Social Media Ads</h4><ul>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg>Paid social campaigns run for you — targeted local ads</li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg>Drives inbound merchant interest to your pipeline</li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg>Available for purchase at agent pricing</li>
       </ul></div>
     </div>
   </section>
