@@ -92,7 +92,7 @@
           <div class="nav-menu">
             <a href="/partners"><b>Partner with NextPay</b><span>Earn by referring or selling</span></a>
             <a href="/affiliate"><b>Affiliate Program</b><span>Flat $500 per referral</span></a>
-            <a href="/agent-program"><b>Agent Program</b><span>50% residuals, bonuses &amp; leads</span></a>
+            <a href="/agent-program"><b>Agent Program &amp; Login</b><span>Residuals, bonuses &amp; leads</span></a>
           </div>
         </div>
       </div>
@@ -152,7 +152,7 @@
         <div class="nm-body">
           <a href="/partners">Partner with NextPay</a>
           <a href="/affiliate">Affiliate Program</a>
-          <a href="/agent-program">Agent Program</a>
+          <a href="/agent-program">Agent Program &amp; Login</a>
         </div>
       </div>
       <a class="nm-link" href="/pricing">Pricing</a>
@@ -179,7 +179,7 @@
         <div><h4>Industries</h4>
           <a href="/industries">Retail</a><a href="/industries">Services</a><a href="/industries">Food &amp; Beverage</a><a href="/industries">Healthcare &amp; Medical</a><a href="/high-risk">High Risk &amp; Specialty</a></div>
         <div><h4>Partners</h4>
-          <a href="/partners">Partner with NextPay</a><a href="/affiliate">Affiliate Program</a><a href="/agent-program">Agent Program</a></div>
+          <a href="/partners">Partner with NextPay</a><a href="/affiliate">Affiliate Program</a><a href="/agent-program">Agent Program &amp; Login</a></div>
         <div><h4>Company</h4>
           <a href="/why-nextpay">Why NextPay</a><a href="/pricing">Pricing</a><a href="/build">Build Your Solution</a><a href="/resources">Resources</a><a href="/quick-application">Quick Application</a><a href="/contact">Contact</a></div>
       </div>
