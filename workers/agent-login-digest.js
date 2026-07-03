@@ -28,9 +28,11 @@ async function fetchLogins(env) {
   const r = await fetch(url, { headers: { Authorization: `Bearer ${env.CF_API_TOKEN}` } });
   const j = await r.json();
   if (!j.success) throw new Error('Cloudflare API error: ' + JSON.stringify(j.errors));
+  const cutoff = Date.now() - HOURS_BACK * 3600 * 1000;
   return (j.result || []).filter(e =>
     e.allowed !== false &&
-    (!e.app_domain || String(e.app_domain).includes(APP_DOMAIN))
+    (!e.app_domain || String(e.app_domain).includes(APP_DOMAIN)) &&
+    new Date(e.created_at).getTime() >= cutoff
   );
 }
 
@@ -55,7 +57,13 @@ async function sendEmail(summary) {
   const subject = `Sales Hub logins — ${summary.users} agent${summary.users === 1 ? '' : 's'}, ${summary.count} login${summary.count === 1 ? '' : 's'} today`;
   const r = await fetch('https://formsubmit.co/ajax/' + SEND_TO, {
     method: 'POST',
-    headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+    headers: {
+      'Content-Type': 'application/json',
+      Accept: 'application/json',
+      Origin: 'https://www.nextpaypos.com',
+      Referer: 'https://www.nextpaypos.com/',
+      'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0 Safari/537.36',
+    },
     body: JSON.stringify({
       _subject: subject,
       _template: 'table',
@@ -65,15 +73,16 @@ async function sendEmail(summary) {
       'Activity': summary.text,
     }),
   });
-  return r.ok;
+  const body = await r.text().catch(() => '');
+  return { ok: r.ok, status: r.status, detail: body.slice(0, 300) };
 }
 
 async function runDigest(env, force) {
   const events = await fetchLogins(env);
   const summary = buildSummary(events);
-  let sent = false;
-  if (summary.count > 0 || SEND_WHEN_EMPTY || force) sent = await sendEmail(summary);
-  return { ...summary, sent };
+  let email = { ok: false, status: 0, detail: 'not attempted' };
+  if (summary.count > 0 || SEND_WHEN_EMPTY || force) email = await sendEmail(summary);
+  return { ...summary, sent: email.ok, email };
 }
 
 export default {
@@ -89,7 +98,7 @@ export default {
       const doSend = url.searchParams.get('send') === '1';
       const events = await fetchLogins(env);
       const summary = buildSummary(events);
-      if (doSend) summary.sent = await sendEmail(summary);
+      if (doSend) { const email = await sendEmail(summary); summary.sent = email.ok; summary.email = email; }
       return new Response(JSON.stringify(summary, null, 2), { headers: { 'Content-Type': 'application/json' } });
     } catch (err) {
       return new Response('Error: ' + err.message, { status: 500 });
