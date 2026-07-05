@@ -30,7 +30,23 @@
 .qt-stat .c{background:#fff;border:1px solid var(--line);border-radius:16px;box-shadow:var(--shadow-sm);padding:24px;text-align:center}
 .qt-stat .n{font-size:28px;font-weight:800;letter-spacing:-.02em;color:var(--teal-dark);line-height:1}
 .qt-stat .l{font-size:13px;color:var(--slate);font-weight:600;margin-top:8px;line-height:1.4}
-@media(max-width:1000px){.qt-mod{grid-template-columns:1fr 1fr}.qt-stat{grid-template-columns:1fr}}
+.plan-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;max-width:1000px;margin:0 auto}
+.plan{background:#fff;border:1px solid var(--line);border-radius:16px;box-shadow:var(--shadow-sm);padding:28px;display:flex;flex-direction:column}
+.plan.feat{border:1.5px solid var(--teal);box-shadow:0 0 0 1px var(--teal),var(--shadow)}
+.plan h4{font-size:19px}
+.plan .plan-price{font-size:36px;font-weight:800;letter-spacing:-.02em;color:var(--ink);margin:8px 0 4px}
+.plan .plan-price span{font-size:14px;font-weight:600;color:var(--slate)}
+.plan>p{font-size:13.5px;color:var(--slate);line-height:1.5;margin-bottom:14px}
+.plan ul{list-style:none;margin:0 0 18px;padding:0;display:flex;flex-direction:column;gap:8px;flex:1}
+.plan li{display:flex;gap:9px;align-items:flex-start;font-size:13.5px;color:var(--ink)}
+.plan li svg{width:17px;height:17px;flex:none;margin-top:1px;color:var(--teal)}
+.plan .btn{width:100%;justify-content:center}
+.qt-hw{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;max-width:1040px;margin:0 auto}
+.qt-hw .c{background:#fff;border:1px solid var(--line);border-radius:16px;box-shadow:var(--shadow-sm);padding:24px;text-align:center}
+.qt-hw .n{font-size:28px;font-weight:800;letter-spacing:-.02em;color:var(--teal-dark);line-height:1}
+.qt-hw .l{font-size:13px;color:var(--slate);font-weight:600;margin-top:8px;line-height:1.4}
+@media(max-width:1000px){.qt-mod{grid-template-columns:1fr 1fr}.qt-stat{grid-template-columns:1fr}.qt-hw{grid-template-columns:1fr 1fr}.plan-grid{grid-template-columns:1fr}}
+@media(max-width:560px){.qt-hw{grid-template-columns:1fr}}
 .shero-media image-slot{background:#fff}
 .shero-media image-slot::part(frame){background:#fff}
 </style></head>
@@ -67,6 +83,63 @@
   <span class="qt-type">CBD Store</span><span class="qt-type">Deli &amp; Bagel</span><span class="qt-type">Retail Store</span>
   <span class="qt-type">Pizzeria</span><span class="qt-type">Quick Service</span>
 </div>
+</div></section>
+
+<!-- PRICING -->
+<section class="ssec" id="pricing"><div class="wrap">
+<div class="sec-head"><span class="eyebrow">Pricing</span><h2>Pay per device, add what you need</h2>
+  <p>Simple monthly software, support included. Build your setup — stations, handhelds, kiosks and displays — and only pay for what you use.</p></div>
+<div class="plan-grid">
+  <div class="plan feat">
+    <h4>POS Station — Pro</h4>
+    <div class="plan-price">$60<span>/mo first station</span></div>
+    <p>The full Quantic POS for restaurants and retail.</p>
+    <ul>
+      <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg>Each additional station $50/mo</li>
+      <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg>Menus, inventory &amp; analytics</li>
+      <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg>Works online or off</li>
+      <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg>24/7 support included</li>
+    </ul>
+    <a class="btn btn-primary" href="/pos-systems#quantic">Get started</a>
+  </div>
+  <div class="plan">
+    <h4>POS Station — Enterprise</h4>
+    <div class="plan-price">$90<span>/mo first station</span></div>
+    <p>For high-volume and multi-location operations.</p>
+    <ul>
+      <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg>Each additional station $80/mo</li>
+      <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg>Advanced feature set</li>
+      <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg>Multi-store ready</li>
+      <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg>24/7 support included</li>
+    </ul>
+    <a class="btn btn-outline" href="/pos-systems#quantic">Get started</a>
+  </div>
+  <div class="plan">
+    <h4>Handheld &amp; more</h4>
+    <div class="plan-price">$30<span>/mo handheld (Lite)</span></div>
+    <p>Round out the setup with the devices your floor needs.</p>
+    <ul>
+      <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg>Additional handhelds $25/mo</li>
+      <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg>Self-order kiosk $50/mo · addl $45</li>
+      <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg>Smart terminal $12/mo · addl $8</li>
+      <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg>Customer display $10 · KDS $20 · signage $15</li>
+    </ul>
+    <a class="btn btn-outline" href="/pos-systems#quantic">Get started</a>
+  </div>
+</div>
+<p class="center muted" style="font-size:13.5px;margin-top:24px">Add-on bundles: <b>Restaurant Pro $99/mo</b> (analytics, caller ID, coupon marketing, loyalty &amp; gift cards, online ordering, reservations — save 32%) · <b>Retail Pro $89/mo</b> (analytics, premium inventory, loyalty &amp; gift cards, QuickBooks, online ordering — save 38%). À la carte add-ons from $10/mo.</p>
+</div></section>
+
+<section class="ssec ssec-soft" id="hardware"><div class="wrap">
+<div class="sec-head"><span class="eyebrow">Hardware bundles</span><h2>Android stations, ready to run</h2>
+  <p>15.6" Imin Swan 1 Pro station bundles — every bundle includes a Lyntek cash drawer and USB receipt printer.</p></div>
+<div class="qt-hw">
+  <div class="c"><div class="n">$1,419</div><div class="l">15.6" station + 10.1" customer display<br>+ Dejavoo P1 payment terminal</div></div>
+  <div class="c"><div class="n">$1,219</div><div class="l">15.6" station solo<br>+ Dejavoo P1 payment terminal</div></div>
+  <div class="c"><div class="n">$1,119</div><div class="l">15.6" station + 10.1" customer display</div></div>
+  <div class="c"><div class="n">$919</div><div class="l">15.6" station solo</div></div>
+</div>
+<p class="center muted" style="font-size:13.5px;margin-top:20px">One-time hardware pricing. Full catalog available — payment terminals, printers, scanners, scales, kiosks, networking and more. Setup, installation, menu build &amp; training quoted per install. iPads not included.</p>
 </div></section>
 
 <section class="ssec" id="integrations"><div class="wrap">
