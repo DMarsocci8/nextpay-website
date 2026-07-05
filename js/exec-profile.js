@@ -20,19 +20,30 @@
     'alexander@nextpaypos.com': ALEX
   };
 
-  /* cb(profileOrNull, loginEmail, rawResponseText) — always called once,
-     guarded so local/preview (no Access) simply reports no identity. */
+  function emailFrom(text){
+    try{ var j = JSON.parse(text); return String(j.email || j.user_email || '').toLowerCase().trim(); }
+    catch(e){ return ''; }
+  }
+  function get(url){
+    return fetch(url, {credentials:'same-origin', cache:'no-store'})
+      .then(function(r){ return r ? r.text() : ''; })
+      .catch(function(){ return ''; });
+  }
+
+  /* cb(profileOrNull, loginEmail, rawResponseText) — always called once. Tries the
+     server-side Pages Function /whoami first (reads Access's authenticated-email
+     header), then falls back to the browser-side Access identity endpoint. Guarded
+     so local/preview (no Access) simply reports no identity. */
   function detect(cb){
+    var done = false;
+    function finish(em, raw){ if(done) return; done = true; cb(em && EXECS[em] ? EXECS[em] : null, em, raw); }
     try{
-      fetch('/cdn-cgi/access/get-identity', {credentials:'same-origin'})
-        .then(function(r){ return r ? r.text() : ''; })
-        .then(function(t){
-          var j = null; try{ j = JSON.parse(t); }catch(e){}
-          var em = j ? String(j.email || j.user_email || '').toLowerCase().trim() : '';
-          cb(em && EXECS[em] ? EXECS[em] : null, em, t);
-        })
-        .catch(function(){ cb(null, '', ''); });
-    }catch(e){ cb(null, '', ''); }
+      get('/whoami').then(function(t){
+        var em = emailFrom(t);
+        if(em){ finish(em, t); return; }
+        get('/cdn-cgi/access/get-identity').then(function(t2){ finish(emailFrom(t2), t2 || t); });
+      });
+    }catch(e){ finish('', ''); }
   }
 
   window.NPExec = { detect: detect, EXECS: EXECS };
