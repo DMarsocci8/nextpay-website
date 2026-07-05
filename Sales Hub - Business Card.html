@@ -119,7 +119,7 @@
       <p class="hint">Fill these in — the card updates as you type.</p>
 
       <div class="field"><label for="f-name">Full name</label><input id="f-name" type="text" placeholder="" autocomplete="name"></div>
-      <div class="field"><label for="f-title">Title</label><input id="f-title" type="text" placeholder="" autocomplete="organization-title"></div>
+      <div class="field" style="font-size:12.5px;color:var(--slate);background:var(--bg-soft);border:1px solid var(--line);border-radius:10px;padding:10px 12px">Your title is <b style="color:var(--ink)">Payment &amp; Rewards Specialist</b> — set for the whole team on the card.</div>
       <div class="field"><label for="f-cell">Cell phone</label><input id="f-cell" type="tel" placeholder="" autocomplete="tel"></div>
       <div class="field"><label for="f-email">Email</label><input id="f-email" type="email" placeholder="" autocomplete="email"></div>
       <div class="saved-note" id="savedNote"></div>
@@ -144,7 +144,7 @@
             <div class="bc-logo"><img src="/assets/logos/nextpay.png" alt="NextPay Business Solutions"></div>
             <div class="bc-info">
               <div class="bc-name" id="c-name">Your Name</div>
-              <div class="bc-title" id="c-title">Relationship Manager</div>
+              <div class="bc-title" id="c-title">Payment &amp; Rewards Specialist</div>
               <div class="bc-rows">
                 <div class="bc-row"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.9v3a2 2 0 01-2.2 2 19.8 19.8 0 01-8.6-3 19.5 19.5 0 01-6-6 19.8 19.8 0 01-3-8.6A2 2 0 014.1 2h3a2 2 0 012 1.7c.1.9.4 1.8.7 2.7a2 2 0 01-.5 2.1L8.1 9.9a16 16 0 006 6l1.4-1.2a2 2 0 012.1-.4c.9.3 1.8.6 2.7.7a2 2 0 011.7 2z"/></svg></span><span id="c-cell">Your phone</span></div>
                 <div class="bc-row"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M2 7l10 6 10-6"/></svg></span><span id="c-email">you@nextpaypos.com</span></div>
@@ -199,16 +199,18 @@ var KEY = 'np_rep_profile';
 function load(){ try{ return JSON.parse(localStorage.getItem(KEY)) || {}; }catch(e){ return {}; } }
 function save(p){ try{ localStorage.setItem(KEY, JSON.stringify(p)); }catch(e){} }
 
-var fields = {name:'f-name', title:'f-title', cell:'f-cell', email:'f-email'};
+var TITLE = 'Payment & Rewards Specialist'; /* locked for all agents */
+var fields = {name:'f-name', cell:'f-cell', email:'f-email'};
 var prof = load();
 Object.keys(fields).forEach(function(k){ var el=document.getElementById(fields[k]); if(prof[k]) el.value=prof[k]; });
 
 function update(){
   var p = load();
   Object.keys(fields).forEach(function(k){ p[k] = document.getElementById(fields[k]).value.trim(); });
+  p.title = TITLE; /* keep the shared profile's title in sync for all agents */
   save(p);
   document.getElementById('c-name').textContent  = p.name  || 'Your Name';
-  document.getElementById('c-title').textContent = p.title || 'Relationship Manager';
+  document.getElementById('c-title').textContent = TITLE;
   document.getElementById('c-cell').textContent  = p.cell  || 'Your phone';
   document.getElementById('c-email').textContent = p.email || 'you@nextpaypos.com';
   var note = document.getElementById('savedNote');
