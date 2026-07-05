@@ -48,18 +48,18 @@
 /* ---- the card ---- */
 .bizcard{width:3.5in;height:2in;border-radius:8px;overflow:hidden;box-shadow:0 6px 24px rgba(12,27,42,.18);background:#fff;display:flex;flex-direction:column;font-family:inherit}
 /* FRONT */
-.bc-main{flex:1;display:flex;align-items:center;gap:.14in;padding:.14in .18in}
+.bc-main{flex:1;display:flex;align-items:center;gap:.14in;padding:.1in .18in;overflow:hidden}
 .bc-logo{width:1.35in;flex:none}
 .bc-logo img{width:100%;height:auto;display:block}
 .bc-info{flex:1;min-width:0}
 .bc-name{font-size:11.5pt;font-weight:800;color:var(--cn);line-height:1.05;letter-spacing:-.01em}
-.bc-title{font-size:7pt;font-weight:600;color:var(--ctitle);margin:1px 0 .07in}
-.bc-rows{display:flex;flex-direction:column;gap:.045in}
+.bc-title{font-size:6.8pt;font-weight:600;color:var(--ctitle);margin:1px 0 .07in;white-space:nowrap}
+.bc-rows{display:flex;flex-direction:column;gap:.032in}
 .bc-row{display:flex;align-items:center;gap:.06in}
-.bc-row .ic{width:.18in;height:.18in;border:1px solid var(--ct);border-radius:50%;display:grid;place-items:center;flex:none}
+.bc-row .ic{width:.16in;height:.16in;border:1px solid var(--ct);border-radius:50%;display:grid;place-items:center;flex:none}
 .bc-row .ic svg{width:.1in;height:.1in;color:var(--ct)}
 .bc-row span{font-size:7pt;color:var(--cn);font-weight:500;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.bc-band{background:var(--ct);color:#fff;text-align:center;padding:.085in .1in}
+.bc-band{background:var(--ct);color:#fff;text-align:center;padding:.07in .1in;flex:none}
 .bc-band .b1{font-size:9pt;font-weight:800;letter-spacing:-.01em;line-height:1.1}
 .bc-band .b2{font-size:6.5pt;font-weight:400;opacity:.92;margin-top:1px}
 /* BACK */
