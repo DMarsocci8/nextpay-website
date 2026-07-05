@@ -77,6 +77,7 @@
 /square /Square.html 200
 /square-features /Square%20Features.html 200
 /statement-upload /Statement%20Upload.html 200
+/sumup /SumUp.html 200
 /swipesimple /SwipeSimple.html 200
 /terminals /Credit%20Card%20Terminals.html 200
 /valor-gateway /Valor%20Gateway.html 200
@@ -218,6 +219,8 @@
 /Square%20Features /square-features 301
 /Statement%20Upload.html /statement-upload 301
 /Statement%20Upload /statement-upload 301
+/SumUp.html /sumup 301
+/SumUp /sumup 301
 /SwipeSimple.html /swipesimple 301
 /Credit%20Card%20Terminals.html /terminals 301
 /Credit%20Card%20Terminals /terminals 301
