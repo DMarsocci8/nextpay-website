@@ -156,6 +156,7 @@
   </div>
 </footer>
 
+<script src="/js/exec-profile.js"></script>
 <script>
 /* ===== hosted, dark-mode-safe signature (logos linked, not embedded) ===== */
 var NP = 'https://www.nextpaypos.com/assets/logos/nextpay-signature-plated.png';
@@ -230,8 +231,8 @@ var layout = 'classic';
 
 /* Title shown in the signature. Reps are locked to the Specialist title; execs
    (detected by their Cloudflare Access login below) get a toggle between their
-   own title and the Specialist one. Stored pre-encoded (used as raw HTML). */
-var SPECIALIST = 'Payment &amp; Rewards Specialist';
+   own title and the Specialist one. Stored PLAIN — esc()'d into the HTML below. */
+var SPECIALIST = 'Payment & Rewards Specialist';
 var TITLE = SPECIALIST;
 
 /* NOTE: fields start empty — the preview shows a generic example, never a
@@ -240,7 +241,7 @@ function data(){
   var phone = (cellEl.value||'').trim() || '(555) 123-4567';
   return {
     name: esc((nameEl.value||'').trim() || 'Contact Name'),
-    title: TITLE,
+    title: esc(TITLE),
     phone: esc(phone),
     digits: phone.replace(/\D/g,''),
     email: esc((emailEl.value||'').trim() || 'name@nextpaypos.com')
@@ -294,26 +295,20 @@ document.getElementById('sig-copy').addEventListener('click', copyRich);
 document.getElementById('sig-download').addEventListener('click', download);
 
 /* ===== exec personalization =====================================================
-   The hub sits behind Cloudflare Access, so /cdn-cgi/access/get-identity returns
-   the verified email of whoever is logged in. If that email is a known exec, we
-   pre-fill their details and show a title toggle (their exec title OR the standard
-   Payment & Rewards Specialist). Everyone else gets the normal rep builder.
-   Titles are stored pre-encoded because they're dropped into the signature as raw
-   HTML. Fully guarded — on any failure (e.g. local preview) nothing changes. */
-var EXECS = {
-  'dom@nextpaypos.com':       { name:'Domenico Marsocci', title:'Co-Founder &amp; CEO', phone:'585.303.2769', email:'dom@nextpaypos.com' },
-  'alexander@nextpaypos.com': { name:'Alexander Bautista', title:'CFO',                 phone:'310.357.4660', email:'alexander@nextpaypos.com' }
-};
+   Uses the shared NPExec.detect() (js/exec-profile.js) — it reads the Cloudflare
+   Access login and returns a known exec's details, or null for reps. Execs get
+   their details pre-filled and a title toggle (their exec title OR Payment &
+   Rewards Specialist, their own selected first). Reps see the normal builder. */
 function applyExec(p){
-  var titles = [p.title, SPECIALIST];
+  var titles = [p.title, SPECIALIST];   /* plain text */
   TITLE = titles[0];
-  nameEl.value  = p.name.replace(/&amp;/g,'&');
+  nameEl.value  = p.name;
   cellEl.value  = p.phone;
   emailEl.value = p.email;
 
   var tc = document.getElementById('titleChooser');
   tc.innerHTML = titles.map(function(t,i){
-    return '<button type="button" class="sig-title'+(i===0?' on':'')+'" data-i="'+i+'">'+t+'</button>';
+    return '<button type="button" class="sig-title'+(i===0?' on':'')+'" data-i="'+i+'">'+esc(t)+'</button>';
   }).join('');
   [].slice.call(tc.querySelectorAll('.sig-title')).forEach(function(b){
     b.addEventListener('click', function(){
@@ -324,19 +319,21 @@ function applyExec(p){
   document.getElementById('titleField').style.display = '';
 
   var ln = document.getElementById('lockNote');
-  if(ln){ ln.innerHTML = 'Signed in as <b>'+p.name+'</b>. Your details are filled in below — choose your <b>title</b> and <b>style</b>, then copy. Company, tagline, logos and buttons are the standard NextPay set.'; }
+  if(ln){ ln.innerHTML = 'Signed in as <b>'+esc(p.name)+'</b>. Your details are filled in below — choose your <b>title</b> and <b>style</b>, then copy. Company, tagline, logos and buttons are the standard NextPay set.'; }
   render();
 }
-try{
-  fetch('/cdn-cgi/access/get-identity', {credentials:'same-origin'})
-    .then(function(r){ return (r && r.ok) ? r.json() : null; })
-    .then(function(j){
-      if(!j) return;
-      var em = String(j.email || j.user_email || '').toLowerCase().trim();
-      if(EXECS[em]) applyExec(EXECS[em]);
-    })
-    .catch(function(){});
-}catch(e){}
+if(window.NPExec){
+  NPExec.detect(function(profile, loginEmail, raw){
+    if(profile) applyExec(profile);
+    /* /emailsignature?whoami=1 → show what the login returned, to map execs */
+    if(location.search.indexOf('whoami') > -1){
+      var ln = document.getElementById('lockNote');
+      if(ln) ln.innerHTML = '<b>whoami:</b> ' + (loginEmail
+        ? (esc(loginEmail) + (profile ? ' — matched ✓' : ' — not in the exec list'))
+        : ('no identity returned' + (raw ? ' · ' + esc(String(raw).slice(0,120)) : '')));
+    }
+  });
+}
 
 render();
 </script>
