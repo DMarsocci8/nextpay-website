@@ -756,6 +756,11 @@
       "source": "/index.html",
       "destination": "/",
       "permanent": true
+    },
+    {
+      "source": "/SumUp.html",
+      "destination": "/sumup",
+      "permanent": true
     }
   ],
   "rewrites": [
@@ -1090,6 +1095,10 @@
     {
       "source": "/why-nextpay",
       "destination": "/Why%20NextPay"
+    },
+    {
+      "source": "/sumup",
+      "destination": "/SumUp"
     }
   ]
 }
