@@ -52,7 +52,7 @@
 .bc-logo{width:1.35in;flex:none}
 .bc-logo img{width:100%;height:auto;display:block}
 .bc-info{flex:1;min-width:0}
-.bc-name{font-size:11.5pt;font-weight:800;color:var(--cn);line-height:1.05;letter-spacing:-.01em}
+.bc-name{font-size:11.5pt;font-weight:800;color:var(--cn);line-height:1.1;letter-spacing:-.01em;white-space:nowrap;overflow:hidden}
 .bc-title{font-size:6.8pt;font-weight:600;color:var(--ctitle);margin:1px 0 .07in;white-space:nowrap}
 .bc-rows{display:flex;flex-direction:column;gap:.032in}
 .bc-row{display:flex;align-items:center;gap:.06in}
@@ -213,8 +213,19 @@ function update(){
   document.getElementById('c-title').textContent = TITLE;
   document.getElementById('c-cell').textContent  = p.cell  || 'Your phone';
   document.getElementById('c-email').textContent = p.email || 'you@nextpaypos.com';
+  fitName();
   var note = document.getElementById('savedNote');
   note.textContent = (p.name || p.email) ? '✓ Saved on this device — reused for your one-pagers' : '';
+}
+/* Keep the name on ONE line: shrink the font just enough to fit the card, so
+   long names never wrap or get clipped. Resets to full size for short names. */
+function fitName(){
+  var el = document.getElementById('c-name');
+  el.style.fontSize = '';               // back to the 11.5pt default
+  var size = 11.5;
+  while(el.scrollWidth > el.clientWidth && size > 6.5){
+    size -= 0.25; el.style.fontSize = size + 'pt';
+  }
 }
 Object.keys(fields).forEach(function(k){ document.getElementById(fields[k]).addEventListener('input', update); });
 
