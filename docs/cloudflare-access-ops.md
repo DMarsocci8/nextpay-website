@@ -22,8 +22,23 @@ The hub's Access app is named **"hub"**.
 | **Session duration** (how often agents must re-login) | Access controls → Applications → **hub** → **Application details** tab → **Details** pill → *Session Duration*. Currently set to **24 hours** (was 30 days). |
 | **See who logged in** | **Insights & Logs → Access events** — every email verification: who, when, from where. |
 | **Who's allowed in** | Access controls → Policies → **NextPay Agents** (allow policy). |
-| **Brand the login screen** | **Settings → Custom Pages → Login page** — NextPay logo, navy `#0C1B2A` background, header text. The small Cloudflare mark can't be removed on the free plan. |
-| **Team name** | Settings → General. Auto-generated as `square-butterfly-e4e0` (shows in `*.cloudflareaccess.com` URL); can be renamed (e.g. `nextpay`). |
+| **Brand the login screen** | **Reusable components → Custom pages → Access login page → Manage** (direct link: <https://dash.cloudflare.com/18d8222b69e682e0dc68c45bc43ad4f9/one/reusable-components/custom-pages>). Saved values below. Ignore the "Account Gateway block page" card on the same screen — that's a different product (device web filtering), not in use. |
+| **Team name** | Settings → General. Renamed from `square-butterfly-e4e0` to **`nextpaypos`** — agents log in at `nextpaypos.cloudflareaccess.com`. |
+
+### Login page branding (saved values)
+
+| Form field | Value |
+|---|---|
+| Your organization's name | `NextPay Sales Hub` |
+| Logo URL | `https://nextpaypos.com/assets/logos/nextpay-color.png` (new logo, navy+teal — reads on the white card; `nextpay.png` is the same artwork since Jul 2026) |
+| Header text | `Sign in with your work email to access the Sales Hub.` |
+| Message | Three lines: `Agent access only.` ⏎ `Questions?` ⏎ `hello@nextpaypos.com` |
+| Background color | `#0C1B2A` (navy; teal alternative `#14A18C`) |
+
+Not customizable: the email-input placeholder text and the small
+"Cloudflare Access" mark (free plan). `hello@nextpaypos.com` is a Google
+Group that forwards to dom@ + alexander@ (admin.google.com → Directory →
+Groups; "Who can post" must be **Anyone on the internet**).
 
 ## Weekly login digest (Cloudflare Worker)
 
