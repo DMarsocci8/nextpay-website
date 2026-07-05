@@ -39,6 +39,8 @@
 .field input{width:100%;border:1px solid var(--line);border-radius:10px;padding:11px 13px;font-family:inherit;font-size:15px;color:var(--ink)}
 .field input:focus{outline:2px solid var(--ct)}
 .saved-note{font-size:12.5px;color:var(--teal-dark);font-weight:600;margin-top:2px;min-height:16px}
+.tchip{font-family:inherit;font-size:12.5px;font-weight:700;color:var(--slate);background:#fff;border:1.5px solid var(--line);border-radius:10px;padding:9px 12px;cursor:pointer}
+.tchip.on{border-color:var(--ct);color:var(--ink);background:rgba(20,161,140,.07)}
 .actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:8px}
 
 .preview h2{font-size:15px;letter-spacing:.04em;text-transform:uppercase;color:var(--slate);margin-bottom:14px}
@@ -119,7 +121,11 @@
       <p class="hint">Fill these in — the card updates as you type.</p>
 
       <div class="field"><label for="f-name">Full name</label><input id="f-name" type="text" placeholder="" autocomplete="name"></div>
-      <div class="field" style="font-size:12.5px;color:var(--slate);background:var(--bg-soft);border:1px solid var(--line);border-radius:10px;padding:10px 12px">Your title is <b style="color:var(--ink)">Payment &amp; Rewards Specialist</b> — set for the whole team on the card.</div>
+      <div class="field" id="lockNote" style="font-size:12.5px;color:var(--slate);background:var(--bg-soft);border:1px solid var(--line);border-radius:10px;padding:10px 12px">Your title is <b style="color:var(--ink)">Payment &amp; Rewards Specialist</b> — set for the whole team on the card.</div>
+      <div class="field" id="titleField" style="display:none">
+        <label>Title</label>
+        <div id="titleChooser" style="display:flex;gap:8px;flex-wrap:wrap"></div>
+      </div>
       <div class="field"><label for="f-cell">Cell phone</label><input id="f-cell" type="tel" placeholder="" autocomplete="tel"></div>
       <div class="field"><label for="f-email">Email</label><input id="f-email" type="email" placeholder="" autocomplete="email"></div>
       <div class="saved-note" id="savedNote"></div>
@@ -193,6 +199,7 @@
   </div>
 </footer>
 
+<script src="/js/exec-profile.js"></script>
 <script>
 /* shared rep profile — reused across the hub (one-pagers, dashboard greeting) */
 var KEY = 'np_rep_profile';
@@ -235,6 +242,44 @@ document.getElementById('clearBtn').addEventListener('click', function(){
   var p=load(); Object.keys(fields).forEach(function(k){ delete p[k]; }); save(p);
   update();
 });
+
+/* ===== exec personalization (shared NPExec) =====================================
+   Execs (by their Cloudflare Access login) get their details pre-filled and a
+   title toggle between their exec title and Payment & Rewards Specialist (their
+   own selected first). All other agents stay locked to the Specialist title. */
+function applyExecCard(p){
+  var titles = [p.title, 'Payment & Rewards Specialist'];
+  TITLE = titles[0];
+  document.getElementById('f-name').value  = p.name;
+  document.getElementById('f-cell').value  = p.phone;
+  document.getElementById('f-email').value = p.email;
+
+  var tc = document.getElementById('titleChooser');
+  tc.innerHTML = titles.map(function(t,i){
+    return '<button type="button" class="tchip'+(i===0?' on':'')+'" data-i="'+i+'">'+t.replace(/&/g,'&amp;')+'</button>';
+  }).join('');
+  [].slice.call(tc.querySelectorAll('.tchip')).forEach(function(b){
+    b.addEventListener('click', function(){
+      tc.querySelectorAll('.tchip').forEach(function(x){ x.classList.remove('on'); });
+      b.classList.add('on'); TITLE = titles[+b.getAttribute('data-i')]; update();
+    });
+  });
+  document.getElementById('lockNote').style.display = 'none';
+  document.getElementById('titleField').style.display = '';
+  update();
+}
+if(window.NPExec){
+  NPExec.detect(function(profile, loginEmail, raw){
+    if(profile) applyExecCard(profile);
+    if(location.search.indexOf('whoami') > -1){
+      var ln = document.getElementById('lockNote');
+      ln.style.display = '';
+      ln.innerHTML = '<b>whoami:</b> ' + (loginEmail
+        ? (loginEmail + (profile ? ' — matched ✓' : ' — not in the exec list'))
+        : ('no identity returned' + (raw ? ' · ' + String(raw).slice(0,120) : '')));
+    }
+  });
+}
 
 update();
 </script>
