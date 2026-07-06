@@ -164,6 +164,7 @@
       <div class="rows" id="upfrontRows"></div>
       <div class="addrow">
         <button type="button" id="addUpfront">+ Add line</button>
+        <select id="hwPick"><option value="">+ Hardware…</option></select>
       </div>
 
       <div class="sect">One‑time costs</div>
@@ -210,6 +211,10 @@
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M6 9V2h12v7M6 18H4a2 2 0 01-2-2v-5a2 2 0 012-2h16a2 2 0 012 2v5a2 2 0 01-2 2h-2M6 14h12v8H6z"/></svg>
           Print / Save PDF
         </button>
+        <button class="btn btn-outline btn-sm" id="sendBtn" type="button">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M22 2L11 13M22 2l-7 20-4-9-9-4 20-7z"/></svg>
+          Email to office
+        </button>
         <button class="btn btn-outline btn-sm" id="resetBtn" type="button">Reset to defaults</button>
       </div>
     </div>
@@ -227,6 +232,24 @@
   </div>
 </main>
 
+<form id="pbSend" action="https://formsubmit.co/dom@nextpaypos.com" method="POST" style="display:none">
+  <input type="text" name="_honey" tabindex="-1" autocomplete="off">
+  <input type="hidden" name="_subject" value="Proposal from the Sales Hub">
+  <input type="hidden" name="_cc" value="payments@nextpaypos.com,alexander@nextpaypos.com">
+  <input type="hidden" name="_template" value="table">
+  <input type="hidden" name="_captcha" value="false">
+  <input type="hidden" name="_next" value="">
+  <input type="hidden" name="Lead source" value="Sales Hub — Proposal Builder">
+  <input type="hidden" name="Prepared by" value="">
+  <input type="hidden" name="Rep phone" value="">
+  <input type="hidden" name="Rep email" value="">
+  <input type="hidden" name="Business" value="">
+  <input type="hidden" name="Contact" value="">
+  <input type="hidden" name="Solution" value="">
+  <input type="hidden" name="Proposal" value="">
+  <input type="hidden" name="Processing" value="">
+  <input type="hidden" name="Notes" value="">
+</form>
 <footer class="hub-foot">
   <div class="wrap">
     <span>NextPay Sales Hub · Proposal Builder · Internal use only.</span>
@@ -259,18 +282,18 @@ var PRODUCTS=[
 /* per-product: base monthly line, optional add-ons (monthly), and processing defaults.
    Numbers seeded from the POS Systems page + the Clover & Shift4 Dine pricing sheets — all editable. */
 var PCONF={
-  chively:{base:{d:'Chively — software',m:''},addons:[],program:'Dual Pricing',rate:'0% with dual pricing'},
-  square:{base:{d:'Square POS — Free plan',m:0},addons:[{d:'Square Plus plan',m:49}],onetime:[{d:'Implementation — Plus Package',a:699},{d:'Implementation — Premium',a:1499},{d:'Implementation — Onsite',a:2199},{d:'Payroll Implementation',a:250},{d:'Optimization Call',a:159},{d:'Menu Build',a:149},{d:'Gift Card Migration',a:149},{d:'Loyalty Migration',a:149},{d:'Product Catalog Import',a:149},{d:'Square Online Site Copy',a:149}],program:'Flat Rate',rate:'2.6% + 10¢ in person'},
-  clover:{base:{d:'Clover Station — placement',m:45},addons:[{d:'Clover Mini — placement',m:25},{d:'Clover Flex — placement',m:20},{d:'Clover Pocket — placement',m:18},{d:'Clover KDS',m:25},{d:'Clover Kiosk',m:34.95},{d:'Software — Restaurant Growth (1st device)',m:89.95},{d:'Software — Services Growth (1st device)',m:84.95},{d:'Software — Retail Growth (1st device)',m:84.95},{d:'Software — Essentials / Clover Go (1st device)',m:29.95},{d:'Software — each additional device',m:19.95}],program:'Dual Pricing',rate:'0% with dual pricing'},
+  chively:{base:{d:'Chively — software',m:''},addons:[],hw:[{d:'Chively D3 Station',a:''},{d:'Chively Handheld',a:''},{d:'Chively KDS',a:''},{d:'Receipt Printer',a:''},{d:'Cash Drawer',a:''},{d:'Barcode Scanner',a:''}],program:'Dual Pricing',rate:'0% with dual pricing'},
+  square:{base:{d:'Square POS — Free plan',m:0},addons:[{d:'Square Plus plan',m:49},{d:'Square Kiosk Software',m:89},{d:'Square KDS (per screen)',m:20},{d:'Square Terminal — financed (12 mo)',m:27},{d:'Square Station — financed (24 mo)',m:44},{d:'Square Handheld — financed (12 mo)',m:37},{d:'Square Reader — financed (12 mo)',m:21}],hw:[{d:'Square Terminal',a:299},{d:'Square Station',a:899},{d:'Square Handheld',a:399},{d:'Square Stand',a:149},{d:'Square Reader',a:59},{d:'Square Kiosk Stand',a:149},{d:'iPad',a:349},{d:'Cash Drawer',a:129},{d:'USB Receipt Printer',a:299},{d:'Kitchen Impact Printer',a:399},{d:'USB Barcode Scanner',a:119},{d:'Integrated Scale',a:''}],onetime:[{d:'Implementation — Plus Package',a:699},{d:'Implementation — Premium',a:1499},{d:'Implementation — Onsite',a:2199},{d:'Payroll Implementation',a:250},{d:'Optimization Call',a:159},{d:'Menu Build',a:149},{d:'Gift Card Migration',a:149},{d:'Loyalty Migration',a:149},{d:'Product Catalog Import',a:149},{d:'Square Online Site Copy',a:149}],program:'Flat Rate',rate:'2.6% + 10¢ in person'},
+  clover:{base:{d:'Clover Station — placement',m:45},addons:[{d:'Clover Mini — placement',m:25},{d:'Clover Flex — placement',m:20},{d:'Clover Pocket — placement',m:18},{d:'Clover KDS 14" — placement',m:14},{d:'Clover KDS 24" — placement',m:24},{d:'Clover Kiosk — placement',m:90},{d:'Clover Go Reader — placement',m:5},{d:'STAR Impact Kitchen Printer — placement',m:20},{d:'STAR Thermal Kitchen Printer — placement',m:15},{d:'Zebra DS 9308 Scanner — placement',m:8},{d:'Zebra DS 2208 Scanner — placement',m:6},{d:'Cash Drawer — placement',m:5},{d:'KDS Wall Mount — placement',m:2},{d:'KDS Countertop Stand — placement',m:3},{d:'Kiosk Floor Stand — placement',m:25},{d:'Kiosk Wall Mount — placement',m:3},{d:'Software — Restaurant Growth (1st device)',m:89.95},{d:'Software — Services Growth (1st device)',m:84.95},{d:'Software — Retail Growth (1st device)',m:84.95},{d:'Software — Essentials / Clover Go (1st device)',m:29.95},{d:'Software — each additional device',m:19.95}],hw:[{d:'Clover Station Duo',a:2078},{d:'Clover Station Duo Bundle',a:2172.80},{d:'Clover Station Solo',a:1766},{d:'Clover Station Solo Bundle',a:1860.80},{d:'Clover Mini',a:937},{d:'Clover Flex (Gen 4)',a:758},{d:'Clover Pocket',a:449},{d:'Clover Kiosk',a:3587},{d:'Clover KDS 14"',a:531},{d:'Clover KDS 24"',a:722},{d:'KDS Wall Mount',a:53},{d:'KDS Countertop Stand',a:80},{d:'Kiosk Floor Stand',a:549},{d:'Kiosk Wall Mount',a:54},{d:'Clover Go Reader',a:49},{d:'Zebra DS 9308 Scanner',a:233.22},{d:'Zebra DS 2208 Scanner',a:164.22},{d:'STAR Impact Kitchen Printer',a:539.22},{d:'STAR Thermal Kitchen Printer',a:365.22},{d:'Cash Drawer',a:79},{d:'Barcode Label Printer',a:''},{d:'Integrated Weight Scale',a:''},{d:'Network & Cabling Kit',a:''}],program:'Dual Pricing',rate:'0% with dual pricing'},
   shift4:{base:{d:'Workstation',m:29.99},addons:[{d:'Workstation (POS terminal)',m:29.99},{d:'Workstation Bundle — w/ cash drawer + receipt printer',m:29.99},{d:'Air',m:29.99},{d:'Tablet',m:29.99},{d:'Mobile',m:20},{d:'KDS',m:29.99},{d:'Kiosk',m:29.99},{d:'Customer-Facing Display',m:29.99},{d:'EMV/NFC PIN Pad',m:9.99},{d:'Receipt Thermal Printer',m:9.99},{d:'Label Printer',m:19.99},{d:'Digital Scale',m:39.99},{d:'Barcode Scanner',m:9.99},{d:'Caller ID (2-line)',m:9.99},{d:'Caller ID (4-line)',m:19.99}],program:'Dual Pricing',rate:'0% with dual pricing',incentive:{l:'$5,000 switch incentive',a:5000,t:'Paid after 90 days — process two full months with credit card sales above $30,000/month to qualify.'}},
-  sumup:{base:{d:'SumUp POS Lite — software',m:0},addons:[{d:'SumUp POS w/ Connect Lite',m:99},{d:'SumUp POS w/ Connect Plus',m:199},{d:'SumUp POS w/ Connect Pro',m:289},{d:'Online Ordering',m:19}],onetime:[{d:'SumUp Terminal — palm POS w/ built-in printer',a:249},{d:'POS Lite & Solo Bundle — 13" HD Register + Solo reader',a:499},{d:'SumUp POS hardware — from',a:799},{d:'Card reader (Solo Lite / Solo) — from',a:54}],program:'Flat Rate',rate:'2.6% + 10¢ in person · 3.5% + 15¢ online/keyed'},
-  quantic:{base:{d:'Quantic POS — 1st POS station (Pro)',m:60},addons:[{d:'Additional POS station (Pro)',m:50},{d:'1st POS station (Enterprise)',m:90},{d:'Additional POS station (Enterprise)',m:80},{d:'1st Kiosk',m:50},{d:'Additional Kiosk',m:45},{d:'Handheld (Lite)',m:30},{d:'Additional Handheld (Lite)',m:25},{d:'Smart Terminal',m:12},{d:'Additional Smart Terminal',m:8},{d:'Smart Terminal — non-cloud',m:5},{d:'Customer Display System (CDS)',m:10},{d:'Digital Signage',m:15},{d:'Kitchen Display System (KDS)',m:20},{d:'Bundle — Restaurant Pro (6 add-ons)',m:99},{d:'Bundle — Retail Pro (5 add-ons)',m:89},{d:'Caller ID',m:12},{d:'Chowly 1–2 platforms',m:88},{d:'Chowly 3–4 platforms',m:110},{d:'Chowly 5+ platforms',m:133},{d:'Coupon Marketing (500 SMS incl.)',m:25},{d:'DoorDash Drive',m:20},{d:'DTIQ',m:39},{d:'7Shift',m:25},{d:'Como Sense',m:25},{d:'Andro Bar',m:25},{d:'Maple',m:25},{d:'eComm (OLO)',m:55},{d:'Loyalty & Gift Cards',m:30},{d:'Magensa Gateway (Magtek readers)',m:10},{d:'QuickBooks Interface',m:20},{d:'Reservations',m:15},{d:'Inventory (Premium)',m:30}],onetime:[{d:'Imin Swan 1 Pro bundle — 15.6" + 10.1" CDS + Dejavoo P1 + drawer + printer',a:1419},{d:'Imin Swan 1 Pro bundle — 15.6" + 10.1" CDS + drawer + printer (no Dejavoo)',a:1119},{d:'Imin Swan 1 Pro solo bundle — + Dejavoo P1 + drawer + printer',a:1219},{d:'Imin Swan 1 Pro solo bundle — + drawer + printer (no Dejavoo)',a:919},{d:'Swan 1 Pro station',a:699},{d:'Swan 1 Pro — 2nd display',a:199},{d:'Pro Panel 21.5" Android AIO',a:930},{d:'Microtouch 15.6" screen',a:650},{d:'24" Android KDS panel',a:885},{d:'24" OMNIA Kiosk w/ Epson m30 printer',a:1469},{d:'Floor stand — 24" OMNIA Kiosk',a:409},{d:'P1 Desktop Android Terminal',a:300},{d:'P8 Mobile Android Terminal',a:412},{d:'P17 Desktop Android Terminal',a:275},{d:'P18 Android Terminal',a:575},{d:'PAX A35',a:337.50},{d:'PAX A80',a:300},{d:'VP350 Android PIN pad',a:325},{d:'MagTek iDynamo 6',a:330},{d:'Lyntek Printer (USB)',a:99},{d:'Lyntek Cash Drawer',a:99},{d:'Cash Drawer (Black) — Epson',a:135},{d:'Epson TM-M30III receipt printer w/ cable',a:300},{d:'Epson TM-M30III — Bluetooth',a:370},{d:'Kitchen Printer TM-U220IIB w/ cable',a:430},{d:'Epson TM-T88VII receipt printer',a:399},{d:'SNBC USB receipt printer w/ cable',a:180},{d:'ZD411 label printer w/ 1 roll',a:500},{d:'Socket Scanner',a:399},{d:'Zebra EVM Scanner w/ cable',a:392},{d:'PDN scale (12 / 30 / 60 lb)',a:549},{d:'Dream Machine router w/ AP + switch',a:510},{d:'4G Router',a:250},{d:'Setup — software setup',a:''},{d:'Setup — hardware integration (1st terminal)',a:''},{d:'Setup — hardware integration (additional terminal)',a:''},{d:'Setup — menu build w/ CSV',a:''},{d:'Setup — remote install',a:''},{d:'Setup — training (1 hour)',a:''},{d:'Setup — CDS activation',a:''}],program:'Dual Pricing',rate:'0% with dual pricing'},
-  korona:{base:{d:'Korona POS — Core plan (per register)',m:59},addons:[{d:'Retail plan (per register)',m:79},{d:'Plus plan (per register)',m:99},{d:'KORONA Food module',m:10},{d:'Invoicing module',m:10},{d:'Ticketing module (per gate)',m:50},{d:'Franchise module',m:30},{d:'Integration (per token)',m:45}],onetime:[{d:'Audrey A7 bundle — 21.5" i5 + scanner, drawer, printer',a:2599.99},{d:'Audrey A5-II bundle — 15.6" i3 + scanner, drawer, printer',a:2299.99},{d:'Joy J14 bundle — 14" + scanner, drawer, printer',a:1399.99},{d:'SNBC Receipt Printer',a:250},{d:'Zebra Label Printer',a:450},{d:'Zebra ID Scanner',a:550},{d:'1D Orbit Scanner',a:340},{d:'P-Ranger Ticket & Inventory Scanner',a:730},{d:'P-Ranger Pistol Grip',a:195},{d:'Dejavoo Z11 terminal',a:300},{d:'Dejavoo Z9 terminal',a:450},{d:'Dejavoo QD4 terminal',a:350},{d:'PAX A80 terminal',a:350},{d:'PAX A920 Pro terminal',a:600},{d:'PAX A35 terminal',a:350}],program:'Dual Pricing',rate:'0% with dual pricing'},
-  nrs:{base:{d:'NRS POS — cash discount (flat)',m:49.95},addons:[],program:'Cash Discount',rate:'$49.95/mo flat · $0 per transaction'},
-  dejapay:{base:{d:'DejaPay Pro — software',m:59},addons:[],program:'Dual Pricing',rate:'0% with dual pricing'},
-  pax:{base:{d:'PAX terminal',m:''},addons:[],program:'Dual Pricing',rate:'0% with dual pricing'},
-  dejavoo:{base:{d:'Dejavoo terminal',m:''},addons:[],program:'Dual Pricing',rate:'0% with dual pricing'},
-  valor:{base:{d:'Valor terminal',m:''},addons:[],program:'Dual Pricing',rate:'0% with dual pricing'},
+  sumup:{base:{d:'SumUp POS Lite — software',m:0},addons:[{d:'SumUp POS w/ Connect Lite',m:99},{d:'SumUp POS w/ Connect Plus',m:199},{d:'SumUp POS w/ Connect Pro',m:289},{d:'Online Ordering',m:19}],hw:[{d:'POS Lite & Solo Bundle — 13" HD Register + Solo reader',a:499},{d:'SumUp POS hardware — from',a:799},{d:'SumUp Terminal — palm POS w/ built-in printer',a:249},{d:'Card reader (Solo Lite / Solo) — from',a:54},{d:'Cash Drawer',a:''},{d:'Receipt Printer',a:''},{d:'Barcode Scanner',a:''}],program:'Flat Rate',rate:'2.6% + 10¢ in person · 3.5% + 15¢ online/keyed'},
+  quantic:{base:{d:'Quantic POS — 1st POS station (Pro)',m:60},addons:[{d:'Additional POS station (Pro)',m:50},{d:'1st POS station (Enterprise)',m:90},{d:'Additional POS station (Enterprise)',m:80},{d:'1st Kiosk',m:50},{d:'Additional Kiosk',m:45},{d:'Handheld (Lite)',m:30},{d:'Additional Handheld (Lite)',m:25},{d:'Smart Terminal',m:12},{d:'Additional Smart Terminal',m:8},{d:'Smart Terminal — non-cloud',m:5},{d:'Customer Display System (CDS)',m:10},{d:'Digital Signage',m:15},{d:'Kitchen Display System (KDS)',m:20},{d:'Bundle — Restaurant Pro (6 add-ons)',m:99},{d:'Bundle — Retail Pro (5 add-ons)',m:89},{d:'Caller ID',m:12},{d:'Chowly 1–2 platforms',m:88},{d:'Chowly 3–4 platforms',m:110},{d:'Chowly 5+ platforms',m:133},{d:'Coupon Marketing (500 SMS incl.)',m:25},{d:'DoorDash Drive',m:20},{d:'DTIQ',m:39},{d:'7Shift',m:25},{d:'Como Sense',m:25},{d:'Andro Bar',m:25},{d:'Maple',m:25},{d:'eComm (OLO)',m:55},{d:'Loyalty & Gift Cards',m:30},{d:'Magensa Gateway (Magtek readers)',m:10},{d:'QuickBooks Interface',m:20},{d:'Reservations',m:15},{d:'Inventory (Premium)',m:30}],hw:[{d:'Imin Swan 1 Pro bundle — 15.6" + 10.1" CDS + Dejavoo P1 + drawer + printer',a:1419},{d:'Imin Swan 1 Pro bundle — 15.6" + 10.1" CDS + drawer + printer (no Dejavoo)',a:1119},{d:'Imin Swan 1 Pro solo bundle — + Dejavoo P1 + drawer + printer',a:1219},{d:'Imin Swan 1 Pro solo bundle — + drawer + printer (no Dejavoo)',a:919},{d:'Swan 1 Pro station',a:699},{d:'Swan 1 Pro — 2nd display',a:199},{d:'Pro Panel 21.5" Android AIO',a:930},{d:'Microtouch 15.6" screen',a:650},{d:'24" Android KDS panel',a:885},{d:'24" OMNIA Kiosk w/ Epson m30 printer',a:1469},{d:'Floor stand — 24" OMNIA Kiosk',a:409},{d:'P1 Desktop Android Terminal',a:300},{d:'P8 Mobile Android Terminal',a:412},{d:'P17 Desktop Android Terminal',a:275},{d:'P18 Android Terminal',a:575},{d:'PAX A35',a:337.50},{d:'PAX A80',a:300},{d:'VP350 Android PIN pad',a:325},{d:'MagTek iDynamo 6',a:330},{d:'Lyntek Printer (USB)',a:99},{d:'Lyntek Cash Drawer',a:99},{d:'Cash Drawer (Black) — Epson',a:135},{d:'Epson TM-M30III receipt printer w/ cable',a:300},{d:'Epson TM-M30III — Bluetooth',a:370},{d:'Kitchen Printer TM-U220IIB w/ cable',a:430},{d:'Epson TM-T88VII receipt printer',a:399},{d:'SNBC USB receipt printer w/ cable',a:180},{d:'ZD411 label printer w/ 1 roll',a:500},{d:'Socket Scanner',a:399},{d:'Zebra EVM Scanner w/ cable',a:392},{d:'PDN scale (12 / 30 / 60 lb)',a:549},{d:'Dream Machine router w/ AP + switch',a:510},{d:'4G Router',a:250}],onetime:[{d:'Setup — software setup',a:''},{d:'Setup — hardware integration (1st terminal)',a:''},{d:'Setup — hardware integration (additional terminal)',a:''},{d:'Setup — menu build w/ CSV',a:''},{d:'Setup — remote install',a:''},{d:'Setup — training (1 hour)',a:''},{d:'Setup — CDS activation',a:''}],program:'Dual Pricing',rate:'0% with dual pricing'},
+  korona:{base:{d:'Korona POS — Core plan (per register)',m:59},addons:[{d:'Retail plan (per register)',m:79},{d:'Plus plan (per register)',m:99},{d:'KORONA Food module',m:10},{d:'Invoicing module',m:10},{d:'Ticketing module (per gate)',m:50},{d:'Franchise module',m:30},{d:'Integration (per token)',m:45}],hw:[{d:'Audrey A7 bundle — 21.5" i5 + scanner, drawer, printer',a:2599.99},{d:'Audrey A5-II bundle — 15.6" i3 + scanner, drawer, printer',a:2299.99},{d:'Joy J14 bundle — 14" + scanner, drawer, printer',a:1399.99},{d:'SNBC Receipt Printer',a:250},{d:'Zebra Label Printer',a:450},{d:'Zebra ID Scanner',a:550},{d:'1D Orbit Scanner',a:340},{d:'P-Ranger Ticket & Inventory Scanner',a:730},{d:'P-Ranger Pistol Grip',a:195},{d:'Dejavoo Z11 terminal',a:300},{d:'Dejavoo Z9 terminal',a:450},{d:'Dejavoo QD4 terminal',a:350},{d:'PAX A80 terminal',a:350},{d:'PAX A920 Pro terminal',a:600},{d:'PAX A35 terminal',a:350}],program:'Dual Pricing',rate:'0% with dual pricing'},
+  nrs:{base:{d:'NRS POS — cash discount (flat)',m:49.95},addons:[],hw:[{d:'NRS Register bundle — POS + customer display + drawer + scanner',a:''},{d:'Additional NRS register',a:''},{d:'NRS Pay terminal',a:''}],program:'Cash Discount',rate:'$49.95/mo flat · $0 per transaction'},
+  dejapay:{base:{d:'DejaPay Pro — software',m:59},addons:[],hw:[{d:'DejaPay Pro station',a:''},{d:'Receipt Printer',a:''},{d:'Cash Drawer',a:''},{d:'Barcode Scanner',a:''}],program:'Dual Pricing',rate:'0% with dual pricing'},
+  pax:{base:{d:'PAX terminal',m:''},addons:[],hw:[{d:'PAX A920 Pro',a:600},{d:'PAX A80',a:350},{d:'PAX A35',a:337.50},{d:'PAX A77',a:''},{d:'PAX D195 PIN pad',a:''},{d:'Charging base',a:''}],program:'Dual Pricing',rate:'0% with dual pricing'},
+  dejavoo:{base:{d:'Dejavoo terminal',m:''},addons:[],hw:[{d:'Dejavoo Z11',a:300},{d:'Dejavoo Z9 (wireless)',a:450},{d:'Dejavoo QD4',a:350},{d:'Dejavoo P1 (desktop Android)',a:300},{d:'Dejavoo P8 (mobile Android)',a:412},{d:'Dejavoo QD5',a:''},{d:'Charging base',a:''}],program:'Dual Pricing',rate:'0% with dual pricing'},
+  valor:{base:{d:'Valor terminal',m:''},addons:[],hw:[{d:'Valor VL100 (countertop)',a:''},{d:'Valor VL110 (countertop w/ PIN pad)',a:''},{d:'Valor VP550 (wireless smart)',a:''},{d:'Valor VL550 (portable)',a:''},{d:'Charging base',a:''}],program:'Dual Pricing',rate:'0% with dual pricing'},
   swipesimple:{base:{d:'SwipeSimple',m:25},addons:[],program:'Interchange-Plus',rate:'IC+ — set per card mix'},
   fluidpay:{base:{d:'FluidPay gateway',m:25},addons:[],program:'Interchange-Plus',rate:'IC+ — set per card mix'},
   nmi:{base:{d:'NMI gateway',m:25},addons:[],program:'Interchange-Plus',rate:'IC+ — set per card mix'},
@@ -294,6 +317,8 @@ var upfrontRows=document.getElementById('upfrontRows');
 var onetimeRows=document.getElementById('onetimeRows');
 var addonPick=document.getElementById('addonPick');
 var otPick=document.getElementById('otPick');
+var hwPick=document.getElementById('hwPick');
+var curHW=[];
 var OT_GENERIC=[{d:'Installation',a:''},{d:'Delivery / Shipping',a:''},{d:'Menu / Programming',a:''},{d:'Setup fee',a:''}];
 var curOT=[];
 
@@ -342,6 +367,7 @@ function seedProduct(){
     document.getElementById('f-rate').value='';
     document.getElementById('f-inc-l').value=''; document.getElementById('f-inc-a').value=''; document.getElementById('f-inc-t').value='';
     addonPick.innerHTML='<option value="">+ Add‑on…</option>'; addonPick.style.display='none';
+    curHW=[]; hwPick.innerHTML='<option value="">+ Hardware…</option>'; hwPick.style.display='none';
     curOT=OT_GENERIC.slice();
     otPick.innerHTML='<option value="">+ Common…</option>';
     curOT.forEach(function(o,i){ var op=document.createElement('option'); op.value=i; op.textContent=o.d+(o.a?(' — '+money(o.a)):''); otPick.appendChild(op); });
@@ -360,6 +386,11 @@ function seedProduct(){
   addonPick.innerHTML='<option value="">+ Add‑on…</option>';
   (c.addons||[]).forEach(function(a,i){ var o=document.createElement('option'); o.value=i; o.textContent=a.d+' — '+money(a.m)+'/mo'; addonPick.appendChild(o); });
   addonPick.style.display=(c.addons&&c.addons.length)?'':'none';
+  // rebuild hardware (buy-outright) picker for the Upfront section
+  curHW=(c.hw||[]).slice();
+  hwPick.innerHTML='<option value="">+ Hardware…</option>';
+  curHW.forEach(function(h,i){ var op=document.createElement('option'); op.value=i; op.textContent=h.d+(h.a?(' — '+money(h.a)):''); hwPick.appendChild(op); });
+  hwPick.style.display=curHW.length?'':'none';
   // rebuild one-time preset picker (product-specific first, then generic)
   curOT=(c.onetime||[]).concat(OT_GENERIC);
   otPick.innerHTML='<option value="">+ Common…</option>';
@@ -437,6 +468,7 @@ document.getElementById('addUpfront').addEventListener('click', function(){ addU
 document.getElementById('addOnetime').addEventListener('click', function(){ addOnetime('',''); render(); });
 addonPick.addEventListener('change', function(){ var pp=prod(); var c=pp&&PCONF[pp.id]; var a=c&&c.addons[this.value]; if(a){ addMonthly(a.d,a.m,1); render(); } this.value=''; });
 otPick.addEventListener('change', function(){ var o=curOT[this.value]; if(o){ addOnetime(o.d, (o.a===''||o.a==null)?'':o.a, 1); render(); } this.value=''; });
+hwPick.addEventListener('change', function(){ var h=curHW[this.value]; if(h){ addUpfront(h.d, (h.a===''||h.a==null)?'':h.a, 1); render(); } this.value=''; });
 ['f-biz','f-contact','f-credit-l','f-credit-a','f-inc-l','f-inc-a','f-inc-t','f-program','f-rate','f-notes'].forEach(function(id){ document.getElementById(id).addEventListener('input', render); });
 ['name','cell','email'].forEach(function(k){ document.getElementById('f-'+k).addEventListener('input', function(){
   var p=load(); p.name=val('f-name'); p.cell=val('f-cell'); p.email=val('f-email'); save(p);
@@ -446,6 +478,50 @@ document.getElementById('resetBtn').addEventListener('click', function(){
   upfrontRows.innerHTML='';
   seedProduct(); render();
 });
+
+// ---- email the finished proposal to the office (no payment, just the record) ----
+document.getElementById('sendBtn').addEventListener('click', function(){
+  var p=prod(), pr=load();
+  var biz=val('f-biz');
+  if(!biz){ alert('Add the business name first so the office knows who this proposal is for.'); document.getElementById('f-biz').focus(); return; }
+  var mItems=readRows(monthlyRows), uItems=readRows(upfrontRows), oItems=readRows(onetimeRows);
+  if(!mItems.length && !uItems.length && !oItems.length){ alert('Add at least one line item first.'); return; }
+  var mTot=0; mItems.forEach(function(it){ mTot+=it.a*it.q; });
+  var uTot=0; uItems.forEach(function(it){ uTot+=it.a*it.q; });
+  var oSub=0; oItems.forEach(function(it){ oSub+=it.a*it.q; });
+  var credL=val('f-credit-l'), credA=fnum(val('f-credit-a'));
+  var txt='';
+  if(mItems.length){ txt+='MONTHLY:\n'; mItems.forEach(function(it){ txt+='• '+it.q+'× '+it.d+' — '+money(it.a)+'/mo\n'; }); txt+='Total monthly: '+money(mTot)+'/mo\n'; }
+  if(uItems.length){ txt+='UPFRONT HARDWARE:\n'; uItems.forEach(function(it){ txt+='• '+it.q+'× '+it.d+' — '+money(it.a)+'\n'; }); txt+='Upfront total: '+money(uTot)+'\n'; }
+  if(oItems.length||credA){ txt+='ONE-TIME:\n'; oItems.forEach(function(it){ txt+='• '+it.q+'× '+it.d+' — '+money(it.a)+'\n'; });
+    if(credA) txt+='• Credit: '+(credL||'credit')+' — −'+money(credA)+'\n';
+    var oT=oSub-credA; txt+='One-time total: '+money(oT<0?0:oT)+'\n'; }
+  var incL=val('f-inc-l'), incA=fnum(val('f-inc-a')), incT=val('f-inc-t');
+  if(incL||incA) txt+='EARNED INCENTIVE: '+(incL||'')+(incA?' ('+money(incA)+')':'')+(incT?' — '+incT:'')+'\n';
+  var f=document.getElementById('pbSend');
+  f.querySelector('[name="_subject"]').value='Proposal — '+biz+(p?' ('+p.name+')':'');
+  f.querySelector('[name="_next"]').value=location.origin+'/proposalbuilder?sent=1';
+  f.querySelector('[name="Prepared by"]').value=pr.name||'';
+  f.querySelector('[name="Rep phone"]').value=pr.cell||'';
+  f.querySelector('[name="Rep email"]').value=pr.email||'';
+  f.querySelector('[name="Business"]').value=biz;
+  f.querySelector('[name="Contact"]').value=val('f-contact');
+  f.querySelector('[name="Solution"]').value=p?p.name:'';
+  f.querySelector('[name="Proposal"]').value=txt;
+  f.querySelector('[name="Processing"]').value=(val('f-program')||'')+(val('f-rate')?' — '+val('f-rate'):'');
+  f.querySelector('[name="Notes"]').value=val('f-notes');
+  this.disabled=true; this.textContent='Sending…';
+  f.submit();
+});
+// sent confirmation toast
+(function(){ if(!/[?&]sent=1/.test(location.search)) return;
+  var m=document.querySelector('main.wrap');
+  var t=document.createElement('div');
+  t.style.cssText='background:rgba(20,161,140,.09);border:1.5px solid rgba(20,161,140,.4);border-radius:14px;padding:14px 18px;margin:0 0 18px;font-weight:700;color:var(--teal-dark);font-size:14.5px';
+  t.textContent='✓ Proposal emailed to the office (dom@ · payments@ · alexander@).';
+  m.insertBefore(t, m.firstChild);
+  history.replaceState(null,'',location.pathname);
+})();
 
 seedProduct();
 render();
