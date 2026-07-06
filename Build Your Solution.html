@@ -57,6 +57,10 @@
 .bcat-hint{font-size:12.5px;color:var(--slate);margin:-6px 0 12px}
 .bitem{display:flex;align-items:center;gap:14px;background:#fff;border:1px solid var(--line);border-radius:13px;padding:14px 16px;margin-bottom:10px;box-shadow:var(--shadow-sm)}
 .bitem.sel{border-color:var(--teal);box-shadow:0 0 0 1.5px var(--teal)}
+.bitem .bi-img{width:58px;height:58px;object-fit:contain;flex:none;background:#fff;border:1px solid var(--line);border-radius:10px;padding:5px}
+.bitem .bi-ph{width:58px;height:58px;flex:none;background:var(--bg-soft);border:1px solid var(--line);border-radius:10px;display:grid;place-items:center;color:var(--slate-2)}
+.bitem .bi-ph svg{width:24px;height:24px}
+@media(max-width:560px){.bitem .bi-img,.bitem .bi-ph{width:44px;height:44px}}
 .bitem .bi-main{flex:1;min-width:0}
 .bitem .bi-name{font-weight:700;font-size:15px;color:var(--navy)}
 .bitem .bi-sub{font-size:12.5px;color:var(--slate-2);margin-top:2px}
@@ -75,6 +79,7 @@
 /* summary */
 .summary{position:sticky;top:96px;background:#fff;border:1px solid var(--line);border-radius:18px;box-shadow:var(--shadow);overflow:hidden}
 .summary .sm-head{background:var(--navy);color:#fff;padding:16px 20px;font-weight:800;font-size:16px;display:flex;align-items:center;gap:8px}
+.summary .sm-head .cnt{margin-left:auto;background:var(--teal);color:#fff;font-size:12.5px;font-weight:800;border-radius:999px;padding:3px 11px;display:none}
 .summary .sm-body{padding:18px 20px}
 .sm-empty{font-size:14px;color:var(--slate);text-align:center;padding:18px 6px;line-height:1.5}
 .sm-line{display:flex;justify-content:space-between;gap:10px;font-size:13.5px;padding:7px 0;border-bottom:1px dashed var(--line)}
@@ -95,6 +100,33 @@
 .trustrow span{display:inline-flex;align-items:center;gap:7px;font-size:13px;color:var(--slate);font-weight:600}
 .trustrow svg{width:15px;height:15px;color:var(--teal)}
 @media(max-width:920px){.summary{position:static;margin-top:8px}}
+
+/* order-request modal */
+.ordwrap{position:fixed;inset:0;background:rgba(12,27,42,.58);z-index:140;display:none;align-items:flex-start;justify-content:center;padding:28px 16px;overflow-y:auto}
+.ordwrap.open{display:flex}
+.ordcard{background:#fff;border-radius:20px;max-width:600px;width:100%;box-shadow:var(--shadow-lg);overflow:hidden;margin:auto 0}
+.ordhead{background:var(--navy);color:#fff;padding:18px 22px;display:flex;align-items:center;gap:10px}
+.ordhead b{font-size:17px}
+.ordhead .ox{margin-left:auto;background:rgba(255,255,255,.12);border:0;color:#fff;width:30px;height:30px;border-radius:50%;font-size:17px;cursor:pointer;line-height:1}
+.ordbody{padding:20px 22px 24px}
+.ordsum{background:var(--bg-soft);border:1px solid var(--line);border-radius:12px;padding:13px 15px;font-size:12.5px;color:var(--ink);line-height:1.6;white-space:pre-line;margin-bottom:16px;max-height:180px;overflow-y:auto}
+.ordsum b{color:var(--navy)}
+.ofrow{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.ofield{display:flex;flex-direction:column;gap:5px;margin-bottom:12px}
+.ofield.full{grid-column:1/-1}
+.ofield label{font-size:12.5px;font-weight:700;color:var(--ink)}
+.ofield input,.ofield select,.ofield textarea{font-family:inherit;font-size:14.5px;padding:11px 13px;border:1.5px solid var(--line);border-radius:10px;background:#fff;color:var(--ink)}
+.ofield input:focus,.ofield select:focus,.ofield textarea:focus{outline:none;border-color:var(--teal)}
+.ofield textarea{resize:vertical;min-height:64px}
+.ordnote{font-size:12px;color:var(--slate);background:rgba(20,161,140,.07);border:1px solid rgba(20,161,140,.25);border-radius:10px;padding:10px 13px;margin:2px 0 14px;line-height:1.5}
+.ordsubmit{width:100%;justify-content:center;font-size:16px;padding:14px}
+@media(max-width:560px){.ofrow{grid-template-columns:1fr}}
+/* success banner */
+.orderok{background:#fff;border:1.5px solid rgba(20,161,140,.4);border-radius:18px;box-shadow:var(--shadow);padding:22px 26px;margin-bottom:22px;display:flex;gap:16px;align-items:flex-start}
+.orderok .okic{flex:none;width:46px;height:46px;border-radius:50%;background:rgba(20,161,140,.12);display:grid;place-items:center;color:var(--teal-dark)}
+.orderok .okic svg{width:24px;height:24px}
+.orderok h3{font-size:18px;color:var(--navy);margin-bottom:4px}
+.orderok p{font-size:14px;color:var(--slate);line-height:1.55;max-width:640px}
 </style>
 </head>
 <body data-page="build">
@@ -119,17 +151,18 @@
       </div>
 
       <aside class="summary">
-        <div class="sm-head"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 3h2l2.4 12.3a1 1 0 001 .7h9.7a1 1 0 001-.8L22 7H6"/><circle cx="9" cy="20" r="1"/><circle cx="18" cy="20" r="1"/></svg> Your build</div>
+        <div class="sm-head"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 3h2l2.4 12.3a1 1 0 001 .7h9.7a1 1 0 001-.8L22 7H6"/><circle cx="9" cy="20" r="1"/><circle cx="18" cy="20" r="1"/></svg> Your build <span class="cnt" id="smCount"></span></div>
         <div class="sm-body">
           <div id="smItems"></div>
           <div class="sm-tot" id="smTot" style="display:none"></div>
           <div class="sm-proc" id="smProc" style="display:none"></div>
           <div class="sm-cta" id="smCta" style="display:none">
-            <a class="btn btn-primary" id="quoteBtn" href="#">Get my exact quote
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
-            <a class="btn btn-outline" href="/contact" target="_blank" rel="noopener">Talk to a specialist</a>
+            <button class="btn btn-primary" id="orderBtn" type="button">Submit order request
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
+            <a class="btn btn-outline" id="quoteBtn" href="#">Get my exact quote</a>
+            <a class="btn btn-ghost" href="/contact" target="_blank" rel="noopener" style="justify-content:center">Talk to a specialist</a>
           </div>
-          <p class="sm-disc">Estimate is for hardware &amp; software only and may vary by configuration. Card processing is quoted separately. Not a binding quote.</p>
+          <p class="sm-disc">Estimate covers hardware &amp; software only and may vary by configuration. Submitting an order request doesn’t charge you anything — we source your equipment, confirm availability and final pricing, then a specialist finalizes everything with you. Card processing is quoted separately.</p>
         </div>
       </aside>
     </div>
@@ -141,100 +174,96 @@
     </div>
   </div>
 </div>
+<div class="ordwrap" id="ordwrap" role="dialog" aria-modal="true" aria-label="Submit order request">
+  <div class="ordcard">
+    <div class="ordhead"><svg viewBox="0 0 24 24" width="19" height="19" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 3h2l2.4 12.3a1 1 0 001 .7h9.7a1 1 0 001-.8L22 7H6"/><circle cx="9" cy="20" r="1"/><circle cx="18" cy="20" r="1"/></svg><b>Submit your order request</b><button class="ox" id="ordClose" type="button" aria-label="Close">&times;</button></div>
+    <div class="ordbody">
+      <div class="ordsum" id="ordSummary"></div>
+      <div class="ordnote"><b>No payment is taken online.</b> We source your equipment first — a NextPay specialist confirms availability, final pricing and processing rates with you before anything is ordered or billed.</div>
+      <form id="ordForm" action="https://formsubmit.co/dom@nextpaypos.com" method="POST">
+        <input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off">
+        <input type="hidden" name="_subject" value="New POS build order request">
+        <input type="hidden" name="_cc" value="payments@nextpaypos.com,alexander@nextpaypos.com">
+        <input type="hidden" name="_template" value="table">
+        <input type="hidden" name="_captcha" value="false">
+        <input type="hidden" name="_next" value="">
+        <input type="hidden" name="Lead source" value="Build Your Solution — order request">
+        <input type="hidden" name="Platform" value="">
+        <input type="hidden" name="Pricing mode" value="">
+        <input type="hidden" name="Order items" value="">
+        <input type="hidden" name="Estimated monthly" value="">
+        <input type="hidden" name="Upfront" value="">
+        <input type="hidden" name="Quoted items" value="">
+        <div class="ofrow">
+          <div class="ofield"><label>First name</label><input required name="first" placeholder="First name"></div>
+          <div class="ofield"><label>Last name</label><input required name="last" placeholder="Last name"></div>
+        </div>
+        <div class="ofield"><label>Business name</label><input required name="biz" placeholder="Business name"></div>
+        <div class="ofrow">
+          <div class="ofield"><label>Email</label><input required type="email" name="email" placeholder="Email address"></div>
+          <div class="ofield"><label>Phone</label><input required type="tel" name="phone" placeholder="Phone number"></div>
+        </div>
+        <div class="ofield"><label>Business address <span style="color:var(--slate-2);font-weight:500">(optional — for install &amp; shipping)</span></label><input name="address" placeholder="Street, city, state"></div>
+        <div class="ofrow">
+          <div class="ofield"><label>When do you need it?</label><select name="timeline"><option>ASAP — under 1 month</option><option>1 – 3 months</option><option>3+ months / just planning</option></select></div>
+          <div class="ofield"><label>Current processor <span style="color:var(--slate-2);font-weight:500">(optional)</span></label><input name="processor" placeholder="e.g. Square, Toast, none"></div>
+        </div>
+        <div class="ofield full"><label>Anything else? <span style="color:var(--slate-2);font-weight:500">(optional)</span></label><textarea name="notes" placeholder="Menu size, number of stations, special requests…"></textarea></div>
+        <button class="btn btn-primary ordsubmit" type="submit">Send order request
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
+      </form>
+    </div>
+  </div>
+</div>
+
 <div id="np-footer"></div>
 
 <script src="js/nav.js"></script>
+<script src="js/pos-catalog.js"></script>
 <script>
 (function(){
-  var CATALOG={
-    clover:{ label:'Clover', logo:'assets/logos/clover.png', modes:['placement','buy'],
-      proc:'Processing is quoted separately — dual pricing available for 0% card fees, or we match/beat your rate. A $5/mo Clover platform fee per location also applies.',
-      cats:[{key:'base',label:'Base systems',type:'qty'},{key:'software',label:'Software plan',type:'single'},{key:'accessory',label:'Accessories & peripherals',type:'qty'}],
-      items:[
-        {id:'cl-duo',cat:'base',name:'Clover Station Duo',sub:'Dual-screen flagship — 14-inch merchant screen plus 7-inch customer display, printer and cash drawer',buy:2078,mo:55},
-        {id:'cl-duob',cat:'base',name:'Clover Station Duo Bundle',sub:'Dual-screen bundle — tablet, printer, terminal, starter kit and cash drawer',buy:2172.80,mo:60},
-        {id:'cl-solo',cat:'base',name:'Clover Station Solo',sub:'Single 14-inch countertop register with built-in receipt printer',buy:1766,mo:45},
-        {id:'cl-solob',cat:'base',name:'Clover Station Solo Bundle',sub:'Single-screen bundle — tablet, printer, starter kit and cash drawer',buy:1860.80,mo:50},
-        {id:'cl-mini',cat:'base',name:'Clover Mini',sub:'Compact 7-inch countertop POS with built-in receipt printer',buy:937,mo:25},
-        {id:'cl-flex',cat:'base',name:'Clover Flex (Gen 4)',sub:'Handheld 5-inch POS with built-in printer and scanner — ring up anywhere',buy:758,mo:20},
-        {id:'cl-pocket',cat:'base',name:'Clover Pocket',sub:'Pocket card reader — tap and chip, pairs with your phone',buy:449,mo:18},
-        {id:'cl-kiosk',cat:'base',name:'Clover Kiosk',sub:'24-inch self-order kiosk with printer — cuts lines and lifts ticket size',buy:3587,mo:90},
-        {id:'sw-healthcare',cat:'software',name:'Clover for Healthcare',sub:'Payments tailored for medical and dental offices',mo:0,addl:11.95},
-        {id:'sw-starter',cat:'software',name:'Starter',sub:'Basic payments and reporting for simple, single-device setups',mo:0,addl:11.95},
-        {id:'sw-essentials',cat:'software',name:'Essentials',sub:'Payments, basic inventory and the Clover Go mobile app',mo:29.95,addl:11.95},
-        {id:'sw-retail',cat:'software',name:'Retail Growth',sub:'Advanced retail — full inventory, item-level tracking and reporting',mo:84.95,addl:19.95},
-        {id:'sw-services',cat:'software',name:'Services Growth',sub:'For service businesses — invoicing, appointments and customer management',mo:84.95,addl:19.95},
-        {id:'sw-restaurant',cat:'software',name:'Restaurant Growth',sub:'Full-service restaurant — tables, coursing, online ordering and KDS',mo:89.95,addl:19.95},
-        {id:'ac-kds14',cat:'accessory',name:'Clover KDS 14" (screen)',sub:'Kitchen display screen — routes orders straight to the line',buy:531,mo:14},
-        {id:'ac-kds24',cat:'accessory',name:'Clover KDS 24" (screen)',sub:'Large kitchen display screen for busy kitchens',buy:722,mo:24},
-        {id:'ac-kdswall',cat:'accessory',name:'KDS Wall Mount',sub:'Wall mount for the KDS screen',buy:53,mo:2},
-        {id:'ac-kdsstand',cat:'accessory',name:'KDS Countertop Stand',sub:'Countertop stand for the KDS screen',buy:80,mo:3},
-        {id:'ac-kioskfloor',cat:'accessory',name:'Kiosk Floor Stand',sub:'Free-standing floor stand for the kiosk',buy:549,mo:25},
-        {id:'ac-kioskwall',cat:'accessory',name:'Kiosk Wall Mount',sub:'Wall mount for the kiosk',buy:54,mo:3},
-        {id:'ac-zebra9308',cat:'accessory',name:'Zebra DS 9308 Scanner',sub:'Hands-free 2D barcode scanner for high-volume retail',buy:233.22,mo:8},
-        {id:'ac-zebra2208',cat:'accessory',name:'Zebra DS 2208 Scanner',sub:'Handheld 2D barcode scanner',buy:164.22,mo:6},
-        {id:'ac-starimpact',cat:'accessory',name:'STAR Impact Kitchen Printer',sub:'Impact kitchen printer — durable for hot kitchens',buy:539.22,mo:20},
-        {id:'ac-starthermal',cat:'accessory',name:'STAR Thermal Kitchen Printer',sub:'Thermal kitchen printer — fast and quiet',buy:365.22,mo:15},
-        {id:'ac-cashdrawer',cat:'accessory',name:'Cash Drawer',sub:'Standard cash drawer',buy:79,mo:5}
-      ]
-    },
-    shift4:{ label:'Shift4 Dine', logo:'assets/logos/shift4.png', modes:['placement'],
-      proc:'No upfront cost — dual pricing available for 0% card fees. Processing is quoted separately.',
-      cats:[{key:'base',label:'Base system',type:'qty'},{key:'accessory',label:'Add-ons & peripherals',type:'qty'}],
-      items:[
-        {id:'s4-base',cat:'base',name:'SkyTab POS Base Package',sub:'Restaurant POS workstation — terminal, 10 server cards, receipt printer and cash drawer',mo:29.99},
-        {id:'s4-glass',cat:'accessory',name:'SkyTab Glass',sub:'Built-for-purpose tablet running the full POS — order and pay at the table',mo:29.99},
-        {id:'s4-kds',cat:'accessory',name:'Kitchen Display System (KDS)',sub:'Kitchen display — routes multiple order types across screens, works offline',mo:29.99},
-        {id:'s4-cfd',cat:'accessory',name:'Customer-Facing Display',sub:'Customer-facing display — order confirmation, tipping and checkout; detaches on a cable',mo:29.99},
-        {id:'s4-kiosk',cat:'accessory',name:'Self Order Kiosk',sub:'Self-serve ordering kiosk for QSR and high-traffic counters — lifts ticket size',mo:29.99},
-        {id:'s4-mobile',cat:'accessory',name:'SkyTab Mobile',sub:'Handheld for pay-at-table, check printing and live customer survey ratings',mo:20},
-        {id:'s4-caller2',cat:'accessory',name:'Caller ID (2-line)',sub:'2-line caller ID — pops up customer info on incoming calls',mo:9.99},
-        {id:'s4-caller4',cat:'accessory',name:'Caller ID (4-line)',sub:'4-line caller ID for higher call volume',mo:19.99},
-        {id:'s4-scale',cat:'accessory',name:'Digital Scale (CAS PD-II)',sub:'Integrated weight scale for delis, markets and checkout',mo:39.99},
-        {id:'s4-thermal',cat:'accessory',name:'Remote Thermal Printer (M335A)',sub:'Remote thermal receipt or prep printer',mo:9.99},
-        {id:'s4-dotmatrix',cat:'accessory',name:'Remote Dot Matrix Printer (TM-U220)',sub:'Remote impact printer for hot kitchens',mo:9.99},
-        {id:'s4-scanner',cat:'accessory',name:'2D Barcode Scanner (Honeywell Voyager 1400g)',sub:'2D barcode scanner for retail and checkout',mo:9.99}
-      ]
-    }
-    ,
-    square:{ label:'Square', logo:'assets/logos/square.svg', modes:['buy','finance'],
-      proc:"Square's published rates apply (2.6% + 10¢ in person, 2.9% + 30¢ online, 3.5% + 15¢ keyed). NextPay reviews your statement to match or beat your effective rate.",
-      cats:[{key:'base',label:'Hardware',type:'qty'},{key:'software',label:'Software plan',type:'single'},{key:'accessory',label:'Accessories',type:'qty'}],
-      items:[
-        {id:'sq-terminal',cat:'base',name:'Square Terminal',sub:'All-in-one handheld terminal with built-in receipt printer — tap, chip and swipe',buy:299,mo:27,term:'12 mo'},
-        {id:'sq-station',cat:'base',name:'Square Station',sub:'Two-screen register — large seller screen plus customer display, no tablet needed',buy:899,mo:44,term:'24 mo'},
-        {id:'sq-handheld',cat:'base',name:'Square Handheld',sub:'Lightweight handheld for tableside ordering and tap-to-pay',buy:399,mo:37,term:'12 mo'},
-        {id:'sq-stand',cat:'base',name:'Square Stand',sub:'Turns your iPad into a countertop POS with a swivel customer display (iPad sold separately)',buy:149},
-        {id:'sq-reader',cat:'base',name:'Square Reader',sub:'Pocket reader — tap and chip, pairs with your phone or tablet',buy:59,mo:21,term:'12 mo'},
-        {id:'sq-kioskstand',cat:'base',name:'Square Kiosk Stand',sub:'Self-serve iPad kiosk stand for quick-service ordering (iPad sold separately)',buy:149},
-        {id:'sq-free',cat:'software',name:'Square Free Plan',sub:'Core POS, online store and invoices at no monthly fee',mo:0},
-        {id:'sq-plus',cat:'software',name:'Square Plus Plan',sub:'Advanced Retail or Restaurant tools — inventory, reporting and team management',mo:49},
-        {id:'sq-ipad',cat:'accessory',name:'iPad',sub:'Required for Square Stand and Kiosk — add one or bring your own',buy:349},
-        {id:'sq-kiosksw',cat:'accessory',name:'Square Kiosk Software',sub:'Runs the customer-facing self-order kiosk screen',mo:89}
-      ]
-    }
-  };
-  var ORDER=['clover','shift4','square'];
+  var CATALOG=window.NP_POS_CATALOG, ORDER=window.NP_POS_ORDER, MODEINFO=window.NP_POS_MODEINFO;
 
+  // ---- state: restore saved cart, then let ?brand= deep-link override ----
   var state={ brand:'clover', mode:'placement', qty:{} };
-  // deep-link ?brand=
+  try{ var saved=JSON.parse(localStorage.getItem('np_build')||'null');
+    if(saved && CATALOG[saved.brand]){ state=saved; if(!state.qty) state.qty={}; } }catch(e){}
   var bm=(location.search).match(/[?&]brand=([\w-]+)/);
-  if(bm && CATALOG[bm[1]]) state.brand=bm[1];
-  state.mode=CATALOG[state.brand].modes[0];
+  if(bm && CATALOG[bm[1]] && bm[1]!==state.brand){ state.brand=bm[1]; state.qty={}; state.mode=CATALOG[state.brand].modes[0]; }
+  if(CATALOG[state.brand].modes.indexOf(state.mode)<0) state.mode=CATALOG[state.brand].modes[0];
+
+  // ---- order-received state (back from FormSubmit redirect) ----
+  var oq=new URLSearchParams(location.search);
+  if(oq.get('ordered')==='1'){
+    try{ localStorage.removeItem('np_build'); }catch(e){}
+    state.qty={};
+    var fn=(oq.get('first')||'').trim().slice(0,40);
+    var hold=document.querySelector('.bhold');
+    var ok=document.createElement('div'); ok.className='orderok';
+    ok.innerHTML='<div class="okic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 13l4 4L19 7"/></svg></div><div><h3>Order request received'+(fn?', '+fn.replace(/[<>&]/g,''):'')+'!</h3><p>We’re sourcing your equipment now. A NextPay specialist will confirm availability, final pricing and your processing rate within 1 business day — nothing is ordered or billed until you approve it. Keep an eye on your inbox and phone.</p></div>';
+    hold.insertBefore(ok, hold.firstChild);
+    history.replaceState(null,'',location.pathname);
+    window.scrollTo({top:0});
+  }
 
   function money(n){ if(n==null) return ''; var s=Math.round(n*100)/100;
     return '$'+s.toLocaleString('en-US',{minimumFractionDigits:(s%1?2:0),maximumFractionDigits:2}); }
   function item(id){ var b=CATALOG[state.brand]; for(var i=0;i<b.items.length;i++){ if(b.items[i].id===id) return b.items[i]; } return null; }
-  function isHardware(it){ return it.buy!=null && it.mo!=null; }
-  function unitMonthly(it){ // monthly contribution of one unit in current mode
-    if(it.buy!=null && it.mo!=null) return state.mode==='buy'?0:it.mo; // togglable: monthly unless buying outright
-    return it.mo!=null?it.mo:0; // software / monthly-only
+  function unitMonthly(it){
+    if(it.quote) return 0;
+    if(it.buy!=null && it.mo!=null) return state.mode==='buy'?0:it.mo;
+    return it.mo!=null?it.mo:0;
   }
-  function unitUpfront(it){ if(it.buy!=null && it.mo!=null) return state.mode==='buy'?it.buy:0; if(it.buy!=null) return it.buy; return 0; }
+  function unitUpfront(it){
+    if(it.quote) return 0;
+    if(it.buy!=null && it.mo!=null) return state.mode==='buy'?it.buy:0;
+    if(it.buy!=null) return it.buy; return 0;
+  }
 
   var brandpick=document.getElementById('brandpick');
   var modebar=document.getElementById('modebar');
   var catEl=document.getElementById('catalog');
+  var PH='<div class="bi-ph"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="6" width="18" height="13" rx="2"/><path d="M8 3h8M12 3v3"/></svg></div>';
 
   function renderBrand(){
     brandpick.innerHTML=ORDER.map(function(k){ var b=CATALOG[k];
@@ -244,11 +273,6 @@
       state.brand=btn.getAttribute('data-b'); state.qty={}; state.mode=CATALOG[state.brand].modes[0]; renderAll();
     };});
   }
-  var MODEINFO={
-    placement:{label:'Placement · $0 down', note:'Low monthly, nothing upfront — unlimited replacements, no contract.'},
-    buy:{label:'Buy outright', note:'Own the hardware — one-time cost. Software is still billed monthly.'},
-    finance:{label:'Finance monthly', note:'Prefer not to pay upfront? Spread the hardware over 12–24 months, then you own it. Software billed monthly.'}
-  };
   function renderMode(){
     var b=CATALOG[state.brand];
     if(b.modes.length<2){ modebar.style.display='none'; return; }
@@ -259,6 +283,7 @@
     modebar.querySelectorAll('button').forEach(function(btn){ btn.onclick=function(){ state.mode=btn.getAttribute('data-m'); renderAll(); };});
   }
   function priceLabel(it){
+    if(it.quote) return 'Quoted<small>with your order</small>';
     if(it.cat==='software') return money(it.mo)+'<small>/mo'+(it.addl?' · +'+money(it.addl)+'/addl device':'')+'</small>';
     if(it.buy!=null && it.mo!=null){
       if(state.mode==='buy') return money(it.buy)+'<small>one-time</small>';
@@ -283,7 +308,8 @@
         } else {
           ctrl='<div class="qty"><button data-dec="'+it.id+'" aria-label="Remove one">−</button><span>'+q+'</span><button data-inc="'+it.id+'" aria-label="Add one">+</button></div>';
         }
-        html+='<div class="bitem'+(sel?' sel':'')+'"><div class="bi-main"><div class="bi-name">'+it.name+'</div>'
+        var thumb = c.type==='single' ? '' : (it.img?'<img class="bi-img" src="'+it.img+'" alt="" loading="lazy">':PH);
+        html+='<div class="bitem'+(sel?' sel':'')+'">'+thumb+'<div class="bi-main"><div class="bi-name">'+it.name+'</div>'
           +(it.sub?'<div class="bi-sub">'+it.sub+'</div>':'')+'</div>'
           +'<div class="bi-price">'+priceLabel(it)+'</div>'+ctrl+'</div>';
       });
@@ -302,52 +328,115 @@
     b.items.forEach(function(it){ var q=state.qty[it.id]||0; if(q>0) lines.push({it:it,q:q}); });
     return lines;
   }
+  function totals(lines){
+    var mo=0, up=0, quoted=[];
+    var devices=0; lines.forEach(function(L){ if(L.it.cat==='base') devices+=L.q; });
+    lines.forEach(function(L){
+      if(L.it.quote){ quoted.push(L.q+'× '+L.it.name); return; }
+      if(L.it.cat==='software'){
+        var extra=(L.it.addl && devices>1)?(devices-1)*L.it.addl:0;
+        mo+=(L.it.mo||0)+extra;
+      } else {
+        mo+=unitMonthly(L.it)*L.q; up+=unitUpfront(L.it)*L.q;
+      }
+    });
+    return {mo:mo,up:up,quoted:quoted,devices:devices};
+  }
   function renderSummary(){
     var lines=buildLines();
     var itemsEl=document.getElementById('smItems');
     var totEl=document.getElementById('smTot');
     var procEl=document.getElementById('smProc');
     var ctaEl=document.getElementById('smCta');
+    var cntEl=document.getElementById('smCount');
+    var units=0; lines.forEach(function(L){ units+=L.q; });
+    if(cntEl){ cntEl.style.display=units>0?'inline-block':'none'; cntEl.textContent=units+(units===1?' item':' items'); }
     if(!lines.length){
       itemsEl.innerHTML='<div class="sm-empty">Add a base system, software and accessories to see your estimate.</div>';
       totEl.style.display='none'; procEl.style.display='none'; ctaEl.style.display='none'; return;
     }
-    var mo=0, up=0;
-    // count base "devices" so per-device software pricing can scale
-    var devices=0; lines.forEach(function(L){ if(L.it.cat==='base') devices+=L.q; });
+    var t=totals(lines);
     itemsEl.innerHTML=lines.map(function(L){
-      var lu=unitUpfront(L.it)*L.q, lm, label;
-      if(L.it.cat==='software'){
-        var extra=(L.it.addl && devices>1)?(devices-1)*L.it.addl:0;
-        lm=(L.it.mo||0)+extra;
-        label=L.it.name+((L.it.addl && devices>1)?' <span style="color:var(--slate-2)">('+devices+' devices)</span>':'');
+      var label, amt;
+      if(L.it.quote){ label='<b>'+L.q+'×</b> '+L.it.name; amt='Quoted'; }
+      else if(L.it.cat==='software'){
+        var extra=(L.it.addl && t.devices>1)?(t.devices-1)*L.it.addl:0;
+        var lm=(L.it.mo||0)+extra;
+        label=L.it.name+((L.it.addl && t.devices>1)?' <span style="color:var(--slate-2)">('+t.devices+' devices)</span>':'');
+        amt=lm>0?money(lm)+'/mo':'$0';
       } else {
-        lm=unitMonthly(L.it)*L.q;
+        var lu=unitUpfront(L.it)*L.q, lm2=unitMonthly(L.it)*L.q;
         label='<b>'+L.q+'×</b> '+L.it.name;
+        amt = lu>0 ? money(lu) : (lm2>0?money(lm2)+'/mo':'$0');
       }
-      mo+=lm; up+=lu;
-      var amt = lu>0 ? money(lu) : (lm>0?money(lm)+'/mo':'$0');
       return '<div class="sm-line"><span class="sl-name">'+label+'</span><span class="sl-amt">'+amt+'</span></div>';
     }).join('');
     var b=CATALOG[state.brand];
     var rows='';
-    rows+='<div class="row big"><span class="k">Estimated monthly</span><span class="v">'+money(mo)+'/mo</span></div>';
-    rows+='<div class="row"><span class="k">'+(state.mode==='buy'?'Hardware upfront':'Upfront')+'</span><span class="v">'+(up>0?money(up):'$0 down')+'</span></div>';
+    rows+='<div class="row big"><span class="k">Estimated monthly</span><span class="v">'+money(t.mo)+'/mo</span></div>';
+    rows+='<div class="row"><span class="k">'+(state.mode==='buy'?'Hardware upfront':'Upfront')+'</span><span class="v">'+(t.up>0?money(t.up):'$0 down')+'</span></div>';
+    if(t.quoted.length) rows+='<div class="row"><span class="k">Quoted items</span><span class="v" style="font-size:13px">priced in your final quote</span></div>';
     totEl.innerHTML=rows; totEl.style.display='block';
     procEl.textContent=b.proc; procEl.style.display='block';
     ctaEl.style.display='flex';
 
-    // build summary string for the quote handoff
     var parts=lines.map(function(L){ return L.q+'× '+L.it.name; });
     var modeTxt={buy:'buy outright',placement:'placement, $0 down',finance:'financed monthly'}[state.mode]||state.mode;
     var summary=b.label+' build ('+modeTxt+'): '+parts.join(', ')
-      +' — Est. '+money(mo)+'/mo'+(up>0?' + '+money(up)+' upfront':'');
+      +' — Est. '+money(t.mo)+'/mo'+(t.up>0?' + '+money(t.up)+' upfront':'');
     document.getElementById('quoteBtn').href='/quick-application?brand='+state.brand+'&build='+encodeURIComponent(summary);
   }
 
-  function renderAll(){ renderBrand(); renderMode(); renderCatalog(); renderSummary(); }
+  // ---- order-request modal ----
+  var wrap=document.getElementById('ordwrap');
+  function orderText(){
+    var lines=buildLines(); var b=CATALOG[state.brand]; var t=totals(lines);
+    var modeTxt={buy:'buy outright',placement:'placement, $0 down',finance:'financed monthly'}[state.mode]||state.mode;
+    var out='Platform: '+b.label+' ('+modeTxt+')\n';
+    lines.forEach(function(L){
+      var priced = L.it.quote ? 'to be quoted' :
+        (L.it.cat==='software' ? money(L.it.mo||0)+'/mo' :
+          (unitUpfront(L.it)>0 ? money(unitUpfront(L.it))+' each' : money(unitMonthly(L.it))+'/mo each'));
+      out+='• '+L.q+'× '+L.it.name+' — '+priced+'\n';
+    });
+    out+='Estimated monthly: '+money(t.mo)+'/mo\n';
+    out+='Upfront: '+(t.up>0?money(t.up):'$0');
+    if(t.quoted.length) out+='\nQuoted with order: '+t.quoted.join(', ');
+    return out;
+  }
+  function openOrder(){
+    var lines=buildLines(); if(!lines.length) return;
+    var b=CATALOG[state.brand]; var t=totals(lines);
+    var txt=orderText();
+    document.getElementById('ordSummary').innerHTML='<b>Your build</b>\n'+txt.replace(/</g,'&lt;');
+    var f=document.getElementById('ordForm');
+    f.querySelector('[name="Platform"]').value=b.label;
+    f.querySelector('[name="Pricing mode"]').value=state.mode;
+    f.querySelector('[name="Order items"]').value=txt;
+    f.querySelector('[name="Estimated monthly"]').value=money(t.mo)+'/mo';
+    f.querySelector('[name="Upfront"]').value=t.up>0?money(t.up):'$0';
+    f.querySelector('[name="Quoted items"]').value=t.quoted.length?t.quoted.join(', '):'none';
+    wrap.classList.add('open');
+    document.body.style.overflow='hidden';
+  }
+  function closeOrder(){ wrap.classList.remove('open'); document.body.style.overflow=''; }
+  document.getElementById('orderBtn').onclick=openOrder;
+  document.getElementById('ordClose').onclick=closeOrder;
+  wrap.addEventListener('click',function(e){ if(e.target===wrap) closeOrder(); });
+  document.addEventListener('keydown',function(e){ if(e.key==='Escape') closeOrder(); });
+  document.getElementById('ordForm').addEventListener('submit',function(e){
+    var f=e.target;
+    f.querySelector('[name="_subject"]').value='New POS build order — '+(f.biz.value||'NextPay')+' ('+CATALOG[state.brand].label+')';
+    f.querySelector('[name="_next"]').value=location.origin+location.pathname+'?ordered=1&first='+encodeURIComponent(f.first.value||'');
+    var btn=f.querySelector('button[type=submit]');
+    if(btn){ btn.disabled=true; btn.textContent='Sending…'; }
+  });
+
+  function persist(){ try{ localStorage.setItem('np_build',JSON.stringify(state)); }catch(e){} }
+  function renderAll(){ renderBrand(); renderMode(); renderCatalog(); renderSummary(); persist(); }
   renderAll();
 })();
+
 </script>
 </body>
 </html>
