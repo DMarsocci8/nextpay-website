@@ -1,0 +1,407 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>DM-to-Sale Playbook — NextPay Sales Hub</title>
+<link rel="icon" href="/assets/favicon.ico" sizes="any">
+<link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
+<link rel="stylesheet" href="/css/nextpay.css">
+<style>
+.hub-bar{position:sticky;top:0;z-index:60;background:var(--navy);color:#fff;border-bottom:1px solid rgba(255,255,255,.10)}
+.hub-bar-inner{display:flex;align-items:center;gap:18px;height:66px;max-width:var(--maxw);margin:0 auto;padding:0 28px}
+.hub-bar img.logo{height:34px;width:auto;display:block}
+.hub-bar .pipe{width:1px;height:26px;background:rgba(255,255,255,.18)}
+.hub-bar .hub-tag{font-weight:800;font-size:15px;color:#fff;display:flex;align-items:center;gap:9px}
+.hub-bar .hub-tag .badge{font-size:10.5px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;background:var(--teal);color:#fff;padding:4px 9px;border-radius:999px}
+.hub-bar .right{margin-left:auto;display:flex;align-items:center;gap:20px}
+.hub-bar .right a{color:#cdd8e2;font-weight:600;font-size:14.5px}.hub-bar .right a:hover{color:#fff}
+
+.pg-head{background:linear-gradient(180deg,var(--navy),var(--navy-2));color:#fff}
+.pg-head .wrap{padding:30px 0 32px}
+.crumbs{display:flex;gap:8px;align-items:center;font-size:13.5px;color:#9fb1c2;padding-bottom:14px;flex-wrap:wrap}
+.crumbs a{color:#cdd8e2;font-weight:600}.crumbs a:hover{color:#fff}.crumbs .sep{opacity:.5}
+.pg-head h1{font-size:clamp(26px,3.6vw,38px);color:#fff;letter-spacing:-.02em}
+.pg-head h1 em{color:var(--teal-bright);font-style:normal}
+.pg-head p.lead{color:#c4d0db;margin-top:10px;max-width:720px;font-size:16px;line-height:1.55}
+.jump{display:flex;gap:9px;flex-wrap:wrap;margin-top:20px}
+.jump a{display:inline-flex;align-items:center;gap:7px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.16);border-radius:999px;padding:8px 14px;font-size:13px;font-weight:700;color:#eaf1f6}
+.jump a:hover{background:rgba(31,194,166,.18);border-color:var(--teal-bright);color:#fff}
+
+main.wrap{padding:30px 0 10px;max-width:920px}
+.sec{margin-bottom:38px;scroll-margin-top:84px}
+.sec h2{font-size:22px;letter-spacing:-.02em;margin-bottom:6px}
+.sec h2 .step{display:inline-grid;place-items:center;width:28px;height:28px;border-radius:9px;background:var(--teal);color:#fff;font-size:14px;font-weight:800;margin-right:10px;vertical-align:-4px}
+.sec .sub{font-size:14.5px;color:var(--slate);margin-bottom:18px;max-width:820px;line-height:1.6}
+.sec p.body{font-size:15px;color:var(--ink);line-height:1.65;margin-bottom:12px;max-width:840px}
+.sec p.body b{color:var(--navy)}
+.sec h4{font-size:15.5px;color:var(--navy);margin:18px 0 8px}
+.quote{font-size:18px;font-weight:800;color:var(--navy);letter-spacing:-.01em;line-height:1.4;border-left:3px solid var(--teal);padding:8px 0 8px 18px;margin:4px 0 16px;max-width:780px}
+
+/* principle cards */
+.pcards{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+@media(max-width:640px){.pcards{grid-template-columns:1fr}}
+.pcards.three{grid-template-columns:1fr 1fr 1fr}
+@media(max-width:760px){.pcards.three{grid-template-columns:1fr}}
+.pcard{background:#fff;border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow-sm);padding:18px 20px}
+.pcard h3{font-size:15.5px;color:var(--navy);margin-bottom:6px;display:flex;align-items:center;gap:9px}
+.pcard h3 .n{flex:none;width:24px;height:24px;border-radius:7px;background:rgba(20,161,140,.14);color:var(--teal-dark);font-size:13px;font-weight:800;display:grid;place-items:center}
+.pcard p{font-size:13.8px;color:var(--slate);line-height:1.55}
+.pcard p b{color:var(--navy)}
+
+/* scripts */
+.dscript{display:flex;flex-direction:column;gap:14px}
+.dstep{background:#fff;border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow-sm);padding:18px 20px}
+.dstep h3{font-size:16px;color:var(--navy);margin-bottom:4px}
+.dstep .when{font-size:12.5px;font-weight:700;color:var(--teal-dark);text-transform:uppercase;letter-spacing:.05em;margin-bottom:10px;display:block}
+.dsay{display:block;font-size:14.5px;color:var(--ink);line-height:1.6;border-left:3px solid var(--teal);background:var(--bg-soft);border-radius:0 10px 10px 0;padding:11px 15px;margin:0 0 10px;white-space:pre-line}
+.dhint{font-size:13px;color:var(--slate);font-style:italic;margin:0 0 6px;display:block}
+.dwhy{font-size:13.5px;color:var(--slate);line-height:1.55}
+.dwhy b{color:var(--teal-dark)}
+
+/* do/don't */
+.dd-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:16px}
+@media(max-width:640px){.dd-grid{grid-template-columns:1fr}}
+.dd{border-radius:var(--radius);padding:18px 20px;border:1px solid var(--line)}
+.dd.do{background:rgba(20,161,140,.06);border-color:rgba(20,161,140,.3)}
+.dd.dont{background:rgba(192,57,46,.05);border-color:rgba(192,57,46,.25)}
+.dd h3{font-size:15px;margin-bottom:10px;display:flex;align-items:center;gap:8px}
+.dd.do h3{color:var(--teal-dark)}.dd.dont h3{color:#c0392b}
+.dd ul{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:9px}
+.dd li{font-size:13.8px;color:var(--ink);line-height:1.5;padding-left:18px;position:relative}
+.dd.do li::before{content:"✓";position:absolute;left:0;color:var(--teal-dark);font-weight:800}
+.dd.dont li::before{content:"✕";position:absolute;left:0;color:#c0392b;font-weight:800}
+
+/* chat example */
+.chat{display:flex;flex-direction:column;gap:10px;max-width:720px}
+.msg{max-width:82%;border-radius:16px;padding:11px 15px;font-size:14px;line-height:1.55}
+.msg .who{display:block;font-size:11px;font-weight:800;letter-spacing:.06em;text-transform:uppercase;margin-bottom:3px;opacity:.75}
+.msg.you{align-self:flex-end;background:var(--teal);color:#fff;border-bottom-right-radius:5px}
+.msg.you .who{color:#dff5f0}
+.msg.them{align-self:flex-start;background:#fff;border:1px solid var(--line);color:var(--ink);border-bottom-left-radius:5px;box-shadow:var(--shadow-sm)}
+.msg.them .who{color:var(--slate)}
+.chat .stagechip{align-self:center;font-size:11.5px;font-weight:800;letter-spacing:.06em;text-transform:uppercase;color:var(--teal-dark);background:rgba(20,161,140,.12);border-radius:999px;padding:5px 13px;margin:6px 0 2px}
+
+/* follow-up cadence */
+.cadence{display:flex;flex-direction:column;gap:0;max-width:720px}
+.cad{display:flex;gap:16px;position:relative;padding-bottom:18px}
+.cad::before{content:"";position:absolute;left:17px;top:34px;bottom:0;width:2px;background:var(--line)}
+.cad:last-child::before{display:none}
+.cad .day{flex:none;width:36px;height:36px;border-radius:50%;background:var(--navy);color:#fff;display:grid;place-items:center;font-size:11px;font-weight:800}
+.cad .t{padding-top:7px;font-size:14px;color:var(--ink);line-height:1.5}
+.cad .t b{color:var(--navy)}
+
+.note{font-size:13.5px;color:var(--slate);background:var(--bg-soft);border:1px solid var(--line);border-radius:12px;padding:15px 17px;margin-top:18px;line-height:1.55}
+.note a{color:var(--teal-dark);font-weight:700}
+
+.hub-foot{background:var(--navy);color:#9fb1c2;padding:30px 0;margin-top:46px;font-size:13.5px}
+.hub-foot .wrap{display:flex;justify-content:space-between;gap:18px;flex-wrap:wrap;max-width:var(--maxw)}
+.hub-foot a{color:#cdd8e2;font-weight:600}.hub-foot a:hover{color:#fff}
+</style>
+  <link rel="stylesheet" href="/css/hub-sections.css?v=3">
+</head>
+<body>
+
+<div class="hub-bar">
+  <div class="hub-bar-inner">
+    <a href="/" style="display:flex;align-items:center" aria-label="Sales Hub home"><img class="logo" src="/assets/logos/nextpay-nav.png" alt="NextPay"></a>
+    <span class="pipe"></span>
+    <span class="hub-tag">Sales Hub <span class="badge">Internal</span></span>
+    <div class="right"><a href="/scripts">Scripts</a><a href="/">Hub home</a></div>
+  </div>
+</div>
+
+<header class="pg-head">
+  <div class="wrap">
+    <div class="crumbs"><a href="/">Sales Hub</a><span class="sep">/</span><a href="/training">Training Academy</a><span class="sep">/</span><span>DM-to-Sale Playbook</span></div>
+    <h1>The DM-to-Sale <em>Playbook</em></h1>
+    <p class="lead">The complete 5-step system to turn Instagram DMs into booked calls and closed deals. Exact scripts for every stage: <b>get them into your DMs, build rapport, find the gap, reflect the dream, and invite the next step.</b></p>
+    <div class="jump">
+      <a href="#why">Why DMs</a>
+      <a href="#step1">1 · The Ask</a>
+      <a href="#step2">2 · Ice Breaker</a>
+      <a href="#step3">3 · Current Situation</a>
+      <a href="#step4">4 · Desired Situation</a>
+      <a href="#step5">5 · The Bridge</a>
+      <a href="#followup">Follow-up</a>
+      <a href="#example">Full example</a>
+    </div>
+  </div>
+</header>
+
+<main class="wrap">
+
+  <!-- WHY -->
+  <section class="sec" id="why">
+    <h2>Why DMs are your most profitable sales channel</h2>
+    <p class="body">Most people treat DMs like an afterthought — they post content, get comments, and then… nothing. Or they jump straight into the pitch and wonder why nobody buys. The truth: <b>DMs are the single most profitable sales channel on social</b> — but only if you follow a process. Here's why most DM strategies fail:</p>
+    <div class="pcards three">
+      <div class="pcard"><h3><span class="n">1</span>The Desperate Pitcher</h3><p>Someone comments on your post. You immediately blast them a link and say "Check this out!" <b>They never respond.</b></p></div>
+      <div class="pcard"><h3><span class="n">2</span>The Endless Chit-Chatter</h3><p>Great conversations, real rapport — but you never move toward a sale. Days turn into weeks. <b>Nothing happens.</b></p></div>
+      <div class="pcard"><h3><span class="n">3</span>The Awkward Closer</h3><p>You ask for the call way too early, before they even know what you do. <b>They feel pressured and disappear.</b></p></div>
+    </div>
+    <p class="body" style="margin-top:14px">The issue isn't that DMs don't work — it's skipped steps. The fix is a clear framework that moves people <b>curiosity → interest → commitment → sale</b>. That's the five steps below.</p>
+  </section>
+
+  <!-- STEP 1 -->
+  <section class="sec" id="step1">
+    <h2><span class="step">1</span>The Ask — getting them into your DMs</h2>
+    <p class="body">You can't sell to people who aren't in your DMs. Step one is content that actively invites people to comment or message you. People who comment, DM, or opt in are <b>warm leads — they've already raised their hand.</b></p>
+    <div class="dscript">
+      <div class="dstep">
+        <h3>Strategy 1 — Comment-to-DM CTAs</h3>
+        <span class="when">End of Reels, carousels &amp; stories</span>
+        <span class="dsay">"Comment 'GUIDE' and I'll send you my free [resource]."
+"Drop a 🔥 if you want the full breakdown."
+"Type 'ME' if this is you and I'll send you the exact framework."</span>
+        <p class="dwhy">When they comment, you DM the resource <b>and start a conversation.</b></p>
+      </div>
+      <div class="dstep">
+        <h3>Strategy 2 — Story engagement</h3>
+        <span class="when">Interactive stories</span>
+        <span class="dsay">Poll: "Are you struggling with [problem]? Yes or No?"
+Question box: "What's your biggest challenge with [topic] right now?"
+Quiz: "Which [type] are you? Drop your result below."</span>
+        <p class="dwhy">When someone engages, slide into their DMs with a follow-up question.</p>
+      </div>
+      <div class="dstep">
+        <h3>Strategy 3 — Reel CTAs</h3>
+        <span class="when">End of every Reel</span>
+        <span class="dsay">"Send me a DM if you want my help with this."
+"DM me 'READY' if you're serious about [transformation]."
+"If this resonates, let's chat — send me a message."</span>
+      </div>
+    </div>
+    <div class="dd-grid">
+      <div class="dd do"><h3>✅ Do</h3><ul>
+        <li>Make the ask easy, clear, and immediate</li>
+        <li>Respond to EVERY comment and DM within 24 hours (ideally 1–2 hours)</li>
+        <li>Use automation (e.g. ManyChat) if you're getting hundreds of comments</li>
+      </ul></div>
+      <div class="dd dont"><h3>❌ Don't</h3><ul>
+        <li>Post content with no CTA and hope people magically reach out</li>
+        <li>Make the ask complicated ("click the link in bio, scroll to the third post…")</li>
+        <li>Ignore comments or wait days to respond</li>
+      </ul></div>
+    </div>
+    <div class="note"><b>Pro tip — viral content = hundreds of leads.</b> If a post pops off, those commenters are potential buyers. Workflow: they comment "GUIDE" → auto-reply "Just sent you a DM! 📩" → auto-DM the resource + one question ("what's your biggest struggle with [topic] right now?") → you reply personally and move to Step 2.</div>
+  </section>
+
+  <!-- STEP 2 -->
+  <section class="sec" id="step2">
+    <h2><span class="step">2</span>The Ice Breaker — building rapport &amp; trust</h2>
+    <p class="body">Think of this like dating: you wouldn't propose on the first hello. Your goals here — make them comfortable, show genuine interest, and position yourself as a <b>helpful expert, not a pushy salesperson.</b> Three plug-and-play openers:</p>
+    <div class="dscript">
+      <div class="dstep">
+        <h3>Script 1 — The Engagement Opener</h3>
+        <span class="when">After they engage with a story or post</span>
+        <span class="dsay">"Hey [Name], saw you [commented on my post about X / replied to my story / watched my Reel]. Curious — is [topic] something you've been struggling with?"</span>
+        <p class="dwhy"><b>Why it works:</b> personalized, non-threatening, and opens the door for them to share their problem.</p>
+      </div>
+      <div class="dstep">
+        <h3>Script 2 — The Curiosity Hook</h3>
+        <span class="when">After they grab a freebie, or on a warm follow-up</span>
+        <span class="dsay">"Hey [Name]! Noticed you grabbed my [freebie name]. Have you had a chance to check it out yet? I'm curious — what made you interested in [topic]?"</span>
+        <p class="dwhy"><b>Why it works:</b> validates the action they took, asks an open-ended question, reads as curiosity — not sales.</p>
+      </div>
+      <div class="dstep">
+        <h3>Script 3 — The Authority Opener</h3>
+        <span class="when">Reaching out first to an ideal-fit prospect</span>
+        <span class="dsay">"Hey [Name], I've been following your content for a bit and I love what you're doing with [specific thing]. Quick question — how long have you been [doing X]?"</span>
+        <p class="dwhy"><b>Why it works:</b> shows you did your research, compliments them first, and gets them talking about themselves.</p>
+      </div>
+    </div>
+    <h4>After they respond</h4>
+    <p class="body">1) <b>Acknowledge</b> ("That makes sense!") · 2) <b>Ask a follow-up</b> to dig deeper · 3) <b>Start identifying the problem</b> — that's your transition into Step 3.</p>
+    <div class="dd-grid">
+      <div class="dd do"><h3>✅ Do</h3><ul>
+        <li>Be specific and personalized</li>
+        <li>Ask open-ended questions</li>
+        <li>Show genuine curiosity about their situation</li>
+      </ul></div>
+      <div class="dd dont"><h3>❌ Don't</h3><ul>
+        <li>Send a generic "Hey! How's it going?" — low effort gets ignored</li>
+        <li>Pitch your offer immediately — you'll kill the conversation</li>
+        <li>Talk about yourself too much — this is about them</li>
+      </ul></div>
+    </div>
+    <div class="note"><b>Pro tip:</b> rotate your openers (story-based, question-based, compliment-based). People can smell copy-paste a mile away — keep it fresh and conversational.</div>
+  </section>
+
+  <!-- STEP 3 -->
+  <section class="sec" id="step3">
+    <h2><span class="step">3</span>The Current Situation — identifying their problem</h2>
+    <p class="body">Now uncover <b>where they are right now</b>: what they're struggling with, what they've tried, why it hasn't worked, and what's holding them back. Key insight: most people don't know their REAL problem — they say "I can't get consistent sales" when the actual issue is the offer or the audience. <b>Your job is to dig deeper.</b></p>
+    <div class="dstep">
+      <h3>The Gap-Identification Script</h3>
+      <span class="when">After they share their struggle</span>
+      <span class="dsay">"Okay [Name], so you're currently [summarize their situation] and you want to get to [what they told you they want]. What's stopping you from achieving that on your own?"</span>
+      <p class="dwhy"><b>Why it works:</b> reflects their situation back (you listened), makes them name their own obstacle, and sets up the bridge for Step 5.</p>
+    </div>
+    <h4>Qualifying questions</h4>
+    <div class="pcards three">
+      <div class="pcard"><h3>About their business</h3><p>"What do you currently sell?" · "What does your sales process look like?" · "What are your monthly sales right now?"</p></div>
+      <div class="pcard"><h3>About their challenges</h3><p>"What have you tried so far?" · "Why do you think it didn't work?" · "What's the biggest thing holding you back?"</p></div>
+      <div class="pcard"><h3>About their readiness</h3><p>"Have you invested in help before?" · "Are you ready to invest in solving this?" · "What would make you confident moving forward?"</p></div>
+    </div>
+    <h4>The three buying signals to listen for</h4>
+    <div class="pcards three">
+      <div class="pcard"><h3><span class="n">1</span>They can't do it alone</h3><p>"I've tried everything." · "I don't know what I'm doing wrong." · "I feel stuck." → <b>They need outside expertise.</b></p></div>
+      <div class="pcard"><h3><span class="n">2</span>They want to collapse time</h3><p>"I'm wasting so much time." · "I wish I knew the exact steps." · "Tired of trial and error." → <b>They value proven systems.</b></p></div>
+      <div class="pcard"><h3><span class="n">3</span>They're ready for a system</h3><p>"Show me what actually works." · "I'll invest if it gets results." · "I just want a clear plan." → <b>They're ready to buy — position it right.</b></p></div>
+    </div>
+    <h4>When they reveal the problem</h4>
+    <p class="body">1) <b>Validate:</b> "That makes total sense — a lot of my clients felt the same way." · 2) <b>Reframe if needed:</b> "Sounds like the real issue isn't X — it's that you don't have a system for Y." · 3) <b>Transition to Step 4</b> with the magic-wand question below.</p>
+    <div class="dd-grid">
+      <div class="dd do"><h3>✅ Do</h3><ul>
+        <li>Listen actively and ask clarifying questions</li>
+        <li>Show empathy and understanding</li>
+        <li>Identify the gap between where they are and where they want to be</li>
+      </ul></div>
+      <div class="dd dont"><h3>❌ Don't</h3><ul>
+        <li>Jump in with "I can help you with that!" — too eager</li>
+        <li>Make them feel bad about their situation — guide, don't judge</li>
+        <li>Stay in this phase too long — keep moving toward the sale</li>
+      </ul></div>
+    </div>
+  </section>
+
+  <!-- STEP 4 -->
+  <section class="sec" id="step4">
+    <h2><span class="step">4</span>The Desired Situation — reflecting their dreams</h2>
+    <p class="body">This is where the emotional motivation lives. People don't buy features or strategies — <b>they buy the future version of themselves.</b> Paint that picture clearly and the sale becomes natural.</p>
+    <div class="dscript">
+      <div class="dstep">
+        <h3>The Dream Reflection Script</h3>
+        <span class="dsay">"So let me ask you this: if you could wave a magic wand and be exactly where you want to be 6 months from now, what would that look like for you?"</span>
+        <span class="dhint">Variants: "What does success look like to you?" · "If we fast-forward 12 months and everything went perfectly, what changed?"</span>
+      </div>
+      <div class="dstep">
+        <h3>Go deeper — the why behind the what</h3>
+        <span class="dsay">"That's amazing. Why is [their goal] important to you? What would achieving that allow you to do?"</span>
+        <p class="dwhy">"$10k/month" usually really means freedom, family, security. <b>That's</b> the true motivation you anchor to.</p>
+      </div>
+      <div class="dstep">
+        <h3>The Mirror Moment</h3>
+        <span class="when">Make the gap painfully clear</span>
+        <span class="dsay">"Okay, so right now you're [current situation] and you want to be [desired situation] so that you can [their deeper motivation].
+
+The question is: what's standing between where you are now and where you want to be? And more importantly — what's it costing you to stay where you are?"</span>
+        <p class="dwhy"><b>Why it works:</b> contrasts today's pain with the dream, creates urgency, and positions your offer as the bridge.</p>
+      </div>
+    </div>
+    <h4>What to listen for</h4>
+    <p class="body"><b>Timeline</b> ("I want this by [date]" = urgency; "someday…" = not ready) · <b>Specificity</b> (clear goals = they know what they want) · <b>Emotional investment</b> (family, freedom, identity = high buy-in; only money = dig deeper).</p>
+    <div class="dd-grid">
+      <div class="dd do"><h3>✅ Do</h3><ul>
+        <li>Let them paint the picture themselves</li>
+        <li>Reflect their dreams back in their own words</li>
+        <li>Create urgency around the cost of staying stuck</li>
+      </ul></div>
+      <div class="dd dont"><h3>❌ Don't</h3><ul>
+        <li>Blurt "I can get you there!" — sounds like a pitch</li>
+        <li>Skip this step — you'll lose the emotional connection</li>
+        <li>Judge their goals or tell them what they should want</li>
+      </ul></div>
+    </div>
+  </section>
+
+  <!-- STEP 5 -->
+  <section class="sec" id="step5">
+    <h2><span class="step">5</span>Building the Bridge — inviting the next step</h2>
+    <p class="body">The gap between where they are and where they want to be is now crystal clear — to both of you. Time to invite them forward: <b>book a call, or close right in the DMs.</b> Rule of thumb: under $500 you can close in DMs; for anything $1,000+ get them on a 30–60 minute call, where you can address objections in real time and keep momentum alive.</p>
+    <div class="dscript">
+      <div class="dstep">
+        <h3>The Call Invitation</h3>
+        <span class="when">After the gap is identified</span>
+        <span class="dsay">"Well, it sounds like I can help, [Name]. I have some ideas on exactly how you can [achieve their desired result] without [the pain they mentioned].
+
+Do you have 15–20 minutes for a chat tomorrow at [specific time] to talk it through?"</span>
+        <p class="dwhy"><b>Why it works:</b> the call is framed as valuable for THEM, references their specific outcome and pain, and a specific time slashes friction.</p>
+      </div>
+      <div class="dstep">
+        <h3>Alternates — direct &amp; value-first</h3>
+        <span class="dhint">More direct:</span>
+        <span class="dsay">"Based on everything you've shared, I think I can help you get from [A] to [B] a lot faster. I work with [ideal clients] on exactly this. Want to jump on a quick 20-minute call and I'll walk you through what that would look like?"</span>
+        <span class="dhint">Value-first:</span>
+        <span class="dsay">"I'd love to share some strategies that have worked really well for clients in similar situations. No pressure to work together — I just think a quick conversation could give you some clarity. Does sometime this week work?"</span>
+      </div>
+      <div class="dstep">
+        <h3>If they say "I'm not ready for a call"</h3>
+        <span class="dsay">"Totally understand! No pressure at all. Let me send you [valuable resource] that breaks down exactly how to [solve their problem]. Check it out and let me know if it helps. And if you ever want to chat through your specific situation, I'm here."</span>
+        <p class="dwhy">Then move to <a href="#followup" style="color:var(--teal-dark);font-weight:700">value-driven follow-up</a> — don't disappear.</p>
+      </div>
+      <div class="dstep">
+        <h3>If they're ready to buy NOW</h3>
+        <span class="dsay">"Love that! Here's what the investment looks like: [price] for [offer]. This includes: [benefit 1], [benefit 2], [benefit 3]. If that works for you, I'll send over the payment link and we can get you onboarded this week. Sound good?"</span>
+        <p class="dwhy">Send the payment link. Close the sale. 🤝</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOLLOW-UP -->
+  <section class="sec" id="followup">
+    <h2>The secret weapon — value-driven follow-up</h2>
+    <p class="body">Not everyone buys on the first conversation, and that's fine. The difference between one-off sales and a sustainable pipeline is staying top-of-mind by <b>continuing to provide value until they're ready</b> — never "hey, just checking in…".</p>
+    <div class="pcards three">
+      <div class="pcard"><h3><span class="n">1</span>Move them to long-form</h3><p>"I just recorded a [video/episode] that breaks down exactly how to [solve their problem]. Here's the link — let me know your takeaway!" <b>Deeper content = more trust.</b></p></div>
+      <div class="pcard"><h3><span class="n">2</span>Share social proof</h3><p>"Just worked with [client] who was in a similar spot — we took them from [A] to [B] in [timeframe]. Thought you might find their story helpful!" <b>Real results remove doubt.</b></p></div>
+      <div class="pcard"><h3><span class="n">3</span>Offer micro-value</h3><p>"Quick thought based on what you shared: one thing that could help immediately is [specific tactic]. Try it this week and tell me how it goes!" <b>A quick win positions you as the expert.</b></p></div>
+    </div>
+    <h4>Sample follow-up cadence — value at least once a week</h4>
+    <div class="cadence">
+      <div class="cad"><span class="day">D1</span><span class="t"><b>Initial DM conversation</b> → invite to a call</span></div>
+      <div class="cad"><span class="day">D3</span><span class="t">Send a valuable video or resource</span></div>
+      <div class="cad"><span class="day">D7</span><span class="t">Share a testimonial or case study</span></div>
+      <div class="cad"><span class="day">D10</span><span class="t">Check in with a micro-value tip</span></div>
+      <div class="cad"><span class="day">D14</span><span class="t">Ask if they've had a chance to review the resources</span></div>
+      <div class="cad"><span class="day">D21</span><span class="t"><b>Invite to a call again</b></span></div>
+    </div>
+    <p class="body">Keep going until they book, buy, or tell you they're not interested. <b>Always lead with value.</b></p>
+  </section>
+
+  <!-- FULL EXAMPLE -->
+  <section class="sec" id="example">
+    <h2>Putting it all together — a full conversation</h2>
+    <p class="sub">The complete flow from a Reel comment to a booked call.</p>
+    <div class="chat">
+      <span class="stagechip">Step 1 · The Ask</span>
+      <div class="msg you"><span class="who">Your Reel CTA</span>"Comment 'READY' if you want my DM Script"</div>
+      <div class="msg them"><span class="who">Sarah</span>READY</div>
+      <span class="stagechip">Step 2 · Ice Breaker</span>
+      <div class="msg you"><span class="who">You</span>Hey Sarah! Just sent you the DM Script. Quick question — what made you interested in learning how to sell in DMs?</div>
+      <div class="msg them"><span class="who">Sarah</span>I'm trying to sign more clients for my coaching business but I'm not sure how to start conversations without being salesy.</div>
+      <span class="stagechip">Step 3 · Current Situation</span>
+      <div class="msg you"><span class="who">You</span>Totally get that. How are you currently getting clients? And how many are you signing per month?</div>
+      <div class="msg them"><span class="who">Sarah</span>Right now I'm just posting content and hoping people reach out. Maybe 1–2 clients in the last 3 months… it's super inconsistent.</div>
+      <div class="msg you"><span class="who">You</span>Got it. So you're posting consistently but not seeing predictable results. What do you think is the biggest thing holding you back?</div>
+      <div class="msg them"><span class="who">Sarah</span>Honestly, I don't have a system. I just post random content and cross my fingers. I feel like I'm guessing all the time.</div>
+      <span class="stagechip">Step 4 · Desired Situation</span>
+      <div class="msg you"><span class="who">You</span>That makes sense. So let me ask you this: if you could wave a magic wand and be exactly where you want to be 6 months from now, what would that look like?</div>
+      <div class="msg them"><span class="who">Sarah</span>I'd be signing 3–5 clients per month at $2k each. That would let me quit my job and go full-time.</div>
+      <div class="msg you"><span class="who">You</span>That's amazing. Why is going full-time important to you?</div>
+      <div class="msg them"><span class="who">Sarah</span>I'm just tired of feeling stuck. I want the freedom to work from anywhere and not answer to a boss.</div>
+      <div class="msg you"><span class="who">You</span>I hear you. So right now you're signing 1–2 clients every few months, and you want 3–5 per month so you can quit and have freedom. What's standing between where you are and where you want to be?</div>
+      <div class="msg them"><span class="who">Sarah</span>I just don't have a clear process. I need someone to show me exactly what to do.</div>
+      <span class="stagechip">Step 5 · Building the Bridge</span>
+      <div class="msg you"><span class="who">You</span>Well, it sounds like we found each other at perfect timing, Sarah. I have some ideas on exactly how you can start signing 3–5 clients a month without posting 10x per day or feeling salesy. Do you have 20 minutes tomorrow at 2pm EST to talk it through?</div>
+      <div class="msg them"><span class="who">Sarah</span>Yes! That works for me.</div>
+      <div class="msg you"><span class="who">You</span>Perfect. I'll send you the Zoom link now. Talk tomorrow!</div>
+      <span class="stagechip">✅ Qualified call booked — now you close on the call</span>
+    </div>
+    <p class="body" style="margin-top:18px"><b>Final thought: it's not a hack, it's a process.</b> The people who win aren't the ones with the biggest audiences — they're the ones who master this flow and treat every conversation as a chance to serve. Attract → converse with curiosity → find the gap → reflect the dream → provide value → invite the next step.</p>
+    <div class="note">Source material: <a href="https://docs.google.com/document/d/18bhlx92DzaaoIgYVhFKm7NsuDRNS41ddEVFKRO1DWx0/edit" target="_blank" rel="noopener">The DM-to-Sale Script (Google Doc)</a> — edit the doc, then ask Claude to refresh this page.</div>
+  </section>
+
+</main>
+
+<footer class="hub-foot">
+  <div class="wrap">
+    <span>NextPay Sales Hub · DM-to-Sale Playbook · Internal use only.</span>
+    <span><a href="/training">← Training Academy</a> · <a href="/">← Back to hub</a></span>
+  </div>
+</footer>
+<script src="/js/hub-nav.js"></script>
+</body>
+</html>

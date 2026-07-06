@@ -22,6 +22,7 @@
         ['Knowledge Base','/knowledgebase'],
         ['Agent Quiz','/quiz'],
         ['Training Academy','/training'],
+        ['DM-to-Sale Playbook','/dmplaybook'],
         ['Product Knowledge','/productknowledge'],
         ['Quick Reference','/quickreferenceguide'],
         ['Agent Mindset','/mindset']
