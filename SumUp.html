@@ -22,12 +22,23 @@
 .su-logo{height:30px;width:auto;margin-bottom:18px;background:#fff;border-radius:8px;padding:8px 12px}
 .su-types{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;max-width:760px;margin:0 auto}
 .su-type{background:#fff;border:1px solid var(--line);border-radius:999px;padding:9px 18px;font-weight:700;font-size:14px;box-shadow:var(--shadow-sm)}
+.plan-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;max-width:1000px;margin:0 auto}
+.plan{background:#fff;border:1px solid var(--line);border-radius:16px;box-shadow:var(--shadow-sm);padding:28px;display:flex;flex-direction:column}
+.plan.feat{border:1.5px solid var(--teal);box-shadow:0 0 0 1px var(--teal),var(--shadow)}
+.plan h4{font-size:19px}
+.plan .plan-price{font-size:32px;font-weight:800;letter-spacing:-.02em;color:var(--ink);margin:8px 0 4px}
+.plan .plan-price span{font-size:14px;font-weight:600;color:var(--slate)}
+.plan>p{font-size:13.5px;color:var(--slate);line-height:1.5;margin-bottom:14px}
+.plan ul{list-style:none;margin:0 0 18px;padding:0;display:flex;flex-direction:column;gap:8px;flex:1}
+.plan li{display:flex;gap:9px;align-items:flex-start;font-size:13.5px;color:var(--ink)}
+.plan li svg{width:17px;height:17px;flex:none;margin-top:1px;color:var(--teal)}
+.plan .btn{width:100%;justify-content:center}
 .su-hw{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;max-width:1000px;margin:0 auto}
 .su-hw .c{background:#fff;border:1px solid var(--line);border-radius:16px;box-shadow:var(--shadow-sm);padding:24px;text-align:center}
 .su-hw .c image-slot{height:150px;margin-bottom:14px}
 .su-hw h4{font-size:17px;margin-bottom:6px}
 .su-hw p{font-size:13.5px;color:var(--slate);line-height:1.5}
-@media(max-width:900px){.su-hw{grid-template-columns:1fr}}
+@media(max-width:900px){.su-hw{grid-template-columns:1fr}.plan-grid{grid-template-columns:1fr}}
 .shero-media image-slot{background:#fff}
 .shero-media image-slot::part(frame){background:#fff}
 </style></head>
@@ -67,14 +78,53 @@
 </div></section>
 
 <section class="ssec" id="lineup"><div class="wrap">
-<div class="sec-head"><span class="eyebrow">The lineup</span><h2>Three ways to take orders</h2>
-  <p>Mix and match — one register at the counter, handhelds on the floor, a kiosk for the line.</p></div>
+<div class="sec-head"><span class="eyebrow">The lineup</span><h2>Three ways to run your counter</h2>
+  <p>The three main SumUp setups — start with a reader, run the day on POS Lite, or grow into the full SumUp POS.</p></div>
 <div class="su-hw">
   <div class="c"><image-slot id="su-register" src="" fit="contain" radius="12" placeholder="SumUp POS Register"></image-slot><h4>SumUp POS Register</h4><p>Full countertop point of sale — menus, modifiers, inventory and built-in loyalty at the counter.</p></div>
-  <div class="c"><image-slot id="su-solo" src="" fit="contain" radius="12" placeholder="SumUp Solo"></image-slot><h4>SumUp Solo</h4><p>Pocket-size touchscreen card reader — tap, chip and swipe anywhere, with an optional printer dock.</p></div>
-  <div class="c"><image-slot id="su-kiosk" src="" fit="contain" radius="12" placeholder="SumUp Kiosk"></image-slot><h4>SumUp Kiosk</h4><p>Self-order kiosk that shortens the line and lifts average ticket — great for QSR and cafes.</p></div>
+  <div class="c"><image-slot id="su-solo" src="" fit="contain" radius="12" placeholder="SumUp Terminal"></image-slot><h4>SumUp Terminal — $249</h4><p>The POS that fits in the palm of your hand — built-in printer, take orders and payments anywhere. Card readers from $54.</p></div>
+  <div class="c"><image-slot id="su-kiosk" src="" fit="contain" radius="12" placeholder="SumUp POS full setup"></image-slot><h4>SumUp POS — from $799 + $99/mo</h4><p>The full system — customer touchscreen with built-in reader, CRM, online ordering, and a specialist installs and trains you.</p></div>
 </div>
-<p class="center muted" style="font-size:13.5px;margin-top:22px" id="pricing"><b>POS Lite bundle: $499</b> — register + Solo card reader, free POS software ($0/mo) and a 30-day money-back guarantee. Processing runs a simple <b>2.6% + 10&cent;</b> per tap, dip or swipe. Bigger setups (full SumUp POS, kiosks, extra registers) quoted per setup — and send a recent statement for a <a class="link-teal" href="/statement-upload" style="font-weight:700">free rate review</a>.</p>
+<div class="plan-grid" id="pricing" style="margin-top:28px">
+  <div class="plan feat">
+    <h4>POS Lite &amp; Solo Bundle</h4>
+    <div class="plan-price">$499<span> hardware · no monthly</span></div>
+    <p>The complete starter counter — sharp, simple and affordable.</p>
+    <ul>
+      <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg>13" HD Register touchscreen + Solo reader</li>
+      <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg>Free POS software — $0 monthly fee</li>
+      <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg>2.6% + 10&cent; per tap, dip or swipe</li>
+      <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg>30-day money-back guarantee</li>
+    </ul>
+    <a class="btn btn-primary" href="/pos-systems#sumup">Get started</a>
+  </div>
+  <div class="plan">
+    <h4>SumUp POS</h4>
+    <div class="plan-price">$99<span>/mo &middot; hardware from $799</span></div>
+    <p>The full system for growing businesses that need more control.</p>
+    <ul>
+      <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg>Dedicated installation &amp; training from a POS specialist</li>
+      <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg>CRM, rewards, staff &amp; marketing tools included</li>
+      <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg>Online ordering +$19/mo</li>
+      <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg>Customer touchscreen with built-in card reader</li>
+      <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg>Connect Plus $199/mo &middot; Connect Pro $289/mo</li>
+    </ul>
+    <a class="btn btn-outline" href="/pos-systems#sumup">Get started</a>
+  </div>
+  <div class="plan">
+    <h4>Terminal &amp; card readers</h4>
+    <div class="plan-price">$249<span> Terminal · readers from $54 · no monthly</span></div>
+    <p>Take payments anywhere — from a pocket reader to the palm-size Terminal POS.</p>
+    <ul>
+      <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg>Terminal — the POS that fits in your palm, $249</li>
+      <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg>Solo &amp; Solo Lite readers from $54</li>
+      <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg>2.6% + 10&cent; in person · 3.5% + 15&cent; online or keyed</li>
+      <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg>No monthly software fee</li>
+    </ul>
+    <a class="btn btn-outline" href="/pos-systems#sumup">Get started</a>
+  </div>
+</div>
+<p class="center muted" style="font-size:13.5px;margin-top:24px"><b>SumUp Connect tiers:</b> <b>Plus ($199/mo)</b> — customer rewards, automated marketing, 2 monthly promotions and weekly SMS &amp; email promos · <b>Pro ($289/mo)</b> — everything in Plus with <b>unlimited</b> SMS, email &amp; marketing promotions. Both include the customer database and dedicated installation &amp; training, with a money-back guarantee. Always flat 2.6% + 10&cent; processing. Kiosks and larger setups quoted per install. Send a recent statement for a <a class="link-teal" href="/statement-upload" style="font-weight:700">free rate review</a> — we'll tell you honestly whether SumUp or another system saves you more.</p>
 </div></section>
 
 <section class="ssec ssec-soft"><div class="wrap"><div class="sband" style="text-align:center"><span class="eyebrow" style="color:var(--teal-bright)">Set up by NextPay</span><h2 style="font-size:clamp(24px,2.8vw,34px)">Get SumUp, configured for you</h2><p style="max-width:560px;margin:12px auto 0">We'll spec the right SumUp hardware, load your menu and items, and get you live — with match-or-beat processing and real support.</p><div class="shero-cta" style="justify-content:center"><a class="btn btn-primary" href="/pos-systems#sumup" target="_blank" rel="noopener">See the lineup <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a><a class="btn btn-outline" href="/quick-application">Apply Now</a><a class="btn btn-ghost" href="/contact" target="_blank" rel="noopener">Talk to a specialist</a></div></div></div></section>
