@@ -78,12 +78,12 @@
       const lease=hw==='lease';
       if(I==='fnb') return lease
         ?[C('Shift4 POS','Top pick','Restaurant-built, lease only, lifetime warranty, no upfront.','from $29.99/mo',POS),C('Clover POS','Option','Placement program, 500+ app marketplace.','no upfront',POS)]
-        :[C('Square POS','Top pick','Free tier, inventory & eCommerce — broadest fit.','from $0/mo',POS),C('Clover POS','Option','Buy or lease, lifetime warranty, 500+ apps.','placement',POS)];
-      if(I==='retail') return [C('Square POS','Top pick','Free tier, inventory and eCommerce built in.','from $0/mo',POS),C('SwipeSimple','Option','Mobile-first, Text-to-Pay, flexible.','from $25/mo',POS)];
+        :[C('Square POS','Top pick','Free tier, inventory & eCommerce — broadest fit.','from $0/mo',POS),C('SumUp POS','Option','Simple cafe/QSR & food-truck register — POS Lite & Solo bundle, loyalty built in.','$499 complete',POS),C('Clover POS','Option','Buy or lease, lifetime warranty, 500+ apps.','placement',POS)];
+      if(I==='retail') return [C('Square POS','Top pick','Free tier, inventory and eCommerce built in.','from $0/mo',POS),C('SumUp POS','Option','Small-shop simplicity — POS Lite & Solo bundle with loyalty built in.','$499 complete',POS),C('SwipeSimple','Option','Mobile-first, Text-to-Pay, flexible.','from $25/mo',POS)];
       if(I==='conv') return [C('Square POS','Top pick','Fast checkout, scalable, free tier.','from $0/mo',POS),C('KORONA POS','Option','Regulated products, ticketing, multi-location.','from $59/mo',POS),C('Clover POS','Option','Placement program, 500+ apps.','no upfront',POS)];
-      if(I==='services') return [C('SwipeSimple','Top pick','Mobile app, appointments, Text-to-Pay.','from $25/mo',POS),C('Clover POS','Option','Appointments, placement program.','no upfront',POS)];
+      if(I==='services') return [C('SwipeSimple','Top pick','Mobile app, appointments, Text-to-Pay.','from $25/mo',POS),C('SumUp POS','Option','Palm-size Terminal + simple register, loyalty built in.','$499 complete',POS),C('Clover POS','Option','Appointments, placement program.','no upfront',POS)];
       if(I==='highrisk') return [C('KORONA POS','Top pick','Age verification, compliance, multi-location.','from $59/mo',POS)];
-      return [C('Square POS','Top pick','Free tier, broad industry fit.','from $0/mo',POS),C('Clover POS','Option','500+ apps, placement program.','no upfront',POS)];
+      return [C('Square POS','Top pick','Free tier, broad industry fit.','from $0/mo',POS),C('SumUp POS','Option','Simple & affordable — POS Lite & Solo bundle, loyalty built in.','$499 complete',POS),C('Clover POS','Option','500+ apps, placement program.','no upfront',POS)];
     }
     function term(){
       if(I==='fnb') return [C('Dejavoo Terminals','Top pick','Countertop + wireless, tip prompting, dual pricing.','processing only',TERM+'#dejavoo'),C('Clover Flex & Go','Option','Natural add-on if Clover is your POS.','processing only',TERM+'#clover')];
@@ -123,7 +123,7 @@
     var DEST={
       'Square POS':'/pos-systems#square','Clover POS':'/pos-systems#clover',
       'Shift4 POS':'/pos-systems#shift4','KORONA POS':'/pos-systems#korona',
-      'PAYS POS':'/pos-systems#pays','SwipeSimple':'/swipesimple',
+      'PAYS POS':'/pos-systems#pays','SumUp POS':'/sumup','SwipeSimple':'/swipesimple',
       'Dejavoo Terminals':'/terminals#dejavoo','Clover Flex & Go':'/terminals#clover',
       'Square Terminal':'/terminals#square','Valor PayTech':'/terminals#valor',
       'PAX Terminals':'/terminals#pax',
