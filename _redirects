@@ -28,6 +28,8 @@
 /playbook                          /discoveryplaybook                             302
 /payplan                           /agentpayplan                                  302
 /discovery                         /discoveryplaybook                             302
+/dmtosale                          /dmplaybook                                    302
+/dmscript                          /dmplaybook                                    302
 
 # --- canonical flat URLs: rewrite (200) so the short URL stays put ---
 /agentpayplan                      /Sales%20Hub%20-%20Agent%20Pay%20Plan.html     200
@@ -35,6 +37,7 @@
 /businesscard                      /Sales%20Hub%20-%20Business%20Card.html        200
 /clover                            /Sales%20Hub%20-%20Clover.html                 200
 /discoveryplaybook                 /Sales%20Hub%20-%20Discovery%20Playbook.html   200
+/dmplaybook                        /Sales%20Hub%20-%20DM%20Playbook.html          200
 /documentlibrary                   /Sales%20Hub%20-%20Document%20Library.html     200
 /emailsignature                    /Sales%20Hub%20-%20Email%20Signature.html      200
 /faq                               /Sales%20Hub%20-%20FAQ.html                    200
@@ -93,6 +96,7 @@
 /SalesHub/BusinessCard             /businesscard                                  301
 /SalesHub/Clover                   /clover                                        301
 /SalesHub/DiscoveryPlaybook        /discoveryplaybook                             301
+/SalesHub/DMPlaybook               /dmplaybook                                    301
 /SalesHub/DocumentLibrary          /documentlibrary                               301
 /SalesHub/EmailSignature           /emailsignature                                301
 /SalesHub/FAQ                      /faq                                           301
