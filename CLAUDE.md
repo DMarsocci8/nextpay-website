@@ -29,9 +29,9 @@
 - For brand hardware with public catalogs (e.g. PAX), hotlink official transparent PNGs via image-slot `src=` (verified working). PAX A920 Pro: https://www.pax.us/wp-content/uploads/2025/05/A920Pro_angled_left_appscreen-.png ; A920MAX, A77, A800, A6630, A6650, D195 also available on pax.us.
 
 ## Forms (lead capture)
-- Statement Upload.html + Merchant Rewards.html specialist form POST via FormSubmit AJAX to **dom@nextpaypos.com**, CC **payments@nextpaypos.com,alexander@nextpaypos.com**.
-- FormSubmit only delivers from a real web server (not the preview sandbox). First real submission from the live site sends a one-time activation link to dom@ — must be clicked once.
-- Statement Upload sends the statement FILE as a real FormSubmit attachment (file input `name="attachment"`, multipart FormData; FormSubmit caps attachments at 10MB — enforced client-side). The submit handler checks the AJAX response and shows a retry + mailto fallback on failure instead of a false success screen.
+- Statement Upload.html + Merchant Rewards.html specialist forms deliver via FormSubmit to **dom@nextpaypos.com**, CC **payments@nextpaypos.com,alexander@nextpaypos.com**. The dom@ endpoint is already activated (no activation step needed).
+- Statement Upload uses a NATIVE multipart POST to formsubmit.co (NOT the /ajax/ endpoint — AJAX silently drops file attachments; verified live 2026-07). The statement file posts as `name="attachment"` and arrives as a real email attachment (verified live). FormSubmit caps attachments at 10MB — enforced client-side. Config (`_subject`, `_cc`, `_template`, `_captcha=false`, `_honey`) lives in hidden inputs; `_next` redirects back to the page with `?sent=1&first=<name>`, which renders the on-brand success screen. Do NOT convert this form back to fetch/AJAX.
+- FormSubmit only delivers from a real web server (not the preview sandbox).
 - If forms ever need to work/test inside preview, switch to Web3Forms (needs an access key from web3forms.com).
 
 ## Cloudflare Access ops (Sales Hub logins)
