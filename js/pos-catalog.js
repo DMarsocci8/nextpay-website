@@ -152,9 +152,125 @@ window.NP_POS_CATALOG = {
       { id: 'su-scanner', cat: 'accessory', name: 'Barcode Scanner', sub: '2D barcode scanner for retail checkout', quote: true, img: 'assets/terminals/chively-scanner.png' },
       { id: 'su-paper', cat: 'accessory', name: 'Receipt Paper Starter Pack', sub: 'Thermal rolls sized to your printers', quote: true }
     ]
+  },
+
+  pays: { label: 'PAYS', logo: 'assets/logos/pays.svg', modes: ['buy'],
+    proc: 'All-inclusive dual pricing — 0% card processing fees. Software plans per payspos.com; hardware beyond the station bundle is quoted with your order.',
+    cats: [
+      { key: 'base', label: 'Hardware', type: 'qty' },
+      { key: 'software', label: 'Software plan', type: 'single' },
+      { key: 'accessory', label: 'Add-ons & accessories', type: 'qty' }
+    ],
+    items: [
+      { id: 'pa-station', cat: 'base', name: 'PAYS Station + Reader Bundle', sub: 'Countertop POS station with card reader — the core PAYS setup', buy: 999, img: 'assets/pos/pays-station-web2.png' },
+      { id: 'pa-handheld', cat: 'base', name: 'PAYS Handheld', sub: 'Mobile handheld for line-busting and tableside orders', quote: true, img: 'assets/pos/pays-handheld.png' },
+      { id: 'pa-kds', cat: 'base', name: 'PAYS Kitchen Display (KDS)', sub: 'Kitchen display for order routing', quote: true, img: 'assets/pos/pays-kds.png' },
+      { id: 'pa-kiosk', cat: 'base', name: 'PAYS Self-Order Kiosk', sub: 'Customer self-ordering kiosk', quote: true, img: 'assets/pos/pays-kiosk-web.png' },
+
+      { id: 'pa-starter', cat: 'software', name: 'Starter', sub: 'Payment processing, 24/7/365 support, reporting, online ordering, take-out & phone orders', mo: 59 },
+      { id: 'pa-growth', cat: 'software', name: 'Growth', sub: 'All Starter features + invoicing, DoorDash/Uber Eats/Grubhub delivery, KDS, fine dine-in, scan gun', mo: 79 },
+      { id: 'pa-enterprise', cat: 'software', name: 'Enterprise', sub: 'All Growth features + gift cards, loyalty, email marketing, catering & events, reservations, multi-location dashboard', mo: 99 },
+
+      { id: 'pa-drawer', cat: 'accessory', name: 'Cash Drawer', sub: 'Standard cash drawer', quote: true, img: 'assets/terminals/chively-drawer.png' },
+      { id: 'pa-printer', cat: 'accessory', name: 'Receipt Printer', sub: 'Countertop thermal receipt printer', quote: true, img: 'assets/terminals/chively-printer.png' },
+      { id: 'pa-scanner', cat: 'accessory', name: 'Barcode Scanner', sub: '2D barcode scanner for retail checkout', quote: true, img: 'assets/terminals/chively-scanner.png' },
+      { id: 'pa-paper', cat: 'accessory', name: 'Receipt Paper Starter Pack', sub: 'Thermal rolls sized to your printers', quote: true }
+    ]
+  },
+
+  quantic: { label: 'Quantic', logo: 'assets/logos/quantic-tight.png', modes: ['buy'],
+    proc: 'Dual pricing available for 0% card fees — processing quoted separately. Software per the Quantic Unified Pricing sheet; support included.',
+    cats: [
+      { key: 'base', label: 'Stations, kiosks & bundles', type: 'qty' },
+      { key: 'persw', label: 'Software (per device, monthly)', type: 'qty' },
+      { key: 'addons', label: 'Add-on modules (monthly)', type: 'qty' },
+      { key: 'accessory', label: 'Terminals, printers & peripherals', type: 'qty' }
+    ],
+    items: [
+      { id: 'qt-swanbundle', cat: 'base', name: 'Swan 1 Pro Bundle (15.6" + 10.1" CDS)', sub: 'Station with customer display, Dejavoo P1 terminal, cash drawer and printer', buy: 1419, img: 'assets/pos/quantic-pos.png' },
+      { id: 'qt-swanbundle2', cat: 'base', name: 'Swan 1 Pro Bundle — no terminal', sub: 'Station with customer display, cash drawer and printer', buy: 1119, img: 'assets/pos/quantic-pos.png' },
+      { id: 'qt-swansolo', cat: 'base', name: 'Swan 1 Pro Solo Bundle', sub: 'Single-screen station with Dejavoo P1, drawer and printer', buy: 1219, img: 'assets/pos/quantic-lite.jpg' },
+      { id: 'qt-swansolo2', cat: 'base', name: 'Swan 1 Pro Solo Bundle — no terminal', sub: 'Single-screen station with drawer and printer', buy: 919, img: 'assets/pos/quantic-lite.jpg' },
+      { id: 'qt-swan', cat: 'base', name: 'Swan 1 Pro Station', sub: 'Station only — add your own peripherals', buy: 699, img: 'assets/pos/quantic-lite.jpg' },
+      { id: 'qt-swan2nd', cat: 'base', name: 'Swan 1 Pro — 2nd Display', sub: 'Customer-facing second display for the Swan station', buy: 199, img: 'assets/pos/quantic-cust-display.png' },
+      { id: 'qt-propanel', cat: 'base', name: 'Pro Panel 21.5" Android AIO', sub: 'Large all-in-one Android POS panel', buy: 930 },
+      { id: 'qt-kdspanel', cat: 'base', name: '24" Android KDS Panel', sub: 'Kitchen display panel', buy: 885, img: 'assets/pos/quantic-kds.png' },
+      { id: 'qt-kiosk', cat: 'base', name: '24" OMNIA Kiosk w/ Printer', sub: 'Self-order kiosk with Epson m30 printer', buy: 1469 },
+      { id: 'qt-kioskstand', cat: 'base', name: 'OMNIA Kiosk Floor Stand', sub: 'Free-standing floor stand for the kiosk', buy: 409 },
+
+      { id: 'qt-swpro', cat: 'persw', name: 'POS Station — Pro (1st station)', sub: 'Core Quantic POS subscription; each additional station $50/mo', mo: 60, img: '' },
+      { id: 'qt-swproaddl', cat: 'persw', name: 'POS Station — Pro (additional)', sub: 'Each additional Pro station', mo: 50 },
+      { id: 'qt-swent', cat: 'persw', name: 'POS Station — Enterprise (1st station)', sub: 'Advanced feature set; each additional station $80/mo', mo: 90 },
+      { id: 'qt-swentaddl', cat: 'persw', name: 'POS Station — Enterprise (additional)', sub: 'Each additional Enterprise station', mo: 80 },
+      { id: 'qt-swkiosk', cat: 'persw', name: 'Kiosk software (1st)', sub: 'Each additional kiosk $45/mo', mo: 50 },
+      { id: 'qt-swhandheld', cat: 'persw', name: 'Handheld (Lite, 1st)', sub: 'Each additional handheld $25/mo', mo: 30 },
+      { id: 'qt-swterminal', cat: 'persw', name: 'Smart Terminal (1st)', sub: 'Each additional $8/mo; non-cloud $5/mo', mo: 12, img: 'assets/pos/quantic-smart-terminal.png' },
+      { id: 'qt-swcds', cat: 'persw', name: 'Customer Display (CDS)', sub: 'Customer-facing display software', mo: 10 },
+      { id: 'qt-swkds', cat: 'persw', name: 'Kitchen Display (KDS)', sub: 'Kitchen display software', mo: 20 },
+
+      { id: 'qt-loyalty', cat: 'addons', name: 'Loyalty & Gift Cards', sub: 'Digital + physical gift cards and loyalty', mo: 30 },
+      { id: 'qt-olo', cat: 'addons', name: 'eComm / Online Ordering (OLO)', sub: 'Quantic online ordering', mo: 55 },
+      { id: 'qt-qb', cat: 'addons', name: 'QuickBooks Interface', sub: 'Accounting sync', mo: 20 },
+      { id: 'qt-callerid', cat: 'addons', name: 'Caller ID', sub: 'Customer pop-up on incoming calls', mo: 12 },
+      { id: 'qt-reservations', cat: 'addons', name: 'Reservations', sub: 'Reservations & table management', mo: 15 },
+      { id: 'qt-inventory', cat: 'addons', name: 'Inventory (Premium)', sub: 'Advanced inventory management', mo: 30 },
+      { id: 'qt-coupon', cat: 'addons', name: 'Coupon Marketing', sub: 'Includes 500 SMS/mo', mo: 25 },
+      { id: 'qt-doordash', cat: 'addons', name: 'DoorDash Drive', sub: 'Delivery dispatch integration', mo: 20 },
+
+      { id: 'qt-p1', cat: 'accessory', name: 'Dejavoo P1 Desktop Terminal', sub: 'Android payment terminal', buy: 300 },
+      { id: 'qt-p8', cat: 'accessory', name: 'Dejavoo P8 Mobile Terminal', sub: 'Mobile Android payment terminal', buy: 412 },
+      { id: 'qt-paxa35', cat: 'accessory', name: 'PAX A35', sub: 'Customer-facing smart PIN pad', buy: 337.50 },
+      { id: 'qt-paxa80', cat: 'accessory', name: 'PAX A80', sub: 'Countertop smart terminal', buy: 300 },
+      { id: 'qt-epsonm30', cat: 'accessory', name: 'Epson TM-M30III Receipt Printer', sub: 'With cable; Bluetooth version $370', buy: 300, img: 'assets/terminals/chively-printer.png' },
+      { id: 'qt-kitchenprinter', cat: 'accessory', name: 'Kitchen Printer TM-U220IIB', sub: 'Impact kitchen printer with cable', buy: 430, img: 'assets/terminals/chively-printer.png' },
+      { id: 'qt-lyntekprinter', cat: 'accessory', name: 'Lyntek Printer (USB)', sub: 'Budget USB receipt printer', buy: 99, img: 'assets/terminals/chively-printer.png' },
+      { id: 'qt-drawer', cat: 'accessory', name: 'Cash Drawer', sub: 'Lyntek $99 · Epson (black) $135', buy: 99, img: 'assets/terminals/chively-drawer.png' },
+      { id: 'qt-zebrascanner', cat: 'accessory', name: 'Zebra EVM Scanner', sub: 'With cable', buy: 392, img: 'assets/terminals/chively-scanner.png' },
+      { id: 'qt-labelprinter', cat: 'accessory', name: 'ZD411 Label Printer', sub: 'With one roll of labels', buy: 500 },
+      { id: 'qt-scale', cat: 'accessory', name: 'PDN Scale (12/30/60 lb)', sub: 'Certified integrated scale', buy: 549 },
+      { id: 'qt-router', cat: 'accessory', name: 'Dream Machine Router Kit', sub: 'Router with AP + switch; 4G backup router $250', buy: 510 },
+      { id: 'qt-setup', cat: 'accessory', name: 'Setup & Training Package', sub: 'Software setup, hardware integration, menu build, remote install and training — scoped to your build', quote: true }
+    ]
+  },
+
+  korona: { label: 'Korona', logo: 'assets/logos/korona.png', modes: ['buy'],
+    proc: 'Processing through NextPay — we match or beat your rate; dual pricing available. Software is per register, hardware is one-time.',
+    cats: [
+      { key: 'plans', label: 'Software plan (per register, monthly)', type: 'qty' },
+      { key: 'modules', label: 'Modules (monthly)', type: 'qty' },
+      { key: 'base', label: 'Register bundles', type: 'qty' },
+      { key: 'accessory', label: 'Terminals, scanners & printers', type: 'qty' }
+    ],
+    items: [
+      { id: 'ko-core', cat: 'plans', name: 'KORONA Core', sub: 'Per register — POS, reporting and support', mo: 59 },
+      { id: 'ko-retail', cat: 'plans', name: 'KORONA Retail', sub: 'Per register — Core + inventory, stock management, barcode automation, price labels', mo: 79 },
+      { id: 'ko-plus', cat: 'plans', name: 'KORONA Plus', sub: 'Per register — the full feature set', mo: 99 },
+
+      { id: 'ko-food', cat: 'modules', name: 'KORONA Food Module', sub: 'Food service features', mo: 10 },
+      { id: 'ko-invoicing', cat: 'modules', name: 'Invoicing Module', sub: 'Invoicing from the register', mo: 10 },
+      { id: 'ko-ticketing', cat: 'modules', name: 'Ticketing Module (per gate)', sub: 'Admissions, ticketing and gates', mo: 50 },
+      { id: 'ko-franchise', cat: 'modules', name: 'Franchise Module', sub: 'Multi-operator franchise tools', mo: 30 },
+      { id: 'ko-integration', cat: 'modules', name: 'Integration (per token)', sub: 'Third-party integration token', mo: 45 },
+
+      { id: 'ko-a7', cat: 'base', name: 'Audrey A7 Bundle (21.5" i5)', sub: 'Register with scanner, cash drawer and printer', buy: 2599.99, img: 'assets/pos/korona-station.png' },
+      { id: 'ko-a5', cat: 'base', name: 'Audrey A5-II Bundle (15.6" i3)', sub: 'Register with scanner, cash drawer and printer', buy: 2299.99, img: 'assets/pos/korona-station.png' },
+      { id: 'ko-j14', cat: 'base', name: 'Joy J14 Bundle (14")', sub: 'Compact register with scanner, cash drawer and printer', buy: 1399.99, img: 'assets/pos/korona-full-set.png' },
+
+      { id: 'ko-z11', cat: 'accessory', name: 'Dejavoo Z11 Terminal', sub: 'Countertop payment terminal', buy: 300 },
+      { id: 'ko-z9', cat: 'accessory', name: 'Dejavoo Z9 Terminal (wireless)', sub: 'Wireless payment terminal', buy: 450 },
+      { id: 'ko-qd4', cat: 'accessory', name: 'Dejavoo QD4 Terminal', sub: 'Android countertop terminal', buy: 350 },
+      { id: 'ko-a920', cat: 'accessory', name: 'PAX A920 Pro Terminal', sub: 'Portable smart terminal', buy: 600 },
+      { id: 'ko-a80', cat: 'accessory', name: 'PAX A80 Terminal', sub: 'Countertop smart terminal', buy: 350 },
+      { id: 'ko-a35', cat: 'accessory', name: 'PAX A35 PIN Pad', sub: 'Customer-facing smart PIN pad', buy: 350 },
+      { id: 'ko-snbc', cat: 'accessory', name: 'SNBC Receipt Printer', sub: 'Thermal receipt printer', buy: 250, img: 'assets/terminals/chively-printer.png' },
+      { id: 'ko-zebralabel', cat: 'accessory', name: 'Zebra Label Printer', sub: 'Shelf and product labels', buy: 450 },
+      { id: 'ko-zebraid', cat: 'accessory', name: 'Zebra ID Scanner', sub: 'Age-verification ID scanner', buy: 550, img: 'assets/terminals/chively-scanner.png' },
+      { id: 'ko-orbit', cat: 'accessory', name: '1D Orbit Scanner', sub: 'Hands-free presentation scanner', buy: 340, img: 'assets/terminals/chively-scanner.png' },
+      { id: 'ko-pranger', cat: 'accessory', name: 'P-Ranger Ticket & Inventory Scanner', sub: 'Pistol grip available for $195', buy: 730 }
+    ]
   }
 };
-window.NP_POS_ORDER = ['clover', 'shift4', 'square', 'sumup'];
+window.NP_POS_ORDER = ['clover', 'shift4', 'square', 'sumup', 'pays', 'quantic', 'korona'];
 window.NP_POS_MODEINFO = {
   placement: { label: 'Placement · $0 down', note: 'Low monthly, nothing upfront — unlimited replacements, no contract.' },
   buy: { label: 'Buy outright', note: 'Own the hardware — one-time cost. Software is still billed monthly.' },
