@@ -61,28 +61,38 @@ window.NP_POS_CATALOG = {
   },
 
   shift4: { label: 'Shift4 Dine', logo: 'assets/logos/shift4.png', modes: ['placement'],
-    proc: 'No upfront cost — dual pricing available for 0% card fees. Processing is quoted separately.',
+    proc: 'No upfront cost — dual pricing available for 0% card fees. Processing is quoted separately. 30-day trial, then a 30-month agreement; hardware carries a lifetime warranty.',
     cats: [
       { key: 'base', label: 'Base system', type: 'qty' },
       { key: 'stations', label: 'Stations, kitchen & displays', type: 'qty' },
+      { key: 'services', label: 'Value-added services', type: 'qty' },
       { key: 'accessory', label: 'Peripherals & accessories', type: 'qty' }
     ],
     items: [
-      { id: 's4-base', cat: 'base', name: 'SkyTab POS Base Package', sub: 'Restaurant POS workstation — terminal, 10 server cards, receipt printer and cash drawer', mo: 29.99, img: 'assets/pos/shift4-skytab-pos.png' },
+      { id: 's4-base', cat: 'base', name: 'SkyTab POS Base Bundle', sub: 'Software, hardware, receipt printer and cash drawer (lifetime warranty), card processing and 24/7 support', mo: 29.99, img: 'assets/pos/shift4-skytab-pos.png' },
 
       { id: 's4-glass', cat: 'stations', name: 'SkyTab Glass', sub: 'Built-for-purpose tablet running the full POS — order and pay at the table', mo: 29.99, img: 'assets/pos/shift4-glass.png' },
+      { id: 's4-air', cat: 'stations', name: 'SkyTab Air', sub: 'Phone-style handheld with hand strap running the full SkyTab POS — take orders and payments anywhere', mo: 29.99, img: 'assets/pos/shift4-handheld.png' },
       { id: 's4-kds', cat: 'stations', name: 'Kitchen Display System (KDS)', sub: 'Kitchen display — routes multiple order types across screens, works offline', mo: 29.99, img: 'assets/pos/shift4-kds.png' },
+      { id: 's4-bumpbar', cat: 'stations', name: 'KDS Bump Bar', sub: 'Physical bump bar for clearing tickets off the kitchen display', mo: 9.99 },
       { id: 's4-cfd', cat: 'stations', name: 'Customer-Facing Display', sub: 'Order confirmation, tipping and checkout — detaches on a cable', mo: 29.99, img: 'assets/pos/shift4-display.png' },
       { id: 's4-kiosk', cat: 'stations', name: 'Self Order Kiosk', sub: 'Self-serve ordering kiosk for QSR and high-traffic counters — lifts ticket size', mo: 29.99, img: 'assets/pos/shift4-kiosk.png' },
-      { id: 's4-mobile', cat: 'stations', name: 'SkyTab Mobile', sub: 'Handheld for pay-at-table, check printing and live customer survey ratings', mo: 20, img: 'assets/pos/shift4-handheld.png' },
+      { id: 's4-mobile', cat: 'stations', name: 'SkyTab Mobile', sub: 'Handheld for pay-at-table, check printing and live customer survey ratings', mo: 20 },
 
+      { id: 's4-lighthouse', cat: 'services', name: 'Lighthouse Business Manager', sub: 'Reporting, reputation and marketing dashboard', mo: 20 },
+      { id: 's4-giftcards', cat: 'services', name: 'Gift Cards', sub: 'Physical and digital gift card program', mo: 25 },
+      { id: 's4-workforce', cat: 'services', name: 'SkyTab Workforce', sub: 'Scheduling, time clock and team management', mo: 35 },
       { id: 's4-thermal', cat: 'accessory', name: 'Remote Thermal Printer (M335A)', sub: 'Remote thermal receipt or prep printer', mo: 9.99, img: 'assets/terminals/chively-printer.png' },
       { id: 's4-dotmatrix', cat: 'accessory', name: 'Remote Dot Matrix Printer (TM-U220)', sub: 'Remote impact printer for hot kitchens', mo: 9.99, img: 'assets/terminals/chively-printer.png' },
       { id: 's4-scanner', cat: 'accessory', name: '2D Barcode Scanner (Honeywell Voyager 1400g)', sub: '2D barcode scanner for retail and checkout', mo: 9.99, img: 'assets/terminals/chively-scanner.png' },
+      { id: 's4-pinpad', cat: 'accessory', name: 'EMV/NFC PIN Pad', sub: 'Customer-facing PIN pad — tap, dip and PIN debit', mo: 9.99 },
+      { id: 's4-labelprinter', cat: 'accessory', name: 'Label Printer', sub: 'Label printing for prep, packaging and retail', mo: 19.99 },
       { id: 's4-scale', cat: 'accessory', name: 'Digital Scale (CAS PD-II)', sub: 'Integrated weight scale for delis, markets and checkout', mo: 39.99 },
       { id: 's4-caller2', cat: 'accessory', name: 'Caller ID (2-line)', sub: 'Pops up customer info on incoming calls', mo: 9.99 },
       { id: 's4-caller4', cat: 'accessory', name: 'Caller ID (4-line)', sub: '4-line caller ID for higher call volume', mo: 19.99 },
-      { id: 's4-drawer', cat: 'accessory', name: 'Additional Cash Drawer', sub: 'Extra cash drawer beyond the one in the base package', quote: true, img: 'assets/terminals/chively-drawer.png' },
+      { id: 's4-drawer', cat: 'accessory', name: 'Additional Cash Drawer', sub: 'Extra cash drawer beyond the one in the base bundle', buy: 129, img: 'assets/terminals/chively-drawer.png' },
+      { id: 's4-till', cat: 'accessory', name: 'Additional Cash Till', sub: 'Extra till insert for shift changes', buy: 25 },
+      { id: 's4-splitcable', cat: 'accessory', name: 'Split Cable for Cash Drawer', sub: 'Run two drawers off one printer port', buy: 25 },
       { id: 's4-paper', cat: 'accessory', name: 'Receipt Paper Starter Pack', sub: 'Thermal and impact rolls sized to your printers', quote: true },
       { id: 's4-network', cat: 'accessory', name: 'Network & Cabling Kit', sub: 'Router, switch and cabling for a clean, reliable install', quote: true }
     ]
