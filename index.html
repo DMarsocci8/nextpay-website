@@ -45,6 +45,8 @@
 .hub-search input{width:100%;border:0;border-radius:999px;padding:16px 20px 16px 50px;font-family:inherit;font-size:16px;color:var(--ink);box-shadow:var(--shadow)}
 .hub-search input:focus{outline:2px solid var(--teal-bright)}
 .hub-search svg{position:absolute;left:19px;top:50%;transform:translateY(-50%);width:20px;height:20px;color:var(--slate)}
+.hub-search-hint{margin-top:10px;font-size:13.5px;font-weight:700;color:var(--teal-bright);cursor:pointer;display:none}
+.hub-search-hint.show{display:block}
 
 /* ---- guided workflow path ---- */
 .flow-sec{background:var(--bg-soft);border-bottom:1px solid var(--line)}
@@ -169,6 +171,7 @@
     <div class="hub-search">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg>
       <input id="hubSearch" type="search" placeholder="Search the hub — e.g. “dual pricing”, “Clover”, “how to submit a deal”…" autocomplete="off">
+      <div class="hub-search-hint" id="searchHint"></div>
     </div>
   </div>
 </header>
@@ -542,6 +545,7 @@
   var grid   = document.getElementById('hubGrid');
   var empty  = document.getElementById('hubEmpty');
   var clearBtn = document.getElementById('clearf');
+  var hint = document.getElementById('searchHint');
   var cards  = Array.prototype.slice.call(grid.querySelectorAll('.hub-card'));
 
   var state = { stage:'all', product:'all', resource:'all' };
@@ -570,6 +574,10 @@
     empty.classList.toggle('show', shown===0);
     var dirty = state.stage!=='all' || state.product!=='all' || state.resource!=='all' || q!=='';
     clearBtn.classList.toggle('show', dirty);
+    if(hint){
+      if(q){ hint.textContent = shown===0 ? 'No matches — try another word' : shown+' match'+(shown===1?'':'es')+' below — press Enter or tap here to jump'; hint.classList.add('show'); }
+      else hint.classList.remove('show');
+    }
   }
 
   // sync the active chip within a filter group
@@ -612,6 +620,9 @@
   });
 
   search.addEventListener('input', apply);
+  function jumpToResults(){ document.getElementById('browse').scrollIntoView({behavior:'smooth', block:'start'}); }
+  search.addEventListener('keydown', function(e){ if(e.key==='Enter'){ e.preventDefault(); jumpToResults(); } });
+  if(hint) hint.addEventListener('click', jumpToResults);
   clearBtn.addEventListener('click', function(){
     setGroup('stage','all'); setGroup('product','all'); setGroup('resource','all');
     search.value=''; syncFlow(); apply();
