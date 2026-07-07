@@ -77,7 +77,7 @@ window.NP_POS_CATALOG = {
       { id: 's4-bumpbar', cat: 'stations', name: 'KDS Bump Bar', sub: 'Physical bump bar for clearing tickets off the kitchen display', mo: 9.99 },
       { id: 's4-cfd', cat: 'stations', name: 'Customer-Facing Display', sub: 'Order confirmation, tipping and checkout — detaches on a cable', mo: 29.99, img: 'assets/pos/shift4-display.png' },
       { id: 's4-kiosk', cat: 'stations', name: 'Self Order Kiosk', sub: 'Self-serve ordering kiosk for QSR and high-traffic counters — lifts ticket size', mo: 29.99, img: 'assets/pos/shift4-kiosk.png' },
-      { id: 's4-mobile', cat: 'stations', name: 'SkyTab Mobile', sub: 'Handheld for pay-at-table, check printing and live customer survey ratings', mo: 20 },
+      { id: 's4-mobile', cat: 'stations', name: 'SkyTab Mobile', sub: 'Handheld for pay-at-table, check printing and live customer survey ratings', mo: 20, img: 'assets/pos/shift4-skytab-mobile.jpg' },
 
       { id: 's4-lighthouse', cat: 'services', name: 'Lighthouse Business Manager', sub: 'Reporting, reputation and marketing dashboard', mo: 20 },
       { id: 's4-giftcards', cat: 'services', name: 'Gift Cards', sub: 'Physical and digital gift card program', mo: 25 },
