@@ -40,6 +40,18 @@
         ['Statement Analyzers','/analyzestatement'],
         ['Calculators','/calculators']
       ]],
+      ['Products', [
+        ['Shift4 Dine','/shift4'],
+        ['Square','/square'],
+        ['Clover','/clover'],
+        ['SumUp','/sumup'],
+        ['Quantic','/quantic'],
+        ['Korona','/korona'],
+        ['NRS','/nrs'],
+        ['DejaPay Pro','/dejapay'],
+        ['PAYS POS','/pays'],
+        ['Next2Pay Invoicing','/next2pay']
+      ]],
       ['Submit', [
         ['Submit a Deal','/submitadeal'],
         ['Document Library','/documentlibrary']

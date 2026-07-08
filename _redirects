@@ -17,7 +17,8 @@
 /requests                          /requestaccess                                 302
 /suggest                           /requestaccess#suggest                         302
 /questions                         /prospecting                                   302
-/pays                              /battlecards                                   302
+/dejapaypro                        /dejapay                                       302
+/next2payinvoicing                 /next2pay                                      302
 /decoder                           /statementdecoder                              302
 /card                              /businesscard                                  302
 /signature                         /emailsignature                                302
@@ -36,6 +37,13 @@
 /brandassets                       /Sales%20Hub%20-%20Brand%20Assets.html         200
 /businesscard                      /Sales%20Hub%20-%20Business%20Card.html        200
 /clover                            /Sales%20Hub%20-%20Clover.html                 200
+/sumup                             /Sales%20Hub%20-%20SumUp.html                  200
+/quantic                           /Sales%20Hub%20-%20Quantic.html                200
+/korona                            /Sales%20Hub%20-%20Korona.html                 200
+/nrs                               /Sales%20Hub%20-%20NRS.html                    200
+/dejapay                           /Sales%20Hub%20-%20DejaPay%20Pro.html          200
+/next2pay                          /Sales%20Hub%20-%20Next2Pay%20Invoicing.html   200
+/pays                              /Sales%20Hub%20-%20PAYS.html                   200
 /discoveryplaybook                 /Sales%20Hub%20-%20Discovery%20Playbook.html   200
 /dmplaybook                        /Sales%20Hub%20-%20DM%20Playbook.html          200
 /documentlibrary                   /Sales%20Hub%20-%20Document%20Library.html     200
@@ -146,6 +154,12 @@
 /SalesHub/Calculators              /calculators                                   301
 /SalesHub/SubmitADeal              /submitadeal                                   301
 /SalesHub/Training                 /training                                      301
-/SalesHub/PAYS                     /battlecards                                   301
+/SalesHub/PAYS                     /pays                                          301
+/SalesHub/SumUp                    /sumup                                         301
+/SalesHub/Quantic                  /quantic                                       301
+/SalesHub/Korona                   /korona                                        301
+/SalesHub/NRS                      /nrs                                           301
+/SalesHub/DejaPayPro               /dejapay                                       301
+/SalesHub/Next2Pay                 /next2pay                                      301
 /SalesHub/Questions                /prospecting                                   301
 /SalesHub/Playbook                 /discoveryplaybook                             301

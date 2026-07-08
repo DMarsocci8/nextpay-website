@@ -1,0 +1,230 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Quantic — Pricing & Deal Info — NextPay Sales Hub</title>
+<link rel="icon" href="/assets/favicon.ico" sizes="any">
+<link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
+<link rel="stylesheet" href="/css/nextpay.css">
+<style>
+.hub-bar{position:sticky;top:0;z-index:60;background:var(--navy);color:#fff;border-bottom:1px solid rgba(255,255,255,.10)}
+.hub-bar-inner{display:flex;align-items:center;gap:18px;height:66px;max-width:var(--maxw);margin:0 auto;padding:0 28px}
+.hub-bar img.logo{height:34px;width:auto;display:block}
+.hub-bar .pipe{width:1px;height:26px;background:rgba(255,255,255,.18)}
+.hub-bar .hub-tag{font-weight:800;font-size:15px;color:#fff;display:flex;align-items:center;gap:9px}
+.hub-bar .hub-tag .badge{font-size:10.5px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;background:var(--teal);color:#fff;padding:4px 9px;border-radius:999px}
+.hub-bar .right{margin-left:auto;display:flex;align-items:center;gap:20px}
+.hub-bar .right a{color:#cdd8e2;font-weight:600;font-size:14.5px}.hub-bar .right a:hover{color:#fff}
+
+.pg-head{background:linear-gradient(180deg,var(--navy),var(--navy-2));color:#fff}
+.pg-head .wrap{padding:30px 0 32px}
+.crumbs{display:flex;gap:8px;align-items:center;font-size:13.5px;color:#9fb1c2;padding-bottom:14px}
+.crumbs a{color:#cdd8e2;font-weight:600}.crumbs a:hover{color:#fff}.crumbs .sep{opacity:.5}
+.pg-head .htop{display:flex;align-items:center;gap:16px}
+.pg-head .plogo{width:88px;height:88px;border-radius:18px;background:#fff;display:grid;place-items:center;padding:12px;flex:none}
+.pg-head .plogo img{max-width:100%;max-height:100%;object-fit:contain}
+.pg-head h1{font-size:clamp(26px,3.6vw,38px);color:#fff;letter-spacing:-.02em}
+.pg-head p.lead{color:#c4d0db;margin-top:10px;max-width:640px;font-size:16px;line-height:1.55}
+.jump{display:flex;gap:9px;flex-wrap:wrap;margin-top:20px}
+.jump a{display:inline-flex;align-items:center;gap:7px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.16);border-radius:999px;padding:8px 14px;font-size:13px;font-weight:700;color:#eaf1f6}
+.jump a:hover{background:rgba(31,194,166,.18);border-color:var(--teal-bright);color:#fff}
+.jump a.sub{background:var(--teal);border-color:var(--teal);color:#fff}
+
+main.wrap{padding:30px 0 10px}
+.sec{margin-bottom:34px;scroll-margin-top:84px}
+.sec h2{font-size:23px;letter-spacing:-.02em;margin-bottom:4px}
+.sec .sub{font-size:14.5px;color:var(--slate);margin-bottom:16px}
+
+.offer-band{display:flex;gap:14px;align-items:center;background:rgba(242,163,60,.12);border:1px solid rgba(242,163,60,.35);border-radius:14px;padding:16px 18px;margin-bottom:22px}
+.offer-band .ico{font-size:22px}
+.offer-band b{color:#b9741a}
+.offer-band p{font-size:14px;color:var(--ink);line-height:1.5}
+
+.tbl-wrap{overflow-x:auto;border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow-sm)}
+table.t{width:100%;border-collapse:collapse;background:#fff;min-width:560px}
+table.t th,table.t td{text-align:left;padding:11px 16px;font-size:14px;border-bottom:1px solid var(--line);vertical-align:top}
+table.t th{background:var(--navy);color:#fff;font-size:11.5px;letter-spacing:.05em;text-transform:uppercase;font-weight:800}
+table.t tr:last-child td{border-bottom:0}
+table.t td.c{font-weight:800;color:var(--navy);white-space:nowrap}
+table.t td.p{font-weight:800;color:var(--teal-dark);white-space:nowrap}
+table.t tbody tr:hover{background:var(--bg-soft)}
+table.t td small{color:var(--slate-2);font-weight:500}
+
+.note-band{display:flex;gap:13px;align-items:flex-start;background:var(--bg-soft);border:1px solid var(--line);border-radius:12px;padding:14px 16px;margin-top:14px}
+.note-band svg{width:18px;height:18px;color:var(--teal-dark);flex:none;margin-top:2px}
+.note-band p{font-size:13.5px;color:var(--slate);line-height:1.5}.note-band b{color:var(--ink)}
+.note-band a{color:var(--teal-dark);font-weight:700}
+.ph{font-size:12.5px;color:#b9741a;background:rgba(242,163,60,.14);border-radius:7px;padding:2px 9px;font-weight:700;white-space:nowrap}
+
+.submit-block{background:linear-gradient(135deg,var(--navy),var(--navy-2));color:#fff;border-radius:var(--radius-lg);padding:28px;box-shadow:var(--shadow)}
+.submit-block h2{color:#fff;font-size:23px;margin-bottom:6px}
+.submit-block p{color:#c4d0db;font-size:14.5px;line-height:1.55;max-width:660px}
+.submit-block .btnrow{display:flex;gap:12px;flex-wrap:wrap;margin-top:18px}
+.submit-block .btnrow a{display:inline-flex;align-items:center;gap:8px;background:var(--teal);color:#fff;font-weight:700;font-size:14px;border-radius:999px;padding:12px 18px}
+.submit-block .btnrow a:hover{background:var(--teal-dark)}
+.submit-block .btnrow a.ghost{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.16)}
+.submit-block .btnrow a svg{width:15px;height:15px}
+
+.hub-foot{background:var(--navy);color:#9fb1c2;padding:30px 0;margin-top:46px;font-size:13.5px}
+.hub-foot .wrap{display:flex;justify-content:space-between;gap:18px;flex-wrap:wrap}
+.hub-foot a{color:#cdd8e2;font-weight:600}.hub-foot a:hover{color:#fff}
+</style>
+  <link rel="stylesheet" href="/css/hub-sections.css?v=3">
+</head>
+<body>
+
+<div class="hub-bar">
+  <div class="hub-bar-inner">
+    <a href="/" style="display:flex;align-items:center" aria-label="Sales Hub home"><img class="logo" src="/assets/logos/nextpay-nav.png" alt="NextPay"></a>
+    <span class="pipe"></span>
+    <span class="hub-tag">Sales Hub <span class="badge">Internal</span></span>
+    <div class="right"><a href="/submitadeal">Submit a Deal</a><a href="/">← Hub home</a></div>
+  </div>
+</div>
+
+<header class="pg-head">
+  <div class="wrap">
+    <div class="crumbs"><a href="/">Sales Hub</a><span class="sep">/</span><span>Quantic — Pricing &amp; Deal Info</span></div>
+    <div class="htop">
+      <span class="plogo"><img src="/assets/logos/quantic-tight.png" alt="Quantic"></span>
+      <div>
+        <h1>Quantic — Pricing &amp; Deal Info</h1>
+        <p class="lead">Flexible cloud POS for restaurants and retail with a deep add-on catalog. All pricing below is from the Quantic Unified Pricing sheet (V5, referral pricing) — support is included with the software.</p>
+      </div>
+    </div>
+    <div class="jump">
+      <a href="#software">Software</a>
+      <a href="#addons">Add-ons &amp; bundles</a>
+      <a href="#hardware">Hardware</a>
+      <a href="#resources">Resources</a>
+      <a class="sub" href="#submit">Submit a Quantic deal →</a>
+    </div>
+  </div>
+</header>
+
+<main class="wrap">
+
+  <div class="offer-band">
+    <span class="ico">💡</span>
+    <p><b>Bundle savings:</b> Restaurant Pro packs 6 add-ons ($145 à la carte) for <b>$99/mo — merchant saves 32%</b>. Retail Pro packs 5 ($143 à la carte) for <b>$89/mo — saves 38%</b>.</p>
+  </div>
+
+  <!-- SOFTWARE -->
+  <section class="sec" id="software">
+    <h2>Software pricing (per month)</h2>
+    <p class="sub">Priced per device — first device, then each additional. Support is included.</p>
+    <div class="tbl-wrap">
+      <table class="t">
+        <thead><tr><th>Subscription</th><th>First</th><th>Each additional</th></tr></thead>
+        <tbody>
+          <tr><td>POS Station — Pro</td><td class="c">$60/mo</td><td class="c">$50/mo</td></tr>
+          <tr><td>POS Station — Enterprise</td><td class="c">$90/mo</td><td class="c">$80/mo</td></tr>
+          <tr><td>Kiosk</td><td class="c">$50/mo</td><td class="c">$45/mo</td></tr>
+          <tr><td>Handheld (Lite)</td><td class="c">$30/mo</td><td class="c">$25/mo</td></tr>
+          <tr><td>Smart Terminal</td><td class="c">$12/mo</td><td class="c">$8/mo</td></tr>
+          <tr><td>Smart Terminal — non-cloud</td><td class="c">$5/mo</td><td>—</td></tr>
+          <tr><td>Customer Display System (CDS)</td><td class="c">$10/mo</td><td>—</td></tr>
+          <tr><td>Digital Signage</td><td class="c">$15/mo</td><td>—</td></tr>
+          <tr><td>Kitchen Display System (KDS)</td><td class="c">$20/mo</td><td>—</td></tr>
+          <tr><td>Support</td><td class="p">Included</td><td>—</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="sub" style="margin-top:10px">Additional station support: $10/mo, $5 per additional terminal.</p>
+  </section>
+
+  <!-- ADD-ONS -->
+  <section class="sec" id="addons">
+    <h2>Add-ons &amp; bundles (per month)</h2>
+    <div class="tbl-wrap">
+      <table class="t">
+        <thead><tr><th>Add-on</th><th>Monthly</th><th>Add-on</th><th>Monthly</th></tr></thead>
+        <tbody>
+          <tr><td>Analytics</td><td class="c">$0</td><td>eComm (OLO)</td><td class="c">$55</td></tr>
+          <tr><td>Caller ID</td><td class="c">$12</td><td>Loyalty &amp; Gift Cards <small>(digital + physical)</small></td><td class="c">$30</td></tr>
+          <tr><td>Chowly online ordering <small>(Quantic integration)</small> — 1–2 platforms</td><td class="c">$88</td><td>Magensa Gateway <small>(Magtek readers)</small></td><td class="c">$10</td></tr>
+          <tr><td>Chowly — 3–4 platforms</td><td class="c">$110</td><td>QuickBooks Interface</td><td class="c">$20</td></tr>
+          <tr><td>Chowly — 5+ platforms</td><td class="c">$133</td><td>Reservations</td><td class="c">$15</td></tr>
+          <tr><td>Coupon Marketing <small>(500 SMS incl., 2&cent; overage, $10 dedicated number)</small></td><td class="c">$25</td><td>Inventory (Premium)</td><td class="c">$30</td></tr>
+          <tr><td>DoorDash Drive</td><td class="c">$20</td><td>DTIQ</td><td class="c">$39</td></tr>
+          <tr><td>7Shift</td><td class="c">$25</td><td>Como Sense</td><td class="c">$25</td></tr>
+          <tr><td>Andro Bar</td><td class="c">$25</td><td>Maple</td><td class="c">$25</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="tbl-wrap" style="margin-top:14px">
+      <table class="t">
+        <thead><tr><th>Bundle</th><th>Includes</th><th>À la carte</th><th>Bundle</th><th>Saves</th></tr></thead>
+        <tbody>
+          <tr><td class="c">Restaurant Pro</td><td>Analytics, Caller ID, Coupon Marketing, Loyalty (w/ Gift Cards), eComm (OLO), Reservations</td><td>$145/mo</td><td class="p">$99/mo</td><td class="p">32%</td></tr>
+          <tr><td class="c">Retail Pro</td><td>Analytics, Inventory (Premium), Loyalty (w/ Gift Cards), QuickBooks, eComm (OLO)</td><td>$143/mo</td><td class="p">$89/mo</td><td class="p">38%</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- HARDWARE -->
+  <section class="sec" id="hardware">
+    <h2>Hardware (one-time)</h2>
+    <p class="sub">Imin Swan 1 Pro station bundles include a Lyntek cash drawer &amp; USB printer.</p>
+    <div class="tbl-wrap">
+      <table class="t">
+        <thead><tr><th>Station bundle</th><th>Price</th><th>What's in it</th></tr></thead>
+        <tbody>
+          <tr><td>15.6" station + 10.1" CDS, with Dejavoo</td><td class="c">$1,419</td><td>Swan 1 Pro · 10.1" customer display · Dejavoo P1 terminal · drawer · printer</td></tr>
+          <tr><td>15.6" station + 10.1" CDS, no Dejavoo</td><td class="c">$1,119</td><td>Swan 1 Pro · 10.1" customer display · drawer · printer</td></tr>
+          <tr><td>15.6" station solo, with Dejavoo</td><td class="c">$1,219</td><td>Swan 1 Pro · Dejavoo P1 terminal · drawer · printer</td></tr>
+          <tr><td>15.6" station solo, no Dejavoo</td><td class="c">$919</td><td>Swan 1 Pro · drawer · printer</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="tbl-wrap" style="margin-top:14px">
+      <table class="t">
+        <thead><tr><th>À la carte highlights</th><th>Price</th><th></th><th>Price</th></tr></thead>
+        <tbody>
+          <tr><td>Swan 1 Pro station</td><td class="c">$699</td><td>P1 Desktop Android Terminal</td><td class="c">$300</td></tr>
+          <tr><td>Pro Panel 21.5" Android 13 AIO</td><td class="c">$930</td><td>P8 Mobile Android Terminal</td><td class="c">$412</td></tr>
+          <tr><td>24" Android KDS panel</td><td class="c">$885</td><td>PAX A80</td><td class="c">$300</td></tr>
+          <tr><td>24" OMNIA Kiosk w/ Epson m30 printer</td><td class="c">$1,469</td><td>PAX A35</td><td class="c">$337.50</td></tr>
+          <tr><td>Lyntek Printer (USB)</td><td class="c">$99</td><td>Lyntek Cash Drawer</td><td class="c">$99</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="sub" style="margin-top:10px">Full hardware list (stands, scanners, more terminals &amp; printers): see <a href="/pricing#quantic" style="color:var(--teal-dark);font-weight:700">Pricing &amp; Fee Programs → Quantic</a> or the PDFs below.</p>
+  </section>
+
+  <!-- RESOURCES -->
+  <section class="sec" id="resources">
+    <h2>Resources</h2>
+    <div class="note-band">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 3h7l5 5v13H7z"/><path d="M14 3v5h5"/></svg>
+      <p>Official sheets: <a href="/assets/docs/quantic-unified-pricing-v5.pdf" target="_blank" rel="noopener">Unified Pricing V5</a> · <a href="/assets/docs/quantic-hardware-price-list.pdf" target="_blank" rel="noopener">Hardware Price List</a> · <a href="/assets/docs/quantic-imin-pos-bundles.pdf" target="_blank" rel="noopener">Imin POS Bundles</a> · <a href="/assets/docs/quantic-example-quote-setup-fees.pdf" target="_blank" rel="noopener">Example Quote &amp; Setup Fees</a>. Every line is preset in the <a href="/proposalbuilder?product=quantic">Proposal Builder</a>.</p>
+    </div>
+  </section>
+
+  <!-- SUBMIT -->
+  <section class="sec" id="submit">
+    <div class="submit-block">
+      <h2>Submit a Quantic deal</h2>
+      <p>Build the quote in the Proposal Builder — software, add-ons, bundles and hardware are all preset. Then submit through the standard flow.</p>
+      <div class="btnrow">
+        <a href="/proposalbuilder?product=quantic">Build a Quantic proposal <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+        <a class="ghost" href="/submitadeal#p-quantic" target="_blank" rel="noopener">Submission steps &amp; contacts <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+        <a class="ghost" href="/statementanalyzer" target="_blank" rel="noopener">Statement Rate Analyzer</a>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="hub-foot">
+  <div class="wrap">
+    <span>NextPay Sales Hub · Quantic — Pricing &amp; Deal Info · Internal use only.</span>
+    <span><a href="/requestaccess#suggest">💡 Suggest / Request</a> · <a href="/">← Back to hub</a></span>
+  </div>
+</footer>
+<script src="/js/hub-nav.js"></script>
+</body>
+</html>

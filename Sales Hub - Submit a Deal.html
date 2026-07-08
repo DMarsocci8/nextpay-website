@@ -377,6 +377,7 @@
      turnaround:TODO,
      contacts:[{role:"Shift4 Merchant Support", name:"Shift4 Merchant Support", phone:"1-888-857-9751", email:""}],
      extra:SHIFT4_TRAIN_BLOCK},
+    p("SumUp", "SumUp", "pos"),
     p("Quantic", "Quantic", "pos"),
     {name:"Korona", brand:"Korona", type:"pos", platform:"Solutions in Payments Portal",
      form:{url:SIP_PORTAL, label:"Open Solutions in Payments Portal"}, steps:[], needs:[], turnaround:TODO,
@@ -441,6 +442,7 @@
     p("Authorize.net", "Authorize.net", "gateways"),
     p("iPOSPays", "iPOSPays", "gateways"),
     /* ---- Invoicing ---- */
+    p("Next2Pay Invoicing", "NextPay", "invoicing"),
     p("FieldPulse", "FieldPulse", "invoicing"),
     p("Field Work", "Field Work", "invoicing"),
     p("LQPay", "LQPay", "invoicing"),
@@ -499,6 +501,13 @@
     if(s.indexOf('square')>-1) return '/square';
     if(s.indexOf('clover')>-1) return '/clover';
     if(s.indexOf('shift4')>-1) return '/shift4';
+    if(s.indexOf('sumup')>-1) return '/sumup';
+    if(s.indexOf('quantic')>-1) return '/quantic';
+    if(s.indexOf('korona')>-1) return '/korona';
+    if(s.indexOf('nrs')>-1 || s.indexOf('national retail')>-1) return '/nrs';
+    if(s.indexOf('dejapay')>-1) return '/dejapay';
+    if(s.indexOf('next2pay')>-1) return '/next2pay';
+    if(s.indexOf('pays pos')>-1) return '/pays';
     return ''; }
 
   function render(){

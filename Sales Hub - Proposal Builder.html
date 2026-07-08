@@ -278,6 +278,7 @@ var PRODUCTS=[
   {id:'authnet',     name:'Authorize.net',         cat:'Online & Gateways',  logo:'authnet.png'},
   {id:'ipospays',    name:'iPOSPays',              cat:'Online & Gateways',  logo:'ipospays.png'},
   {id:'luqra',       name:'Luqra',                 cat:'Online & Gateways',  logo:'luqra.png'},
+  {id:'next2pay',    name:'Next2Pay Invoicing',    cat:'Invoicing',          logo:'next2pay-invoicing.png'},
   {id:'lqpay',       name:'LQPay',                 cat:'Invoicing',          logo:'lqpay.png'}
 ];
 /* per-product: base monthly line, optional add-ons (monthly), and processing defaults.
@@ -302,6 +303,7 @@ var PCONF={
   authnet:{base:{d:'Authorize.net gateway',m:25},addons:[],program:'Interchange-Plus',rate:'IC+ — set per card mix'},
   ipospays:{base:{d:'iPOSPays',m:25},addons:[],program:'Dual Pricing',rate:'0% with dual pricing'},
   luqra:{base:{d:'Luqra gateway',m:25},addons:[],program:'Interchange-Plus',rate:'IC+ — set per card mix'},
+  next2pay:{base:{d:'Next2Pay Invoicing — software',m:''},addons:[{d:'Recurring billing / auto-pay',m:''}],program:'Card + ACH',rate:'Quoted per merchant — confirm before presenting'},
   lqpay:{base:{d:'LQPay',m:''},addons:[],program:'Dual Pricing',rate:'0% with dual pricing'}
 };
 var KEY='np_rep_profile';
