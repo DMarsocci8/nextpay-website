@@ -442,6 +442,7 @@
     p("Authorize.net", "Authorize.net", "gateways"),
     p("iPOSPays", "iPOSPays", "gateways"),
     /* ---- Invoicing ---- */
+    p("Next2Pay Invoicing", "NextPay", "invoicing"),
     p("FieldPulse", "FieldPulse", "invoicing"),
     p("Field Work", "Field Work", "invoicing"),
     p("LQPay", "LQPay", "invoicing"),
@@ -505,6 +506,7 @@
     if(s.indexOf('korona')>-1) return '/korona';
     if(s.indexOf('nrs')>-1 || s.indexOf('national retail')>-1) return '/nrs';
     if(s.indexOf('dejapay')>-1) return '/dejapay';
+    if(s.indexOf('next2pay')>-1) return '/next2pay';
     if(s.indexOf('pays pos')>-1) return '/pays';
     return ''; }
 

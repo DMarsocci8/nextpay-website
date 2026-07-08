@@ -49,7 +49,8 @@
         ['Korona','/korona'],
         ['NRS','/nrs'],
         ['DejaPay Pro','/dejapay'],
-        ['PAYS POS','/pays']
+        ['PAYS POS','/pays'],
+        ['Next2Pay Invoicing','/next2pay']
       ]],
       ['Submit', [
         ['Submit a Deal','/submitadeal'],
