@@ -95,7 +95,7 @@
       // Anything invoicing-related leads with NextPay's own invoicing product.
       const list=onlineBase();
       list.forEach(c=>{ if(c.top){ c.top=false; c.role='Option'; } });
-      list.unshift(C('NextPay Invoice','Top pick','Payment requests by text or email, recurring billing, card-on-file & QuickBooks sync.','custom',INV));
+      list.unshift(C('Next2Pay Invoicing','Top pick','Payment requests by text or email, recurring billing, card-on-file & QuickBooks sync.','custom',INV));
       return list;
     }
     function onlineBase(){
@@ -131,7 +131,7 @@
       'Valor Gateway':'/gateways#valor','FluidPay':'/gateways#fluidpay',
       'iPOSpays by Dejavoo':'/gateways#ipospays',
       'Square Online & Invoicing':'/square','Square Online':'/square',
-      'Field Work':'/invoicing','LQpay':'/luqra','NextPay Invoice':'/invoicing'
+      'Field Work':'/invoicing','LQpay':'/luqra','Next2Pay Invoicing':'/invoicing'
     };
     cards.forEach(function(c){ if(DEST[c.name]) c.href=DEST[c.name]; });
     return cards;
