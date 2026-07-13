@@ -42,5 +42,8 @@
 - FormSubmit only delivers from a real web server (not the preview sandbox).
 - If forms ever need to work/test inside preview, switch to Web3Forms (needs an access key from web3forms.com).
 
+## Little Diggers training guide (internal)
+- `Little Diggers Training Guide.html` — internal franchise-training reference for Dom & John (Little Diggers indoor sandbox playspaces, a separate business — NOT NextPay). Self-contained single file with its own branding (sand/navy, Nunito); does not use nextpay.css/nav. Keep it OUT of the NextPay nav, sitemap.xml, vercel.json and _redirects; page carries `noindex`. Workflow: owner pastes official training language in chat → organize it into the page's sections, preserving the original wording. The "Coming Soon" section lists modules not yet added.
+
 ## Cloudflare Access ops (Sales Hub logins)
 - Hub login sessions, login logs, the daily agent-login-digest Worker, and login-page branding are documented in `docs/cloudflare-access-ops.md`.

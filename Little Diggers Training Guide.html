@@ -1,0 +1,680 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>Little Diggers — Training Guide (Internal)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,400;0,600;0,700;0,800;0,900;1,400&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --sand:#F2B33D;
+    --sand-light:#FBE3B0;
+    --sand-pale:#FDF8EF;
+    --earth:#4A2F1B;
+    --navy:#17324A;
+    --green:#3E8E5A;
+    --red:#C0503B;
+    --ink:#2B2318;
+    --muted:#7A6A55;
+    --card:#FFFFFF;
+    --line:#EAD9BC;
+    --radius:16px;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html{scroll-behavior:smooth;scroll-padding-top:90px;}
+  body{
+    font-family:'Nunito',system-ui,sans-serif;
+    background:var(--sand-pale);
+    color:var(--ink);
+    line-height:1.6;
+  }
+
+  /* ============ TOP BAR ============ */
+  .topbar{
+    position:sticky;top:0;z-index:50;
+    background:var(--navy);
+    color:#fff;
+    display:flex;align-items:center;gap:14px;
+    padding:10px 22px;
+    box-shadow:0 2px 10px rgba(23,50,74,.25);
+  }
+  .logo-slot{
+    width:44px;height:44px;flex:0 0 44px;
+    border-radius:12px;
+    background:var(--sand);
+    display:flex;align-items:center;justify-content:center;
+    font-size:24px;
+    overflow:hidden;cursor:pointer;
+    border:2px dashed transparent;
+  }
+  .logo-slot.empty{border-color:rgba(255,255,255,.35);}
+  .logo-slot img{width:100%;height:100%;object-fit:contain;background:#fff;}
+  .brand-name{font-weight:900;font-size:19px;letter-spacing:.2px;white-space:nowrap;}
+  .brand-name small{display:block;font-size:11px;font-weight:700;color:var(--sand-light);letter-spacing:1.5px;text-transform:uppercase;}
+  .internal-badge{
+    background:var(--sand);color:var(--earth);
+    font-size:11px;font-weight:900;letter-spacing:1px;text-transform:uppercase;
+    padding:4px 12px;border-radius:999px;white-space:nowrap;
+  }
+  .searchwrap{margin-left:auto;position:relative;width:min(340px,38vw);}
+  .searchwrap input{
+    width:100%;padding:9px 14px 9px 36px;border-radius:999px;border:none;
+    font-family:inherit;font-size:14px;font-weight:600;
+    background:rgba(255,255,255,.14);color:#fff;outline:none;
+  }
+  .searchwrap input::placeholder{color:rgba(255,255,255,.55);}
+  .searchwrap input:focus{background:#fff;color:var(--ink);}
+  .searchwrap svg{position:absolute;left:12px;top:50%;transform:translateY(-50%);width:16px;height:16px;opacity:.7;pointer-events:none;}
+  .searchwrap input:focus + svg path{stroke:var(--muted);}
+
+  /* ============ LAYOUT ============ */
+  .layout{display:flex;max-width:1280px;margin:0 auto;gap:34px;padding:28px 22px 90px;}
+  .sidebar{
+    width:250px;flex:0 0 250px;
+    position:sticky;top:82px;align-self:flex-start;
+    max-height:calc(100vh - 100px);overflow-y:auto;
+    padding-right:6px;
+  }
+  .side-group{margin-bottom:20px;}
+  .side-group h4{
+    font-size:11px;font-weight:900;letter-spacing:1.4px;text-transform:uppercase;
+    color:var(--muted);margin-bottom:7px;padding-left:10px;
+  }
+  .side-group a{
+    display:block;padding:7px 10px;border-radius:10px;
+    color:var(--ink);text-decoration:none;font-size:14px;font-weight:700;
+  }
+  .side-group a:hover{background:var(--sand-light);}
+  .side-group a.active{background:var(--sand);color:var(--earth);}
+  .side-group a.pending{color:var(--muted);font-weight:600;}
+  .side-group a.pending::after{content:" ·";color:transparent;}
+  .side-group a .soon{
+    font-size:10px;font-weight:900;letter-spacing:.5px;text-transform:uppercase;
+    background:var(--line);color:var(--muted);border-radius:999px;padding:1px 7px;margin-left:6px;
+  }
+  main{flex:1;min-width:0;}
+
+  /* ============ HERO ============ */
+  .hero{
+    background:linear-gradient(135deg,var(--navy) 0%,#215074 100%);
+    border-radius:22px;color:#fff;
+    padding:34px 34px 30px;margin-bottom:26px;
+    position:relative;overflow:hidden;
+  }
+  .hero::after{
+    content:"";position:absolute;right:-40px;bottom:-70px;width:280px;height:280px;
+    background:radial-gradient(circle at 30% 30%, var(--sand) 0%, transparent 70%);
+    opacity:.35;border-radius:50%;
+  }
+  .hero h1{font-size:30px;font-weight:900;line-height:1.2;margin-bottom:8px;}
+  .hero p{max-width:640px;color:#DCE8F2;font-size:15px;}
+  .hero .chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:16px;}
+  .hero .chip{
+    background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.22);
+    border-radius:999px;padding:4px 13px;font-size:12px;font-weight:800;
+  }
+
+  /* ============ QUICK REFERENCE ============ */
+  .quickref{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:14px;margin-bottom:34px;}
+  .qcard{
+    background:var(--card);border:1px solid var(--line);border-radius:var(--radius);
+    padding:16px 18px;
+  }
+  .qcard .num{font-size:26px;font-weight:900;color:var(--navy);line-height:1.1;}
+  .qcard .lbl{font-size:13px;font-weight:700;color:var(--muted);margin-top:3px;}
+
+  /* ============ SECTIONS / POLICY CARDS ============ */
+  .section{margin-bottom:40px;}
+  .section-eyebrow{
+    font-size:12px;font-weight:900;letter-spacing:1.6px;text-transform:uppercase;
+    color:var(--sand);margin-bottom:4px;
+  }
+  .section > h2{
+    font-size:24px;font-weight:900;color:var(--navy);
+    margin-bottom:6px;scroll-margin-top:90px;
+  }
+  .section > .section-sub{color:var(--muted);font-size:14.5px;max-width:720px;margin-bottom:18px;}
+
+  .policy{
+    background:var(--card);border:1px solid var(--line);border-radius:var(--radius);
+    padding:24px 26px;margin-bottom:18px;
+  }
+  .policy h3{font-size:15px;font-weight:900;color:var(--earth);letter-spacing:.4px;text-transform:uppercase;margin:20px 0 8px;}
+  .policy h3:first-child{margin-top:0;}
+  .policy p{margin-bottom:10px;font-size:15px;}
+  .policy ul,.policy ol{margin:4px 0 12px 22px;font-size:15px;}
+  .policy li{margin-bottom:5px;}
+  .policy li ul{margin-top:5px;margin-bottom:4px;}
+
+  .scope-chip{
+    display:inline-block;background:var(--sand-light);color:var(--earth);
+    font-size:12px;font-weight:800;border-radius:999px;padding:3px 12px;margin-bottom:12px;
+  }
+
+  .do-dont{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:12px 0;}
+  .do,.dont,.banned{border-radius:12px;padding:14px 16px;font-size:14.5px;}
+  .do{background:#EDF6EF;border:1px solid #CBE4D2;}
+  .dont{background:#FBF1E8;border:1px solid #F0D9C2;}
+  .banned{background:#FAECE9;border:1px solid #EFCFC7;margin:12px 0;}
+  .do h4,.dont h4,.banned h4{font-size:12px;font-weight:900;letter-spacing:1.2px;text-transform:uppercase;margin-bottom:8px;}
+  .do h4{color:var(--green);} .dont h4{color:#B06A28;} .banned h4{color:var(--red);}
+  .do ul,.dont ul,.banned ul{margin:0 0 0 18px;}
+
+  .callout{
+    display:flex;gap:12px;align-items:flex-start;
+    background:var(--sand-light);border-radius:12px;padding:13px 16px;margin:12px 0;
+    font-size:14.5px;font-weight:600;color:var(--earth);
+  }
+  .callout .ic{font-size:18px;line-height:1.4;}
+
+  .two-col{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:12px 0;}
+  .mini-card{background:var(--sand-pale);border:1px solid var(--line);border-radius:12px;padding:14px 16px;font-size:14.5px;}
+  .mini-card h4{font-size:12px;font-weight:900;letter-spacing:1px;text-transform:uppercase;color:var(--navy);margin-bottom:6px;}
+  .mini-card ul{margin:0 0 0 18px;}
+
+  /* placeholder / coming-soon */
+  .placeholder{
+    border:2px dashed var(--line);border-radius:var(--radius);
+    background:transparent;padding:26px;text-align:center;color:var(--muted);
+    font-size:14.5px;font-weight:600;
+  }
+  .placeholder strong{color:var(--earth);}
+
+  /* search state */
+  .hidden-by-search{display:none !important;}
+  mark{background:var(--sand);border-radius:3px;padding:0 2px;}
+  .no-results{display:none;text-align:center;color:var(--muted);font-weight:700;padding:40px 0;}
+
+  .updated{font-size:12px;color:var(--muted);font-weight:700;margin-top:6px;}
+
+  .backtop{
+    position:fixed;right:22px;bottom:22px;z-index:40;
+    width:44px;height:44px;border-radius:50%;border:none;cursor:pointer;
+    background:var(--navy);color:#fff;font-size:19px;font-weight:900;
+    box-shadow:0 4px 14px rgba(23,50,74,.35);
+    opacity:0;pointer-events:none;transition:opacity .2s;
+  }
+  .backtop.show{opacity:1;pointer-events:auto;}
+
+  footer{
+    max-width:1280px;margin:0 auto;padding:0 22px 40px;
+    font-size:12.5px;color:var(--muted);text-align:center;
+  }
+
+  @media (max-width:900px){
+    .sidebar{display:none;}
+    .layout{padding-top:18px;}
+    .do-dont,.two-col{grid-template-columns:1fr;}
+    .searchwrap{width:min(220px,44vw);}
+    .brand-name small{display:none;}
+    .internal-badge{display:none;}
+  }
+
+  @media print{
+    .topbar,.sidebar,.backtop{display:none !important;}
+    body{background:#fff;}
+    .layout{display:block;padding:0;}
+    .hero{background:var(--navy) !important;-webkit-print-color-adjust:exact;print-color-adjust:exact;border-radius:0;}
+    .policy{break-inside:avoid;border:1px solid #ccc;}
+    .section{break-before:auto;}
+  }
+</style>
+</head>
+<body>
+
+<header class="topbar">
+  <div class="logo-slot empty" id="logoSlot" title="Drag &amp; drop the Little Diggers logo here (saved in this browser)">🪣</div>
+  <div class="brand-name">Little Diggers<small>Training Guide</small></div>
+  <span class="internal-badge">Internal — Dom &amp; John</span>
+  <div class="searchwrap">
+    <input type="search" id="guideSearch" placeholder="Search the guide… (e.g. posts per week, trademark)" autocomplete="off">
+    <svg viewBox="0 0 24 24" fill="none"><path d="M21 21l-4.35-4.35M11 19a8 8 0 1 1 0-16 8 8 0 0 1 0 16z" stroke="#fff" stroke-width="2" stroke-linecap="round"/></svg>
+  </div>
+</header>
+
+<div class="layout">
+
+  <!-- ============ SIDEBAR ============ -->
+  <nav class="sidebar" id="toc">
+    <div class="side-group">
+      <h4>Start Here</h4>
+      <a href="#quick-reference">Quick Reference</a>
+      <a href="#how-to-use">How This Guide Works</a>
+    </div>
+    <div class="side-group">
+      <h4>Marketing &amp; Brand</h4>
+      <a href="#social-content">Social Media Content</a>
+      <a href="#social-accounts">Social Media Accounts</a>
+      <a href="#brand-logo">Brand &amp; Logo Usage</a>
+      <a href="#trademarks">Trademark Policy</a>
+    </div>
+    <div class="side-group">
+      <h4>Community &amp; Giving</h4>
+      <a href="#donations">Donations &amp; Gifts</a>
+      <a href="#endorsements">Third Party Endorsements</a>
+    </div>
+    <div class="side-group">
+      <h4>More Modules</h4>
+      <a href="#coming-operations" class="pending">Operations <span class="soon">soon</span></a>
+      <a href="#coming-operations" class="pending">Safety &amp; Cleaning <span class="soon">soon</span></a>
+      <a href="#coming-operations" class="pending">Bookings &amp; Parties <span class="soon">soon</span></a>
+      <a href="#coming-operations" class="pending">Staffing <span class="soon">soon</span></a>
+    </div>
+  </nav>
+
+  <!-- ============ MAIN ============ -->
+  <main id="content">
+
+    <div class="hero">
+      <h1>Little Diggers Franchise Training Guide</h1>
+      <p>One organized reference for everything from franchise training — policies, standards, and the key language, exactly as provided. Physical play in a digital world. 🏖️</p>
+      <div class="chips">
+        <span class="chip">Indoor Sandbox Playspace</span>
+        <span class="chip">Internal reference only</span>
+        <span class="chip" id="moduleCount">6 modules added</span>
+      </div>
+    </div>
+
+    <!-- ============ QUICK REFERENCE ============ -->
+    <section class="section" id="quick-reference">
+      <div class="section-eyebrow">Start Here</div>
+      <h2>Quick Reference</h2>
+      <p class="section-sub">The numbers and rules that come up most. Full detail in the sections below.</p>
+      <div class="quickref">
+        <div class="qcard"><div class="num">2–5</div><div class="lbl">Social posts per week (quality over quantity)</div></div>
+        <div class="qcard"><div class="num">14 days</div><div class="lbl">Lead time to submit marketing materials for approval (social posts exempt)</div></div>
+        <div class="qcard"><div class="num">3 biz days</div><div class="lbl">Corporate marketing review turnaround</div></div>
+        <div class="qcard"><div class="num">1</div><div class="lbl">Official Facebook Page per location — Corporate runs IG &amp; TikTok</div></div>
+        <div class="qcard"><div class="num">0</div><div class="lbl">New social accounts without written approval</div></div>
+        <div class="qcard"><div class="num">™ / ®</div><div class="lbl">Use marks exactly per Brand Guidelines; report suspected infringement immediately</div></div>
+        <div class="qcard"><div class="num">Kids first</div><div class="lbl">Donations go to local, child-focused causes — borderline cases need corporate consultation</div></div>
+        <div class="qcard"><div class="num">Neutral</div><div class="lbl">No third party may imply Little Diggers endorsement — political, commercial, or charitable</div></div>
+      </div>
+    </section>
+
+    <!-- ============ HOW TO USE ============ -->
+    <section class="section" id="how-to-use">
+      <div class="section-eyebrow">Start Here</div>
+      <h2>How This Guide Works</h2>
+      <div class="policy">
+        <p>This page is the internal Little Diggers reference for <strong>Dom &amp; John</strong>. As we go through franchise training, the official language gets pasted in and organized here — grouped by topic, searchable from the bar up top, and printable (<strong>Ctrl/Cmd&nbsp;+&nbsp;P</strong> gives a clean handout).</p>
+        <ul>
+          <li><strong>Search</strong> — type in the top bar to filter every section live.</li>
+          <li><strong>Original language is preserved</strong> — content is reorganized for reference, not rewritten.</li>
+          <li><strong>Drop the logo</strong> — drag the Little Diggers logo onto the square in the top-left; it saves in your browser.</li>
+          <li><strong>More coming</strong> — placeholder sections at the bottom fill in as training continues.</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- ============ SOCIAL MEDIA CONTENT POLICY ============ -->
+    <section class="section" id="social-content">
+      <div class="section-eyebrow">Marketing &amp; Brand</div>
+      <h2>Social Media Content Policy</h2>
+      <p class="section-sub">To ensure all social content builds trust, protects the brand, and drives real-world visits and bookings.</p>
+
+      <div class="policy">
+        <span class="scope-chip">Scope: all employees, contractors, volunteers &amp; third parties representing Little Diggers or a franchise</span>
+
+        <div class="callout"><span class="ic">📌</span><span>Content must utilize <strong>approved templates and assets</strong> obtained through the dedicated chat or the ordering portal.</span></div>
+
+        <h3>Posting Expectations</h3>
+        <ul>
+          <li><strong>2–5 posts per week</strong> recommended</li>
+          <li><strong>Quality &gt; quantity</strong></li>
+        </ul>
+
+        <div class="do-dont">
+          <div class="do">
+            <h4>✔ Prioritize</h4>
+            <ul>
+              <li>Real, in-playspace content (or content from events) whenever possible</li>
+              <li>Children at play, staff interactions, and clean environments</li>
+              <li>Use provided caption frameworks and approved messaging</li>
+            </ul>
+          </div>
+          <div class="dont">
+            <h4>✖ Avoid</h4>
+            <ul>
+              <li>Over-editing</li>
+              <li>Overly sales-oriented language</li>
+              <li>Sarcasm or edgy humor</li>
+              <li>Medical, developmental, or safety claims</li>
+              <li>Negativity regarding customers, kids, parenting choices, etc.</li>
+              <li>Explicit language or music</li>
+              <li>Trends that conflict with parent trust or safety perception</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="banned">
+          <h4>🚫 Prohibited Practices</h4>
+          <ul>
+            <li>Political messaging</li>
+            <li>Unauthorized vendor use for promotions</li>
+            <li>Exaggerated claims</li>
+            <li>Competitor comparisons or disparagement</li>
+            <li>Misleading offers</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ SOCIAL MEDIA ACCOUNT POLICY ============ -->
+    <section class="section" id="social-accounts">
+      <div class="section-eyebrow">Marketing &amp; Brand</div>
+      <h2>Social Media Account Policy</h2>
+      <p class="section-sub">Social media is a primary discovery, trust-building, and conversion channel for Little Diggers. The goal: a consistent, high-trust brand nationally, while local locations connect authentically with their community.</p>
+
+      <div class="policy">
+        <span class="scope-chip">Scope: all employees, contractors, volunteers &amp; third parties representing Little Diggers or a franchise</span>
+
+        <p>All Little Diggers franchisees and corporate stores are provided with a dedicated Facebook page. Social media usage must promote the brand's services, engage customers positively, and align with the core vision of <strong>physical play in a digital world</strong>. Personal opinions, off-brand promotions, or content potentially harmful to the brand's reputation are strictly prohibited. All activity must comply with platform terms of service and applicable regulations, including <strong>FTC guidelines on endorsements and disclosures</strong>.</p>
+
+        <h3>Account Ownership</h3>
+        <div class="two-col">
+          <div class="mini-card">
+            <h4>Corporate Owns</h4>
+            <ul><li>National Facebook, Instagram, TikTok accounts</li></ul>
+          </div>
+          <div class="mini-card">
+            <h4>Franchisee Owns</h4>
+            <ul><li>One official Facebook Page per location (access provisioned by Corporate)</li></ul>
+          </div>
+        </div>
+
+        <div class="banned">
+          <h4>🚫 Prohibited Actions</h4>
+          <ul>
+            <li>Locations may not create additional social accounts on any platform without written approval</li>
+            <li>Instagram and TikTok are managed nationally unless otherwise approved</li>
+            <li>Copying, downloading, or removing trade secret materials without authorization</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ BRAND & LOGO USAGE POLICY ============ -->
+    <section class="section" id="brand-logo">
+      <div class="section-eyebrow">Marketing &amp; Brand</div>
+      <h2>Brand &amp; Logo Usage Policy</h2>
+      <p class="section-sub">Standards for the appropriate and consistent application of the Little Diggers brand across all franchise locations and marketing initiatives — safeguarding brand integrity, protecting intellectual property rights, and promoting uniformity in visual presentation and messaging.</p>
+
+      <div class="policy">
+        <span class="scope-chip">Scope: all franchisees, employees, vendors &amp; partners engaged in marketing activities</span>
+
+        <h3>Governing Document</h3>
+        <p>All brand elements — logo, trademarks, color palette, typography, tagline, imagery guidelines, and visual standards — are defined in the official <strong>Little Diggers Brand Design Guidelines</strong> (the "Brand Guidelines"), the authoritative reference for proper brand representation.</p>
+        <div class="callout"><span class="ic">🗂️</span><span>The most current version of the Brand Guidelines lives in the <strong>franchise portal</strong>. Franchisees are responsible for using only the latest approved files and specifications.</span></div>
+
+        <h3>Usage Guidelines</h3>
+        <ul>
+          <li>Brand elements must be applied in strict accordance with the Brand Guidelines.</li>
+          <li>Approved uses: signage, websites, social media platforms, promotional materials, uniforms, and merchandise — provided they align with the family-friendly and educational positioning of Little Diggers.</li>
+          <li>All materials must maintain proper proportions, clear space requirements, minimum sizes, and reproduction quality.</li>
+          <li>Use the pre-approved portal templates for common marketing items: flyers, social media graphics, and advertisements.</li>
+        </ul>
+
+        <div class="banned">
+          <h4>🚫 Prohibited Uses</h4>
+          <ul>
+            <li>Any modification, distortion, recoloring, or unauthorized combination of brand elements</li>
+            <li>Use in contexts that could harm the brand's reputation, including materials promoting violence, discrimination, political, religious, or controversial subjects</li>
+            <li>Reproduction on unofficial merchandise or in any commercial activity without express franchisor approval</li>
+            <li>Unauthorized sublicensing, transfer, or sharing of brand assets with third parties</li>
+          </ul>
+        </div>
+
+        <h3>Approval Process</h3>
+        <ul>
+          <li>With the exception of social media posts, all marketing materials incorporating Little Diggers brand elements must be submitted for review through the franchise portal <strong>at least 14 days prior</strong> to production or distribution.</li>
+          <li>The corporate marketing team reviews submissions and provides feedback <strong>within 3 business days</strong>.</li>
+          <li>Questions on interpreting the Brand Guidelines go to the corporate marketing team.</li>
+        </ul>
+
+        <h3>Compliance &amp; Enforcement</h3>
+        <ul>
+          <li>Franchisees are responsible for compliance by their staff, agencies, and vendors.</li>
+          <li>Annual brand usage training is provided as part of ongoing support.</li>
+          <li>Non-compliance may result in required corrective actions, withdrawal of materials, or penalties per the Franchise Agreement.</li>
+          <li>Little Diggers retains the right to audit marketing materials and brand usage at any time.</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- ============ TRADEMARK POLICY ============ -->
+    <section class="section" id="trademarks">
+      <div class="section-eyebrow">Marketing &amp; Brand</div>
+      <h2>Trademark Policy</h2>
+      <p class="section-sub">Standards governing the use, protection, and enforcement of the Little Diggers trademarks — a core component of the franchise system's intellectual property. Goal: preserve the marks' legal validity and strength, prevent dilution or infringement, and ensure consistent usage per federal trademark law and the Franchise Agreement.</p>
+
+      <div class="policy">
+        <span class="scope-chip">Scope: all franchisees, employees, vendors &amp; partners</span>
+
+        <h3>Governing Documents</h3>
+        <p>The Little Diggers trademarks — registered marks, service marks, logos, and associated designations — are defined in the <strong>Brand Design Guidelines</strong> and the <strong>Franchise Agreement</strong> (ownership, registration status, permitted scope of use). Always refer to the most current versions in the franchise portal.</p>
+        <div class="callout"><span class="ic">⚖️</span><span>The franchisor retains <strong>exclusive ownership</strong> of all trademarks — no rights transfer beyond the limited license in the Franchise Agreement.</span></div>
+
+        <h3>Rights &amp; License Grant</h3>
+        <p>The Franchise Agreement grants a <strong>limited, non-exclusive, non-transferable license</strong> to use the trademarks solely in connection with operating an authorized indoor sandbox playspace location, in strict accordance with approved guidelines. The license is conditioned on ongoing compliance with quality standards, operational requirements, and brand specifications.</p>
+
+        <h3>Usage Requirements</h3>
+        <ul>
+          <li>Use trademarks exactly as specified in the Brand Design Guidelines — no alteration, modification, or dilution.</li>
+          <li>Apply proper notices consistently: <strong>™</strong> for unregistered marks, <strong>®</strong> for registered marks.</li>
+          <li><strong>Notify the franchisor immediately</strong> of any suspected infringement, unauthorized use, or third-party claims to similar marks.</li>
+          <li>The franchisor reserves the right to police and enforce trademark rights, including legal action against infringers, at its sole discretion.</li>
+        </ul>
+
+        <div class="banned">
+          <h4>🚫 Prohibited Uses</h4>
+          <ul>
+            <li>Unauthorized reproduction, adaptation, or combination of trademarks with other elements</li>
+            <li>Use that could cause confusion, dilution, or damage to the brand's reputation — including political, discriminatory, or controversial contexts</li>
+            <li>Registering (or attempting to register) similar marks, domain names, or trade names without franchisor consent</li>
+            <li>Continued use after termination or expiration of the Franchise Agreement</li>
+          </ul>
+        </div>
+
+        <h3>Protection &amp; Enforcement</h3>
+        <ul>
+          <li>The franchisor maintains federal trademark registrations where applicable and monitors for infringement.</li>
+          <li>Franchisees must cooperate in enforcement efforts — providing evidence or ceasing use as directed.</li>
+          <li>Third-party claims against a franchisee's use are handled per the Franchise Agreement (may include defense obligations or indemnification per the Franchise Disclosure Document).</li>
+          <li>No independent legal action related to the trademarks without prior written approval.</li>
+        </ul>
+
+        <h3>Approval &amp; Monitoring</h3>
+        <ul>
+          <li>All proposed trademark uses in marketing, signage, or other applications follow the approval process in the Brand &amp; Logo Usage Policy (above).</li>
+          <li>The franchisor may inspect locations, materials, and operations to verify compliance.</li>
+          <li>Non-compliance may bring corrective directives, penalties under the Franchise Agreement, or termination of the license and franchise rights.</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- ============ DONATIONS & GIFTS POLICY ============ -->
+    <section class="section" id="donations">
+      <div class="section-eyebrow">Community &amp; Giving</div>
+      <h2>Donations &amp; Gifts Policy</h2>
+      <p class="section-sub">Which organizations and initiatives are eligible for Little Diggers donations or in-kind support — keeping contributions aligned with the mission of encouraging children to thrive and engage with the physical world around them.</p>
+
+      <div class="policy">
+        <div class="do-dont">
+          <div class="do">
+            <h4>✔ Supported Initiatives</h4>
+            <ul>
+              <li><strong>Foster Care &amp; Adoption</strong> — organizations that support or work with foster care and adoption in the local community</li>
+              <li><strong>Infant &amp; Pregnancy Loss Organizations</strong> — groups providing support and care to families who have lost an infant</li>
+              <li><strong>Child-Focused Programs</strong> — direct support for early childhood education, developmental play, health, or wellness (e.g., preschools, daycares, pediatric therapy programs, children with cancer, etc.)</li>
+              <li><strong>School and PTA/PTO Fundraisers</strong> — auctions, fun runs, or events at elementary schools, particularly those serving families with children ages 7 and under</li>
+              <li><strong>Local Youth Organizations</strong> — non-profits focused on children (e.g., children's museums, libraries' kids programs, family resource centers)</li>
+              <li><strong>Community Events for Families</strong> — festivals, fairs, or gatherings emphasizing child-friendly activities in the location's territory</li>
+            </ul>
+          </div>
+          <div class="dont">
+            <h4>✖ Declined Initiatives</h4>
+            <ul>
+              <li>Political campaigns, candidates, or advocacy groups</li>
+              <li>Adult-focused causes or events without clear child involvement</li>
+              <li>Animal/pet-related charities or events</li>
+              <li>Organizations outside the local community or with national/international scope (referred to corporate if appropriate)</li>
+              <li>Requests promoting competing businesses or conflicting values</li>
+            </ul>
+          </div>
+        </div>
+        <div class="callout"><span class="ic">🤝</span><span>Reference this list during initial evaluations — <strong>borderline cases require corporate consultation</strong>.</span></div>
+      </div>
+    </section>
+
+    <!-- ============ THIRD PARTY ENDORSEMENT POLICY ============ -->
+    <section class="section" id="endorsements">
+      <div class="section-eyebrow">Community &amp; Giving</div>
+      <h2>Third Party Endorsement Policy</h2>
+      <p class="section-sub">Little Diggers requires strict brand neutrality — no use of the brand that could reasonably create the perception of endorsement, political or otherwise, by third parties (customers, vendors, community organizations, influencers, charities, sponsors, or other external entities).</p>
+
+      <div class="policy">
+        <p>Franchisees must ensure that no third party is permitted to imply, suggest, or appear to suggest that Little Diggers, the brand, or any franchise location endorses, supports, sponsors, is affiliated with, or approves of their products, services, candidates, political parties, causes, ballot measures, or any other position, organization, or activity.</p>
+
+        <div class="banned">
+          <h4>🚫 Prohibited Conduct — franchisees shall not permit, facilitate, or allow any third party to:</h4>
+          <ul>
+            <li>Use the Little Diggers name, logo, trademarks, trade dress, photographs of franchise locations, uniforms, signage, vehicles, or any other brand identifiers in connection with any endorsement, sponsorship, affiliation, or support statement — political, commercial, charitable, or otherwise</li>
+            <li>State or imply that Little Diggers or any franchise location endorses, sponsors, recommends, partners with, or approves of:
+              <ul>
+                <li>Any political candidate, political party, elected official, political organization, ballot initiative, referendum, or partisan issue</li>
+                <li>Any non-political third-party product, service, cause, organization, event, individual, or viewpoint</li>
+              </ul>
+            </li>
+            <li>Display, distribute, or post third-party materials (flyers, posters, banners, social media graphics, promotional items) containing Little Diggers branding alongside political messages, partisan symbols, candidate/party names, advocacy language, or commercial endorsements</li>
+            <li>Conduct fundraising, voter registration drives, petitioning, or other advocacy activities on franchise premises that could reasonably be perceived as brand-endorsed</li>
+            <li>Tag, mention, or associate Little Diggers social media accounts, website, or location pages with political content, partisan events, or third-party endorsements in posts, stories, or advertisements</li>
+          </ul>
+        </div>
+
+        <h3>Permitted Activities (Strict Conditions — all must be met)</h3>
+        <ul>
+          <li>No Little Diggers branding appears in any third-party promotional, advocacy, or political materials</li>
+          <li>The activity is clearly identified as hosted or supported solely by the third party</li>
+          <li>No implication is created that the location or brand endorses the third party's position, candidate, cause, or product</li>
+          <li>Franchisee personnel do not participate in partisan advocacy during the activity</li>
+        </ul>
+        <p>Example of permissible neutral participation: allowing space for generic community events, provided no brand identifiers are used in connection with any advocacy messaging.</p>
+
+        <h3>Franchisee Obligations</h3>
+        <ul>
+          <li>Actively monitor and promptly remove any unauthorized third-party materials or statements that imply brand endorsement</li>
+          <li>Decline requests from third parties to use Little Diggers branding in connection with endorsements of any kind</li>
+          <li>Train staff to recognize and prohibit activities that could create the appearance of brand endorsement</li>
+          <li>Report any suspected unauthorized use of the brand by third parties to the Franchisor immediately</li>
+        </ul>
+
+        <h3>Exceptions</h3>
+        <p>Any proposed arrangement involving third-party use of the brand in connection with an endorsement or affiliation requires <strong>prior written approval from the Little Diggers Corporate Office</strong>. Approvals are granted only in exceptional circumstances and will be documented.</p>
+
+        <h3>Compliance &amp; Enforcement</h3>
+        <p>Compliance is a <strong>material obligation under the Franchise Agreement</strong>. Violations — including failure to prevent or correct unauthorized third-party endorsements — may result in remedial measures, up to and including termination of the franchise agreement. Report suspected violations immediately to the Franchisor's designated compliance contact.</p>
+      </div>
+    </section>
+
+    <!-- ============ COMING SOON ============ -->
+    <section class="section" id="coming-operations">
+      <div class="section-eyebrow">More Modules</div>
+      <h2>Coming Soon</h2>
+      <div class="placeholder">
+        <strong>Operations · Safety &amp; Cleaning · Bookings &amp; Parties · Staffing · Customer Experience</strong><br>
+        As you work through the rest of training, paste the language into chat and it gets organized here.
+      </div>
+    </section>
+
+    <div class="no-results" id="noResults">No matches — try a different word. 🏝️</div>
+  </main>
+</div>
+
+<button class="backtop" id="backTop" title="Back to top">↑</button>
+
+<footer>
+  Little Diggers™ internal training reference · not linked from the public site · updated July 2026
+</footer>
+
+<script>
+(function(){
+  /* ---------- live search ---------- */
+  var input = document.getElementById('guideSearch');
+  var sections = Array.prototype.slice.call(document.querySelectorAll('.section'));
+  var noResults = document.getElementById('noResults');
+  var tocLinks = Array.prototype.slice.call(document.querySelectorAll('#toc a'));
+
+  input.addEventListener('input', function(){
+    var q = input.value.trim().toLowerCase();
+    var any = false;
+    sections.forEach(function(sec){
+      var hit = !q || sec.textContent.toLowerCase().indexOf(q) !== -1;
+      sec.classList.toggle('hidden-by-search', !hit);
+      if (hit) any = true;
+    });
+    noResults.style.display = (q && !any) ? 'block' : 'none';
+    tocLinks.forEach(function(a){
+      var target = document.querySelector(a.getAttribute('href'));
+      a.style.opacity = (target && target.classList.contains('hidden-by-search')) ? .35 : 1;
+    });
+  });
+
+  /* ---------- active TOC highlight ---------- */
+  if ('IntersectionObserver' in window){
+    var map = {};
+    tocLinks.forEach(function(a){ map[a.getAttribute('href').slice(1)] = a; });
+    var obs = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if (e.isIntersecting && map[e.target.id]){
+          tocLinks.forEach(function(a){ a.classList.remove('active'); });
+          map[e.target.id].classList.add('active');
+        }
+      });
+    }, {rootMargin:'-20% 0px -70% 0px'});
+    sections.forEach(function(s){ obs.observe(s); });
+  }
+
+  /* ---------- back to top ---------- */
+  var btn = document.getElementById('backTop');
+  window.addEventListener('scroll', function(){
+    btn.classList.toggle('show', window.scrollY > 600);
+  }, {passive:true});
+  btn.addEventListener('click', function(){ window.scrollTo({top:0,behavior:'smooth'}); });
+
+  /* ---------- logo drop slot (saved per-browser) ---------- */
+  var KEY = 'ld-guide-logo';
+  var slot = document.getElementById('logoSlot');
+  function render(src){
+    if (!src) return;
+    slot.innerHTML = '<img src="'+src+'" alt="Little Diggers logo">';
+    slot.classList.remove('empty');
+  }
+  try { render(localStorage.getItem(KEY)); } catch(e){}
+  ['dragover','dragenter'].forEach(function(ev){
+    slot.addEventListener(ev, function(e){ e.preventDefault(); slot.style.borderColor='#fff'; });
+  });
+  slot.addEventListener('dragleave', function(){ slot.style.borderColor=''; });
+  slot.addEventListener('drop', function(e){
+    e.preventDefault(); slot.style.borderColor='';
+    var f = e.dataTransfer.files && e.dataTransfer.files[0];
+    if (!f || f.type.indexOf('image/') !== 0) return;
+    var r = new FileReader();
+    r.onload = function(){
+      try { localStorage.setItem(KEY, r.result); } catch(err){}
+      render(r.result);
+    };
+    r.readAsDataURL(f);
+  });
+  slot.addEventListener('dblclick', function(){
+    try { localStorage.removeItem(KEY); } catch(e){}
+    slot.innerHTML = '🪣'; slot.classList.add('empty');
+  });
+})();
+</script>
+
+</body>
+</html>
