@@ -3,6 +3,16 @@
   "trailingSlash": false,
   "redirects": [
     {
+      "source": "/application",
+      "destination": "/assets/docs/NextPay-Merchant-Application.pdf",
+      "permanent": false
+    },
+    {
+      "source": "/merchant-application",
+      "destination": "/assets/docs/NextPay-Merchant-Application.pdf",
+      "permanent": false
+    },
+    {
       "source": "/Accept Payments.html",
       "destination": "/accept-payments",
       "permanent": true

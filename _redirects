@@ -235,3 +235,7 @@
 /Why%20NextPay.html /why-nextpay 301
 /Why%20NextPay /why-nextpay 301
 /index.html / 301
+
+# merchant application (fillable PDF)
+/application /assets/docs/NextPay-Merchant-Application.pdf 302
+/merchant-application /application 302
