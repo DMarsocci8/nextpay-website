@@ -32,6 +32,7 @@
         ['Objection Handling','/objections'],
         ['Competitor Battlecards','/battlecards'],
         ['SumUp Battlecards','/sumupbattlecards'],
+        ['SkyTab Battlecards','/skytabbattlecards'],
         ['Prospecting Questions','/prospecting'],
         ['Current Promotions','/promotions']
       ]],
