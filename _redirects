@@ -76,6 +76,7 @@
 /requestaccess                     /Sales%20Hub%20-%20Request%20Access.html       200
 /scripts                           /Sales%20Hub%20-%20Scripts.html                200
 /shift4                            /Sales%20Hub%20-%20Shift4.html                 200
+/skytab                            /shift4                                        302
 /shift4biquiz                      /Sales%20Hub%20-%20Shift4%20BI%20Quiz.html     200
 /shift4businessintelligence        /Sales%20Hub%20-%20Shift4%20Business%20Intelligence.html 200
 /shift4customerhub                 /Sales%20Hub%20-%20Shift4%20Customer%20Hub.html 200

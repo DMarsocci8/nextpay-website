@@ -23,7 +23,7 @@ Consequences:
 - Images are user-supplied via `<image-slot>` drag-and-drop placeholders (user has a logo/photo library). Pages must live at project root for slot persistence.
 
 ## Products in scope
-- **POS:** Square, Clover, Shift4 Dine (was SkyTab), SumUp, Quantic, Korona, NRS, DejaPay Pro, Chively
+- **POS:** Square, Clover, SkyTab by Shift4, SumUp, Quantic, Korona, NRS, DejaPay Pro, Chively
 - ⚠️ **Chively is NOT a NextPay product.** It is a third-party partner brand exactly like Clover or Square — never describe or brand it as NextPay's own. Its pricing comes from the Chively partner rep. It's currently at the bottom of the priority list; if we push it later, it's marketed as Chively, not NextPay.
 - **Gateways:** FluidPay, NMI, Luqra, Valor, Authorize.net, iPOSPays
 - **Terminals:** PAX Mobile line, Dejavoo (P Line, QD line), Square Mobile, Square Handheld, Clover Flex, Clover Go, Shift4 terminals, Valor VL
