@@ -42,7 +42,7 @@
         ['Calculators','/calculators']
       ]],
       ['Products', [
-        ['Shift4 Dine','/shift4'],
+        ['SkyTab by Shift4','/shift4'],
         ['Square','/square'],
         ['Clover','/clover'],
         ['SumUp','/sumup'],
