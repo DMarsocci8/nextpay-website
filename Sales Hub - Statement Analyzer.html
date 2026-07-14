@@ -118,16 +118,25 @@ main.wrap{padding:30px 0 10px}
       <div class="fg">
         <label for="prog">Compare to NextPay program</label>
         <select id="prog">
-          <option value="dual">Dual Pricing — 0% effective</option>
-          <option value="cash">Cash Discount — 0% effective</option>
-          <option value="surcharge">Surcharge — credit fee passed on</option>
-          <option value="icplus">Interchange-Plus — enter target rate</option>
-          <option value="flat">Flat Rate — enter target rate</option>
+          <optgroup label="The BUSINESS pays the fee (rate = what they pay)">
+            <option value="flat">Flat Rate — business pays</option>
+            <option value="icplus">Interchange-Plus — business pays</option>
+          </optgroup>
+          <optgroup label="The CUSTOMER pays the fee (business nets ~0%)">
+            <option value="dual">Dual Pricing — flat rate the customer pays</option>
+            <option value="cash">Cash Discount — flat rate the customer pays</option>
+            <option value="surcharge">Surcharge — credit only (business still pays debit)</option>
+          </optgroup>
         </select>
+        <p id="whopays" style="font-size:12.5px;line-height:1.45;margin-top:8px"></p>
       </div>
       <div class="fg" id="targetWrap">
-        <label for="target">Target effective rate <span class="sub">— the rate you'll quote</span></label>
+        <label for="target">Business's new rate <span class="sub">— what the business will pay</span></label>
         <div class="ig pct"><span class="pre">%</span><input id="target" type="number" min="0" step="0.01" inputmode="decimal" placeholder="2.25"></div>
+      </div>
+      <div class="fg" id="debitWrap">
+        <label for="debit">% of volume that's debit <span class="sub">— surcharge can't apply to debit</span></label>
+        <div class="ig pct"><span class="pre">%</span><input id="debit" type="number" min="0" max="100" step="1" inputmode="decimal" placeholder="30"></div>
       </div>
       <div class="fg">
         <label for="npfee">NextPay monthly cost <span class="sub">(optional — software / program fee)</span></label>
@@ -162,53 +171,69 @@ function num(id){var v=parseFloat(el(id).value);return isFinite(v)&&v>0?v:0;}
 function money(x){return '$'+Math.round(x).toLocaleString('en-US');}
 function pct(x){return x.toFixed(2)+'%';}
 
-var ZERO={dual:'Dual Pricing',cash:'Cash Discount',surcharge:'Surcharge'};
+var MERCHANT_PAID={flat:true,icplus:true};   // rate = what the business pays
 var prog=el('prog'), out=el('out');
+var EMPTY='<p class="empty">Enter a <b style="color:#fff">monthly volume</b> and <b style="color:#fff">total fees</b> to see what the business pays now and what they’d pay with NextPay.</p>';
 
-function isZero(){return ZERO.hasOwnProperty(prog.value);}
+function isMerchantPaid(){return MERCHANT_PAID.hasOwnProperty(prog.value);}
+function isSurcharge(){return prog.value==='surcharge';}
 function progName(){
-  return {dual:'Dual Pricing',cash:'Cash Discount',surcharge:'Surcharge',icplus:'Interchange-Plus',flat:'Flat Rate'}[prog.value];
+  return {flat:'Flat Rate (business pays)',icplus:'Interchange-Plus (business pays)',dual:'Dual Pricing',cash:'Cash Discount',surcharge:'Surcharge'}[prog.value];
 }
-function syncTarget(){ el('targetWrap').style.display = isZero() ? 'none' : 'block'; }
+function syncFields(){
+  el('targetWrap').style.display = isMerchantPaid() ? 'block' : 'none';
+  el('debitWrap').style.display  = isSurcharge() ? 'block' : 'none';
+  var wp=el('whopays'); wp.style.color='#93a6b8';
+  if(isMerchantPaid())    wp.innerHTML='<b style="color:#cfe0d8">The business pays this rate.</b> Enter the new rate they’ll pay — lower is better for them.';
+  else if(isSurcharge())  wp.innerHTML='<b style="color:#cfe0d8">The customer pays the credit fee.</b> Credit nets ~$0 for the business — but debit can’t be surcharged, so the business still pays on its debit volume.';
+  else                    wp.innerHTML='<b style="color:#cfe0d8">The customer pays the fee.</b> The flat rate here is the higher price the <i>customer</i> sees on card — the business nets ~$0.';
+}
 
 function calc(){
-  syncTarget();
+  syncFields();
   var vol=num('vol'), fees=num('fees'), txns=num('txns'), npfee=num('npfee');
-  if(!vol || !fees){
-    out.innerHTML='<p class="empty">Enter a <b style="color:#fff">monthly volume</b> and <b style="color:#fff">total fees</b> to see the merchant’s effective rate and their NextPay savings.</p>';
-    return;
-  }
+  if(!vol || !fees){ out.innerHTML=EMPTY; return; }
   var eff = fees/vol*100;
   var perTxn = txns ? (fees/txns) : null;
 
-  var projProc = isZero() ? 0 : vol*(num('target')/100);
+  var projProc;
+  if(isMerchantPaid())   projProc = vol*(num('target')/100);
+  else if(isSurcharge()){ var d=num('debit'); if(d<=0) d=30; projProc = fees*(Math.min(d,100)/100); }
+  else                   projProc = 0;                       // dual / cash net ~0%
+
   var proj = projProc + npfee;
-  var saveM = fees - proj;
-  var saveY = saveM*12;
+  var projEff = vol>0 ? proj/vol*100 : 0;
+  var saveM = fees - proj, saveY = saveM*12;
   var reduce = fees>0 ? (saveM/fees*100) : 0;
 
-  var npLabel = isZero() ? 'Processing nets to ~$0' : 'At '+pct(num('target'))+(npfee?' + '+money(npfee)+'/mo':'');
+  var youPaySub;
+  if(isMerchantPaid())   youPaySub = pct(projEff)+' effective'+(npfee?(' · +'+money(npfee)+'/mo'):'');
+  else if(isSurcharge()) youPaySub = 'debit only ≈ '+pct(projEff)+(npfee?(' · +'+money(npfee)+'/mo'):'');
+  else                   youPaySub = npfee?('program fee only'):'~$0 processing';
 
   var say;
-  if(saveM>0){
-    say = 'Right now you’re paying an effective rate of <b>'+pct(eff)+'</b> — about <b>'+money(fees*12)+'</b> a year. With <b>'+progName()+'</b>, that drops to roughly <b>'+money(proj*12)+'</b>, putting about <b>'+money(saveY)+'</b> back in your pocket every year.';
-  } else {
-    say = 'At <b>'+pct(eff)+'</b> effective they’re already sharp — lead with the rewards, no-upfront hardware and the connected tools rather than rate alone.';
-  }
+  if(saveM>0 && isMerchantPaid())
+    say = 'The business pays an effective <b>'+pct(eff)+'</b> today — about <b>'+money(fees*12)+'</b>/yr. On <b>'+progName()+'</b> at <b>'+pct(num('target'))+'</b> that’s roughly <b>'+money(proj*12)+'</b>/yr — about <b>'+money(saveY)+'</b> back a year.';
+  else if(saveM>0 && isSurcharge())
+    say = 'On <b>Surcharge</b> the customer covers the credit-card fee, so the business only keeps paying on debit — about <b>'+money(proj)+'</b>/mo — saving roughly <b>'+money(saveY)+'</b> a year off today’s '+pct(eff)+' effective.';
+  else if(saveM>0)
+    say = 'On <b>'+progName()+'</b> the customer covers the card fee, so the business nets ~$0 in processing'+(npfee?(' beyond the '+money(npfee)+'/mo program fee'):'')+' — down from '+pct(eff)+' effective today, about <b>'+money(saveY)+'</b> back a year.';
+  else
+    say = 'At <b>'+pct(eff)+'</b> effective they’re already sharp — lead with rewards, no-upfront hardware and the connected tools rather than rate alone.';
 
   out.innerHTML =
-    '<div class="eff"><span class="big">'+pct(eff)+'</span><span class="lbl">current effective rate'+(perTxn?(' · '+('$'+perTxn.toFixed(2))+' / transaction'):'')+'</span></div>'
+    '<div class="eff"><span class="big">'+pct(eff)+'</span><span class="lbl">what the business pays now'+(perTxn?(' · $'+perTxn.toFixed(2)+' / transaction'):'')+'</span></div>'
     + '<div class="rows">'
-    +   '<div class="stat"><div class="k">They pay now</div><div class="v">'+money(fees)+'/mo</div><div class="vsub">'+money(fees*12)+' / year</div></div>'
-    +   '<div class="stat"><div class="k">With NextPay</div><div class="v">'+money(proj)+'/mo</div><div class="vsub">'+npLabel+'</div></div>'
+    +   '<div class="stat"><div class="k">Business pays now</div><div class="v">'+money(fees)+'/mo</div><div class="vsub">'+money(fees*12)+' / year</div></div>'
+    +   '<div class="stat"><div class="k">Business pays with NextPay</div><div class="v">'+money(proj)+'/mo</div><div class="vsub">'+youPaySub+'</div></div>'
     +   '<div class="stat save"><div class="k">Estimated savings</div><div class="v">'+money(saveM>0?saveM:0)+'/mo</div><div class="vsub">'+money(saveY>0?saveY:0)+' a year'+(saveM>0?(' · '+Math.round(reduce)+'% less'):'')+'</div></div>'
     + '</div>'
     + '<div class="say">'+say+'</div>';
 }
 
-['vol','fees','txns','target','npfee'].forEach(function(id){ el(id).addEventListener('input', calc); });
+['vol','fees','txns','target','debit','npfee'].forEach(function(id){ el(id).addEventListener('input', calc); });
 prog.addEventListener('change', calc);
-syncTarget();
+syncFields();
 calc();
 </script>
 <script src="/js/hub-nav.js"></script>
