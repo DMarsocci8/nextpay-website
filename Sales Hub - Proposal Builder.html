@@ -260,7 +260,7 @@
 <script>
 var PRODUCTS=[
   {id:'clover',      name:'Clover POS',            cat:'POS Systems',        logo:'clover.png'},
-  {id:'shift4',      name:'Shift4 Dine',           cat:'POS Systems',        logo:'shift4.png'},
+  {id:'shift4',      name:'SkyTab by Shift4',           cat:'POS Systems',        logo:'skytab.svg'},
   {id:'square',      name:'Square POS',            cat:'POS Systems',        logo:'square-word.svg'},
   {id:'sumup',       name:'SumUp POS',             cat:'POS Systems',        logo:'sumup.svg'},
   {id:'quantic',     name:'Quantic POS',           cat:'POS Systems',        logo:'quantic-tight.png'},
@@ -282,7 +282,7 @@ var PRODUCTS=[
   {id:'lqpay',       name:'LQPay',                 cat:'Invoicing',          logo:'lqpay.png'}
 ];
 /* per-product: base monthly line, optional add-ons (monthly), and processing defaults.
-   Numbers seeded from the POS Systems page + the Clover & Shift4 Dine pricing sheets — all editable. */
+   Numbers seeded from the POS Systems page + the Clover & SkyTab by Shift4 pricing sheets — all editable. */
 var PCONF={
   chively:{base:{d:'Chively — software',m:''},addons:[],hw:[{d:'Chively D3 Station',a:''},{d:'Chively Handheld',a:''},{d:'Chively KDS',a:''},{d:'Receipt Printer',a:''},{d:'Cash Drawer',a:''},{d:'Barcode Scanner',a:''}],program:'Dual Pricing',rate:'0% with dual pricing'},
   square:{base:{d:'Square POS — Free plan',m:0},addons:[{d:'Square Plus plan',m:49},{d:'Square Kiosk Software',m:89},{d:'Square KDS (per screen)',m:20},{d:'Square Terminal — financed (12 mo)',m:27},{d:'Square Station — financed (24 mo)',m:44},{d:'Square Handheld — financed (12 mo)',m:37},{d:'Square Reader — financed (12 mo)',m:21}],hw:[{d:'Square Terminal',a:299},{d:'Square Station',a:899},{d:'Square Handheld',a:399},{d:'Square Stand',a:149},{d:'Square Reader',a:59},{d:'Square Kiosk Stand',a:149},{d:'iPad',a:349},{d:'Cash Drawer',a:129},{d:'USB Receipt Printer',a:299},{d:'Kitchen Impact Printer',a:399},{d:'USB Barcode Scanner',a:119},{d:'Integrated Scale',a:''}],onetime:[{d:'Implementation — Plus Package',a:699},{d:'Implementation — Premium',a:1499},{d:'Implementation — Onsite',a:2199},{d:'Payroll Implementation',a:250},{d:'Optimization Call',a:159},{d:'Menu Build',a:149},{d:'Gift Card Migration',a:149},{d:'Loyalty Migration',a:149},{d:'Product Catalog Import',a:149},{d:'Square Online Site Copy',a:149}],program:'Flat Rate',rate:'2.6% + 10¢ in person'},
@@ -298,11 +298,11 @@ var PCONF={
   dejavoo:{base:{d:'Dejavoo terminal',m:''},addons:[],hw:[{d:'Dejavoo Z11',a:300},{d:'Dejavoo Z9 (wireless)',a:450},{d:'Dejavoo QD4',a:350},{d:'Dejavoo P1 (desktop Android)',a:300},{d:'Dejavoo P8 (mobile Android)',a:412},{d:'Dejavoo QD5',a:''},{d:'Charging base',a:''}],program:'Dual Pricing',rate:'0% with dual pricing'},
   valor:{base:{d:'Valor terminal',m:''},addons:[],hw:[{d:'Valor VL100 (countertop)',a:''},{d:'Valor VL110 (countertop w/ PIN pad)',a:''},{d:'Valor VP550 (wireless smart)',a:''},{d:'Valor VL550 (portable)',a:''},{d:'Charging base',a:''}],program:'Dual Pricing',rate:'0% with dual pricing'},
   swipesimple:{base:{d:'SwipeSimple',m:25},addons:[],program:'Interchange-Plus',rate:'IC+ — set per card mix'},
-  fluidpay:{base:{d:'FluidPay gateway',m:25},addons:[],program:'Interchange-Plus',rate:'IC+ — set per card mix'},
-  nmi:{base:{d:'NMI gateway',m:25},addons:[],program:'Interchange-Plus',rate:'IC+ — set per card mix'},
-  authnet:{base:{d:'Authorize.net gateway',m:25},addons:[],program:'Interchange-Plus',rate:'IC+ — set per card mix'},
-  ipospays:{base:{d:'iPOSPays',m:25},addons:[],program:'Dual Pricing',rate:'0% with dual pricing'},
-  luqra:{base:{d:'Luqra gateway',m:25},addons:[],program:'Interchange-Plus',rate:'IC+ — set per card mix'},
+  fluidpay:{base:{d:'FluidPay gateway',m:25},addons:[{d:'QuickBooks integration',m:25}],program:'Interchange-Plus',rate:'IC+ — set per card mix'},
+  nmi:{base:{d:'NMI gateway',m:25},addons:[{d:'QuickBooks integration',m:25}],program:'Interchange-Plus',rate:'IC+ — set per card mix'},
+  authnet:{base:{d:'Authorize.net gateway',m:25},addons:[{d:'QuickBooks integration',m:25}],program:'Interchange-Plus',rate:'IC+ — set per card mix'},
+  ipospays:{base:{d:'iPOSPays',m:25},addons:[{d:'QuickBooks integration',m:25}],program:'Dual Pricing',rate:'0% with dual pricing'},
+  luqra:{base:{d:'Luqra gateway',m:25},addons:[{d:'QuickBooks integration',m:25}],program:'Interchange-Plus',rate:'IC+ — set per card mix'},
   next2pay:{base:{d:'Next2Pay Invoicing — software',m:''},addons:[{d:'Recurring billing / auto-pay',m:''}],program:'Card + ACH',rate:'Quoted per merchant — confirm before presenting'},
   lqpay:{base:{d:'LQPay',m:''},addons:[],program:'Dual Pricing',rate:'0% with dual pricing'}
 };

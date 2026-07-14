@@ -31,17 +31,20 @@
         ['Prospecting Scripts','/scripts'],
         ['Objection Handling','/objections'],
         ['Competitor Battlecards','/battlecards'],
+        ['SumUp Battlecards','/sumupbattlecards'],
+        ['SkyTab Battlecards','/skytabbattlecards'],
         ['Prospecting Questions','/prospecting'],
         ['Current Promotions','/promotions']
       ]],
       ['Quote', [
         ['Pricing & Fee Programs','/pricing'],
         ['Proposal Builder','/proposalbuilder'],
+        ['Merchant Application','/application',1],
         ['Statement Analyzers','/analyzestatement'],
         ['Calculators','/calculators']
       ]],
       ['Products', [
-        ['Shift4 Dine','/shift4'],
+        ['SkyTab by Shift4','/shift4'],
         ['Square','/square'],
         ['Clover','/clover'],
         ['SumUp','/sumup'],
@@ -54,6 +57,7 @@
       ]],
       ['Submit', [
         ['Submit a Deal','/submitadeal'],
+        ['Merchant Application','/application',1],
         ['Document Library','/documentlibrary']
       ]],
       ['Build', [

@@ -38,6 +38,11 @@
 /businesscard                      /Sales%20Hub%20-%20Business%20Card.html        200
 /clover                            /Sales%20Hub%20-%20Clover.html                 200
 /sumup                             /Sales%20Hub%20-%20SumUp.html                  200
+/sumupbattlecards                  /Sales%20Hub%20-%20SumUp%20Battlecards.html    200
+/application                       /assets/docs/NextPay-Merchant-Application.pdf   200
+/apply                             /application                                    302
+/merchant-application              /application                                    302
+/sumup-battlecards                 /sumupbattlecards                              302
 /quantic                           /Sales%20Hub%20-%20Quantic.html                200
 /korona                            /Sales%20Hub%20-%20Korona.html                 200
 /nrs                               /Sales%20Hub%20-%20NRS.html                    200
@@ -71,6 +76,8 @@
 /requestaccess                     /Sales%20Hub%20-%20Request%20Access.html       200
 /scripts                           /Sales%20Hub%20-%20Scripts.html                200
 /shift4                            /Sales%20Hub%20-%20Shift4.html                 200
+/skytab                            /shift4                                        302
+/skytabbattlecards                 /Sales%20Hub%20-%20SkyTab%20Battlecards.html   200
 /shift4biquiz                      /Sales%20Hub%20-%20Shift4%20BI%20Quiz.html     200
 /shift4businessintelligence        /Sales%20Hub%20-%20Shift4%20Business%20Intelligence.html 200
 /shift4customerhub                 /Sales%20Hub%20-%20Shift4%20Customer%20Hub.html 200
