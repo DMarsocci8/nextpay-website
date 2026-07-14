@@ -31,6 +31,7 @@
         ['Prospecting Scripts','/scripts'],
         ['Objection Handling','/objections'],
         ['Competitor Battlecards','/battlecards'],
+        ['SumUp Battlecards','/sumupbattlecards'],
         ['Prospecting Questions','/prospecting'],
         ['Current Promotions','/promotions']
       ]],
@@ -54,6 +55,7 @@
       ]],
       ['Submit', [
         ['Submit a Deal','/submitadeal'],
+        ['Merchant Application','/application',1],
         ['Document Library','/documentlibrary']
       ]],
       ['Build', [
