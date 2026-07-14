@@ -39,6 +39,7 @@
       ['Quote', [
         ['Pricing & Fee Programs','/pricing'],
         ['Proposal Builder','/proposalbuilder'],
+        ['Merchant Application','/application',1],
         ['Statement Analyzers','/analyzestatement'],
         ['Calculators','/calculators']
       ]],
