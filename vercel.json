@@ -3,6 +3,11 @@
   "trailingSlash": false,
   "redirects": [
     {
+      "source": "/skytab",
+      "destination": "/shift4-dine",
+      "permanent": false
+    },
+    {
       "source": "/application",
       "destination": "/assets/docs/NextPay-Merchant-Application.pdf",
       "permanent": false
