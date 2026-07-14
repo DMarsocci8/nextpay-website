@@ -1,0 +1,465 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>SumUp Battlecards — NextPay Sales Hub</title>
+<link rel="icon" href="/assets/favicon.ico" sizes="any">
+<link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
+<link rel="stylesheet" href="/css/nextpay.css">
+<style>
+.hub-bar{position:sticky;top:0;z-index:60;background:var(--navy);color:#fff;border-bottom:1px solid rgba(255,255,255,.10)}
+.hub-bar-inner{display:flex;align-items:center;gap:18px;height:66px;max-width:var(--maxw);margin:0 auto;padding:0 28px}
+.hub-bar img.logo{height:34px;width:auto;display:block}
+.hub-bar .pipe{width:1px;height:26px;background:rgba(255,255,255,.18)}
+.hub-bar .hub-tag{font-weight:800;font-size:15px;color:#fff;display:flex;align-items:center;gap:9px}
+.hub-bar .hub-tag .badge{font-size:10.5px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;background:var(--teal);color:#fff;padding:4px 9px;border-radius:999px}
+.hub-bar .right{margin-left:auto;display:flex;align-items:center;gap:20px}
+.hub-bar .right a{color:#cdd8e2;font-weight:600;font-size:14.5px}.hub-bar .right a:hover{color:#fff}
+
+.pg-head{background:linear-gradient(180deg,var(--navy),var(--navy-2));color:#fff}
+.pg-head .wrap{padding:30px 0 32px}
+.crumbs{display:flex;gap:8px;align-items:center;font-size:13.5px;color:#9fb1c2;padding-bottom:14px}
+.crumbs a{color:#cdd8e2;font-weight:600}.crumbs a:hover{color:#fff}.crumbs .sep{opacity:.5}
+.pg-head .htop{display:flex;align-items:center;gap:16px}
+.pg-head .plogo{width:88px;height:88px;border-radius:18px;background:#fff;display:grid;place-items:center;padding:14px;flex:none}
+.pg-head .plogo img{max-width:100%;max-height:100%;object-fit:contain}
+.pg-head h1{font-size:clamp(26px,3.6vw,38px);color:#fff;letter-spacing:-.02em}
+.pg-head p.lead{color:#c4d0db;margin-top:10px;max-width:660px;font-size:16px;line-height:1.55}
+.jump{display:flex;gap:9px;flex-wrap:wrap;margin-top:20px}
+.jump a{display:inline-flex;align-items:center;gap:7px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.16);border-radius:999px;padding:8px 14px;font-size:13px;font-weight:700;color:#eaf1f6}
+.jump a:hover{background:rgba(31,194,166,.18);border-color:var(--teal-bright);color:#fff}
+
+main.wrap{padding:26px 0 10px}
+
+.bc{background:#fff;border:1px solid var(--line);border-radius:var(--radius-lg);box-shadow:var(--shadow-sm);padding:24px;margin-bottom:26px;scroll-margin-top:84px}
+.bc-head{border-bottom:1px solid var(--line);padding-bottom:16px;margin-bottom:6px}
+.bc-vs{display:flex;align-items:center;gap:12px;flex-wrap:wrap}
+.bc-vs h2{font-size:23px;letter-spacing:-.02em}
+.bc-vs .vs{color:var(--slate);font-weight:800}
+.bc-vs img{height:24px;width:auto;vertical-align:middle}
+.bc-vs .wm{font-weight:800;font-size:19px;color:var(--navy)}
+.bc-who{color:var(--slate);font-size:14px;line-height:1.55;margin-top:10px}
+.bctag{display:inline-block;font-size:11px;font-weight:800;letter-spacing:.07em;text-transform:uppercase;color:var(--teal-dark);margin:18px 0 10px}
+.reasons{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+@media(max-width:820px){.reasons{grid-template-columns:1fr}}
+.reason{border:1px solid var(--line);border-radius:var(--radius);padding:16px;background:var(--bg-soft,#f6fafb)}
+.reason .n{width:26px;height:26px;border-radius:999px;background:var(--navy);color:#fff;display:grid;place-items:center;font-weight:800;font-size:13px;margin-bottom:9px}
+.reason h4{font-size:14.5px;margin-bottom:6px}
+.reason p{font-size:12.5px;color:var(--slate);line-height:1.5}
+
+.tbl-wrap{overflow-x:auto;border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow-sm)}
+table.t{width:100%;border-collapse:collapse;background:#fff;min-width:640px}
+table.t th,table.t td{text-align:left;padding:11px 15px;font-size:13.5px;border-bottom:1px solid var(--line);vertical-align:top;line-height:1.45}
+table.t th{background:var(--navy);color:#fff;font-size:11.5px;letter-spacing:.05em;text-transform:uppercase;font-weight:800}
+table.t tr:last-child td{border-bottom:0}
+table.t td.rowlbl{font-weight:800;color:var(--navy);white-space:nowrap;background:var(--bg-soft,#f6fafb)}
+.weak{color:#b4453a;font-weight:700}
+
+.bc-two{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:6px}
+@media(max-width:820px){.bc-two{grid-template-columns:1fr}}
+.panel{border:1px solid var(--line);border-radius:var(--radius);padding:16px 18px}
+.panel h4{font-size:12.5px;text-transform:uppercase;letter-spacing:.06em;color:var(--navy);margin-bottom:12px}
+.obj-item{margin-bottom:13px}
+.obj-item:last-child{margin-bottom:0}
+.obj-item .q{font-weight:800;font-size:13.5px;color:var(--ink)}
+.obj-item .a{font-size:12.5px;color:var(--slate);line-height:1.5;margin-top:3px}
+.trap{list-style:none;margin:0;padding:0}
+.trap li{font-size:13.5px;color:var(--ink);line-height:1.45;margin-bottom:10px;padding-left:16px;position:relative}
+.trap li:last-child{margin-bottom:0}
+.trap li:before{content:"›";position:absolute;left:0;color:var(--teal);font-weight:800}
+
+.feat table.t{min-width:420px}
+.yes{color:var(--teal);font-weight:800}.no{color:#c25b50;font-weight:800}.warn{color:#c08a12;font-weight:800}
+.fnote{font-size:11.5px;color:var(--slate);margin-top:8px}
+.note-band{display:flex;gap:11px;align-items:flex-start;background:rgba(20,161,140,.08);border:1px solid rgba(20,161,140,.22);border-radius:var(--radius);padding:13px 15px;margin:0 0 22px}
+.note-band svg{width:20px;height:20px;color:var(--teal-dark);flex:none;margin-top:1px}
+.note-band p{font-size:13px;color:var(--ink);line-height:1.5}
+</style>
+</head>
+<body>
+
+<div class="hub-bar">
+  <div class="hub-bar-inner">
+    <a href="/" style="display:flex;align-items:center" aria-label="Sales Hub home"><img class="logo" src="/assets/logos/nextpay-nav.png" alt="NextPay"></a>
+    <span class="pipe"></span>
+    <span class="hub-tag">Sales Hub <span class="badge">Internal</span></span>
+    <div class="right"><a href="/sumup">SumUp Deal Info</a><a href="/">← Hub home</a></div>
+  </div>
+</div>
+
+<header class="pg-head">
+  <div class="wrap">
+    <div class="crumbs"><a href="/">Sales Hub</a><span class="sep">/</span><span>SumUp Battlecards</span></div>
+    <div class="htop">
+      <span class="plogo"><img src="/assets/logos/sumup.svg" alt="SumUp"></span>
+      <div>
+        <h1>SumUp Battlecards</h1>
+        <p class="lead">Head-to-head cards for selling SumUp against the systems you'll run into most — who they are, why merchants switch, objection handling, and the trap questions that expose hidden fees. <em>Updated March 2026.</em></p>
+      </div>
+    </div>
+    <div class="jump">
+      <a href="#clover">vs Clover</a>
+      <a href="#lightspeed">vs Lightspeed</a>
+      <a href="#nrs">vs NRS</a>
+      <a href="#shopify">vs Shopify</a>
+      <a href="#square">vs Square</a>
+      <a href="#toast">vs Toast</a>
+    </div>
+  </div>
+</header>
+
+<main class="wrap">
+
+  <div class="note-band">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4M12 8h.01"/></svg>
+    <p><b>SumUp's constant strengths</b> (true on every card): 12-month contract with fixed processing, software &amp; hardware costs · SaaS $99&ndash;$289 with <b>dual pricing</b> · <b>one software fee per location</b> no matter how many devices · integrated loyalty, automated SMS, inventory &amp; reporting built in · modular hardware you own with 3/6/12-month 0% financing · <b>US-based phone support</b> on all products.</p>
+  </div>
+
+  <!-- ============ CLOVER ============ -->
+  <section class="bc" id="clover">
+    <div class="bc-head">
+      <div class="bc-vs"><h2>SumUp <span class="vs">vs</span></h2><img src="/assets/logos/clover.png" alt="Clover"></div>
+      <p class="bc-who"><b>Who are they?</b> Clover is a POS platform owned by Fiserv (First Data) that often wins on recognizable hardware and ecosystem depth, but the merchant experience gets complex with lots of apps and fees, and customer support can be a challenge.</p>
+    </div>
+    <div class="bctag">Top 3 reasons merchants choose SumUp</div>
+    <div class="reasons">
+      <div class="reason"><div class="n">1</div><h4>All-in-One Platform</h4><p>Built-in loyalty, inventory management and advanced reporting — merchants aren't stitching together separate apps.</p></div>
+      <div class="reason"><div class="n">2</div><h4>Predictable Pricing</h4><p>Transparent pricing on a 1-year contract. Clover merchants are often in 36–48-mo. contracts paying $50–$100/mo for add-on apps that SumUp includes.</p></div>
+      <div class="reason"><div class="n">3</div><h4>One-Call Support</h4><p>100% US-based support for all products, while Clover merchants get bounced between ISO, Clover, and third-party app vendors.</p></div>
+    </div>
+    <div class="bctag">Comparison</div>
+    <div class="tbl-wrap"><table class="t">
+      <thead><tr><th style="width:120px"></th><th>SumUp</th><th>Clover</th></tr></thead>
+      <tbody>
+        <tr><td class="rowlbl">Contract</td><td>12 months with fixed processing, software fees, and hardware costs.</td><td>36–48 months; early termination fees and minimums are common. <span class="weak">Weak spot:</span> contracts are long, especially to get the best pricing.</td></tr>
+        <tr><td class="rowlbl">Pricing</td><td>SaaS fees $99–$289; dual pricing available; only one software fee per location, no matter how many devices.</td><td>Monthly software $180–$245/mo + app marketplace costs; 2.3% + 10¢ CP for QSR, 2.5% + 10¢ Retail, 3.5% + 10¢ CNP. <span class="weak">Weak spot:</span> total cost rises quickly with add-ons.</td></tr>
+        <tr><td class="rowlbl">Ecosystem</td><td>Integrated POS + growth platform: customer database, loyalty, automated SMS campaigns, inventory, robust reporting, appointment booking and commissions.</td><td>POS + large app marketplace. <span class="weak">Weak spot:</span> feature depth often depends on paid add-ons — more fees, logins and support ping-pong.</td></tr>
+        <tr><td class="rowlbl">Hardware</td><td>Modular: buy only what you need — register, cash drawer, printer, barcode scanner.</td><td>Card reader $199, terminals $699–$749, Mini $849, POS bundle $1,799–$1,899; kiosk &amp; KDS available. <span class="weak">Weak spot:</span> monthly financing raises cost; equipment only runs on Clover; each additional device $9.95/mo.</td></tr>
+      </tbody>
+    </table></div>
+    <div class="bc-two">
+      <div class="panel"><h4>Quick objection handling</h4>
+        <div class="obj-item"><div class="q">"Clover has more features."</div><div class="a">They have a big app marketplace, but those features are paid add-ons from different companies — multiple bills, logins and support lines. With SumUp the core functionality is already built in and supported by one US-based team.</div></div>
+        <div class="obj-item"><div class="q">"Clover is cheaper."</div><div class="a">It can look that way at first. But add up what you actually pay each month across all your apps — SumUp's all-in price usually comes in lower, and you're not managing a dozen subscriptions.</div></div>
+        <div class="obj-item"><div class="q">"My bank offers Clover."</div><div class="a">A lot of banks distribute Clover — but that usually comes with a 36-month contract and pricing set by a reseller, not Clover directly. Worth looking at what you're actually locked into.</div></div>
+        <div class="obj-item"><div class="q">"I need QSR speed: modifiers, quick menus, kitchen support."</div><div class="a">SumUp has all that — modifiers, KDS, fast checkout. Plus loyalty is built into checkout, so you're building your customer list every time you ring someone up.</div></div>
+      </div>
+      <div class="panel"><h4>Trap questions to ask merchants</h4>
+        <ul class="trap">
+          <li>Are you locked into a multi-year agreement today?</li>
+          <li>How many monthly fees are you paying across software, apps, and support?</li>
+          <li>How are you driving repeat visits today — do you have a customer list you can actually message?</li>
+          <li>Which features are included vs paid add-ons, and who sets the price: the bank/reseller or the POS provider?</li>
+          <li>Who do you call when something breaks: Clover, your bank, or the app provider?</li>
+        </ul>
+      </div>
+    </div>
+    <div class="bctag">Feature comparison</div>
+    <div class="feat tbl-wrap"><table class="t">
+      <thead><tr><th>Feature</th><th>SumUp</th><th>Clover</th></tr></thead>
+      <tbody>
+        <tr><td class="rowlbl">POS</td><td><span class="yes">✓</span></td><td><span class="yes">✓</span></td></tr>
+        <tr><td class="rowlbl">Kiosk</td><td><span class="yes">✓</span></td><td><span class="yes">✓</span></td></tr>
+        <tr><td class="rowlbl">Integrated loyalty</td><td><span class="yes">✓</span></td><td><span class="no">✗</span></td></tr>
+        <tr><td class="rowlbl">Automated messaging</td><td><span class="yes">✓</span></td><td><span class="no">✗</span></td></tr>
+        <tr><td class="rowlbl">Optimized for SHAFT</td><td><span class="yes">✓</span></td><td><span class="no">✗</span></td></tr>
+        <tr><td class="rowlbl">Gift cards</td><td><span class="yes">✓</span></td><td><span class="yes">✓</span></td></tr>
+        <tr><td class="rowlbl">Offline processing</td><td><span class="yes">✓</span></td><td><span class="yes">✓</span></td></tr>
+        <tr><td class="rowlbl">Support for all products</td><td><span class="yes">✓</span></td><td><span class="no">✗</span></td></tr>
+        <tr><td class="rowlbl">Inventory</td><td><span class="yes">✓</span></td><td><span class="warn">▲*</span></td></tr>
+        <tr><td class="rowlbl">Staff management</td><td><span class="yes">✓</span></td><td><span class="yes">✓</span></td></tr>
+      </tbody>
+    </table></div>
+    <p class="fnote">* Limited functionality without an extra (paid) app.</p>
+  </section>
+
+  <!-- ============ LIGHTSPEED ============ -->
+  <section class="bc" id="lightspeed">
+    <div class="bc-head">
+      <div class="bc-vs"><h2>SumUp <span class="vs">vs</span></h2><span class="wm">lightspeed</span></div>
+      <p class="bc-who"><b>Who are they?</b> Lightspeed has separate products for retail (X-Series) and restaurants (K-Series), and targets growing, multi-location businesses with deep inventory management and analytics. Pricing starts at $109/mo for retail and $69/mo for restaurants and climbs quickly with add-ons, extra registers, and extra locations.</p>
+    </div>
+    <div class="bctag">Top 3 reasons merchants choose SumUp</div>
+    <div class="reasons">
+      <div class="reason"><div class="n">1</div><h4>Built for SMB</h4><p>SumUp is built for SMBs of all sizes, from 1 location to enterprise. Lightspeed's features are geared toward multi-location, so a small shop is likely paying for features it's not using.</p></div>
+      <div class="reason"><div class="n">2</div><h4>Flexibility</h4><p>SumUp lets partners bring their own processor. Lightspeed requires Lightspeed Payments for most retail merchants — costly for the few using an external processor.</p></div>
+      <div class="reason"><div class="n">3</div><h4>Transparent Pricing</h4><p>A SumUp contract means fixed monthly fees and published rates. Lightspeed doesn't publish pricing for most add-ons, so merchants don't know the real cost until they're already in a sales conversation.</p></div>
+    </div>
+    <div class="bctag">Comparison</div>
+    <div class="tbl-wrap"><table class="t">
+      <thead><tr><th style="width:120px"></th><th>SumUp</th><th>Lightspeed</th></tr></thead>
+      <tbody>
+        <tr><td class="rowlbl">Contract</td><td>12 months with fixed processing, software fees, and hardware costs.</td><td>12- to 36-month contracts. <span class="weak">Weak spot:</span> merchants are required to use Lightspeed Payments, and can incur cited fees of up to $400/month if they use a different processor.</td></tr>
+        <tr><td class="rowlbl">Pricing</td><td>SaaS fees $99–$289; dual pricing available; only one software fee per location, no matter how many devices.</td><td>Retail: Basic $109, Core $179, Plus $339/mo + 2.6% + 10¢ (pre-pay for up to 18% off). Restaurant: Starter $69, Essential $189, Premium $399/mo; KDS $30/mo. <span class="weak">Weak spot:</span> base plan is stripped down; Essentials require Core or Plus; 24/7 phone support only on Plus.</td></tr>
+        <tr><td class="rowlbl">Ecosystem</td><td>Integrated POS + growth: customer database, loyalty, automated SMS campaigns, inventory, reporting.</td><td>POS, inventory, eCommerce, NuORDER wholesale network, accounting. <span class="weak">Weak spot:</span> loyalty and advanced marketing (email/SMS flows, segmentation) are paid add-ons; retail and restaurant are separate products.</td></tr>
+        <tr><td class="rowlbl">Hardware</td><td>Modular: register, cash drawer, printer, barcode scanner; 3-, 6- and 12-month financing available without interest.</td><td>Retail setup ad hoc (iPad $349, stand $169, mobile tap $79, printer $299, drawer $129, scanner $429 = $1,454); additional registers $59/each; retail terminal $329; desktop setup $1,500–$2,200. <span class="weak">Weak spot:</span> necessary hardware (USB hub, iPad stand) adds up; Android only for in-person retail payments.</td></tr>
+      </tbody>
+    </table></div>
+    <div class="bc-two">
+      <div class="panel"><h4>Quick objection handling</h4>
+        <div class="obj-item"><div class="q">"Lightspeed has better inventory management."</div><div class="a">For a retailer managing thousands of SKUs across multiple warehouses, maybe. But as a one- or two-location SMB, SumUp's inventory does everything you need without the complexity or the price tag.</div></div>
+        <div class="obj-item"><div class="q">"Lightspeed has better analytics and reporting."</div><div class="a">Their reporting is strong, but it's locked behind the Core plan at $179–$189/mo or higher. SumUp includes reporting at every tier — you know what's selling and who's coming back from day one.</div></div>
+        <div class="obj-item"><div class="q">"I want a system I can grow into."</div><div class="a">Growth shouldn't mean paying for features you don't use yet. SumUp scales with you, and when you do need them, loyalty and marketing are already included.</div></div>
+      </div>
+      <div class="panel"><h4>Trap questions to ask merchants</h4>
+        <ul class="trap">
+          <li>What's your total monthly Lightspeed bill right now, including all add-ons, processing, and extra registers?</li>
+          <li>How long did it take to fully set up Lightspeed and train your staff on it?</li>
+          <li>Is Lightspeed automatically bringing customers back, or are you doing all that marketing yourself?</li>
+        </ul>
+      </div>
+    </div>
+    <div class="bctag">Feature comparison</div>
+    <div class="feat tbl-wrap"><table class="t">
+      <thead><tr><th>Feature</th><th>SumUp</th><th>Lightspeed</th></tr></thead>
+      <tbody>
+        <tr><td class="rowlbl">POS</td><td><span class="yes">✓</span></td><td><span class="yes">✓</span></td></tr>
+        <tr><td class="rowlbl">Kiosk</td><td><span class="yes">✓</span></td><td><span class="warn">▲¹</span></td></tr>
+        <tr><td class="rowlbl">Integrated loyalty</td><td><span class="yes">✓</span></td><td><span class="warn">✓²</span></td></tr>
+        <tr><td class="rowlbl">Automated messaging</td><td><span class="yes">✓</span></td><td><span class="warn">✓²</span></td></tr>
+        <tr><td class="rowlbl">Optimized for SHAFT</td><td><span class="yes">✓</span></td><td><span class="no">✗</span></td></tr>
+        <tr><td class="rowlbl">Gift cards</td><td><span class="yes">✓</span></td><td><span class="yes">✓</span></td></tr>
+        <tr><td class="rowlbl">Offline processing</td><td><span class="yes">✓</span></td><td><span class="yes">✓</span></td></tr>
+        <tr><td class="rowlbl">Phone support for all plans</td><td><span class="yes">✓</span></td><td><span class="no">✗</span></td></tr>
+        <tr><td class="rowlbl">Inventory</td><td><span class="yes">✓</span></td><td><span class="yes">✓</span></td></tr>
+        <tr><td class="rowlbl">Staff management</td><td><span class="yes">✓</span></td><td><span class="yes">✓</span></td></tr>
+      </tbody>
+    </table></div>
+    <p class="fnote">¹ Software on 3rd-party hardware. ² Extra cost.</p>
+  </section>
+
+  <!-- ============ NRS ============ -->
+  <section class="bc" id="nrs">
+    <div class="bc-head">
+      <div class="bc-vs"><h2>SumUp <span class="vs">vs</span></h2><img src="/assets/logos/nrs.png" alt="National Retail Solutions (NRS)"></div>
+      <p class="bc-who"><b>Who are they?</b> National Retail Solutions (NRS) targets independent retailers, bodegas, convenience stores, and small grocers with a low-cost POS terminal bundled with their NRS PAY processing. They emphasize free or heavily subsidized hardware to lock merchants into their processing contracts. NRS is known in the convenience-store and tobacco segments, but lacks the breadth of a true growth platform.</p>
+    </div>
+    <div class="bctag">Top 3 reasons merchants choose SumUp</div>
+    <div class="reasons">
+      <div class="reason"><div class="n">1</div><h4>Built for Growth</h4><p>SumUp is designed to bring customers back with tools that grow the business. NRS is built to ring up transactions — its marketing features are antiquated and cost extra.</p></div>
+      <div class="reason"><div class="n">2</div><h4>Transparent, All-in Pricing</h4><p>SumUp's SaaS fees are fixed and predictable. NRS bundles processing with hidden rate markups and long-term contracts, so merchants don't realize how much they're paying.</p></div>
+      <div class="reason"><div class="n">3</div><h4>People-Powered Support</h4><p>SumUp has US-based phone support for all merchants. NRS support is primarily ticket-based and often slow, leaving merchants stuck during business hours.</p></div>
+    </div>
+    <div class="bctag">Comparison</div>
+    <div class="tbl-wrap"><table class="t">
+      <thead><tr><th style="width:120px"></th><th>SumUp</th><th>NRS</th></tr></thead>
+      <tbody>
+        <tr><td class="rowlbl">Contract</td><td>12 months with fixed processing, software fees, and hardware costs.</td><td>Typically 3–4 year processing contract with early termination fees. <span class="weak">Weak spot:</span> hardware may be "free," but the merchant is locked into NRS PAY and long contracts.</td></tr>
+        <tr><td class="rowlbl">Pricing</td><td>SaaS fees $99–$289; dual pricing available; only one software fee per location. eCommerce $19/month (included with kiosk or Urban Piper delivery aggregator).</td><td>Basic $19.95, Pro $34.95, Advanced $49.95, Elite $79.95/mo. Cash discounting $49.95/mo (or $0 if processing &gt;$18k/mo); Clean Rate 2.49% + 10¢ plus $10/mo. <span class="weak">Weak spot:</span> monthly SaaS fees increase if the merchant is not using NRS PAY.</td></tr>
+        <tr><td class="rowlbl">Ecosystem</td><td>Integrated POS + growth platform: customer database, loyalty, automated SMS campaigns, inventory, robust reporting.</td><td>Basic POS with sales reporting; loyalty and marketing are limited or require third-party add-ons. <span class="weak">Weak spot:</span> targeted features like ID scanning and SMS receipts are only in top tiers. Only Elite-tier merchants can contact their customers, or it's an $80 add-on.</td></tr>
+        <tr><td class="rowlbl">Hardware</td><td>Modular: register, cash drawer, printer, barcode scanner.</td><td>Countertop POS bundles $1,299–$1,799, tablet POS bundles $499–$1,199, and kiosk ($1,595; floor stand $200). Bring your own tablet available. <span class="weak">Weak spot:</span> hardware is often highly subsidized or free, but that comes with long contracts and use of NRS PAY.</td></tr>
+      </tbody>
+    </table></div>
+    <div class="bc-two">
+      <div class="panel"><h4>Quick objection handling</h4>
+        <div class="obj-item"><div class="q">"The NRS point of sale is free."</div><div class="a">It's not free; you pay for it through their processing rates. NRS locks you into NRS PAY with inflated margins. Add up what you're actually paying per swipe over 3–4 years and you'll likely spend more than if you bought your hardware outright and kept transparent processing with SumUp.</div></div>
+        <div class="obj-item"><div class="q">"NRS is built for stores like mine; they understand my business."</div><div class="a">NRS has a basic platform that rings up sales and runs reports. SumUp does that AND gives you tools to grow: loyalty, automated text marketing, and a customer database. Your POS should help you bring customers back, not just check them out.</div></div>
+        <div class="obj-item"><div class="q">"I like that NRS integrates with my security cameras."</div><div class="a">Camera integration is a nice perk, but it requires separate equipment and an upgraded plan. What's doing more for your bottom line: a camera overlay on your POS, or automated marketing that brings customers back every week?</div></div>
+      </div>
+      <div class="panel"><h4>Trap questions to ask merchants</h4>
+        <ul class="trap">
+          <li>What's your total monthly NRS bill right now, including software, NRS Pay fees, and any add-ons?</li>
+          <li>How are you bringing customers back to your store right now? Are you using NRS loyalty, or is that on a plan you don't have?</li>
+          <li>How many of NRS's premium features are you actually paying for separately vs. what you thought came with the system?</li>
+        </ul>
+      </div>
+    </div>
+    <div class="bctag">Feature comparison</div>
+    <div class="feat tbl-wrap"><table class="t">
+      <thead><tr><th>Feature</th><th>SumUp</th><th>NRS</th></tr></thead>
+      <tbody>
+        <tr><td class="rowlbl">POS</td><td><span class="yes">✓</span></td><td><span class="yes">✓</span></td></tr>
+        <tr><td class="rowlbl">Kiosk</td><td><span class="yes">✓</span></td><td><span class="yes">✓</span></td></tr>
+        <tr><td class="rowlbl">Integrated loyalty</td><td><span class="yes">✓</span></td><td><span class="yes">✓</span></td></tr>
+        <tr><td class="rowlbl">Automated messaging</td><td><span class="yes">✓</span></td><td><span class="no">✗</span></td></tr>
+        <tr><td class="rowlbl">Optimized for SHAFT</td><td><span class="yes">✓</span></td><td><span class="yes">✓</span></td></tr>
+        <tr><td class="rowlbl">Gift cards</td><td><span class="yes">✓</span></td><td><span class="no">✗</span></td></tr>
+        <tr><td class="rowlbl">Offline processing</td><td><span class="yes">✓</span></td><td><span class="yes">✓</span></td></tr>
+        <tr><td class="rowlbl">Support for all products</td><td><span class="yes">✓</span></td><td><span class="yes">✓</span></td></tr>
+        <tr><td class="rowlbl">Inventory</td><td><span class="yes">✓</span></td><td><span class="yes">✓</span></td></tr>
+        <tr><td class="rowlbl">Staff management</td><td><span class="yes">✓</span></td><td><span class="yes">✓</span></td></tr>
+      </tbody>
+    </table></div>
+  </section>
+
+  <!-- ============ SHOPIFY ============ -->
+  <section class="bc" id="shopify">
+    <div class="bc-head">
+      <div class="bc-vs"><h2>SumUp <span class="vs">vs</span></h2><span class="wm">shopify</span></div>
+      <p class="bc-who"><b>Who are they?</b> Shopify is an eCommerce-first platform that combines online store tools, POS, payments, and apps into one ecosystem. Retailers can sell in-person, online, and on social media, but brick-and-mortar businesses are required to subscribe to an eCommerce plan. Tiered processing means higher sales result in more transaction fees.</p>
+    </div>
+    <div class="bctag">Top 3 reasons merchants choose SumUp</div>
+    <div class="reasons">
+      <div class="reason"><div class="n">1</div><h4>Built for In-Person SMBs</h4><p>SumUp was designed for brick-and-mortar businesses, while Shopify is adapting online tools to in-person transactions. They force everyone to pay for an online store.</p></div>
+      <div class="reason"><div class="n">2</div><h4>Transparent + Inclusive Pricing</h4><p>SumUp only requires one software fee per location with automated marketing and inventory included. Shopify requires a base eComm plan plus POS Pro.</p></div>
+      <div class="reason"><div class="n">3</div><h4>People-Powered Support</h4><p>SumUp has US-based phone support for all merchants. Shopify phone support is only available to Pro merchants; Basic and Grow plan merchants are limited to chat and email.</p></div>
+    </div>
+    <div class="bctag">Comparison</div>
+    <div class="tbl-wrap"><table class="t">
+      <thead><tr><th style="width:120px"></th><th>SumUp</th><th>Shopify</th></tr></thead>
+      <tbody>
+        <tr><td class="rowlbl">Contract</td><td>12 months with fixed processing, software fees, and hardware costs.</td><td>Monthly Shopify subscription required; POS tied to eCommerce plan. <span class="weak">Weak spot:</span> less flexible for offline-first businesses — requires their "Pro" package.</td></tr>
+        <tr><td class="rowlbl">Pricing</td><td>SaaS fees $99–$289; dual pricing available; one software fee per location. eCommerce $19/month (included with kiosk or Urban Piper delivery aggregator).</td><td>Plans $39–$399/mo + $89/mo per location for POS Pro (unlimited staff, advanced inventory); pay monthly or annually (~25% discount). Processing starts at 2.4% +10¢ to 2.7% + 30¢. <span class="weak">Weak spot:</span> processing fees scale with sales volume.</td></tr>
+        <tr><td class="rowlbl">Ecosystem</td><td>Integrated POS + growth: customer database, loyalty, automated SMS campaigns, inventory, reporting.</td><td>eCommerce, POS, payments, apps, marketing, and fulfillment in one unified platform for omnichannel selling. <span class="weak">Weak spot:</span> layered plans, add-ons and processing tiers make total cost and setup complexity higher for in-person–first businesses.</td></tr>
+        <tr><td class="rowlbl">Hardware</td><td>Modular: register, cash drawer, printer, barcode scanner.</td><td>Card readers $49–$89, Terminal $349–$379, and build-your-own POS bundle (can go as high as $1,130; basics like iPad stand and connectivity hub are not included).</td></tr>
+      </tbody>
+    </table></div>
+    <div class="bc-two">
+      <div class="panel"><h4>Quick objection handling</h4>
+        <div class="obj-item"><div class="q">"Shopify POS syncs online and offline inventory."</div><div class="a">That's valuable for merchants already on Shopify's eCommerce. If most of your sales are at the counter, you're paying for an eComm subscription just to get a POS. With us, inventory syncs across locations for just $19/month.</div></div>
+        <div class="obj-item"><div class="q">"Shopify is an all-in-one system."</div><div class="a">It is — for online sellers. But for a brick-and-mortar business you're largely paying to power an online store. Our platform was built for in-person businesses, so you're only paying for what you actually use.</div></div>
+        <div class="obj-item"><div class="q">"We have a Shopify website so it makes sense to use that POS."</div><div class="a">That's fair, and if your online store is driving real revenue it might make sense to keep it. But you're paying your Shopify plan plus $89/mo for Pro per location, so you may be spending more on the POS than you realize — especially with marketing and loyalty, which are included with SumUp.</div></div>
+      </div>
+      <div class="panel"><h4>Trap questions to ask merchants</h4>
+        <ul class="trap">
+          <li>Are you actively selling online, or did you get Shopify mainly for the POS?</li>
+          <li>Do you know how much of your monthly Shopify bill is just for the eComm plan versus the POS?</li>
+          <li>How often do you call Shopify support, and how long does it take to get someone on the phone?</li>
+          <li>Are you using Shopify's marketing tools, or are you mostly just processing transactions?</li>
+        </ul>
+      </div>
+    </div>
+    <div class="bctag">Feature comparison</div>
+    <div class="feat tbl-wrap"><table class="t">
+      <thead><tr><th>Feature</th><th>SumUp</th><th>Shopify</th></tr></thead>
+      <tbody>
+        <tr><td class="rowlbl">POS</td><td><span class="yes">✓</span></td><td><span class="yes">✓</span></td></tr>
+        <tr><td class="rowlbl">Kiosk</td><td><span class="yes">✓</span></td><td><span class="warn">▲*</span></td></tr>
+        <tr><td class="rowlbl">Integrated loyalty</td><td><span class="yes">✓</span></td><td><span class="yes">✓</span></td></tr>
+        <tr><td class="rowlbl">Automated messaging</td><td><span class="yes">✓</span></td><td><span class="yes">✓</span></td></tr>
+        <tr><td class="rowlbl">Optimized for SHAFT</td><td><span class="yes">✓</span></td><td><span class="no">✗</span></td></tr>
+        <tr><td class="rowlbl">Gift cards</td><td><span class="yes">✓</span></td><td><span class="yes">✓</span></td></tr>
+        <tr><td class="rowlbl">Offline processing</td><td><span class="yes">✓</span></td><td><span class="yes">✓</span></td></tr>
+        <tr><td class="rowlbl">Support for all products</td><td><span class="yes">✓</span></td><td><span class="yes">✓</span></td></tr>
+        <tr><td class="rowlbl">Inventory</td><td><span class="yes">✓</span></td><td><span class="yes">✓</span></td></tr>
+        <tr><td class="rowlbl">Staff management</td><td><span class="yes">✓</span></td><td><span class="yes">✓</span></td></tr>
+      </tbody>
+    </table></div>
+    <p class="fnote">* Requires a third-party app and is on a small iPad.</p>
+  </section>
+
+  <!-- ============ SQUARE ============ -->
+  <section class="bc" id="square">
+    <div class="bc-head">
+      <div class="bc-vs"><h2>SumUp <span class="vs">vs</span></h2><img src="/assets/logos/square.svg" alt="Square"></div>
+      <p class="bc-who"><b>Who are they?</b> Square, part of global fintech Block, Inc., is a payments and software company targeting small businesses with a well-known brand and $0 entry-level plan. They offer an integrated stack: POS, online ordering, invoicing, payroll, marketing, and banking. The $0 plan makes them the default for new merchants, but the loyalty features that actually drive repeat business are gated behind paid tiers.</p>
+    </div>
+    <div class="bctag">Top 3 reasons merchants choose SumUp</div>
+    <div class="reasons">
+      <div class="reason"><div class="n">1</div><h4>All-Inclusive SMS Marketing</h4><p>The cost of SumUp's built-in marketing is fixed regardless of database size. Square's SMS costs scale as the customer list grows, and the service carries a monthly fee.</p></div>
+      <div class="reason"><div class="n">2</div><h4>Dual Pricing / Surcharging</h4><p>SumUp's POS has built-in dual pricing, so merchants can pass transaction fees to the consumer. Square cannot detect credit card charges — an important distinction for today's merchants.</p></div>
+      <div class="reason"><div class="n">3</div><h4>People-Powered Support</h4><p>SumUp has US-based phone support for all merchants. Lowest-tier Square merchants get phone support for just 90 days and often rely on community forums.</p></div>
+    </div>
+    <div class="bctag">Comparison</div>
+    <div class="tbl-wrap"><table class="t">
+      <thead><tr><th style="width:120px"></th><th>SumUp</th><th>Square</th></tr></thead>
+      <tbody>
+        <tr><td class="rowlbl">Contract</td><td>12 months with fixed processing, software fees, and hardware costs.</td><td>No contract required; merchants can cancel anytime. <span class="weak">Weak spot:</span> no contracts means Square can change pricing at any time, putting more features behind priced tiers.</td></tr>
+        <tr><td class="rowlbl">Pricing</td><td>SaaS fees $99–$289; dual pricing available; only one software fee per location, no matter how many devices.</td><td>Free ($0/mo), Plus ($49/mo/location), Premium ($149/mo/location). CP: 2.4% + 15¢ to 2.6% + 15¢; CNP: 2.9% + 30¢ to 3.3% + 30¢, depending on tier. <span class="weak">Weak spot:</span> not all POS features are available at every SaaS tier; gift cards have a 2.5% load fee.</td></tr>
+        <tr><td class="rowlbl">Ecosystem</td><td>Integrated POS + growth: customer database, loyalty, automated SMS campaigns, inventory, reporting.</td><td>POS, payments, invoicing, online ordering, payroll, banking; marketing and loyalty on paid plans only. <span class="weak">Weak spot:</span> Square's marketing automations are template-based and require merchant setup; SMS scales with customer database.</td></tr>
+        <tr><td class="rowlbl">Hardware</td><td>Modular: register, cash drawer, printer, barcode scanner; 3-, 6- and 12-month financing available without interest.</td><td>Card readers $59, iPad POS $149, Terminal $299, Full register $899; bundles with accessories available starting at $1,189.</td></tr>
+      </tbody>
+    </table></div>
+    <div class="bc-two">
+      <div class="panel"><h4>Quick objection handling</h4>
+        <div class="obj-item"><div class="q">"Square is free to start."</div><div class="a">It is, but the free plan doesn't include loyalty, marketing, or staff management. Once you add those, you're on Plus for $49/month, and SMS costs go up from there. With SumUp, everything is included from day one.</div></div>
+        <div class="obj-item"><div class="q">"Square is everywhere. Everyone knows it."</div><div class="a">Brand recognition is real, but your customers don't come back because of who processes your payments. They come back because of reminders like our AutoPilot messaging, and Square's marketing is not as robust.</div></div>
+        <div class="obj-item"><div class="q">"I can always add features later with Square."</div><div class="a">You can, but every feature bumps the bill. Loyalty requires Plus at $49/month. 24/7 phone support requires Premium at $149/month. Send more than 500 texts per month and you're paying per text. By the time you have the full toolkit, you're paying more than you would with SumUp.</div></div>
+      </div>
+      <div class="panel"><h4>Trap questions to ask merchants</h4>
+        <ul class="trap">
+          <li>What's your total monthly Square bill right now, including all add-on features?</li>
+          <li>How many marketing texts do you send per month, and what does that cost you?</li>
+          <li>How often do you call Square support, and how long does it take to get someone on the phone?</li>
+          <li>Is Square doing anything automatically to bring customers back, or are you doing that all yourself?</li>
+        </ul>
+      </div>
+    </div>
+    <div class="bctag">Feature comparison</div>
+    <div class="feat tbl-wrap"><table class="t">
+      <thead><tr><th>Feature</th><th>SumUp</th><th>Square</th></tr></thead>
+      <tbody>
+        <tr><td class="rowlbl">POS</td><td><span class="yes">✓</span></td><td><span class="yes">✓</span></td></tr>
+        <tr><td class="rowlbl">Kiosk</td><td><span class="yes">✓</span></td><td><span class="yes">✓</span></td></tr>
+        <tr><td class="rowlbl">Integrated loyalty</td><td><span class="yes">✓</span></td><td><span class="warn">✓*</span></td></tr>
+        <tr><td class="rowlbl">Automated messaging</td><td><span class="yes">✓</span></td><td><span class="yes">✓</span></td></tr>
+        <tr><td class="rowlbl">Optimized for SHAFT</td><td><span class="yes">✓</span></td><td><span class="no">✗</span></td></tr>
+        <tr><td class="rowlbl">Gift cards</td><td><span class="yes">✓</span></td><td><span class="yes">✓</span></td></tr>
+        <tr><td class="rowlbl">Offline processing</td><td><span class="yes">✓</span></td><td><span class="yes">✓</span></td></tr>
+        <tr><td class="rowlbl">Phone support for all plans</td><td><span class="yes">✓</span></td><td><span class="no">✗</span></td></tr>
+        <tr><td class="rowlbl">Inventory</td><td><span class="yes">✓</span></td><td><span class="yes">✓</span></td></tr>
+        <tr><td class="rowlbl">Staff management</td><td><span class="yes">✓</span></td><td><span class="warn">✓*</span></td></tr>
+      </tbody>
+    </table></div>
+    <p class="fnote">* Plus and Premium plans only.</p>
+  </section>
+
+  <!-- ============ TOAST ============ -->
+  <section class="bc" id="toast">
+    <div class="bc-head">
+      <div class="bc-vs"><h2>SumUp <span class="vs">vs</span></h2><span class="wm" style="color:#ff4c00">toast</span></div>
+      <p class="bc-who"><b>Who are they?</b> Toast is a restaurant-first POS platform with strong brand recognition. They sell direct to merchants with expensive proprietary hardware. They advertise a $0 Starter Kit, but SaaS fees are often much higher, and contracts usually run 2 years. Add-ons such as marketing, gift cards, payroll, and delivery are extra. Toast is expanding into retail, but the platform is still designed for restaurants. Onboarding and implementation starts at $849 and can go over $1,000 for in-person service.</p>
+    </div>
+    <div class="bctag">Top 3 reasons merchants choose SumUp</div>
+    <div class="reasons">
+      <div class="reason"><div class="n">1</div><h4>All-Inclusive Growth Tools</h4><p>SumUp's loyalty, SMS, and automated marketing campaigns are included in Plus and Pro tiers. Toast charges extra for all of those — the base marketing plan includes only 500 texts.</p></div>
+      <div class="reason"><div class="n">2</div><h4>Hardware Costs</h4><p>With SumUp, merchants buy modular hardware that they own outright. Toast requires proprietary devices that can't transfer if they move to another point of sale.</p></div>
+      <div class="reason"><div class="n">3</div><h4>Transparent Pricing</h4><p>A SumUp contract means fixed monthly fees and published rates. Toast doesn't publish pricing for most add-ons, so merchants don't know the real cost until they're already in a sales conversation.</p></div>
+    </div>
+    <div class="bctag">Comparison</div>
+    <div class="tbl-wrap"><table class="t">
+      <thead><tr><th style="width:120px"></th><th>SumUp</th><th>Toast</th></tr></thead>
+      <tbody>
+        <tr><td class="rowlbl">Contract</td><td>12 months with fixed processing, software fees, and hardware costs.</td><td>Two-year contracts. <span class="weak">Weak spot:</span> early termination fees and price increases after the initial term make it hard to leave. The fine print notes the onboarding fee is a "best estimate" but may change.</td></tr>
+        <tr><td class="rowlbl">Pricing</td><td>SaaS fees $99–$289; dual pricing available; only one software fee per location, no matter how many devices.</td><td>Pay-as-you-Go $0/mo all tiers; Basic (3.09% + 15¢), Core (3.39% + 15¢), Growth (3.69% + 15¢). Traditional: Basic $69/mo, Core $219/mo, Growth $578/mo + 2.49% + 15¢ for all tiers. <span class="weak">Weak spot:</span> not all POS features at every tier; basic features like gift cards and loyalty only at the highest tier.</td></tr>
+        <tr><td class="rowlbl">Ecosystem</td><td>Integrated POS + growth: customer database, loyalty, automated SMS campaigns, inventory, reporting.</td><td>POS, online ordering, delivery integrations, payroll, marketing, accounting, digital storefront. <span class="weak">Weak spot:</span> growth comes at a high cost — loyalty and SMS/email marketing only available at $578/mo.</td></tr>
+        <tr><td class="rowlbl">Hardware</td><td>Modular: register, cash drawer, printer, barcode scanner; 3-, 6- and 12-month financing available without interest.</td><td>Starter kits vary by size; starting prices: Countertop $1,068, Handheld $1,032, Kiosk $1,339; accessories like printers, scales and cash drawer are extra. <span class="weak">Weak spot:</span> cannot use non-Toast hardware. A retail starter setup runs $2,500+ before software fees. Toast requires 2 proprietary routers ($538).</td></tr>
+      </tbody>
+    </table></div>
+    <div class="bc-two">
+      <div class="panel"><h4>Quick objection handling</h4>
+        <div class="obj-item"><div class="q">"Toast is the industry standard for restaurants."</div><div class="a">Toast is built for full-service restaurants. If the merchant runs a QSR, café, or retail shop, they're paying for a restaurant-grade system designed for someone else. SumUp is built for QSR, retail, and services in mind.</div></div>
+        <div class="obj-item"><div class="q">"Toast has a free plan."</div><div class="a">It's free until you need marketing, loyalty, gift cards, or a second terminal. Once you add what actually drives repeat business, you're on a custom quote with a two-year contract. SumUp includes growth tools from day one.</div></div>
+        <div class="obj-item"><div class="q">"Toast has 24/7 support included."</div><div class="a">That's true, but think about how often you actually need to call support at 3am versus how often you need loyalty and marketing tools that work automatically. SumUp includes both US-based support and the growth tools that drive repeat business.</div></div>
+      </div>
+      <div class="panel"><h4>Trap questions to ask merchants</h4>
+        <ul class="trap">
+          <li>What's your total monthly Toast bill right now, including all add-ons, processing, and per-device fees?</li>
+          <li>How much are you paying per month for each terminal or handheld on top of your software fee?</li>
+          <li>If you wanted to switch POS systems tomorrow, could you reuse any of your current hardware?</li>
+          <li>Is Toast automatically bringing customers back, or are you doing all that marketing yourself?</li>
+        </ul>
+      </div>
+    </div>
+    <div class="bctag">Feature comparison</div>
+    <div class="feat tbl-wrap"><table class="t">
+      <thead><tr><th>Feature</th><th>SumUp</th><th>Toast</th></tr></thead>
+      <tbody>
+        <tr><td class="rowlbl">POS</td><td><span class="yes">✓</span></td><td><span class="yes">✓</span></td></tr>
+        <tr><td class="rowlbl">Kiosk</td><td><span class="yes">✓</span></td><td><span class="yes">✓</span></td></tr>
+        <tr><td class="rowlbl">Integrated loyalty</td><td><span class="yes">✓</span></td><td><span class="warn">▲¹</span></td></tr>
+        <tr><td class="rowlbl">Automated messaging</td><td><span class="yes">✓</span></td><td><span class="no">✗</span></td></tr>
+        <tr><td class="rowlbl">Optimized for SHAFT</td><td><span class="yes">✓</span></td><td><span class="no">✗</span></td></tr>
+        <tr><td class="rowlbl">Gift cards</td><td><span class="yes">✓</span></td><td><span class="warn">▲¹</span></td></tr>
+        <tr><td class="rowlbl">Offline processing</td><td><span class="yes">✓</span></td><td><span class="yes">✓</span></td></tr>
+        <tr><td class="rowlbl">Phone support for all plans</td><td><span class="yes">✓</span></td><td><span class="yes">✓</span></td></tr>
+        <tr><td class="rowlbl">Inventory</td><td><span class="yes">✓</span></td><td><span class="yes">✓</span></td></tr>
+        <tr><td class="rowlbl">Staff management</td><td><span class="yes">✓</span></td><td><span class="warn">✓²</span></td></tr>
+      </tbody>
+    </table></div>
+    <p class="fnote">¹ Extra cost. ² Scheduling and payroll require paid add-ons.</p>
+  </section>
+
+</main>
+
+<footer class="hub-foot">
+  <div class="wrap">
+    <span>NextPay Sales Hub · SumUp Battlecards · Internal use only. Updated March 2026.</span>
+    <span><a href="/requestaccess#suggest">💡 Suggest / Request</a> · <a href="/">← Back to hub</a></span>
+  </div>
+</footer>
+<script src="/js/hub-nav.js"></script>
+</body>
+</html>
