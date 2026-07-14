@@ -19,30 +19,14 @@
 .pg-head .wrap{padding:30px 0 32px}
 .crumbs{display:flex;gap:8px;align-items:center;font-size:13.5px;color:#9fb1c2;padding-bottom:14px}
 .crumbs a{color:#cdd8e2;font-weight:600}.crumbs a:hover{color:#fff}.crumbs .sep{opacity:.5}
-.pg-head .htop{display:flex;align-items:center;gap:16px}
-.pg-head .plogo{width:88px;height:88px;border-radius:18px;background:#fff;display:grid;place-items:center;padding:12px;flex:none}
-.pg-head .plogo img{max-width:100%;max-height:100%;object-fit:contain}
 .pg-head h1{font-size:clamp(26px,3.6vw,38px);color:#fff;letter-spacing:-.02em}
 .pg-head p.lead{color:#c4d0db;margin-top:10px;max-width:640px;font-size:16px;line-height:1.55}
 main.wrap{padding:30px 0 10px}
-.cmp-wrap{overflow-x:auto;border:1px solid var(--line);border-radius:var(--radius-lg);box-shadow:var(--shadow-sm)}
-table.cmp{width:100%;border-collapse:collapse;background:#fff;min-width:760px}
-table.cmp th,table.cmp td{padding:15px 18px;font-size:14.5px;border-bottom:1px solid var(--line);text-align:center;vertical-align:middle}
-table.cmp thead th{font-size:13px;letter-spacing:.04em;text-transform:uppercase;font-weight:800;background:var(--bg-soft)}
-table.cmp thead th.pays{background:var(--teal);color:#fff;font-size:15px}
-table.cmp tbody td:first-child{text-align:left;font-weight:800;color:var(--navy);background:var(--bg-soft);white-space:nowrap}
-table.cmp td.pays{background:rgba(20,161,140,.07);font-weight:700;color:var(--ink)}
-table.cmp tr:last-child td{border-bottom:0}
-table.cmp .strike{color:var(--slate-2);text-decoration:line-through;font-weight:600}
-table.cmp .promo{color:var(--teal-dark);font-weight:800}
-table.cmp .big{font-size:16px;font-weight:800;color:var(--navy)}
-.win{display:flex;gap:13px;align-items:flex-start;background:rgba(20,161,140,.08);border:1px solid rgba(20,161,140,.25);border-radius:12px;padding:15px 18px;margin-top:22px}
-.win svg{width:18px;height:18px;color:var(--teal-dark);flex:none;margin-top:2px}
-.win p{font-size:14px;color:var(--ink);line-height:1.55}.win b{color:var(--teal-dark)}
 /* tabs + battlecards */
-.tabs{display:flex;flex-wrap:wrap;gap:9px;margin-top:20px}
-.tabs button{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.16);border-radius:999px;padding:9px 16px;font-size:13.5px;font-weight:700;color:#eaf1f6;cursor:pointer;font-family:inherit}
-.tabs button.active{background:var(--teal);border-color:var(--teal);color:#fff}
+.tabrow{display:flex;flex-wrap:wrap;gap:9px;align-items:center;margin-top:14px}
+.tabrow-label{font-size:11px;font-weight:800;letter-spacing:.11em;text-transform:uppercase;color:#8fa5b8;margin-right:5px;flex:none}
+.tabrow button{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.16);border-radius:999px;padding:9px 16px;font-size:13.5px;font-weight:700;color:#eaf1f6;cursor:pointer;font-family:inherit}
+.tabrow button.active{background:var(--teal);border-color:var(--teal);color:#fff}
 .bc{display:none}.bc.show{display:block}
 .bc-angle{font-size:14.5px;color:var(--slate);line-height:1.6;background:var(--bg-soft);border:1px solid var(--line);border-radius:12px;padding:13px 16px;margin-bottom:16px}
 .bc-angle b{color:var(--navy)}
@@ -50,13 +34,17 @@ table.cmp .big{font-size:16px;font-weight:800;color:var(--navy)}
 @media(max-width:760px){.bc-cols{grid-template-columns:1fr}}
 .bc-box{border:1px solid var(--line);border-radius:14px;padding:16px 18px;background:#fff;box-shadow:var(--shadow-sm)}
 .bc-box h3{font-size:13px;font-weight:800;letter-spacing:.05em;text-transform:uppercase;margin-bottom:11px}
-.bc-box.weak h3{color:#b9741a}.bc-box.win-box h3{color:var(--teal-dark)}
+.bc-box.weak h3{color:#b9741a}.bc-box.win-box h3{color:var(--teal-dark)}.bc-box.strong h3{color:var(--navy)}
 .bc-box ul{list-style:none;margin:0;padding:0}
 .bc-box li{position:relative;padding-left:24px;font-size:14px;color:var(--ink);line-height:1.5;margin-bottom:9px}
 .bc-box li:last-child{margin-bottom:0}
 .bc-box li:before{position:absolute;left:0;top:0;font-weight:800}
 .bc-box.weak li:before{content:'\2715';color:#c2410c}
 .bc-box.win-box li:before{content:'\2713';color:var(--teal-dark)}
+.bc-box.strong li:before{content:'+';color:var(--slate-2);font-size:16px;line-height:1.3}
+.win{display:flex;gap:13px;align-items:flex-start;background:rgba(20,161,140,.08);border:1px solid rgba(20,161,140,.25);border-radius:12px;padding:15px 18px;margin-top:16px}
+.win svg{width:18px;height:18px;color:var(--teal-dark);flex:none;margin-top:2px}
+.win p{font-size:14px;color:var(--ink);line-height:1.55}.win b{color:var(--teal-dark)}
 .duels{margin-top:20px}
 .duels h3{font-size:13px;font-weight:800;letter-spacing:.05em;text-transform:uppercase;color:var(--navy);margin-bottom:10px}
 .duel{border:1px solid var(--line);border-radius:11px;padding:12px 15px;margin-bottom:10px;background:#fff;box-shadow:var(--shadow-sm)}
@@ -64,6 +52,23 @@ table.cmp .big{font-size:16px;font-weight:800;color:var(--navy)}
 .duel .t:before{content:'They say: ';color:var(--slate-2);font-weight:700}
 .duel .y{font-size:14px;color:var(--ink);line-height:1.55;margin-top:5px}
 .duel .y:before{content:'You say: ';color:var(--teal-dark);font-weight:800}
+.pdfrow{margin-top:18px}
+.pdfbtn{display:inline-flex;align-items:center;gap:8px;font-weight:800;font-size:13.5px;color:var(--navy);background:#fff;border:1.5px solid var(--line);border-radius:999px;padding:10px 18px;text-decoration:none}
+.pdfbtn:hover{border-color:var(--teal);color:var(--teal-dark)}
+.notebox{background:rgba(242,163,60,.09);border:1px solid rgba(242,163,60,.35);border-radius:12px;padding:13px 16px;margin-top:16px;font-size:14px;color:var(--ink);line-height:1.55}
+.notebox b{color:#b9741a}
+/* start-here path cards */
+.paths{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:16px}
+@media(max-width:760px){.paths{grid-template-columns:1fr}}
+.path{border:1px solid var(--line);border-radius:14px;padding:18px 20px;background:#fff;box-shadow:var(--shadow-sm)}
+.path h3{font-size:16px;font-weight:800;color:var(--navy);margin-bottom:8px}
+.path p{font-size:14px;color:var(--slate);line-height:1.6}
+.path .chips{display:flex;flex-wrap:wrap;gap:7px;margin-top:12px}
+.path .chips span{font-size:12.5px;font-weight:700;color:var(--navy);background:var(--bg-soft);border:1px solid var(--line);border-radius:999px;padding:5px 12px}
+.qlinks{display:flex;flex-wrap:wrap;gap:10px;margin-top:20px}
+.qlinks a{display:inline-flex;align-items:center;gap:8px;font-weight:800;font-size:13.5px;color:#fff;background:var(--teal);border-radius:999px;padding:10px 18px;text-decoration:none}
+.qlinks a.ghost{background:#fff;color:var(--navy);border:1.5px solid var(--line)}
+.qlinks a.ghost:hover{border-color:var(--teal);color:var(--teal-dark)}
 .hub-foot{background:var(--navy);color:#9fb1c2;padding:30px 0;margin-top:46px;font-size:13.5px}
 .hub-foot .wrap{display:flex;justify-content:space-between;gap:18px;flex-wrap:wrap}
 .hub-foot a{color:#cdd8e2;font-weight:600}.hub-foot a:hover{color:#fff}
@@ -79,13 +84,21 @@ table.cmp .big{font-size:16px;font-weight:800;color:var(--navy)}
 <header class="pg-head"><div class="wrap">
   <div class="crumbs"><a href="/">Sales Hub</a><span class="sep">/</span><span>Competitor Battlecards</span></div>
   <h1>Competitor Battlecards</h1>
-  <p class="lead">How we win against the systems you'll run into most — where each competitor is weak, how NextPay beats them, and exactly what to say. Pick a competitor.</p>
-  <div class="tabs">
-    <button class="active" data-s="hardware">Hardware &amp; price</button>
+  <p class="lead">Real head-to-head battlecards: who each competitor is, what they charge, where they're strong, where they're weak, and exactly how you win the deal.</p>
+  <div class="tabrow"><button class="active" data-s="start">Start here</button></div>
+  <div class="tabrow"><span class="tabrow-label">SkyTab by Shift4 vs</span>
+    <button data-s="s4toast">Toast</button>
+    <button data-s="s4clover">Clover</button>
+    <button data-s="s4square">Square</button>
+    <button data-s="s4spoton">SpotOn</button>
+    <button data-s="s4heartland">Heartland</button>
+    <button data-s="s4lightspeed">Lightspeed</button>
+    <button data-s="s4revel">Revel</button>
+    <button data-s="s4tabit">Tabit</button>
+  </div>
+  <div class="tabrow"><span class="tabrow-label">Everyday battles</span>
     <button data-s="square">Square</button>
     <button data-s="sumup">SumUp</button>
-    <button data-s="toast">Toast</button>
-    <button data-s="shift4">Shift4</button>
     <button data-s="stripe">Stripe</button>
     <button data-s="bigproc">Heartland / Fiserv</button>
     <button data-s="bank">Local Bank / ISO</button>
@@ -93,38 +106,350 @@ table.cmp .big{font-size:16px;font-weight:800;color:var(--navy)}
 </div></header>
 <main class="wrap">
 
-  <!-- HARDWARE & PRICE: our POS vs Clover vs Toast -->
-  <div class="bc show" id="hardware">
-    <p class="bc-angle"><b>Remember:</b> you can place almost any system on this table for the merchant — <b>Clover, Square, Shift4, SumUp and more</b>. The only two we <i>don't</i> sell are <b>Toast</b> and <b>SpotOn</b>. So don't get pulled into a which-box-is-better fight. <b>You're the POS expert and their account manager</b> — you bring the best deal, the best service, and a real person on the account instead of an 800 number. And if you need something to close, lead with <b>Merchant Rewards</b>: why would they buy it from a call center when they can get it from a dedicated rep who actually supports them? The table below is the cost to get in the door and run each month.</p>
-    <div class="cmp-wrap">
-      <table class="cmp">
-        <thead><tr><th></th><th class="pays">NextPay</th><th>Clover</th><th>Toast</th><th>Square</th><th>Shift4</th><th>SpotOn</th></tr></thead>
-        <tbody>
-          <tr><td>POS Station + Credit Card Reader</td>
-              <td class="pays">Placement / promo pricing available</td>
-              <td><strong>No upfront</strong><br><span style="color:var(--slate-2)">placement</span></td>
-              <td class="big">$4,000</td>
-              <td><strong>No upfront</strong><br><span style="color:var(--slate-2)">placement</span></td>
-              <td><strong>No upfront</strong><br><span style="color:var(--slate-2)">placement</span></td>
-              <td>Leased / varies</td></tr>
-          <tr><td>Software</td>
-              <td class="pays">From $79/mo — all inclusive<br><span style="color:var(--teal-dark);font-weight:800">Volume discounts available</span></td>
-              <td>$150+/mo + add-ons</td><td>$250+/mo + add-ons</td><td>$0–$69/mo</td><td>$79+/mo + add-ons</td><td>$99+/mo</td></tr>
-          <tr><td>Processing</td>
-              <td class="pays">Match-or-beat — dual pricing available</td>
-              <td>3.00% + 15¢ per transaction</td><td>3.50% + 15¢ per transaction</td><td>2.6% + 10¢ per transaction</td><td>2.49% + 15¢ per transaction</td><td>Locked to SpotOn (custom)</td></tr>
-          <tr><td>Contract</td>
-              <td class="pays">No contract</td><td>1-year contract</td><td>2-year contract</td><td>No contract</td><td>1–3 year contract</td><td>Often multi-year</td></tr>
-          <tr><td>Shipping</td>
-              <td class="pays">FREE</td><td>Billable</td><td>Billable</td><td>Billable</td><td>Billable</td><td>Billable</td></tr>
-          <tr><td>Support</td>
-              <td class="pays">Dedicated account manager</td><td>Call center</td><td>Call center</td><td>Email &amp; chat</td><td>24/7 support</td><td>24/7 support</td></tr>
-        </tbody>
-      </table>
+  <!-- START HERE -->
+  <div class="bc show" id="start">
+    <p class="bc-angle"><b>Remember: NextPay doesn't sell one box — we place almost any system.</b> Clover, Square, SkyTab by Shift4, SumUp, Quantic, Korona and more. The only two we <i>don't</i> sell are <b>Toast</b> and <b>SpotOn</b>. So don't get pulled into a which-box-is-better fight. <b>You're the POS expert and their account manager</b> — you bring the right system, the best deal, and a real person on the account instead of an 800 number. For our numbers, everything lives on the <a href="/pricing"><b>Pricing page</b></a>.</p>
+    <div class="paths">
+      <div class="path">
+        <h3>Restaurant head-to-head? Use the SkyTab by Shift4 battlecards.</h3>
+        <p>When you're selling <b>SkyTab by Shift4</b> (formerly SkyTab) into a restaurant, bar or cafe and going toe-to-toe with a restaurant POS, use the dedicated battlecards above — built from Shift4's official sales battle cards, one per competitor.</p>
+        <div class="chips"><span>Toast</span><span>Clover</span><span>Square</span><span>SpotOn</span><span>Heartland</span><span>Lightspeed</span><span>Revel</span><span>Tabit</span></div>
+      </div>
+      <div class="path">
+        <h3>Processing or service battle? Use the everyday battlecards.</h3>
+        <p>When the fight isn't about the POS box — it's about rates, fees, holds or support — use the everyday cards. They cover the situations you'll hit most on main street: Square and SumUp defaults, Stripe online, big processors, and the merchant's own bank.</p>
+        <div class="chips"><span>Square</span><span>SumUp</span><span>Stripe</span><span>Heartland / Fiserv</span><span>Local Bank / ISO</span></div>
+      </div>
+    </div>
+    <div class="notebox"><b>Save Merchant Rewards for when you need it.</b> Don't lead with rewards on every call — it cuts into residuals. Use it wisely: as a <b>closing tactic</b> when a deal needs one last push, or as an <b>interest grabber</b> when someone closes the door on you completely.</div>
+    <div class="qlinks">
+      <a href="/pricing">All POS pricing</a>
+      <a class="ghost" href="/objections">Objection handling</a>
+      <a class="ghost" href="/proposalbuilder">Proposal Builder</a>
+      <a class="ghost" href="/documentlibrary">Battlecard PDFs in the Document Library</a>
     </div>
   </div>
 
-  <!-- SQUARE -->
+  <!-- SHIFT4 DINE vs TOAST -->
+  <div class="bc" id="s4toast">
+    <p class="bc-angle"><b>Who they are:</b> Toast is a bar &amp; restaurant cloud POS that grew fast on VC money, an IPO and a big direct sales team. Proprietary Android hardware, bundled Toast Payments, and a huge catalog of add-on modules (online ordering, loyalty, payroll, xtraCHEF inventory, delivery).<br><b>Their pricing:</b> setup + monthly SaaS + processing, and <b>every add-on module is billed separately</b> — costs stack fast for a fully integrated restaurant, plus monthly fees for third-party integrations.</p>
+    <div class="bc-cols">
+      <div class="bc-box strong"><h3>Where Toast is strong</h3>
+        <ul>
+          <li>Mature cloud product — handles complex menus and modifiers, ships new features quickly.</li>
+          <li>Sticky ecosystem: their own online ordering, delivery, analytics and payroll keep merchants on the hook.</li>
+          <li>Big brand awareness — social media, merchant-facing content, community.</li>
+          <li>IPO cash funds an aggressive direct sales team.</li>
+        </ul>
+      </div>
+      <div class="bc-box weak"><h3>Where Toast is weak</h3>
+        <ul>
+          <li>Monthly fees for third-party integrations drive the real cost way up — they need those fees to fund growth.</li>
+          <li>Base product is SaaS + processing, then <b>each module is monetized separately</b> — the quote never matches the final bill.</li>
+          <li>Direct sales model means most install and support work is done remotely — no local presence.</li>
+          <li>Multi-year contracts with early-termination fees.</li>
+        </ul>
+      </div>
+    </div>
+    <div class="bc-box win-box" style="margin-top:16px"><h3>How you win with SkyTab by Shift4</h3>
+      <ul>
+        <li>End-to-end pricing: online ordering, QR order &amp; pay, contactless payments and more are <b>included free — no setup, no monthly</b> — where Toast bills each as a line item.</li>
+        <li>Customer Hub (formerly Lighthouse) business tools and the Marketplace are included, not upsold.</li>
+        <li>Local install, training and support through the reseller network — not a remote ticket queue.</li>
+        <li>No multi-year lock-in, and a <b>$5,000 switch incentive</b> to offset leaving Toast.</li>
+      </ul>
+    </div>
+    <div class="win">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>
+      <p><b>What to say:</b> "You can get the same restaurant toolkit — KDS, online ordering, handhelds, offline mode — without the multi-year contract or Toast's stacking module fees. And we'll put $5,000 toward your switch."</p>
+    </div>
+    <div class="duels"><h3>They'll say → you say</h3>
+      <div class="duel"><div class="t">"Toast is built for restaurants."</div><div class="y">"So is SkyTab by Shift4 — a third of restaurants in North America run on Shift4. Same tools, but online ordering and QR pay are included instead of billed as separate modules."</div></div>
+      <div class="duel"><div class="t">"We already invested in Toast."</div><div class="y">"That's exactly what the $5,000 switch incentive is for. Let's add up your Toast bill with every module and integration fee on it — then compare."</div></div>
+    </div>
+    <p class="pdfrow"><a class="pdfbtn" href="/assets/docs/SkyTab%20POS_Battlecard_Toast.pdf" target="_blank">Open the original battlecard PDF ↗</a></p>
+  </div>
+
+  <!-- SHIFT4 DINE vs CLOVER -->
+  <div class="bc" id="s4clover">
+    <p class="bc-angle"><b>Who they are:</b> Clover is Fiserv's cloud POS — good hardware, big brand, huge reseller network, used by everyone from barber shops to restaurants.<br><b>Their pricing:</b> roughly $60–80/mo + $9.95 per additional device on restaurant plans — but the real cost climbs through the App Market, and processing rates vary wildly depending on who sold the account.</p>
+    <div class="bc-cols">
+      <div class="bc-box strong"><h3>Where Clover is strong</h3>
+        <ul>
+          <li>Great hardware and reliable payments.</li>
+          <li>Brand recognition, backed by a Fortune 500 company (Fiserv).</li>
+          <li>Software cheaper than Toast; processing can be low depending on the sales channel.</li>
+          <li>Extensive reseller network.</li>
+        </ul>
+      </div>
+      <div class="bc-box weak"><h3>Where Clover is weak</h3>
+        <ul>
+          <li>One-size-fits-all — not mature or tailored for sophisticated restaurants.</li>
+          <li>App-market model: the "low" software price balloons once you add the apps a restaurant actually needs.</li>
+          <li>Hardware is expensive — and when a reseller subsidizes it, the processing rate is usually padded to pay for it.</li>
+          <li>Highly variable processing rates and minimal restaurant innovation.</li>
+        </ul>
+      </div>
+    </div>
+    <div class="bc-box win-box" style="margin-top:16px"><h3>How you win with SkyTab by Shift4</h3>
+      <ul>
+        <li>Purpose-built for restaurants — richer features out of the box, regular updates, no app market to nickel-and-dime.</li>
+        <li>Hardware is more affordable and included in the cost — lower total cost of ownership.</li>
+        <li>Shift4 runs a third of North American restaurants — this isn't a niche product.</li>
+        <li>If they're on Clover already, <b>pull the statement</b> — reseller accounts often sit on high rate schedules. That's your opening.</li>
+      </ul>
+    </div>
+    <div class="notebox"><b>Heads up:</b> we sell Clover too. This card is for restaurant deals where Clover is the wrong fit — if Clover genuinely fits (retail, services, simple counter service), place Clover through us and win on rate and service instead.</div>
+    <div class="win">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>
+      <p><b>What to say:</b> "Clover is a general-purpose POS wearing a restaurant costume. SkyTab by Shift4 is built only for restaurants — and once you add up Clover's apps and the rate you're actually on, we're the cheaper system too."</p>
+    </div>
+    <div class="duels"><h3>They'll say → you say</h3>
+      <div class="duel"><div class="t">"Clover's monthly price is lower."</div><div class="y">"The sticker is — the total isn't. KDS, online ordering, loyalty all come from the app market at a monthly fee each. With SkyTab by Shift4 that's built in."</div></div>
+      <div class="duel"><div class="t">"My Clover was basically free."</div><div class="y">"Subsidized hardware gets paid back somewhere — usually in the processing rate. Bring me a statement and I'll show you what that 'free' Clover really costs a month."</div></div>
+    </div>
+    <p class="pdfrow"><a class="pdfbtn" href="/assets/docs/SkyTabPOSBattlecard_Clover.pdf" target="_blank">Open the original battlecard PDF ↗</a></p>
+  </div>
+
+  <!-- SHIFT4 DINE vs SQUARE -->
+  <div class="bc" id="s4square">
+    <p class="bc-angle"><b>Who they are:</b> Square offers a free base-level POS with no fixed monthly cost — an incredible value and a very low barrier to entry, which is why so many small restaurants start there. iPad/iOS-based hardware.<br><b>Their pricing:</b> Free plan at $0/mo; Plus around $60/mo; Premium is a contracted rate — plus flat-rate processing on every card.</p>
+    <div class="bc-cols">
+      <div class="bc-box strong"><h3>Where Square is strong</h3>
+        <ul>
+          <li>Free entry-level plan — very low commitment for a new merchant, with paid tiers to grow into.</li>
+          <li>Very easy to set up and use; simple interface, minimal hardware.</li>
+          <li>Strong brand that carried over from retail into food &amp; beverage.</li>
+        </ul>
+      </div>
+      <div class="bc-box weak"><h3>Where Square is weak</h3>
+        <ul>
+          <li>Not practical for multi-channel or multi-location — lacks the modifier depth and channel handling bars and restaurants need.</li>
+          <li>Easy to start with, but merchants outgrow it as they expand.</li>
+          <li>Limited, iOS-built hardware — thin options for KDS and back-of-house.</li>
+          <li>Relies on remote implementation and merchant self-install — little live, on-site support.</li>
+        </ul>
+      </div>
+    </div>
+    <div class="bc-box win-box" style="margin-top:16px"><h3>How you win with SkyTab by Shift4</h3>
+      <ul>
+        <li>Built for food &amp; beverage: deep modifiers, integrations and functionality that support a growing operation — no rip-and-replace at the next stage.</li>
+        <li>Real hardware options on commercial-grade Android — stations, handhelds, KDS.</li>
+        <li>End-to-end pricing opens up features, hardware and functionality free of charge.</li>
+        <li>Local resellers install, train and support the merchant in person.</li>
+      </ul>
+    </div>
+    <div class="notebox"><b>Heads up:</b> we sell Square too. This card is for restaurants that have outgrown it — for a simple counter-service or retail merchant, placing Square through us can be the right call.</div>
+    <div class="win">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>
+      <p><b>What to say:</b> "Square got you open — SkyTab by Shift4 keeps you growing. When you're juggling modifiers, online orders and a kitchen, you need a system built for restaurants and a person who shows up, not a help center."</p>
+    </div>
+    <div class="duels"><h3>They'll say → you say</h3>
+      <div class="duel"><div class="t">"Square is free."</div><div class="y">"The app is — the processing isn't, and neither is the growth ceiling. Once you're a real restaurant, the missing KDS, modifiers and support cost you more than a POS would."</div></div>
+      <div class="duel"><div class="t">"Square was so easy to set up."</div><div class="y">"Because you set it up yourself. With us, a local team installs it, programs your menu and trains your staff — you don't touch a manual."</div></div>
+    </div>
+    <p class="pdfrow"><a class="pdfbtn" href="/assets/docs/SkyTabPOSBattlecard_Square.pdf" target="_blank">Open the original battlecard PDF ↗</a></p>
+  </div>
+
+  <!-- SHIFT4 DINE vs SPOTON -->
+  <div class="bc" id="s4spoton">
+    <p class="bc-angle"><b>Who they are:</b> SpotOn is a mix-and-match restaurant platform — POS, handhelds, loyalty, websites, DoorDash-powered delivery — where merchants assemble the features they want.<br><b>Their pricing:</b> POS $25/mo with their processing ($195/mo without); Restaurant $65/mo + hardware; Loyalty $65/mo; Website $65/mo; processing 1.99% + 20¢ (jumps to 2.99% + 20¢ if you don't use their payments). No standard pricing — merchants need a quote to know their real cost.</p>
+    <div class="bc-cols">
+      <div class="bc-box strong"><h3>Where SpotOn is strong</h3>
+        <ul>
+          <li>Easy-to-use, restaurant-specific platform — detailed modifiers, separate menu types, web-based management.</li>
+          <li>Marketing and business add-ons: website building, loyalty, wide reporting.</li>
+          <li>24/7 chat, phone and email support.</li>
+          <li>Low headline processing commission (1.99% + 20¢) — attractive at high volume.</li>
+        </ul>
+      </div>
+      <div class="bc-box weak"><h3>Where SpotOn is weak</h3>
+        <ul>
+          <li>Monthly fees for the hardware itself.</li>
+          <li>No standard pricing — you can't know the cost without a custom quote.</li>
+          <li>Add-ons stack fast: $65 loyalty here, $65 website there — the "cheap POS" isn't cheap by the end.</li>
+          <li>Leave their processing and the rate jumps a full point to 2.99% + 20¢ — that low rate is a leash.</li>
+        </ul>
+      </div>
+    </div>
+    <div class="bc-box win-box" style="margin-top:16px"><h3>How you win with SkyTab by Shift4</h3>
+      <ul>
+        <li>Hardware is <b>free with the POS service</b> — no monthly hardware rental.</li>
+        <li>Straightforward monthly costs — no quote required to know what you'll pay.</li>
+        <li>Loyalty, email marketing, reputation management, social tools and third-party integrations are <b>free</b> through Customer Hub and the Marketplace — SpotOn charges for each.</li>
+        <li>Free of charge setup and monthly on features that SpotOn line-items.</li>
+      </ul>
+    </div>
+    <div class="win">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>
+      <p><b>What to say:</b> "SpotOn quotes you a $25 POS, then adds $65 for loyalty, $65 for the website and a monthly fee for the hardware. With us the hardware's free, the tools are included, and the price is the price."</p>
+    </div>
+    <div class="duels"><h3>They'll say → you say</h3>
+      <div class="duel"><div class="t">"SpotOn's rate is only 1.99%."</div><div class="y">"As long as you never leave — step off their processing and it's 2.99%. Add up the software and hardware fees around that rate and let's compare real monthly totals."</div></div>
+      <div class="duel"><div class="t">"I like all their add-ons."</div><div class="y">"So do we — that's why loyalty, marketing and reputation tools are included free in Customer Hub instead of $65 a month each."</div></div>
+    </div>
+    <p class="pdfrow"><a class="pdfbtn" href="/assets/docs/SkyTabPOSBattlecard_SpotOn.pdf" target="_blank">Open the original battlecard PDF ↗</a></p>
+  </div>
+
+  <!-- SHIFT4 DINE vs HEARTLAND -->
+  <div class="bc" id="s4heartland">
+    <p class="bc-angle"><b>Who they are:</b> Heartland (a Global Payments subsidiary) sells Heartland Restaurant POS — the former MobileBytes — an iPad/iOS system sold mostly through dealers.<br><b>Their pricing:</b> priced per terminal + monthly software (mobile app $75/mo), sold either as SaaS + upfront hardware or as one monthly PaaS rate — plus a <b>$125/mo compliance fee</b> and payment "junk fees" like an EMV failover fee.</p>
+    <div class="bc-cols">
+      <div class="bc-box strong"><h3>Where Heartland is strong</h3>
+        <ul>
+          <li>Cheaper when POS and payments are bundled together.</li>
+          <li>Good eGift program, free integrated online ordering, native kiosk app.</li>
+          <li>Easy to set up; tableside QR ordering and loyalty features.</li>
+          <li>Decent enterprise menu capabilities and free open-API integrations.</li>
+        </ul>
+      </div>
+      <div class="bc-box weak"><h3>Where Heartland is weak</h3>
+        <ul>
+          <li>Consumer iPads, not commercial-grade hardware — and iOS/iCloud reliance causes real problems.</li>
+          <li>If you don't process with Heartland, critical features shut off: pre-auth, offline mode, SMS, cash discount and more.</li>
+          <li>Hidden fees: EMV failover fee, $125/mo compliance fee, payment junk fees.</li>
+          <li>Surcharge program adds the fee <i>after</i> the total is shown — confusing guests — and support is a nightmare.</li>
+          <li>KDS needs an iPad, has no reporting; dealer-dependent install quality.</li>
+        </ul>
+      </div>
+    </div>
+    <div class="bc-box win-box" style="margin-top:16px"><h3>How you win with SkyTab by Shift4</h3>
+      <ul>
+        <li>Commercial-grade Android hardware built for a greasy, busy line — not a consumer iPad.</li>
+        <li>Our dual-pricing / cash-discount programs are compliant and shown to the guest <i>before</i> the total — no surprise-fee confusion.</li>
+        <li>Advanced KDS (rush, merge, list view, all-day production) with reporting.</li>
+        <li>Payments fully integrated — no separate payment app — and integrations set up in a couple of clicks in the Marketplace.</li>
+        <li><b>Pull their statement</b> — the junk fees and $125/mo compliance fee are your closing argument.</li>
+      </ul>
+    </div>
+    <div class="win">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>
+      <p><b>What to say:</b> "Check your Heartland statement for the compliance fee and the EMV failover fee — that's real money every month for nothing. We run commercial hardware, compliant dual pricing, and no junk fees."</p>
+    </div>
+    <div class="duels"><h3>They'll say → you say</h3>
+      <div class="duel"><div class="t">"Heartland's bundle was cheap."</div><div class="y">"Until the $125-a-month compliance fee and the junk fees hit the statement. Bring me one month's statement and I'll circle them for you."</div></div>
+      <div class="duel"><div class="t">"The iPads look great."</div><div class="y">"They do — until one drops, overheats, or iCloud hiccups mid-rush. Restaurant hardware should be built for restaurants."</div></div>
+    </div>
+    <p class="pdfrow"><a class="pdfbtn" href="/assets/docs/SkyTabPOSBattlecard_Heartland.pdf" target="_blank">Open the original battlecard PDF ↗</a></p>
+  </div>
+
+  <!-- SHIFT4 DINE vs LIGHTSPEED -->
+  <div class="bc" id="s4lightspeed">
+    <p class="bc-angle"><b>Who they are:</b> Lightspeed is a Canadian public company with cloud POS across retail, restaurant, golf and eCommerce. Restaurant runs on the L-Series with non-proprietary hardware.<br><b>Their pricing:</b> Essentials $29/mo, Plus $119/mo, Pro $289/mo, Enterprise contracted — with add-ons priced separately, so you need a custom quote to know the real cost.</p>
+    <div class="bc-cols">
+      <div class="bc-box strong"><h3>Where Lightspeed is strong</h3>
+        <ul>
+          <li>Diversified portfolio (retail, restaurant, golf, eCom) keeps them resilient.</li>
+          <li>Own payment processing plus multiple processor options — flexible on the payments side.</li>
+          <li>Non-proprietary hardware — merchants can sometimes reuse existing gear.</li>
+        </ul>
+      </div>
+      <div class="bc-box weak"><h3>Where Lightspeed is weak</h3>
+        <ul>
+          <li>A maze of configuration options, add-ons and integrations — steep learning curve for setup and staff training.</li>
+          <li>Add-on pricing means the sticker price is fiction — you need a custom quote to know the cost.</li>
+          <li>Offline is the killer: without their LiteServer, an internet drop means <b>no credit, debit or gift cards</b> — and even with it, integrations and reporting stop.</li>
+        </ul>
+      </div>
+    </div>
+    <div class="bc-box win-box" style="margin-top:16px"><h3>How you win with SkyTab by Shift4</h3>
+      <ul>
+        <li>True offline mode: devices switch to offline automatically when an authorization fails, queue the transactions, and process when the connection returns — <b>cards keep working when the internet doesn't</b>.</li>
+        <li>Straightforward, service-based pricing — predictable, no quote roulette.</li>
+        <li>Customer Hub and Marketplace features included at no additional charge.</li>
+        <li>Local dealers handle install and training, so the "learning curve" is our problem, not the merchant's.</li>
+      </ul>
+    </div>
+    <div class="win">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>
+      <p><b>What to say:</b> "Ask Lightspeed what happens to card payments when the internet drops. With SkyTab by Shift4 the terminal flips to offline mode and keeps taking cards — that alone can pay for the switch on one busy Friday."</p>
+    </div>
+    <div class="duels"><h3>They'll say → you say</h3>
+      <div class="duel"><div class="t">"Lightspeed starts at $29."</div><div class="y">"Starts — then every feature you actually need is an add-on with its own price. Get their full quote in writing and let's put it next to ours."</div></div>
+      <div class="duel"><div class="t">"We can keep our old hardware."</div><div class="y">"Mixed old hardware is where support problems live. Our hardware comes with the service — and a local team that installs and stands behind it."</div></div>
+    </div>
+    <p class="pdfrow"><a class="pdfbtn" href="/assets/docs/SkyTabPOSBattlecard_Lightspeed.pdf" target="_blank">Open the original battlecard PDF ↗</a></p>
+  </div>
+
+  <!-- SHIFT4 DINE vs REVEL -->
+  <div class="bc" id="s4revel">
+    <p class="bc-angle"><b>Who they are:</b> Revel is an iPad-based cloud POS pioneer that now targets multi-location quick-serve — they no longer chase single-location merchants.<br><b>Their pricing:</b> $99/mo <i>per terminal</i> with a two-terminal minimum and a <b>three-year contract</b> for best pricing; implementation from $674; KDS, CDS and online ordering are all separate SaaS fees that add up to hundreds per month.</p>
+    <div class="bc-cols">
+      <div class="bc-box strong"><h3>Where Revel is strong</h3>
+        <ul>
+          <li>Enterprise-grade configuration that scales with multi-location growth.</li>
+          <li>Multi-channel: drive-thru, delivery, online ordering, order tracking with customer texts.</li>
+          <li>Lots of integrations and targeted features for different merchant types.</li>
+        </ul>
+      </div>
+      <div class="bc-box weak"><h3>Where Revel is weak</h3>
+        <ul>
+          <li>High cost — custom quotes required before you ever know the full price.</li>
+          <li>Everything is SaaS: KDS, CDS, online ordering each billed separately — hundreds of dollars a month.</li>
+          <li>Best pricing requires a three-year contract and a two-terminal minimum.</li>
+          <li>iOS-only hardware; not aimed at single-location operators anymore.</li>
+        </ul>
+      </div>
+    </div>
+    <div class="bc-box win-box" style="margin-top:16px"><h3>How you win with SkyTab by Shift4</h3>
+      <ul>
+        <li>No forced three-year contract — service-based pricing you can end as needed, custom enterprise agreements when they're earned.</li>
+        <li>End-to-end payments open up features free of charge that Revel bills as SaaS line items.</li>
+        <li>The SkyTab ecosystem — Mobile, Online, Glass, CDS, KDS — grows with the merchant without a new fee per screen.</li>
+        <li>Commercial Android hardware, and we're glad to take the single-location restaurant Revel walked away from.</li>
+      </ul>
+    </div>
+    <div class="win">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>
+      <p><b>What to say:</b> "Revel wants a three-year contract, two terminals minimum, and a SaaS fee for every screen in the building. We give you the same capabilities with the features built in — and no three-year handcuffs."</p>
+    </div>
+    <div class="duels"><h3>They'll say → you say</h3>
+      <div class="duel"><div class="t">"Revel handles our multiple locations."</div><div class="y">"So do we — with custom enterprise agreements. The difference is you're not paying $99 per terminal plus separate SaaS for KDS, CDS and online ordering at every site."</div></div>
+      <div class="duel"><div class="t">"We already signed a quote process with them."</div><div class="y">"Get the final all-in number in writing — implementation, per-terminal, every SaaS module. Ours fits on one page, and I'll put them side by side for you."</div></div>
+    </div>
+    <p class="pdfrow"><a class="pdfbtn" href="/assets/docs/SkyTabPOSBattlecard_Revel.pdf" target="_blank">Open the original battlecard PDF ↗</a></p>
+  </div>
+
+  <!-- SHIFT4 DINE vs TABIT -->
+  <div class="bc" id="s4tabit">
+    <p class="bc-angle"><b>Who they are:</b> Tabit is an Israeli-born, mobile-first iPad POS now headquartered in Florida. Payment-agnostic, no direct sales — they grow by recruiting resellers with attractive partner programs.<br><b>Their pricing:</b> varies dealer to dealer (some bundle networking gear into the price, which muddies the quote) — but generally about $49/mo per mobile device.</p>
+    <div class="bc-cols">
+      <div class="bc-box strong"><h3>Where Tabit is strong</h3>
+        <ul>
+          <li>Mobile-first: every iPad is a full POS station — fast communication to the kitchen.</li>
+          <li>Cloud-based with a centralized database linking ordering, reservations and reporting.</li>
+          <li>Rich native suite: online ordering, delivery, reservations, BI, KDS all integrated.</li>
+        </ul>
+      </div>
+      <div class="bc-box weak"><h3>Where Tabit is weak</h3>
+        <ul>
+          <li><b>No offline mode</b> — if the internet drops, they can't take cards. Their fix? Sell you a second internet connection.</li>
+          <li>No direct implementation or support teams — experience depends entirely on the dealer, with no remote support capability.</li>
+          <li>Clunky back end that's hard to set up and configure; partners need heavy training to deliver basic service.</li>
+          <li>iPads are costly, and an all-Wi-Fi POS is most likely to fail during your busiest rush.</li>
+        </ul>
+      </div>
+    </div>
+    <div class="bc-box win-box" style="margin-top:16px"><h3>How you win with SkyTab by Shift4</h3>
+      <ul>
+        <li>Offline mode: merchants keep processing card payments when the connection drops.</li>
+        <li>Real support — agents can remote into terminals and fix things live, backed by local resellers.</li>
+        <li>Intuitive back office, with most settings manageable right from the POS — menu, employees, the works.</li>
+        <li>Native solutions AND Marketplace integrations — cloud-based like Tabit, without the fragility.</li>
+      </ul>
+    </div>
+    <div class="win">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>
+      <p><b>What to say:</b> "Ask Tabit one question: what happens to card payments when the Wi-Fi goes down on a Saturday night? Their answer is 'buy a second internet line.' Ours is 'the terminal keeps working.'"</p>
+    </div>
+    <div class="duels"><h3>They'll say → you say</h3>
+      <div class="duel"><div class="t">"Every iPad is a register — it's so flexible."</div><div class="y">"Flexible until the network blips. An all-Wi-Fi, all-iPad floor has a single point of failure, and it always picks the dinner rush."</div></div>
+      <div class="duel"><div class="t">"Our dealer takes care of us."</div><div class="y">"If the dealer's good — Tabit has no direct support and can't even remote into your terminals. Our support can take over the screen and fix it while you're on the phone."</div></div>
+    </div>
+    <p class="pdfrow"><a class="pdfbtn" href="/assets/docs/SkyTabPOSBattlecard_Tabit.pdf" target="_blank">Open the original battlecard PDF ↗</a></p>
+  </div>
+
+  <!-- SQUARE (everyday) -->
   <div class="bc" id="square">
     <p class="bc-angle"><b>Why merchants use Square:</b> dead-simple setup, a free POS app, and an all-in-one ecosystem — it's the easy default for new and small businesses.</p>
     <div class="bc-cols">
@@ -157,7 +482,7 @@ table.cmp .big{font-size:16px;font-weight:800;color:var(--navy)}
     </div>
   </div>
 
-  <!-- SUMUP -->
+  <!-- SUMUP (everyday) -->
   <div class="bc" id="sumup">
     <p class="bc-angle"><b>Heads up — we sell SumUp now.</b> SumUp is one of our products, not a competitor to displace. Don't pitch against it — pitch it. Today's SumUp is a full all-in-one POS + growth platform: built-in loyalty, automated SMS marketing, a self-service kiosk, inventory and reporting — with dual pricing available and US-based phone support on a 12-month term.</p>
     <div class="win">
@@ -166,59 +491,7 @@ table.cmp .big{font-size:16px;font-weight:800;color:var(--navy)}
     </div>
   </div>
 
-  <!-- TOAST -->
-  <div class="bc" id="toast">
-    <p class="bc-angle"><b>Why restaurants use Toast:</b> a purpose-built restaurant platform — KDS, online ordering, handhelds and solid reporting on Android hardware.</p>
-    <div class="bc-cols">
-      <div class="bc-box weak"><h3>Where Toast falls short</h3>
-        <ul>
-          <li>Long contracts (often multi-year) with early-termination fees.</li>
-          <li>Proprietary hardware that's pricey, plus software modules that stack up fast.</li>
-          <li>Added order-processing and service fees, and steady rate creep.</li>
-          <li>Locked to Toast Payments — you can't shop your processing rate.</li>
-          <li>Online ordering and add-ons are billed as separate line items.</li>
-        </ul>
-      </div>
-      <div class="bc-box win-box"><h3>How NextPay wins</h3>
-        <ul>
-          <li>SkyTab by Shift4 delivers the same restaurant toolkit — KDS, online ordering, handhelds, offline mode.</li>
-          <li>No multi-year lock-in and a lower all-in monthly.</li>
-          <li>Dual pricing / fee programs to cut processing to near zero.</li>
-          <li>A <b>$5,000 switch incentive</b> to offset leaving their current system.</li>
-          <li>Dedicated support, not a ticket queue.</li>
-        </ul>
-      </div>
-    </div>
-    <div class="win">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>
-      <p><b>What to say:</b> "You can get the same restaurant tools without a multi-year contract or Toast's stacking fees — and we'll put $5,000 toward your switch."</p>
-    </div>
-    <div class="duels"><h3>They'll say → you say</h3>
-      <div class="duel"><div class="t">"Toast is built for restaurants."</div><div class="y">"So is SkyTab by Shift4 — KDS, online ordering, handhelds, offline mode — without the 2-3 year contract or the new order fees."</div></div>
-      <div class="duel"><div class="t">"Switching mid-contract is a pain."</div><div class="y">"We help you time it, and the $5k incentive offsets the exit. Let's map out when it makes sense."</div></div>
-    </div>
-  </div>
-
-  <!-- SHIFT4 (restaurant) -->
-  <div class="bc" id="shift4">
-    <p class="bc-angle"><b>Use this when:</b> you're selling <b>SkyTab by Shift4</b> into a restaurant, bar or cafe and going head-to-head with a restaurant POS. Shift4 has its own full battlecard set — each competitor's strengths, weak spots, and exactly how to win the deal.</p>
-    <div class="bc-box win-box"><h3>Shift4 has dedicated battlecards vs:</h3>
-      <ul>
-        <li>Toast</li>
-        <li>Clover</li>
-        <li>Heartland</li>
-        <li>Lightspeed</li>
-        <li>Revel</li>
-        <li>SpotOn</li>
-        <li>Square</li>
-        <li>Tabit</li>
-      </ul>
-    </div>
-    <p><b>What to say:</b> "Same restaurant toolkit — KDS, online ordering, handhelds, offline mode — without the multi-year contract or stacking fees, and we'll put $5,000 toward your switch."</p>
-    <p style="margin-top:16px"><a href="/shift4#battlecards" style="display:inline-flex;align-items:center;gap:8px;font-weight:800;font-size:14px;color:#fff;background:var(--teal);border-radius:999px;padding:11px 20px;text-decoration:none">Open the full Shift4 battlecards <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2.6"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></p>
-  </div>
-
-  <!-- STRIPE -->
+  <!-- STRIPE (everyday) -->
   <div class="bc" id="stripe">
     <p class="bc-angle"><b>Why merchants use Stripe:</b> developer-first with best-in-class APIs — a favorite for online, SaaS and marketplace businesses.</p>
     <div class="bc-cols">
@@ -250,7 +523,7 @@ table.cmp .big{font-size:16px;font-weight:800;color:var(--navy)}
     </div>
   </div>
 
-  <!-- HEARTLAND / FISERV -->
+  <!-- HEARTLAND / FISERV (everyday) -->
   <div class="bc" id="bigproc">
     <p class="bc-angle"><b>Why merchants are on Heartland / Fiserv (First Data):</b> big, well-known processors with broad product lines, often bundled through their bank.</p>
     <div class="bc-cols">
@@ -279,7 +552,7 @@ table.cmp .big{font-size:16px;font-weight:800;color:var(--navy)}
     </div>
   </div>
 
-  <!-- LOCAL BANK / ISO -->
+  <!-- LOCAL BANK / ISO (everyday) -->
   <div class="bc" id="bank">
     <p class="bc-angle"><b>Why merchants use their bank:</b> trust and convenience — one relationship, a banker they already know, everything in one place.</p>
     <div class="bc-cols">
@@ -310,9 +583,9 @@ table.cmp .big{font-size:16px;font-weight:800;color:var(--navy)}
 
 </main>
 <script>
-document.querySelectorAll('.tabs button').forEach(function(b){
+document.querySelectorAll('.tabrow button').forEach(function(b){
   b.addEventListener('click',function(){
-    document.querySelectorAll('.tabs button').forEach(function(x){x.classList.remove('active');});
+    document.querySelectorAll('.tabrow button').forEach(function(x){x.classList.remove('active');});
     b.classList.add('active');
     document.querySelectorAll('.bc').forEach(function(s){s.classList.remove('show');});
     document.getElementById(b.getAttribute('data-s')).classList.add('show');
