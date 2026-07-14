@@ -12,7 +12,7 @@
   const P = () => (window.NP_PRODUCTS||{});
   // Scope the tray to products that exist on THIS page (avoid cross-page stragglers)
   if(window.NP_PRODUCTS){ tray = tray.filter(id=>window.NP_PRODUCTS[id]); try{ sessionStorage.setItem(KEY, JSON.stringify(tray)); }catch(e){} }
-  const BRAND_LOGOS={pax:'assets/logos/pax.svg',dejavoo:'assets/logos/dejavoo.png',dejapay:'assets/logos/dejapay.webp',clover:'assets/logos/clover.png',square:'assets/logos/square.svg',shift4:'assets/logos/shift4.png',korona:'assets/logos/korona.png',quantic:'assets/logos/quantic.svg',nrs:'assets/logos/nrs.png',valor:'assets/logos/valor.png',swipesimple:'assets/logos/swipesimple.png',nextpay:'assets/logos/nextpay.png'};
+  const BRAND_LOGOS={pax:'assets/logos/pax.svg',dejavoo:'assets/logos/dejavoo.png',dejapay:'assets/logos/dejapay.webp',clover:'assets/logos/clover.png',square:'assets/logos/square.svg',shift4:'assets/logos/skytab.svg',korona:'assets/logos/korona.png',quantic:'assets/logos/quantic.svg',nrs:'assets/logos/nrs.png',valor:'assets/logos/valor.png',swipesimple:'assets/logos/swipesimple.png',nextpay:'assets/logos/nextpay.png'};
   function brandLogo(name){ const s=(name||'').toLowerCase(); for(const k in BRAND_LOGOS){ if(s.indexOf(k)>=0) return BRAND_LOGOS[k]; } return null; }
 
   function save(){ try{ sessionStorage.setItem(KEY, JSON.stringify(tray)); }catch(e){} }
