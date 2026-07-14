@@ -7,7 +7,7 @@
 - Images are user-supplied via `<image-slot>` drag-and-drop placeholders (user has a logo/photo library). Pages must live at project root for slot persistence.
 
 ## Products in scope
-- **POS:** NextPay (Chively), Square, Clover, Shift4 Dine (was SkyTab), Quantic, Korona, NRS, DejaPay Pro
+- **POS:** NextPay (Chively), Square, Clover, SkyTab by Shift4, Quantic, Korona, NRS, DejaPay Pro
 - **Gateways:** FluidPay, NMI, Luqra, Valor, Authorize.net, iPOSPays
 - **Terminals:** PAX Mobile line, Dejavoo (P Line, QD line), Square Mobile, Square Handheld, Clover Flex, Clover Go, Shift4 terminals, Valor VL
 - **Invoicing:** FieldPulse, Field Work, LQPay, QuickBooks integrations (more coming soon)

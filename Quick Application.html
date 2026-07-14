@@ -145,7 +145,7 @@
                   <option>POS Systems — NextPay POS (Chively)</option>
                   <option>POS Systems — Square</option>
                   <option>POS Systems — Clover</option>
-                  <option>POS Systems — Shift4 Dine</option>
+                  <option>POS Systems — SkyTab by Shift4</option>
                   <option>POS Systems — Quantic</option>
                   <option>POS Systems — Korona</option>
                   <option>POS Systems — NRS</option>
@@ -239,7 +239,7 @@
       if(notes){ notes.value='My build from the estimator: '+build; }
     }
     if(brand){
-      var map={clover:'Clover',shift4:'Shift4 Dine',square:'Square'};
+      var map={clover:'Clover',shift4:'SkyTab by Shift4',square:'Square'};
       var want=map[brand]; if(!want) return;
       var sel=document.querySelector('select[name="solution"]');
       if(sel){ for(var i=0;i<sel.options.length;i++){ if(sel.options[i].text.indexOf(want)>-1){ sel.selectedIndex=i; break; } } }
