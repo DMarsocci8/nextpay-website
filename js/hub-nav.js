@@ -40,6 +40,8 @@
       ['Quote', [
         ['Pricing & Fee Programs','/pricing'],
         ['Proposal Builder','/proposalbuilder'],
+        ['Proposal Template','/proposaltemplate'],
+        ['NextLink Proposal','/nextlinkproposal'],
         ['Merchant Application','/application',1],
         ['Statement Analyzers','/analyzestatement'],
         ['Calculators','/calculators']

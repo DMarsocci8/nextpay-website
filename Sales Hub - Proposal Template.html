@@ -1,0 +1,273 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Proposal Template — NextPay Sales Hub</title>
+<link rel="icon" href="/assets/favicon.ico" sizes="any">
+<link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
+<link rel="stylesheet" href="/css/nextpay.css">
+<style>
+.hub-bar{position:sticky;top:0;z-index:60;background:var(--navy);color:#fff;border-bottom:1px solid rgba(255,255,255,.10)}
+.hub-bar-inner{display:flex;align-items:center;gap:18px;height:66px;max-width:var(--maxw);margin:0 auto;padding:0 28px}
+.hub-bar img.logo{height:34px;width:auto;display:block}
+.hub-bar .pipe{width:1px;height:26px;background:rgba(255,255,255,.18)}
+.hub-bar .hub-tag{font-weight:800;font-size:15px;color:#fff;display:flex;align-items:center;gap:9px}
+.hub-bar .hub-tag .badge{font-size:10.5px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;background:var(--teal);color:#fff;padding:4px 9px;border-radius:999px}
+.hub-bar .right{margin-left:auto;display:flex;align-items:center;gap:20px}
+.hub-bar .right a{color:#cdd8e2;font-weight:600;font-size:14.5px}.hub-bar .right a:hover{color:#fff}
+
+.pg-head{background:linear-gradient(180deg,var(--navy),var(--navy-2));color:#fff}
+.pg-head .wrap{padding:26px 0 26px}
+.crumbs{display:flex;gap:8px;align-items:center;font-size:13.5px;color:#9fb1c2;padding-bottom:12px}
+.crumbs a{color:#cdd8e2;font-weight:600}.crumbs a:hover{color:#fff}.crumbs .sep{opacity:.5}
+.pg-head h1{font-size:clamp(23px,3.2vw,31px);color:#fff;letter-spacing:-.02em}
+.pg-head p.lead{color:#c4d0db;margin-top:9px;max-width:660px;font-size:15.5px;line-height:1.55}
+
+/* ---- editor toolbar (never prints) ---- */
+.tb{position:sticky;top:66px;z-index:40;background:#fff;border-bottom:1px solid var(--line);box-shadow:var(--shadow-sm)}
+.tb-inner{max-width:var(--maxw);margin:0 auto;padding:11px 28px;display:flex;flex-wrap:wrap;gap:9px;align-items:center}
+.tb .btn{font-family:inherit;font-weight:700;font-size:13px;border-radius:999px;padding:9px 15px;border:1px solid var(--line);background:#fff;color:var(--navy);cursor:pointer;display:inline-flex;align-items:center;gap:7px}
+.tb .btn:hover{border-color:var(--teal);color:var(--teal-dark)}
+.tb .btn.primary{background:var(--teal);border-color:var(--teal);color:#fff}
+.tb .btn.primary:hover{background:var(--teal-dark);color:#fff}
+.tb .btn svg{width:15px;height:15px}
+.tb .spacer{flex:1}
+.tb .saved{font-size:12.5px;color:var(--teal-dark);font-weight:700}
+.tb .hint{font-size:12px;color:var(--slate);flex-basis:100%;margin-top:-2px}
+.tb .hint b{color:var(--navy)}
+
+.stagewrap{background:var(--bg-soft,#eef3f5);padding:26px 16px 40px;display:flex;justify-content:center}
+
+/* ---- the printable sheet — mirrors the Proposal Builder house style ---- */
+.sheet{width:8.5in;min-height:11in;background:#fff;color:#173A43;box-shadow:0 10px 40px rgba(12,27,42,.22);
+  padding:.6in .62in .5in;box-sizing:border-box;display:flex;flex-direction:column;font-family:'Plus Jakarta Sans',system-ui,Arial,sans-serif}
+.pp-head{display:flex;align-items:center;justify-content:space-between;border-bottom:2px solid #16A085;padding-bottom:.16in;gap:.2in}
+.pp-head .np img{height:.5in;width:auto;display:block}
+.pp-head .pl{min-height:.6in;max-width:3in;display:flex;align-items:center;justify-content:flex-end;text-align:right;font-size:15pt;font-weight:800;color:#0C1B2A}
+.pp-title{display:flex;align-items:flex-end;justify-content:space-between;margin-top:.2in;gap:.2in}
+.pp-title h1{font-size:28pt;font-weight:800;letter-spacing:-.02em;color:#0C1B2A;line-height:1}
+.pp-title .meta{text-align:right;font-size:9.5pt;color:#5b6b73;line-height:1.6}
+.pp-title .meta b{color:#173A43}
+.pp-prod{margin-top:.16in;font-size:11pt;color:#5b6b73}
+.pp-prod b{color:#0C1B2A;font-size:13pt;font-weight:800}
+.pp-sec-h{font-size:9pt;font-weight:800;letter-spacing:.09em;text-transform:uppercase;color:#16A085;margin:.24in 0 .06in;display:flex;align-items:center;justify-content:space-between}
+.pp-sec-h .addrow{font-size:8pt;font-weight:800;letter-spacing:.02em;text-transform:none;color:#0E8473;background:rgba(20,161,140,.09);border:1px solid rgba(20,161,140,.3);border-radius:999px;padding:2px 9px;cursor:pointer}
+.pp-table{width:100%;border-collapse:collapse}
+.pp-table th{font-size:8pt;font-weight:800;letter-spacing:.04em;text-transform:uppercase;color:#8a979d;text-align:right;padding:.03in 0 .06in;border-bottom:1.5px solid #e3e9ed}
+.pp-table th:first-child{text-align:left}
+.pp-table td{padding:.065in 0;border-bottom:1px solid #eef2f4;font-size:10.5pt;color:#173A43;text-align:right;font-variant-numeric:tabular-nums;vertical-align:top}
+.pp-table td:first-child{text-align:left;font-weight:600}
+.pp-table .qty{width:.7in}.pp-table .amt{width:1.2in}.pp-table .del{width:.28in}
+.pp-table tr.tot td{border-top:2px solid #e3e9ed;border-bottom:0;font-weight:800;padding-top:.09in}
+.pp-table tr.tot td:last-child{color:#0E8473;font-size:12pt}
+.delx{cursor:pointer;color:#c25b50;font-weight:800;font-size:11pt;line-height:1;opacity:.55}
+.delx:hover{opacity:1}
+.pp-proc{margin-top:.2in;background:#f3f7f8;border:1px solid #e3e9ed;border-radius:.13in;padding:.14in .18in;display:flex;justify-content:space-between;align-items:center;gap:.2in}
+.pp-proc .l{font-size:8pt;font-weight:800;letter-spacing:.07em;text-transform:uppercase;color:#8a979d}
+.pp-proc b{display:block;font-size:12.5pt;font-weight:800;color:#0C1B2A;margin-top:2px}
+.pp-proc .rate{text-align:right}.pp-proc .rate b{color:#0E8473}
+.pp-notes{margin-top:.18in}
+.pp-notes p{font-size:10pt;color:#3c4a52;line-height:1.5;min-height:.4in}
+.pp-foot{margin-top:auto;padding-top:.2in;border-top:1px solid #e3e9ed;display:flex;justify-content:space-between;align-items:flex-end;gap:.2in}
+.pp-foot .rep b{font-size:11.5pt;font-weight:800;color:#0C1B2A}
+.pp-foot .rep .rows2{display:flex;flex-wrap:wrap;gap:.03in .24in;margin-top:.05in;font-size:9pt;color:#5b6b73;font-weight:600}
+.pp-foot .dis{font-size:6.5pt;color:#9aa7ad;max-width:3in;text-align:right;line-height:1.4}
+
+/* editable affordance on screen only */
+[contenteditable]{outline:none;border-radius:4px;transition:box-shadow .12s,background .12s}
+[contenteditable]:hover{box-shadow:inset 0 0 0 1px #d7e0e4}
+[contenteditable]:focus{box-shadow:inset 0 0 0 1.5px var(--teal,#16A085);background:rgba(20,161,140,.05)}
+[contenteditable][data-ph]:empty:before{content:attr(data-ph);color:#b3bfc5;font-weight:500}
+
+@media print{
+  .hub-bar,.tb,.pg-head,.hub-foot{display:none!important}
+  .stagewrap{padding:0;background:#fff;display:block}
+  .sheet{box-shadow:none;margin:0;width:8.5in;min-height:auto}
+  .delx,.addrow{display:none!important}
+  [contenteditable]:hover,[contenteditable]:focus{box-shadow:none;background:none}
+  @page{size:8.5in 11in;margin:0}
+}
+@media(max-width:900px){.sheet{transform-origin:top center}}
+</style>
+</head>
+<body>
+
+<div class="hub-bar">
+  <div class="hub-bar-inner">
+    <a href="/" style="display:flex;align-items:center" aria-label="Sales Hub home"><img class="logo" src="/assets/logos/nextpay-nav.png" alt="NextPay"></a>
+    <span class="pipe"></span>
+    <span class="hub-tag">Sales Hub <span class="badge">Internal</span></span>
+    <div class="right"><a href="/proposalbuilder">Proposal Builder</a><a href="/nextlinkproposal">NextLink template</a><a href="/">← Hub home</a></div>
+  </div>
+</div>
+
+<header class="pg-head">
+  <div class="wrap">
+    <div class="crumbs"><a href="/">Sales Hub</a><span class="sep">/</span><a href="/proposalbuilder">Proposal Builder</a><span class="sep">/</span><span>Proposal Template</span></div>
+    <h1>Proposal Template — any product, NextPay branded</h1>
+    <p class="lead">A clean, blank NextPay proposal you can type straight onto for <b>any</b> product, bundle or custom deal. Fill in the fields, add your line items, then <b>Print / Save as PDF</b>. Your name &amp; contact fill in automatically from your rep profile. Need auto-priced numbers instead? Use the <a href="/proposalbuilder" style="color:#cdd8e2;text-decoration:underline">Proposal Builder</a>.</p>
+  </div>
+</header>
+
+<div class="tb">
+  <div class="tb-inner">
+    <button class="btn primary" id="printBtn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9V2h12v7M6 18H4a2 2 0 01-2-2v-5a2 2 0 012-2h16a2 2 0 012 2v5a2 2 0 01-2 2h-2M6 14h12v8H6z"/></svg>Print / Save as PDF</button>
+    <button class="btn" data-add="monthly"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14"/></svg>Monthly line</button>
+    <button class="btn" data-add="upfront"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14"/></svg>Upfront line</button>
+    <button class="btn" data-add="onetime"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14"/></svg>One-time line</button>
+    <button class="btn" id="resetBtn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12a9 9 0 109-9 9 9 0 00-6.4 2.6L3 8"/><path d="M3 3v5h5"/></svg>Reset</button>
+    <span class="spacer"></span>
+    <span class="saved" id="savedNote"></span>
+    <div class="hint">Everything on the sheet is editable — click any text to change it. <b>Tab</b> moves field to field. Amounts recalculate as you type. Nothing is sent anywhere; this is a print-your-own template.</div>
+  </div>
+</div>
+
+<div class="stagewrap">
+  <div class="sheet" id="sheet">
+    <div class="pp-head">
+      <span class="np"><img src="/assets/logos/nextpay.png" alt="NextPay"></span>
+      <span class="pl" contenteditable="true" data-ph="Product / solution name">Your Solution</span>
+    </div>
+    <div class="pp-title">
+      <h1>Proposal</h1>
+      <div class="meta">
+        Prepared for <b><span contenteditable="true" data-ph="Business name">[Business name]</span></b><br>
+        <span contenteditable="true" data-ph="Contact name">[Contact]</span><br>
+        Prepared by <b><span id="repName" contenteditable="true" data-ph="Your name">[Your name]</span></b><br>
+        <span id="today"></span>
+      </div>
+    </div>
+
+    <div class="pp-prod">Solution: <b contenteditable="true" data-ph="e.g. Clover Station Duo, gateway bundle, custom package">[Product or bundle]</b> · <span contenteditable="true" data-ph="Category">POS Systems</span></div>
+
+    <div class="pp-sec-h">Monthly investment <span class="addrow" data-add="monthly">+ add line</span></div>
+    <table class="pp-table" id="tblMonthly">
+      <thead><tr><th>Item</th><th class="qty">Qty</th><th class="amt">Per mo</th><th class="del"></th></tr></thead>
+      <tbody></tbody>
+      <tfoot><tr class="tot"><td>Total monthly</td><td></td><td id="totMonthly">$0.00</td><td></td></tr></tfoot>
+    </table>
+
+    <div class="pp-sec-h">Upfront hardware <span class="addrow" data-add="upfront">+ add line</span></div>
+    <table class="pp-table" id="tblUpfront">
+      <thead><tr><th>Item</th><th class="qty">Qty</th><th class="amt">Each</th><th class="del"></th></tr></thead>
+      <tbody></tbody>
+      <tfoot><tr class="tot"><td>Upfront total</td><td></td><td id="totUpfront">$0.00</td><td></td></tr></tfoot>
+    </table>
+
+    <div class="pp-sec-h">One-time &amp; setup <span class="addrow" data-add="onetime">+ add line</span></div>
+    <table class="pp-table" id="tblOnetime">
+      <thead><tr><th>Item</th><th class="qty">Qty</th><th class="amt">Amount</th><th class="del"></th></tr></thead>
+      <tbody></tbody>
+      <tfoot><tr class="tot"><td>One-time total</td><td></td><td id="totOnetime">$0.00</td><td></td></tr></tfoot>
+    </table>
+
+    <div class="pp-proc">
+      <div><span class="l">Processing program</span><b contenteditable="true" data-ph="e.g. Dual Pricing / Flat Rate / Interchange+">Dual Pricing</b></div>
+      <div class="rate"><span class="l">Rate</span><b contenteditable="true" data-ph="e.g. 0% with dual pricing">0% with dual pricing</b></div>
+    </div>
+
+    <div class="pp-notes">
+      <div class="pp-sec-h">Additional comments</div>
+      <p contenteditable="true" data-ph="Anything else the merchant should know — timeline, what's included, next steps…"></p>
+    </div>
+
+    <div class="pp-foot">
+      <div class="rep"><b id="repName2" contenteditable="true" data-ph="Your name">[Your name]</b>
+        <div class="rows2">
+          <span id="repPhone" contenteditable="true" data-ph="Cell">[Cell]</span>
+          <span id="repEmail" contenteditable="true" data-ph="Email">[Email]</span>
+          <span>www.nextpaypos.com</span>
+        </div>
+      </div>
+      <div class="dis">Pricing is an estimate, valid 30 days, and subject to underwriting, card mix, and final agreement. Not a binding offer.</div>
+    </div>
+  </div>
+</div>
+
+<footer class="hub-foot">
+  <div class="wrap">
+    <span>NextPay Sales Hub · Proposal Template · Internal use only.</span>
+    <span><a href="/proposalbuilder">Auto-priced Proposal Builder →</a> · <a href="/">← Back to hub</a></span>
+  </div>
+</footer>
+
+<script>
+(function(){
+  // ---- date ----
+  try{ document.getElementById('today').textContent =
+    new Date().toLocaleDateString('en-US',{year:'numeric',month:'long',day:'numeric'}); }catch(e){}
+
+  // ---- rep profile auto-fill (shared key used across every hub tool) ----
+  try{
+    var rp = JSON.parse(localStorage.getItem('np_rep_profile')||'{}')||{};
+    function seed(id,v){ var el=document.getElementById(id); if(el&&v){ el.textContent=v; } }
+    seed('repName', rp.name); seed('repName2', rp.name);
+    seed('repPhone', rp.cell); seed('repEmail', rp.email);
+    if(rp.name||rp.email){ document.getElementById('savedNote').textContent='✓ Rep details from your profile'; }
+    // keep the two name fields in sync as you type
+    ['repName','repName2'].forEach(function(id){
+      var el=document.getElementById(id);
+      el&&el.addEventListener('input', function(){
+        var other=document.getElementById(id==='repName'?'repName2':'repName');
+        if(other) other.textContent=el.textContent;
+      });
+    });
+  }catch(e){}
+
+  // ---- money helpers ----
+  function money(n){ return '$'+(Math.round(n*100)/100).toLocaleString('en-US',{minimumFractionDigits:2,maximumFractionDigits:2}); }
+  function num(s){ var n=parseFloat(String(s).replace(/[^0-9.\-]/g,'')); return isNaN(n)?0:n; }
+
+  // ---- editable row ----
+  function addRow(which, name, qty, amt){
+    var tb=document.querySelector('#tbl'+which.charAt(0).toUpperCase()+which.slice(1)+' tbody');
+    var tr=document.createElement('tr');
+    tr.innerHTML='<td contenteditable="true" data-ph="Describe the item">'+(name||'')+'</td>'
+      +'<td class="qty" contenteditable="true">'+(qty||'1')+'</td>'
+      +'<td class="amt" contenteditable="true" data-ph="0.00">'+(amt||'')+'</td>'
+      +'<td class="del"><span class="delx" title="Remove line">×</span></td>';
+    tb.appendChild(tr);
+    tr.querySelector('.delx').addEventListener('click', function(){ tr.remove(); recalc(); });
+    tr.addEventListener('input', recalc);
+    recalc();
+    return tr;
+  }
+
+  function recalc(){
+    [['Monthly'],['Upfront'],['Onetime']].forEach(function(g){
+      var w=g[0], rows=document.querySelectorAll('#tbl'+w+' tbody tr'), t=0;
+      rows.forEach(function(r){
+        var cells=r.querySelectorAll('td');
+        t += num(cells[1].textContent) * num(cells[2].textContent);
+      });
+      document.getElementById('tot'+w).textContent=money(t);
+    });
+  }
+
+  // ---- toolbar add buttons + inline "+ add line" ----
+  document.body.addEventListener('click', function(e){
+    var t=e.target.closest('[data-add]'); if(!t) return;
+    var row=addRow(t.getAttribute('data-add'));
+    var first=row.querySelector('td'); if(first){ first.focus(); }
+  });
+
+  // ---- print ----
+  document.getElementById('printBtn').addEventListener('click', function(){ window.print(); });
+
+  // ---- reset ----
+  document.getElementById('resetBtn').addEventListener('click', function(){
+    if(!confirm('Clear this proposal and start over?')) return;
+    ['Monthly','Upfront','Onetime'].forEach(function(w){ document.querySelector('#tbl'+w+' tbody').innerHTML=''; });
+    recalc(); seedStarter();
+  });
+
+  // ---- start with one blank line in each so the layout reads as a proposal ----
+  function seedStarter(){ addRow('monthly'); addRow('upfront'); addRow('onetime'); }
+  seedStarter();
+})();
+</script>
+<script src="/js/hub-nav.js"></script>
+</body>
+</html>
