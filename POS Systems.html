@@ -107,6 +107,12 @@
 .vtag{font-size:13px}
 .tgrid .more-card{display:none}
 .tgrid.expanded .more-card{display:flex}
+.brandstrip-label{display:inline-flex;align-items:center;font-size:12px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:rgba(255,255,255,.72);margin-right:4px}
+.bchip.bchip-txt{display:inline-flex;align-items:center;font-weight:800;font-size:13px;color:#fff;padding:0 12px;height:44px}
+.accsec{background:var(--bg-soft,#f3f7f8)}
+.acc-eyebrow{font-size:12px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:var(--teal-dark);margin-bottom:6px}
+.acc-title{font-size:clamp(24px,3vw,32px);letter-spacing:-.02em;margin:0 0 8px}
+.tband.accbuild{margin:36px 0 0}
 .showmore{display:flex;align-items:center;gap:9px;margin:22px auto 0;padding:12px 24px;border-radius:999px;border:1.5px solid var(--line);background:#fff;color:var(--navy);font-family:inherit;font-weight:700;font-size:15px;cursor:pointer;transition:.16s}
 .showmore:hover{border-color:var(--teal);color:var(--teal-dark)}
 .showmore svg{width:16px;height:16px;transition:.2s}
@@ -158,15 +164,18 @@ window.addEventListener('load',function(){document.querySelectorAll('img.brandlo
           <a class="btn btn-ghost" href="#all">Browse all systems</a>
         </div>
         <div class="brandstrip">
+          <span class="brandstrip-label">Jump to a brand:</span>
           <a href="#shift4" class="bchip" title="SkyTab by Shift4"><img src="assets/logos/skytab.svg" alt="SkyTab by Shift4" style="height:32px;max-width:160px"></a>
           <a href="#square" class="bchip" title="Square"><img src="assets/logos/square.svg" alt="Square"></a>
           <a href="#sumup" class="bchip" title="SumUp"><img src="assets/logos/sumup.svg" alt="SumUp"></a>
           <a href="#clover" class="bchip" title="Clover"><img src="assets/logos/clover.png" alt="Clover"></a>
+          <a href="#pays" class="bchip" title="PAYS POS"><img src="assets/logos/pays.svg" alt="PAYS POS"></a>
           <a href="#nrs" class="bchip" title="NRS"><img src="assets/logos/nrs.png" alt="NRS"></a>
           <a href="#quantic" class="bchip" title="Quantic"><img src="assets/logos/quantic-tight.png" alt="Quantic"></a>
           <a href="#korona" class="bchip" title="Korona"><img src="assets/logos/korona.png" alt="Korona"></a>
           <a href="#nextpay" class="bchip" title="Chively"><img src="assets/logos/chively-white.png" style="filter:brightness(0)" alt="Chively"></a>
           <a href="#dejapay" class="bchip" title="DejaPay Pro"><img src="assets/logos/dejapay.webp" alt="DejaPay Pro"></a>
+          <a href="#accessories" class="bchip bchip-txt" title="Accessories &amp; add-ons">+ Accessories</a>
         </div>
       </div>
       <div class="thero-media">
@@ -189,6 +198,7 @@ window.addEventListener('load',function(){document.querySelectorAll('img.brandlo
     <a href="#korona">Korona</a>
     <a href="#nextpay">Chively</a>
     <a href="#dejapay">DejaPay Pro</a>
+    <a href="#accessories">Accessories</a>
     <a href="#compare-help">Compare</a>
   </div>
 </div>
@@ -865,6 +875,107 @@ window.addEventListener('load',function(){document.querySelectorAll('img.brandlo
       <img class="lcl" src="assets/logos/korona.png" alt="Korona">
       <img class="lcl" src="assets/logos/chively-white.png" alt="Chively">
       <img class="lcl" src="assets/logos/dejapay.webp" alt="DejaPay Pro">
+    </div>
+  </div>
+</section>
+
+<!-- ACCESSORIES & ADD-ONS -->
+<section class="bsec accsec" data-cats="restaurant retail convenience services highrisk" id="accessories">
+  <div class="wrap">
+    <div class="bhead">
+      <div class="bh-left">
+        <div class="acc-eyebrow">Complete the setup</div>
+        <h2 class="acc-title">Accessories &amp; add-ons</h2>
+        <p>Round out any POS with the hardware that makes it run — printers, scanners, cash drawers, scales and more. These work across the systems above; the exact model is matched to your POS and <b>priced with your setup</b>. Add them to your build in a couple of clicks.</p>
+        <div class="bestfor"><span class="vtag-label">Works with</span><span class="tag tag-teal vtag">Every POS above</span></div>
+      </div>
+      <div class="bh-quiz"><span>Want it all in one quote?</span><a class="btn btn-primary btn-sm" href="/build" target="_blank" rel="noopener">Build your setup <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a><span style="margin-top:8px;font-size:12.5px;color:var(--slate)">Pick your system, software &amp; accessories — instant estimate.</span></div>
+    </div>
+    <div class="tgrid cols4">
+      <article class="pcard">
+        <div class="pimg"><image-slot id="p-acc-receiptprinter" src="assets/terminals/chively-printer.png" fit="contain" radius="0" placeholder="Receipt printer"></image-slot></div>
+        <div class="pbody">
+          <h3>Receipt Printer</h3>
+          <p class="pdesc">Fast, quiet thermal receipt printer for the front counter — USB or network.</p>
+          <div class="pspecs"><span class="tag">Thermal</span><span class="tag">Countertop</span></div>
+          <div class="pcta"><div class="pcta-row"><a class="btn btn-primary btn-sm btn-block" href="/build" target="_blank" rel="noopener">Add to your build</a></div></div>
+        </div>
+      </article>
+      <article class="pcard">
+        <div class="pimg"><image-slot id="p-acc-kitchenprinter" src="assets/terminals/chively-printer.png" fit="contain" radius="0" placeholder="Kitchen printer"></image-slot></div>
+        <div class="pbody">
+          <h3>Kitchen / Impact Printer</h3>
+          <p class="pdesc">Heat-tolerant impact printer that fires tickets straight to the kitchen line.</p>
+          <div class="pspecs"><span class="tag">Impact</span><span class="tag">Back-of-house</span></div>
+          <div class="pcta"><div class="pcta-row"><a class="btn btn-primary btn-sm btn-block" href="/build" target="_blank" rel="noopener">Add to your build</a></div></div>
+        </div>
+      </article>
+      <article class="pcard">
+        <div class="pimg"><image-slot id="p-acc-scanner" src="assets/terminals/chively-scanner.png" fit="contain" radius="0" placeholder="Barcode scanner"></image-slot></div>
+        <div class="pbody">
+          <h3>Barcode Scanner</h3>
+          <p class="pdesc">Handheld or hands-free 2D scanner for fast, accurate retail checkout.</p>
+          <div class="pspecs"><span class="tag">2D / QR</span><span class="tag">Retail</span></div>
+          <div class="pcta"><div class="pcta-row"><a class="btn btn-primary btn-sm btn-block" href="/build" target="_blank" rel="noopener">Add to your build</a></div></div>
+        </div>
+      </article>
+      <article class="pcard">
+        <div class="pimg"><image-slot id="p-acc-drawer" src="assets/terminals/chively-drawer.png" fit="contain" radius="0" placeholder="Cash drawer"></image-slot></div>
+        <div class="pbody">
+          <h3>Cash Drawer</h3>
+          <p class="pdesc">Sturdy cash drawer that pops on print — pairs with your station or printer.</p>
+          <div class="pspecs"><span class="tag">Printer-driven</span><span class="tag">Lockable</span></div>
+          <div class="pcta"><div class="pcta-row"><a class="btn btn-primary btn-sm btn-block" href="/build" target="_blank" rel="noopener">Add to your build</a></div></div>
+        </div>
+      </article>
+      <article class="pcard more-card">
+        <div class="pimg"><image-slot id="p-acc-label" src="" fit="contain" radius="0" placeholder="Label printer"></image-slot></div>
+        <div class="pbody">
+          <h3>Label / Barcode Printer</h3>
+          <p class="pdesc">Print shelf tags and product barcodes for tight retail inventory control.</p>
+          <div class="pspecs"><span class="tag">Shelf labels</span><span class="tag">Inventory</span></div>
+          <div class="pcta"><div class="pcta-row"><a class="btn btn-primary btn-sm btn-block" href="/build" target="_blank" rel="noopener">Add to your build</a></div></div>
+        </div>
+      </article>
+      <article class="pcard more-card">
+        <div class="pimg"><image-slot id="p-acc-scale" src="" fit="contain" radius="0" placeholder="Integrated scale"></image-slot></div>
+        <div class="pbody">
+          <h3>Integrated Scale</h3>
+          <p class="pdesc">Certified weigh-at-checkout scale for delis, markets and by-weight selling.</p>
+          <div class="pspecs"><span class="tag">Certified</span><span class="tag">Deli / market</span></div>
+          <div class="pcta"><div class="pcta-row"><a class="btn btn-primary btn-sm btn-block" href="/build" target="_blank" rel="noopener">Add to your build</a></div></div>
+        </div>
+      </article>
+      <article class="pcard more-card">
+        <div class="pimg"><image-slot id="p-acc-reader" src="assets/terminals/square-reader.avif" fit="contain" radius="0" placeholder="Card reader"></image-slot></div>
+        <div class="pbody">
+          <h3>Card Reader / PIN Pad</h3>
+          <p class="pdesc">Customer-facing tap, dip and PIN debit — add a reader or pin pad to any lane.</p>
+          <div class="pspecs"><span class="tag">Tap &amp; chip</span><span class="tag">PIN debit</span></div>
+          <div class="pcta"><div class="pcta-row"><a class="btn btn-primary btn-sm btn-block" href="/build" target="_blank" rel="noopener">Add to your build</a></div></div>
+        </div>
+      </article>
+      <article class="pcard more-card">
+        <div class="pimg"><image-slot id="p-acc-stand" src="" fit="contain" radius="0" placeholder="Stands & mounts"></image-slot></div>
+        <div class="pbody">
+          <h3>Stands, Mounts &amp; Paper</h3>
+          <p class="pdesc">Countertop stands, wall/kiosk mounts and receipt-paper starter packs to finish the install.</p>
+          <div class="pspecs"><span class="tag">Stands</span><span class="tag">Receipt paper</span></div>
+          <div class="pcta"><div class="pcta-row"><a class="btn btn-primary btn-sm btn-block" href="/build" target="_blank" rel="noopener">Add to your build</a></div></div>
+        </div>
+      </article>
+    </div>
+    <button class="showmore" type="button" data-label="accessories">Show more accessories <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg></button>
+
+    <div class="tband accbuild">
+      <span class="eyebrow" style="color:var(--teal-bright)">Build it your way</span>
+      <h2>Build your full setup — POS + accessories</h2>
+      <p>Pick your system, software and every accessory in one place and get an instant estimate — then we dial in your exact quote with match-or-beat processing.</p>
+      <div class="thero-cta">
+        <a class="btn btn-primary" href="/build" target="_blank" rel="noopener">Build Your Solution
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+        <a class="btn btn-ghost" href="/quick-application" target="_blank" rel="noopener">Get a quote</a>
+      </div>
     </div>
   </div>
 </section>
