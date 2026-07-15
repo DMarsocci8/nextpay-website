@@ -56,7 +56,7 @@
         ['NRS','/nrs'],
         ['DejaPay Pro','/dejapay'],
         ['PAYS POS','/pays'],
-        ['Next2Pay Invoicing','/next2pay']
+        ['Next2Pay Invoicing','/next2pay',1]
       ]],
       ['Submit', [
         ['Submit a Deal','/submitadeal'],
