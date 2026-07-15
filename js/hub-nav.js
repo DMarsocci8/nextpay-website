@@ -31,6 +31,7 @@
         ['Prospecting Scripts','/scripts'],
         ['Objection Handling','/objections'],
         ['Competitor Battlecards','/battlecards'],
+        ['Our POS Line-Up Battlecards','/posbattlecards'],
         ['SumUp Battlecards','/sumupbattlecards'],
         ['SkyTab Battlecards','/skytabbattlecards'],
         ['Prospecting Questions','/prospecting'],
