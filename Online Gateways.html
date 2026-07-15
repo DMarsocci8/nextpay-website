@@ -152,12 +152,13 @@ window.addEventListener('load',function(){document.querySelectorAll('img.brandlo
       <div>
         <span class="tag tag-teal">Accept Payments · Online Payments</span>
         <h1>Take payments online,<br><em>your way.</em></h1>
-        <p class="lead">Built for your e-commerce business and beyond — website checkout, payment links, recurring billing and virtual terminals, powered by NMI, FluidPay, Authorize.net, Valor, Luqra and iPOSPays. Compare gateways, see what each is best for, and settle everything in one NextPay dashboard.</p>
+        <p class="lead">Built for your business and beyond — website checkout, payment links, recurring billing and virtual terminals. Lead with <b>Next2Pay</b>, our own card + ACH platform, or pick a standalone gateway (NMI, FluidPay, Authorize.net, Valor, Luqra, iPOSPays). Compare, see what each is best for, and settle everything in one NextPay dashboard.</p>
         <div class="thero-cta">
           <a class="btn btn-primary" href="/quiz" target="_blank" rel="noopener">Take the Quiz <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
           <a class="btn btn-ghost" href="#all">Browse all gateways</a>
         </div>
         <div class="brandstrip">
+          <a href="#next2pay" class="bchip" title="Next2Pay"><img src="assets/logos/next2pay-white.svg" alt="Next2Pay" style="height:26px"></a>
           <a href="#valor" class="bchip" title="Valor"><img src="assets/logos/valor.png" alt="Valor"></a>
           <a href="#fluidpay" class="bchip" title="FluidPay"><img src="assets/logos/fluidpay.png" alt="FluidPay"></a>
           <a href="#ipospays" class="bchip" title="iPOSPays"><img src="assets/logos/ipospays.png" alt="iPOSPays"></a>
@@ -176,7 +177,8 @@ window.addEventListener('load',function(){document.querySelectorAll('img.brandlo
 <div class="brandnav" id="all">
   <div class="wrap">
     <span class="bn-label">Shop by gateway</span>
-    <a href="#valor" class="on">Valor</a>
+    <a href="#next2pay" class="on">Next2Pay</a>
+    <a href="#valor">Valor</a>
     <a href="#fluidpay">FluidPay</a>
     <a href="#ipospays">iPOSPays</a>
     <a href="#authnet">Authorize.net</a>
@@ -185,6 +187,32 @@ window.addEventListener('load',function(){document.querySelectorAll('img.brandlo
     <a href="#compare-help">Compare</a>
   </div>
 </div>
+
+<!-- NEXT2PAY — featured -->
+<section class="bsec" id="next2pay" style="scroll-margin-top:120px">
+  <div class="wrap">
+    <div style="position:relative;overflow:hidden;background:linear-gradient(120deg,#0C1B2A,#10243A);border-radius:26px;padding:clamp(28px,4vw,52px);color:#fff">
+      <div style="position:absolute;right:-90px;bottom:-130px;width:420px;height:420px;border-radius:50%;background:radial-gradient(circle,rgba(20,161,140,.28),transparent 70%)"></div>
+      <div style="position:relative;z-index:2;max-width:760px">
+        <span style="display:inline-flex;align-items:center;gap:7px;font-size:12px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:#1FC2A6">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" style="width:14px;height:14px"><path d="M5 13l4 4L19 7"/></svg>Our flagship — lead with this
+        </span>
+        <div style="margin:14px 0 6px"><img src="assets/logos/next2pay-white.svg" alt="Next2Pay" style="height:54px;width:auto;display:block"></div>
+        <h2 style="font-size:clamp(26px,3.2vw,38px);color:#fff;letter-spacing:-.02em;margin:6px 0 0">The gateway built for getting paid</h2>
+        <p style="color:#c4d0db;font-size:17px;line-height:1.6;margin:12px 0 0;max-width:640px">Next2Pay is our own card + ACH platform — send invoices and pay-by-link, run recurring billing, vault cards, and take bank payments, all under the NextPay brand and settled to one account. Dual pricing or cost-plus, your merchant's choice.</p>
+        <div style="display:flex;gap:9px;flex-wrap:wrap;margin:20px 0 0">
+          <span class="tag tag-teal">Invoicing &amp; pay links</span><span class="tag tag-teal">Recurring billing</span><span class="tag tag-teal">Card + ACH</span><span class="tag">Virtual terminal</span><span class="tag">QuickBooks sync</span><span class="tag">Dual pricing</span>
+        </div>
+        <div class="thero-cta" style="margin-top:24px">
+          <a class="btn btn-primary" href="/invoicing">Explore Next2Pay <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+          <a class="btn btn-ghost" href="/contact" style="color:#fff;border-color:rgba(255,255,255,.35)">Book a demo</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="wrap" style="padding-top:6px"><p style="color:var(--slate);font-size:14.5px;max-width:820px;margin:8px auto 0">Prefer a standalone gateway, or need one for a specific processor or terminal? We support these too — pick the one that fits.</p></div>
 
 <!-- VALOR -->
 <section class="bsec" id="valor">
