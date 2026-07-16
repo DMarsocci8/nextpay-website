@@ -75,6 +75,18 @@ table.t td small{color:var(--slate-2);font-weight:500}
 .n2p-tbl td.r{font-weight:800;color:var(--teal-dark);white-space:nowrap;font-variant-numeric:tabular-nums}
 .n2p-note{font-size:12.5px;color:var(--slate);margin-top:8px;line-height:1.5}
 .n2p-uw{max-width:640px;margin:6px 0 0;padding-left:18px;color:var(--ink);font-size:13.5px;line-height:1.7}
+/* Software preview gallery */
+.n2p-shotgrid{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+@media(max-width:760px){.n2p-shotgrid{grid-template-columns:1fr}}
+.n2p-shot{margin:0;background:#fff;border:1px solid var(--line);border-radius:14px;overflow:hidden;box-shadow:var(--shadow-sm)}
+.n2p-shot.wide{grid-column:1/-1}
+.n2p-shot .n2p-winbar{height:30px;background:#f0f3f6;border-bottom:1px solid var(--line);display:flex;align-items:center;gap:6px;padding:0 12px}
+.n2p-shot .n2p-winbar i{width:9px;height:9px;border-radius:50%;background:#cdd6dd;display:block}
+.n2p-shot img{width:100%;display:block}
+.n2p-shot figcaption{font-size:12.5px;color:var(--slate);padding:10px 14px;border-top:1px solid var(--line)}
+.n2p-shot.phone{background:transparent;border:0;box-shadow:none;text-align:center}
+.n2p-shot.phone img{max-width:260px;margin:0 auto;display:block}
+.n2p-shot.phone figcaption{border:0}
 .note-band a{color:var(--teal-dark);font-weight:700}
 .ph{font-size:12.5px;color:#b9741a;background:rgba(242,163,60,.14);border-radius:7px;padding:2px 9px;font-weight:700;white-space:nowrap}
 
@@ -116,6 +128,7 @@ table.t td small{color:var(--slate-2);font-weight:500}
     </div>
     <div class="jump">
       <a href="#features">What it does</a>
+      <a href="#software">See the software</a>
       <a href="#pricing">Pricing</a>
       <a href="#buyrates">Buy rates</a>
       <a href="#portals">Portals &amp; logins</a>
@@ -157,6 +170,19 @@ table.t td small{color:var(--slate-2);font-weight:500}
         <b style="display:block;font-size:15.5px;color:var(--ink);margin-bottom:5px">Who it's for</b>
         <p style="font-size:14.5px;color:var(--slate);line-height:1.55">Contractors and home services, professional services (legal, accounting, consulting), medical &amp; wellness billing, B2B suppliers, property and service companies — anyone who bills after the work instead of ringing a register.</p>
       </div>
+    </div>
+  </section>
+
+  <!-- SOFTWARE PREVIEW -->
+  <section class="sec" id="software">
+    <h2>See the software</h2>
+    <p class="sub">What the portal looks like — use these in demos and proposals. (Real portal walkthrough videos, including the QuickBooks version, are coming soon.)</p>
+    <div class="n2p-shotgrid">
+      <figure class="n2p-shot wide"><div class="n2p-winbar"><i></i><i></i><i></i></div><img src="/assets/software/next2pay-dashboard.png" alt="Next2Pay dashboard" loading="lazy"><figcaption>Dashboard — paid, outstanding, recurring MRR &amp; recent payments</figcaption></figure>
+      <figure class="n2p-shot"><div class="n2p-winbar"><i></i><i></i><i></i></div><img src="/assets/software/next2pay-invoice.png" alt="Next2Pay payment request" loading="lazy"><figcaption>Create a payment request + live invoice preview</figcaption></figure>
+      <figure class="n2p-shot"><div class="n2p-winbar"><i></i><i></i><i></i></div><img src="/assets/software/next2pay-recurring.png" alt="Next2Pay recurring billing" loading="lazy"><figcaption>Recurring billing — subscriptions &amp; auto-pay</figcaption></figure>
+      <figure class="n2p-shot"><div class="n2p-winbar"><i></i><i></i><i></i></div><img src="/assets/software/next2pay-terminal.png" alt="Next2Pay virtual terminal" loading="lazy"><figcaption>Virtual terminal — key in card or ACH</figcaption></figure>
+      <figure class="n2p-shot phone"><img src="/assets/software/next2pay-paypage.png" alt="Next2Pay customer pay page" loading="lazy"><figcaption>Customer pay page — bank ($0 fee) or card</figcaption></figure>
     </div>
   </section>
 
