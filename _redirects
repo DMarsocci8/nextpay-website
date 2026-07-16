@@ -105,6 +105,9 @@
 /analyzestatement                  /Sales%20Hub%20-%20Statements.html             200
 /calculators                       /Sales%20Hub%20-%20Statements.html             200
 /residualcalculator                /Sales%20Hub%20-%20Residual%20Calculator.html  200
+/buyrates                          /Sales%20Hub%20-%20Buy%20Rates.html            200
+/schedulea                         /buyrates                                      302
+/buyouts                           /buyrates                                      302
 /residuals                         /residualcalculator                            302
 /submitadeal                       /Sales%20Hub%20-%20Submit%20a%20Deal.html      200
 /training                          /Sales%20Hub%20-%20Training.html               200
