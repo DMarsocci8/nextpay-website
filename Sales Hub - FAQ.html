@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="robots" content="noindex, nofollow">
-<title>Merchant Account Fee FAQ — NextPay Sales Hub</title>
+<title>Merchant FAQ — Invoicing, Processing & Fees — NextPay Sales Hub</title>
 <link rel="icon" href="/assets/favicon.ico" sizes="any">
 <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
 <link rel="stylesheet" href="/css/nextpay.css">
@@ -59,11 +59,41 @@ h2.sec{font-size:21px;letter-spacing:-.02em;margin:26px 0 12px}
   <div class="right"><a href="/">← Hub home</a></div>
 </div></div>
 <header class="pg-head"><div class="wrap">
-  <div class="crumbs"><a href="/">Sales Hub</a><span class="sep">/</span><span>Merchant Account Fee FAQ</span></div>
-  <h1>Merchant Account Fee FAQ</h1>
-  <p class="lead">A quick guide to understanding common statement line items — use it to answer fee questions with confidence and full transparency.</p>
+  <div class="crumbs"><a href="/">Sales Hub</a><span class="sep">/</span><span>Merchant FAQ</span></div>
+  <h1>Merchant FAQ</h1>
+  <p class="lead">The questions merchants actually ask — invoicing, how card processing works, and account fees — with plain-English answers you can use on a call. Plus the internal buy-rate math so you know what to charge and what to absorb.</p>
+  <div class="jump" style="display:flex;gap:9px;flex-wrap:wrap;margin-top:18px">
+    <a href="#invoicing" style="background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.16);border-radius:999px;padding:8px 14px;font-size:13px;font-weight:700;color:#eaf1f6">Invoicing &amp; Next2Pay</a>
+    <a href="#processing" style="background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.16);border-radius:999px;padding:8px 14px;font-size:13px;font-weight:700;color:#eaf1f6">Card processing basics</a>
+    <a href="#buyrates" style="background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.16);border-radius:999px;padding:8px 14px;font-size:13px;font-weight:700;color:#eaf1f6">Your buy rates</a>
+    <a href="#fees" style="background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.16);border-radius:999px;padding:8px 14px;font-size:13px;font-weight:700;color:#eaf1f6">Account fees</a>
+  </div>
 </div></header>
 <main class="wrap">
+
+  <!-- INVOICING / NEXT2PAY -->
+  <h2 class="sec" id="invoicing">Invoicing &amp; Next2Pay — what merchants ask</h2>
+  <p style="font-size:14px;color:var(--slate);margin:0 0 12px;max-width:720px;line-height:1.55">Use these when a merchant is weighing an invoicing solution. Our own platform is <b>Next2Pay</b> — <a href="/next2pay" style="color:var(--teal-dark);font-weight:700">full deal info here</a>.</p>
+  <div id="invoicing-faq"></div>
+
+  <!-- CREDIT CARD PROCESSING -->
+  <h2 class="sec" id="processing">Credit card processing — the basics merchants ask</h2>
+  <p style="font-size:14px;color:var(--slate);margin:0 0 12px;max-width:720px;line-height:1.55">Plain-English answers to the "how does this actually work" questions. For programs and numbers, see <a href="/pricing" style="color:var(--teal-dark);font-weight:700">Pricing &amp; Fee Programs</a>.</p>
+  <div id="processing-faq"></div>
+
+  <!-- AGENT BUY-RATE CALLOUT -->
+  <h2 class="sec" id="buyrates">Know your buy rates <span class="ph" style="font-size:11px;font-weight:800;letter-spacing:.06em;text-transform:uppercase;color:#fff;background:var(--teal);padding:3px 9px;border-radius:999px;vertical-align:middle;margin-left:8px">Agents only</span></h2>
+  <div class="intro" style="border-left-color:var(--teal-bright)">
+    <p><b>The fees below are your COST — your buy rate.</b> On every deal you have three choices with each line item:</p>
+    <ul style="margin:10px 0 0;padding-left:20px;font-size:14.5px;color:var(--ink);line-height:1.7">
+      <li><b>Pass it through at cost</b> — the merchant pays "our cost," you keep your normal residual.</li>
+      <li><b>Mark it up</b> — charge above cost and the difference is extra margin for you.</li>
+      <li><b>Absorb / waive it</b> — take it out of <b>your residual</b> to sharpen the deal and close.</li>
+    </ul>
+    <p style="margin-top:10px">Same logic on the <b>Next2Pay</b> gateway &amp; ACH lines — the full buy&#8209;rate sheet lives on the <a href="/next2pay#buyrates" style="color:var(--teal-dark);font-weight:800">Next2Pay deal-info page →</a>. Build the deal either way in the <a href="/proposalbuilder" style="color:var(--teal-dark);font-weight:800">Proposal Builder</a>.</p>
+  </div>
+
+  <h2 class="sec" id="fees">Account fees — what shows up on a statement</h2>
   <div class="intro">
     <p><b>Why are there different fees on a statement?</b> Payment processing involves multiple parties — the card networks (Visa, Mastercard, etc.), the acquiring bank, fraud-prevention services and compliance providers. Some fees are required by these networks and security standards and are simply passed through. NextPay Business Solutions' goal is full transparency, so you always know what you're paying and why.</p>
   </div>
@@ -128,6 +158,30 @@ h2.sec{font-size:21px;letter-spacing:-.02em;margin:26px 0 12px}
   <span><a href="/requestaccess#suggest">💡 Suggest / Request</a> · <a href="/">← Back to hub</a></span>
 </div></footer>
 <script>
+var INVOICING=[
+ {q:"How do my customers pay an invoice?",a:"They get a secure link by text or email and pay in a couple of taps — by card or straight from their bank account (ACH). No app to download, no account to create."},
+ {q:"What does Next2Pay cost me?",a:"$25/month for the software, or $50/month with the QuickBooks integration. Card and ACH processing is quoted separately — and with dual pricing the card fee can be passed to the customer so you keep the full invoice."},
+ {q:"Card vs. bank (ACH) — what's the difference for me?",a:"Bank/ACH is much cheaper on larger invoices, so it's great for big-ticket billing. With dual pricing the customer who pays by card covers the card fee, so either way you collect the full amount."},
+ {q:"Can I set up automatic recurring billing?",a:"Yes. Put memberships, retainers, service plans and subscriptions on autopilot — Next2Pay charges the card or bank on the schedule you set, retries failed payments, and emails every receipt."},
+ {q:"Does it work with QuickBooks?",a:"Yes — the QuickBooks-integrated plan syncs invoices and payments both ways, so your books stay reconciled automatically. (That's the $50/month plan.)"},
+ {q:"Can I take a deposit now and bill the balance later?",a:"Yes — send a deposit link up front and the balance when the work is done. Great for contractors, events and custom orders."},
+ {q:"Is it secure?",a:"Yes. It's PCI-compliant, cards are vaulted securely, and customers pay on a secure hosted page — you never handle raw card data."},
+ {q:"Do I need special hardware?",a:"No. Next2Pay runs on any phone, tablet or computer, and the built-in virtual terminal turns any device into a card terminal when you need to key a payment in."},
+ {q:"Can I brand the invoices as my business?",a:"Yes — your business name and details are on the invoice and pay page, so it looks like you, not a third party."},
+ {q:"How fast do I get my money?",a:"Funds settle to your NextPay account on a standard next-day/2-day schedule depending on setup — and everything (invoices, recurring, in-person) settles to one account."}
+];
+var PROCESSING=[
+ {q:"How does credit card processing actually work?",a:"When a card is run, the transaction passes through the card network (Visa, Mastercard, etc.) and the customer's issuing bank, then to the processor. The bank's cost is called interchange and is passed through; the processor adds a small markup on top."},
+ {q:"What is interchange?",a:"Interchange is the wholesale cost set by Visa/Mastercard that goes to the bank that issued the customer's card. It's the same for everyone — no processor can beat it. The only thing that really varies between processors is the markup added on top."},
+ {q:"Interchange-plus vs. flat rate vs. tiered — what's the difference?",a:"Interchange-plus shows the true cost plus a set markup (most transparent). Flat rate (like Square) bundles everything into one simple percentage. Tiered pricing buckets cards into 'qualified / mid / non-qualified' and usually hides the real markup — it's the one to watch out for."},
+ {q:"What is dual pricing / cash discount?",a:"You show two prices — a cash price and a card price. The customer who pays by card covers the processing fee, so the merchant processes at effectively 0%. It's the simplest way to eliminate processing costs."},
+ {q:"Is surcharging the same as dual pricing?",a:"No. A surcharge is an added fee on credit cards only — it's capped, can't be applied to debit cards, and must be disclosed and registered with the card brands. Dual pricing simply shows a cash vs. card price and is generally the cleaner, more flexible option."},
+ {q:"How long until I get funded?",a:"Typically next business day; some setups fund in two days. The merchant just needs to batch out their transactions each day to get paid."},
+ {q:"What's a chargeback?",a:"When a customer disputes a charge with their bank, the amount is pulled back while it's reviewed. Clear receipts, good descriptors and delivery proof keep them rare — and NextPay chargeback protection helps fight the ones that come."},
+ {q:"Can you really lower my rate?",a:"We can't change interchange (nobody can), but we can cut the processor markup, remove junk fees and unnecessary software costs, or move you to dual pricing for effectively 0%. A quick statement review shows exactly where the savings are."},
+ {q:"Are there long contracts or equipment leases?",a:"We avoid long-term equipment leases — they're where merchants get stuck. Always read the term before signing anything with a lease, and ask us if you're not sure."},
+ {q:"Who do I call for support?",a:"You get a direct NextPay contact — a real person, not just an 800 number — for setup, questions and issues."}
+];
 var COMMON=[
  {q:"What is the Monthly Service Fee?",a:"Covers account maintenance, reporting tools, settlements, and the backend processing systems that support the merchant account."},
  {q:"What is the Annual Regulatory / Admin Fee?",a:"An annual fee that helps cover card-brand regulatory assessments and administrative requirements set by the card networks. Typically billed once per year."},
@@ -148,7 +202,7 @@ function render(id,arr){
   return '<div class="faq"><button class="faq-head" type="button"><span class="q">'+o.q+'</span><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg></button><div class="faq-body"><p>'+o.a+'</p></div></div>';
  }).join('');
 }
-render('common',COMMON);render('pci',PCI);
+render('invoicing-faq',INVOICING);render('processing-faq',PROCESSING);render('common',COMMON);render('pci',PCI);
 document.querySelectorAll('.faq-head').forEach(function(b){b.addEventListener('click',function(){b.parentNode.classList.toggle('open');});});
 </script>
 <script src="/js/hub-nav.js"></script>
