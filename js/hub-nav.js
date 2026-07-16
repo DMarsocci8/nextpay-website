@@ -20,6 +20,7 @@
     var GROUPS = [
       ['Learn', [
         ['Knowledge Base','/knowledgebase'],
+        ['Merchant FAQ','/faq'],
         ['Agent Quiz','/quiz'],
         ['Training Academy','/training'],
         ['DM-to-Sale Playbook','/dmplaybook'],
