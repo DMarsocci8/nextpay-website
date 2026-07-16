@@ -1,0 +1,254 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Next2Pay — Invoicing, Recurring Billing & Online Payments | NextPay</title>
+<meta name="description" content="Next2Pay is NextPay's own invoicing and payments platform — send invoices and pay-by-link, run recurring billing, take card & ACH, and sync with QuickBooks. Dual pricing available.">
+<link rel="canonical" href="https://www.nextpaypos.com/next2pay">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="NextPay Business Solutions">
+<meta property="og:title" content="Next2Pay — Invoicing, Recurring Billing & Online Payments">
+<meta property="og:description" content="Send invoices and pay-by-link, run recurring billing, take card & ACH, sync with QuickBooks. NextPay's own platform.">
+<meta property="og:url" content="https://www.nextpaypos.com/next2pay">
+<meta property="og:image" content="https://www.nextpaypos.com/assets/og/nextpay-og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="/assets/icons/favicon.ico">
+<link rel="apple-touch-icon" href="/assets/icons/apple-touch-icon-180.png">
+<link rel="stylesheet" href="css/nextpay.css">
+<style>
+.n2-hero{background:radial-gradient(120% 120% at 80% -10%,#12293e 0%,var(--navy) 55%);color:#fff;position:relative;overflow:hidden}
+.n2-hero .wrap{position:relative;z-index:2}
+.n2-crumb{display:flex;gap:8px;align-items:center;font-size:14px;color:#9fb1c2;padding:20px 0 0}
+.n2-crumb a:hover{color:#fff}.n2-crumb .sep{opacity:.5}
+.n2-hgrid{display:grid;grid-template-columns:1.05fr 1.1fr;gap:46px;align-items:center;padding:36px 0 64px}
+.n2-badge{display:inline-flex;align-items:center;gap:8px;font-size:12.5px;font-weight:800;letter-spacing:.04em;color:var(--teal-bright);background:rgba(31,194,166,.12);border:1px solid rgba(31,194,166,.28);border-radius:999px;padding:7px 14px}
+.n2-logo{height:52px;width:auto;display:block;margin:20px 0 6px}
+.n2-hero h1{font-size:clamp(30px,4.4vw,52px);line-height:1.06;letter-spacing:-.02em;color:#fff;margin-top:10px}
+.n2-hero h1 em{color:var(--teal-bright);font-style:normal}
+.n2-hero .lead{color:#c4d0db;font-size:18px;line-height:1.6;margin-top:18px;max-width:560px}
+.n2-cta{display:flex;gap:13px;flex-wrap:wrap;margin-top:28px}
+.n2-hero .btn-ghost{color:#fff;border-color:rgba(255,255,255,.35)}
+.n2-tags{display:flex;gap:8px;flex-wrap:wrap;margin-top:24px}
+.n2-tags span{font-size:12.5px;font-weight:700;color:#cdd8e2;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.14);border-radius:999px;padding:7px 13px}
+.n2-heroshot{position:relative}
+.frame{background:#fff;border-radius:14px;box-shadow:0 30px 70px rgba(0,0,0,.42);overflow:hidden;border:1px solid rgba(255,255,255,.14)}
+.frame .bar{height:34px;background:#0b1622;display:flex;align-items:center;gap:7px;padding:0 14px}
+.frame .bar i{width:11px;height:11px;border-radius:50%;background:#33404e;display:block}
+.frame .bar i:nth-child(1){background:#ec6a5e}.frame .bar i:nth-child(2){background:#f4bf4f}.frame .bar i:nth-child(3){background:#61c554}
+.frame img{width:100%;display:block}
+.n2-heroshot .phone{position:absolute;right:-26px;bottom:-40px;width:150px;filter:drop-shadow(0 24px 40px rgba(0,0,0,.4))}
+
+.n2-strip{background:var(--navy-2,#10243A);border-top:1px solid rgba(255,255,255,.08);border-bottom:1px solid rgba(255,255,255,.08)}
+.n2-strip .wrap{display:flex;gap:34px;flex-wrap:wrap;justify-content:center;padding:20px 0}
+.n2-strip .it{display:flex;align-items:center;gap:9px;color:#cdd8e2;font-size:14px;font-weight:700}
+.n2-strip .it svg{width:17px;height:17px;color:var(--teal-bright)}
+
+.n2-sec{padding:72px 0;border-bottom:1px solid var(--line)}
+.n2-sec:nth-of-type(even){background:var(--bg-soft)}
+.sec-head{max-width:720px;margin:0 auto 44px;text-align:center}
+.sec-head .eyebrow{color:var(--teal-dark)}
+.sec-head h2{font-size:clamp(28px,3.4vw,40px);letter-spacing:-.02em;margin-top:8px}
+.sec-head p{margin-top:14px;color:var(--slate);font-size:18px;line-height:1.6}
+
+.n2-feats{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+@media(max-width:900px){.n2-feats{grid-template-columns:1fr 1fr}}
+@media(max-width:600px){.n2-feats{grid-template-columns:1fr}}
+.n2-feat{background:#fff;border:1px solid var(--line);border-radius:16px;padding:22px;box-shadow:var(--shadow-sm)}
+.n2-feat .ic{width:44px;height:44px;border-radius:12px;background:rgba(20,161,140,.10);color:var(--teal-dark);display:grid;place-items:center;margin-bottom:14px}
+.n2-feat .ic svg{width:22px;height:22px}
+.n2-feat h4{font-size:16px;color:var(--navy)}
+.n2-feat p{font-size:14px;color:var(--slate);line-height:1.55;margin-top:6px}
+
+.n2-show{display:grid;grid-template-columns:1fr 1.15fr;gap:46px;align-items:center;max-width:var(--maxw);margin:0 auto}
+.n2-show.rev{grid-template-columns:1.15fr 1fr}
+.n2-show.rev .n2-copy{order:2}
+@media(max-width:900px){.n2-show,.n2-show.rev{grid-template-columns:1fr;gap:26px}.n2-show.rev .n2-copy{order:0}}
+.n2-copy .eyebrow{color:var(--teal-dark);font-weight:800;font-size:12.5px;letter-spacing:.08em;text-transform:uppercase}
+.n2-copy h3{font-size:clamp(23px,2.6vw,32px);letter-spacing:-.02em;margin:8px 0 0}
+.n2-copy p{color:var(--slate);font-size:16.5px;line-height:1.62;margin-top:14px}
+.n2-list{list-style:none;margin:18px 0 0;padding:0}
+.n2-list li{display:flex;gap:11px;align-items:flex-start;font-size:15px;color:var(--ink);margin-bottom:11px;line-height:1.5}
+.n2-list li svg{width:19px;height:19px;color:var(--teal);flex:none;margin-top:1px}
+.shot{border-radius:14px;box-shadow:0 20px 50px rgba(12,27,42,.16);border:1px solid var(--line);overflow:hidden;background:#fff}
+.shot img{width:100%;display:block}
+.shot.win .bar{height:32px;background:#f0f3f6;border-bottom:1px solid var(--line);display:flex;align-items:center;gap:7px;padding:0 13px}
+.shot.win .bar i{width:10px;height:10px;border-radius:50%;background:#cdd6dd;display:block}
+.phoneshot{max-width:320px;margin:0 auto;display:block}
+.phoneshot img{width:100%;display:block}
+
+.n2-dual{background:linear-gradient(120deg,var(--navy),var(--navy-3,#16314c));color:#fff;border-radius:26px;padding:clamp(30px,4vw,54px);position:relative;overflow:hidden}
+.n2-dual::after{content:"";position:absolute;right:-90px;top:-120px;width:420px;height:420px;border-radius:50%;background:radial-gradient(circle,rgba(20,161,140,.28),transparent 70%)}
+.n2-dual .in{position:relative;z-index:2;display:grid;grid-template-columns:1.1fr 1fr;gap:40px;align-items:center}
+@media(max-width:820px){.n2-dual .in{grid-template-columns:1fr;gap:26px}}
+.n2-dual h2{font-size:clamp(25px,3vw,36px);color:#fff;letter-spacing:-.02em}
+.n2-dual p{color:#c4d0db;font-size:16.5px;line-height:1.6;margin-top:14px}
+.n2-dcards{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.n2-dcard{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.14);border-radius:16px;padding:20px}
+.n2-dcard.ach{border-color:rgba(31,194,166,.5);background:rgba(31,194,166,.10)}
+.n2-dcard .t{font-size:13px;color:#9fb1c2;font-weight:700}
+.n2-dcard .b{font-size:26px;font-weight:800;letter-spacing:-.02em;margin:6px 0 2px}
+.n2-dcard.ach .b{color:var(--teal-bright)}
+.n2-dcard .s{font-size:12.5px;color:#9fb1c2}
+
+.n2-final{text-align:center;padding:76px 0}
+.n2-final h2{font-size:clamp(28px,3.6vw,42px);letter-spacing:-.02em}
+.n2-final p{color:var(--slate);font-size:18px;margin:14px auto 0;max-width:560px}
+.n2-final .n2-cta{justify-content:center;margin-top:26px}
+</style>
+<script>
+function npLogoFail(img){var b=img.getAttribute('data-brand');if(img.classList.contains('hdr')){img.parentElement.outerHTML='<div class="bname">'+b+'</div>';}else{img.outerHTML='<span class="pbrand">'+b+'</span>';}}
+</script>
+</head>
+<body data-page="next2pay">
+
+<div id="np-nav"></div>
+
+<!-- HERO -->
+<header class="n2-hero" data-screen-label="Next2Pay hero">
+  <div class="wrap">
+    <div class="n2-crumb"><a href="/accept-payments">Accept Payments</a><span class="sep">/</span><a href="/invoicing">Invoicing</a><span class="sep">/</span><span>Next2Pay</span></div>
+    <div class="n2-hgrid">
+      <div>
+        <span class="n2-badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" style="width:14px;height:14px"><path d="M5 13l4 4L19 7"/></svg>Our own invoicing &amp; payments platform</span>
+        <img class="n2-logo" src="assets/logos/next2pay-white.svg" alt="Next2Pay">
+        <h1>Get paid faster,<br><em>on your terms.</em></h1>
+        <p class="lead">Next2Pay is NextPay's own platform for invoicing, recurring billing and online payments. Send an invoice or pay-by-link, take card or bank (ACH), and watch every payment settle to one account — with dual pricing so you can keep the full amount.</p>
+        <div class="n2-cta">
+          <a class="btn btn-primary" href="/contact">Book a demo <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+          <a class="btn btn-ghost" href="/quick-application">Apply now</a>
+        </div>
+        <div class="n2-tags"><span>Invoices &amp; pay links</span><span>Recurring billing</span><span>Card + ACH</span><span>Virtual terminal</span><span>QuickBooks sync</span></div>
+      </div>
+      <div class="n2-heroshot">
+        <div class="frame"><div class="bar"><i></i><i></i><i></i></div><img src="assets/software/next2pay-dashboard.png" alt="Next2Pay dashboard — billing overview, revenue and recent payments" loading="eager"></div>
+        <img class="phone" src="assets/software/next2pay-paypage.png" alt="Next2Pay customer pay page on mobile">
+      </div>
+    </div>
+  </div>
+</header>
+
+<div class="n2-strip">
+  <div class="wrap">
+    <div class="it"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 13l4 4L19 7"/></svg>Invoices by text &amp; email</div>
+    <div class="it"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 13l4 4L19 7"/></svg>Card &amp; bank (ACH)</div>
+    <div class="it"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 13l4 4L19 7"/></svg>Recurring &amp; auto-pay</div>
+    <div class="it"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 13l4 4L19 7"/></svg>Dual pricing</div>
+    <div class="it"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 13l4 4L19 7"/></svg>QuickBooks integration</div>
+  </div>
+</div>
+
+<!-- FEATURES -->
+<section class="n2-sec">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="eyebrow">One platform</span>
+      <h2>Everything you need to bill and get paid</h2>
+      <p>From the first invoice to the deposit in your account — Next2Pay handles it, and it all reconciles in one place.</p>
+    </div>
+    <div class="n2-feats">
+      <div class="n2-feat"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 3h7l5 5v13H7z"/><path d="M14 3v5h5M9 13h6M9 17h4"/></svg></div><h4>Smart invoicing</h4><p>Itemized invoices with automatic reminders and live payment tracking — sent by email or text.</p></div>
+      <div class="n2-feat"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10 13a5 5 0 007 0l2-2a5 5 0 00-7-7l-1 1"/><path d="M14 11a5 5 0 00-7 0l-2 2a5 5 0 007 7l1-1"/></svg></div><h4>Instant pay links</h4><p>Send a pay-by-link and get paid in a tap — no app, no login, no friction for your customer.</p></div>
+      <div class="n2-feat"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="6" y="2" width="12" height="20" rx="2"/><path d="M11 18h2"/></svg></div><h4>Text-to-pay</h4><p>SMS requests get seen and paid faster than email — reach customers right on their phone.</p></div>
+      <div class="n2-feat"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12a9 9 0 1015-6.7L21 8"/><path d="M21 3v5h-5"/></svg></div><h4>Recurring billing</h4><p>Charge memberships, retainers and subscriptions automatically on the schedule you set.</p></div>
+      <div class="n2-feat"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="5" width="20" height="14" rx="2"/><path d="M2 10h20"/></svg></div><h4>Virtual terminal</h4><p>Key in a card or bank payment from any device — turn a phone or laptop into a terminal.</p></div>
+      <div class="n2-feat"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 7c0-1.7 3.6-3 8-3s8 1.3 8 3-3.6 3-8 3-8-1.3-8-3z"/><path d="M4 7v10c0 1.7 3.6 3 8 3s8-1.3 8-3V7M4 12c0 1.7 3.6 3 8 3s8-1.3 8-3"/></svg></div><h4>QuickBooks sync</h4><p>Two-way sync keeps invoices and payments reconciled in QuickBooks automatically.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- SHOWCASE: payment request -->
+<section class="n2-sec">
+  <div class="wrap">
+    <div class="n2-show">
+      <div class="n2-copy">
+        <span class="eyebrow">Bill in seconds</span>
+        <h3>Create a payment request and send it by text or email</h3>
+        <p>Pick a customer, add the amount and hit send. They get a secure link, tap to pay by card or bank, and you see it land in real time — no paper, no chasing.</p>
+        <ul class="n2-list">
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 13l4 4L19 7"/></svg>Branded, professional invoice every time</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 13l4 4L19 7"/></svg>Customer chooses card or fee-free bank (ACH)</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 13l4 4L19 7"/></svg>Automatic receipts and reminders</li>
+        </ul>
+      </div>
+      <div class="shot win"><div class="bar"><i></i><i></i><i></i></div><img src="assets/software/next2pay-invoice.png" alt="Next2Pay — create a payment request with a live invoice preview" loading="lazy"></div>
+    </div>
+  </div>
+</section>
+
+<!-- SHOWCASE: recurring -->
+<section class="n2-sec">
+  <div class="wrap">
+    <div class="n2-show rev">
+      <div class="shot win"><div class="bar"><i></i><i></i><i></i></div><img src="assets/software/next2pay-recurring.png" alt="Next2Pay recurring billing — active subscription plans" loading="lazy"></div>
+      <div class="n2-copy">
+        <span class="eyebrow">Set it and forget it</span>
+        <h3>Recurring billing that runs itself</h3>
+        <p>Put memberships, retainers and subscriptions on autopilot. Next2Pay charges the card or bank on schedule, retries failures, and emails every receipt — so revenue shows up without the follow-up.</p>
+        <ul class="n2-list">
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 13l4 4L19 7"/></svg>Any cadence — weekly, monthly, quarterly</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 13l4 4L19 7"/></svg>Cards on file, vaulted securely</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 13l4 4L19 7"/></svg>Auto-retry keeps collection rates high</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SHOWCASE: virtual terminal -->
+<section class="n2-sec">
+  <div class="wrap">
+    <div class="n2-show">
+      <div class="n2-copy">
+        <span class="eyebrow">No hardware needed</span>
+        <h3>Take a payment from any device with the virtual terminal</h3>
+        <p>On the phone with a customer? Key the card or bank details right into Next2Pay and charge it on the spot — then vault the card for next time.</p>
+        <ul class="n2-list">
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 13l4 4L19 7"/></svg>Card or ACH, keyed securely</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 13l4 4L19 7"/></svg>PCI-compliant, card vaulting built in</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 13l4 4L19 7"/></svg>Attach it to an invoice in one click</li>
+        </ul>
+      </div>
+      <div class="shot win"><div class="bar"><i></i><i></i><i></i></div><img src="assets/software/next2pay-terminal.png" alt="Next2Pay virtual terminal — key in a card or bank payment" loading="lazy"></div>
+    </div>
+  </div>
+</section>
+
+<!-- DUAL PRICING -->
+<section class="n2-sec">
+  <div class="wrap">
+    <div class="n2-dual">
+      <div class="in">
+        <div>
+          <h2>Keep more of every invoice with dual pricing</h2>
+          <p>Give customers the choice: pay by card, or pay by bank (ACH) with no fee. Most choose bank on bigger invoices — so you collect the full amount and cut the cost of getting paid.</p>
+        </div>
+        <div class="n2-dcards">
+          <div class="n2-dcard ach"><div class="t">Pay by bank (ACH)</div><div class="b">$0 fee</div><div class="s">Best for larger invoices</div></div>
+          <div class="n2-dcard"><div class="t">Pay by card</div><div class="b">Fast</div><div class="s">Small card fee, their choice</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FINAL CTA -->
+<section class="n2-final">
+  <div class="wrap">
+    <h2>Ready to get paid faster?</h2>
+    <p>See Next2Pay in action and we'll set you up with invoicing, recurring billing and match-or-beat processing — all on one account.</p>
+    <div class="n2-cta">
+      <a class="btn btn-primary" href="/contact">Book a demo <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+      <a class="btn btn-outline" href="/quick-application">Apply now</a>
+    </div>
+  </div>
+</section>
+
+<div id="np-footer"></div>
+<script src="js/nav.js"></script>
+<script src="js/image-slot.js"></script>
+<script src="js/nextpay.js"></script>
+</body>
+</html>
