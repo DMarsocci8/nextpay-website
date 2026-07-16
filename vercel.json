@@ -433,6 +433,11 @@
       "permanent": true
     },
     {
+      "source": "/Next2Pay.html",
+      "destination": "/next2pay",
+      "permanent": true
+    },
+    {
       "source": "/iPOSPays Gateway.html",
       "destination": "/ipospays",
       "permanent": true
@@ -954,6 +959,10 @@
     {
       "source": "/invoicing",
       "destination": "/Invoicing"
+    },
+    {
+      "source": "/next2pay",
+      "destination": "/Next2Pay"
     },
     {
       "source": "/ipospays",
