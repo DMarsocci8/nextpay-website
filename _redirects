@@ -104,6 +104,8 @@
 /statements                        /Sales%20Hub%20-%20Statements.html             200
 /analyzestatement                  /Sales%20Hub%20-%20Statements.html             200
 /calculators                       /Sales%20Hub%20-%20Statements.html             200
+/residualcalculator                /Sales%20Hub%20-%20Residual%20Calculator.html  200
+/residuals                         /residualcalculator                            302
 /submitadeal                       /Sales%20Hub%20-%20Submit%20a%20Deal.html      200
 /training                          /Sales%20Hub%20-%20Training.html               200
 

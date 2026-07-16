@@ -45,6 +45,7 @@
         ['NextLink Proposal','/nextlinkproposal'],
         ['Merchant Application','/application',1],
         ['Statement Analyzers','/analyzestatement'],
+        ['Residual Calculator','/residualcalculator'],
         ['Calculators','/calculators']
       ]],
       ['Products', [

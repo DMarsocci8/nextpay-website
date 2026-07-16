@@ -1,0 +1,240 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Residual Calculator — NextPay Sales Hub</title>
+<link rel="icon" href="/assets/favicon.ico" sizes="any">
+<link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
+<link rel="stylesheet" href="/css/nextpay.css">
+<style>
+.hub-bar{position:sticky;top:0;z-index:60;background:var(--navy);color:#fff;border-bottom:1px solid rgba(255,255,255,.10)}
+.hub-bar-inner{display:flex;align-items:center;gap:18px;height:66px;max-width:var(--maxw);margin:0 auto;padding:0 28px}
+.hub-bar img.logo{height:34px;width:auto;display:block}.hub-bar .pipe{width:1px;height:26px;background:rgba(255,255,255,.18)}
+.hub-bar .hub-tag{font-weight:800;font-size:15px;color:#fff;display:flex;align-items:center;gap:9px}
+.hub-bar .hub-tag .badge{font-size:10.5px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;background:var(--teal);color:#fff;padding:4px 9px;border-radius:999px}
+.hub-bar .right{margin-left:auto;display:flex;gap:18px}.hub-bar .right a{color:#cdd8e2;font-weight:600;font-size:14.5px}.hub-bar .right a:hover{color:#fff}
+.pg-head{background:linear-gradient(180deg,var(--navy),var(--navy-2));color:#fff}
+.pg-head .wrap{padding:28px 0 30px}
+.crumbs{display:flex;gap:8px;align-items:center;font-size:13.5px;color:#9fb1c2;padding-bottom:12px}
+.crumbs a{color:#cdd8e2;font-weight:600}.crumbs a:hover{color:#fff}.crumbs .sep{opacity:.5}
+.pg-head h1{font-size:clamp(24px,3.4vw,34px);color:#fff;letter-spacing:-.02em}
+.pg-head p.lead{color:#c4d0db;margin-top:10px;max-width:700px;font-size:16px;line-height:1.55}
+main.wrap{padding:26px 0 20px}
+
+.modebar{display:flex;gap:8px;margin-bottom:8px;flex-wrap:wrap}
+.modebar button{font-family:inherit;font-weight:800;font-size:14px;border:1px solid var(--line);background:#fff;color:var(--slate);border-radius:999px;padding:11px 20px;cursor:pointer}
+.modebar button.on{background:var(--navy);color:#fff;border-color:var(--navy)}
+.examples{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:20px}
+.examples button{font-family:inherit;font-weight:700;font-size:12.5px;border:1px dashed rgba(20,161,140,.5);background:rgba(20,161,140,.06);color:var(--teal-dark);border-radius:999px;padding:8px 14px;cursor:pointer}
+.examples button:hover{background:rgba(20,161,140,.12)}
+
+.grid{display:grid;grid-template-columns:1.05fr .95fr;gap:22px;align-items:start}
+@media(max-width:860px){.grid{grid-template-columns:1fr}}
+.card{background:#fff;border:1px solid var(--line);border-radius:var(--radius-lg);box-shadow:var(--shadow-sm);padding:22px 24px}
+.card h3{font-size:16px;color:var(--navy);margin-bottom:4px}
+.card .sub{font-size:13px;color:var(--slate);margin-bottom:16px}
+.fg{margin-bottom:15px}
+.fg label{display:block;font-size:12.5px;font-weight:700;color:var(--slate);margin-bottom:6px}
+.fg .hint{font-weight:500;color:#9aa7ad}
+.inp{display:flex;align-items:center;border:1.5px solid var(--line);border-radius:10px;padding:0 13px;background:#fff}
+.inp:focus-within{border-color:var(--teal)}
+.inp .pre,.inp .suf{color:var(--teal-dark);font-weight:800;font-size:15px}
+.inp input{border:0;outline:0;font-family:inherit;font-weight:700;font-size:15px;padding:12px 8px;width:100%;color:var(--ink);background:none;text-align:right}
+.inp input::-webkit-outer-spin-button,.inp input::-webkit-inner-spin-button{-webkit-appearance:none;margin:0}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.mode-fields{display:none}.mode-fields.on{display:block}
+.assump{margin-top:6px;border-top:1px solid var(--line);padding-top:14px}
+.assump summary{font-size:13px;font-weight:800;color:var(--teal-dark);cursor:pointer}
+.assump .grid2{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:12px}
+.assump .fg{margin-bottom:8px}.assump label{font-size:11.5px}
+
+.result{position:sticky;top:84px}
+.result .big{background:linear-gradient(135deg,var(--navy),var(--navy-2));color:#fff;border-radius:var(--radius-lg);padding:24px;text-align:center;position:relative;overflow:hidden}
+.result .big::after{content:"";position:absolute;right:-70px;top:-90px;width:260px;height:260px;border-radius:50%;background:radial-gradient(circle,rgba(20,161,140,.28),transparent 70%)}
+.result .big .l{font-size:12.5px;font-weight:700;color:#9fb1c2;position:relative;z-index:2}
+.result .big .v{font-size:46px;font-weight:800;letter-spacing:-.02em;margin:4px 0 2px;position:relative;z-index:2}
+.result .big .v small{font-size:18px;color:#c4d0db;font-weight:700}
+.result .big .an{font-size:13px;color:var(--teal-bright);font-weight:800;position:relative;z-index:2}
+.split{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:14px}
+.split .s{background:#fff;border:1px solid var(--line);border-radius:12px;padding:14px;text-align:center}
+.split .s.you{border-color:var(--teal);box-shadow:0 0 0 1px var(--teal)}
+.split .s .sl{font-size:11.5px;font-weight:700;color:var(--slate)}
+.split .s .sv{font-size:22px;font-weight:800;color:var(--navy);margin-top:3px}
+.split .s.you .sv{color:var(--teal-dark)}
+.split .s .sa{font-size:11px;color:var(--slate);margin-top:2px}
+.bd{margin-top:16px;border:1px solid var(--line);border-radius:12px;overflow:hidden}
+.bd .bh{background:var(--bg-soft);font-size:11px;font-weight:800;letter-spacing:.05em;text-transform:uppercase;color:#8a979d;padding:10px 14px}
+.bd .r{display:flex;justify-content:space-between;padding:9px 14px;border-top:1px solid var(--line);font-size:13.5px;color:var(--ink)}
+.bd .r .v{font-weight:800;font-variant-numeric:tabular-nums}
+.bd .r.pos .v{color:var(--teal-dark)}.bd .r.neg .v{color:#c0603f}
+.bd .r.tot{background:rgba(20,161,140,.06);font-weight:800}.bd .r.tot .v{color:var(--teal-dark)}
+.disc{font-size:12px;color:var(--slate);line-height:1.5;margin-top:14px;background:var(--bg-soft);border:1px solid var(--line);border-radius:11px;padding:12px 14px}
+.disc b{color:var(--navy)}
+.tie{margin-top:16px;background:rgba(20,161,140,.07);border:1px solid rgba(20,161,140,.25);border-radius:12px;padding:13px 15px;font-size:13px;color:var(--ink);line-height:1.55}
+.tie b{color:var(--teal-dark)}
+</style>
+</head>
+<body>
+<div class="hub-bar"><div class="hub-bar-inner">
+  <a href="/" style="display:flex;align-items:center" aria-label="Sales Hub home"><img class="logo" src="/assets/logos/nextpay-nav.png" alt="NextPay"></a>
+  <span class="pipe"></span><span class="hub-tag">Sales Hub <span class="badge">Internal</span></span>
+  <div class="right"><a href="/next2pay">Next2Pay</a><a href="/faq#buyrates">Buy rates</a><a href="/">← Hub home</a></div>
+</div></div>
+<header class="pg-head"><div class="wrap">
+  <div class="crumbs"><a href="/">Sales Hub</a><span class="sep">/</span><span>Residual Calculator</span></div>
+  <h1>Next2Pay Residual Calculator</h1>
+  <p class="lead">A rough estimate of the monthly residual on a Next2Pay deal — using the real buy rates — split <b>50/50</b> between you and NextPay. Model it as <b>Cost Plus (IC+)</b> or <b>Dual Pricing</b>. Numbers are for training; confirm the real split and rates before you quote.</p>
+</div></header>
+
+<main class="wrap">
+  <div class="modebar">
+    <button id="m-costplus" class="on" type="button">Cost Plus (IC+)</button>
+    <button id="m-dual" type="button">Dual Pricing</button>
+  </div>
+  <div class="examples">
+    <span style="font-size:12.5px;font-weight:700;color:var(--slate);align-self:center">Load an example:</span>
+    <button id="ex-cp" type="button">Cost Plus — $50k/mo</button>
+    <button id="ex-dp" type="button">Dual Pricing 3.5% — $50k/mo</button>
+  </div>
+
+  <div class="grid">
+    <div class="card">
+      <h3>The deal</h3>
+      <p class="sub">What the merchant runs each month.</p>
+      <div class="two">
+        <div class="fg"><label>Monthly card volume</label><div class="inp"><span class="pre">$</span><input id="i-vol" type="text" inputmode="decimal" value="50,000"></div></div>
+        <div class="fg"><label>Transactions / month</label><div class="inp"><input id="i-txn" type="number" value="350"></div></div>
+      </div>
+
+      <!-- COST PLUS -->
+      <div class="mode-fields on" id="f-costplus">
+        <div class="two">
+          <div class="fg"><label>Your markup over interchange <span class="hint">(bps)</span></label><div class="inp"><input id="i-bps" type="number" value="25"><span class="suf">bps</span></div></div>
+          <div class="fg"><label>Your per-transaction markup</label><div class="inp"><span class="pre">$</span><input id="i-item" type="text" inputmode="decimal" value="0.10"></div></div>
+        </div>
+        <div class="fg"><label>Monthly program fees you bill the merchant <span class="hint">(PCI, statement, etc.)</span></label><div class="inp"><span class="pre">$</span><input id="i-mfees" type="text" inputmode="decimal" value="15.00"></div></div>
+      </div>
+
+      <!-- DUAL PRICING -->
+      <div class="mode-fields" id="f-dual">
+        <div class="two">
+          <div class="fg"><label>Customer card fee <span class="hint">(dual price %)</span></label><div class="inp"><input id="i-dpfee" type="number" step="0.1" value="3.5"><span class="suf">%</span></div></div>
+          <div class="fg"><label>Effective processing cost <span class="hint">(IC + assess + buy)</span></label><div class="inp"><input id="i-cost" type="number" step="0.1" value="2.5"><span class="suf">%</span></div></div>
+        </div>
+      </div>
+
+      <details class="assump">
+        <summary>Buy-rate assumptions (Next2Pay) — edit if needed</summary>
+        <div class="grid2">
+          <div class="fg"><label>Discount buy-up (bps)</label><div class="inp"><input id="b-bps" type="number" step="0.1" value="2"><span class="suf">bps</span></div></div>
+          <div class="fg"><label>Per-item buy (txn+auth)</label><div class="inp"><span class="pre">$</span><input id="b-item" type="text" inputmode="decimal" value="0.0515"></div></div>
+          <div class="fg"><label>Monthly acct buy (maint+report+PCI)</label><div class="inp"><span class="pre">$</span><input id="b-acct" type="text" inputmode="decimal" value="8.47"></div></div>
+          <div class="fg"><label>Gateway + annual buy /mo</label><div class="inp"><span class="pre">$</span><input id="b-gw" type="text" inputmode="decimal" value="4.67"></div></div>
+        </div>
+        <p style="font-size:11.5px;color:var(--slate);margin-top:4px;line-height:1.5">Defaults from the Next2Pay buy-rate sheet: +2&nbsp;bps, $0.0215 transaction + $0.03 auth, $2.99 maintenance + $2.95 reporting + $2.53 PCI, $3.00 gateway + $20/yr annual. <a href="/faq#buyrates" style="color:var(--teal-dark);font-weight:700">See the full sheet →</a></p>
+      </details>
+    </div>
+
+    <div class="result">
+      <div class="big">
+        <div class="l">Your residual (50%)</div>
+        <div class="v" id="r-you">$0<small>/mo</small></div>
+        <div class="an" id="r-youyr">$0 / year</div>
+      </div>
+      <div class="split">
+        <div class="s you"><div class="sl">You (agent) · 50%</div><div class="sv" id="r-you2">$0</div><div class="sa">per month</div></div>
+        <div class="s"><div class="sl">NextPay · 50%</div><div class="sv" id="r-np">$0</div><div class="sa">per month</div></div>
+      </div>
+      <div class="bd">
+        <div class="bh">How it's figured (monthly)</div>
+        <div id="r-breakdown"></div>
+        <div class="r tot"><span>Residual pool</span><span class="v" id="r-pool">$0</span></div>
+      </div>
+      <div class="tie"><b>Pass it through or absorb it.</b> Every buy-rate line is your cost — bill it to the merchant at cost, mark it up (more residual), or waive it out of your share to win the deal. See the <a href="/faq#buyrates">Merchant FAQ</a>.</div>
+      <div class="disc"><b>Rough estimate for training.</b> Interchange varies by card type, ticket size and mix; dual-pricing spread depends on your program. This assumes interchange &amp; assessments pass through at cost. Confirm the real buy rates and your actual split before quoting a merchant.</div>
+    </div>
+  </div>
+</main>
+
+<footer class="hub-foot"><div class="wrap">
+  <span>NextPay Sales Hub · Next2Pay Residual Calculator · Internal use only — estimates, not a guarantee.</span>
+  <span><a href="/requestaccess#suggest">💡 Suggest / Request</a> · <a href="/">← Back to hub</a></span>
+</div></footer>
+
+<script>
+(function(){
+  var mode='costplus';
+  var $=function(id){return document.getElementById(id);};
+  function num(v){var n=parseFloat(String(v).replace(/[^0-9.\-]/g,''));return isNaN(n)?0:n;}
+  function money(n){var neg=n<0;n=Math.abs(n);var s='$'+n.toLocaleString('en-US',{minimumFractionDigits:2,maximumFractionDigits:2});return neg?'−'+s:s;}
+  function money0(n){return '$'+Math.round(n).toLocaleString('en-US');}
+
+  function setMode(m){
+    mode=m;
+    $('m-costplus').classList.toggle('on',m==='costplus');
+    $('m-dual').classList.toggle('on',m==='dual');
+    $('f-costplus').classList.toggle('on',m==='costplus');
+    $('f-dual').classList.toggle('on',m==='dual');
+    calc();
+  }
+
+  function calc(){
+    var V=num($('i-vol').value), T=num($('i-txn').value);
+    var bBps=num($('b-bps').value), bItem=num($('b-item').value), bAcct=num($('b-acct').value), bGw=num($('b-gw').value);
+    var monthlyBuy=bAcct+bGw;
+    var rows=[], pool=0;
+    if(mode==='costplus'){
+      var mBps=num($('i-bps').value), mItem=num($('i-item').value), mFees=num($('i-mfees').value);
+      var volMk=V*(mBps/10000), itemMk=T*mItem, feeMk=mFees;
+      var volBuy=V*(bBps/10000);
+      pool = (volMk+itemMk+feeMk) - (volBuy+monthlyBuy);
+      rows.push(['Volume markup ('+mBps+' bps)', volMk, 1]);
+      rows.push(['Per-item markup ('+T+' × '+money(mItem)+')', itemMk, 1]);
+      rows.push(['Program fees billed', feeMk, 1]);
+      rows.push(['− Discount buy-up ('+bBps+' bps)', -volBuy, 0]);
+      rows.push(['− Monthly account + gateway buy', -monthlyBuy, 0]);
+    } else {
+      var fee=num($('i-dpfee').value), cost=num($('i-cost').value);
+      var collected=V*(fee/100);
+      var procPct=V*(cost/100);
+      var perItem=T*bItem;
+      pool = collected - procPct - perItem - monthlyBuy;
+      rows.push(['Collected from card fee ('+fee+'%)', collected, 1]);
+      rows.push(['− Processing cost ('+cost+'%)', -procPct, 0]);
+      rows.push(['− Per-item buy ('+T+' × '+money(bItem)+')', -perItem, 0]);
+      rows.push(['− Monthly account + gateway buy', -monthlyBuy, 0]);
+    }
+    var you=pool*0.5;
+    $('r-you').innerHTML=money0(you)+'<small>/mo</small>';
+    $('r-youyr').textContent=money0(you*12)+' / year';
+    $('r-you2').textContent=money0(you);
+    $('r-np').textContent=money0(pool*0.5);
+    $('r-pool').textContent=money(pool);
+    $('r-breakdown').innerHTML=rows.map(function(r){
+      return '<div class="r '+(r[2]?'pos':'neg')+'"><span>'+r[0]+'</span><span class="v">'+money(r[1])+'</span></div>';
+    }).join('');
+  }
+
+  ['i-vol','i-txn','i-bps','i-item','i-mfees','i-dpfee','i-cost','b-bps','b-item','b-acct','b-gw'].forEach(function(id){
+    var el=$(id); if(el) el.addEventListener('input',calc);
+  });
+  $('m-costplus').addEventListener('click',function(){setMode('costplus');});
+  $('m-dual').addEventListener('click',function(){setMode('dual');});
+
+  $('ex-cp').addEventListener('click',function(){
+    $('i-vol').value='50,000';$('i-txn').value='350';$('i-bps').value='25';$('i-item').value='0.10';$('i-mfees').value='15.00';
+    setMode('costplus');
+  });
+  $('ex-dp').addEventListener('click',function(){
+    $('i-vol').value='50,000';$('i-txn').value='350';$('i-dpfee').value='3.5';$('i-cost').value='2.5';
+    setMode('dual');
+  });
+
+  calc();
+})();
+</script>
+<script src="/js/hub-nav.js"></script>
+</body>
+</html>
