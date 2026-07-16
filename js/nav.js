@@ -18,6 +18,7 @@
               <a class="mega-link" href="/pos-systems"><b>Point of Sale Systems</b><span>Clover, Shift4Dine, Square &amp; more</span></a>
               <a class="mega-link" href="/terminals"><b>Credit Card Terminals</b><span>PAX, Dejavoo, SwipeSimple &amp; more</span></a>
               <a class="mega-link" href="/invoicing"><b>Online Payments &amp; Invoicing</b><span>Gateways, invoicing &amp; recurring billing</span></a>
+              <a class="mega-link" href="/next2pay"><b>Next2Pay</b><span>Our invoicing &amp; payments platform</span></a>
               <a class="mega-link" href="/integrations"><b>Integrations</b><span>QuickBooks, FieldPulse, CRMs &amp; more</span></a>
             </div>
             <div class="mcol">
@@ -122,6 +123,7 @@
           <a class="nm-rich" href="/pos-systems"><b>Point of Sale Systems</b><span>Clover, Shift4Dine, Square &amp; more</span></a>
           <a class="nm-rich" href="/terminals"><b>Credit Card Terminals</b><span>PAX, Dejavoo, SwipeSimple &amp; more</span></a>
           <a class="nm-rich" href="/invoicing"><b>Online Payments &amp; Invoicing</b><span>Gateways, invoicing &amp; recurring billing</span></a>
+          <a class="nm-rich" href="/next2pay"><b>Next2Pay</b><span>Our invoicing &amp; payments platform</span></a>
           <a class="nm-rich" href="/integrations"><b>Integrations</b><span>QuickBooks, FieldPulse, CRMs &amp; more</span></a>
           <span class="nm-grp">Run Your Business</span>
           <a class="nm-rich" href="/payroll"><b>Payroll &amp; Workers Comp</b><span>Pay your team, stay covered</span></a>
@@ -171,7 +173,7 @@
       <div class="footcards"><span class="fc-eyebrow">We accept every major card</span><div class="fc-row"><img src="assets/cards/card-1.png" alt="Visa"><img src="assets/cards/card-2.png" alt="Mastercard"><img src="assets/cards/card-3.png" alt="American Express"><img src="assets/cards/card-4.png" alt="Discover"><img src="assets/cards/card-5.png" alt="JCB"><img src="assets/cards/card-6.png" alt="UnionPay"><img src="assets/cards/card-7.png" alt="Link"></div></div>
       <div class="foot-grid">
         <div><h4>Accept Payments</h4>
-          <a href="/pos-systems">POS Systems</a><a href="/terminals">Credit Card Terminals</a><a href="/invoicing">Online Payments &amp; Invoicing</a><a href="/integrations">Integrations</a></div>
+          <a href="/pos-systems">POS Systems</a><a href="/terminals">Credit Card Terminals</a><a href="/invoicing">Online Payments &amp; Invoicing</a><a href="/next2pay">Next2Pay</a><a href="/integrations">Integrations</a></div>
         <div><h4>Run Your Business</h4>
           <a href="/payroll">Payroll &amp; Workers Comp</a><a href="/hr-compliance">HR &amp; Compliance</a><a href="/bookkeeping">Bookkeeping</a><a href="/fee-programs">Zero Fee Programs</a><a href="/chargeback-protection">Fraud &amp; Chargeback Protection</a></div>
         <div><h4>Grow Your Business</h4>
