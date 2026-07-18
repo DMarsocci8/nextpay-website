@@ -78,6 +78,15 @@ table.t td small{color:var(--slate-2);font-weight:500}
 /* Software preview gallery */
 .n2p-shotgrid{display:grid;grid-template-columns:1fr 1fr;gap:16px}
 @media(max-width:760px){.n2p-shotgrid{grid-template-columns:1fr}}
+.n2p-video{display:flex;align-items:center;gap:18px;background:linear-gradient(120deg,var(--navy),#12293e);border-radius:var(--radius-lg);padding:20px 24px;margin:0 0 18px;text-decoration:none;box-shadow:var(--shadow-sm)}
+.n2p-video:hover{box-shadow:0 12px 30px rgba(12,27,42,.28)}
+.n2p-video .play{flex:none;width:56px;height:56px;border-radius:50%;background:var(--teal);color:#fff;display:grid;place-items:center}
+.n2p-video .play svg{width:22px;height:22px;margin-left:3px}
+.n2p-video:hover .play{background:var(--teal-bright)}
+.n2p-video .vt b{display:block;color:#fff;font-size:16px}
+.n2p-video .vt span{display:block;color:#c4d0db;font-size:13px;margin-top:3px}
+.n2p-video .ext{margin-left:auto;flex:none;color:#9fb1c2}.n2p-video .ext svg{width:18px;height:18px}
+@media(max-width:520px){.n2p-video .ext{display:none}}
 .n2p-shot{margin:0;background:#fff;border:1px solid var(--line);border-radius:14px;overflow:hidden;box-shadow:var(--shadow-sm)}
 .n2p-shot.wide{grid-column:1/-1}
 .n2p-shot .n2p-winbar{height:30px;background:#f0f3f6;border-bottom:1px solid var(--line);display:flex;align-items:center;gap:6px;padding:0 12px}
@@ -171,7 +180,12 @@ table.t td small{color:var(--slate-2);font-weight:500}
   <!-- SOFTWARE PREVIEW -->
   <section class="sec" id="software">
     <h2>See the software</h2>
-    <p class="sub">What the portal looks like — use these in demos and proposals. (Real portal walkthrough videos, including the QuickBooks version, are coming soon.)</p>
+    <p class="sub">Watch the portal in action, then use the screenshots below in demos and proposals.</p>
+    <a class="n2p-video" href="https://linked2invoice.com/media/Y4WR2RE8TMF8" target="_blank" rel="noopener">
+      <span class="play"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></span>
+      <span class="vt"><b>Watch: Next2Pay + QuickBooks walkthrough</b><span>See the invoicing portal with the QuickBooks integration — opens in a new tab</span></span>
+      <span class="ext"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 3h7v7M21 3l-9 9M21 14v5a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h5"/></svg></span>
+    </a>
     <div class="n2p-shotgrid">
       <figure class="n2p-shot wide"><div class="n2p-winbar"><i></i><i></i><i></i></div><img src="/assets/software/next2pay-dashboard.png" alt="Next2Pay dashboard" loading="lazy"><figcaption>Dashboard — paid, outstanding, recurring MRR &amp; recent payments</figcaption></figure>
       <figure class="n2p-shot"><div class="n2p-winbar"><i></i><i></i><i></i></div><img src="/assets/software/next2pay-invoice.png" alt="Next2Pay payment request" loading="lazy"><figcaption>Create a payment request + live invoice preview</figcaption></figure>
@@ -199,7 +213,7 @@ table.t td small{color:var(--slate-2);font-weight:500}
     </div>
     <div class="note-band" style="margin-top:16px">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4M12 8h.01"/></svg>
-      <p>The <b>$25 / $50</b> is the software price the merchant pays. Card &amp; ACH processing is quoted on top. Videos of the portal (including the QuickBooks-integrated version) are <b>coming soon</b>.</p>
+      <p>The <b>$25 / $50</b> is the software price the merchant pays. Card &amp; ACH processing is quoted on top. See the portal in action — including the QuickBooks version — in the <a href="#software" style="color:var(--teal-dark);font-weight:700">walkthrough video</a>.</p>
     </div>
 
     <h3 class="n2p-th">Processing — two ways to run it</h3>
@@ -335,7 +349,7 @@ table.t td small{color:var(--slate-2);font-weight:500}
     <h2>Resources</h2>
     <div class="note-band">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 3h7l5 5v13H7z"/><path d="M14 3v5h5"/></svg>
-      <p>Logos: <a href="/assets/logos/next2pay.svg" target="_blank" rel="noopener">Next2Pay wordmark (color)</a> · <a href="/assets/logos/next2pay-white.svg" target="_blank" rel="noopener">white version (for dark backgrounds)</a>. Preset in the <a href="/proposalbuilder?product=next2pay">Proposal Builder</a>. Common merchant questions are answered on the <a href="/faq#invoicing">Merchant FAQ</a>, and you can estimate your residual in the <a href="/residualcalculator">Residual Calculator</a>. Portal &amp; QuickBooks walkthrough videos are <b>coming soon</b>. Other invoicing options (FieldPulse, Field Work, LQPay, QuickBooks integrations) stay on <a href="/pricing">Pricing &amp; Fee Programs</a> — lead with Next2Pay.</p>
+      <p>Logos: <a href="/assets/logos/next2pay.svg" target="_blank" rel="noopener">Next2Pay wordmark (color)</a> · <a href="/assets/logos/next2pay-white.svg" target="_blank" rel="noopener">white version (for dark backgrounds)</a>. Preset in the <a href="/proposalbuilder?product=next2pay">Proposal Builder</a>. Common merchant questions are answered on the <a href="/faq#invoicing">Merchant FAQ</a>, and you can estimate your residual in the <a href="/residualcalculator">Residual Calculator</a>. Watch the <a href="/next2pay#software">portal + QuickBooks walkthrough video</a>. Other invoicing options (FieldPulse, Field Work, LQPay, QuickBooks integrations) stay on <a href="/pricing">Pricing &amp; Fee Programs</a> — lead with Next2Pay.</p>
     </div>
   </section>
 
