@@ -130,6 +130,8 @@ details.bc[open]>summary .chev{transform:rotate(90deg)}
       <a href="#price">How to price</a>
       <a href="#discovery">Discovery script</a>
       <a href="#battlecards">Battlecards</a>
+      <a href="#faq">FAQ</a>
+      <a href="#about">About SkyTab &amp; Shift4</a>
       <a href="#resources">Resources</a>
       <a class="sub" href="#submit">Submit a Shift4 deal →</a>
     </div>
@@ -450,6 +452,61 @@ details.bc[open]>summary .chev{transform:rotate(90deg)}
     </div>
   </section>
 
+  <style>
+  .st-faq{background:#fff;border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow-sm);margin-bottom:10px;overflow:hidden}
+  .st-faq-head{display:flex;align-items:center;gap:13px;width:100%;background:none;border:0;padding:15px 20px;cursor:pointer;text-align:left;font-family:inherit}
+  .st-faq-head .q{flex:1;font-size:15px;font-weight:700;color:var(--ink)}
+  .st-faq-head .chev{width:19px;height:19px;color:var(--slate);transition:.2s;flex:none}
+  .st-faq.open .st-faq-head .chev{transform:rotate(180deg)}
+  .st-faq-body{display:none;padding:0 20px 17px;border-top:1px solid var(--line)}
+  .st-faq.open .st-faq-body{display:block}
+  .st-faq-body p{font-size:14.5px;color:var(--ink);line-height:1.6;margin-top:12px}
+  .st-about{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+  @media(max-width:760px){.st-about{grid-template-columns:1fr}}
+  .st-card{background:#fff;border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow-sm);padding:20px 22px}
+  .st-card h3{font-size:16px;color:var(--navy);margin-bottom:8px}
+  .st-card p{font-size:14px;color:var(--ink);line-height:1.6}
+  .st-card ul{margin:8px 0 0;padding-left:18px}.st-card li{font-size:14px;color:var(--ink);line-height:1.55;margin-bottom:6px}
+  .st-card b{color:var(--navy)}
+  </style>
+
+  <!-- FAQ -->
+  <section class="sec" id="faq">
+    <h2>SkyTab by Shift4 — FAQ</h2>
+    <p class="sub">The questions merchants actually ask — with plain answers you can use on a call.</p>
+    <div id="st-faq-list"></div>
+  </section>
+
+  <!-- ABOUT -->
+  <section class="sec" id="about">
+    <h2>About SkyTab &amp; Shift4</h2>
+    <p class="sub">Know the product and the company behind it — it's a strong brand to sell against.</p>
+    <div class="st-about">
+      <div class="st-card">
+        <h3>The product — SkyTab</h3>
+        <p>SkyTab is Shift4's purpose-built restaurant POS ecosystem — countertop stations, SkyTab Glass tablets, SkyTab Mobile/Air handhelds, kitchen display systems, customer-facing displays and self-order kiosks — all tied to end-to-end Shift4 payments.</p>
+        <ul>
+          <li><b>Built for restaurants &amp; bars</b> — modifiers, coursing, tabs, tableside ordering and pay-at-table.</li>
+          <li><b>Included, not add-ons</b> — online ordering, QR order &amp; pay, loyalty &amp; gift, reputation and email/SMS marketing come with the platform.</li>
+          <li><b>Hardware included</b> with the POS service, with a lifetime warranty.</li>
+          <li><b>True offline mode</b> — keep taking orders and card payments if the internet drops, then sync when it's back.</li>
+          <li><b>Business manager back office</b> (Lighthouse / Customer Hub) — real-time reporting and marketing from anywhere.</li>
+        </ul>
+      </div>
+      <div class="st-card">
+        <h3>The company — Shift4</h3>
+        <p>Shift4 Payments (NYSE: <b>FOUR</b>) is a large U.S. payments-technology company providing integrated payments and commerce tech across restaurants, hospitality, stadiums and venues, and more.</p>
+        <ul>
+          <li><b>Deep restaurant footprint</b> — by Shift4's own numbers, they serve roughly a third of North American restaurants.</li>
+          <li><b>End-to-end payments</b> — because Shift4 owns the processing, it can bundle features rivals monetize separately, and its <b>Advantage</b> (dual-pricing) program can take card processing toward 0% for the merchant.</li>
+          <li><b>Well-capitalized, growing brand</b> — public company with high-profile clients and sponsorships and a strong hospitality-tech roadmap.</li>
+          <li><b>Real support</b> — a mature reseller network for local install, training and service, plus a direct SkyTab team and 24/7 support.</li>
+        </ul>
+        <p style="margin-top:10px;font-size:13px;color:var(--slate)">Use these as talking points; confirm current figures with Shift4 before quoting specifics to a merchant.</p>
+      </div>
+    </div>
+  </section>
+
   <!-- RESOURCES -->
   <section class="sec" id="resources">
     <h2>Resources</h2>
@@ -533,6 +590,30 @@ details.bc[open]>summary .chev{transform:rotate(90deg)}
     <span><a href="/requestaccess#suggest">💡 Suggest / Request</a> · <a href="/">← Back to hub</a></span>
   </div>
 </footer>
+<script>
+(function(){
+  var FAQ=[
+   {q:"What is SkyTab?",a:"Shift4's all-in-one restaurant POS — hardware, software, online ordering, payments and support in one system, built specifically for restaurants and bars."},
+   {q:"What does the merchant actually get?",a:"POS station(s), SkyTab Mobile/Air handhelds, a kitchen display system, customer-facing display and self-order kiosk options — plus online ordering, QR order & pay, loyalty & gift, and reputation/email/SMS marketing in the back office. Hardware is included with the service."},
+   {q:"What does it cost?",a:"Around $29.99/month per terminal with no upfront hardware cost, and free install, training and menu programming. Hardware carries a lifetime warranty. There's a 30-day trial, then typically a 30-month service agreement."},
+   {q:"Is there a contract?",a:"A 30-day trial, then a 30-month service agreement. The hardware itself carries a lifetime warranty, so it's replaced if it fails."},
+   {q:"Does it work if the internet goes down?",a:"Yes — true offline mode. SkyTab keeps taking orders and card payments during an outage and syncs everything once the connection is back."},
+   {q:"How does processing / dual pricing work?",a:"SkyTab runs on end-to-end Shift4 payments. The Advantage program (dual pricing / cash discount) can take card processing toward 0% for the merchant, or they can run traditional processing — their choice."},
+   {q:"Can it handle online ordering and delivery?",a:"Yes. SkyTab Online gives the restaurant commission-free ordering on its own site, plus third-party delivery integrations (DoorDash, Uber Eats and more) through the Shift4 Marketplace."},
+   {q:"What about reporting, loyalty and marketing?",a:"They're built in through the business manager (Lighthouse / Customer Hub) — real-time reporting, reputation management, email/SMS marketing, loyalty and gift — included rather than paid add-ons."},
+   {q:"Who installs and supports it?",a:"A mature reseller network handles local install and training, backed by a direct SkyTab team and 24/7 support."},
+   {q:"What types of restaurants is it for?",a:"Full-service, bars and nightclubs, QSR and fast casual, cafes, pizzerias and food trucks — from a single location up to multi-unit operators."},
+   {q:"How fast does the merchant get funded?",a:"Standard next-day funding options through Shift4, depending on setup."}
+  ];
+  var el=document.getElementById('st-faq-list');
+  if(el){
+    el.innerHTML=FAQ.map(function(o){
+      return '<div class="st-faq"><button class="st-faq-head" type="button"><span class="q">'+o.q+'</span><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg></button><div class="st-faq-body"><p>'+o.a+'</p></div></div>';
+    }).join('');
+    el.querySelectorAll('.st-faq-head').forEach(function(b){b.addEventListener('click',function(){b.parentNode.classList.toggle('open');});});
+  }
+})();
+</script>
 <script src="/js/hub-nav.js"></script>
 </body>
 </html>
