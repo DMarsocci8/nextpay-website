@@ -140,6 +140,10 @@
 .portal .pnum{width:34px;height:34px;border-radius:10px;background:var(--navy);color:#fff;display:grid;place-items:center;font-weight:800;font-size:15px}
 .portal h4{font-size:17px;letter-spacing:-.01em;display:flex;align-items:center;gap:8px;flex-wrap:wrap;min-height:30px}
 .portal h4 img{height:26px;width:auto;max-width:150px;object-fit:contain;flex:none;display:block}
+/* size the plain wordmarks so their letters match the NextLink logo */
+.portal h4 img[src*="next2pay"]{height:17px}
+.portal h4 img[src*="nextfund"]{height:18px}
+.portal h4 img[src*="square.svg"]{height:23px}
 .portal p{font-size:13.5px;color:var(--slate);line-height:1.5;flex:1}
 .portal .access{font-size:12px;font-weight:800;letter-spacing:.05em;text-transform:uppercase;padding:4px 10px;border-radius:999px;align-self:flex-start;background:rgba(242,163,60,.16);color:#b9741a}
 .portal .access.given{background:rgba(20,161,140,.14);color:var(--teal-dark)}
@@ -215,19 +219,19 @@
     <div class="portal-grid">
       <div class="portal">
         <span class="pnum">1</span>
-        <h4>Solutions in Payments Portal</h4>
+        <h4><img src="/assets/logos/solutions-in-payments-white.png" alt="Solutions in Payments Portal"></h4>
         <p>Submit and board <b>every product except Square, Clover and Shift4</b> here — terminals, gateways, invoicing and more. Your primary day-to-day portal.</p>        <a class="plink" style="white-space:nowrap;align-self:stretch;justify-content:center" href="https://solutionsinpaymentsportal.com/" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M14 3h7v7M21 3l-9 9M21 14v5a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h5"/></svg>Open Solutions in Payments Portal</a>
         <a class="noaccess" href="/requestaccess?portal=Solutions+in+Payments+Portal" target="_blank" rel="noopener">Don't have access? Click here →</a>
       </div>
       <div class="portal">
         <span class="pnum">2</span>
-        <h4><img src="/assets/logos/shift4.png" alt="Shift4"> Partner Portal</h4>
+        <h4><img src="/assets/logos/skytab.svg" alt="SkyTab by Shift4"></h4>
         <p><b>SkyTab by Shift4</b> and <b>Shift4 Terminals</b> are submitted here — log in and submit under the <b>Sales Center</b>. You'll get your own login.</p>        <a class="plink" style="white-space:nowrap;align-self:stretch;justify-content:center" href="https://link.shift4payments.com/auth/login?redirectUrl=https%3A%2F%2Fapi.dealer-portal.shift4.com%2Fapi%2Fauth%2Flink%3Fredirect%3Dhttps%253A%252F%252Fpartner-portal.shift4.com%252F%252F" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M14 3h7v7M21 3l-9 9M21 14v5a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h5"/></svg>Open Shift4 Partner Portal</a>
         <a class="noaccess" href="/requestaccess?portal=Shift4+Partner+Portal" target="_blank" rel="noopener">Don't have access? Click here →</a>
       </div>
       <div class="portal">
         <span class="pnum">3</span>
-        <h4><img src="/assets/logos/square.svg" alt="Square">Square</h4>
+        <h4><img src="/assets/logos/square.svg" alt="Square"></h4>
         <p><b>Square</b> has its own sign-up path. Create your <b>own</b> Square account first so you know the flow and can coach merchants through applying.</p>
         <span class="access">Create your own account</span>
         <a class="plink" style="white-space:nowrap;align-self:stretch;justify-content:center" href="https://app.squareup.com/signup/en-us?signup_token=C76D31CB54" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M14 3h7v7M21 3l-9 9M21 14v5a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h5"/></svg>Sign-up — Cash Discount 4%</a>
