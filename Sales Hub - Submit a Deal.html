@@ -329,6 +329,12 @@
   // default platform for most products is the Solutions in Payments Portal
   function p(name, brand, type, platform){ return {name:name, brand:brand, type:type, platform:platform||"Solutions in Payments Portal", form:{url:SIP_PORTAL,label:"Open Solutions in Payments Portal"}, steps:[], needs:[], turnaround:TODO, contacts:[{role:"Submissions / Boarding", name:TODO, phone:TODO, email:TODO},{role:"Tech / Onboarding", name:TODO, phone:TODO, email:TODO}]}; }
 
+  // NextPay sales help — reusable contact pair (defined before PRODUCTS so it's available while the array builds)
+  var SALES_HELP = [
+    {role:"Sales help", name:"Domenico Marsocci", phone:"585-303-2769", email:"dom@nextpaypos.com"},
+    {role:"Sales help", name:"Alexander Bautista", phone:"310-357-4660", email:"Alexander@nextpaypos.com"}
+  ];
+
   var PRODUCTS = [
     /* ---- POS ---- */
     {name:"Square", brand:"Square", type:"pos", platform:"Square application links (apply live, or send to the merchant)",
@@ -442,11 +448,43 @@
     p("Authorize.net", "Authorize.net", "gateways"),
     p("iPOSPays", "iPOSPays", "gateways"),
     /* ---- Invoicing ---- */
-    p("Next2Pay Invoicing", "NextPay", "invoicing"),
+    {name:"Next2Pay Invoicing", brand:"NextPay", type:"invoicing", platform:"Solutions in Payments Portal",
+     form:{url:SIP_PORTAL, label:"Open Solutions in Payments Portal"},
+     steps:[
+       "Build the quote in the Proposal Builder and confirm the plan ($25/mo, or $50/mo with QuickBooks)",
+       "Board the merchant through the Solutions in Payments Portal",
+       "Enter the merchant, business and bank details",
+       "Save your confirmation and set up the merchant's Next2Pay portal login"
+     ],
+     needs:["Merchant business details & EIN","Bank info for deposits","Chosen plan — $25/mo or $50/mo (QuickBooks)"],
+     turnaround:TODO,
+     contacts:SALES_HELP,
+     extra:'<h4 style="margin-top:22px">Build the proposal</h4><div style="margin-top:8px"><a class="formbtn" href="/proposalbuilder?product=next2pay">Build a Next2Pay proposal <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></div>'},
     p("FieldPulse", "FieldPulse", "invoicing"),
     p("Field Work", "Field Work", "invoicing"),
     p("LQPay", "LQPay", "invoicing"),
-    p("QuickBooks Integration", "QuickBooks", "invoicing")
+    p("QuickBooks Integration", "QuickBooks", "invoicing"),
+    /* ---- Grow Your Business ---- */
+    {name:"NextLink", brand:"NextPay · Client Automation & Outreach", type:"grow", platform:"NextLink page",
+     form:{url:"https://www.nextpaypos.com/outreach", label:"Open the NextLink page"},
+     steps:[
+       "Review the merchant's outreach goals and channels",
+       "Send them to the NextLink page to get started",
+       "A NextLink specialist maps the campaign and gets it live"
+     ],
+     needs:["Target audience & channels","Merchant contact info"],
+     turnaround:TODO,
+     contacts:SALES_HELP},
+    {name:"NextFund", brand:"NextPay · Business Financing & Funding", type:"grow", platform:"Business Financing form",
+     form:{url:"https://www.nextpaypos.com/financing", label:"Open the Business Financing form"},
+     steps:[
+       "Send the merchant to the Business Financing form",
+       "They provide business details to see funding options",
+       "A NextPay specialist follows up with the offers"
+     ],
+     needs:["Business details","Monthly revenue / recent statements"],
+     turnaround:TODO,
+     contacts:SALES_HELP}
   ];
 
   /* ---- example of a fully filled product (template to copy) ----
@@ -464,7 +502,7 @@
      }
   ------------------------------------------------------------- */
 
-  var TYPE_LABEL = {pos:"POS System", terminals:"Terminal", gateways:"Gateway", invoicing:"Invoicing"};
+  var TYPE_LABEL = {pos:"POS System", terminals:"Terminal", gateways:"Gateway", invoicing:"Invoicing", grow:"Grow"};
 
   // product -> brand logo (files already in assets/logos/)
   var LOGOS = {
@@ -475,22 +513,17 @@
     "Clover Flex / Go":"clover.png", "Square Mobile / Handheld":"square.svg", "Shift4 Terminals":"shift4.png",
     "FluidPay":"fluidpay.png", "NMI":"nmi.png", "Luqra":"luqra.png", "Valor Gateway":"valor.png",
     "Authorize.net":"authnet.png", "iPOSPays":"ipospays.png",
-    "FieldPulse":"fieldpulse.png", "Field Work":"fieldwork.png", "LQPay":"lqpay.png", "QuickBooks Integration":"quickbooks.png"
+    "FieldPulse":"fieldpulse.png", "Field Work":"fieldwork.png", "LQPay":"lqpay.png", "QuickBooks Integration":"quickbooks.png",
+    "Next2Pay Invoicing":"next2pay.svg", "NextLink":"nextlink-white.svg", "NextFund":"nextfund.svg"
   };
   // logos that are white/reversed and need a dark backing
-  var DARK_LOGOS = {"Chively":1};
+  var DARK_LOGOS = {"Chively":1, "NextLink":1};
   // products with an active promotion (shows an Offer badge + banner linking to Promotions)
   var PROMO = {
     "SkyTab by Shift4":"$5,000 switch incentive — no upfront, free install, training & menu programming.",
     "Clover":"Placement program — no upfront costs, just pay monthly.",
     "Square":"Financing available — no upfront, pay the hardware over time."
   };
-  // NextPay sales help — reusable contact pair
-  var SALES_HELP = [
-    {role:"Sales help", name:"Domenico Marsocci", phone:"585-303-2769", email:"dom@nextpaypos.com"},
-    {role:"Sales help", name:"Alexander Bautista", phone:"310-357-4660", email:"Alexander@nextpaypos.com"}
-  ];
-
   function esc(s){ return (s||"").replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;"); }
   function val(s){ return s ? esc(s) : '<span class="todo-text">— needs info —</span>'; }
   function initials(n){ return n ? n.split(/\s+/).slice(0,2).map(function(w){return w[0];}).join("").toUpperCase() : "?"; }
