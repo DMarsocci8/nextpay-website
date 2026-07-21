@@ -23,7 +23,8 @@
         ['Agent Pay Plan','/agentpayplan'],
         ['Residual Calculator','/residualcalculator'],
         ['Buy Rates & Schedule A','/buyrates',1],
-        ['Field Sales Plan','/fieldplan']
+        ['Field Sales Plan','/fieldplan'],
+        ['Agent Mindset','/mindset']
       ]],
       ['Learn', [
         ['Knowledge Base','/knowledgebase'],
@@ -32,7 +33,6 @@
         ['Product Knowledge','/productknowledge'],
         ['Quick Reference','/quickreferenceguide'],
         ['DM-to-Sale Playbook','/dmplaybook'],
-        ['Agent Mindset','/mindset'],
         ['Merchant FAQ','/faq'],
         ['Agent Quiz','/quiz']
       ]],
