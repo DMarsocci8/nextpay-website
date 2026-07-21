@@ -76,6 +76,10 @@
 /quickreferenceguide               /Sales%20Hub%20-%20Quick%20Reference%20Guide.html 200
 /quiz                              /Sales%20Hub%20-%20Quiz.html                   200
 /requestaccess                     /Sales%20Hub%20-%20Request%20Access.html       200
+/resourcecenter                    /Sales%20Hub%20-%20Resource%20Center.html      200
+/resources                         /resourcecenter                                302
+/videolibrary                      /resourcecenter                                302
+/digideck                          https://dine.shift4.com/digideck               302
 /scripts                           /Sales%20Hub%20-%20Scripts.html                200
 /shift4                            /Sales%20Hub%20-%20Shift4.html                 200
 /skytab                            /shift4                                        302

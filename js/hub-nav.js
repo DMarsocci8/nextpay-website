@@ -18,64 +18,54 @@
 (function(){
   try{
     var GROUPS = [
+      ['My Business', [
+        ['My Dashboard','/mydashboard',1],
+        ['Agent Pay Plan','/agentpayplan'],
+        ['Residual Calculator','/residualcalculator'],
+        ['Buy Rates & Schedule A','/buyrates',1],
+        ['Field Sales Plan','/fieldplan'],
+        ['Agent Mindset','/mindset']
+      ]],
       ['Learn', [
         ['Knowledge Base','/knowledgebase'],
-        ['Merchant FAQ','/faq'],
-        ['Agent Quiz','/quiz'],
+        ['Resource Center','/resourcecenter',1],
         ['Training Academy','/training'],
-        ['DM-to-Sale Playbook','/dmplaybook'],
         ['Product Knowledge','/productknowledge'],
         ['Quick Reference','/quickreferenceguide'],
-        ['Agent Mindset','/mindset']
+        ['DM-to-Sale Playbook','/dmplaybook'],
+        ['Merchant FAQ','/faq'],
+        ['Agent Quiz','/quiz']
       ]],
       ['Sell', [
         ['Prospecting Scripts','/scripts'],
-        ['Objection Handling','/objections'],
-        ['Competitor Battlecards','/battlecards'],
-        ['Our POS Line-Up Battlecards','/posbattlecards'],
-        ['SumUp Battlecards','/sumupbattlecards'],
-        ['SkyTab Battlecards','/skytabbattlecards'],
         ['Prospecting Questions','/prospecting'],
+        ['Objection Handling','/objections'],
+        ['Battlecards','/battlecards'],
         ['Current Promotions','/promotions']
       ]],
-      ['Quote', [
+      ['Quote & Submit', [
         ['Pricing & Fee Programs','/pricing'],
-        ['Proposal Builder','/proposalbuilder'],
+        ['Statement Analyzers','/analyzestatement'],
+        ['Calculators','/calculators'],
+        ['Merchant Application','/application',1],
+        ['Submit a Deal','/submitadeal']
+      ]],
+      ['Build & Personalize', [
+        ['Proposal Builder','/proposalbuilder',1],
         ['Proposal Template','/proposaltemplate'],
         ['NextLink Proposal','/nextlinkproposal'],
-        ['Merchant Application','/application',1],
-        ['Statement Analyzers','/analyzestatement'],
-        ['Buy Rates & Schedule A','/buyrates',1],
-        ['Residual Calculator','/residualcalculator'],
-        ['Calculators','/calculators']
+        ['Marketing Assets','/marketingassets'],
+        ['Brand Assets','/brandassets'],
+        ['Email Signature','/emailsignature'],
+        ['Document Library','/documentlibrary'],
+        ['Lead Generation','/leadgeneration']
       ]],
       ['Products', [
         ['SkyTab by Shift4','/shift4'],
+        ['Next2Pay Invoicing','/next2pay',1],
         ['Square','/square'],
         ['Clover','/clover'],
-        ['SumUp','/sumup'],
-        ['Quantic','/quantic'],
-        ['Korona','/korona'],
-        ['NRS','/nrs'],
-        ['DejaPay Pro','/dejapay'],
-        ['PAYS POS','/pays'],
-        ['Next2Pay Invoicing','/next2pay',1]
-      ]],
-      ['Submit', [
-        ['Submit a Deal','/submitadeal'],
-        ['Merchant Application','/application',1],
-        ['Document Library','/documentlibrary']
-      ]],
-      ['Build', [
-        ['Marketing Assets','/marketingassets'],
-        ['Email Signature','/emailsignature'],
-        ['Brand Assets','/brandassets'],
-        ['Lead Generation','/leadgeneration']
-      ]],
-      ['Grow', [
-        ['My Dashboard','/mydashboard',1],
-        ['Agent Pay Plan','/agentpayplan'],
-        ['Field Sales Plan','/fieldplan']
+        ['SumUp','/sumup']
       ]]
     ];
 
