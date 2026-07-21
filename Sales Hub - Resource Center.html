@@ -70,6 +70,7 @@ main.wrap{padding:26px 0 10px}
 .rc-card:hover .rc-thumb .play{transform:scale(1.07)}
 .rc-thumb .play svg{width:22px;height:22px;color:#fff;margin-left:3px}
 .rc-thumb .soon{position:absolute;left:10px;bottom:10px;z-index:2;font-size:10.5px;font-weight:800;letter-spacing:.05em;text-transform:uppercase;color:#dce6ec;background:rgba(12,27,42,.72);border:1px solid rgba(255,255,255,.16);padding:4px 9px;border-radius:999px}
+.rc-thumb .soon.ext{color:#fff;background:rgba(20,161,140,.92);border-color:rgba(255,255,255,.28)}
 .rc-thumb .dur{position:absolute;right:10px;bottom:10px;z-index:2;font-size:11px;font-weight:700;color:#fff;background:rgba(12,27,42,.8);padding:3px 8px;border-radius:6px}
 .rc-body{padding:16px 17px 18px;display:flex;flex-direction:column;gap:8px;flex:1}
 .rc-cat{font-size:10.5px;font-weight:800;letter-spacing:.07em;text-transform:uppercase;color:var(--teal-dark)}
@@ -212,10 +213,14 @@ main.wrap{padding:26px 0 10px}
       video:"", link:"/shift4businessintelligence" },
     { cat:"Payments", title:"Reading a Shift4 Statement",
       desc:"Walk a merchant's Shift4 statement line by line — fees, effective rate and savings.",
-      video:"", link:"/shift4statementguide" }
+      video:"", link:"/shift4statementguide" },
+    { cat:"Next2Pay Invoicing", title:"Next2Pay platform — merchant demo & walkthrough",
+      desc:"See the invoicing platform the way a merchant does — building and sending invoices, recurring billing, pay-by-link and reporting. Know it cold before you demo it.",
+      ext:"https://linked2invoice.com/media/Y4WR2RE8TMF8", cta:"Watch the demo",
+      logo:"/assets/logos/next2pay.svg", link:"/next2pay" }
   ];
 
-  var LOGO = "/assets/logos/skytab.svg"; // ghost watermark on coming-soon tiles
+  var LOGO = "/assets/logos/skytab.svg"; // default ghost watermark on coming-soon tiles
 
   function ytId(u){ var m=(u||"").match(/(?:youtu\.be\/|youtube\.com\/(?:watch\?v=|embed\/|shorts\/))([\w-]{11})/); return m?m[1]:""; }
   function vmId(u){ var m=(u||"").match(/vimeo\.com\/(?:video\/)?(\d+)/); return m?m[1]:""; }
@@ -228,22 +233,27 @@ main.wrap{padding:26px 0 10px}
   function thumbFor(u){ var y=ytId(u); return y?("https://img.youtube.com/vi/"+y+"/hqdefault.jpg"):""; }
 
   var PLAY='<span class="play"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></span>';
+  var EXTBTN='<span class="play"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.4"><path d="M14 4h6v6M20 4l-9 9M18 14v5a1 1 0 01-1 1H5a1 1 0 01-1-1V7a1 1 0 011-1h5"/></svg></span>';
   var ARR='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg>';
+  var EXT='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M14 4h6v6M20 4l-9 9M18 14v5a1 1 0 01-1 1H5a1 1 0 01-1-1V7a1 1 0 011-1h5"/></svg>';
 
   function cardHTML(v, i){
-    var has=!!(v.video), thumb=thumbFor(v.video);
-    var media = '<div class="rc-thumb" data-i="'+i+'">'
-      + (thumb ? '<img src="'+esc(thumb)+'" alt="" loading="lazy">' : '<span class="ghost"><img src="'+LOGO+'" alt=""></span>')
-      + PLAY
-      + (has ? (v.dur?'<span class="dur">'+esc(v.dur)+'</span>':'') : '<span class="soon">Video coming soon</span>')
-      + '</div>';
+    var ghost=v.logo||LOGO, isExt=!!v.ext, has=!!(v.video), thumb=thumbFor(v.video);
+    var inner = (thumb ? '<img src="'+esc(thumb)+'" alt="" loading="lazy">' : '<span class="ghost"><img src="'+esc(ghost)+'" alt=""></span>')
+      + (isExt ? EXTBTN : PLAY)
+      + (isExt ? '<span class="soon ext">Opens in new tab</span>'
+               : (has ? (v.dur?'<span class="dur">'+esc(v.dur)+'</span>':'') : '<span class="soon">Video coming soon</span>'));
+    var media = isExt
+      ? '<a class="rc-thumb" href="'+esc(v.ext)+'" target="_blank" rel="noopener">'+inner+'</a>'
+      : '<div class="rc-thumb" data-i="'+i+'">'+inner+'</div>';
     var guide = v.link ? '<a href="'+esc(v.link)+'">Guide &amp; quiz '+ARR+'</a>' : '';
-    var watch = has ? '<a class="watch" data-i="'+i+'">Watch '+ARR+'</a>' : '';
+    var action = isExt ? '<a class="watch" href="'+esc(v.ext)+'" target="_blank" rel="noopener">'+esc(v.cta||'Open')+' '+EXT+'</a>'
+                       : (has ? '<a class="watch" data-i="'+i+'">Watch '+ARR+'</a>' : '');
     return '<article class="rc-card" data-cat="'+esc(v.cat)+'">'
       + media
       + '<div class="rc-body"><span class="rc-cat">'+esc(v.cat)+'</span>'
       + '<h3>'+esc(v.title)+'</h3><p>'+esc(v.desc)+'</p>'
-      + '<div class="rc-links">'+watch+guide+'</div></div></article>';
+      + '<div class="rc-links">'+action+guide+'</div></div></article>';
   }
 
   var grid=document.getElementById('grid'), chips=document.getElementById('chips');
