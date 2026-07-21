@@ -50,7 +50,7 @@
 .faq .fa{padding:0 0 20px;color:var(--slate);font-size:15.5px;line-height:1.6}
 @media(max-width:1000px){.prog-grid,.fsteps{grid-template-columns:1fr 1fr}}
 @media(max-width:640px){.prog-grid,.fsteps{grid-template-columns:1fr}}
-/* embedded jotform */
+/* embedded funding application (Cognito Forms) */
 .jf-embed{background:#fff;border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow);overflow:hidden;max-width:900px;margin:0 auto}
 .jf-embed iframe{display:block}
 </style>
@@ -232,16 +232,38 @@
     <div class="sec-head"><span class="eyebrow">Active application</span><h2>Funding application</h2>
       <p>Start your application below. It branches into business funding or real-estate financing and captures the exact underwriting fields so your file is ready to review.</p></div>
     <div class="jf-embed">
-      <iframe id="JotFormIFrame-250841370856258" title="NextPay Funding Application" allowtransparency="true" allow="geolocation; microphone; camera; fullscreen; payment" src="https://form.jotform.com/250841370856258" frameborder="0" style="min-width:100%;max-width:100%;height:1100px;border:none;" scrolling="no"></iframe>
+      <iframe id="fundingFrame" title="NextPay Funding Application" src="https://www.cognitoforms.com/RevealLending/Submission" allow="payment" style="min-width:100%;max-width:100%;width:100%;height:2400px;border:none;" scrolling="yes"></iframe>
     </div>
-    <p class="center muted" style="font-size:13.5px;margin-top:18px">Prefer a full-screen view? <a class="link-teal" href="https://form.jotform.com/250841370856258?utm_campaign=11023295752" target="_blank" rel="noopener">Open the application in a new tab →</a></p>
+    <p class="center muted" style="font-size:13.5px;margin-top:18px">Prefer a full-screen view? <a class="link-teal" href="https://www.cognitoforms.com/RevealLending/Submission" target="_blank" rel="noopener">Open the application in a new tab →</a></p>
   </div>
 </section>
 
 <section class="ssec" data-backlink style="padding:6px 0 60px"><div class="wrap"><a class="link-teal" href="/grow" style="display:inline-flex;align-items:center;gap:7px;font-weight:700"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" style="transform:rotate(180deg)"><path d="M5 12h14M13 6l6 6-6 6"/></svg>Back to Grow Your Business</a></div></section>
 <div id="np-footer"></div>
-<script src="https://cdn.jotfor.ms/s/umd/latest/for-form-embed-handler.js"></script>
-<script>window.jotformEmbedHandler("iframe[id='JotFormIFrame-250841370856258']", "https://form.jotform.com")</script>
+<script src="https://www.cognitoforms.com/f/iframe.js"></script>
+<script>
+/* Auto-resize the Cognito funding form. Cognito's own iframe.js only resizes
+   /f/<key>/<number> "seamless" iframes; this friendly-URL embed needs its own
+   listener so the taller branches (Business, Real Estate) aren't cut off. */
+(function(){
+  var frame = document.getElementById('fundingFrame');
+  if(!frame) return;
+  function setH(h){ if(h && h > 200){ frame.style.height = Math.ceil(h) + 'px'; } }
+  window.addEventListener('message', function(e){
+    try{
+      if(String(e.origin).indexOf('cognitoforms.com') === -1) return;
+      var d = e.data;
+      if(typeof d === 'number'){ setH(d); return; }
+      if(typeof d === 'object' && d){ setH(d.height || (d.data && d.data.height)); return; }
+      if(typeof d === 'string'){
+        try{ var o = JSON.parse(d); if(o && (o.height || (o.data && o.data.height))){ setH(o.height || o.data.height); return; } }catch(_){}
+        var m = d.match(/(\d{3,5}(?:\.\d+)?)/);
+        if(m && (/height|resize|cognito/i.test(d) || /^\s*\d/.test(d))) setH(parseFloat(m[1]));
+      }
+    }catch(_){}
+  }, false);
+}());
+</script>
 <script src="js/nav.js"></script>
 <script src="js/image-slot.js"></script>
 </body>
