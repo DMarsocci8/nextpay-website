@@ -145,3 +145,18 @@
     else init();
   }catch(err){ /* never break the host page */ }
 })();
+
+/* ---- hub usage beacon ----
+   Report this page view to /log (a Pages Function). The server reads the
+   signed-in agent's email from Cloudflare Access — we only send the path.
+   Fire-and-forget; never blocks or breaks the page. */
+(function(){
+  try{
+    var body = JSON.stringify({ p: location.pathname + location.search });
+    if(navigator.sendBeacon){
+      navigator.sendBeacon('/log', new Blob([body], { type:'application/json' }));
+    } else {
+      fetch('/log', { method:'POST', headers:{'content-type':'application/json'}, body:body, keepalive:true }).catch(function(){});
+    }
+  }catch(e){ /* ignore */ }
+})();
