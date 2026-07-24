@@ -554,5 +554,122 @@ window.HUB_DATA = {
     submit: 'dom@nextpaypos.com',
     cc: 'payments@nextpaypos.com, alexander@nextpaypos.com',
     help: 'hello@nextpaypos.com'
-  }
+  },
+
+  /* ---------- Deal signals ----------
+     What the prospect tells you, as checkable facts. The Navigator uses
+     these to score the product fit and build the stack automatically. */
+  signals: {
+    zerofee:   'Wants 0% card fees (dual pricing)',
+    cash:      'Cash-heavy customer base',
+    zero_down: 'Cash-tight — needs $0 down on hardware',
+    ownhw:     'Wants to own the hardware outright',
+    budget:    'Very price-sensitive / micro-merchant',
+    multi:     'Multiple locations or registers',
+    highticket:'High average ticket ($500+)',
+    ebt:       'Needs EBT / SNAP',
+    scan:      'Tobacco scan-data rebates',
+    age:       'Age-restricted items (ID checks)',
+    scale:     'Sells by weight (certified scale)',
+    phone:     'Heavy phone orders',
+    delivery:  'Delivery (own drivers or apps)',
+    olo:       'Wants first-party online ordering',
+    kiosk:     'Lines at rush — needs speed / kiosk',
+    tabs:      'Bar tabs / card pre-auth',
+    online:    'Sells online / e-commerce',
+    invoices:  'Sends invoices or estimates',
+    recurring: 'Recurring billing / memberships',
+    field:     'Techs or crews collect in the field',
+    appts:     'Appointment booking / no-show pain',
+    fsm:       'Already runs shop/practice software'
+  },
+
+  /* Signals most worth probing per industry (others behind "show all") */
+  industrySignals: {
+    'convenience':          ['ebt', 'scan', 'age', 'scale', 'cash', 'zerofee', 'multi', 'budget'],
+    'liquor':               ['age', 'cash', 'zerofee', 'multi', 'ownhw'],
+    'boutique':             ['online', 'multi', 'budget', 'zero_down'],
+    'jewelry':              ['highticket', 'invoices', 'phone', 'online'],
+    'specialty-retail':     ['online', 'multi', 'ownhw', 'budget'],
+    'fine-dining':          ['tabs', 'phone', 'olo', 'multi', 'zero_down', 'ownhw'],
+    'pizzerias':            ['phone', 'delivery', 'olo', 'zerofee', 'cash', 'kiosk'],
+    'food-trucks':          ['budget', 'zero_down', 'zerofee', 'kiosk'],
+    'bars':                 ['tabs', 'age', 'cash', 'zerofee', 'kiosk'],
+    'qsr-cafes':            ['kiosk', 'olo', 'zerofee', 'budget', 'multi'],
+    'bakeries':             ['scale', 'invoices', 'phone', 'olo'],
+    'auto-repair':          ['highticket', 'invoices', 'fsm', 'zerofee', 'field'],
+    'salons':               ['appts', 'budget', 'multi', 'recurring'],
+    'home-services':        ['field', 'invoices', 'recurring', 'fsm', 'highticket'],
+    'fitness':              ['recurring', 'fsm', 'multi'],
+    'professional-services':['invoices', 'highticket', 'recurring', 'online'],
+    'cleaning':             ['recurring', 'invoices', 'field', 'budget'],
+    'healthcare':           ['appts', 'recurring', 'fsm', 'highticket'],
+    'high-risk':            ['online', 'recurring', 'highticket']
+  },
+
+  /* How each signal moves the recommendation.
+     boosts: score changes on candidate products (m = name-match regex, d = delta)
+     stack:  auto-suggestions for the rest of the stack (slot: terminal|gateway|invoicing|addon)
+     note:   strategy reminder shown with the recommendation */
+  signalEffects: {
+    zerofee:   { boosts: [{ m: 'pays', d: 2, why: 'All-inclusive dual pricing house' }],
+                 note: 'Lead with dual pricing — signage + a correctly built terminal/POS file.' },
+    cash:      { note: 'Cash-heavy crowd = easy dual-pricing adoption. Show the cash price.' },
+    zero_down: { boosts: [{ m: 'skytab|shift4', d: 2, why: '$0-down placement model' }, { m: 'clover', d: 1, why: 'Placement mode available' }, { m: 'quantic|korona', d: -1, why: 'Buy-outright model needs cash up front' }] },
+    ownhw:     { boosts: [{ m: 'quantic', d: 2, why: 'Own-your-hardware bundles' }, { m: 'korona', d: 2, why: 'One-time hardware, per-register software' }, { m: 'skytab|shift4', d: -2, why: 'Placement-only — no ownership' }] },
+    budget:    { boosts: [{ m: 'sumup', d: 2, why: '$0 monthly software tier' }, { m: 'nrs', d: 1, why: 'Price-friendly single lane' }] },
+    multi:     { boosts: [{ m: 'korona', d: 2, why: 'Multi-location strength' }, { m: 'quantic', d: 1, why: 'Multi-location dashboard' }, { m: 'skytab|shift4', d: 1, why: 'Lighthouse multi-site reporting' }] },
+    highticket:{ boosts: [{ m: 'clover', d: 1, why: 'Handles high-ticket keyed + deposits well' }],
+                 stack: [{ slot: 'gateway', v: 'NMI or Authorize.net (virtual terminal)', why: 'High tickets usually mean phone/keyed payments too' }],
+                 note: 'Interchange-plus shines at high tickets; disclose max single ticket on the application.' },
+    ebt:       { boosts: [{ m: 'nrs', d: 2, why: 'EBT/SNAP native' }, { m: 'korona', d: 1, why: 'EBT-capable retail lanes' }],
+                 note: 'Confirm EBT/FNS number on the application up front — it changes the file build.' },
+    scan:      { boosts: [{ m: 'nrs', d: 2, why: 'Scan-data programs built in' }, { m: 'korona', d: 2, why: 'Scan-data capable' }, { m: 'square|sumup', d: -2, why: 'No tobacco scan-data support' }] },
+    age:       { boosts: [{ m: 'korona', d: 2, why: 'Zebra ID-scanner add-on forces age checks' }, { m: 'nrs', d: 1, why: 'Built-in age verification' }] },
+    scale:     { boosts: [{ m: 'clover', d: 1, why: 'Integrated certified scale' }, { m: 'quantic', d: 1, why: 'PDN certified scale ($549)' }, { m: 'skytab|shift4', d: 1, why: 'Digital scale $39.99/mo on placement' }],
+                 stack: [{ slot: 'addon', v: 'Certified integrated scale', why: 'By-weight selling — spec it in the quote, non-negotiable' }] },
+    phone:     { boosts: [{ m: 'skytab|shift4', d: 2, why: 'Caller ID pop ($9.99–$19.99/mo) — the demo moment' }, { m: 'quantic', d: 1, why: 'Caller ID module $12/mo' }],
+                 stack: [{ slot: 'addon', v: 'Caller ID (2- or 4-line)', why: 'Heavy phone orders' }] },
+    delivery:  { boosts: [{ m: 'skytab|shift4', d: 2, why: 'Delivery management built in' }, { m: 'pays', d: 2, why: 'Growth plan includes DoorDash/UberEats/Grubhub' }, { m: 'quantic', d: 1, why: 'DoorDash Drive module $20/mo' }] },
+    olo:       { boosts: [{ m: 'skytab|shift4', d: 1, why: 'First-party online ordering' }, { m: 'pays', d: 1, why: 'Online ordering included from Starter' }, { m: 'quantic', d: 1, why: 'OLO module $55/mo' }],
+                 note: 'Pitch first-party ordering as the escape from third-party commissions.' },
+    kiosk:     { boosts: [{ m: 'skytab|shift4', d: 1, why: 'Self-order kiosk $29.99/mo' }, { m: 'clover', d: 1, why: 'Clover Kiosk' }],
+                 stack: [{ slot: 'addon', v: 'Self-order kiosk', why: 'Rush-hour lines — kiosks lift ticket size too' }] },
+    tabs:      { boosts: [{ m: 'skytab|shift4', d: 2, why: 'Fast tabs with card pre-auth' }],
+                 note: 'Pre-auth tabs is the killer question at bars — if their current system can’t, we win.' },
+    online:    { boosts: [{ m: 'square', d: 1, why: 'POS + online store one ecosystem' }],
+                 stack: [{ slot: 'gateway', v: 'NMI or FluidPay', why: 'E-commerce / card-not-present rail' }] },
+    invoices:  { stack: [{ slot: 'invoicing', v: 'FieldPulse (trades) / QuickBooks integration (books-first)', why: 'They send invoices or estimates' }] },
+    recurring: { stack: [{ slot: 'gateway', v: 'NMI or FluidPay with account updater', why: 'Recurring billing — account updater rescues failing cards' }],
+                 note: 'Quantify recovered failed payments — that story beats any rate pitch.' },
+    field:     { stack: [{ slot: 'terminal', v: 'PAX A920 Pro or Dejavoo P8 (mobile)', why: 'Crews collecting in the field' }, { slot: 'invoicing', v: 'FieldPulse (text-to-pay)', why: 'Estimates → invoice → pay-by-text' }] },
+    appts:     { boosts: [{ m: 'square', d: 2, why: 'Appointments + card-on-file no-show protection' }, { m: 'clover', d: 1, why: 'Appointments via app market' }] },
+    fsm:       { note: 'They already run shop/practice software — sell the payments integration (gateway/terminal), do NOT pitch ripping out their workflow.',
+                 stack: [{ slot: 'gateway', v: 'Gateway that integrates with their software (NMI first ask)', why: 'Integration play, not a POS swap' }] }
+  },
+
+  /* ---------- What to say — talk tracks per step ---------- */
+  talkTracks: {
+    discovery: '“Walk me through a normal day at the register — I’m not here to pitch you a box, I want to see where the money leaks first.” Then shut up and take notes. The rep who asks the best questions wins the deal.',
+    statement: '“Grab me last month’s statement — two minutes. I’ll read it line by line and show you exactly what you’re paying. If you’re actually in good shape, I’ll tell you that too and leave you alone.” That last sentence is what gets the statement.',
+    recommend: '“Based on what you told me — [their answers] — here’s what I’d put in: [primary]. Here’s why that beats what you have…” One recommendation with reasons tied to THEIR words. Never read them a menu.',
+    pricing:   '“There are two ways to do this: keep paying fees and I make them smaller, or post a cash price and a card price and your fees basically disappear. Businesses like yours around here mostly run the second. Want to see both on paper?”',
+    close:     '“If the numbers on this page hold, is there anything stopping us from getting you installed this month?” Ask it, then be quiet. Whatever they say next is the real objection — handle that one, not the ones you imagined.'
+  },
+
+  /* ---------- Stall-breakers — where deals go to die, and the play ---------- */
+  stalls: [
+    { s: '“Just send me some info.”',
+      play: 'Info never closed a deal — the statement does. “Happy to — and the useful version of that is me pricing YOUR numbers. Get me last month’s statement and the info I send will have your savings on it, not a brochure.” Book the 10-minute review before you leave.' },
+    { s: 'Ghosting after the proposal.',
+      play: 'Never chase with “just following up.” Bring new information every touch: “Ran your numbers against three other [industry] shops we signed — you’re mid-pack, here’s the gap.” Three value touches over ~10 days, then the breakup text: “Closing your file — if the fees start hurting again, you have my number.” The breakup text revives more deals than the follow-ups.' },
+    { s: '“I’ll get you the statement” … never does.',
+      play: 'Make it effortless: text them the upload link (nextpaypos.com/statement-upload), or “snap a photo of the last two pages, that’s all I need.” Still stuck? “Want to grab it off your processor’s portal together? Takes five minutes, I’ll wait.”' },
+    { s: '“I need to talk to my partner / spouse.”',
+      play: 'Real objection or shield — find out: “Totally fair. What do you think they’ll want to know?” Then book the 15 minutes with both of them ON that call, and send the one-pager ahead so the partner isn’t hearing it second-hand.' },
+    { s: '“After the holidays / busy season.”',
+      play: 'Cost of waiting, in their numbers: “Waiting three months costs you about $[monthly overpay × 3]. We install off-hours and you keep taking payments the whole time — busy season is exactly when the better system pays for itself.”' },
+    { s: '“My current rep says they’ll match your rate.”',
+      play: '“If they could do that rate, why weren’t you already on it?” Get any match offer in writing, then compare the stack — a rate match on the same tired terminal still loses to pay-at-table, online ordering, and a rep who answers the phone. And a match without a contract release is the same trap at a lower price.' }
+  ]
 };

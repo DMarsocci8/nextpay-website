@@ -88,22 +88,83 @@
     if (deal.isStartup) {
       h += '<div class="note warn"><b>Startup path:</b> ' + esc(D.startup.intro) + '</div><ul class="ck">' + D.startup.q.map(q => '<li>' + esc(q) + '</li>').join('') + '</ul>';
     }
+    h += '<div class="note mt16">🎙 <b>Say it like this:</b> ' + esc(D.talkTracks.discovery) + '<br><br>🎙 <b>The statement ask:</b> ' + esc(D.talkTracks.statement) + '</div>';
+    h += '<hr class="sep"><h4>What did you learn? Tap everything that applies</h4>' +
+      '<p class="muted small">These are the facts that pick the product. The next step scores the fit from what you tap here.</p>' +
+      '<div class="pick-grid mt8" id="sig-grid"></div>' +
+      '<button class="btn btn-outline btn-sm mt8" id="sig-more" type="button">Show all signals</button>';
     h += '<hr class="sep"><div class="frow3">' +
       '<div><label class="fl">Est. monthly card volume ($)</label><input class="fi" id="f-volume" inputmode="numeric" value="' + esc(deal.volume) + '" placeholder="e.g. 45000"></div>' +
       '<div><label class="fl">Average ticket ($)</label><input class="fi" id="f-ticket" inputmode="numeric" value="' + esc(deal.avgTicket) + '" placeholder="e.g. 32"></div>' +
       '<div><label class="fl">Current processor</label><input class="fi" id="f-processor" value="' + esc(deal.currentProcessor) + '" placeholder="e.g. Toast, Square, unknown"></div></div>' +
       '<label class="fl">Discovery notes</label><textarea class="fi" id="f-notes" rows="4" placeholder="Pain points, timeline, decision makers, anything that shapes the fit…">' + esc(deal.discoveryNotes) + '</textarea></div>';
     $('wiz').innerHTML = h;
+
+    /* signal chips: industry-relevant first, rest behind "show all" */
+    deal.signals = deal.signals || [];
+    const rel = D.industrySignals[deal.industry] || [];
+    const all = Object.keys(D.signals);
+    const ordered = [...rel, ...all.filter(k => !rel.includes(k))];
+    let showAll = rel.length === 0;
+    function sigDraw() {
+      const list = showAll ? ordered : ordered.slice(0, rel.length);
+      $('sig-grid').innerHTML = list.map(k =>
+        '<button type="button" class="pick' + (deal.signals.includes(k) ? ' on' : '') + '" data-sig="' + k + '">' + esc(D.signals[k]) + '</button>').join('');
+      $('sig-more').style.display = showAll ? 'none' : '';
+    }
+    sigDraw();
+    $('sig-grid').addEventListener('click', (e) => {
+      const b = e.target.closest('[data-sig]'); if (!b) return;
+      const i = deal.signals.indexOf(b.dataset.sig);
+      if (i >= 0) deal.signals.splice(i, 1); else deal.signals.push(b.dataset.sig);
+      b.classList.toggle('on');
+    });
+    $('sig-more').addEventListener('click', () => { showAll = true; sigDraw(); });
   }
 
   function s2() {
     const iv = ind();
     if (!iv) { $('wiz').innerHTML = '<div class="card">Pick a business type in step 1 first.</div>'; return; }
-    let h = '<div class="rec-box"><span class="tag">Recommended starting point</span><h3 class="mt8">' + esc(iv.primary.name) + '</h3><p class="muted">' + esc(iv.primary.why) + '</p></div>';
-    if (iv.alts.length) {
-      h += '<div class="grid2 mt16">' + iv.alts.map(a => '<div class="alt-box"><b>' + esc(a.name) + '</b><p class="muted small mt8">' + esc(a.why) + '</p></div>').join('') + '</div>';
+    deal.signals = deal.signals || [];
+
+    /* score the industry's candidates against the tapped signals */
+    const cands = [{ name: iv.primary.name, why: iv.primary.why, score: 3, reasons: [] }]
+      .concat(iv.alts.map((a, i) => ({ name: a.name, why: a.why, score: 2 - i * 0.1, reasons: [] })));
+    const notes = [], stackSug = { terminal: [], gateway: [], invoicing: [], addon: [] };
+    for (const k of deal.signals) {
+      const fx = D.signalEffects[k]; if (!fx) continue;
+      (fx.boosts || []).forEach(b => {
+        const re = new RegExp(b.m, 'i');
+        cands.forEach(c => { if (re.test(c.name)) { c.score += b.d; c.reasons.push((b.d > 0 ? '✓ ' : '✗ ') + b.why); } });
+      });
+      (fx.stack || []).forEach(s => stackSug[s.slot].push(s));
+      if (fx.note) notes.push(fx.note);
     }
-    h += '<div class="card mt16"><h3>Fit rules — let their answers decide</h3><ul class="ck plain">' + iv.rules.map(r => '<li>' + esc(r) + '</li>').join('') + '</ul>' +
+    cands.sort((a, b) => b.score - a.score);
+    const top = cands[0];
+    const sigNames = deal.signals.map(k => D.signals[k]);
+
+    let h = '<div class="rec-box"><span class="tag">' + (deal.signals.length ? 'Best fit from their answers' : 'Recommended starting point — tap signals in Discovery to sharpen this') + '</span>' +
+      '<h3 class="mt8">' + esc(top.name) + '</h3><p class="muted">' + esc(top.why) + '</p>' +
+      (top.reasons.length ? '<ul class="ck plain mt8">' + top.reasons.map(r => '<li class="small">' + esc(r) + '</li>').join('') + '</ul>' : '') +
+      '<button class="btn btn-primary btn-sm mt8" type="button" id="use-stack">Use this stack ↓</button></div>';
+    const alts2 = cands.slice(1);
+    if (alts2.length) {
+      h += '<div class="grid2 mt16">' + alts2.map(a =>
+        '<div class="alt-box"><b>' + esc(a.name) + '</b>' + (a.score <= 0 ? ' <span class="chip red" style="margin-left:6px">poor fit here</span>' : '') +
+        '<p class="muted small mt8">' + esc(a.why) + '</p>' +
+        (a.reasons.length ? '<p class="small muted mt8">' + a.reasons.map(esc).join(' · ') + '</p>' : '') + '</div>').join('') + '</div>';
+    }
+    const sugRows = [];
+    const SLOT = { terminal: 'Terminal', gateway: 'Gateway', invoicing: 'Invoicing', addon: 'Add-on' };
+    for (const [slot, list] of Object.entries(stackSug)) list.forEach(s => sugRows.push(Object.assign({ slot }, s)));
+    if (sugRows.length) {
+      h += '<div class="card mt16"><h3>Round out the stack — from their answers</h3><ul class="ck plain">' +
+        sugRows.map(s => '<li><b>' + SLOT[s.slot] + ':</b>&nbsp;' + esc(s.v) + ' <span class="muted small">— ' + esc(s.why) + '</span></li>').join('') + '</ul></div>';
+    }
+    if (notes.length) h += '<div class="note mt16"><b>Play it right:</b><br>' + notes.map(esc).join('<br>') + '</div>';
+    h += '<div class="note warn mt16">🎙 <b>Pitching the pick:</b> ' + esc(D.talkTracks.recommend).replace('[their answers]', sigNames.length ? '<i>' + esc(sigNames.slice(0, 3).join(', ').toLowerCase()) + '</i>' : '[their answers]').replace('[primary]', '<b>' + esc(top.name) + '</b>') + '</div>';
+    h += '<div class="card mt16"><h3>Fit rules — the full cheat sheet</h3><ul class="ck plain">' + iv.rules.map(r => '<li>' + esc(r) + '</li>').join('') + '</ul>' +
       '<p class="small muted mt8">Deeper dives: <a href="products.html">Product library</a> · <a href="https://nextpaypos.com/build" target="_blank" rel="noopener">public Build Your Solution catalog ↗</a></p></div>';
     h += '<div class="card mt16"><h3>Lock the stack for this deal</h3><div class="frow">' +
       '<div><label class="fl">POS / core product</label><input class="fi" id="f-pos" value="' + esc(deal.products.pos) + '" placeholder="e.g. ' + esc(iv.primary.name) + '"></div>' +
@@ -113,6 +174,23 @@
       '<label class="fl">Placement (where the deal is written)</label><select class="fi" id="f-place">' +
       '<option value="">— choose —</option>' + Object.entries(D.placements).map(([k, p]) => '<option value="' + k + '"' + (deal.placement === k ? ' selected' : '') + '>' + esc(p.label) + '</option>').join('') + '</select></div>';
     $('wiz').innerHTML = h;
+
+    /* one click fills the stack from the scored recommendation */
+    const PLACE_GUESS = [
+      [/skytab|shift4/i, 'skytab'], [/clover/i, 'clover'], [/square/i, 'square'],
+      [/quantic/i, 'quantic'], [/korona/i, 'korona'], [/nrs/i, 'nrs'], [/pays/i, 'pays'],
+      [/sumup/i, 'sumup'], [/terminal|pax|dejavoo|valor/i, 'terminal-gateway'],
+      [/gateway|invoic|fieldpulse|field work|lqpay|nmi|fluidpay|quickbooks/i, 'invoicing-gateway']
+    ];
+    $('use-stack').addEventListener('click', () => {
+      $('f-pos').value = top.name;
+      if (stackSug.terminal.length) $('f-term').value = stackSug.terminal[0].v;
+      if (stackSug.gateway.length) $('f-gw').value = stackSug.gateway[0].v;
+      if (stackSug.invoicing.length) $('f-inv').value = stackSug.invoicing[0].v;
+      const g = PLACE_GUESS.find(([re]) => re.test(top.name));
+      if (g) $('f-place').value = g[1];
+      $('f-pos').scrollIntoView({ behavior: 'smooth', block: 'center' });
+    });
   }
   function grab2() {
     if ($('f-pos')) {
@@ -132,6 +210,7 @@
       '<tr><td><b>Interchange-plus</b></td><td>"You pay cost plus a transparent, small markup — we show you both numbers."</td><td>Higher tickets, professional/healthcare optics, statement-beats.</td></tr>' +
       '<tr><td><b>Flat rate</b></td><td>"One simple rate, no surprises."</td><td>Micro-merchants and startups that value simplicity over savings.</td></tr>' +
       '</tbody></table></div>' +
+      '<div class="note warn mt8">🎙 <b>Positioning the price:</b> ' + esc(D.talkTracks.pricing) + '</div>' +
       '<p class="small muted mt8">Buy rates, Schedule A and the residual calculator live on <a href="pricing.html">Pricing &amp; Buy Rates</a>. Quick gut-check below.</p></div>';
     h += '<div class="card mt16"><h3>Quick residual estimate</h3><div class="frow3">' +
       '<div><label class="fl">Monthly volume ($)</label><input class="fi" id="c-vol" inputmode="numeric" value="' + (vol || '') + '"></div>' +
@@ -159,6 +238,7 @@
         '<p class="small muted">Run the numbers on <a href="statement-review.html#projections">Statement Review → Projections</a>, then come back.</p></div>';
     } else {
       h = '<div class="card"><h3>Get the statement — then meet or beat it</h3>' +
+        '<div class="note warn">🎙 <b>The ask:</b> ' + esc(D.talkTracks.statement) + '</div>' +
         '<ul class="ck plain">' +
         '<li>Ask for the <b>last full month\'s statement</b> (all pages — fee pages matter most).</li>' +
         '<li>Merchant can upload it directly at <a href="https://nextpaypos.com/statement-upload" target="_blank" rel="noopener">nextpaypos.com/statement-upload</a> — it lands with Dom automatically. Or you email it with the deal.</li>' +
@@ -186,11 +266,55 @@
     } else {
       h += '<div class="note warn mt16">No placement chosen yet — go back to <b>Best fit</b> and pick where this deal gets written, then the exact submission steps appear here. Full checklists also live on <a href="submit-deal.html">Submit a Deal</a>.</div>';
     }
+    h += '<div class="note warn mt16">🎙 <b>The closing ask:</b> ' + esc(D.talkTracks.close) + '</div>';
+    h += '<div class="card mt16"><div class="spread"><h3>Deal package — paste into your submission email</h3>' +
+      '<button class="btn btn-outline btn-sm" type="button" id="copy-sum">📋 Copy</button></div>' +
+      '<textarea class="fi mt8" id="sum" rows="16" readonly style="font-family:ui-monospace,monospace;font-size:12.5px"></textarea>' +
+      '<span class="small muted" id="copy-msg"></span></div>';
+    h += '<div class="card mt16"><h3>Deal stuck? Stall-breakers</h3>' +
+      '<p class="muted small mb8">Where deals actually die — and the play that revives them.</p>' +
+      '<div class="tbl-wrap"><table class="tbl"><tbody>' +
+      D.stalls.map(x => '<tr><td style="width:220px"><b>' + esc(x.s) + '</b></td><td class="small">' + esc(x.play) + '</td></tr>').join('') +
+      '</tbody></table></div></div>';
     h += '<div class="card mt16"><h3>Wrap up</h3><div class="frow">' +
       '<div><label class="fl">Deal stage</label><select class="fi" id="f-stage">' + Store.STAGES.map(s => '<option value="' + s.key + '"' + (deal.stage === s.key ? ' selected' : '') + '>' + s.label + '</option>').join('') + '</select></div>' +
       '<div><label class="fl">Next step</label><input class="fi" id="f-next" value="' + esc(deal.nextStep) + '" placeholder="e.g. Call back Tue with proposal"></div></div>' +
       '<label class="fl">Next step date</label><input class="fi" type="date" id="f-nextdate" value="' + esc(deal.nextStepDate) + '" style="max-width:220px"></div>';
     $('wiz').innerHTML = h;
+
+    /* live deal-package summary */
+    function sumDraw() {
+      const iv2 = ind();
+      const line = (l) => l == null ? null : l;
+      $('sum').value = [
+        'NEW DEAL — ' + (deal.biz || '(business name)'),
+        'Agent: ' + (localStorage.getItem('hub_user_email') || '(your email)'),
+        'Contact: ' + ([deal.contactName, deal.phone, deal.email].filter(Boolean).join(' · ') || 'TBD'),
+        'Industry: ' + (iv2 ? iv2.label : 'TBD') + (deal.isStartup ? '  (STARTUP — projections, no statement)' : ''),
+        'Est. volume: ' + (deal.volume ? '$' + Number(deal.volume).toLocaleString() + '/mo' : 'TBD') +
+          '  ·  Avg ticket: ' + (deal.avgTicket ? '$' + deal.avgTicket : 'TBD'),
+        'Current processor: ' + (deal.currentProcessor || 'TBD') + (deal.effRate ? '  ·  their effective rate: ' + deal.effRate + '%' : ''),
+        '',
+        'STACK',
+        '  POS / core:  ' + (deal.products.pos || 'TBD'),
+        '  Terminal:    ' + (deal.products.terminal || '—'),
+        '  Gateway:     ' + (deal.products.gateway || '—'),
+        '  Invoicing:   ' + (deal.products.invoicing || '—'),
+        '  Placement:   ' + ((D.placements[deal.placement] || {}).label || 'TBD'),
+        '  Pricing:     ' + (deal.pricingModel || 'TBD'),
+        (deal.signals && deal.signals.length) ? 'Needs: ' + deal.signals.map(k => D.signals[k]).join('; ') : null,
+        '',
+        'Notes: ' + (deal.discoveryNotes || '—'),
+        'Next step: ' + (deal.nextStep || '—') + (deal.nextStepDate ? ' (' + deal.nextStepDate + ')' : '')
+      ].filter(line => line !== null).join('\n');
+    }
+    sumDraw();
+    ['f-stage', 'f-next', 'f-nextdate'].forEach(id => $(id).addEventListener('input', () => { grab5(); sumDraw(); }));
+    $('copy-sum').addEventListener('click', async () => {
+      try { await navigator.clipboard.writeText($('sum').value); }
+      catch (e) { $('sum').select(); document.execCommand('copy'); }
+      $('copy-msg').textContent = '✅ Copied — paste it into the email to ' + D.contacts.submit;
+    });
   }
   function grab5() {
     if ($('f-stage')) { deal.stage = $('f-stage').value; deal.nextStep = $('f-next').value; deal.nextStepDate = $('f-nextdate').value; }
