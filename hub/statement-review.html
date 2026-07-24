@@ -1,0 +1,122 @@
+<!DOCTYPE html><html lang="en"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>Statement Review — NextPay Sales Hub</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/hub.css">
+</head><body>
+<div class="hub-shell"><div id="hub-side"></div><main class="hub-main">
+
+<div class="pg-head">
+  <span class="eyebrow">Meet or beat</span>
+  <h1>Statement Review</h1>
+  <p>Almost every existing business hands you a statement at some point in the deal. Here's how to read it, compute what they really pay, and build the beat. No statement? Jump to <a href="#projections">projections</a>.</p>
+</div>
+
+<div class="grid2">
+  <div class="card">
+    <h3>1 · Get the statement</h3>
+    <ul class="ck">
+      <li>Ask for the <b>most recent full month</b> — all pages. The fee summary is usually at the back.</li>
+      <li>Easiest path: merchant uploads it at <a href="https://nextpaypos.com/statement-upload" target="_blank" rel="noopener">nextpaypos.com/statement-upload</a> (goes straight to Dom, 10&nbsp;MB max).</li>
+      <li>A phone photo of the fee pages works fine to start.</li>
+      <li>Three months is better than one if volume swings seasonally.</li>
+    </ul>
+  </div>
+  <div class="card">
+    <h3>2 · Find the two numbers</h3>
+    <ul class="ck">
+      <li><b>Total card volume</b> — "Total sales / amount submitted / settled".</li>
+      <li><b>Total fees</b> — "Total fees / fees charged / total deductions". Include everything: discount, per-item, monthly, PCI, statement, batch fees.</li>
+      <li>Watch for <b>junk fees</b>: PCI non-compliance ($19.95+/mo), annual fees, "regulatory" fees, inflated AmEx or keyed rates.</li>
+      <li>Note the pricing model: tiered ("qual/mid/non-qual" = worst), flat rate, or interchange-plus.</li>
+    </ul>
+  </div>
+</div>
+
+<div class="card mt16" id="calc">
+  <h3>3 · Effective rate calculator</h3>
+  <div class="frow3">
+    <div><label class="fl">Total monthly card volume ($)</label><input class="fi" id="e-vol" inputmode="numeric" placeholder="e.g. 48000"></div>
+    <div><label class="fl">Total monthly fees ($)</label><input class="fi" id="e-fees" inputmode="numeric" placeholder="e.g. 1580"></div>
+    <div><label class="fl">Our proposed effective rate (%)</label><input class="fi" id="e-ours" inputmode="numeric" placeholder="e.g. 2.4 — or 0 for dual pricing"></div>
+  </div>
+  <div class="grid3 mt16">
+    <div class="stat"><div class="n" id="o-eff">—</div><div class="l">their current effective rate</div></div>
+    <div class="stat"><div class="n" id="o-mo">—</div><div class="l">monthly savings with us</div></div>
+    <div class="stat"><div class="n" id="o-yr" style="color:var(--teal)">—</div><div class="l">annual savings — lead with this number</div></div>
+  </div>
+  <div class="note mt16"><b>How to present it:</b> "You paid <span id="o-quote-fees">$—</span> to take <span id="o-quote-vol">$—</span> in cards last month — that's <span id="o-quote-eff">—</span>. We'll do the same for <span id="o-quote-ours">—</span>, which puts <span id="o-quote-yr">$—</span> a year back in your pocket. If I can show you that on paper, is there anything stopping us from moving forward?"</div>
+</div>
+
+<div class="card mt16">
+  <h3>4 · Decide the play</h3>
+  <div class="tbl-wrap"><table class="tbl"><thead><tr><th>What the statement shows</th><th>The play</th></tr></thead><tbody>
+    <tr><td>Effective rate over ~3% card-present</td><td>Easy beat on interchange-plus — or flip the whole cost to $0 with dual pricing.</td></tr>
+    <tr><td>Junk fees (PCI, statement, annual)</td><td>Line-item them in the proposal: "we don't charge these." Small numbers, big trust.</td></tr>
+    <tr><td>Already cheap (under ~2.2% CP)</td><td>Don't nickel-and-dime — win on product: better POS, pay-at-table, online ordering, support. Meet the rate, beat the stack.</td></tr>
+    <tr><td>Flat rate (Square/Stripe/Toast)</td><td>At $15k+/mo, interchange-plus nearly always wins. Below that, sell product + service.</td></tr>
+    <tr><td>Lease on the terminal ($30–$100/mo!)</td><td>Huge win: our placement model is $0 down without a 48-month non-cancellable lease. Check their lease end date.</td></tr>
+    <tr><td>Early termination fee in their contract</td><td>Quantify it vs annual savings — usually savings covers it in 1–3 months. Ask Dom about buyout options on bigger deals.</td></tr>
+  </tbody></table></div>
+</div>
+
+<div class="card mt16" id="projections">
+  <h3>No statement? Startup &amp; projections worksheet</h3>
+  <p class="muted small">New businesses, new concepts, or owners who "can't find" the statement: build the numbers from projections. Underwriting works off estimates for new merchants — just keep them honest.</p>
+  <div class="frow3">
+    <div><label class="fl">Customers per day</label><input class="fi" id="p-cust" inputmode="numeric" placeholder="e.g. 120"></div>
+    <div><label class="fl">Average ticket ($)</label><input class="fi" id="p-ticket" inputmode="numeric" placeholder="e.g. 14"></div>
+    <div><label class="fl">Days open / month</label><input class="fi" id="p-days" inputmode="numeric" value="26"></div>
+  </div>
+  <div class="frow">
+    <div><label class="fl">% paid by card</label><input class="fi" id="p-mix" inputmode="numeric" value="80"></div>
+    <div><label class="fl">Highest expected single ticket ($)</label><input class="fi" id="p-max" inputmode="numeric" placeholder="for the application"></div>
+  </div>
+  <div class="grid2 mt16">
+    <div class="stat"><div class="n" id="p-gross">—</div><div class="l">projected gross monthly sales</div></div>
+    <div class="stat"><div class="n" id="p-card" style="color:var(--teal)">—</div><div class="l">projected monthly card volume — use on the application</div></div>
+  </div>
+  <ul class="ck mt16">
+    <li>Quote conservatively — underwriting may cap early volume and raise it with history.</li>
+    <li>Startups are the best dual-pricing candidates: no habit of eating card fees yet.</li>
+    <li>Cash-tight startup? $0-down placement (SkyTab, Clover placement) beats buying hardware.</li>
+    <li>Any processing history helps — Square/Stripe/PayPal exports count as documentation.</li>
+  </ul>
+</div>
+
+</main></div>
+<script src="js/hub.js"></script><script src="js/hub-data.js"></script><script src="js/hub-store.js"></script>
+<script>
+(function () {
+  const $ = (id) => document.getElementById(id);
+  const fmt = (n) => '$' + Math.round(n).toLocaleString();
+  function effcalc() {
+    const v = parseFloat($('e-vol').value) || 0, f = parseFloat($('e-fees').value) || 0;
+    const oursIn = $('e-ours').value.trim(), ours = parseFloat(oursIn);
+    const eff = v > 0 ? (f / v * 100) : 0;
+    $('o-eff').textContent = v > 0 ? eff.toFixed(2) + '%' : '—';
+    let mo = null;
+    if (v > 0 && oursIn !== '' && !isNaN(ours)) mo = f - v * (ours / 100);
+    $('o-mo').textContent = mo !== null ? fmt(mo) + '/mo' : '—';
+    $('o-yr').textContent = mo !== null ? fmt(mo * 12) + '/yr' : '—';
+    $('o-quote-fees').textContent = f ? fmt(f) : '$—';
+    $('o-quote-vol').textContent = v ? fmt(v) : '$—';
+    $('o-quote-eff').textContent = v > 0 ? eff.toFixed(2) + '%' : '—';
+    $('o-quote-ours').textContent = (oursIn !== '' && !isNaN(ours)) ? (ours === 0 ? '0% with dual pricing' : ours + '%') : '—';
+    $('o-quote-yr').textContent = mo !== null ? fmt(mo * 12) : '$—';
+  }
+  ['e-vol', 'e-fees', 'e-ours'].forEach(id => $(id).addEventListener('input', effcalc));
+
+  function projcalc() {
+    const c = parseFloat($('p-cust').value) || 0, t = parseFloat($('p-ticket').value) || 0,
+          d = parseFloat($('p-days').value) || 0, m = (parseFloat($('p-mix').value) || 0) / 100;
+    const gross = c * t * d;
+    $('p-gross').textContent = gross ? fmt(gross) : '—';
+    $('p-card').textContent = gross ? fmt(gross * m) : '—';
+  }
+  ['p-cust', 'p-ticket', 'p-days', 'p-mix'].forEach(id => $(id).addEventListener('input', projcalc));
+})();
+</script>
+</body></html>

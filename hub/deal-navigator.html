@@ -1,0 +1,228 @@
+<!DOCTYPE html><html lang="en"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>Deal Navigator — NextPay Sales Hub</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/hub.css">
+</head><body>
+<div class="hub-shell"><div id="hub-side"></div><main class="hub-main">
+
+<div class="pg-head">
+  <span class="eyebrow">Work a deal</span>
+  <h1>Deal Navigator</h1>
+  <p>The whole sales process, guided: pick the business type, ask the right questions, land on the right products, price it, and submit. Save to your pipeline at any point.</p>
+</div>
+
+<div class="wiz-bar" id="wizbar"></div>
+<div id="wiz"></div>
+
+<div class="flex mt24">
+  <button class="btn btn-outline" id="back">← Back</button>
+  <button class="btn btn-primary" id="next">Next →</button>
+  <span style="flex:1"></span>
+  <button class="btn btn-navy" id="save">💾 Save to pipeline</button>
+</div>
+<div class="small muted mt8" id="savemsg"></div>
+
+</main></div>
+<script src="js/hub.js"></script><script src="js/hub-data.js"></script><script src="js/hub-store.js"></script>
+<script>
+(function () {
+  const D = window.HUB_DATA;
+  const STEPS = ['Business type', 'Discovery', 'Best fit', 'Pricing', 'Statement', 'Proposal & submit'];
+  let step = 0;
+  let deal = { stage: 'prospect', products: {} };
+
+  const $ = (id) => document.getElementById(id);
+  const esc = (s) => String(s == null ? '' : s).replace(/[<>&"]/g, c => ({'<':'&lt;','>':'&gt;','&':'&amp;','"':'&quot;'}[c]));
+
+  function bar() {
+    $('wizbar').innerHTML = STEPS.map((s, i) =>
+      '<span class="' + (i === step ? 'on' : i < step ? 'done' : '') + '">' + (i + 1) + ' · ' + s + '</span>').join('');
+    $('back').style.visibility = step === 0 ? 'hidden' : 'visible';
+    $('next').style.display = step === STEPS.length - 1 ? 'none' : '';
+  }
+
+  function ind() { return D.industries[deal.industry]; }
+
+  /* ---- step renderers ---- */
+  function s0() {
+    const groups = {};
+    for (const [k, v] of Object.entries(D.industries)) (groups[v.group] = groups[v.group] || []).push([k, v]);
+    let h = '<div class="card"><h3>What kind of business is this?</h3><p class="muted small mb8">This drives the questions, the product fit and the pricing angle for the whole deal.</p>';
+    for (const [g, list] of Object.entries(groups)) {
+      h += '<div class="hs-sec" style="padding-left:0;color:var(--mut)">' + g + '</div><div class="pick-grid">';
+      h += list.map(([k, v]) => '<button class="pick' + (deal.industry === k ? ' on' : '') + '" data-ind="' + k + '">' + esc(v.label) + '</button>').join('');
+      h += '</div>';
+    }
+    h += '<hr class="sep"><div class="frow"><div><label class="fl">Business name</label><input class="fi" id="f-biz" value="' + esc(deal.biz) + '" placeholder="DBA / business name"></div>' +
+      '<div><label class="fl">Contact name</label><input class="fi" id="f-contact" value="' + esc(deal.contactName) + '" placeholder="Owner / decision maker"></div></div>' +
+      '<div class="frow"><div><label class="fl">Phone</label><input class="fi" id="f-phone" value="' + esc(deal.phone) + '"></div>' +
+      '<div><label class="fl">Email</label><input class="fi" id="f-email" value="' + esc(deal.email) + '"></div></div>' +
+      '<label class="fl" style="display:flex;align-items:center;gap:8px;text-transform:none;font-size:13.5px"><input type="checkbox" id="f-startup"' + (deal.isStartup ? ' checked' : '') + ' style="width:16px;height:16px"> New business / startup (no processing history)</label></div>';
+    $('wiz').innerHTML = h;
+    document.querySelectorAll('[data-ind]').forEach(b => b.addEventListener('click', () => {
+      grab(); deal.industry = b.dataset.ind; s0();
+    }));
+  }
+  function grab() { // pull step-0 fields if present
+    if ($('f-biz')) {
+      deal.biz = $('f-biz').value; deal.contactName = $('f-contact').value;
+      deal.phone = $('f-phone').value; deal.email = $('f-email').value;
+      deal.isStartup = $('f-startup').checked;
+    }
+    ['f-volume', 'f-ticket', 'f-processor', 'f-notes'].forEach(id => {
+      if ($(id)) deal[{ 'f-volume': 'volume', 'f-ticket': 'avgTicket', 'f-processor': 'currentProcessor', 'f-notes': 'discoveryNotes' }[id]] = $(id).value;
+    });
+  }
+
+  function s1() {
+    const iv = ind();
+    let h = '<div class="card"><h3>Discovery — what to ask ' + (iv ? esc(iv.label) : 'this business') + '</h3>' +
+      '<p class="muted small">Work through these in conversation, not as an interrogation. Capture answers below — they follow the deal into your pipeline.</p>';
+    for (const g of D.baseDiscovery) {
+      h += '<h4 class="mt16">' + esc(g.h) + '</h4><ul class="ck">' + g.q.map(q => '<li>' + esc(q) + '</li>').join('') + '</ul>';
+    }
+    if (iv) h += '<h4 class="mt16" style="color:var(--teal)">Specific to ' + esc(iv.label) + '</h4><ul class="ck">' + iv.ask.map(q => '<li>' + esc(q) + '</li>').join('') + '</ul>';
+    if (deal.isStartup) {
+      h += '<div class="note warn"><b>Startup path:</b> ' + esc(D.startup.intro) + '</div><ul class="ck">' + D.startup.q.map(q => '<li>' + esc(q) + '</li>').join('') + '</ul>';
+    }
+    h += '<hr class="sep"><div class="frow3">' +
+      '<div><label class="fl">Est. monthly card volume ($)</label><input class="fi" id="f-volume" inputmode="numeric" value="' + esc(deal.volume) + '" placeholder="e.g. 45000"></div>' +
+      '<div><label class="fl">Average ticket ($)</label><input class="fi" id="f-ticket" inputmode="numeric" value="' + esc(deal.avgTicket) + '" placeholder="e.g. 32"></div>' +
+      '<div><label class="fl">Current processor</label><input class="fi" id="f-processor" value="' + esc(deal.currentProcessor) + '" placeholder="e.g. Toast, Square, unknown"></div></div>' +
+      '<label class="fl">Discovery notes</label><textarea class="fi" id="f-notes" rows="4" placeholder="Pain points, timeline, decision makers, anything that shapes the fit…">' + esc(deal.discoveryNotes) + '</textarea></div>';
+    $('wiz').innerHTML = h;
+  }
+
+  function s2() {
+    const iv = ind();
+    if (!iv) { $('wiz').innerHTML = '<div class="card">Pick a business type in step 1 first.</div>'; return; }
+    let h = '<div class="rec-box"><span class="tag">Recommended starting point</span><h3 class="mt8">' + esc(iv.primary.name) + '</h3><p class="muted">' + esc(iv.primary.why) + '</p></div>';
+    if (iv.alts.length) {
+      h += '<div class="grid2 mt16">' + iv.alts.map(a => '<div class="alt-box"><b>' + esc(a.name) + '</b><p class="muted small mt8">' + esc(a.why) + '</p></div>').join('') + '</div>';
+    }
+    h += '<div class="card mt16"><h3>Fit rules — let their answers decide</h3><ul class="ck plain">' + iv.rules.map(r => '<li>' + esc(r) + '</li>').join('') + '</ul>' +
+      '<p class="small muted mt8">Deeper dives: <a href="products.html">Product library</a> · <a href="https://nextpaypos.com/build" target="_blank" rel="noopener">public Build Your Solution catalog ↗</a></p></div>';
+    h += '<div class="card mt16"><h3>Lock the stack for this deal</h3><div class="frow">' +
+      '<div><label class="fl">POS / core product</label><input class="fi" id="f-pos" value="' + esc(deal.products.pos) + '" placeholder="e.g. ' + esc(iv.primary.name) + '"></div>' +
+      '<div><label class="fl">Terminal(s)</label><input class="fi" id="f-term" value="' + esc(deal.products.terminal) + '" placeholder="e.g. PAX A920 Pro ×2"></div></div><div class="frow">' +
+      '<div><label class="fl">Gateway (if CNP)</label><input class="fi" id="f-gw" value="' + esc(deal.products.gateway) + '" placeholder="e.g. NMI"></div>' +
+      '<div><label class="fl">Invoicing (if needed)</label><input class="fi" id="f-inv" value="' + esc(deal.products.invoicing) + '" placeholder="e.g. FieldPulse"></div></div>' +
+      '<label class="fl">Placement (where the deal is written)</label><select class="fi" id="f-place">' +
+      '<option value="">— choose —</option>' + Object.entries(D.placements).map(([k, p]) => '<option value="' + k + '"' + (deal.placement === k ? ' selected' : '') + '>' + esc(p.label) + '</option>').join('') + '</select></div>';
+    $('wiz').innerHTML = h;
+  }
+  function grab2() {
+    if ($('f-pos')) {
+      deal.products.pos = $('f-pos').value; deal.products.terminal = $('f-term').value;
+      deal.products.gateway = $('f-gw').value; deal.products.invoicing = $('f-inv').value;
+      deal.placement = $('f-place').value;
+    }
+  }
+
+  function s3() {
+    const iv = ind();
+    const vol = parseFloat(deal.volume) || 0;
+    let h = '<div class="card"><h3>Pricing angle for this deal</h3>' +
+      (iv ? '<div class="note">' + esc(iv.pricing) + '</div>' : '') +
+      '<div class="tbl-wrap"><table class="tbl"><thead><tr><th>Model</th><th>Pitch</th><th>Best when</th></tr></thead><tbody>' +
+      '<tr><td><b>Dual pricing (0%)</b></td><td>"Card price and cash price — you keep 100% of the cash price, card fees disappear."</td><td>Fee-sensitive owners; food, liquor, c-store, trades. Needs signage + correct terminal file.</td></tr>' +
+      '<tr><td><b>Interchange-plus</b></td><td>"You pay cost plus a transparent, small markup — we show you both numbers."</td><td>Higher tickets, professional/healthcare optics, statement-beats.</td></tr>' +
+      '<tr><td><b>Flat rate</b></td><td>"One simple rate, no surprises."</td><td>Micro-merchants and startups that value simplicity over savings.</td></tr>' +
+      '</tbody></table></div>' +
+      '<p class="small muted mt8">Buy rates, Schedule A and the residual calculator live on <a href="pricing.html">Pricing &amp; Buy Rates</a>. Quick gut-check below.</p></div>';
+    h += '<div class="card mt16"><h3>Quick residual estimate</h3><div class="frow3">' +
+      '<div><label class="fl">Monthly volume ($)</label><input class="fi" id="c-vol" inputmode="numeric" value="' + (vol || '') + '"></div>' +
+      '<div><label class="fl">Margin over buy rate (basis points)</label><input class="fi" id="c-bps" inputmode="numeric" placeholder="e.g. 50"></div>' +
+      '<div><label class="fl">Your residual split (%)</label><input class="fi" id="c-split" inputmode="numeric" placeholder="per your agreement"></div></div>' +
+      '<div class="stat mt16" style="max-width:340px"><div class="n" id="c-out">—</div><div class="l">estimated monthly residual to you (before monthly-fee income)</div></div>' +
+      '<label class="fl">Pricing model chosen</label><select class="fi" id="f-model" style="max-width:340px">' +
+      ['', 'Dual pricing (0%)', 'Interchange-plus', 'Flat rate', 'TBD after statement'].map(m => '<option' + (deal.pricingModel === m ? ' selected' : '') + '>' + m + '</option>').join('') + '</select></div>';
+    $('wiz').innerHTML = h;
+    const calc = () => {
+      const v = parseFloat($('c-vol').value) || 0, b = parseFloat($('c-bps').value) || 0, sp = parseFloat($('c-split').value) || 0;
+      $('c-out').textContent = (v && b && sp) ? '$' + Math.round(v * (b / 10000) * (sp / 100)).toLocaleString() + '/mo' : '—';
+    };
+    ['c-vol', 'c-bps', 'c-split'].forEach(id => $(id).addEventListener('input', calc));
+    calc();
+  }
+  function grab3() { if ($('f-model')) deal.pricingModel = $('f-model').value; }
+
+  function s4() {
+    let h;
+    if (deal.isStartup) {
+      h = '<div class="card"><h3>No statement — build it from projections</h3>' +
+        '<ul class="ck">' + D.startup.q.map(q => '<li>' + esc(q) + '</li>').join('') + '</ul>' +
+        '<div class="note warn mt16"><b>Tips:</b><br>' + D.startup.tips.map(esc).join('<br>') + '</div>' +
+        '<p class="small muted">Run the numbers on <a href="statement-review.html#projections">Statement Review → Projections</a>, then come back.</p></div>';
+    } else {
+      h = '<div class="card"><h3>Get the statement — then meet or beat it</h3>' +
+        '<ul class="ck plain">' +
+        '<li>Ask for the <b>last full month\'s statement</b> (all pages — fee pages matter most).</li>' +
+        '<li>Merchant can upload it directly at <a href="https://nextpaypos.com/statement-upload" target="_blank" rel="noopener">nextpaypos.com/statement-upload</a> — it lands with Dom automatically. Or you email it with the deal.</li>' +
+        '<li>Compute their <b>effective rate</b>: total fees ÷ total card volume. Use the <a href="statement-review.html">Statement Review calculator</a>.</li>' +
+        '<li>Look for junk: PCI non-compliance fees, statement fees, batch fees, annual fees, inflated keyed rates.</li>' +
+        '<li>Build the beat and show the annual savings number, not the rate.</li></ul>' +
+        '<label class="fl">Their effective rate (%)</label><div class="frow"><input class="fi" id="f-effrate" value="' + esc(deal.effRate) + '" placeholder="e.g. 3.1" style="max-width:200px"></div></div>';
+    }
+    $('wiz').innerHTML = h;
+  }
+  function grab4() { if ($('f-effrate')) deal.effRate = $('f-effrate').value; }
+
+  function s5() {
+    const p = D.placements[deal.placement];
+    let h = '<div class="card"><h3>Proposal</h3><ul class="ck plain">' +
+      '<li>Itemize hardware + software monthlies from the catalog numbers (see <a href="products.html">Products</a> and <a href="pricing.html">Pricing</a>).</li>' +
+      '<li>State the pricing model plainly (dual pricing / interchange-plus / flat) and the savings vs today.</li>' +
+      '<li>One page beats ten. Quote → savings → what happens next.</li>' +
+      '<li>SkyTab deals: use the blank SkyTab proposal PDF as the shell (<a href="https://nextpaypos.com/SkyTab_Proposal%20-%20Blank.pdf" target="_blank" rel="noopener">download ↗</a>).</li></ul></div>';
+    if (p) {
+      h += '<div class="card mt16"><h3>Submit — ' + esc(p.label) + '</h3><div class="steps mt8">' +
+        p.steps.map(s => '<div class="step"><div><p style="color:var(--ink)">' + esc(s).replace('{DBA}', esc(deal.biz || 'DBA')) + '</p></div></div>').join('') + '</div>' +
+        '<div class="note mt8">Docs checklist (every deal): <ul class="ck mt8">' + D.commonDocs.map(d => '<li>' + esc(d) + '</li>').join('') + '</ul></div>' +
+        '<p class="small">Send to <b>' + D.contacts.submit + '</b> · CC <b>' + D.contacts.cc + '</b></p></div>';
+    } else {
+      h += '<div class="note warn mt16">No placement chosen yet — go back to <b>Best fit</b> and pick where this deal gets written, then the exact submission steps appear here. Full checklists also live on <a href="submit-deal.html">Submit a Deal</a>.</div>';
+    }
+    h += '<div class="card mt16"><h3>Wrap up</h3><div class="frow">' +
+      '<div><label class="fl">Deal stage</label><select class="fi" id="f-stage">' + Store.STAGES.map(s => '<option value="' + s.key + '"' + (deal.stage === s.key ? ' selected' : '') + '>' + s.label + '</option>').join('') + '</select></div>' +
+      '<div><label class="fl">Next step</label><input class="fi" id="f-next" value="' + esc(deal.nextStep) + '" placeholder="e.g. Call back Tue with proposal"></div></div>' +
+      '<label class="fl">Next step date</label><input class="fi" type="date" id="f-nextdate" value="' + esc(deal.nextStepDate) + '" style="max-width:220px"></div>';
+    $('wiz').innerHTML = h;
+  }
+  function grab5() {
+    if ($('f-stage')) { deal.stage = $('f-stage').value; deal.nextStep = $('f-next').value; deal.nextStepDate = $('f-nextdate').value; }
+  }
+
+  const RENDER = [s0, s1, s2, s3, s4, s5];
+  const GRABS = [grab, grab, grab2, grab3, grab4, grab5];
+
+  function go(n) {
+    GRABS[step]();
+    step = Math.max(0, Math.min(STEPS.length - 1, n));
+    bar(); RENDER[step]();
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+  $('back').addEventListener('click', () => go(step - 1));
+  $('next').addEventListener('click', () => go(step + 1));
+  $('save').addEventListener('click', async () => {
+    GRABS[step]();
+    if (!deal.biz) { $('savemsg').textContent = 'Give the deal a business name (step 1) before saving.'; return; }
+    await Store.saveDeal(deal);
+    $('savemsg').innerHTML = '✅ Saved to your pipeline — <a href="crm.html">open My Pipeline</a>. Keep going; saving again updates the same deal.';
+  });
+
+  document.addEventListener('hub:ready', async () => {
+    const q = new URLSearchParams(location.search);
+    if (q.get('industry') && D.industries[q.get('industry')]) deal.industry = q.get('industry');
+    if (q.get('deal')) {
+      const found = (await Store.listDeals()).find(d => d.id === q.get('deal'));
+      if (found) { deal = found; deal.products = deal.products || {}; }
+    }
+    bar(); RENDER[step]();
+  });
+})();
+</script>
+</body></html>

@@ -1,0 +1,78 @@
+<!DOCTYPE html><html lang="en"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>Calendar — NextPay Sales Hub</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/hub.css">
+<style>.embed{width:100%;min-height:640px;border:0;border-radius:12px;background:#fff}</style>
+</head><body>
+<div class="hub-shell"><div id="hub-side"></div><main class="hub-main">
+
+<div class="pg-head">
+  <span class="eyebrow">My business</span>
+  <h1>Calendar</h1>
+  <p>Your Google Calendar and Calendly booking page, right inside the hub. One-time setup per browser — paste your links below and they stick.</p>
+</div>
+
+<div class="card" id="setup">
+  <h3>Connect your calendars</h3>
+  <div class="frow">
+    <div>
+      <label class="fl">Google Calendar embed URL</label>
+      <input class="fi" id="in-g" placeholder="https://calendar.google.com/calendar/embed?src=you%40nextpaypos.com&ctz=America%2FNew_York">
+      <p class="small muted mt8">Get it: Google Calendar → ⚙ Settings → your calendar → <b>Integrate calendar</b> → copy the <b>public URL / embed</b> src. (Calendar sharing must allow it, or use "Get shareable link" while signed in — the iframe shows whatever your browser session can see.)</p>
+    </div>
+    <div>
+      <label class="fl">Calendly link</label>
+      <input class="fi" id="in-c" placeholder="https://calendly.com/your-name">
+      <p class="small muted mt8">Your Calendly scheduling page URL. Merchants can book you from here, and you can send the same link by text/email.</p>
+    </div>
+  </div>
+  <div class="flex mt16"><button class="btn btn-primary btn-sm" id="save">Save</button><span class="small muted" id="msg"></span></div>
+</div>
+
+<div class="card mt16" id="g-wrap" style="display:none">
+  <div class="spread"><h3>📅 Google Calendar</h3><a class="small" id="g-open" target="_blank" rel="noopener">Open in Google ↗</a></div>
+  <iframe class="embed mt8" id="g-frame" loading="lazy"></iframe>
+</div>
+
+<div class="card mt16" id="c-wrap" style="display:none">
+  <div class="spread"><h3>🗓 Calendly</h3><a class="small" id="c-open" target="_blank" rel="noopener">Open Calendly ↗</a></div>
+  <iframe class="embed mt8" id="c-frame" loading="lazy"></iframe>
+</div>
+
+<div class="card mt16">
+  <h3>Booking habits that close deals</h3>
+  <ul class="ck">
+    <li>Never end a good conversation without a calendar slot — "I'll text you my booking link right now, grab 15 minutes."</li>
+    <li>Statement reviews get a firm appointment: owners "find" the statement when there's a meeting for it.</li>
+    <li>Install days go on the calendar the moment a deal is approved — and block the follow-up call 2 days after.</li>
+    <li>Every next step in <a href="crm.html">My Pipeline</a> should exist on your calendar too.</li>
+  </ul>
+</div>
+
+</main></div>
+<script src="js/hub.js"></script><script src="js/hub-data.js"></script><script src="js/hub-store.js"></script>
+<script>
+(function () {
+  const $ = (id) => document.getElementById(id);
+  function draw() {
+    const g = localStorage.getItem('hub_gcal') || '', c = localStorage.getItem('hub_calendly') || '';
+    $('in-g').value = g; $('in-c').value = c;
+    $('g-wrap').style.display = g ? '' : 'none';
+    if (g) { $('g-frame').src = g; $('g-open').href = 'https://calendar.google.com'; }
+    $('c-wrap').style.display = c ? '' : 'none';
+    if (c) { $('c-frame').src = c.replace(/\/$/, '') + '?embed_domain=' + location.hostname + '&embed_type=Inline'; $('c-open').href = c; }
+  }
+  $('save').addEventListener('click', () => {
+    const g = $('in-g').value.trim(), c = $('in-c').value.trim();
+    if (g && !/^https:\/\/calendar\.google\.com\//.test(g)) { $('msg').textContent = 'Google embed URL should start with https://calendar.google.com/'; return; }
+    if (c && !/^https:\/\/calendly\.com\//.test(c)) { $('msg').textContent = 'Calendly link should start with https://calendly.com/'; return; }
+    localStorage.setItem('hub_gcal', g); localStorage.setItem('hub_calendly', c);
+    $('msg').textContent = '✅ Saved'; draw();
+  });
+  draw();
+})();
+</script>
+</body></html>

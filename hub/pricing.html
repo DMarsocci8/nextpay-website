@@ -1,0 +1,145 @@
+<!DOCTYPE html><html lang="en"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>Pricing & Buy Rates — NextPay Sales Hub</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/hub.css">
+</head><body>
+<div class="hub-shell"><div id="hub-side"></div><main class="hub-main">
+
+<div class="pg-head">
+  <span class="eyebrow">Price it right</span>
+  <h1>Pricing &amp; Buy Rates</h1>
+  <p>How to price a deal, what the software actually costs (verified numbers), your buy rates, and what lands in your pocket. <b>Everything on this page is internal — never screenshot or forward it to a merchant.</b></p>
+</div>
+
+<div class="card">
+  <h3>The three ways to price processing</h3>
+  <div class="tbl-wrap"><table class="tbl"><thead><tr><th>Model</th><th>Merchant pays</th><th>When to use</th><th>Watch for</th></tr></thead><tbody>
+    <tr><td><b>Dual pricing (0%)</b></td><td>Card price vs cash price; program fee built into card price</td><td>Fee-sensitive: food, liquor, c-store, trades, startups</td><td>Signage required; terminal/POS file must be built for it; a few owners hate the optics — have interchange-plus ready</td></tr>
+    <tr><td><b>Interchange-plus</b></td><td>True cost + transparent markup (bps + per-item)</td><td>Higher tickets, professional offices, statement beats</td><td>Know your buy rate before quoting; margin = what you quote − buy rate</td></tr>
+    <tr><td><b>Flat rate</b></td><td>One blended % (+ per item)</td><td>Micro-merchants, simplicity buyers</td><td>You eat interchange swings — keep the blend honest</td></tr>
+  </tbody></table></div>
+</div>
+
+<div class="card mt16" id="buyrates">
+  <div class="spread"><h3>Your buy rates &amp; Schedule A</h3><span class="chip red">Internal only</span></div>
+  <p class="muted small">Buy rate = what the processing costs <i>us</i>. Everything you quote above it is margin, split per your agent agreement. Your exact Schedule A is in your signed agent agreement — keep your working numbers here (saved in your browser only).</p>
+  <div class="tbl-wrap"><table class="tbl"><thead><tr><th>Program</th><th>My buy rate / cost</th><th>Notes</th></tr></thead><tbody id="br-rows"></tbody></table></div>
+  <div class="flex mt8"><button class="btn btn-outline btn-sm" id="br-add">+ Add row</button><span class="small muted">Autosaves as you type · stored locally</span></div>
+  <div class="note mt16">Reference docs:
+    <a href="https://nextpaypos.com/Alexander_Bautista_DOM_SkyTab_Partner_Schedu.pdf" target="_blank" rel="noopener">SkyTab partner Schedule A (PDF)</a> ·
+    <a href="https://nextpaypos.com/docs/quantic-monthly.pdf" target="_blank" rel="noopener">Quantic Unified Pricing V5</a> ·
+    <a href="https://nextpaypos.com/docs/quantic-hardware.pdf" target="_blank" rel="noopener">Quantic hardware</a> ·
+    <a href="https://nextpaypos.com/Reseller%20Pricing%20Guide%20Square%20Hardware.xlsx" target="_blank" rel="noopener">Square reseller hardware (xlsx)</a> ·
+    <a href="https://nextpaypos.com/Reseller%20Pricing%20Guide%20Square%20Services.xlsx" target="_blank" rel="noopener">Square reseller services (xlsx)</a>.
+    Missing a Schedule A? Email <b>dom@nextpaypos.com</b>.</div>
+</div>
+
+<div class="card mt16">
+  <h3>Residual calculator</h3>
+  <div class="frow3">
+    <div><label class="fl">Monthly volume ($)</label><input class="fi" id="r-vol" inputmode="numeric" placeholder="45000"></div>
+    <div><label class="fl">Rate quoted to merchant (%)</label><input class="fi" id="r-rate" inputmode="numeric" placeholder="2.60"></div>
+    <div><label class="fl">Buy rate (%)</label><input class="fi" id="r-buy" inputmode="numeric" placeholder="2.10"></div>
+  </div>
+  <div class="frow3">
+    <div><label class="fl">Monthly fee income ($ — software margin, statement fee…)</label><input class="fi" id="r-fees" inputmode="numeric" value="0"></div>
+    <div><label class="fl">Your residual split (%)</label><input class="fi" id="r-split" inputmode="numeric" placeholder="per your agreement"></div>
+    <div></div>
+  </div>
+  <div class="grid3 mt16">
+    <div class="stat"><div class="n" id="r-margin">—</div><div class="l">total monthly margin on the deal</div></div>
+    <div class="stat"><div class="n" id="r-mine" style="color:var(--teal)">—</div><div class="l">your monthly residual</div></div>
+    <div class="stat"><div class="n" id="r-year">—</div><div class="l">your residual per year — deals stack</div></div>
+  </div>
+</div>
+
+<div class="card mt16">
+  <h3>Verified software &amp; hardware price points</h3>
+  <p class="muted small">These are the confirmed numbers behind the catalog — safe to quote. Full itemized builds live in the <a href="https://nextpaypos.com/build" target="_blank" rel="noopener">Build Your Solution catalog ↗</a>.</p>
+  <div class="tbl-wrap"><table class="tbl"><thead><tr><th>Product</th><th>Confirmed pricing</th></tr></thead><tbody>
+    <tr><td><b>SkyTab</b></td><td>Base bundle $29.99/mo · Glass/Air/KDS/CFD/Kiosk $29.99/mo each · Mobile $20 · Bump Bar $9.99 · PIN pad $9.99 · Label $19.99 · Scale $39.99 · Lighthouse $20 · Gift Cards $25 · Workforce $35 · one-time: drawer $129, till $25, split cable $25. 30-day trial → 30-month agreement.</td></tr>
+    <tr><td><b>PAYS</b></td><td>Starter $59 / Growth $79 / Enterprise $99 per month · station bundle $999.</td></tr>
+    <tr><td><b>Quantic</b></td><td>Pro $60 first station / $50 additional · Enterprise $90 / $80 · modules per Unified Pricing V5.</td></tr>
+    <tr><td><b>Korona</b></td><td>Core $59 / Retail $79 / Plus $99 per register · modules (Food $10, Invoicing $10, Ticketing $50/gate…).</td></tr>
+    <tr><td><b>Clover</b></td><td>Software $0–$89.95/mo by plan (+$5/mo platform fee per location) · hardware placement or purchase per catalog.</td></tr>
+    <tr><td><b>Square</b></td><td>Free plan / Plus $49/mo · Terminal $299 · Handheld $399 · Station $899 · published rates 2.6%+10¢ CP.</td></tr>
+    <tr><td><b>SumUp</b></td><td>POS Lite &amp; Solo $499 · POS $799 + $99/mo · Terminal $249 · Solo $54 · Connect Plus $199 / Pro $289.</td></tr>
+  </tbody></table></div>
+</div>
+
+<div class="card mt16" id="proposal">
+  <h3>Building the proposal</h3>
+  <ul class="ck">
+    <li>One page: the stack (itemized), the pricing model, the savings vs today, and what happens next.</li>
+    <li>Use the <a href="https://nextpaypos.com/build" target="_blank" rel="noopener">Build Your Solution</a> catalog numbers for hardware/software lines.</li>
+    <li>SkyTab: start from the <a href="https://nextpaypos.com/SkyTab_Proposal%20-%20Blank.pdf" target="_blank" rel="noopener">blank SkyTab proposal PDF</a>.</li>
+    <li>Show <b>annual</b> savings from the <a href="statement-review.html">Statement Review</a> calculator — it's the number they remember.</li>
+    <li>Never put buy rates, splits, or anything from this page in a proposal.</li>
+  </ul>
+</div>
+
+<div class="card mt16">
+  <div class="spread"><h3>NextLink (internal pricing)</h3><span class="chip red">Never publish — internal only</span></div>
+  <div class="tbl-wrap"><table class="tbl"><tbody>
+    <tr><td>Trial (3-month term)</td><td>$599 / mo / seat</td></tr>
+    <tr><td>Annual</td><td>$749 / mo / seat</td></tr>
+    <tr><td>Month-to-month</td><td>$999 / mo / seat</td></tr>
+    <tr><td>Enterprise (10+ seats)</td><td>Custom — talk to Dom</td></tr>
+  </tbody></table></div>
+</div>
+
+</main></div>
+<script src="js/hub.js"></script><script src="js/hub-data.js"></script><script src="js/hub-store.js"></script>
+<script>
+(function () {
+  const $ = (id) => document.getElementById(id);
+  const fmt = (n) => '$' + Math.round(n).toLocaleString();
+
+  /* residual calc */
+  function rcalc() {
+    const v = parseFloat($('r-vol').value) || 0, q = parseFloat($('r-rate').value) || 0,
+          b = parseFloat($('r-buy').value) || 0, f = parseFloat($('r-fees').value) || 0,
+          sp = (parseFloat($('r-split').value) || 0) / 100;
+    const margin = v * ((q - b) / 100) + f;
+    $('r-margin').textContent = (v && q) ? fmt(margin) + '/mo' : '—';
+    $('r-mine').textContent = (v && q && sp) ? fmt(margin * sp) + '/mo' : '—';
+    $('r-year').textContent = (v && q && sp) ? fmt(margin * sp * 12) + '/yr' : '—';
+  }
+  ['r-vol', 'r-rate', 'r-buy', 'r-fees', 'r-split'].forEach(id => $(id).addEventListener('input', rcalc));
+
+  /* editable buy-rate table (localStorage) */
+  const DEFAULTS = [
+    { p: 'Card processing — interchange-plus', r: '', n: 'From your Schedule A: bps + per item over cost' },
+    { p: 'Dual pricing program', r: '', n: 'Program fee %, terminal file build' },
+    { p: 'SkyTab placement', r: '', n: 'See SkyTab partner Schedule A PDF' },
+    { p: 'Clover placement', r: '', n: '' },
+    { p: 'Gateway (NMI / FluidPay) monthly + per item', r: '', n: '' }
+  ];
+  let rows;
+  try { rows = JSON.parse(localStorage.getItem('hub_buyrates') || 'null') || DEFAULTS; } catch (e) { rows = DEFAULTS; }
+  const esc = (s) => String(s == null ? '' : s).replace(/[<>&"]/g, c => ({'<':'&lt;','>':'&gt;','&':'&amp;','"':'&quot;'}[c]));
+  function draw() {
+    $('br-rows').innerHTML = rows.map((r, i) =>
+      '<tr><td><input class="fi" data-i="' + i + '" data-f="p" value="' + esc(r.p) + '"></td>' +
+      '<td><input class="fi" data-i="' + i + '" data-f="r" value="' + esc(r.r) + '" placeholder="e.g. IC + 15bps + 5¢"></td>' +
+      '<td class="flex"><input class="fi" data-i="' + i + '" data-f="n" value="' + esc(r.n) + '">' +
+      '<button class="btn btn-outline btn-sm" data-del="' + i + '">✕</button></td></tr>').join('');
+  }
+  $('br-rows').addEventListener('input', (e) => {
+    const t = e.target; if (t.dataset.i == null) return;
+    rows[+t.dataset.i][t.dataset.f] = t.value;
+    localStorage.setItem('hub_buyrates', JSON.stringify(rows));
+  });
+  $('br-rows').addEventListener('click', (e) => {
+    const b = e.target.closest('[data-del]'); if (!b) return;
+    rows.splice(+b.dataset.del, 1);
+    localStorage.setItem('hub_buyrates', JSON.stringify(rows)); draw();
+  });
+  $('br-add').addEventListener('click', () => { rows.push({ p: '', r: '', n: '' }); draw(); });
+  draw();
+})();
+</script>
+</body></html>

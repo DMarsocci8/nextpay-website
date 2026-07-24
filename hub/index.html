@@ -1,0 +1,103 @@
+<!DOCTYPE html><html lang="en"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>Dashboard — NextPay Sales Hub</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/hub.css">
+</head><body>
+<div class="hub-shell"><div id="hub-side"></div><main class="hub-main">
+
+<div class="pg-head">
+  <span class="eyebrow">NextPay Sales Hub</span>
+  <h1 id="greet">Welcome back</h1>
+  <p>Everything you need to work a deal from first conversation to signed merchant — in one place.</p>
+</div>
+
+<div class="grid3">
+  <a class="card" href="deal-navigator.html" style="text-decoration:none;color:inherit">
+    <span class="chip">Start here</span>
+    <h3 class="mt8">🧭 Work a new deal</h3>
+    <p class="muted small">Pick the business type, get the questions to ask, the right products, pricing and next steps — the whole sales process, guided.</p>
+  </a>
+  <a class="card" href="statement-review.html" style="text-decoration:none;color:inherit">
+    <span class="chip navy">Meet or beat</span>
+    <h3 class="mt8">🧾 Review a statement</h3>
+    <p class="muted small">Got a competitor statement? Compute their real effective rate and build the beat. No statement? Run projections.</p>
+  </a>
+  <a class="card" href="submit-deal.html" style="text-decoration:none;color:inherit">
+    <span class="chip green">Close it</span>
+    <h3 class="mt8">📤 Submit a deal</h3>
+    <p class="muted small">Per-product submission checklists — exactly what docs you need and where to send them.</p>
+  </a>
+</div>
+
+<div class="grid4 mt24" id="stats"></div>
+
+<div class="grid2 mt24">
+  <div class="card">
+    <div class="spread"><h3>⏰ Next steps due</h3><a class="small" href="crm.html">Open pipeline →</a></div>
+    <div id="due" class="mt8 small muted">Loading…</div>
+  </div>
+  <div class="card">
+    <div class="spread"><h3>🕘 Recent deals</h3><a class="small" href="crm.html">All deals →</a></div>
+    <div id="recent" class="mt8 small muted">Loading…</div>
+  </div>
+</div>
+
+<div class="card mt24">
+  <h3>The NextPay sales process</h3>
+  <p class="muted small mb8">Every deal moves through the same path. Each step has a page in the sidebar.</p>
+  <div class="tbl-wrap"><table class="tbl"><thead><tr><th>Step</th><th>What you do</th><th>Where</th></tr></thead><tbody>
+    <tr><td><b>1 · Prospect</b></td><td>Identify the business type and open the playbook</td><td><a href="deal-navigator.html">Deal Navigator</a> · <a href="industries.html">Industry Playbooks</a></td></tr>
+    <tr><td><b>2 · Discovery</b></td><td>Ask the right questions — volume, ticket, pain, current processor</td><td><a href="deal-navigator.html">Deal Navigator</a></td></tr>
+    <tr><td><b>3 · Solution</b></td><td>Match products (POS / terminal / gateway / invoicing) and placement</td><td><a href="deal-navigator.html">Deal Navigator</a> · <a href="products.html">Products</a></td></tr>
+    <tr><td><b>4 · Pricing</b></td><td>Pick the pricing model, check buy rates, estimate your residual</td><td><a href="pricing.html">Pricing &amp; Buy Rates</a></td></tr>
+    <tr><td><b>5 · Statement</b></td><td>Meet-or-beat their statement, or run startup projections</td><td><a href="statement-review.html">Statement Review</a></td></tr>
+    <tr><td><b>6 · Proposal</b></td><td>Build and send the proposal</td><td><a href="pricing.html#proposal">Proposal tools</a></td></tr>
+    <tr><td><b>7 · Submit</b></td><td>Package docs and submit the deal</td><td><a href="submit-deal.html">Submit a Deal</a></td></tr>
+    <tr><td><b>8 · Live</b></td><td>Merchant installed &amp; processing — log them in your book</td><td><a href="merchants.html">My Merchants</a></td></tr>
+  </tbody></table></div>
+</div>
+
+<div class="note mt24" id="mode-note" style="display:none"></div>
+
+</main></div>
+<script src="js/hub.js"></script><script src="js/hub-data.js"></script><script src="js/hub-store.js"></script>
+<script>
+document.addEventListener('hub:ready', async function (ev) {
+  const email = ev.detail.email;
+  if (email) {
+    const name = email.split('@')[0].replace(/[._]/g, ' ');
+    document.getElementById('greet').textContent = 'Welcome back, ' + name.charAt(0).toUpperCase() + name.slice(1);
+  }
+  const deals = await Store.listDeals();
+  const mine = deals.filter(d => d.stage !== 'lost');
+  const active = mine.filter(d => !['installed'].includes(d.stage));
+  const stats = [
+    { n: active.length, l: 'Active deals' },
+    { n: mine.filter(d => d.stage === 'proposal').length, l: 'Proposals out' },
+    { n: mine.filter(d => ['submitted', 'underwriting'].includes(d.stage)).length, l: 'Submitted / underwriting' },
+    { n: (await Store.listMerchants()).length, l: 'Merchants live' }
+  ];
+  document.getElementById('stats').innerHTML = stats.map(s => '<div class="stat"><div class="n">' + s.n + '</div><div class="l">' + s.l + '</div></div>').join('');
+
+  const due = active.filter(d => d.nextStep).sort((a, b) => (a.nextStepDate || '9') < (b.nextStepDate || '9') ? -1 : 1).slice(0, 6);
+  document.getElementById('due').innerHTML = due.length
+    ? due.map(d => '<div style="padding:7px 0;border-bottom:1px solid var(--line)"><b>' + (d.biz || 'Unnamed') + '</b> — ' + d.nextStep + (d.nextStepDate ? ' <span class="chip amber" style="margin-left:6px">' + d.nextStepDate + '</span>' : '') + '</div>').join('')
+    : 'No next steps logged. Open a deal in your pipeline and set one — every active deal should have a next step.';
+
+  const recent = deals.sort((a, b) => (b.updatedAt || '') < (a.updatedAt || '') ? -1 : 1).slice(0, 6);
+  document.getElementById('recent').innerHTML = recent.length
+    ? recent.map(d => '<div style="padding:7px 0;border-bottom:1px solid var(--line)"><b>' + (d.biz || 'Unnamed') + '</b> <span class="chip" style="margin-left:6px">' + Store.stageLabel(d.stage) + '</span></div>').join('')
+    : 'No deals yet — hit <a href="deal-navigator.html">Work a new deal</a> to start your first one.';
+
+  await Store.probe();
+  const n = document.getElementById('mode-note');
+  if (!Store.apiMode()) {
+    n.style.display = 'block';
+    n.innerHTML = '<b>Local mode:</b> your deals and merchants are saved in this browser only. Once the hub CRM API is deployed, everything syncs centrally and admins see all agent activity automatically. You can also <a href="#" onclick="Store.exportAll();return false">export your book</a> anytime.';
+  }
+});
+</script>
+</body></html>

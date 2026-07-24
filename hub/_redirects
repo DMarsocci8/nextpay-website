@@ -1,0 +1,6 @@
+# Legacy hub URLs → new structure (Cloudflare Pages serves clean URLs natively:
+# /pricing → pricing.html, etc.)
+/SalesHub / 301
+/Sales%20Hub / 301
+/Sales_Hub / 301
+/agentpayplan /compensation 301

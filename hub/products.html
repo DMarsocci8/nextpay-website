@@ -1,0 +1,46 @@
+<!DOCTYPE html><html lang="en"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>Products — NextPay Sales Hub</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/hub.css">
+</head><body>
+<div class="hub-shell"><div id="hub-side"></div><main class="hub-main">
+
+<div class="pg-head">
+  <span class="eyebrow">Learn</span>
+  <h1>Product Library</h1>
+  <p>Every product we place, with its one-liner and key selling points. Each card links to the public page — that's the merchant-facing story. Itemized builds and prices live in the <a href="https://nextpaypos.com/build" target="_blank" rel="noopener">Build Your Solution catalog ↗</a>.</p>
+</div>
+
+<div id="lib"></div>
+
+<div class="card mt24">
+  <h3>Which category does this deal even need?</h3>
+  <div class="tbl-wrap"><table class="tbl"><thead><tr><th>They say…</th><th>Category</th><th>Start with</th></tr></thead><tbody>
+    <tr><td>"I run a restaurant / store / salon" (counter or table service)</td><td><b>POS system</b></td><td>The <a href="deal-navigator.html">Navigator</a>'s industry pick</td></tr>
+    <tr><td>"I just need to take cards" (simple counter, mobile, trades)</td><td><b>Terminal</b></td><td>PAX A920 Pro or Dejavoo — dual pricing ready</td></tr>
+    <tr><td>"I sell online / over the phone / subscriptions"</td><td><b>Gateway</b></td><td>NMI or FluidPay (recurring, virtual terminal)</td></tr>
+    <tr><td>"I bill customers / send estimates / work in the field"</td><td><b>Invoicing</b></td><td>FieldPulse (trades) · LQPay (healthcare) · QuickBooks (books-first)</td></tr>
+  </tbody></table></div>
+  <p class="small muted mt8">Most real deals combine two: POS + gateway, terminal + invoicing. Quote the stack, not the box.</p>
+</div>
+
+</main></div>
+<script src="js/hub.js"></script><script src="js/hub-data.js"></script><script src="js/hub-store.js"></script>
+<script>
+(function () {
+  const esc = (s) => String(s == null ? '' : s).replace(/[<>&"]/g, c => ({'<':'&lt;','>':'&gt;','&':'&amp;','"':'&quot;'}[c]));
+  const SECS = [['pos', 'POS Systems'], ['terminals', 'Credit Card Terminals'], ['gateways', 'Online Gateways'], ['invoicing', 'Invoicing & Field Service']];
+  document.getElementById('lib').innerHTML = SECS.map(([k, label]) =>
+    '<h3 class="mt24 mb8">' + label + '</h3><div class="grid3">' +
+    HUB_DATA.products[k].map(p =>
+      '<div class="card" style="box-shadow:none"><b>' + esc(p.name) + '</b><div class="small muted">' + esc(p.tag) + '</div>' +
+      '<ul class="ck plain mt8">' + p.sell.map(s => '<li class="small">' + esc(s) + '</li>').join('') + '</ul>' +
+      '<a class="small" href="' + p.link + '" target="_blank" rel="noopener">Public page ↗</a></div>'
+    ).join('') + '</div>'
+  ).join('');
+})();
+</script>
+</body></html>

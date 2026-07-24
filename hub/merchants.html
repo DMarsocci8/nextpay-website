@@ -1,0 +1,120 @@
+<!DOCTYPE html><html lang="en"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>My Merchants — NextPay Sales Hub</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/hub.css">
+</head><body>
+<div class="hub-shell"><div id="hub-side"></div><main class="hub-main">
+
+<div class="pg-head">
+  <span class="eyebrow">My business</span>
+  <div class="spread"><h1>My Merchants</h1>
+    <span class="flex"><button class="btn btn-primary btn-sm" id="add">+ Add merchant</button></span>
+  </div>
+  <p>Your signed, processing merchants — even though they live in different back-end portals (Shift4, Clover, Square…), keep the master record here: who they are, what they run, where they're placed, their rate, and their documents.</p>
+</div>
+
+<div class="card"><div class="tbl-wrap"><table class="tbl">
+  <thead><tr><th>Merchant</th><th>Contact</th><th>Product / placement</th><th>Rate / program</th><th>MID</th><th>Status</th><th></th></tr></thead>
+  <tbody id="rows"><tr><td colspan="7" class="muted">Loading…</td></tr></tbody>
+</table></div></div>
+<div class="note mt16" id="mode-note" style="display:none"></div>
+
+<div class="modal-bg" id="mbg"><div class="modal">
+  <button class="x" id="mx">✕</button>
+  <h3 id="m-title">Merchant</h3>
+  <div class="frow">
+    <div><label class="fl">DBA</label><input class="fi" id="m-dba"></div>
+    <div><label class="fl">Legal name</label><input class="fi" id="m-legal"></div>
+  </div>
+  <div class="frow3">
+    <div><label class="fl">Contact</label><input class="fi" id="m-contact"></div>
+    <div><label class="fl">Phone</label><input class="fi" id="m-phone"></div>
+    <div><label class="fl">Email</label><input class="fi" id="m-email"></div>
+  </div>
+  <div class="frow">
+    <div><label class="fl">Product (POS / terminal / gateway)</label><input class="fi" id="m-product" placeholder="e.g. SkyTab · 2 stations + Air"></div>
+    <div><label class="fl">Placed with</label><select class="fi" id="m-place">
+      <option value="">—</option>
+      <option>SkyTab / Shift4</option><option>Clover</option><option>Next2Pay / Chively</option><option>Square</option>
+      <option>Quantic</option><option>Korona</option><option>NRS</option><option>PAYS</option><option>SumUp</option>
+      <option>Dejavoo / iPOSPays</option><option>PAX terminal</option><option>Valor</option><option>Gateway only (NMI/FluidPay/Auth.net)</option><option>Other</option>
+    </select></div>
+  </div>
+  <div class="frow3">
+    <div><label class="fl">Rate / program</label><input class="fi" id="m-program" placeholder="e.g. Dual pricing 3.99%/0%"></div>
+    <div><label class="fl">MID</label><input class="fi" id="m-mid"></div>
+    <div><label class="fl">Status</label><select class="fi" id="m-status"><option>Live</option><option>Installing</option><option>Underwriting</option><option>Paused</option><option>Closed</option></select></div>
+  </div>
+  <div class="frow">
+    <div><label class="fl">Signed date</label><input class="fi" type="date" id="m-signed"></div>
+    <div><label class="fl">Contract / docs links</label><input class="fi" id="m-docs" placeholder="Drive/Dropbox links, comma-separated"></div>
+  </div>
+  <label class="fl">Notes</label><textarea class="fi" id="m-notes" rows="3" placeholder="Equipment on site, portal logins location, service history…"></textarea>
+  <div class="flex mt16">
+    <button class="btn btn-primary" id="m-save">Save</button>
+    <span style="flex:1"></span>
+    <button class="btn btn-outline" id="m-del" style="color:var(--red)">Delete</button>
+  </div>
+</div></div>
+
+</main></div>
+<script src="js/hub.js"></script><script src="js/hub-data.js"></script><script src="js/hub-store.js"></script>
+<script>
+(function () {
+  const $ = (id) => document.getElementById(id);
+  const esc = (s) => String(s == null ? '' : s).replace(/[<>&"]/g, c => ({'<':'&lt;','>':'&gt;','&':'&amp;','"':'&quot;'}[c]));
+  let rows = [], cur = null;
+
+  async function draw() {
+    rows = await Store.listMerchants();
+    $('rows').innerHTML = rows.length ? rows.map(m =>
+      '<tr><td><b>' + esc(m.dba || '—') + '</b>' + (m.legal ? '<br><span class="small muted">' + esc(m.legal) + '</span>' : '') + '</td>' +
+      '<td class="small">' + esc(m.contactName || '') + (m.phone ? '<br>' + esc(m.phone) : '') + (m.email ? '<br>' + esc(m.email) : '') + '</td>' +
+      '<td class="small">' + esc(m.product || '') + (m.placement ? '<br><span class="chip navy">' + esc(m.placement) + '</span>' : '') + '</td>' +
+      '<td class="small">' + esc(m.program || '') + '</td><td class="small">' + esc(m.mid || '') + '</td>' +
+      '<td><span class="chip ' + (m.status === 'Live' ? 'green' : m.status === 'Closed' ? 'red' : 'amber') + '">' + esc(m.status || '') + '</span></td>' +
+      '<td><button class="btn btn-outline btn-sm" data-id="' + m.id + '">Edit</button></td></tr>').join('')
+      : '<tr><td colspan="7" class="muted">No merchants yet. When a deal installs, use "Mark installed" in <a href="crm.html">My Pipeline</a> — or add one here.</td></tr>';
+    document.querySelectorAll('[data-id]').forEach(b => b.addEventListener('click', () => open(b.dataset.id)));
+  }
+
+  function open(id) {
+    cur = rows.find(m => m.id === id) || { status: 'Live' };
+    $('m-title').textContent = cur.id ? (cur.dba || 'Merchant') : 'New merchant';
+    $('m-dba').value = cur.dba || ''; $('m-legal').value = cur.legal || '';
+    $('m-contact').value = cur.contactName || ''; $('m-phone').value = cur.phone || ''; $('m-email').value = cur.email || '';
+    $('m-product').value = cur.product || ''; $('m-place').value = cur.placement || '';
+    $('m-program').value = cur.program || ''; $('m-mid').value = cur.mid || ''; $('m-status').value = cur.status || 'Live';
+    $('m-signed').value = cur.signedDate || ''; $('m-docs').value = cur.docs || ''; $('m-notes').value = cur.notes || '';
+    $('mbg').classList.add('open');
+  }
+  const close = () => $('mbg').classList.remove('open');
+  $('mx').addEventListener('click', close);
+  $('mbg').addEventListener('click', (e) => { if (e.target === $('mbg')) close(); });
+  $('m-save').addEventListener('click', async () => {
+    cur.dba = $('m-dba').value; cur.legal = $('m-legal').value;
+    cur.contactName = $('m-contact').value; cur.phone = $('m-phone').value; cur.email = $('m-email').value;
+    cur.product = $('m-product').value; cur.placement = $('m-place').value;
+    cur.program = $('m-program').value; cur.mid = $('m-mid').value; cur.status = $('m-status').value;
+    cur.signedDate = $('m-signed').value; cur.docs = $('m-docs').value; cur.notes = $('m-notes').value;
+    await Store.saveMerchant(cur); close(); draw();
+  });
+  $('m-del').addEventListener('click', async () => {
+    if (cur.id && confirm('Delete this merchant record?')) { await Store.deleteMerchant(cur.id); close(); draw(); }
+  });
+  $('add').addEventListener('click', () => open(null));
+
+  document.addEventListener('hub:ready', async () => {
+    await draw();
+    await Store.probe();
+    if (!Store.apiMode()) {
+      const n = $('mode-note'); n.style.display = 'block';
+      n.innerHTML = '<b>Local mode:</b> merchant records live in this browser until the hub CRM API is deployed. Use Export on <a href="crm.html">My Pipeline</a> to back up your whole book.';
+    }
+  });
+})();
+</script>
+</body></html>
