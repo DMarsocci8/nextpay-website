@@ -769,7 +769,7 @@ window.HUB_DATA = {
       cols: ['Low-Risk', 'High-Risk'],
       covers: 'House processing paper for: Quantic · NRS · Korona · standalone terminals (PAX / Dejavoo / Valor) · gateways (NMI / FluidPay / Authorize.net / iPOSPays) · high-risk files. Does NOT cover: Square, SkyTab/Shift4, Clover/Fiserv, Next2Pay, NextLink, SumUp, PAYS, FieldPulse, LQPay (each has its own schedule).',
       split: { low: '90%', high: '60%' },
-      floor: 'Your true cost on low-risk SIP paper = interchange (pass-through) + 0.02% BIN sponsor + $0.02 per transaction (+ $0.02 per batch). Everything you quote above that is margin — and you keep 90% of it (60% on high-risk).',
+      floor: 'Your true cost on low-risk SIP paper = interchange (pass-through) + 0.02% BIN sponsor + $0.02 per transaction (+ $0.02 per batch). Everything you quote above that is margin. The program pays 90% of it (60% high-risk) and the agent earns 50% of that — so ≈45% of gross margin lands in your pocket (30% on the high-risk book).',
       example: 'Example: $45,000/mo, ~1,500 transactions, quoted at IC + 0.50% + $0.10 → gross margin ≈ 45,000 × 0.48% + 1,500 × $0.08 = $336/mo. The schedule pays 90% of that ($302) — your 50% ≈ $151/mo, for the life of the merchant. Ten of these = $1,500/mo that keeps paying.',
       groups: [
         { h: 'Residual split', rows: [['Revenue share', '90%', '60%']] },
