@@ -25,13 +25,7 @@
 
 <div class="note internal mt16"><b>How you get paid on every schedule here:</b> the tables show what each program pays on the deal — and <b>agents earn 50% of the Schedule A</b>. SIP low-risk pays 90% of margin, so your share works out to 45% of the gross margin (30% on the high-risk book). Your signed agent agreement is the final word.</div>
 
-<div class="card mt16" id="schedule-sip">
-  <div class="spread"><h3>Schedule A — Solutions in Payments (house paper)</h3><span class="chip red">Internal only</span></div>
-  <p class="muted small" id="sip-covers"></p>
-  <div class="note" id="sip-floor"></div>
-  <div class="tbl-wrap"><table class="tbl"><thead><tr><th>Fee</th><th>Low-Risk</th><th>High-Risk</th></tr></thead><tbody id="sip-rows"></tbody></table></div>
-  <div class="note mt8" id="sip-example" style="border-color:var(--green);background:rgba(46,158,107,.08)"></div>
-</div>
+<div id="schedules"></div>
 
 <div class="card mt16" id="buyrates">
   <div class="spread"><h3>Your buy rates &amp; Schedule A</h3><span class="chip red">Internal only</span></div>
@@ -157,16 +151,22 @@
   $('br-add').addEventListener('click', () => { rows.push({ p: '', r: '', n: '' }); draw(); });
   draw();
 
-  /* SIP Schedule A table */
+  /* Schedule A tables — one card per uploaded schedule */
   const D = window.HUB_DATA;
-  const sip = D.schedules.sip;
-  $('sip-covers').textContent = sip.covers;
-  $('sip-floor').innerHTML = '<b>The cost floor:</b> ' + esc(sip.floor);
-  $('sip-example').innerHTML = '<b>Make it real:</b> ' + esc(sip.example);
-  $('sip-rows').innerHTML = sip.groups.map(g =>
-    '<tr><td colspan="3" style="background:var(--soft);font-weight:800;font-size:11.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--mut)">' + esc(g.h) + '</td></tr>' +
-    g.rows.map(r => '<tr><td>' + esc(r[0]) + '</td><td>' + esc(r[1]) + '</td><td>' + esc(r[2]) + '</td></tr>').join('')
-  ).join('');
+  $('schedules').innerHTML = Object.entries(D.schedules).map(([key, sc]) =>
+    '<div class="card mt16" id="schedule-' + key + '">' +
+    '<div class="spread"><h3>Schedule A — ' + esc(sc.label) + '</h3><span class="chip red">Internal only</span></div>' +
+    '<p class="muted small">' + esc(sc.covers) + '</p>' +
+    (sc.splitNote ? '<div class="note">' + esc(sc.splitNote) + '</div>' : '') +
+    '<div class="note"><b>The cost floor:</b> ' + esc(sc.floor) + '</div>' +
+    '<div class="tbl-wrap"><table class="tbl"><thead><tr><th>Fee</th>' + sc.cols.map(c => '<th>' + esc(c) + '</th>').join('') + '</tr></thead><tbody>' +
+    sc.groups.map(g =>
+      '<tr><td colspan="' + (sc.cols.length + 1) + '" style="background:var(--soft);font-weight:800;font-size:11.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--mut)">' + esc(g.h) + '</td></tr>' +
+      g.rows.map(r => '<tr>' + r.map(c => '<td>' + esc(c) + '</td>').join('') + '</tr>').join('')
+    ).join('') + '</tbody></table></div>' +
+    '<div class="note mt8" style="border-color:var(--green);background:rgba(46,158,107,.08)"><b>Make it real:</b> ' + esc(sc.example) + '</div>' +
+    (sc.docs ? '<div class="note warn mt8"><b>Minimum underwriting documents:</b><ul class="ck mt8">' + sc.docs.map(d => '<li>' + esc(d) + '</li>').join('') + '</ul></div>' : '') +
+    '</div>').join('');
 
   /* deal economics by source */
   $('eco-rows').innerHTML = Object.entries(D.economics).map(([k, e]) =>

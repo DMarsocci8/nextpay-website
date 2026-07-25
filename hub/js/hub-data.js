@@ -606,7 +606,7 @@ window.HUB_DATA = {
     'next2pay': { label: 'Next2Pay / Chively (house POS & invoicing)', steps: [
       'House deal — best margins in the book. Confirm the build: Chively POS stations/handhelds, Next2Pay Invoicing, or both.',
       'Build the quote in the Proposal Studio. Selling NextLink (client automation outreach) too? Its per-seat proposal has its own section there.',
-      'Common docs + menu/inventory or invoice workflow details.',
+      'Underwriting docs (all required): last 3 months processing statements · last 3 months business bank statements · Articles of Incorporation · owner ID(s) · bank account details · Plaid connection · Veriff completion. Plus menu/inventory or invoice workflow details.',
       'Email the packaged deal to dom@nextpaypos.com (CC payments@ + alexander@) — subject "Next2Pay deal — {DBA}".',
       'Onboarding and install are run in-house — coordinate dates directly with Dom.'
     ]},
@@ -766,6 +766,7 @@ window.HUB_DATA = {
   schedules: {
     sip: {
       label: 'Solutions in Payments (SIP)',
+      cols: ['Low-Risk', 'High-Risk'],
       covers: 'House processing paper for: Quantic · NRS · Korona · standalone terminals (PAX / Dejavoo / Valor) · gateways (NMI / FluidPay / Authorize.net / iPOSPays) · high-risk files. Does NOT cover: Square, SkyTab/Shift4, Clover/Fiserv, Next2Pay, NextLink, SumUp, PAYS, FieldPulse, LQPay (each has its own schedule).',
       split: { low: '90%', high: '60%' },
       floor: 'Your true cost on low-risk SIP paper = interchange (pass-through) + 0.02% BIN sponsor + $0.02 per transaction (+ $0.02 per batch). Everything you quote above that is margin — and you keep 90% of it (60% on high-risk).',
@@ -797,6 +798,66 @@ window.HUB_DATA = {
           ['Annual PCI / with breach insurance', '$36.00 / $79.00', '$36.00 / $79.00'],
           ['Annual fee', '$0.00', '$50.00']] }
       ]
+    },
+    next2pay: {
+      label: 'Next2Pay / linked2pay (house invoicing & gateway)',
+      cols: ['Buy rate', 'Rev share'],
+      covers: 'House rails for: Next2Pay Invoicing (Linked2Invoice) · the house gateway · ACH / RDC processing · card processing written on linked2pay. This is the schedule behind every invoice-type deal.',
+      splitNote: 'Everything quoted above these buy rates is shared margin — you earn 50% of the Schedule A.',
+      split: { low: 'margin over buy', high: '—' },
+      floor: 'Your true cost on Next2Pay card processing = interchange + 2 bps + $0.0215/transaction + $0.03 authorization. ACH costs $0.10/item (+$10/mo enabled). Linked2Invoice costs $35/mo. Quote above these — the difference is shared margin.',
+      example: 'Example: a service business doing $30,000/mo CNP, ~600 transactions, quoted at IC + 0.75% + $0.15: margin ≈ 30,000 × 0.73% + 600 × ~$0.10 ≈ $278/mo. Add Linked2Invoice quoted at $79 vs $35 buy = $44. Your 50% ≈ $161/mo — and ACH invoices fatten it further at $0.10 buy per item.',
+      groups: [
+        { h: 'Card processing buy rates', rows: [
+          ['Interchange & assessments (V/MC/D/EBT)', 'Interchange + 2 bps', 'Yes'],
+          ['American Express', 'Interchange + 2 bps', 'Yes'],
+          ['Transaction', '$0.0215 / item', 'Yes'],
+          ['Authorization', '$0.03 / item', 'Yes'],
+          ['AVS', '$0.01 / item', 'Yes'],
+          ['Batch fee', '$0.03 / item', 'Yes'],
+          ['Voice authorization', '$1.24 / call', 'Yes'],
+          ['PIN debit', '$0.0215 / item', 'Yes'],
+          ['Chargeback', '$20.00 / occurrence', 'Yes'],
+          ['Retrieval request', '$2.50 / occurrence', 'Yes'],
+          ['Application / terminal download / equipment', '$0.00', 'Yes'],
+          ['Account maintenance', '$2.99 / mo', 'Yes'],
+          ['Online reporting', '$2.95 / mo', 'Yes'],
+          ['PCI compliance', '$2.53 / mo', 'Yes'],
+          ['GPRS terminal (SIM card)', '$50.00 / mo', 'Yes'],
+          ['1099-K reporting', '$15.00 / yr', 'Yes'],
+          ['Annual fee', '$20.00 / yr', 'Yes']] },
+        { h: 'Additional costs', rows: [
+          ['Account on file — open', '$0.99 / mo', '—'],
+          ['Account on file — closed', '$0.49 / mo', '—'],
+          ['Merchant statements (paper)', '$0.25 / mo', '—'],
+          ['Electronic statements', '$0.45 / mo', '—'],
+          ['Regulatory IRS reporting', '$0.95 / mo', '—'],
+          ['Excessive chargebacks', '$4.00 / occurrence', '—'],
+          ['Mid-risk BIN monitoring', '5 bps on volume', '—'],
+          ['High-risk BIN monitoring', '35 bps on volume', '—'],
+          ['High-risk monitoring fee', '$10.00 / mo', '—']] },
+        { h: 'Gateway & ACH buy rates', rows: [
+          ['Monthly gateway fee per MID', '$3.00 / mo', 'Yes'],
+          ['ACH processing enabled', '$10.00 / mo', 'Yes'],
+          ['ACH processing transaction', '$0.10 / item', 'Yes'],
+          ['ACH return', '$2.00 / item', 'Yes'],
+          ['Unauthorized return', '$10.00 / item', 'Yes'],
+          ['Account verification', '$0.30 / item', 'No'],
+          ['Notice of change', '$2.00 / item', 'No'],
+          ['Standard funding', '1 bps on volume', 'Yes'],
+          ['Next-day funding', '3 bps on volume · NDF $0.20/item + 10 bps', 'Yes'],
+          ['RDC main location', '$75.00 / mo', 'Yes'],
+          ['RDC next-day funding', '$20.00 / mo', 'Yes'],
+          ['RDC processing transaction', '$0.12 / item', 'Yes'],
+          ['RDC return / unauthorized', '$4.00 / $7.50 per item', 'Yes'],
+          ['Transaction (Direct X9)', '$0.15 / item', 'Yes'],
+          ['Credit card processing transaction (gateway)', '$0.05 / item', 'Yes'],
+          ['Linked2Invoice', '$35.00 / mo', 'Yes'],
+          ['Add store fee', '$25.00 one-time', 'No'],
+          ['Mailed check', '$3.00 / item', 'No'],
+          ['Early termination', '$65.00 one-time', 'No']] }
+      ],
+      docs: ['Last 3 months of processing statements', 'Last 3 months of business bank statements', 'Articles of Incorporation', 'ID for the business owners', 'Bank account details', 'Connection to Plaid', 'Completion of Veriff']
     }
   },
 
@@ -806,10 +867,11 @@ window.HUB_DATA = {
      from Dom — they render as "missing" until filled in. INTERNAL ONLY. */
   economics: {
     'next2pay': {
-      source: 'In-house (NextPay / Chively / Next2Pay / NextLink)',
-      quote: 'Processing on our house paper — dual pricing or IC+ per your Schedule A. NextLink (client automation outreach) seats per the internal list: Trial $599 / Annual $749 / M2M $999 per seat/mo.',
-      make: ['Best margins in the book — house software margin + full processing residual split', 'No third-party program taking a cut'],
-      need: 'Your agent Schedule A defines the split — confirm SaaS-margin share on Next2Pay Invoicing and NextLink seats with Dom.'
+      source: 'In-house — linked2pay rails (NextPay / Chively / Next2Pay / NextLink)',
+      sched: 'next2pay',
+      quote: 'Card processing at the linked2pay buy rates (IC + 2 bps + $0.0215/txn) — quote dual pricing or IC+ above it. ACH at $0.10/item buy. Linked2Invoice at $35/mo buy — retail-price it per deal. NextLink (outreach) seats per the internal list: Trial $599 / Annual $749 / M2M $999 per seat/mo.',
+      make: ['Margin over the Next2Pay buy rates — card, ACH and Linked2Invoice SaaS — you earn 50% of the Schedule A', 'Best-control paper in the book: every line on the schedule is shareable'],
+      need: null
     },
     'skytab': {
       source: 'Shift4 partner program (Lighthouse partner portal)',
@@ -870,11 +932,11 @@ window.HUB_DATA = {
       need: null
     },
     'invoicing-gateway': {
-      source: 'House paper + software partner (Next2Pay first; FieldPulse / LQPay / QB)',
-      sched: 'sip',
-      quote: 'Lead with Next2Pay Invoicing (house — own schedule). Gateway-based CNP processing rides SIP paper: quote above the SIP floor. Partner-software subscriptions at partner list prices.',
-      make: ['Program pays 90% of CNP margin over SIP cost — you keep 50% of what the schedule pays', 'Next2Pay Invoicing SaaS margin (house schedule)', 'Partner software referral where applicable'],
-      need: 'FieldPulse / LQPay referral terms, if we get paid on those subscriptions.'
+      source: 'Next2Pay / linked2pay rails (house invoicing + gateway + ACH)',
+      sched: 'next2pay',
+      quote: 'Lead with Next2Pay Invoicing. Card CNP quoted above IC + 2 bps + $0.0215; ACH is the winner on $2k+ invoices ($0.10/item buy). Linked2Invoice $35/mo buy — set the retail per deal.',
+      make: ['Margin over the linked2pay buy rates on card + ACH volume — 50% of the Schedule A', 'Linked2Invoice SaaS margin (retail − $35/mo buy)'],
+      need: null
     },
     'high-risk': {
       source: 'Solutions in Payments high-risk book, underwritten per file via Dom',
