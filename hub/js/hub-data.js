@@ -833,22 +833,22 @@ window.HUB_DATA = {
       source: 'Quantic (Unified Pricing V5) · processing on Solutions in Payments paper',
       sched: 'sip',
       quote: 'Hardware/software at the Unified Pricing sheet numbers; processing quoted by us on SIP — dual pricing or IC+ above the SIP cost floor.',
-      make: ['Program pays 90% of margin over SIP cost (IC + 0.02% + $0.02/txn) — your residual is 50% of our 50% of that', 'Hardware/software margin per Unified Pricing'],
-      need: 'Quantic hardware/software referral split — the processing side is fully covered by SIP.'
+      make: ['Program pays 90% of margin over SIP cost (IC + 0.02% + $0.02/txn) — your residual is 50% of our 50% of that', 'Hardware/software quoted at the Unified Pricing sheet numbers'],
+      need: null
     },
     'korona': {
       source: 'Korona dealer program · processing on Solutions in Payments paper',
       sched: 'sip',
       quote: 'Software per register at sheet prices ($59/$79/$99); hardware one-time; processing on SIP — meet-or-beat or dual pricing above the SIP cost floor.',
-      make: ['Program pays 90% of margin over SIP cost (IC + 0.02% + $0.02/txn) — your residual is 50% of our 50% of that', 'Software/hardware margin per dealer terms'],
-      need: 'Korona software/hardware margin terms — the processing side is fully covered by SIP.'
+      make: ['Program pays 90% of margin over SIP cost (IC + 0.02% + $0.02/txn) — your residual is 50% of our 50% of that', 'Software per register and hardware quoted at sheet prices'],
+      need: null
     },
     'nrs': {
       source: 'NRS dealer program · processing on Solutions in Payments paper',
       sched: 'sip',
       quote: 'NRS hardware/software per their current dealer sheet; processing on SIP — dual pricing is the norm in c-stores.',
-      make: ['Program pays 90% of margin over SIP cost (IC + 0.02% + $0.02/txn) — your residual is 50% of our 50% of that', 'Dealer margin on NRS hardware'],
-      need: 'NRS hardware dealer margin sheet — the processing side is fully covered by SIP.'
+      make: ['Program pays 90% of margin over SIP cost (IC + 0.02% + $0.02/txn) — your residual is 50% of our 50% of that', 'NRS hardware/software quoted per their current dealer sheet'],
+      need: null
     },
     'pays': {
       source: 'PAYS agent program',
