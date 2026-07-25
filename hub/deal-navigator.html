@@ -177,6 +177,7 @@
 
     /* one click fills the stack from the scored recommendation */
     const PLACE_GUESS = [
+      [/next2pay|chively|nextpay pos/i, 'next2pay'],
       [/skytab|shift4/i, 'skytab'], [/clover/i, 'clover'], [/square/i, 'square'],
       [/quantic/i, 'quantic'], [/korona/i, 'korona'], [/nrs/i, 'nrs'], [/pays/i, 'pays'],
       [/sumup/i, 'sumup'], [/terminal|pax|dejavoo|valor/i, 'terminal-gateway'],
@@ -212,6 +213,16 @@
       '</tbody></table></div>' +
       '<div class="note warn mt8">🎙 <b>Positioning the price:</b> ' + esc(D.talkTracks.pricing) + '</div>' +
       '<p class="small muted mt8">Buy rates, Schedule A and the residual calculator live on <a href="pricing.html">Pricing &amp; Buy Rates</a>. Quick gut-check below.</p></div>';
+    const eco = D.economics[deal.placement];
+    if (eco) {
+      h += '<div class="card mt16"><div class="spread"><h3>Your economics on this deal — ' + esc((D.placements[deal.placement] || {}).label || '') + '</h3><span class="chip red">Internal</span></div>' +
+        '<p class="small mt8"><b>Sourced from:</b> ' + esc(eco.source) + '</p>' +
+        '<p class="small mt8"><b>Where to quote the processing:</b> ' + esc(eco.quote) + '</p>' +
+        '<p class="small mt8 mb8"><b>What you make:</b></p><ul class="ck plain">' + eco.make.map(m => '<li class="small">' + esc(m) + '</li>').join('') + '</ul>' +
+        (eco.need ? '<div class="note warn mt8"><b>Schedule A gap:</b> ' + esc(eco.need) + ' Full source-by-source table on <a href="pricing.html#economics">Pricing &amp; Buy Rates</a>.</div>' : '') + '</div>';
+    } else {
+      h += '<div class="note mt16">Pick a <b>placement</b> back on the Best fit step and your deal economics (source, what you make, where to quote) appear here automatically.</div>';
+    }
     h += '<div class="card mt16"><h3>Quick residual estimate</h3><div class="frow3">' +
       '<div><label class="fl">Monthly volume ($)</label><input class="fi" id="c-vol" inputmode="numeric" value="' + (vol || '') + '"></div>' +
       '<div><label class="fl">Margin over buy rate (basis points)</label><input class="fi" id="c-bps" inputmode="numeric" placeholder="e.g. 50"></div>' +

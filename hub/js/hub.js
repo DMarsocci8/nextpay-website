@@ -14,7 +14,11 @@
     coin: '<circle cx="12" cy="12" r="9"/><path d="M12 7v10M15 9.5c0-1.4-1.3-2.5-3-2.5s-3 .9-3 2.2c0 2.9 6 1.6 6 4.4 0 1.3-1.3 2.4-3 2.4s-3-1.1-3-2.5"/>',
     cal: '<rect x="3" y="5" width="18" height="16" rx="2"/><path d="M8 3v4M16 3v4M3 10h18"/>',
     users: '<circle cx="9" cy="8" r="3.5"/><path d="M2.5 20c.6-3.4 3.2-5.5 6.5-5.5s5.9 2.1 6.5 5.5"/><circle cx="17" cy="9" r="2.6"/><path d="M15.5 14.7c2.9.2 5.2 2.1 5.8 5.3"/>',
-    shield: '<path d="M12 3l8 3v6c0 4.5-3.2 7.8-8 9-4.8-1.2-8-4.5-8-9V6z"/><path d="M9 12l2 2 4-4"/>'
+    shield: '<path d="M12 3l8 3v6c0 4.5-3.2 7.8-8 9-4.8-1.2-8-4.5-8-9V6z"/><path d="M9 12l2 2 4-4"/>',
+    pen: '<path d="M12 20h9"/><path d="M16.5 3.5a2.1 2.1 0 013 3L7 19l-4 1 1-4z"/>',
+    mega: '<path d="M3 11l14-5v12L3 13z"/><path d="M11.6 16.8a3 3 0 11-5.8-1.6"/><path d="M17 8a4 4 0 010 6"/>',
+    book: '<path d="M4 19.5A2.5 2.5 0 016.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 014 19.5v-15A2.5 2.5 0 016.5 2z"/>',
+    folder: '<path d="M22 19a2 2 0 01-2 2H4a2 2 0 01-2-2V5a2 2 0 012-2h5l2 3h9a2 2 0 012 2z"/>'
   };
   function icon(k) {
     return '<svg viewBox="0 0 24 24">' + (ICONS[k] || '') + '</svg>';
@@ -27,14 +31,18 @@
     { href: 'crm.html', label: 'My Pipeline', ic: 'board' },
     { href: 'statement-review.html', label: 'Statement Review', ic: 'calc' },
     { href: 'pricing.html', label: 'Pricing & Buy Rates', ic: 'coin' },
+    { href: 'proposals.html', label: 'Proposal Studio', ic: 'pen' },
     { href: 'submit-deal.html', label: 'Submit a Deal', ic: 'send' },
     { sec: 'Learn' },
-    { href: 'training.html', label: 'Training', ic: 'cap' },
+    { href: 'training.html', label: 'Training Academy', ic: 'cap' },
+    { href: 'playbook.html', label: 'Sales Playbook', ic: 'book' },
     { href: 'products.html', label: 'Products', ic: 'box' },
     { href: 'industries.html', label: 'Industry Playbooks', ic: 'store' },
+    { href: 'resources.html', label: 'Resource Library', ic: 'folder' },
     { sec: 'My business' },
     { href: 'merchants.html', label: 'My Merchants', ic: 'users' },
     { href: 'compensation.html', label: 'Compensation', ic: 'doc' },
+    { href: 'marketing.html', label: 'Marketing & Brand', ic: 'mega' },
     { href: 'calendar.html', label: 'Calendar', ic: 'cal' },
     { sec: 'Admin', admin: true },
     { href: 'admin.html', label: 'All Agent Deals', ic: 'shield', admin: true }

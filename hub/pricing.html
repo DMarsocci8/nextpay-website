@@ -56,6 +56,12 @@
   </div>
 </div>
 
+<div class="card mt16" id="economics">
+  <div class="spread"><h3>Deal economics by source — what you make, where you quote</h3><span class="chip red">Internal only</span></div>
+  <p class="muted small">Where a deal is written decides your money. Rows marked <span class="chip amber">Schedule A needed</span> are waiting on paperwork from Dom — the structure is ready, the numbers drop in.</p>
+  <div class="tbl-wrap"><table class="tbl"><thead><tr><th>Placement</th><th>Sourced from</th><th>What you make</th><th>Where to quote processing</th></tr></thead><tbody id="eco-rows"></tbody></table></div>
+</div>
+
 <div class="card mt16">
   <h3>Verified software &amp; hardware price points</h3>
   <p class="muted small">These are the confirmed numbers behind the catalog — safe to quote. Full itemized builds live in the <a href="https://nextpaypos.com/build" target="_blank" rel="noopener">Build Your Solution catalog ↗</a>.</p>
@@ -140,6 +146,15 @@
   });
   $('br-add').addEventListener('click', () => { rows.push({ p: '', r: '', n: '' }); draw(); });
   draw();
+
+  /* deal economics by source */
+  const D = window.HUB_DATA;
+  $('eco-rows').innerHTML = Object.entries(D.economics).map(([k, e]) =>
+    '<tr><td><b>' + esc((D.placements[k] || {}).label || k) + '</b>' +
+    (e.need ? '<br><span class="chip amber" style="margin-top:6px">Schedule A needed</span>' : '<br><span class="chip green" style="margin-top:6px">Ready</span>') + '</td>' +
+    '<td class="small">' + esc(e.source) + (e.need ? '<br><span class="muted"><b>Missing:</b> ' + esc(e.need) + '</span>' : '') + '</td>' +
+    '<td class="small"><ul class="ck plain">' + e.make.map(m => '<li>' + esc(m) + '</li>').join('') + '</ul></td>' +
+    '<td class="small">' + esc(e.quote) + '</td></tr>').join('');
 })();
 </script>
 </body></html>

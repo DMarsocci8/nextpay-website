@@ -326,10 +326,10 @@ window.HUB_DATA = {
         'Deposits before jobs? Financing conversations on big tickets?',
         'Recurring maintenance plans?'
       ],
-      primary: { name: 'FieldPulse + gateway', why: 'Estimates, scheduling, invoicing, text-to-pay in the field — paired with NMI/FluidPay for card-on-file and recurring plans.' },
+      primary: { name: 'Next2Pay Invoicing', why: 'Our house invoicing platform — estimates, invoices, text-to-pay and recurring on our rails. Invoice-type deals lead with Next2Pay, every time.' },
       alts: [
-        { name: 'Mobile terminal (PAX A920 / Dejavoo P8)', why: 'Tap-in-the-driveway for techs; pairs with any back office.' },
-        { name: 'Field Work', why: 'Alternative field-service suite — more coming soon.' }
+        { name: 'FieldPulse + gateway', why: 'Full field-service management (scheduling, dispatch) when they need FSM beyond invoicing.' },
+        { name: 'Mobile terminal (PAX A920 / Dejavoo P8)', why: 'Tap-in-the-driveway for techs; pairs with any back office.' }
       ],
       rules: [
         'Already on ServiceTitan/Housecall → integrate payments (gateway), do not replace the FSM.',
@@ -368,7 +368,7 @@ window.HUB_DATA = {
         'Average invoice size? Net terms?',
         'Practice management software in use?'
       ],
-      primary: { name: 'Invoicing + virtual terminal (gateway)', why: 'Emailed invoices, saved cards, virtual terminal for phone payments — no countertop hardware needed.' },
+      primary: { name: 'Next2Pay Invoicing', why: 'House invoicing — emailed invoices, saved cards, recurring retainers, virtual terminal for phone payments. No countertop hardware needed.' },
       alts: [
         { name: 'QuickBooks integration', why: 'Payments inside the books they already keep.' },
         { name: 'Clover Go / SumUp Solo', why: 'Pocket reader for the occasional in-person payment.' }
@@ -388,7 +388,7 @@ window.HUB_DATA = {
         'How do you invoice and chase payment today?',
         'Crews in the field — collect on site or bill after?'
       ],
-      primary: { name: 'FieldPulse / LQPay invoicing', why: 'Recurring job billing, card-on-file, text-to-pay — built for route-based service businesses.' },
+      primary: { name: 'Next2Pay Invoicing', why: 'House invoicing — recurring job billing, card-on-file autopay, text-to-pay. Invoice-type deals lead with Next2Pay.' },
       alts: [
         { name: 'SumUp Solo', why: 'Cheap in-field reader for crews that collect on completion.' },
         { name: 'QuickBooks integration', why: 'For owners running everything in QB already.' }
@@ -473,6 +473,7 @@ window.HUB_DATA = {
       { name: 'iPOSPays', tag: 'Dejavoo-native gateway', sell: ['Drives Dejavoo/DejaPay hardware'], link: 'https://nextpaypos.com/ipospays' }
     ],
     invoicing: [
+      { name: 'Next2Pay Invoicing', tag: 'OUR house invoicing — lead with this on every invoice-type deal', sell: ['Estimates, invoices, text-to-pay, recurring — on our rails', 'Best margins in the invoicing lineup', 'Next2Pay proposal ready to build in the Proposal Studio'], link: 'https://nextpaypos.com/next2pay' },
       { name: 'FieldPulse', tag: 'Field service suite', sell: ['Estimates → invoices → text-to-pay', 'Scheduling + CRM for trades'], link: 'https://nextpaypos.com/invoicing' },
       { name: 'Field Work', tag: 'Field service alternative', sell: ['Job management + payments'], link: 'https://nextpaypos.com/invoicing' },
       { name: 'LQPay', tag: 'Billing & statements', sell: ['Healthcare-friendly workflows'], link: 'https://nextpaypos.com/invoicing' },
@@ -532,6 +533,13 @@ window.HUB_DATA = {
     'sumup': { label: 'SumUp', steps: [
       'Hardware from the SumUp price list (POS Lite $499, Terminal $249, Solo $54…).',
       'Common docs; email to dom@nextpaypos.com — subject "SumUp deal — {DBA}".'
+    ]},
+    'next2pay': { label: 'Next2Pay / Chively (house POS & invoicing)', steps: [
+      'House deal — best margins in the book. Confirm the build: Chively POS stations/handhelds, Next2Pay Invoicing, or both.',
+      'Build the quote in the Proposal Studio. Selling NextLink (client automation outreach) too? Its per-seat proposal has its own section there.',
+      'Common docs + menu/inventory or invoice workflow details.',
+      'Email the packaged deal to dom@nextpaypos.com (CC payments@ + alexander@) — subject "Next2Pay deal — {DBA}".',
+      'Onboarding and install are run in-house — coordinate dates directly with Dom.'
     ]},
     'terminal-gateway': { label: 'Standalone terminal (+ gateway)', steps: [
       'Pick terminal (PAX / Dejavoo / Valor) and file build: dual pricing or standard; tip adjust; auto-batch time.',
@@ -639,10 +647,10 @@ window.HUB_DATA = {
                  note: 'Pre-auth tabs is the killer question at bars — if their current system can’t, we win.' },
     online:    { boosts: [{ m: 'square', d: 1, why: 'POS + online store one ecosystem' }],
                  stack: [{ slot: 'gateway', v: 'NMI or FluidPay', why: 'E-commerce / card-not-present rail' }] },
-    invoices:  { stack: [{ slot: 'invoicing', v: 'FieldPulse (trades) / QuickBooks integration (books-first)', why: 'They send invoices or estimates' }] },
-    recurring: { stack: [{ slot: 'gateway', v: 'NMI or FluidPay with account updater', why: 'Recurring billing — account updater rescues failing cards' }],
+    invoices:  { stack: [{ slot: 'invoicing', v: 'Next2Pay Invoicing — house first', why: 'Invoice-type deals always lead with Next2Pay; FieldPulse only if they need full FSM' }] },
+    recurring: { stack: [{ slot: 'invoicing', v: 'Next2Pay Invoicing — recurring billing', why: 'House recurring first' }, { slot: 'gateway', v: 'NMI or FluidPay with account updater', why: 'Account updater rescues failing cards' }],
                  note: 'Quantify recovered failed payments — that story beats any rate pitch.' },
-    field:     { stack: [{ slot: 'terminal', v: 'PAX A920 Pro or Dejavoo P8 (mobile)', why: 'Crews collecting in the field' }, { slot: 'invoicing', v: 'FieldPulse (text-to-pay)', why: 'Estimates → invoice → pay-by-text' }] },
+    field:     { stack: [{ slot: 'terminal', v: 'PAX A920 Pro or Dejavoo P8 (mobile)', why: 'Crews collecting in the field' }, { slot: 'invoicing', v: 'Next2Pay Invoicing — text-to-pay', why: 'Estimates → invoice → pay-by-text, house first' }] },
     appts:     { boosts: [{ m: 'square', d: 2, why: 'Appointments + card-on-file no-show protection' }, { m: 'clover', d: 1, why: 'Appointments via app market' }] },
     fsm:       { note: 'They already run shop/practice software — sell the payments integration (gateway/terminal), do NOT pitch ripping out their workflow.',
                  stack: [{ slot: 'gateway', v: 'Gateway that integrates with their software (NMI first ask)', why: 'Integration play, not a POS swap' }] }
@@ -671,5 +679,84 @@ window.HUB_DATA = {
       play: 'Cost of waiting, in their numbers: “Waiting three months costs you about $[monthly overpay × 3]. We install off-hours and you keep taking payments the whole time — busy season is exactly when the better system pays for itself.”' },
     { s: '“My current rep says they’ll match your rate.”',
       play: '“If they could do that rate, why weren’t you already on it?” Get any match offer in writing, then compare the stack — a rate match on the same tired terminal still loses to pay-at-table, online ordering, and a rep who answers the phone. And a match without a contract release is the same trap at a lower price.' }
-  ]
+  ],
+
+  /* ---------- Deal economics by source ----------
+     Where the deal is written decides what the agent makes and where the
+     processing gets quoted. Entries with `need` are waiting on a Schedule A
+     from Dom — they render as "missing" until filled in. INTERNAL ONLY. */
+  economics: {
+    'next2pay': {
+      source: 'In-house (NextPay / Chively / Next2Pay / NextLink)',
+      quote: 'Processing on our house paper — dual pricing or IC+ per your Schedule A. NextLink (client automation outreach) seats per the internal list: Trial $599 / Annual $749 / M2M $999 per seat/mo.',
+      make: ['Best margins in the book — house software margin + full processing residual split', 'No third-party program taking a cut'],
+      need: 'Your agent Schedule A defines the split — confirm SaaS-margin share on Next2Pay Invoicing and NextLink seats with Dom.'
+    },
+    'skytab': {
+      source: 'Shift4 partner program (Lighthouse partner portal)',
+      quote: 'Processing on the Shift4 file — dual pricing or IC+. Hardware/software at sheet prices ($29.99/mo per device class; see Pricing page).',
+      make: ['Processing residual per the SkyTab partner Schedule A (PDF on the Pricing page)', 'Activation bonus per NextPay comp plan'],
+      need: null
+    },
+    'clover': {
+      source: 'Clover via our ISO paper',
+      quote: 'Processing quoted by us on the Clover file — dual pricing available; $5/mo Clover platform fee per location passes through.',
+      make: ['Hardware margin (placement spread or purchase markup)', 'Software plan margin', 'Processing residual per Schedule A'],
+      need: 'Clover Schedule A — hardware cost sheet + processing buy rates for Clover deals.'
+    },
+    'square': {
+      source: 'Square reseller program',
+      quote: 'Square’s published rates apply while they process on Square — the play is hardware margin now, then move processing to our rails via statement beat where it fits.',
+      make: ['Hardware margin per the Square reseller guides (xlsx on the Pricing page)', 'Processing residual only if/when moved to our paper'],
+      need: null
+    },
+    'quantic': {
+      source: 'Quantic referral program (Unified Pricing V5)',
+      quote: 'Hardware/software at the Unified Pricing sheet numbers; processing quoted by us — dual pricing available.',
+      make: ['Referral share on the Quantic build', 'Processing residual per Schedule A'],
+      need: 'Quantic referral split % — confirm the referral payout terms with Dom.'
+    },
+    'korona': {
+      source: 'Korona dealer program',
+      quote: 'Software per register at sheet prices ($59/$79/$99); hardware one-time; processing through NextPay — meet-or-beat or dual pricing.',
+      make: ['Software/hardware margin per dealer terms', 'Processing residual per Schedule A'],
+      need: 'Korona dealer Schedule A — software/hardware margin terms.'
+    },
+    'nrs': {
+      source: 'NRS dealer program',
+      quote: 'NRS hardware/software per their current dealer sheet; processing on the NRS Pay or our paper — ask Dom which book before quoting.',
+      make: ['Dealer margin on hardware', 'Processing residual depending on which paper the deal is written on'],
+      need: 'NRS dealer Schedule A + guidance on NRS Pay vs house paper.'
+    },
+    'pays': {
+      source: 'PAYS agent program',
+      quote: 'Plans at sheet prices (Starter $59 / Growth $79 / Enterprise $99; station $999). All-inclusive dual pricing — program fee structure per PAYS.',
+      make: ['Residual on the dual-pricing program per PAYS agent terms', 'Software margin if any'],
+      need: 'PAYS agent Schedule A — residual split on the dual-pricing program.'
+    },
+    'sumup': {
+      source: 'SumUp reseller',
+      quote: 'Hardware at our listed prices (POS Lite $499, Terminal $249, Solo $54); SumUp’s published rate applies until processing moves to our rails.',
+      make: ['Hardware margin', 'Statement-beat conversion later = processing residual'],
+      need: 'SumUp reseller margin sheet.'
+    },
+    'terminal-gateway': {
+      source: 'House paper (PAX / Dejavoo / Valor + NMI / FluidPay / Authorize.net / iPOSPays)',
+      quote: 'Fully ours to price: dual pricing or IC+ per your processing Schedule A; terminal at cost + margin or placement; gateway monthly + per-item.',
+      make: ['Processing residual — your bps margin × volume, split per Schedule A', 'Terminal hardware margin', 'Gateway monthly margin'],
+      need: null
+    },
+    'invoicing-gateway': {
+      source: 'House paper + software partner (Next2Pay first; FieldPulse / LQPay / QB)',
+      quote: 'Lead with Next2Pay Invoicing (house). Processing per your Schedule A (CNP rates); partner-software subscriptions at partner list prices.',
+      make: ['Processing residual on CNP volume', 'Next2Pay Invoicing SaaS margin (house)', 'Partner software referral where applicable'],
+      need: 'FieldPulse / LQPay referral terms, if we get paid on those subscriptions.'
+    },
+    'high-risk': {
+      source: 'Specialty underwriting via Dom',
+      quote: 'Never quote first — pricing comes back from underwriting per file.',
+      make: ['Residual per file, set at approval — often strong, always case-by-case'],
+      need: null
+    }
+  }
 };

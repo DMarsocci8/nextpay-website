@@ -40,15 +40,15 @@
 </div>
 
 <div class="card mt16">
-  <h3>Objection handling</h3>
-  <div class="tbl-wrap"><table class="tbl"><thead><tr><th>They say</th><th>You say</th></tr></thead><tbody>
-    <tr><td>"I'm happy with my current processor."</td><td>"Most people are — until they see the statement in plain English. Ten minutes, line by line, and if you're actually in good shape I'll shake your hand and tell you so."</td></tr>
-    <tr><td>"I'm under contract."</td><td>"When does it end? … Let's look at the exit cost vs what you're overpaying — savings usually covers the fee in a couple of months, and on bigger deals we can talk about help with the buyout."</td></tr>
-    <tr><td>"Dual pricing will scare off my customers."</td><td>"Gas stations have done cash/card pricing for decades. Half the shops on this street run it. And if it's not for you, I'll quote it straight instead — your call, two options."</td></tr>
-    <tr><td>"Your rate is only a little better."</td><td>"On your volume 'a little' is $X a year — but honestly the rate is the smallest part. You're also getting [pay-at-table / online ordering / real support] your current system doesn't do."</td></tr>
-    <tr><td>"I need to think about it."</td><td>"Totally fair. What specifically do you want to think over — the price, the hardware, or the switch itself? Let me answer that now and you can decide with real information."</td></tr>
-    <tr><td>"I don't have time for a switchover."</td><td>"We do the heavy lifting — menu build, install, training. Most switches happen in one slow afternoon, and you keep taking payments the whole time."</td></tr>
-  </tbody></table></div>
+  <h3>Scripts, battlecards & objection handling</h3>
+  <p class="muted small">The words for every moment — prospecting scripts, the DM-to-Sale playbook, the field routine, battlecards and objection handling — live in the <a href="playbook.html"><b>Sales Playbook</b></a>. Read it after this page; know the objection table cold.</p>
+</div>
+
+<div class="card mt16" id="quiz">
+  <h3>🎓 Agent quiz — pass it before your first week in the field</h3>
+  <p class="muted small mb8">Ten questions, instant grade. 8/10 or better means you're ready; anything less, re-read the section it points you to.</p>
+  <div id="quiz-body"></div>
+  <div class="flex mt16"><button class="btn btn-primary" id="quiz-grade">Grade me</button><span id="quiz-out" class="small" style="font-weight:700"></span></div>
 </div>
 
 <div class="card mt16">
@@ -86,4 +86,34 @@
 
 </main></div>
 <script src="js/hub.js"></script><script src="js/hub-data.js"></script><script src="js/hub-store.js"></script>
+<script>
+(function () {
+  const Q = [
+    { q: 'A merchant pays $1,540 in total fees on $44,000 of card volume. Their effective rate is…', a: ['3.5%', '2.9%', '1.9%', '4.2%'], c: 0, w: 'Statement Review — total fees ÷ volume.' },
+    { q: 'Which number do you lead with when presenting a statement beat?', a: ['The basis-point spread', 'Annual savings in dollars', 'Our buy rate', 'Interchange tables'], c: 1, w: 'Statement Review — savings, not rates.' },
+    { q: 'SkyTab terms you must say out loud before submitting:', a: ['None, it\u2019s month-to-month', '30-day trial then 30-month agreement', '12-month lease', '90-day trial'], c: 1, w: 'Products / Submit a Deal.' },
+    { q: 'A c-store needs tobacco scan-data rebates. Which platforms fit?', a: ['Square or SumUp', 'NRS or Korona', 'SkyTab', 'Any gateway'], c: 1, w: 'Industry Playbooks — convenience.' },
+    { q: 'Invoice-type deal (plumber, law office, cleaning route). You lead with…', a: ['FieldPulse', 'QuickBooks', 'Next2Pay Invoicing (house)', 'Stripe'], c: 2, w: 'Products — invoice deals lead with Next2Pay.' },
+    { q: 'What single metric best predicts your pipeline health?', a: ['Doors knocked', 'Statements collected', 'Business cards handed out', 'DMs sent'], c: 1, w: 'Sales Playbook — mindset.' },
+    { q: 'Dual pricing requires…', a: ['Nothing special', 'Posted signage + a correctly built terminal/POS file', 'A 3-year contract', 'State approval'], c: 1, w: 'Pricing & Buy Rates.' },
+    { q: 'High-risk prospect asks for a rate on the spot. You…', a: ['Quote something safe', 'Never quote first — package the file for underwriting via Dom', 'Quote interchange-plus', 'Decline the deal'], c: 1, w: 'Industry Playbooks — high risk.' },
+    { q: 'Docs every standard deal needs:', a: ['App only', 'App + voided check + ID + statements/projections', 'Just the statement', 'ID and a handshake'], c: 1, w: 'Submit a Deal.' },
+    { q: 'A deal has no next step and no date in the pipeline. It is…', a: ['Fine', 'A wish, not a deal — fix it today', 'Closed', 'Someone else\u2019s problem'], c: 1, w: 'Training — the core motion.' }
+  ];
+  const body = document.getElementById('quiz-body');
+  body.innerHTML = Q.map((x, i) =>
+    '<div class="mt16"><b>' + (i + 1) + '. ' + x.q + '</b>' +
+    x.a.map((a, j) => '<label style="display:flex;gap:8px;margin-top:6px;font-size:13.5px;cursor:pointer"><input type="radio" name="q' + i + '" value="' + j + '"> ' + a + '</label>').join('') + '</div>').join('');
+  document.getElementById('quiz-grade').addEventListener('click', () => {
+    let score = 0; const misses = [];
+    Q.forEach((x, i) => {
+      const v = document.querySelector('input[name=q' + i + ']:checked');
+      if (v && +v.value === x.c) score++; else misses.push((i + 1) + ' (' + x.w + ')');
+    });
+    document.getElementById('quiz-out').innerHTML = score >= 8
+      ? '✅ ' + score + '/10 — ready for the field.'
+      : '📖 ' + score + '/10 — review question' + (misses.length > 1 ? 's' : '') + ' ' + misses.join(', ');
+  });
+})();
+</script>
 </body></html>
