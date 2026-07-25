@@ -217,6 +217,7 @@
     if (eco) {
       h += '<div class="card mt16"><div class="spread"><h3>Your economics on this deal — ' + esc((D.placements[deal.placement] || {}).label || '') + '</h3><span class="chip red">Internal</span></div>' +
         '<p class="small mt8"><b>Sourced from:</b> ' + esc(eco.source) + '</p>' +
+        (eco.sched && D.schedules[eco.sched] ? '<p class="small mt8"><b>Schedule A:</b> ' + esc(D.schedules[eco.sched].label) + ' — you keep <b>' + esc(D.schedules[eco.sched].split.low) + '</b> of margin (low-risk) / ' + esc(D.schedules[eco.sched].split.high) + ' (high-risk). <a href="pricing.html#schedule-sip">Full fee table →</a></p>' : '') +
         '<p class="small mt8"><b>Where to quote the processing:</b> ' + esc(eco.quote) + '</p>' +
         '<p class="small mt8 mb8"><b>What you make:</b></p><ul class="ck plain">' + eco.make.map(m => '<li class="small">' + esc(m) + '</li>').join('') + '</ul>' +
         (eco.need ? '<div class="note warn mt8"><b>Schedule A gap:</b> ' + esc(eco.need) + ' Full source-by-source table on <a href="pricing.html#economics">Pricing &amp; Buy Rates</a>.</div>' : '') + '</div>';

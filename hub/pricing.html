@@ -23,6 +23,14 @@
   </tbody></table></div>
 </div>
 
+<div class="card mt16" id="schedule-sip">
+  <div class="spread"><h3>Schedule A — Solutions in Payments (house paper)</h3><span class="chip red">Internal only</span></div>
+  <p class="muted small" id="sip-covers"></p>
+  <div class="note" id="sip-floor"></div>
+  <div class="tbl-wrap"><table class="tbl"><thead><tr><th>Fee</th><th>Low-Risk</th><th>High-Risk</th></tr></thead><tbody id="sip-rows"></tbody></table></div>
+  <div class="note mt8" id="sip-example" style="border-color:var(--green);background:rgba(46,158,107,.08)"></div>
+</div>
+
 <div class="card mt16" id="buyrates">
   <div class="spread"><h3>Your buy rates &amp; Schedule A</h3><span class="chip red">Internal only</span></div>
   <p class="muted small">Buy rate = what the processing costs <i>us</i>. Everything you quote above it is margin, split per your agent agreement. Your exact Schedule A is in your signed agent agreement — keep your working numbers here (saved in your browser only).</p>
@@ -46,7 +54,7 @@
   </div>
   <div class="frow3">
     <div><label class="fl">Monthly fee income ($ — software margin, statement fee…)</label><input class="fi" id="r-fees" inputmode="numeric" value="0"></div>
-    <div><label class="fl">Your residual split (%)</label><input class="fi" id="r-split" inputmode="numeric" placeholder="per your agreement"></div>
+    <div><label class="fl">Your residual split (%)</label><input class="fi" id="r-split" inputmode="numeric" value="90"><span class="small muted">SIP paper: 90 low-risk / 60 high-risk. Other programs per their schedule.</span></div>
     <div></div>
   </div>
   <div class="grid3 mt16">
@@ -147,8 +155,18 @@
   $('br-add').addEventListener('click', () => { rows.push({ p: '', r: '', n: '' }); draw(); });
   draw();
 
-  /* deal economics by source */
+  /* SIP Schedule A table */
   const D = window.HUB_DATA;
+  const sip = D.schedules.sip;
+  $('sip-covers').textContent = sip.covers;
+  $('sip-floor').innerHTML = '<b>The cost floor:</b> ' + esc(sip.floor);
+  $('sip-example').innerHTML = '<b>Make it real:</b> ' + esc(sip.example);
+  $('sip-rows').innerHTML = sip.groups.map(g =>
+    '<tr><td colspan="3" style="background:var(--soft);font-weight:800;font-size:11.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--mut)">' + esc(g.h) + '</td></tr>' +
+    g.rows.map(r => '<tr><td>' + esc(r[0]) + '</td><td>' + esc(r[1]) + '</td><td>' + esc(r[2]) + '</td></tr>').join('')
+  ).join('');
+
+  /* deal economics by source */
   $('eco-rows').innerHTML = Object.entries(D.economics).map(([k, e]) =>
     '<tr><td><b>' + esc((D.placements[k] || {}).label || k) + '</b>' +
     (e.need ? '<br><span class="chip amber" style="margin-top:6px">Schedule A needed</span>' : '<br><span class="chip green" style="margin-top:6px">Ready</span>') + '</td>' +

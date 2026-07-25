@@ -681,6 +681,44 @@ window.HUB_DATA = {
       play: '“If they could do that rate, why weren’t you already on it?” Get any match offer in writing, then compare the stack — a rate match on the same tired terminal still loses to pay-at-table, online ordering, and a rep who answers the phone. And a match without a contract release is the same trap at a lower price.' }
   ],
 
+  /* ---------- Schedule As (INTERNAL ONLY) ---------- */
+  schedules: {
+    sip: {
+      label: 'Solutions in Payments (SIP)',
+      covers: 'House processing paper for: Quantic · NRS · Korona · standalone terminals (PAX / Dejavoo / Valor) · gateways (NMI / FluidPay / Authorize.net / iPOSPays) · high-risk files. Does NOT cover: Square, SkyTab/Shift4, Clover/Fiserv, Next2Pay, NextLink, SumUp, PAYS, FieldPulse, LQPay (each has its own schedule).',
+      split: { low: '90%', high: '60%' },
+      floor: 'Your true cost on low-risk SIP paper = interchange (pass-through) + 0.02% BIN sponsor + $0.02 per transaction (+ $0.02 per batch). Everything you quote above that is margin — and you keep 90% of it (60% on high-risk).',
+      example: 'Example: $45,000/mo, ~1,500 transactions, quoted at IC + 0.50% + $0.10 → margin ≈ 45,000 × 0.48% + 1,500 × $0.08 = $336/mo. Your 90% = ~$302/mo residual, for the life of the merchant.',
+      groups: [
+        { h: 'Residual split', rows: [['Revenue share', '90%', '60%']] },
+        { h: 'Portfolio fees', rows: [
+          ['Visa/MC/Disc/Amex — BIN sponsor', '0.02%', '0.25%'],
+          ['Interchange & association fees', 'Pass-through', 'Pass-through']] },
+        { h: 'Transaction fees', rows: [
+          ['Visa/MC/Disc/Amex — transaction', '$0.02', '$0.10'],
+          ['PIN debit / EBT — transaction', '$0.02', '$0.10'],
+          ['Batch', '$0.02', '$0.10'],
+          ['AVS (voice)', '$3.50', '$3.50'],
+          ['AVS (electronic)', '$0.02', '$0.10'],
+          ['Wireless transaction (vendor specific)', '$0.05', '$0.10'],
+          ['Other transaction', '$0.00', '$0.00'],
+          ['Chargeback', '$10.00', '$15.00'],
+          ['Retrieval (12B letters)', '$7.00', '$10.00']] },
+        { h: 'Monthly & annual — per occurrence', rows: [
+          ['Account on file', '$5.00', '$10.00'],
+          ['Debit access', '$0.00', '$0.00'],
+          ['Risk monitoring', '$0.00', '0.15%'],
+          ['IRS regulatory', '$2.00', '$5.00'],
+          ['Wireless terminal monthly (vendor specific)', '$15.00', '$15.00'],
+          ['Gateway monitoring', '$0.00', '$25.00'],
+          ['Merchant online access', '$0.00', '$0.00'],
+          ['Monthly minimum', '$0.00', '$50.00'],
+          ['Annual PCI / with breach insurance', '$36.00 / $79.00', '$36.00 / $79.00'],
+          ['Annual fee', '$0.00', '$50.00']] }
+      ]
+    }
+  },
+
   /* ---------- Deal economics by source ----------
      Where the deal is written decides what the agent makes and where the
      processing gets quoted. Entries with `need` are waiting on a Schedule A
@@ -711,22 +749,25 @@ window.HUB_DATA = {
       need: null
     },
     'quantic': {
-      source: 'Quantic referral program (Unified Pricing V5)',
-      quote: 'Hardware/software at the Unified Pricing sheet numbers; processing quoted by us — dual pricing available.',
-      make: ['Referral share on the Quantic build', 'Processing residual per Schedule A'],
-      need: 'Quantic referral split % — confirm the referral payout terms with Dom.'
+      source: 'Quantic (Unified Pricing V5) · processing on Solutions in Payments paper',
+      sched: 'sip',
+      quote: 'Hardware/software at the Unified Pricing sheet numbers; processing quoted by us on SIP — dual pricing or IC+ above the SIP cost floor.',
+      make: ['90% of processing margin over SIP cost (IC pass-through + 0.02% BIN + $0.02/txn)', 'Hardware/software margin per Unified Pricing'],
+      need: 'Quantic hardware/software referral split — the processing side is fully covered by SIP.'
     },
     'korona': {
-      source: 'Korona dealer program',
-      quote: 'Software per register at sheet prices ($59/$79/$99); hardware one-time; processing through NextPay — meet-or-beat or dual pricing.',
-      make: ['Software/hardware margin per dealer terms', 'Processing residual per Schedule A'],
-      need: 'Korona dealer Schedule A — software/hardware margin terms.'
+      source: 'Korona dealer program · processing on Solutions in Payments paper',
+      sched: 'sip',
+      quote: 'Software per register at sheet prices ($59/$79/$99); hardware one-time; processing on SIP — meet-or-beat or dual pricing above the SIP cost floor.',
+      make: ['90% of processing margin over SIP cost (IC pass-through + 0.02% BIN + $0.02/txn)', 'Software/hardware margin per dealer terms'],
+      need: 'Korona software/hardware margin terms — the processing side is fully covered by SIP.'
     },
     'nrs': {
-      source: 'NRS dealer program',
-      quote: 'NRS hardware/software per their current dealer sheet; processing on the NRS Pay or our paper — ask Dom which book before quoting.',
-      make: ['Dealer margin on hardware', 'Processing residual depending on which paper the deal is written on'],
-      need: 'NRS dealer Schedule A + guidance on NRS Pay vs house paper.'
+      source: 'NRS dealer program · processing on Solutions in Payments paper',
+      sched: 'sip',
+      quote: 'NRS hardware/software per their current dealer sheet; processing on SIP — dual pricing is the norm in c-stores.',
+      make: ['90% of processing margin over SIP cost (IC pass-through + 0.02% BIN + $0.02/txn)', 'Dealer margin on NRS hardware'],
+      need: 'NRS hardware dealer margin sheet — the processing side is fully covered by SIP.'
     },
     'pays': {
       source: 'PAYS agent program',
@@ -741,21 +782,24 @@ window.HUB_DATA = {
       need: 'SumUp reseller margin sheet.'
     },
     'terminal-gateway': {
-      source: 'House paper (PAX / Dejavoo / Valor + NMI / FluidPay / Authorize.net / iPOSPays)',
-      quote: 'Fully ours to price: dual pricing or IC+ per your processing Schedule A; terminal at cost + margin or placement; gateway monthly + per-item.',
-      make: ['Processing residual — your bps margin × volume, split per Schedule A', 'Terminal hardware margin', 'Gateway monthly margin'],
+      source: 'Solutions in Payments paper (PAX / Dejavoo / Valor + NMI / FluidPay / Authorize.net / iPOSPays)',
+      sched: 'sip',
+      quote: 'Fully ours to price on SIP: dual pricing or IC+ above the cost floor (IC pass-through + 0.02% + $0.02/txn); terminal at cost + margin or placement; gateway monthly + per-item.',
+      make: ['90% of everything above the SIP cost floor — bps margin, per-item margin AND monthly-fee margin', 'Terminal hardware margin', 'Gateway monthly margin'],
       need: null
     },
     'invoicing-gateway': {
       source: 'House paper + software partner (Next2Pay first; FieldPulse / LQPay / QB)',
-      quote: 'Lead with Next2Pay Invoicing (house). Processing per your Schedule A (CNP rates); partner-software subscriptions at partner list prices.',
-      make: ['Processing residual on CNP volume', 'Next2Pay Invoicing SaaS margin (house)', 'Partner software referral where applicable'],
+      sched: 'sip',
+      quote: 'Lead with Next2Pay Invoicing (house — own schedule). Gateway-based CNP processing rides SIP paper: quote above the SIP floor. Partner-software subscriptions at partner list prices.',
+      make: ['90% of CNP processing margin over SIP cost', 'Next2Pay Invoicing SaaS margin (house schedule)', 'Partner software referral where applicable'],
       need: 'FieldPulse / LQPay referral terms, if we get paid on those subscriptions.'
     },
     'high-risk': {
-      source: 'Specialty underwriting via Dom',
-      quote: 'Never quote first — pricing comes back from underwriting per file.',
-      make: ['Residual per file, set at approval — often strong, always case-by-case'],
+      source: 'Solutions in Payments high-risk book, underwritten per file via Dom',
+      sched: 'sip',
+      quote: 'Never quote first — pricing comes back from underwriting per file, priced above the SIP high-risk floor (IC + 0.25% BIN + $0.10/txn + risk monitoring 0.15%).',
+      make: ['60% revenue share on margin over the SIP high-risk schedule — set at approval, often strong'],
       need: null
     }
   }
