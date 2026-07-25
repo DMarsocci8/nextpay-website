@@ -756,10 +756,10 @@ window.HUB_DATA = {
      Worked SIP example uses that reading — flag to Dom if the math should
      read differently. */
   agentSplit: {
-    label: '50% of our 50%',
-    text: 'Every Schedule A in this hub shows what the program pays on the deal. The house rule: agents earn 50% of our 50% — half of NextPay\u2019s half of the residual the schedule produces. Your signed agent agreement is the final word.',
-    calcPct: 25,
-    calcNote: 'Default = 25% (50% of our 50%). Enter your exact split from your agent agreement if it differs.'
+    label: '50% of the Schedule A',
+    text: 'Every Schedule A in this hub shows what the program pays on the deal. The house rule: agents earn 50% of whatever the schedule pays. On SIP low-risk paper (90% program share) that works out to 45% of the gross margin on the deal; on the high-risk book (60% share) it is 30%. Your signed agent agreement is the final word.',
+    calcPct: 45,
+    calcNote: 'Default = 45% (50% of the SIP low-risk 90% share). High-risk: 30. Other programs: 50% of that schedule\u2019s payout.'
   },
 
   /* ---------- Schedule As (INTERNAL ONLY) ---------- */
@@ -769,7 +769,7 @@ window.HUB_DATA = {
       covers: 'House processing paper for: Quantic · NRS · Korona · standalone terminals (PAX / Dejavoo / Valor) · gateways (NMI / FluidPay / Authorize.net / iPOSPays) · high-risk files. Does NOT cover: Square, SkyTab/Shift4, Clover/Fiserv, Next2Pay, NextLink, SumUp, PAYS, FieldPulse, LQPay (each has its own schedule).',
       split: { low: '90%', high: '60%' },
       floor: 'Your true cost on low-risk SIP paper = interchange (pass-through) + 0.02% BIN sponsor + $0.02 per transaction (+ $0.02 per batch). Everything you quote above that is margin — and you keep 90% of it (60% on high-risk).',
-      example: 'Example: $45,000/mo, ~1,500 transactions, quoted at IC + 0.50% + $0.10 → gross margin ≈ 45,000 × 0.48% + 1,500 × $0.08 = $336/mo paid on the 90% program share. House rule (50% of our 50%) puts roughly a quarter of that in your pocket ≈ $84/mo per deal, for the life of the merchant — and deals stack.',
+      example: 'Example: $45,000/mo, ~1,500 transactions, quoted at IC + 0.50% + $0.10 → gross margin ≈ 45,000 × 0.48% + 1,500 × $0.08 = $336/mo. The schedule pays 90% of that ($302) — your 50% ≈ $151/mo, for the life of the merchant. Ten of these = $1,500/mo that keeps paying.',
       groups: [
         { h: 'Residual split', rows: [['Revenue share', '90%', '60%']] },
         { h: 'Portfolio fees', rows: [
@@ -833,21 +833,21 @@ window.HUB_DATA = {
       source: 'Quantic (Unified Pricing V5) · processing on Solutions in Payments paper',
       sched: 'sip',
       quote: 'Hardware/software at the Unified Pricing sheet numbers; processing quoted by us on SIP — dual pricing or IC+ above the SIP cost floor.',
-      make: ['Program pays 90% of margin over SIP cost (IC + 0.02% + $0.02/txn) — your residual is 50% of our 50% of that', 'Hardware/software quoted at the Unified Pricing sheet numbers'],
+      make: ['Program pays 90% of margin over SIP cost (IC + 0.02% + $0.02/txn) — you keep 50% of what the schedule pays', 'Hardware/software quoted at the Unified Pricing sheet numbers'],
       need: null
     },
     'korona': {
       source: 'Korona dealer program · processing on Solutions in Payments paper',
       sched: 'sip',
       quote: 'Software per register at sheet prices ($59/$79/$99); hardware one-time; processing on SIP — meet-or-beat or dual pricing above the SIP cost floor.',
-      make: ['Program pays 90% of margin over SIP cost (IC + 0.02% + $0.02/txn) — your residual is 50% of our 50% of that', 'Software per register and hardware quoted at sheet prices'],
+      make: ['Program pays 90% of margin over SIP cost (IC + 0.02% + $0.02/txn) — you keep 50% of what the schedule pays', 'Software per register and hardware quoted at sheet prices'],
       need: null
     },
     'nrs': {
       source: 'NRS dealer program · processing on Solutions in Payments paper',
       sched: 'sip',
       quote: 'NRS hardware/software per their current dealer sheet; processing on SIP — dual pricing is the norm in c-stores.',
-      make: ['Program pays 90% of margin over SIP cost (IC + 0.02% + $0.02/txn) — your residual is 50% of our 50% of that', 'NRS hardware/software quoted per their current dealer sheet'],
+      make: ['Program pays 90% of margin over SIP cost (IC + 0.02% + $0.02/txn) — you keep 50% of what the schedule pays', 'NRS hardware/software quoted per their current dealer sheet'],
       need: null
     },
     'pays': {
@@ -866,21 +866,21 @@ window.HUB_DATA = {
       source: 'Solutions in Payments paper (PAX / Dejavoo / Valor + NMI / FluidPay / Authorize.net / iPOSPays)',
       sched: 'sip',
       quote: 'Fully ours to price on SIP: dual pricing or IC+ above the cost floor (IC pass-through + 0.02% + $0.02/txn); terminal at cost + margin or placement; gateway monthly + per-item.',
-      make: ['Program pays 90% of everything above the SIP cost floor (bps, per-item AND monthly-fee margin) — your residual is 50% of our 50%', 'Terminal hardware margin', 'Gateway monthly margin'],
+      make: ['Program pays 90% of everything above the SIP cost floor (bps, per-item AND monthly-fee margin) — you keep 50% of what the schedule pays', 'Terminal hardware margin', 'Gateway monthly margin'],
       need: null
     },
     'invoicing-gateway': {
       source: 'House paper + software partner (Next2Pay first; FieldPulse / LQPay / QB)',
       sched: 'sip',
       quote: 'Lead with Next2Pay Invoicing (house — own schedule). Gateway-based CNP processing rides SIP paper: quote above the SIP floor. Partner-software subscriptions at partner list prices.',
-      make: ['Program pays 90% of CNP margin over SIP cost — your residual is 50% of our 50%', 'Next2Pay Invoicing SaaS margin (house schedule)', 'Partner software referral where applicable'],
+      make: ['Program pays 90% of CNP margin over SIP cost — you keep 50% of what the schedule pays', 'Next2Pay Invoicing SaaS margin (house schedule)', 'Partner software referral where applicable'],
       need: 'FieldPulse / LQPay referral terms, if we get paid on those subscriptions.'
     },
     'high-risk': {
       source: 'Solutions in Payments high-risk book, underwritten per file via Dom',
       sched: 'sip',
       quote: 'Never quote first — pricing comes back from underwriting per file, priced above the SIP high-risk floor (IC + 0.25% BIN + $0.10/txn + risk monitoring 0.15%).',
-      make: ['Program pays 60% of margin over the SIP high-risk schedule (set at approval) — your residual is 50% of our 50%'],
+      make: ['Program pays 60% of margin over the SIP high-risk schedule (set at approval) — you keep 50% of what the schedule pays'],
       need: null
     }
   }

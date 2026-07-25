@@ -217,7 +217,7 @@
     if (eco) {
       h += '<div class="card mt16"><div class="spread"><h3>Your economics on this deal — ' + esc((D.placements[deal.placement] || {}).label || '') + '</h3><span class="chip red">Internal</span></div>' +
         '<p class="small mt8"><b>Sourced from:</b> ' + esc(eco.source) + '</p>' +
-        (eco.sched && D.schedules[eco.sched] ? '<p class="small mt8"><b>Schedule A:</b> ' + esc(D.schedules[eco.sched].label) + ' — program pays <b>' + esc(D.schedules[eco.sched].split.low) + '</b> of margin (low-risk) / ' + esc(D.schedules[eco.sched].split.high) + ' (high-risk); your cut is <b>' + esc(D.agentSplit.label) + '</b>. <a href="pricing.html#schedule-sip">Full fee table →</a></p>' : '') +
+        (eco.sched && D.schedules[eco.sched] ? '<p class="small mt8"><b>Schedule A:</b> ' + esc(D.schedules[eco.sched].label) + ' — program pays <b>' + esc(D.schedules[eco.sched].split.low) + '</b> of margin (low-risk) / ' + esc(D.schedules[eco.sched].split.high) + ' (high-risk); you earn <b>' + esc(D.agentSplit.label) + '</b> (SIP low-risk ≈ 45% of gross margin). <a href="pricing.html#schedule-sip">Full fee table →</a></p>' : '') +
         '<p class="small mt8"><b>Where to quote the processing:</b> ' + esc(eco.quote) + '</p>' +
         '<p class="small mt8 mb8"><b>What you make:</b></p><ul class="ck plain">' + eco.make.map(m => '<li class="small">' + esc(m) + '</li>').join('') + '</ul>' +
         (eco.need ? '<div class="note warn mt8"><b>Schedule A gap:</b> ' + esc(eco.need) + ' Full source-by-source table on <a href="pricing.html#economics">Pricing &amp; Buy Rates</a>.</div>' : '') + '</div>';
@@ -227,7 +227,7 @@
     h += '<div class="card mt16"><h3>Quick residual estimate</h3><div class="frow3">' +
       '<div><label class="fl">Monthly volume ($)</label><input class="fi" id="c-vol" inputmode="numeric" value="' + (vol || '') + '"></div>' +
       '<div><label class="fl">Margin over buy rate (basis points)</label><input class="fi" id="c-bps" inputmode="numeric" placeholder="e.g. 50"></div>' +
-      '<div><label class="fl">Your residual split (%)</label><input class="fi" id="c-split" inputmode="numeric" value="25" placeholder="house rule: 25 (50% of our 50%)"></div></div>' +
+      '<div><label class="fl">Your residual split (%)</label><input class="fi" id="c-split" inputmode="numeric" value="45" placeholder="SIP low-risk: 45 (50% of the 90% share)"></div></div>' +
       '<div class="stat mt16" style="max-width:340px"><div class="n" id="c-out">—</div><div class="l">estimated monthly residual to you (before monthly-fee income)</div></div>' +
       '<label class="fl">Pricing model chosen</label><select class="fi" id="f-model" style="max-width:340px">' +
       ['', 'Dual pricing (0%)', 'Interchange-plus', 'Flat rate', 'TBD after statement'].map(m => '<option' + (deal.pricingModel === m ? ' selected' : '') + '>' + m + '</option>').join('') + '</select></div>';
