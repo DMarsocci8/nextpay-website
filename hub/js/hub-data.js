@@ -17,16 +17,23 @@ window.HUB_DATA = {
       'Roughly how much card volume per month, and what is your average ticket?',
       'Are you a new business, or switching from a current setup?'
     ]},
+    { h: 'How you operate today', q: [
+      'Walk me through a busy shift — where do lines, mistakes or bottlenecks actually happen?',
+      'What do you still do on paper or by hand that you wish you didn\u2019t?',
+      'At the end of the day, how do you know what sold and what made money — reports, gut feel, or the accountant months later?',
+      'When something breaks at 7pm on a Friday, what happens today?'
+    ]},
     { h: 'Payments today', q: [
       'Who do you process with now, and what do you think you pay? (Most owners do not know — that is normal.)',
       'Can you grab your last processing statement? We will read it line by line and meet or beat it.',
       'Are you under a contract or lease with your current provider? When does it end? Any early-termination fee?',
       'Have you heard of dual pricing / 0% processing? Would eliminating card fees interest you?'
     ]},
-    { h: 'Operations & pain', q: [
-      'What annoys you most about your current POS or terminal?',
-      'What do you wish you had — online ordering, invoicing, loyalty, better reporting, faster support?',
-      'Who else is involved in this decision, and what is your timeline?'
+    { h: 'Beyond the rate — where the real win is', q: [
+      'If you could fix ONE thing about how this place runs, what would move the needle most?',
+      'What would an extra hour a day back be worth to you? (That is usually what the right system buys.)',
+      'What almost made you switch before — and what stopped you?',
+      'Who else needs to be convinced, and what will THEY care about?'
     ]}
   ],
 
@@ -51,10 +58,13 @@ window.HUB_DATA = {
   industries: {
     'convenience': { label: 'Convenience & Grocery', group: 'Retail',
       ask: [
-        'How many SKUs? Do you need scan data reporting (tobacco rebates) or EBT/SNAP?',
-        'Do you sell age-restricted items (tobacco, vape, lotto)? Need built-in ID verification?',
-        'Sell anything by weight (deli, produce)? A certified integrated scale changes the hardware pick.',
-        'How fast is the line at rush? Lane speed matters more here than anywhere.'
+        'Walk me through the counter at rush hour — how many customers an hour, and what actually slows the line?',
+        'How do you track inventory today — do you know your top 20 sellers and your dead stock, or is it a walk-the-aisles-with-a-notepad situation?',
+        'EBT/SNAP — what share of your sales? (Changes the file build AND the POS pick.)',
+        'Tobacco: are you collecting scan-data rebates today? If not, that\'s found money we can turn on.',
+        'Age-restricted items — how do you make sure every clerk cards every customer, even when you\'re not standing there?',
+        'Anything sold by weight — deli, produce? A certified integrated scale changes the hardware.',
+        'Can you see voids, no-sales and discounts by clerk right now? (Shrinkage usually hides there.)'
       ],
       primary: { name: 'NRS', why: 'Purpose-built for c-stores and bodegas — age verification, scan-data programs, customer-facing screen, high-speed lanes.' },
       alts: [
@@ -73,9 +83,13 @@ window.HUB_DATA = {
 
     'liquor': { label: 'Liquor Stores', group: 'Retail',
       ask: [
-        'How do you handle ID checks today? Want the register to force age verification?',
-        'Case discounts, mix-and-match pricing, keg deposits — how complex is pricing?',
-        'Inventory counts by bottle or by case? Shrinkage a concern?'
+        'How do you card today — and has a missed check ever cost you? Register-forced ID scanning takes that risk off your clerks.',
+        'Case discounts, mix-and-match, keg deposits — does the register handle that, or is it clerk math?',
+        'Do you know your margin by bottle? Which 50 SKUs actually make you the money?',
+        'How long does a full inventory count take you today — and when did you last do one?',
+        'How much of your volume is debit? (PIN debit pricing is where liquor statements bleed.)',
+        'Multi-store, or planning a second? (Changes the platform pick.)',
+        'What happens to pricing when your distributor costs jump — how fast can you re-tag the store?'
       ],
       primary: { name: 'Korona', why: 'The liquor-store standard — per-register pricing, ID scanner add-on ($550), case-break inventory, label printing.' },
       alts: [
@@ -93,9 +107,13 @@ window.HUB_DATA = {
 
     'boutique': { label: 'Boutique & Clothing', group: 'Retail',
       ask: [
-        'Do you also sell online or on Instagram? Need inventory synced between floor and web?',
-        'Matrix inventory (size/color) or simple items?',
-        'Do you do pop-ups or trunk shows away from the store?'
+        'Do you sell online or on Instagram too? Does floor inventory sync with web inventory, or do you oversell?',
+        'Size/color matrix inventory or simple items? How do you know what to reorder and in what size?',
+        'Pop-ups, markets, trunk shows — do you sell away from the register?',
+        'Gift cards and loyalty — anything today, or is it a punch card in a drawer?',
+        'When a regular walks in, can staff see what she bought last time?',
+        'How many hours a week goes into receiving new stock and tagging it?',
+        'What did last season\'s dead inventory cost you — and would earlier reporting have caught it?'
       ],
       primary: { name: 'Square', why: 'Best-in-class for boutiques — floor + online store + social selling in one ecosystem, beautiful hardware, easy staff training.' },
       alts: [
@@ -113,9 +131,13 @@ window.HUB_DATA = {
 
     'jewelry': { label: 'Jewelry Stores', group: 'Retail',
       ask: [
-        'What is your highest typical ticket? Any single sales over $5–10k? (Underwriting needs this.)',
-        'Do you take deposits, layaway, or phone orders?',
-        'Repairs and custom work — do you invoice those?'
+        'What\'s your highest typical ticket, and any single sales over $5–10k? (Underwriting needs this up front so payouts never get held.)',
+        'Deposits, layaway, custom orders — how do you track what\'s owed and what\'s in the safe?',
+        'Repairs: how do you track a piece from intake to pickup, and how do customers pay for them?',
+        'Phone orders and out-of-state buyers — how do you take those cards today?',
+        'Do you offer financing on big pieces? (We have a financing referral lane.)',
+        'How do you handle appraisals and insurance work — invoiced, or paid at the counter?',
+        'Who reconciles the register against the case inventory, and how often?'
       ],
       primary: { name: 'Clover', why: 'Clean countertop presence, invoices and deposits handled, strong for high-ticket keyed + card-present mix.' },
       alts: [
@@ -124,7 +146,7 @@ window.HUB_DATA = {
       ],
       rules: [
         'High single tickets → disclose max ticket on the app; set realistic limits so payouts are not held.',
-        'Phone orders/deposits → add a gateway virtual terminal (NMI or Authorize.net).',
+        'Phone orders/deposits → Next2Pay virtual terminal (house rails).',
         'Repairs pipeline → invoicing add-on or QuickBooks integration.'
       ],
       pricing: 'High average ticket → interchange-plus shines; per-item fees are irrelevant, basis points are everything. Statements from jewelry stores usually show inflated keyed rates — easy beat.',
@@ -133,9 +155,13 @@ window.HUB_DATA = {
 
     'specialty-retail': { label: 'Specialty Retail', group: 'Retail',
       ask: [
-        'What makes your inventory unusual — serialized items, rentals, consignment, bulk?',
-        'Ticketing or admissions component?',
-        'How much lives online vs in-store?'
+        'What\'s unusual about your inventory — serialized items, rentals, consignment, bulk, bundles?',
+        'Any tickets, admissions, classes or events in the mix?',
+        'How much lives online vs in-store, and do the two share inventory?',
+        'Consignors or vendors to pay out? How do you track their share today?',
+        'What does your current system NOT track that you end up keeping in a spreadsheet?',
+        'Seasonal spikes — what breaks first when you get slammed?',
+        'How do you decide what to reorder, and how often are you wrong?'
       ],
       primary: { name: 'Korona', why: 'The flexible retail engine — modules for ticketing, franchise, integrations; per-register pricing scales.' },
       alts: [
@@ -153,10 +179,13 @@ window.HUB_DATA = {
 
     'fine-dining': { label: 'Fine Dining & Full Service', group: 'Food & Beverage',
       ask: [
-        'Covers per night and turns? Coursing and table management needs?',
-        'Pay-at-table — do servers close checks tableside today?',
-        'Online reservations/waitlist? Wine program with high bottle tickets?',
-        'How many stations: server stations, bar, kitchen screens, expo?'
+        'Covers a night and how many turns? Where does a table stall — kitchen, server, or the check?',
+        'How do servers close checks today — walk to a station, or at the table? (Pay-at-table alone can add a turn.)',
+        'How does the kitchen get orders — printed tickets, shouted, KDS? How many remakes a week from misreads?',
+        'Wine program: big bottle tickets? How are they rung and tipped?',
+        'Reservations and no-shows — what does a no-showed 6-top cost you on a Saturday?',
+        'Tips: pooled, direct, tip-out rules — what does closing look like for your manager each night?',
+        'How late does someone stay after close doing reports — and what would they do with that hour back?'
       ],
       primary: { name: 'SkyTab by Shift4', why: 'The full-service standard — $29.99/mo base bundle, pay-at-table handhelds, KDS, Lighthouse reporting, lifetime hardware warranty, $0 upfront.' },
       alts: [
@@ -174,10 +203,13 @@ window.HUB_DATA = {
 
     'pizzerias': { label: 'Pizzerias', group: 'Food & Beverage',
       ask: [
-        'Delivery: your own drivers, third-party apps, or both? Which apps?',
-        'Phone orders — how many lines? Caller ID pop would help?',
-        'Online ordering: theirs or yours? Commission pain?',
-        'Slices at lunch (speed) vs pies at night (phones) — what does rush look like?'
+        'Phone vs online vs walk-in — what\'s the order mix at Friday rush?',
+        'Who answers the phones at rush, and how many order errors a week come from that scramble?',
+        'Delivery: your drivers or the apps? What did you pay in third-party commissions last month? (Get the real number.)',
+        'If we put your own online ordering in front of regulars, what share of app orders could you pull back?',
+        'How do orders hit the kitchen — handwritten tickets or screens? Remakes cost how much a week?',
+        'Caller ID that pops the customer\'s history when the phone rings — what would that save at rush?',
+        'Lunch slices need speed, dinner needs phones — where does the current setup fall down?'
       ],
       primary: { name: 'SkyTab by Shift4', why: 'Built for pizza — caller ID (2-line $9.99/4-line $19.99), delivery management, online ordering, KDS, $0 upfront.' },
       alts: [
@@ -195,10 +227,13 @@ window.HUB_DATA = {
 
     'food-trucks': { label: 'Food Trucks', group: 'Food & Beverage',
       ask: [
-        'Connectivity where you park — reliable LTE? Offline mode matters.',
-        'One window or two? Line-busting needed?',
-        'Events and festivals — need extra handhelds occasionally?',
-        'Power setup — battery/inverter constraints?'
+        'How\'s connectivity where you park? Ever lost sales to a dead signal? (Offline mode matters more than any rate.)',
+        'One window or two? How many customers can you turn an hour, and what caps it?',
+        'Events and festivals — need extra readers a few weekends a year?',
+        'Power setup — battery, inverter, generator? (Decides the hardware.)',
+        'Do you track sales by location/event so you know which spots earn?',
+        'Menu changes — how fast can you 86 an item or change a price from the window?',
+        'Commissary, catering or a brick-and-mortar in the plans? (Pick a platform that grows with that.)'
       ],
       primary: { name: 'Square', why: 'The truck favorite — Terminal ($299) or Handheld ($399), works offline, zero monthly to start, easy menu changes from a phone.' },
       alts: [
@@ -216,10 +251,13 @@ window.HUB_DATA = {
 
     'bars': { label: 'Bars & Nightclubs', group: 'Food & Beverage',
       ask: [
-        'Tabs: how do you hold cards? Pre-auth needed?',
-        'Speed at last call — how many drinks a minute per well?',
-        'Age verification at the door or at the bar?',
-        'Cash percentage? ATM on site?'
+        'Tabs: how do you hold cards today, and how many walked tabs a month? (Pre-auth kills that number.)',
+        'Speed at last call — how many drinks a minute per well, and what slows it?',
+        'How do you track pour cost and comps? Can you see comps by bartender?',
+        'Age checks at the door or the bar — any exposure there?',
+        'What\'s your cash mix? ATM on site?',
+        'Kitchen or food menu? How do those orders route?',
+        'What does inventory night look like — and who counts the bottles?'
       ],
       primary: { name: 'SkyTab by Shift4', why: 'Bar-proven — fast tabs with pre-auth, handhelds for the floor, KDS for the kitchen, rugged hardware with lifetime warranty.' },
       alts: [
@@ -237,10 +275,13 @@ window.HUB_DATA = {
 
     'qsr-cafes': { label: 'QSR, Cafés & Coffee Shops', group: 'Food & Beverage',
       ask: [
-        'Line speed at morning rush — seconds per order matters. Kiosk interest?',
-        'Loyalty program today? Punch cards → digital?',
-        'Mobile/online ahead-of-line ordering?',
-        'Tips: counter tip prompts — current setup?'
+        'Orders per hour at peak — and how many seconds does each order take at the register?',
+        'Would a self-order kiosk pull people out of your line? (Kiosks also lift average ticket.)',
+        'Loyalty today — punch cards? How many regulars could you actually reach if you had their info?',
+        'Mobile/ahead-of-line ordering — do regulars ask for it?',
+        'Staff turnover: how long to train a new hire on your current register?',
+        'Catering or wholesale orders — how are those taken and paid?',
+        'Morning rush staffing — could one less register body cover it with faster checkout?'
       ],
       primary: { name: 'SkyTab by Shift4', why: 'QSR-tuned — self-order kiosk ($29.99/mo), KDS, customer-facing display, gift cards ($25/mo), all placement-model.' },
       alts: [
@@ -258,10 +299,13 @@ window.HUB_DATA = {
 
     'bakeries': { label: 'Bakeries, Delis & Markets', group: 'Food & Beverage',
       ask: [
-        'Sell by weight? Certified scale integration needed?',
-        'Wholesale/catering invoices alongside the counter?',
-        'Pre-orders (holidays, cakes) — deposits?',
-        'Label printing for packaged goods?'
+        'What\'s sold by weight vs by piece? (Certified scale integration is the fork in the road.)',
+        'Custom orders — cakes, catering: how do you take deposits and schedule pickups today? Paper book?',
+        'Wholesale accounts — how do you invoice them, and how long do they take to pay?',
+        'Do you print labels for packaged goods — ingredients, barcodes, dates?',
+        'Pre-orders for holidays: what did the counter chaos look like last time?',
+        'Who reconciles the drawer after the 5am-noon rush?',
+        'What sells out and what gets tossed — do you know by item, by day?'
       ],
       primary: { name: 'Clover', why: 'Counter + scale + label support, invoices for wholesale, familiar for staff.' },
       alts: [
@@ -279,19 +323,22 @@ window.HUB_DATA = {
 
     'auto-repair': { label: 'Auto Repair & Automotive', group: 'Services',
       ask: [
-        'How do you quote and invoice a job today — paper, shop software?',
-        'Average repair order? Big tickets ($1–3k) common?',
-        'Deposits for parts? Card-on-file for regulars?',
-        'Do customers pay in the bay, at the counter, or by text link?'
+        'Walk me through a job today: estimate → approval → work → payment. Where\'s the paper, and where does it stall?',
+        'What\'s your average repair order — and your biggest this month? (Underwriting needs the max ticket.)',
+        'How do customers approve added work mid-job — phone call, or could a text with photos and a pay link close it faster?',
+        'Deposits on big parts orders — how do you take them?',
+        'Fleet or commercial accounts — how long do they float you? Net-30 pain?',
+        'Cards over the phone today? (That\'s your highest rate and your highest risk — text-to-pay fixes both.)',
+        'Shop management software in use? (If yes, we integrate payments — we don\'t rip out your workflow.)'
       ],
-      primary: { name: 'Terminal + FieldPulse invoicing', why: 'Countertop or handheld terminal (PAX/Dejavoo/Valor) for walk-ups + FieldPulse for estimates→invoices→text-to-pay.' },
+      primary: { name: 'Terminal + Next2Pay Invoicing', why: 'Countertop or handheld terminal (PAX/Dejavoo/Valor) for walk-ups + Next2Pay for estimates → invoices → text-to-pay.' },
       alts: [
         { name: 'Clover', why: 'Services Growth plan ($84.95/mo) — invoices, customers, payments in one box.' },
         { name: 'Quantic', why: 'Station + QuickBooks interface ($20/mo) for shops living in QB.' }
       ],
       rules: [
-        'Shop management software already in place → sell the gateway/terminal that integrates, do not rip out their workflow.',
-        'Text-to-pay is the wow demo for shops — invoice from FieldPulse, customer pays from their phone.',
+        'Shop management software already in place → Next2Pay payments integrated underneath, do not rip out their workflow.',
+        'Text-to-pay is the wow demo for shops — invoice from Next2Pay, customer pays from their phone.',
         'High average ticket → interchange-plus; surcharge/dual pricing is common in auto and well accepted.'
       ],
       pricing: 'High tickets → basis points matter. Shops are classic dual-pricing adopters (parts+labor quotes absorb it cleanly). Statements often show old-school tiered pricing — easy beat.',
@@ -300,10 +347,13 @@ window.HUB_DATA = {
 
     'salons': { label: 'Salons & Spas', group: 'Services',
       ask: [
-        'Booking: how do clients book today? No-show problem?',
-        'Independent chairs/booth renters — who takes the payment?',
-        'Retail product sales at the front desk?',
-        'Tips flow — pooled, direct, on card?'
+        'How do clients book — and what did no-shows cost you last week, honestly?',
+        'Card-on-file at booking: would your stylists back a no-show policy if the system enforced it?',
+        'Booth renters or employees? Who takes the payment, and who pays the fees?',
+        'Retail at the front desk — tracked, or on the honor system?',
+        'How do tips flow — on card, pooled, paid out how?',
+        'Rebooking: does anyone ask for the next appointment at checkout, every time?',
+        'How many hours a week goes to booking calls, confirms, reschedules?'
       ],
       primary: { name: 'Square', why: 'Appointments + POS + no-show protection in one; booth renters can run their own accounts.' },
       alts: [
@@ -321,19 +371,22 @@ window.HUB_DATA = {
 
     'home-services': { label: 'Home Services (HVAC, Plumbing, Electrical…)', group: 'Services',
       ask: [
-        'How many techs in the field? How do they collect today — check, card over phone?',
-        'Quoting/estimating software in use? (ServiceTitan, Housecall, none?)',
-        'Deposits before jobs? Financing conversations on big tickets?',
-        'Recurring maintenance plans?'
+        'How many techs in the field, and how does each one collect today — check, card over phone, \'we\'ll bill you\'?',
+        'From job-done to money-in-bank: how many days, really?',
+        'How do estimates go out — and how do customers approve and pay? Could a text link close it same-day?',
+        'Deposits before big jobs — how do you take them?',
+        'Maintenance plans or recurring contracts — billed how? Cards on file?',
+        'Big tickets: do financing conversations come up? (We have a financing lane.)',
+        'How many office hours a week go to invoicing and chasing payments?'
       ],
       primary: { name: 'Next2Pay Invoicing', why: 'Our house invoicing platform — estimates, invoices, text-to-pay and recurring on our rails. Invoice-type deals lead with Next2Pay, every time.' },
       alts: [
-        { name: 'FieldPulse + gateway', why: 'Full field-service management (scheduling, dispatch) when they need FSM beyond invoicing.' },
+        { name: 'Next2Pay + their existing FSM', why: 'Already on ServiceTitan/Housecall? Keep it — Next2Pay handles the payments underneath.' },
         { name: 'Mobile terminal (PAX A920 / Dejavoo P8)', why: 'Tap-in-the-driveway for techs; pairs with any back office.' }
       ],
       rules: [
-        'Already on ServiceTitan/Housecall → integrate payments (gateway), do not replace the FSM.',
-        'Recurring maintenance contracts → recurring billing via gateway is the hook.',
+        'Already on ServiceTitan/Housecall → integrate Next2Pay payments underneath, do not replace the FSM.',
+        'Recurring maintenance contracts → Next2Pay recurring billing is the hook.',
         'Big tickets → mention business financing referrals (NextPay financing).'
       ],
       pricing: 'Keyed-over-phone is where they bleed today — moving to text-to-pay links and tap-in-field drops their effective rate immediately. Surcharge/dual pricing widely accepted in trades.',
@@ -342,18 +395,21 @@ window.HUB_DATA = {
 
     'fitness': { label: 'Fitness & Gyms', group: 'Services',
       ask: [
-        'Memberships: how many, billed how, and how many cards fail each month?',
-        'Gym management software (MindBody, Zen Planner…)?',
-        'Front-desk retail (drinks, gear)?',
-        'Class packs, day passes, annual pre-pays?'
+        'How many members, and how many payments FAIL each month? Get the real number — that\'s the deal right there.',
+        'What happens to a failed payment today — who chases it, and how much never comes back?',
+        'Contracts vs month-to-month? Annual pre-pays, class packs, drop-ins?',
+        'Gym software (MindBody, Zen Planner…)? (We integrate payments — not a software rip-out.)',
+        'Front desk retail — drinks, gear, supplements?',
+        'How do members sign up — in person, online, both?',
+        'What\'s your churn, and how much of it starts with a billing problem?'
       ],
-      primary: { name: 'Gateway recurring (NMI / FluidPay)', why: 'Membership billing with account-updater to rescue failing cards — the revenue story gyms care about.' },
+      primary: { name: 'Next2Pay recurring billing', why: 'House recurring engine — membership billing with card-on-file, retries and account updater. The revenue story gyms care about: recovered failed dues.' },
       alts: [
         { name: 'Square', why: 'Front desk + simple memberships for boutique studios.' },
         { name: 'Clover', why: 'Counter retail + app-market gym tools.' }
       ],
       rules: [
-        'On MindBody etc. → payments integration play, not a POS swap.',
+        'On MindBody etc. → Next2Pay payments integration underneath, not a POS swap.',
         'Failed recurring payments → account updater + retry logic is the differentiator; quantify recovered revenue.',
         'High-volume recurring → watch chargebacks; mention chargeback protection.'
       ],
@@ -363,20 +419,23 @@ window.HUB_DATA = {
 
     'professional-services': { label: 'Professional Services (Legal, Accounting…)', group: 'Services',
       ask: [
-        'How do clients pay — invoices, retainers, in office?',
-        'Trust/IOLTA accounting rules apply (law firms)?',
-        'Average invoice size? Net terms?',
-        'Practice management software in use?'
+        'How do invoices go out today, and what\'s the average days-to-paid?',
+        'Retainers: how are they collected and replenished?',
+        '(Law firms) Trust/IOLTA rules in play? — flag before we quote anything on trust money.',
+        'Phone payments today — how are those cards handled and stored? (Compliance risk hiding there.)',
+        'What percentage of invoices go past 60 days, and who does the chasing?',
+        'Average invoice size? (Above ~$2k, ACH beats cards — we quote both rails.)',
+        'Would clients pay faster with a pay link on the invoice? (They do — measurably.)'
       ],
       primary: { name: 'Next2Pay Invoicing', why: 'House invoicing — emailed invoices, saved cards, recurring retainers, virtual terminal for phone payments. No countertop hardware needed.' },
       alts: [
-        { name: 'QuickBooks integration', why: 'Payments inside the books they already keep.' },
+        { name: 'Next2Pay + QuickBooks sync', why: 'Invoices and payments flowing into the books they already keep.' },
         { name: 'Clover Go / SumUp Solo', why: 'Pocket reader for the occasional in-person payment.' }
       ],
       rules: [
         'Law firms → surcharging rules + trust account handling need care; flag for Dom before quoting fees on trust payments.',
         'Big invoices → percentage caps matter; consider flat-fee ACH as the primary rail with card as convenience.',
-        'Offer ACH/echeck via gateway — often the real winner at $2k+ invoices.'
+        'Offer ACH/echeck through Next2Pay — often the real winner at $2k+ invoices.'
       ],
       pricing: 'High-ticket CNP — every basis point counts, and ACH steals the show. Lead with total cost per $10k invoiced.',
       placements: ['invoicing-gateway']
@@ -384,14 +443,18 @@ window.HUB_DATA = {
 
     'cleaning': { label: 'Cleaning Services', group: 'Services',
       ask: [
-        'Residential, commercial, or both? Recurring schedules?',
-        'How do you invoice and chase payment today?',
-        'Crews in the field — collect on site or bill after?'
+        'Residential, commercial, or both? How many recurring jobs a week?',
+        'How do you bill — after each job, monthly, and how do you get paid: check, Venmo, card?',
+        'Days from job-done to money-in-bank?',
+        'Do crews collect on site, or does the office bill later?',
+        'Commercial accounts on net-30 — how much is floating out there right now?',
+        'Card-on-file autopay for recurring residentials: what would never-chasing-a-check-again be worth?',
+        'How do customers tip your crews, if at all?'
       ],
       primary: { name: 'Next2Pay Invoicing', why: 'House invoicing — recurring job billing, card-on-file autopay, text-to-pay. Invoice-type deals lead with Next2Pay.' },
       alts: [
         { name: 'SumUp Solo', why: 'Cheap in-field reader for crews that collect on completion.' },
-        { name: 'QuickBooks integration', why: 'For owners running everything in QB already.' }
+        { name: 'Next2Pay + QuickBooks sync', why: 'For owners running everything in QB already.' }
       ],
       rules: [
         'Recurring residential → card-on-file autopay is the pitch (no more chasing checks).',
@@ -404,20 +467,23 @@ window.HUB_DATA = {
 
     'healthcare': { label: 'Healthcare & Medical (Vision, Dental, Chiro, Derm, Mental Health, Wellness)', group: 'Healthcare',
       ask: [
-        'Copays at front desk vs statements after insurance — what is the mix?',
-        'Patient payment plans? Card-on-file consent workflow?',
-        'Any HIPAA-driven constraints from their compliance officer on payment tech?',
-        'Multiple providers/locations under one tax ID?'
+        'Copays at the desk vs balances after insurance — what\'s the mix?',
+        'How do patient statements go out, and what share actually gets collected?',
+        'Card-on-file with consent for post-adjudication balances — does your compliance flow allow it? (This is the workflow that changes everything.)',
+        'Payment plans for bigger treatment — offered? Tracked how?',
+        'No-shows: what does your no-show rate cost per provider per week?',
+        'How much front-desk time goes to billing calls?',
+        'Multiple providers or locations under one tax ID? Practice management software in use?'
       ],
       primary: { name: 'Clover (Healthcare plan)', why: 'Front-desk friendly, $0 software plan for healthcare, clean countertop presence, payment plans via apps.' },
       alts: [
-        { name: 'Terminal + gateway (NMI / Authorize.net)', why: 'Simple copay terminal + virtual terminal for post-insurance balances and stored consents.' },
-        { name: 'LQPay', why: 'Healthcare-oriented billing workflows and statements.' }
+        { name: 'Terminal + Next2Pay virtual terminal', why: 'Simple copay terminal + Next2Pay for post-insurance balances and stored consents.' },
+        { name: 'Next2Pay payment plans', why: 'Card-on-file treatment plans and statements on house rails.' }
       ],
       rules: [
         'Card-on-file for balances after adjudication → the killer workflow; needs stored-credential consent language.',
         'Surcharging patient payments is regulated territory in some states — quote standard or dual-pricing-with-care; check with Dom.',
-        'Integrations with practice management (Dentrix etc.) → ask before promising; usually gateway-level.'
+        'Integrations with practice management (Dentrix etc.) → ask before promising; Next2Pay rails underneath is the usual answer.'
       ],
       pricing: 'Steady CNP + card-present mix; statements typically show mid-market processors with junk fees (PCI, statement fees) — line-item beats are easy to show.',
       placements: ['clover', 'terminal-gateway', 'invoicing-gateway']
@@ -425,12 +491,15 @@ window.HUB_DATA = {
 
     'high-risk': { label: 'High Risk & Specialty', group: 'Specialty',
       ask: [
-        'Exactly what do you sell, and on what billing model (one-time, subscription, trial)?',
-        'Processing history: current/former processors, any terminations (MATCH list)?',
-        'Chargeback ratio? Refund policy?',
-        'Monthly volume and average ticket, documented?'
+        'Exactly what do you sell, and on what billing model — one-time, subscription, trial-to-paid?',
+        'Processing history: current and former processors, any terminations or MATCH list events? (Be straight — underwriting finds everything.)',
+        'Chargeback ratio and refund policy — what are the real numbers?',
+        'Monthly volume and average ticket, documented — bank statements if processing statements don\'t exist.',
+        'Why did the last processor relationship end?',
+        'Licenses, website, terms of service — current and compliant?',
+        'How do they operate day-to-day — fulfillment, customer service, dispute handling? Underwriting reads operations, not just numbers.'
       ],
-      primary: { name: 'Gateway-first (NMI / FluidPay) + specialty underwriting', why: 'High-risk placements are underwriting deals, not hardware deals — package the file well and route to Dom.' },
+      primary: { name: 'Next2Pay rails + specialty underwriting', why: 'High-risk placements are underwriting deals, not hardware deals — package the file well and route to Dom; the gateway rides our rails once approved.' },
       alts: [],
       rules: [
         'NEVER promise approval or rates before underwriting on high-risk — package and submit.',
@@ -546,9 +615,9 @@ window.HUB_DATA = {
       'If CNP needed, add the gateway (NMI / FluidPay / Authorize.net / iPOSPays for Dejavoo).',
       'Common docs; email to dom@nextpaypos.com — subject "Terminal deal — {DBA}".'
     ]},
-    'invoicing-gateway': { label: 'Invoicing / gateway (software-first)', steps: [
-      'Confirm the workflow: estimates? recurring? text-to-pay? Pick FieldPulse / Field Work / LQPay / QB accordingly.',
-      'Gateway pairing (NMI or FluidPay usually) — virtual terminal + recurring + account updater as needed.',
+    'invoicing-gateway': { label: 'Next2Pay Invoicing / gateway (software-first)', steps: [
+      'Confirm the workflow: estimates? recurring? text-to-pay? virtual terminal? Next2Pay covers all of it — partner tools (FieldPulse / LQPay / QB sync) only where Dom approves an exception.',
+      'Spec the Next2Pay build: invoicing seats, recurring plans, card-on-file, ACH option for big invoices.',
       'Common docs; email to dom@nextpaypos.com — subject "Invoicing deal — {DBA}".'
     ]},
     'high-risk': { label: 'High Risk & Specialty', steps: [
@@ -628,7 +697,7 @@ window.HUB_DATA = {
     budget:    { boosts: [{ m: 'sumup', d: 2, why: '$0 monthly software tier' }, { m: 'nrs', d: 1, why: 'Price-friendly single lane' }] },
     multi:     { boosts: [{ m: 'korona', d: 2, why: 'Multi-location strength' }, { m: 'quantic', d: 1, why: 'Multi-location dashboard' }, { m: 'skytab|shift4', d: 1, why: 'Lighthouse multi-site reporting' }] },
     highticket:{ boosts: [{ m: 'clover', d: 1, why: 'Handles high-ticket keyed + deposits well' }],
-                 stack: [{ slot: 'gateway', v: 'NMI or Authorize.net (virtual terminal)', why: 'High tickets usually mean phone/keyed payments too' }],
+                 stack: [{ slot: 'gateway', v: 'Next2Pay virtual terminal', why: 'High tickets usually mean phone/keyed payments too' }],
                  note: 'Interchange-plus shines at high tickets; disclose max single ticket on the application.' },
     ebt:       { boosts: [{ m: 'nrs', d: 2, why: 'EBT/SNAP native' }, { m: 'korona', d: 1, why: 'EBT-capable retail lanes' }],
                  note: 'Confirm EBT/FNS number on the application up front — it changes the file build.' },
@@ -646,14 +715,14 @@ window.HUB_DATA = {
     tabs:      { boosts: [{ m: 'skytab|shift4', d: 2, why: 'Fast tabs with card pre-auth' }],
                  note: 'Pre-auth tabs is the killer question at bars — if their current system can’t, we win.' },
     online:    { boosts: [{ m: 'square', d: 1, why: 'POS + online store one ecosystem' }],
-                 stack: [{ slot: 'gateway', v: 'NMI or FluidPay', why: 'E-commerce / card-not-present rail' }] },
-    invoices:  { stack: [{ slot: 'invoicing', v: 'Next2Pay Invoicing — house first', why: 'Invoice-type deals always lead with Next2Pay; FieldPulse only if they need full FSM' }] },
-    recurring: { stack: [{ slot: 'invoicing', v: 'Next2Pay Invoicing — recurring billing', why: 'House recurring first' }, { slot: 'gateway', v: 'NMI or FluidPay with account updater', why: 'Account updater rescues failing cards' }],
+                 stack: [{ slot: 'gateway', v: 'Next2Pay gateway (house rails)', why: 'E-commerce / card-not-present rail' }] },
+    invoices:  { stack: [{ slot: 'invoicing', v: 'Next2Pay Invoicing', why: 'Invoice-type deals always lead with Next2Pay' }] },
+    recurring: { stack: [{ slot: 'invoicing', v: 'Next2Pay recurring billing', why: 'House recurring — card-on-file, retries, account updater rescues failing cards' }],
                  note: 'Quantify recovered failed payments — that story beats any rate pitch.' },
-    field:     { stack: [{ slot: 'terminal', v: 'PAX A920 Pro or Dejavoo P8 (mobile)', why: 'Crews collecting in the field' }, { slot: 'invoicing', v: 'Next2Pay Invoicing — text-to-pay', why: 'Estimates → invoice → pay-by-text, house first' }] },
+    field:     { stack: [{ slot: 'terminal', v: 'PAX A920 Pro or Dejavoo P8 (mobile)', why: 'Crews collecting in the field' }, { slot: 'invoicing', v: 'Next2Pay Invoicing (text-to-pay)', why: 'Estimates → invoice → pay-by-text' }] },
     appts:     { boosts: [{ m: 'square', d: 2, why: 'Appointments + card-on-file no-show protection' }, { m: 'clover', d: 1, why: 'Appointments via app market' }] },
-    fsm:       { note: 'They already run shop/practice software — sell the payments integration (gateway/terminal), do NOT pitch ripping out their workflow.',
-                 stack: [{ slot: 'gateway', v: 'Gateway that integrates with their software (NMI first ask)', why: 'Integration play, not a POS swap' }] }
+    fsm:       { note: 'They already run shop/practice software — sell the payments integration, do NOT pitch ripping out their workflow.',
+                 stack: [{ slot: 'gateway', v: 'Next2Pay rails integrated with their existing software', why: 'Integration play, not a POS swap' }] }
   },
 
   /* ---------- What to say — talk tracks per step ---------- */
@@ -681,6 +750,18 @@ window.HUB_DATA = {
       play: '“If they could do that rate, why weren’t you already on it?” Get any match offer in writing, then compare the stack — a rate match on the same tired terminal still loses to pay-at-table, online ordering, and a rep who answers the phone. And a match without a contract release is the same trap at a lower price.' }
   ],
 
+  /* ---------- Agent split rule (INTERNAL ONLY) ----------
+     House rule from Dom: on every Schedule A / buy-rate sheet uploaded to
+     this hub, agents earn 50% OF OUR 50% of the residual the program pays.
+     Worked SIP example uses that reading — flag to Dom if the math should
+     read differently. */
+  agentSplit: {
+    label: '50% of our 50%',
+    text: 'Every Schedule A in this hub shows what the program pays on the deal. The house rule: agents earn 50% of our 50% — half of NextPay\u2019s half of the residual the schedule produces. Your signed agent agreement is the final word.',
+    calcPct: 25,
+    calcNote: 'Default = 25% (50% of our 50%). Enter your exact split from your agent agreement if it differs.'
+  },
+
   /* ---------- Schedule As (INTERNAL ONLY) ---------- */
   schedules: {
     sip: {
@@ -688,7 +769,7 @@ window.HUB_DATA = {
       covers: 'House processing paper for: Quantic · NRS · Korona · standalone terminals (PAX / Dejavoo / Valor) · gateways (NMI / FluidPay / Authorize.net / iPOSPays) · high-risk files. Does NOT cover: Square, SkyTab/Shift4, Clover/Fiserv, Next2Pay, NextLink, SumUp, PAYS, FieldPulse, LQPay (each has its own schedule).',
       split: { low: '90%', high: '60%' },
       floor: 'Your true cost on low-risk SIP paper = interchange (pass-through) + 0.02% BIN sponsor + $0.02 per transaction (+ $0.02 per batch). Everything you quote above that is margin — and you keep 90% of it (60% on high-risk).',
-      example: 'Example: $45,000/mo, ~1,500 transactions, quoted at IC + 0.50% + $0.10 → margin ≈ 45,000 × 0.48% + 1,500 × $0.08 = $336/mo. Your 90% = ~$302/mo residual, for the life of the merchant.',
+      example: 'Example: $45,000/mo, ~1,500 transactions, quoted at IC + 0.50% + $0.10 → gross margin ≈ 45,000 × 0.48% + 1,500 × $0.08 = $336/mo paid on the 90% program share. House rule (50% of our 50%) puts roughly a quarter of that in your pocket ≈ $84/mo per deal, for the life of the merchant — and deals stack.',
       groups: [
         { h: 'Residual split', rows: [['Revenue share', '90%', '60%']] },
         { h: 'Portfolio fees', rows: [
@@ -752,21 +833,21 @@ window.HUB_DATA = {
       source: 'Quantic (Unified Pricing V5) · processing on Solutions in Payments paper',
       sched: 'sip',
       quote: 'Hardware/software at the Unified Pricing sheet numbers; processing quoted by us on SIP — dual pricing or IC+ above the SIP cost floor.',
-      make: ['90% of processing margin over SIP cost (IC pass-through + 0.02% BIN + $0.02/txn)', 'Hardware/software margin per Unified Pricing'],
+      make: ['Program pays 90% of margin over SIP cost (IC + 0.02% + $0.02/txn) — your residual is 50% of our 50% of that', 'Hardware/software margin per Unified Pricing'],
       need: 'Quantic hardware/software referral split — the processing side is fully covered by SIP.'
     },
     'korona': {
       source: 'Korona dealer program · processing on Solutions in Payments paper',
       sched: 'sip',
       quote: 'Software per register at sheet prices ($59/$79/$99); hardware one-time; processing on SIP — meet-or-beat or dual pricing above the SIP cost floor.',
-      make: ['90% of processing margin over SIP cost (IC pass-through + 0.02% BIN + $0.02/txn)', 'Software/hardware margin per dealer terms'],
+      make: ['Program pays 90% of margin over SIP cost (IC + 0.02% + $0.02/txn) — your residual is 50% of our 50% of that', 'Software/hardware margin per dealer terms'],
       need: 'Korona software/hardware margin terms — the processing side is fully covered by SIP.'
     },
     'nrs': {
       source: 'NRS dealer program · processing on Solutions in Payments paper',
       sched: 'sip',
       quote: 'NRS hardware/software per their current dealer sheet; processing on SIP — dual pricing is the norm in c-stores.',
-      make: ['90% of processing margin over SIP cost (IC pass-through + 0.02% BIN + $0.02/txn)', 'Dealer margin on NRS hardware'],
+      make: ['Program pays 90% of margin over SIP cost (IC + 0.02% + $0.02/txn) — your residual is 50% of our 50% of that', 'Dealer margin on NRS hardware'],
       need: 'NRS hardware dealer margin sheet — the processing side is fully covered by SIP.'
     },
     'pays': {
@@ -785,21 +866,21 @@ window.HUB_DATA = {
       source: 'Solutions in Payments paper (PAX / Dejavoo / Valor + NMI / FluidPay / Authorize.net / iPOSPays)',
       sched: 'sip',
       quote: 'Fully ours to price on SIP: dual pricing or IC+ above the cost floor (IC pass-through + 0.02% + $0.02/txn); terminal at cost + margin or placement; gateway monthly + per-item.',
-      make: ['90% of everything above the SIP cost floor — bps margin, per-item margin AND monthly-fee margin', 'Terminal hardware margin', 'Gateway monthly margin'],
+      make: ['Program pays 90% of everything above the SIP cost floor (bps, per-item AND monthly-fee margin) — your residual is 50% of our 50%', 'Terminal hardware margin', 'Gateway monthly margin'],
       need: null
     },
     'invoicing-gateway': {
       source: 'House paper + software partner (Next2Pay first; FieldPulse / LQPay / QB)',
       sched: 'sip',
       quote: 'Lead with Next2Pay Invoicing (house — own schedule). Gateway-based CNP processing rides SIP paper: quote above the SIP floor. Partner-software subscriptions at partner list prices.',
-      make: ['90% of CNP processing margin over SIP cost', 'Next2Pay Invoicing SaaS margin (house schedule)', 'Partner software referral where applicable'],
+      make: ['Program pays 90% of CNP margin over SIP cost — your residual is 50% of our 50%', 'Next2Pay Invoicing SaaS margin (house schedule)', 'Partner software referral where applicable'],
       need: 'FieldPulse / LQPay referral terms, if we get paid on those subscriptions.'
     },
     'high-risk': {
       source: 'Solutions in Payments high-risk book, underwritten per file via Dom',
       sched: 'sip',
       quote: 'Never quote first — pricing comes back from underwriting per file, priced above the SIP high-risk floor (IC + 0.25% BIN + $0.10/txn + risk monitoring 0.15%).',
-      make: ['60% revenue share on margin over the SIP high-risk schedule — set at approval, often strong'],
+      make: ['Program pays 60% of margin over the SIP high-risk schedule (set at approval) — your residual is 50% of our 50%'],
       need: null
     }
   }
