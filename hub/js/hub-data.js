@@ -568,10 +568,12 @@ window.HUB_DATA = {
       'Install is scheduled by the SkyTab team; track status in the Shift4 partner portal and log it on the deal in My Pipeline.'
     ]},
     'clover': { label: 'Clover', steps: [
-      'Lock the hardware list + software plan (placement vs buy) from the Proposal Builder.',
-      'Collect common docs; note the $5/mo Clover platform fee per location on the quote.',
-      'Email the packaged deal to dom@nextpaypos.com (CC payments@ + alexander@) — subject "Clover deal — {DBA}".',
-      'Hardware ships configured; schedule the install/training call with the merchant and log it.'
+      'Lock the hardware + software plan. Wholesale pricing sheet: hub docs \u2192 Clover hardware & software pricing (Duo bundle $2,058.80 \u00b7 Solo $1,734.80 \u00b7 Mini $917.10 \u00b7 Flex Gen 4 $738.11 \u00b7 Kiosk $3,537.12 + deployment fees). Note the $5/mo Clover platform fee per MID on the quote.',
+      'Need help mid-sale? Clover program POS desk: (877) 928-0305 opt 2 \u00b7 pos@redfynn.com \u2014 POS sale assistance, system functionality, configuration questions.',
+      'Application: use the Clover merchant application PDF (hub docs). Application questions or status: (877) 928-0305 ext 205 \u00b7 applications@redfynn.com. Collect the common docs below as usual.',
+      'Email the packaged deal to dom@nextpaypos.com (CC payments@ + alexander@) \u2014 subject "Clover deal \u2014 {DBA}".',
+      'Install & training: schedule installs at book.redfynn.com/install or (813) 803-5503; onboarding training at calendly.com/pos-nhs/onboarding-training or (877) 928-0305 ext 280.',
+      'After go-live: merchant support (877) 928-0305 opt 3 \u00b7 support@redfynn.com; merchants already on Clover devices call (844) 864-5449. Log the merchant in My Merchants.'
     ]},
     'square': { label: 'Square (hardware resell + rate review)', steps: [
       'Quote hardware from the reseller guide; software plan Free or Plus $49/mo.',
@@ -858,6 +860,90 @@ window.HUB_DATA = {
           ['Early termination', '$65.00 one-time', 'No']] }
       ],
       docs: ['Last 3 months of processing statements', 'Last 3 months of business bank statements', 'Articles of Incorporation', 'ID for the business owners', 'Bank account details', 'Connection to Plaid', 'Completion of Veriff']
+    },
+    clover: {
+      label: 'Clover (NextPay white-labeled program)',
+      cols: ['Partner cost'],
+      covers: 'Our white-labeled Clover paper — every Clover deal (Fiserv application). Hardware at wholesale per the Clover pricing sheet (hub docs); Clover platform fee $5/MID + $0.03 non-swiped auth pass through.',
+      splitNote: 'The program pays 90% of net revenue on the book; you earn 50% of the Schedule A — ≈45% of the margin you create. POS-assisted closes (their POS team helps you sell) carry a 20 bps residual surcharge. High-risk accounts and ACH processing pay a 50% net-revenue share instead.',
+      split: { low: '90% of net revenue', high: '50% (high-risk/ACH)' },
+      floor: 'Your true cost on Clover paper = interchange (pass-through) + 0.03% BIN + $0.035/authorization (+ $0.02 batch, $0.01 AVS). Several lines carry built-in spread: PCI billed $149/yr vs $99 cost, PCI non-action $39.95/mo vs $21.95, statement $1/mo cost. Same-day funding $9.95 cannot be marked up.',
+      example: 'Example: $45,000/mo Clover retail, ~1,500 transactions, quoted at IC + 0.50% + $0.10: margin ≈ 45,000 × 0.47% + 1,500 × $0.065 ≈ $309/mo. Program pays 90% ($278) — your 50% ≈ $139/mo, plus PCI/statement spread and hardware markup.',
+      groups: [
+        { h: 'Residual split', rows: [
+          ['Program revenue share (standard accounts)', '90% of net revenue'],
+          ['High-risk accounts', '50% share of net revenue'],
+          ['ACH processing', '50% share of net revenue'],
+          ['POS-assisted sales (their POS team closes with you)', 'minus 20 bps on residuals']] },
+        { h: 'Processing costs (pass-through + per item)', rows: [
+          ['Interchange, dues & assessments (V/MC/D)', 'Pass-through'],
+          ['Amex pass-through, network & system fees', 'Pass-through + 0.30% system fee'],
+          ['BIN fee (bank sponsorship)', '0.03% (0.0003)'],
+          ['Authorization', '$0.035'],
+          ['Non-bankcard T&E authorization', '$0.04'],
+          ['AVS', '$0.01'],
+          ['Batch fee', '$0.02'],
+          ['Voice authorization', '$0.75'],
+          ['EBT authorization', '$0.05'],
+          ['PIN debit authorization', '$0.05']] },
+        { h: 'Per occurrence', rows: [
+          ['Chargeback', '$15.00'],
+          ['Retrieval', '$10.00'],
+          ['ACH reject', '$15.00']] },
+        { h: 'Monthly & annual', rows: [
+          ['Merchant on file + IRS compliance', '$6.95 / mo'],
+          ['Merchant statement (per location)', '$1.00 / mo'],
+          ['Monthly minimum (if V/MC/D volume < $5k)', '$0.00'],
+          ['PCI annual — merchant billed $149', '$99.00 cost'],
+          ['PCI non-action — merchant billed $39.95/mo', '$21.95 cost'],
+          ['Annual fee (optional)', '$0.00'],
+          ['Early termination (optional, only if charged)', '$0.00'],
+          ['Same-day funding (no markup allowed)', '$9.95'],
+          ['TIN mismatch (until validated)', '$4.95 / mo'],
+          ['Payanywhere terminals (A80, A920, E600, E700)', 'Free placement'],
+          ['Clover platform fee', '$5.00 / MID'],
+          ['Clover non-swiped auth', '$0.03 / auth']] }
+      ]
+    },
+    sumup: {
+      label: 'SumUp reseller program',
+      cols: ['Rate / cost'],
+      covers: 'SumUp reseller paper — Cloud POS SaaS, kiosk, eCommerce and hardware resale, with processing commission on merchants you place. Hardware cannot be discounted below the Schedule A cost.',
+      splitNote: 'SumUp pays an 80% Transaction Fee Commission on processing margin (85% above $2.5M monthly TPV, 90% above $5M) and 20% SaaS commission on new merchants — and you earn 50% of the Schedule A.',
+      split: { low: '80% transaction commission', high: '20% SaaS commission' },
+      floor: 'Processing buy rate = interchange + 0.05%, per-transaction fee waived. You set the merchant\u2019s pricing; SumUp pays 80% of the margin as commission — your half of that is 40% of what you quote above cost. SaaS: 20% commission on subscriptions for new merchants (existing/non-transactional: 0%).',
+      example: 'Example: $20,000/mo boutique quoted at IC + 0.50% + $0.08 (400 txns): margin ≈ $90 + $32 = $122/mo → 80% commission $98 → your 50% ≈ $49/mo. Add Cloud POS w/ Connect Lite at $99/mo retail → 20% SaaS commission $19.80 → your 50% ≈ $10/mo. Plus hardware markup over the costs below.',
+      groups: [
+        { h: 'Processing (interchange-plus)', rows: [
+          ['Interchange, card association, dues & assessments', 'Pass-through'],
+          ['Buy rate', 'IC + 0.05%'],
+          ['Per-transaction fee', 'Waived'],
+          ['Transaction Fee Commission', '80% (85% at $2.5M+ TPV · 90% at $5M+)'],
+          ['SaaS Fee Commission — new merchants (processing partner)', '20%'],
+          ['SaaS Fee Commission — existing / non-transactional', '0%']] },
+        { h: 'SaaS monthly fees (partner pricing)', rows: [
+          ['SumUp Cloud POS w/ Connect Lite', '$99.00 / mo'],
+          ['Cloud POS w/ Connect Plus (SMS promos, AutoPilot)', '$199.00 / mo'],
+          ['Cloud POS w/ Connect Pro (AI-enhanced promos)', '$289.00 / mo'],
+          ['SumUp eCommerce', '$19.00 / mo'],
+          ['SumUp Kiosk (per station)', '$69.00 / mo'],
+          ['Order aggregation (Urban Piper)', '$79.00 / mo']] },
+        { h: 'Hardware costs (no discounting below these)', rows: [
+          ['Core POS (register + customer display)', '$1,040.00'],
+          ['Core POS + printer', '$1,340.00'],
+          ['Complete POS (displays, printer, drawer)', '$1,440.00'],
+          ['Retail Complete (+ barcode scanner)', '$1,499.00'],
+          ['SumUp Kiosk', '$699.00'],
+          ['Kiosk + counter stand', '$739.00'],
+          ['Kiosk + floor stand', '$839.00']] },
+        { h: 'One-time & per occurrence', rows: [
+          ['Installation & inventory/menu setup', '$199.00'],
+          ['eCommerce setup', '$99.00'],
+          ['Order aggregation setup', '$99.00'],
+          ['Chargeback / retrieval / reversal', '$12.00 each'],
+          ['Chargeback mediation', '$22.00'],
+          ['Inactive merchant / account on file / statement', 'Waived']] }
+      ]
     }
   },
 
@@ -880,10 +966,11 @@ window.HUB_DATA = {
       need: null
     },
     'clover': {
-      source: 'NextPay\u2019s white-labeled Clover program (house paper)',
-      quote: 'Processing quoted by us on our Clover paper \u2014 dual pricing available; $5/mo Clover platform fee per location passes through. Ask Dom whether the deal qualifies for the Clover Advantage program before quoting.',
-      make: ['Processing residual per the Clover Schedule A \u2014 you earn 50% of the Schedule A', 'Hardware margin (placement spread or purchase markup)', 'Software plan margin', 'Clover Advantage program incentives where the deal qualifies'],
-      need: 'Clover Schedule A (buy rates + Clover Advantage program terms) \u2014 on its way from Dom; numbers drop in the moment it lands.'
+      source: 'NextPay\u2019s white-labeled Clover program (house paper, Fiserv application)',
+      sched: 'clover',
+      quote: 'Quote dual pricing or IC+ above the Clover cost floor (IC + 0.03% + $0.035/auth). $5/mo Clover platform fee per MID passes through. Hardware at wholesale per the pricing sheet \u2014 mark up per deal. Ask Dom whether the deal qualifies for the Clover Advantage program before quoting.',
+      make: ['Program pays 90% of net revenue \u2014 you earn 50% of the Schedule A (\u2248 45% of margin)', 'Hardware markup over wholesale (Duo bundle $2,058.80 \u00b7 Solo $1,734.80 \u00b7 Mini $917.10 \u00b7 Flex Gen 4 $738.11 + deployment)', 'Built-in spreads: PCI, statement, compliance lines', 'Watch: POS-assisted closes cost 20 bps; high-risk/ACH pay 50% net share'],
+      need: null
     },
     'square': {
       source: 'Square reseller program',
@@ -919,10 +1006,11 @@ window.HUB_DATA = {
       need: 'PAYS agent Schedule A — residual split on the dual-pricing program.'
     },
     'sumup': {
-      source: 'SumUp reseller',
-      quote: 'Hardware at our listed prices (POS Lite $499, Terminal $249, Solo $54); SumUp’s published rate applies until processing moves to our rails.',
-      make: ['Hardware margin', 'Statement-beat conversion later = processing residual'],
-      need: 'SumUp reseller margin sheet.'
+      source: 'SumUp reseller program',
+      sched: 'sumup',
+      quote: 'You set the merchant\u2019s processing price above IC + 0.05% (per-item waived). SaaS at partner pricing (Cloud POS $99\u2013$289/mo tiers); hardware marked up over Schedule A costs \u2014 never below them. Small merchants can also start on SumUp\u2019s published simple rates.',
+      make: ['80% Transaction Fee Commission on processing margin (tiers to 90%) \u2014 you earn 50% of the Schedule A', '20% SaaS commission on new-merchant subscriptions \u2014 your half is 10% of the sub', 'Hardware markup over Schedule A cost (discounting below cost comes out of your pocket)'],
+      need: null
     },
     'terminal-gateway': {
       source: 'Solutions in Payments paper (PAX / Dejavoo / Valor + NMI / FluidPay / Authorize.net / iPOSPays)',
