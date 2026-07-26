@@ -880,10 +880,10 @@ window.HUB_DATA = {
       need: null
     },
     'clover': {
-      source: 'Clover via our ISO paper',
-      quote: 'Processing quoted by us on the Clover file — dual pricing available; $5/mo Clover platform fee per location passes through.',
-      make: ['Hardware margin (placement spread or purchase markup)', 'Software plan margin', 'Processing residual per Schedule A'],
-      need: 'Clover Schedule A — hardware cost sheet + processing buy rates for Clover deals.'
+      source: 'NextPay\u2019s white-labeled Clover program (house paper)',
+      quote: 'Processing quoted by us on our Clover paper \u2014 dual pricing available; $5/mo Clover platform fee per location passes through. Ask Dom whether the deal qualifies for the Clover Advantage program before quoting.',
+      make: ['Processing residual per the Clover Schedule A \u2014 you earn 50% of the Schedule A', 'Hardware margin (placement spread or purchase markup)', 'Software plan margin', 'Clover Advantage program incentives where the deal qualifies'],
+      need: 'Clover Schedule A (buy rates + Clover Advantage program terms) \u2014 on its way from Dom; numbers drop in the moment it lands.'
     },
     'square': {
       source: 'Square reseller program',
