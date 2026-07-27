@@ -482,7 +482,7 @@ window.HUB_DATA = {
       ],
       rules: [
         'Card-on-file for balances after adjudication → the killer workflow; needs stored-credential consent language.',
-        'Surcharging patient payments is regulated territory in some states — quote standard or dual-pricing-with-care; check with Dom.',
+        'Surcharging patient payments is regulated territory in some states — quote standard or dual-pricing-with-care; check with the NextPay team in Deal Desk.',
         'Integrations with practice management (Dentrix etc.) → ask before promising; Next2Pay rails underneath is the usual answer.'
       ],
       pricing: 'Steady CNP + card-present mix; statements typically show mid-market processors with junk fees (PCI, statement fees) — line-item beats are easy to show.',
@@ -615,7 +615,7 @@ window.HUB_DATA = {
       'Build the quote in the Proposal Studio. Selling NextLink (client automation outreach) too? Its per-seat proposal has its own section there.',
       'Underwriting docs (all required): last 3 months processing statements · last 3 months business bank statements · Articles of Incorporation · owner ID(s) · bank account details · Plaid connection · Veriff completion. Plus menu/inventory or invoice workflow details.',
       'Email the packaged deal to dom@nextpaypos.com (CC payments@ + alexander@) — subject "Next2Pay deal — {DBA}".',
-      'Onboarding and install are run in-house — coordinate dates directly with Dom.'
+      'Onboarding and install are run in-house — coordinate dates with the NextPay team in the deal’s Deal Desk thread.'
     ]},
     'terminal-gateway': { label: 'Standalone terminal (+ gateway)', steps: [
       'Pick terminal (PAX / Dejavoo / Valor) and file build: dual pricing or standard; tip adjust; auto-batch time.',
@@ -909,7 +909,7 @@ window.HUB_DATA = {
       label: 'SumUp reseller program',
       cols: ['Rate / cost'],
       covers: 'SumUp reseller paper — Cloud POS SaaS, kiosk, eCommerce and hardware resale, with processing commission on merchants you place. Hardware cannot be discounted below the Schedule A cost.',
-      splitNote: 'Costs come off the top; you earn 50% of the net payout — ≈ 40% of the processing margin you quote above cost (steps up on large books — ask Dom) and ≈ 10% of new-merchant SaaS subscriptions. Hardware markup follows the same split.',
+      splitNote: 'Costs come off the top; you earn 50% of the net payout — ≈ 40% of the processing margin you quote above cost (steps up on large books — ask the NextPay team) and ≈ 10% of new-merchant SaaS subscriptions. Hardware markup follows the same split.',
       floor: 'Processing buy rate = interchange + 0.05%, per-transaction fee waived. You set the merchant\u2019s pricing — your share ≈ 40% of whatever you quote above cost. SaaS subscriptions on new merchants pay you ≈ 10% of the sub; existing/non-transactional merchants pay no SaaS share.',
       example: 'Example: $20,000/mo boutique quoted at IC + 0.50% + $0.08 (400 txns): margin ≈ $122/mo → your share ≈ $49/mo. Add Cloud POS w/ Connect Lite at $99/mo retail → your share ≈ $10/mo. Plus hardware markup over the costs below.',
       groups: [
@@ -983,7 +983,7 @@ window.HUB_DATA = {
     'clover': {
       source: 'NextPay\u2019s white-labeled Clover program (house paper, Fiserv application)',
       sched: 'clover',
-      quote: 'Quote dual pricing or IC+ above the Clover cost floor (IC + 0.03% + $0.035/auth). $5/mo Clover platform fee per MID passes through. Hardware at wholesale per the pricing sheet \u2014 mark up per deal. Ask Dom whether the deal qualifies for the Clover Advantage program before quoting.',
+      quote: 'Quote dual pricing or IC+ above the Clover cost floor (IC + 0.03% + $0.035/auth). $5/mo Clover platform fee per MID passes through. Hardware at wholesale per the pricing sheet \u2014 mark up per deal. Ask in Deal Desk whether the deal qualifies for the Clover Advantage program before quoting.',
       make: ['Your share \u2248 45% of the margin you create on standard Clover accounts', 'Hardware markup over wholesale (Duo bundle $2,058.80 \u00b7 Solo $1,734.80 \u00b7 Mini $917.10 \u00b7 Flex Gen 4 $738.11 + deployment)', 'Built-in spreads: PCI, statement, compliance lines', 'Watch: POS-assisted closes trim your residual 20 bps; high-risk/ACH pay roughly half the standard share'],
       need: null
     },
@@ -1043,7 +1043,7 @@ window.HUB_DATA = {
       need: null
     },
     'high-risk': {
-      source: 'Solutions in Payments high-risk book, underwritten per file via Dom',
+      source: 'Solutions in Payments high-risk book, underwritten per file — work it with the NextPay team in Deal Desk',
       sched: 'sip',
       quote: 'Never quote first — pricing comes back from underwriting per file, priced above the SIP high-risk floor (IC + 0.25% BIN + $0.10/txn + risk monitoring 0.15%).',
       make: ['Your share ≈ 30% of the margin over the SIP high-risk schedule — pricing set at approval, per file'],
