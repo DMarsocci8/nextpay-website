@@ -146,7 +146,7 @@ window.HUB_DATA = {
       ],
       rules: [
         'High single tickets → disclose max ticket on the app; set realistic limits so payouts are not held.',
-        'Phone orders/deposits → Next2Pay virtual terminal (house rails).',
+        'Phone orders/deposits → Next2Pay virtual terminal (linked2pay rails).',
         'Repairs pipeline → invoicing add-on or QuickBooks integration.'
       ],
       pricing: 'High average ticket → interchange-plus shines; per-item fees are irrelevant, basis points are everything. Statements from jewelry stores usually show inflated keyed rates — easy beat.',
@@ -723,7 +723,7 @@ window.HUB_DATA = {
     tabs:      { boosts: [{ m: 'skytab|shift4', d: 2, why: 'Fast tabs with card pre-auth' }],
                  note: 'Pre-auth tabs is the killer question at bars — if their current system can’t, we win.' },
     online:    { boosts: [{ m: 'square', d: 1, why: 'POS + online store one ecosystem' }],
-                 stack: [{ slot: 'gateway', v: 'Next2Pay gateway (house rails)', why: 'E-commerce / card-not-present rail' }] },
+                 stack: [{ slot: 'gateway', v: 'Next2Pay gateway (linked2pay rails)', why: 'E-commerce / card-not-present rail' }] },
     invoices:  { stack: [{ slot: 'invoicing', v: 'Next2Pay Invoicing', why: 'They invoice their customers — Next2Pay is the play. (If they run a full POS, invoicing is usually a feature there; Next2Pay is for true invoice-first businesses or one-off simple invoicing needs.)' }] },
     recurring: { stack: [{ slot: 'invoicing', v: 'Next2Pay recurring billing', why: 'House recurring — card-on-file, retries, account updater rescues failing cards' }],
                  note: 'Quantify recovered failed payments — that story beats any rate pitch.' },
