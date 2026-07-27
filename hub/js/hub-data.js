@@ -135,13 +135,14 @@ window.HUB_DATA = {
         'Deposits, layaway, custom orders — how do you track what\'s owed and what\'s in the safe?',
         'Repairs: how do you track a piece from intake to pickup, and how do customers pay for them?',
         'Phone orders and out-of-state buyers — how do you take those cards today?',
-        'Do you offer financing on big pieces? (We have a financing referral lane.)',
+        'Do you offer financing on big pieces? (NextFund — our financing lane — is the answer for anything finance or lending.)',
         'How do you handle appraisals and insurance work — invoiced, or paid at the counter?',
         'Who reconciles the register against the case inventory, and how often?'
       ],
       primary: { name: 'Clover', why: 'Clean countertop presence, invoices and deposits handled, strong for high-ticket keyed + card-present mix.' },
       alts: [
         { name: 'Quantic', why: 'Swan station with premium inventory module for serious multi-case stores.' },
+        { name: 'Next2Pay virtual terminal', why: 'Phone orders, deposits and layaway payments — house rails, no countertop hardware needed.' },
         { name: 'Valor terminal + gateway', why: 'Simple high-ticket terminal play when they keep their own books.' }
       ],
       rules: [
@@ -310,6 +311,7 @@ window.HUB_DATA = {
       primary: { name: 'Clover', why: 'Counter + scale + label support, invoices for wholesale, familiar for staff.' },
       alts: [
         { name: 'SkyTab', why: 'Digital scale ($39.99/mo) + label printer ($19.99/mo) on placement — $0 upfront for a full deli line.' },
+        { name: 'Next2Pay Invoicing', why: 'Wholesale accounts and catering/cake deposits — invoices and card-on-file on our rails.' },
         { name: 'Quantic', why: 'PDN certified scale ($549) + label printer, own-hardware route.' }
       ],
       rules: [
@@ -357,6 +359,7 @@ window.HUB_DATA = {
       ],
       primary: { name: 'Square', why: 'Appointments + POS + no-show protection in one; booth renters can run their own accounts.' },
       alts: [
+        { name: 'Next2Pay recurring', why: 'Memberships, packages and card-on-file no-show protection — house rails alongside any front desk.' },
         { name: 'Clover', why: 'Services Growth plan with appointments via app market; placement mode for $0 down.' },
         { name: 'SumUp', why: 'Solo reader ($54) per chair for independent stylists — dead simple.' }
       ],
@@ -376,7 +379,7 @@ window.HUB_DATA = {
         'How do estimates go out — and how do customers approve and pay? Could a text link close it same-day?',
         'Deposits before big jobs — how do you take them?',
         'Maintenance plans or recurring contracts — billed how? Cards on file?',
-        'Big tickets: do financing conversations come up? (We have a financing lane.)',
+        'Big tickets: do financing conversations come up? (NextFund is our lane for that.)',
         'How many office hours a week go to invoicing and chasing payments?'
       ],
       primary: { name: 'Next2Pay Invoicing', why: 'Our house invoicing platform — estimates, invoices, text-to-pay and recurring on our rails. Invoice-type deals lead with Next2Pay, every time.' },
@@ -387,7 +390,7 @@ window.HUB_DATA = {
       rules: [
         'Already on ServiceTitan/Housecall → integrate Next2Pay payments underneath, do not replace the FSM.',
         'Recurring maintenance contracts → Next2Pay recurring billing is the hook.',
-        'Big tickets → mention business financing referrals (NextPay financing).'
+        'Big tickets → the recommendation for anything finance or lending is NextFund.'
       ],
       pricing: 'Keyed-over-phone is where they bleed today — moving to text-to-pay links and tap-in-field drops their effective rate immediately. Surcharge/dual pricing widely accepted in trades.',
       placements: ['invoicing-gateway', 'terminal-gateway']
@@ -547,6 +550,11 @@ window.HUB_DATA = {
       { name: 'Field Work', tag: 'Field service alternative', sell: ['Job management + payments'], link: 'https://nextpaypos.com/invoicing' },
       { name: 'LQPay', tag: 'Billing & statements', sell: ['Healthcare-friendly workflows'], link: 'https://nextpaypos.com/invoicing' },
       { name: 'QuickBooks integrations', tag: 'Payments inside QB', sell: ['Invoices paid straight into the books'], link: 'https://nextpaypos.com/integrations' }
+    ],
+    services: [
+      { name: 'NextFund — Business Financing', tag: 'The recommendation for ANYTHING finance or lending', sell: ['Working capital, equipment loans, merchant cash advances', 'Fast approvals off processing history', 'A second commission riding alongside your processing deal'], link: 'https://nextpaypos.com/financing' },
+      { name: 'NextLink — Client Automation & Outreach', tag: 'House outreach platform, sold per seat', sell: ['Automated campaigns + follow-up sequences that never forget', 'Proposal ready to build in the Proposal Studio', 'Internal seat pricing on the Pricing page'], link: 'https://nextpaypos.com/outreach' },
+      { name: 'Merchant Rewards', tag: 'Sweetener on every processing deal', sell: ['Merchants earn on the volume they already process', 'Stacks with dual pricing', 'Pitch it during the statement review'], link: 'https://nextpaypos.com/merchant-rewards' }
     ]
   },
 
@@ -660,7 +668,8 @@ window.HUB_DATA = {
     recurring: 'Recurring billing / memberships',
     field:     'Techs or crews collect in the field',
     appts:     'Appointment booking / no-show pain',
-    fsm:       'Already runs shop/practice software'
+    fsm:       'Already runs shop/practice software',
+    funding:   'Needs funding / working capital'
   },
 
   /* Signals most worth probing per industry (others behind "show all") */
@@ -668,18 +677,18 @@ window.HUB_DATA = {
     'convenience':          ['ebt', 'scan', 'age', 'scale', 'cash', 'zerofee', 'multi', 'budget'],
     'liquor':               ['age', 'cash', 'zerofee', 'multi', 'ownhw'],
     'boutique':             ['online', 'multi', 'budget', 'zero_down'],
-    'jewelry':              ['highticket', 'invoices', 'phone', 'online'],
+    'jewelry':              ['highticket', 'invoices', 'phone', 'online', 'funding'],
     'specialty-retail':     ['online', 'multi', 'ownhw', 'budget'],
-    'fine-dining':          ['tabs', 'phone', 'olo', 'multi', 'zero_down', 'ownhw'],
+    'fine-dining':          ['tabs', 'phone', 'olo', 'multi', 'zero_down', 'ownhw', 'funding'],
     'pizzerias':            ['phone', 'delivery', 'olo', 'zerofee', 'cash', 'kiosk'],
     'food-trucks':          ['budget', 'zero_down', 'zerofee', 'kiosk'],
     'bars':                 ['tabs', 'age', 'cash', 'zerofee', 'kiosk'],
     'qsr-cafes':            ['kiosk', 'olo', 'zerofee', 'budget', 'multi'],
     'bakeries':             ['scale', 'invoices', 'phone', 'olo'],
-    'auto-repair':          ['highticket', 'invoices', 'fsm', 'zerofee', 'field'],
+    'auto-repair':          ['highticket', 'invoices', 'fsm', 'zerofee', 'field', 'funding'],
     'salons':               ['appts', 'budget', 'multi', 'recurring'],
-    'home-services':        ['field', 'invoices', 'recurring', 'fsm', 'highticket'],
-    'fitness':              ['recurring', 'fsm', 'multi'],
+    'home-services':        ['field', 'invoices', 'recurring', 'fsm', 'highticket', 'funding'],
+    'fitness':              ['recurring', 'fsm', 'multi', 'funding'],
     'professional-services':['invoices', 'highticket', 'recurring', 'online'],
     'cleaning':             ['recurring', 'invoices', 'field', 'budget'],
     'healthcare':           ['appts', 'recurring', 'fsm', 'highticket'],
@@ -724,7 +733,9 @@ window.HUB_DATA = {
     field:     { stack: [{ slot: 'terminal', v: 'PAX A920 Pro or Dejavoo P8 (mobile)', why: 'Crews collecting in the field' }, { slot: 'invoicing', v: 'Next2Pay Invoicing (text-to-pay)', why: 'Estimates → invoice → pay-by-text' }] },
     appts:     { boosts: [{ m: 'square', d: 2, why: 'Appointments + card-on-file no-show protection' }, { m: 'clover', d: 1, why: 'Appointments via app market' }] },
     fsm:       { note: 'They already run shop/practice software — sell the payments integration, do NOT pitch ripping out their workflow.',
-                 stack: [{ slot: 'gateway', v: 'Next2Pay rails integrated with their existing software', why: 'Integration play, not a POS swap' }] }
+                 stack: [{ slot: 'gateway', v: 'Next2Pay rails integrated with their existing software', why: 'Integration play, not a POS swap' }] },
+    funding:   { stack: [{ slot: 'addon', v: 'NextFund — business financing referral', why: 'Anything finance or lending: the recommendation is NextFund. Working capital, equipment loans, cash advances — package the intro to Dom.' }],
+                 note: 'Financing talk on a deal is a second commission: NextFund referrals ride alongside the processing deal.' }
   },
 
   /* ---------- What to say — talk tracks per step ---------- */

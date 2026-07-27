@@ -32,7 +32,7 @@
 <script>
 (function () {
   const esc = (s) => String(s == null ? '' : s).replace(/[<>&"]/g, c => ({'<':'&lt;','>':'&gt;','&':'&amp;','"':'&quot;'}[c]));
-  const SECS = [['pos', 'POS Systems'], ['terminals', 'Credit Card Terminals'], ['gateways', 'Online Gateways'], ['invoicing', 'Invoicing & Field Service']];
+  const SECS = [['pos', 'POS Systems'], ['terminals', 'Credit Card Terminals'], ['gateways', 'Online Gateways'], ['invoicing', 'Invoicing & Field Service'], ['services', 'Business Services — NextFund, NextLink & Rewards']];
   document.getElementById('lib').innerHTML = SECS.map(([k, label]) =>
     '<h3 class="mt24 mb8">' + label + '</h3><div class="grid3">' +
     HUB_DATA.products[k].map(p =>
