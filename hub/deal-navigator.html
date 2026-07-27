@@ -177,7 +177,8 @@
 
     /* one click fills the stack from the scored recommendation */
     const PLACE_GUESS = [
-      [/next2pay|chively|nextpay pos/i, 'next2pay'],
+      [/chively|nextpay pos/i, 'chively'],
+      [/next2pay/i, 'next2pay'],
       [/skytab|shift4/i, 'skytab'], [/clover/i, 'clover'], [/square/i, 'square'],
       [/quantic/i, 'quantic'], [/korona/i, 'korona'], [/nrs/i, 'nrs'], [/pays/i, 'pays'],
       [/sumup/i, 'sumup'], [/terminal|pax|dejavoo|valor/i, 'terminal-gateway'],
