@@ -1,0 +1,224 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>NextLink — Client Engagement &amp; B2B Outreach, Automated</title>
+<meta name="description" content="NextLink turns outreach into a scalable client-engagement engine — LinkedIn, email, voicemail drops and calls in one system, with human-like AI personalization. Book a demo.">
+<link rel="canonical" href="https://nextlinks.co/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="NextLink">
+<meta property="og:title" content="NextLink — Client Engagement &amp; B2B Outreach, Automated">
+<meta property="og:description" content="Automate follow-up, unify conversations, and grow your network across LinkedIn, email, voicemail drops and calls — without adding headcount.">
+<meta property="og:url" content="https://nextlinks.co/">
+<meta property="og:image" content="https://www.nextpaypos.com/assets/og/nextpay-og.png">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="/assets/icons/favicon.ico">
+<link rel="apple-touch-icon" href="/assets/icons/apple-touch-icon-180.png">
+<link rel="stylesheet" href="css/nextpay.css">
+<style>
+body{background:#fff}
+.nl-bar{position:sticky;top:0;z-index:60;background:var(--navy);border-bottom:1px solid rgba(255,255,255,.10)}
+.nl-bar-in{max-width:var(--maxw);margin:0 auto;padding:0 28px;height:70px;display:flex;align-items:center;gap:18px}
+.nl-bar img{height:36px;width:auto;display:block;flex:none}
+.nl-bar .right{margin-left:auto;display:flex;align-items:center;gap:18px}
+.nl-bar .right a.plain{color:#cdd8e2;font-weight:600;font-size:14.5px;white-space:nowrap}
+.nl-bar .right a.plain:hover{color:#fff}
+.nl-hero{background:linear-gradient(180deg,var(--navy),#10293d);color:#fff;position:relative;overflow:hidden}
+.nl-hero::after{content:"";position:absolute;right:-140px;top:-160px;width:560px;height:560px;border-radius:50%;background:radial-gradient(circle,rgba(31,194,166,.22),transparent 70%)}
+.nl-hero .wrap{position:relative;z-index:2;padding:64px 0 74px}
+.nl-hgrid{display:grid;grid-template-columns:1.05fr .95fr;gap:52px;align-items:center}
+@media(max-width:960px){.nl-hgrid{grid-template-columns:1fr}}
+.nl-hero h1{font-size:clamp(36px,4.6vw,58px);line-height:1.04;color:#fff;letter-spacing:-.02em}
+.nl-hero h1 em{color:var(--teal-bright);font-style:normal}
+.nl-hero .lead{color:#c4d0db;margin-top:20px;max-width:560px;font-size:17.5px;line-height:1.6}
+.nl-cta{display:flex;gap:13px;flex-wrap:wrap;margin-top:30px}
+.nl-chips{display:flex;flex-wrap:wrap;gap:9px;margin-top:26px}
+.nl-chips span{display:inline-flex;align-items:center;gap:7px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.16);border-radius:999px;padding:8px 14px;font-size:13.5px;font-weight:700;color:#eaf1f6}
+.nl-chips svg{width:14px;height:14px;color:var(--teal-bright)}
+/* hero mock: outreach sequence card */
+.nl-mock{background:#fff;color:var(--ink);border-radius:18px;box-shadow:0 30px 70px rgba(0,0,0,.4);padding:22px 24px;max-width:440px;margin-left:auto}
+.nl-mock .mh{font-size:13px;font-weight:800;letter-spacing:.06em;text-transform:uppercase;color:var(--slate-2);margin-bottom:14px}
+.nl-step{display:flex;gap:12px;align-items:flex-start;padding:11px 0;border-bottom:1px solid var(--line)}
+.nl-step:last-child{border-bottom:0}
+.nl-step .ic{width:34px;height:34px;border-radius:10px;background:rgba(20,161,140,.1);color:var(--teal-dark);display:grid;place-items:center;flex:none}
+.nl-step .ic svg{width:17px;height:17px}
+.nl-step b{font-size:14.5px;display:block}
+.nl-step span{font-size:12.5px;color:var(--slate)}
+.nl-step .st{margin-left:auto;font-size:11.5px;font-weight:800;border-radius:999px;padding:4px 10px;flex:none}
+.nl-step .st.done{background:rgba(20,161,140,.12);color:var(--teal-dark)}
+.nl-step .st.q{background:var(--bg-soft);color:var(--slate)}
+.nl-mock .foot{margin-top:14px;background:var(--navy);color:#fff;border-radius:11px;padding:12px 15px;font-size:13.5px;display:flex;gap:9px;align-items:center}
+.nl-mock .foot svg{width:16px;height:16px;color:var(--teal-bright);flex:none}
+.nl-sec{padding:70px 0}
+.nl-sec.soft{background:var(--bg-soft)}
+.nl-head{max-width:720px;margin:0 auto 44px;text-align:center}
+.nl-head h2{font-size:clamp(27px,3.3vw,40px);letter-spacing:-.02em}
+.nl-head p{margin-top:13px;color:var(--slate);font-size:17px;line-height:1.6}
+.nl-grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+@media(max-width:900px){.nl-grid3{grid-template-columns:1fr 1fr}}
+@media(max-width:620px){.nl-grid3{grid-template-columns:1fr}}
+.nl-card{background:#fff;border:1px solid var(--line);border-radius:16px;padding:24px;box-shadow:var(--shadow-sm)}
+.nl-card .ic{width:44px;height:44px;border-radius:12px;background:rgba(20,161,140,.1);color:var(--teal-dark);display:grid;place-items:center;margin-bottom:14px}
+.nl-card .ic svg{width:21px;height:21px}
+.nl-card h4{font-size:17.5px;margin-bottom:7px}
+.nl-card p{font-size:14.5px;color:var(--slate);line-height:1.55}
+.nl-steps{display:grid;grid-template-columns:repeat(4,1fr);gap:22px}
+@media(max-width:900px){.nl-steps{grid-template-columns:1fr 1fr}}
+@media(max-width:620px){.nl-steps{grid-template-columns:1fr}}
+.nl-s .n{width:52px;height:52px;border-radius:14px;background:var(--teal);color:#fff;font-size:22px;font-weight:800;display:flex;align-items:center;justify-content:center;box-shadow:0 8px 20px rgba(20,161,140,.32);margin-bottom:13px}
+.nl-s h4{font-size:17px;margin-bottom:6px}
+.nl-s p{font-size:14px;color:var(--slate);line-height:1.55}
+.nl-pain{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;max-width:980px;margin:0 auto}
+@media(max-width:900px){.nl-pain{grid-template-columns:1fr}}
+.nl-pain .pc{background:#fff;border:1px solid var(--line);border-left:3px solid #f2a33c;border-radius:14px;padding:20px 22px;font-size:14.5px;color:var(--ink);line-height:1.55;box-shadow:var(--shadow-sm)}
+.nl-trust{background:var(--navy);color:#fff}
+.nl-trust .wrap{padding:56px 0;display:flex;align-items:center;justify-content:space-between;gap:30px;flex-wrap:wrap}
+.nl-trust h2{color:#fff;font-size:clamp(23px,2.8vw,32px);letter-spacing:-.02em;max-width:600px}
+.nl-trust p{color:#c4d0db;margin-top:10px;max-width:600px;font-size:15.5px;line-height:1.6}
+.nl-form-wrap{display:grid;grid-template-columns:1fr 1fr;gap:46px;align-items:start}
+@media(max-width:900px){.nl-form-wrap{grid-template-columns:1fr}}
+.nl-form{background:#fff;border:1px solid var(--line);border-radius:18px;padding:30px;box-shadow:var(--shadow)}
+.nl-form h3{font-size:21px;margin-bottom:6px}
+.nl-form .fs{font-size:14px;color:var(--slate);margin-bottom:18px}
+.nl-form label{display:block;font-size:13px;font-weight:700;color:var(--navy);margin:14px 0 6px}
+.nl-form input,.nl-form textarea{width:100%;border:1.5px solid var(--line);border-radius:10px;padding:12px 14px;font-family:inherit;font-size:15px;color:var(--ink)}
+.nl-form input:focus,.nl-form textarea:focus{outline:none;border-color:var(--teal)}
+.nl-foot{background:var(--navy);color:#9fb1c2;padding:28px 0;font-size:13.5px}
+.nl-foot .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;align-items:center}
+.nl-foot a{color:#cdd8e2;font-weight:600}
+.nl-foot a:hover{color:#fff}
+</style>
+</head>
+<body>
+
+<div class="nl-bar"><div class="nl-bar-in">
+  <a href="/" aria-label="NextLink home"><img src="assets/logos/nextlink-2tone.svg" alt="NextLink"></a>
+  <div class="right">
+    <a class="plain" href="https://www.nextpaypos.com" target="_blank" rel="noopener">A NextPay company</a>
+    <a class="btn btn-primary btn-sm" href="#demo">Book a demo</a>
+  </div>
+</div></div>
+
+<header class="nl-hero">
+  <div class="wrap">
+    <div class="nl-hgrid">
+      <div>
+        <h1>Outreach that runs itself.<br><em>Relationships that don't.</em></h1>
+        <p class="lead">NextLink turns outbound into a scalable client-engagement engine — automate follow-up, unify every conversation, and grow your professional network across LinkedIn, email, voicemail drops and calls, without adding headcount.</p>
+        <div class="nl-cta">
+          <a class="btn btn-primary" href="#demo">Book a demo <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+          <a class="btn btn-ghost" href="#how">See how it works</a>
+        </div>
+        <div class="nl-chips">
+          <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg>LinkedIn</span>
+          <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg>Email</span>
+          <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg>Voicemail drops</span>
+          <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg>Built-in dialer</span>
+        </div>
+      </div>
+      <div>
+        <div class="nl-mock" aria-hidden="true">
+          <div class="mh">Outreach sequence · Active</div>
+          <div class="nl-step"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-4 0v7h-4v-7a6 6 0 016-6zM2 9h4v12H2z"/><circle cx="4" cy="4" r="2"/></svg></div><div><b>LinkedIn connect</b><span>Personalized invite sent</span></div><span class="st done">Done</span></div>
+          <div class="nl-step"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M22 7l-10 6L2 7"/></svg></div><div><b>Email follow-up</b><span>Sent · opened 2×</span></div><span class="st done">Done</span></div>
+          <div class="nl-step"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.9v3a2 2 0 01-2.2 2 19.8 19.8 0 01-8.6-3.1 19.5 19.5 0 01-6-6A19.8 19.8 0 012.1 4.2 2 2 0 014.1 2h3a2 2 0 012 1.7c.1 1 .4 2 .7 2.9a2 2 0 01-.5 2.1L8.1 10a16 16 0 006 6l1.3-1.3a2 2 0 012.1-.4c.9.3 1.9.5 2.9.7a2 2 0 011.6 2z"/></svg></div><div><b>Voicemail drop</b><span>Scheduled · tomorrow 10:00a</span></div><span class="st q">Queued</span></div>
+          <div class="foot"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 13l4 4L19 7"/></svg><b>Meeting booked</b>&nbsp;— auto-replied in 4 min · +312 connections this month</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- PAIN -->
+<section class="nl-sec">
+  <div class="wrap">
+    <div class="nl-head"><span class="eyebrow" style="justify-content:center">Sound familiar?</span><h2>Outreach matters — but the manual work keeps getting in the way</h2><p>Your team is capable, yet buried in busywork. The bottleneck isn't effort — it's the system behind the effort.</p></div>
+    <div class="nl-pain">
+      <div class="pc"><b>Follow-ups slip through the cracks.</b> Manual reminders, scattered notes, and momentum that dies every time the week gets busy.</div>
+      <div class="pc"><b>Conversations live in too many places.</b> LinkedIn, email, SMS, calls — and nothing is unified, so nobody sees the whole thread.</div>
+      <div class="pc"><b>Growth means more hours or more hires.</b> Every outbound push depends on headcount — and hiring still doesn't fix the inefficiency.</div>
+    </div>
+  </div>
+</section>
+
+<!-- FEATURES -->
+<section class="nl-sec soft">
+  <div class="wrap">
+    <div class="nl-head"><span class="eyebrow" style="justify-content:center">Meet NextLink</span><h2>Your unfair advantage for client engagement &amp; B2B outreach</h2><p>A dedicated engagement layer for outbound, follow-up and relationship growth — automation with personalization, so multi-channel campaigns actually feel human.</p></div>
+    <div class="nl-grid3">
+      <div class="nl-card"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16v12H5.2L4 17.2V4z"/><path d="M8 20h12v-8"/></svg></div><h4>Multichannel sequences</h4><p>LinkedIn, email, voicemail drops and calls in one campaign — with smart delays, triggers and conditions.</p></div>
+      <div class="nl-card"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2a7 7 0 017 7c0 2.4-1.2 4.1-2.6 5.4-.8.8-1.4 1.9-1.4 3.1V19a2 2 0 01-2 2h-2a2 2 0 01-2-2v-1.5c0-1.2-.6-2.3-1.4-3.1C6.2 13.1 5 11.4 5 9a7 7 0 017-7z"/></svg></div><h4>Human-like AI personalization</h4><p>Messages written and adapted per prospect — based on their behavior, role and engagement. No copy-paste blasts.</p></div>
+      <div class="nl-card"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg></div><h4>One unified inbox</h4><p>Every conversation from every channel in one place — so nothing gets lost and anyone can pick up the thread.</p></div>
+      <div class="nl-card"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.9v3a2 2 0 01-2.2 2 19.8 19.8 0 01-8.6-3.1 19.5 19.5 0 01-6-6A19.8 19.8 0 012.1 4.2 2 2 0 014.1 2h3a2 2 0 012 1.7c.1 1 .4 2 .7 2.9a2 2 0 01-.5 2.1L8.1 10a16 16 0 006 6l1.3-1.3a2 2 0 012.1-.4c.9.3 1.9.5 2.9.7a2 2 0 011.6 2z"/></svg></div><h4>Built-in dialer &amp; voicemail drops</h4><p>Call from the same system, drop pre-recorded voicemails at scale, and keep recordings on the contact record.</p></div>
+      <div class="nl-card"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 12a8 8 0 0114-5l2 2M20 12a8 8 0 01-14 5l-2-2M17 4v5h-5M7 20v-5h5"/></svg></div><h4>Automatic follow-up</h4><p>The system nurtures every lead on schedule and hands you qualified prospects ready to talk.</p></div>
+      <div class="nl-card"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 3v18h18"/><path d="M7 15l4-4 3 3 5-6"/></svg></div><h4>Reporting that shows what works</h4><p>Connections added, replies, meetings booked — see which sequences and channels actually drive growth.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section class="nl-sec" id="how">
+  <div class="wrap">
+    <div class="nl-head"><span class="eyebrow" style="justify-content:center">Ease of use</span><h2>From zero to booked meetings in four steps</h2><p>No new habits and no heavy onboarding — your first multichannel campaign can be live in about 15 minutes.</p></div>
+    <div class="nl-steps">
+      <div class="nl-s"><div class="n">1</div><h4>Connect your channels</h4><p>Sync LinkedIn, email, voicemail and calls — with a built-in dialer. Setup takes about 15 minutes.</p></div>
+      <div class="nl-s"><div class="n">2</div><h4>Let AI personalize</h4><p>Human-like AI writes and adapts your messages for each prospect based on behavior, title and engagement.</p></div>
+      <div class="nl-s"><div class="n">3</div><h4>Build smart sequences</h4><p>Customize workflows or launch a pre-built multichannel sequence with smart delays, triggers and conditions.</p></div>
+      <div class="nl-s"><div class="n">4</div><h4>Book more meetings</h4><p>The system follows up, nurtures leads, and hands you qualified prospects ready to talk.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- TRUST -->
+<section class="nl-trust">
+  <div class="wrap">
+    <div>
+      <span class="eyebrow" style="color:var(--teal-bright)">Who's behind it</span>
+      <h2>Built by NextPay — the business-solutions company trusted by merchants nationwide</h2>
+      <p>NextLink is part of the NextPay family: payments, POS, payroll, funding and growth tools for thousands of businesses. One partner, real people, and support that actually picks up.</p>
+    </div>
+    <a class="btn btn-primary" href="https://www.nextpaypos.com" target="_blank" rel="noopener" style="flex:none">Explore NextPay <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+  </div>
+</section>
+
+<!-- DEMO FORM -->
+<section class="nl-sec soft" id="demo">
+  <div class="wrap">
+    <div class="nl-form-wrap">
+      <div>
+        <span class="eyebrow">See it live</span>
+        <h2 style="font-size:clamp(27px,3.2vw,40px);margin-top:10px">Map your NextLink workflow</h2>
+        <p style="color:var(--slate);font-size:16.5px;line-height:1.65;margin-top:14px">Tell us how you do outreach today and we'll show you exactly what NextLink would automate — your channels, your sequences, your follow-up. A live walkthrough, not a slideshow.</p>
+        <div class="nl-chips" style="margin-top:22px">
+          <span style="background:#fff;border-color:var(--line);color:var(--navy)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" style="color:var(--teal-dark)"><path d="M5 13l4 4L19 7"/></svg>15-minute setup</span>
+          <span style="background:#fff;border-color:var(--line);color:var(--navy)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" style="color:var(--teal-dark)"><path d="M5 13l4 4L19 7"/></svg>No headcount needed</span>
+          <span style="background:#fff;border-color:var(--line);color:var(--navy)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" style="color:var(--teal-dark)"><path d="M5 13l4 4L19 7"/></svg>Demo on your use case</span>
+        </div>
+      </div>
+      <form class="nl-form" data-subject="NextLink demo request (nextlinks.co)">
+        <h3>Book your NextLink demo</h3>
+        <p class="fs">We'll reach out within one business day.</p>
+        <label>Full name</label><input required name="name" placeholder="Full name">
+        <label>Business</label><input required name="business" placeholder="Business name">
+        <label>Email</label><input required type="email" name="email" placeholder="Email address">
+        <label>Phone</label><input required type="tel" name="phone" placeholder="Phone number">
+        <label>How do you do outreach today?</label><textarea name="message" rows="3" placeholder="Channels you use, team size, what's slowing you down…"></textarea>
+        <button class="btn btn-primary btn-block" type="submit" style="margin-top:20px">Book my demo <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
+      </form>
+    </div>
+  </div>
+</section>
+
+<footer class="nl-foot">
+  <div class="wrap">
+    <span>© NextLink · A <a href="https://www.nextpaypos.com" target="_blank" rel="noopener">NextPay</a> company</span>
+    <span><a href="#demo">Book a demo</a> · <a href="https://www.nextpaypos.com/contact" target="_blank" rel="noopener">Contact</a></span>
+  </div>
+</footer>
+
+<script>
+document.querySelectorAll("form.nl-form").forEach(function(f){f.addEventListener("submit",function(e){e.preventDefault();var fd=new FormData(f);var nm=(fd.get("name")||"there").split(" ")[0];fd.append("_subject",f.getAttribute("data-subject"));fd.append("_cc","payments@nextpaypos.com,alexander@nextpaypos.com");fd.append("_template","table");var b=f.querySelector("button[type=submit]");if(b){b.disabled=true;b.textContent="Sending…";}function done(){f.innerHTML='<div style="text-align:center;padding:22px 6px"><div style="width:64px;height:64px;border-radius:50%;background:rgba(20,161,140,.12);display:grid;place-items:center;color:var(--teal-dark);margin:0 auto 16px"><svg viewBox="0 0 24 24" width="34" height="34" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 13l4 4L19 7"/></svg></div><h3>Thanks, '+nm+' — you’re on the list.</h3><p style="font-size:15px;color:var(--slate);margin-top:10px">A NextLink specialist will reach out within one business day to schedule your demo.</p></div>';}fetch("https://formsubmit.co/ajax/dom@nextpaypos.com",{method:"POST",headers:{Accept:"application/json"},body:fd}).then(function(r){return r.json();}).then(done).catch(done);});});
+</script>
+</body>
+</html>

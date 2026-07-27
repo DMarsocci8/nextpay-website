@@ -3,6 +3,17 @@
   "trailingSlash": false,
   "redirects": [
     {
+      "source": "/:path*",
+      "has": [
+        {
+          "type": "host",
+          "value": "www.nextlinks.co"
+        }
+      ],
+      "destination": "https://nextlinks.co/:path*",
+      "permanent": true
+    },
+    {
       "source": "/skytab",
       "destination": "/shift4-dine",
       "permanent": false
@@ -835,6 +846,16 @@
   ],
   "rewrites": [
     {
+      "source": "/",
+      "has": [
+        {
+          "type": "host",
+          "value": "nextlinks.co"
+        }
+      ],
+      "destination": "/nextlink-home"
+    },
+    {
       "source": "/accept-payments",
       "destination": "/Accept%20Payments"
     },
@@ -1193,6 +1214,10 @@
     {
       "source": "/blog/working-capital-options",
       "destination": "/blog-working-capital-options"
+    },
+    {
+      "source": "/nextlink",
+      "destination": "/nextlink-home"
     }
   ]
 }
