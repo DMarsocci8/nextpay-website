@@ -82,13 +82,13 @@ a,button,input,select,textarea,label,summary,[role="button"],.nm-head,.nm-link,.
 /* ---------- top nav ---------- */
 .nav{position:sticky;top:0;z-index:60;background:var(--navy);color:#fff}
 .nav-inner{display:flex;align-items:center;gap:30px;height:78px;max-width:var(--maxw);margin:0 auto;padding:0 28px}
-.nav-logo{display:flex;align-items:center}
+.nav-logo{display:flex;align-items:center;flex:none}
 .nav-logo img{height:38px;width:auto;display:block}
 .nav-logo .nplogo{display:flex;align-items:center;gap:8px;font-weight:800;color:var(--navy);font-size:19px;letter-spacing:-.02em}
 .nav-logo .mark{width:26px;height:26px;border-radius:50%;background:conic-gradient(from 220deg,var(--teal),var(--teal-bright),var(--navy));display:grid;place-items:center}
 .nav-logo .mark::after{content:"";width:9px;height:9px;border-radius:50%;background:#fff}
 .nav-links{display:flex;align-items:center;gap:26px;margin-left:8px}
-.nav-links a,.nav-item{color:#dfe7ee;font-weight:600;font-size:15.5px;display:inline-flex;align-items:center;gap:5px;cursor:pointer;background:none;border:0;font-family:inherit}
+.nav-links a,.nav-item{color:#dfe7ee;font-weight:600;font-size:15.5px;display:inline-flex;align-items:center;gap:5px;cursor:pointer;background:none;border:0;font-family:inherit;white-space:nowrap}
 .nav-links a:hover,.nav-item:hover{color:#fff}
 .nav-item svg{width:13px;height:13px;opacity:.8}
 .nav-right{margin-left:auto;display:flex;align-items:center;gap:22px}
