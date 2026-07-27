@@ -218,7 +218,7 @@
         </div>
       </div>
       <div class="rhero-media">
-        <image-slot id="rw-hero" shape="rounded" radius="24" fit="cover" src="https://galaxy-prod.tlcdn.com/gen/user_3Eb17T9oOFZ9qisq1IawSJ0x1zW/e70f2ddf-12a8-44ee-803f-8e1a47981a4f.jpg" placeholder="Drop a rewards lifestyle photo"></image-slot>
+        <image-slot id="rw-hero" shape="rounded" radius="24" fit="cover" src="assets/rewards/rw-hero.jpg" placeholder="Drop a rewards lifestyle photo"></image-slot>
         <div class="pointchip"><div class="pc-n">+120,000</div><span>points a year on<br>$50k/mo processing</span></div>
       </div>
     </div>
@@ -268,11 +268,11 @@
       <p>Not statement credits. Real rewards you can use for yourself, your team, or your family.</p>
     </div>
     <div class="earn-grid">
-      <div class="earn-card"><image-slot id="earn-travel" fit="cover" src="https://galaxy-prod.tlcdn.com/gen/user_3Eb17T9oOFZ9qisq1IawSJ0x1zW/e70f2ddf-12a8-44ee-803f-8e1a47981a4f.jpg" placeholder="Travel"></image-slot><div class="ec-b"><b>Travel</b><span>Flights · hotels · rental cars</span></div></div>
-      <div class="earn-card"><image-slot id="earn-luxury" fit="cover" src="https://galaxy-prod.tlcdn.com/gen/user_3Eb17T9oOFZ9qisq1IawSJ0x1zW/43127d31-0ab7-4842-ab1d-39e24ee32b02.jpg" placeholder="Luxury goods"></image-slot><div class="ec-b"><b>Luxury Goods</b><span>Watches · handbags · jewelry</span></div></div>
-      <div class="earn-card"><image-slot id="earn-elec" fit="cover" src="https://galaxy-prod.tlcdn.com/gen/user_3Eb17T9oOFZ9qisq1IawSJ0x1zW/13a3ab7f-54b7-4203-9cd8-6882390d7ce6.jpg" placeholder="Electronics"></image-slot><div class="ec-b"><b>Electronics</b><span>AirPods, Xbox, iMac &amp; more</span></div></div>
-      <div class="earn-card"><image-slot id="earn-gift" fit="cover" src="https://galaxy-prod.tlcdn.com/gen/user_3Eb17T9oOFZ9qisq1IawSJ0x1zW/2e40319b-ac25-42ab-8dc3-61ec105bb698.jpg" placeholder="Gift cards"></image-slot><div class="ec-b"><b>Gift Cards</b><span>200+ brands</span></div></div>
-      <div class="earn-card"><image-slot id="earn-merch" fit="cover" src="https://galaxy-prod.tlcdn.com/gen/user_3Eb17T9oOFZ9qisq1IawSJ0x1zW/d04e1e05-7df1-4deb-98bb-1a0fda2919cb.jpg" placeholder="Merchandise"></image-slot><div class="ec-b"><b>Merchandise</b><span>Hundreds of unique items</span></div></div>
+      <div class="earn-card"><image-slot id="earn-travel" fit="cover" src="assets/rewards/earn-travel.jpg" placeholder="Travel"></image-slot><div class="ec-b"><b>Travel</b><span>Flights · hotels · rental cars</span></div></div>
+      <div class="earn-card"><image-slot id="earn-luxury" fit="cover" src="assets/rewards/earn-luxury.jpg" placeholder="Luxury goods"></image-slot><div class="ec-b"><b>Luxury Goods</b><span>Watches · handbags · jewelry</span></div></div>
+      <div class="earn-card"><image-slot id="earn-elec" fit="cover" src="assets/rewards/earn-elec.jpg" placeholder="Electronics"></image-slot><div class="ec-b"><b>Electronics</b><span>AirPods, Xbox, iMac &amp; more</span></div></div>
+      <div class="earn-card"><image-slot id="earn-gift" fit="cover" src="assets/rewards/earn-gift.jpg" placeholder="Gift cards"></image-slot><div class="ec-b"><b>Gift Cards</b><span>200+ brands</span></div></div>
+      <div class="earn-card"><image-slot id="earn-merch" fit="cover" src="assets/rewards/earn-merch.jpg" placeholder="Merchandise"></image-slot><div class="ec-b"><b>Merchandise</b><span>Hundreds of unique items</span></div></div>
     </div>
     <div class="stat-row">
       <div class="stat-card"><div class="sbig">100%</div><div><b>of your volume earns</b><p>Every processed dollar counts toward your rewards.</p></div></div>
@@ -298,15 +298,16 @@
           <div class="calc-num"><span class="pre">$</span><input id="rc-num" type="text" inputmode="numeric" value="50,000"><span class="suf">/ month</span></div>
           <div class="rng">
             <div class="rng-track"></div><div class="rng-fill" id="rc-fill"></div>
-            <input id="rc-range" type="range" min="2000" max="250000" step="1000" value="50000">
+            <input id="rc-range" type="range" min="2000" max="1000000" step="1000" value="50000">
           </div>
-          <div class="rng-marks"><span>$2k</span><span>$125k</span><span>$250k+</span></div>
+          <div class="rng-marks"><span>$2k</span><span>$500k</span><span>$1M</span></div>
           <div class="quickvol">
-            <button data-vol="10000">$10k</button>
             <button data-vol="25000">$25k</button>
             <button data-vol="50000">$50k</button>
             <button data-vol="100000">$100k</button>
-            <button data-vol="200000">$200k</button>
+            <button data-vol="250000">$250k</button>
+            <button data-vol="500000">$500k</button>
+            <button data-vol="1000000">$1M</button>
           </div>
         </div>
         <p class="ci-note"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg> 100% of your processed volume earns points — no extra steps, no separate spending.</p>
@@ -338,38 +339,38 @@
 
     <div class="railhead">Luxury Watches</div>
     <div class="rail">
-      <div class="rcard"><image-slot id="w1" fit="cover" src="https://galaxy-prod.tlcdn.com/gen/user_3Eb17T9oOFZ9qisq1IawSJ0x1zW/0f1b5d04-5903-470c-be41-d9576fc6a403.jpg" placeholder="Rolex"></image-slot><div class="rc-b"><b>Rolex Submariner</b><div class="rc-pts">1,970,000 pts</div></div></div>
-      <div class="rcard"><image-slot id="w2" fit="cover" src="https://galaxy-prod.tlcdn.com/gen/user_3Eb17T9oOFZ9qisq1IawSJ0x1zW/5aeda59d-864e-4ade-8750-f66f2c503b6e.jpg" placeholder="Cartier"></image-slot><div class="rc-b"><b>Cartier Ballon Bleu</b><div class="rc-pts">2,428,800 pts</div></div></div>
-      <div class="rcard"><image-slot id="w3" fit="cover" src="https://galaxy-prod.tlcdn.com/gen/user_3Eb17T9oOFZ9qisq1IawSJ0x1zW/e4128d43-a9a9-4b87-9cba-c9460f81eec8.jpg" placeholder="Omega"></image-slot><div class="rc-b"><b>Omega Master Co-Axial</b><div class="rc-pts">1,462,800 pts</div></div></div>
-      <div class="rcard"><image-slot id="w4" fit="cover" src="https://galaxy-prod.tlcdn.com/gen/user_3Eb17T9oOFZ9qisq1IawSJ0x1zW/df638b91-3824-46a8-98ac-7d8835c4d911.jpg" placeholder="Breitling"></image-slot><div class="rc-b"><b>Breitling Chronomat</b><div class="rc-pts">1,173,000 pts</div></div></div>
-      <div class="rcard"><image-slot id="w5" fit="cover" src="https://galaxy-prod.tlcdn.com/gen/user_3Eb17T9oOFZ9qisq1IawSJ0x1zW/57373306-78a3-4679-9eb5-9f60fbc72568.jpg" placeholder="Omega Seamaster"></image-slot><div class="rc-b"><b>Omega Seamaster</b><div class="rc-pts">814,200 pts</div></div></div>
+      <div class="rcard"><image-slot id="w1" fit="cover" src="assets/rewards/w1.jpg" placeholder="Rolex"></image-slot><div class="rc-b"><b>Rolex Submariner</b><div class="rc-pts">1,970,000 pts</div></div></div>
+      <div class="rcard"><image-slot id="w2" fit="cover" src="assets/rewards/w2.jpg" placeholder="Cartier"></image-slot><div class="rc-b"><b>Cartier Ballon Bleu</b><div class="rc-pts">2,428,800 pts</div></div></div>
+      <div class="rcard"><image-slot id="w3" fit="cover" src="assets/rewards/w3.jpg" placeholder="Omega"></image-slot><div class="rc-b"><b>Omega Master Co-Axial</b><div class="rc-pts">1,462,800 pts</div></div></div>
+      <div class="rcard"><image-slot id="w4" fit="cover" src="assets/rewards/w4.jpg" placeholder="Breitling"></image-slot><div class="rc-b"><b>Breitling Chronomat</b><div class="rc-pts">1,173,000 pts</div></div></div>
+      <div class="rcard"><image-slot id="w5" fit="cover" src="assets/rewards/w5.jpg" placeholder="Omega Seamaster"></image-slot><div class="rc-b"><b>Omega Seamaster</b><div class="rc-pts">814,200 pts</div></div></div>
     </div>
 
     <div class="railhead">Trip Packages <span>· flight for 2 + hotel · from</span></div>
     <div class="rail">
-      <div class="rcard"><image-slot id="t1" fit="cover" src="https://galaxy-prod.tlcdn.com/gen/user_3Eb17T9oOFZ9qisq1IawSJ0x1zW/462728c1-f225-4c94-a69a-f20dc43f4329.jpg" placeholder="Maui"></image-slot><div class="rc-b"><b>Maui, HI</b><div class="rc-pts">455,000 pts</div></div></div>
-      <div class="rcard"><image-slot id="t2" fit="cover" src="https://galaxy-prod.tlcdn.com/gen/user_3Eb17T9oOFZ9qisq1IawSJ0x1zW/6c4beb09-39ab-47ed-97e3-a195b9ba52e6.jpg" placeholder="Miami"></image-slot><div class="rc-b"><b>Miami, FL</b><div class="rc-pts">487,500 pts</div></div></div>
-      <div class="rcard"><image-slot id="t3" fit="cover" src="https://galaxy-prod.tlcdn.com/gen/user_3Eb17T9oOFZ9qisq1IawSJ0x1zW/eb1e2d42-9fbf-4a39-826c-2123f335dba0.jpg" placeholder="Las Vegas"></image-slot><div class="rc-b"><b>Las Vegas, NV</b><div class="rc-pts">520,000 pts</div></div></div>
-      <div class="rcard"><image-slot id="t4" fit="cover" src="https://galaxy-prod.tlcdn.com/gen/user_3Eb17T9oOFZ9qisq1IawSJ0x1zW/8a8f390b-645a-4e27-ab35-8b4aaa5c7e30.jpg" placeholder="Aspen"></image-slot><div class="rc-b"><b>Aspen, CO</b><div class="rc-pts">825,500 pts</div></div></div>
-      <div class="rcard"><image-slot id="t5" fit="cover" src="https://galaxy-prod.tlcdn.com/gen/user_3Eb17T9oOFZ9qisq1IawSJ0x1zW/18020ef8-9a7f-48d1-a0fe-d74b599f2893.jpg" placeholder="Cancun"></image-slot><div class="rc-b"><b>Cancun, MX</b><div class="rc-pts">845,000 pts</div></div></div>
+      <div class="rcard"><image-slot id="t1" fit="cover" src="assets/rewards/t1.jpg" placeholder="Maui"></image-slot><div class="rc-b"><b>Maui, HI</b><div class="rc-pts">455,000 pts</div></div></div>
+      <div class="rcard"><image-slot id="t2" fit="cover" src="assets/rewards/t2.jpg" placeholder="Miami"></image-slot><div class="rc-b"><b>Miami, FL</b><div class="rc-pts">487,500 pts</div></div></div>
+      <div class="rcard"><image-slot id="t3" fit="cover" src="assets/rewards/t3.jpg" placeholder="Las Vegas"></image-slot><div class="rc-b"><b>Las Vegas, NV</b><div class="rc-pts">520,000 pts</div></div></div>
+      <div class="rcard"><image-slot id="t4" fit="cover" src="assets/rewards/t4.jpg" placeholder="Aspen"></image-slot><div class="rc-b"><b>Aspen, CO</b><div class="rc-pts">825,500 pts</div></div></div>
+      <div class="rcard"><image-slot id="t5" fit="cover" src="assets/rewards/t5.jpg" placeholder="Cancun"></image-slot><div class="rc-b"><b>Cancun, MX</b><div class="rc-pts">845,000 pts</div></div></div>
     </div>
 
     <div class="railhead">Electronics</div>
     <div class="rail">
-      <div class="rcard"><image-slot id="e1" fit="cover" src="https://galaxy-prod.tlcdn.com/gen/user_3Eb17T9oOFZ9qisq1IawSJ0x1zW/b48005c1-592e-4899-b073-a8c7f96a0f31.jpg" placeholder="Xbox"></image-slot><div class="rc-b"><b>Xbox Series X</b><div class="rc-pts">62,040 pts</div></div></div>
-      <div class="rcard"><image-slot id="e2" fit="cover" src="https://galaxy-prod.tlcdn.com/gen/user_3Eb17T9oOFZ9qisq1IawSJ0x1zW/0e3a3b08-6311-4006-b4d1-208912c84349.jpg" placeholder="AirPods Max"></image-slot><div class="rc-b"><b>Apple AirPods Max</b><div class="rc-pts">75,840 pts</div></div></div>
-      <div class="rcard"><image-slot id="e3" fit="cover" src="https://galaxy-prod.tlcdn.com/gen/user_3Eb17T9oOFZ9qisq1IawSJ0x1zW/ef111729-c21d-4a39-ba55-9595923cd8e3.jpg" placeholder="Galaxy Tab"></image-slot><div class="rc-b"><b>Galaxy Tab S10+</b><div class="rc-pts">138,000 pts</div></div></div>
-      <div class="rcard"><image-slot id="e4" fit="cover" src="https://galaxy-prod.tlcdn.com/gen/user_3Eb17T9oOFZ9qisq1IawSJ0x1zW/3636fdcd-767d-4b65-8a1a-129891c6316e.jpg" placeholder="iMac"></image-slot><div class="rc-b"><b>iMac All-in-One</b><div class="rc-pts">179,280 pts</div></div></div>
-      <div class="rcard"><image-slot id="e5" fit="cover" src="https://galaxy-prod.tlcdn.com/gen/user_3Eb17T9oOFZ9qisq1IawSJ0x1zW/7d59c526-6e9a-4b6e-9926-07ef485d89f7.jpg" placeholder="Scooter"></image-slot><div class="rc-b"><b>Electric Scooter</b><div class="rc-pts">690,000 pts</div></div></div>
+      <div class="rcard"><image-slot id="e1" fit="cover" src="assets/rewards/e1.jpg" placeholder="Xbox"></image-slot><div class="rc-b"><b>Xbox Series X</b><div class="rc-pts">62,040 pts</div></div></div>
+      <div class="rcard"><image-slot id="e2" fit="cover" src="assets/rewards/e2.jpg" placeholder="AirPods Max"></image-slot><div class="rc-b"><b>Apple AirPods Max</b><div class="rc-pts">75,840 pts</div></div></div>
+      <div class="rcard"><image-slot id="e3" fit="cover" src="assets/rewards/e3.jpg" placeholder="Galaxy Tab"></image-slot><div class="rc-b"><b>Galaxy Tab S10+</b><div class="rc-pts">138,000 pts</div></div></div>
+      <div class="rcard"><image-slot id="e4" fit="cover" src="assets/rewards/e4.jpg" placeholder="iMac"></image-slot><div class="rc-b"><b>iMac All-in-One</b><div class="rc-pts">179,280 pts</div></div></div>
+      <div class="rcard"><image-slot id="e5" fit="cover" src="assets/rewards/e5.jpg" placeholder="Scooter"></image-slot><div class="rc-b"><b>Electric Scooter</b><div class="rc-pts">690,000 pts</div></div></div>
     </div>
 
     <div class="railhead">Gift Cards <span>· 200+ brands · from 12,000 pts</span></div>
     <div class="rail">
-      <div class="rcard"><image-slot id="g1" fit="cover" src="https://galaxy-prod.tlcdn.com/gen/user_3Eb17T9oOFZ9qisq1IawSJ0x1zW/586f7c80-aaab-4653-a194-78b4e3eb419e.jpg" placeholder="Amazon"></image-slot><div class="rc-b"><b>Amazon</b><div class="rc-pts">from 12,000 pts</div></div></div>
-      <div class="rcard"><image-slot id="g2" fit="cover" src="https://galaxy-prod.tlcdn.com/gen/user_3Eb17T9oOFZ9qisq1IawSJ0x1zW/a628ddb1-58b8-4ad5-ab5c-43390810ad39.jpg" placeholder="Uber"></image-slot><div class="rc-b"><b>Uber</b><div class="rc-pts">from 12,000 pts</div></div></div>
-      <div class="rcard"><image-slot id="g3" fit="cover" src="https://galaxy-prod.tlcdn.com/gen/user_3Eb17T9oOFZ9qisq1IawSJ0x1zW/d972992c-bb08-49f1-ab49-9b8befa8b6ff.jpg" placeholder="Starbucks"></image-slot><div class="rc-b"><b>Starbucks</b><div class="rc-pts">from 12,000 pts</div></div></div>
-      <div class="rcard"><image-slot id="g4" fit="cover" src="https://galaxy-prod.tlcdn.com/gen/user_3Eb17T9oOFZ9qisq1IawSJ0x1zW/627fec38-075c-4c1f-8d57-cd46ab9b185f.jpg" placeholder="Nordstrom"></image-slot><div class="rc-b"><b>Nordstrom</b><div class="rc-pts">from 12,000 pts</div></div></div>
-      <div class="rcard"><image-slot id="g5" fit="cover" src="https://galaxy-prod.tlcdn.com/gen/user_3Eb17T9oOFZ9qisq1IawSJ0x1zW/1f1b8a91-6a8b-4212-83dd-9c57767af250.jpg" placeholder="Best Buy"></image-slot><div class="rc-b"><b>Best Buy</b><div class="rc-pts">from 12,000 pts</div></div></div>
+      <div class="rcard"><image-slot id="g1" fit="cover" src="assets/rewards/g1.jpg" placeholder="Amazon"></image-slot><div class="rc-b"><b>Amazon</b><div class="rc-pts">from 12,000 pts</div></div></div>
+      <div class="rcard"><image-slot id="g2" fit="cover" src="assets/rewards/g2.jpg" placeholder="Uber"></image-slot><div class="rc-b"><b>Uber</b><div class="rc-pts">from 12,000 pts</div></div></div>
+      <div class="rcard"><image-slot id="g3" fit="cover" src="assets/rewards/g3.jpg" placeholder="Starbucks"></image-slot><div class="rc-b"><b>Starbucks</b><div class="rc-pts">from 12,000 pts</div></div></div>
+      <div class="rcard"><image-slot id="g4" fit="cover" src="assets/rewards/g4.jpg" placeholder="Nordstrom"></image-slot><div class="rc-b"><b>Nordstrom</b><div class="rc-pts">from 12,000 pts</div></div></div>
+      <div class="rcard"><image-slot id="g5" fit="cover" src="assets/rewards/g5.jpg" placeholder="Best Buy"></image-slot><div class="rc-b"><b>Best Buy</b><div class="rc-pts">from 12,000 pts</div></div></div>
     </div>
   </div>
 </section>
