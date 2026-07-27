@@ -142,7 +142,6 @@ window.HUB_DATA = {
       primary: { name: 'Clover', why: 'Clean countertop presence, invoices and deposits handled, strong for high-ticket keyed + card-present mix.' },
       alts: [
         { name: 'Quantic', why: 'Swan station with premium inventory module for serious multi-case stores.' },
-        { name: 'Next2Pay virtual terminal', why: 'Phone orders, deposits and layaway payments — house rails, no countertop hardware needed.' },
         { name: 'Valor terminal + gateway', why: 'Simple high-ticket terminal play when they keep their own books.' }
       ],
       rules: [
@@ -311,12 +310,11 @@ window.HUB_DATA = {
       primary: { name: 'Clover', why: 'Counter + scale + label support, invoices for wholesale, familiar for staff.' },
       alts: [
         { name: 'SkyTab', why: 'Digital scale ($39.99/mo) + label printer ($19.99/mo) on placement — $0 upfront for a full deli line.' },
-        { name: 'Next2Pay Invoicing', why: 'Wholesale accounts and catering/cake deposits — invoices and card-on-file on our rails.' },
         { name: 'Quantic', why: 'PDN certified scale ($549) + label printer, own-hardware route.' }
       ],
       rules: [
         'By-weight selling → certified scale is non-negotiable; spec it in the quote.',
-        'Wholesale accounts → invoicing (Clover invoices or QuickBooks integration).',
+        'Wholesale/catering invoices → usually a feature of the POS they get (Clover invoices, SkyTab); Next2Pay only if they are invoice-first with no POS need.',
         'Cake deposits → card-on-file / deposit workflow question.'
       ],
       pricing: 'Mixed ticket sizes; dual pricing works at the counter, invoices often stay standard-priced. Quote both lanes.',
@@ -359,7 +357,6 @@ window.HUB_DATA = {
       ],
       primary: { name: 'Square', why: 'Appointments + POS + no-show protection in one; booth renters can run their own accounts.' },
       alts: [
-        { name: 'Next2Pay recurring', why: 'Memberships, packages and card-on-file no-show protection — house rails alongside any front desk.' },
         { name: 'Clover', why: 'Services Growth plan with appointments via app market; placement mode for $0 down.' },
         { name: 'SumUp', why: 'Solo reader ($54) per chair for independent stylists — dead simple.' }
       ],
@@ -545,7 +542,7 @@ window.HUB_DATA = {
       { name: 'iPOSPays', tag: 'Dejavoo-native gateway', sell: ['Drives Dejavoo/DejaPay hardware'], link: 'https://nextpaypos.com/ipospays' }
     ],
     invoicing: [
-      { name: 'Next2Pay Invoicing', tag: 'OUR house invoicing — lead with this on every invoice-type deal', sell: ['Estimates, invoices, text-to-pay, recurring — on our rails', 'Best margins in the invoicing lineup', 'Next2Pay proposal ready to build in the Proposal Studio'], link: 'https://nextpaypos.com/next2pay' },
+      { name: 'Next2Pay Invoicing', tag: 'House invoicing — for trades & businesses that INVOICE their customers', sell: ['Roofers, electricians, plumbers, pros, cleaning routes — estimates, invoices, text-to-pay, recurring', 'NOT a POS replacement: salons/bakeries/restaurants get a full POS (invoicing is usually a POS feature there)', 'Best margins in the invoicing lineup — proposal ready in the Proposal Studio'], link: 'https://nextpaypos.com/next2pay' },
       { name: 'FieldPulse', tag: 'Field service suite', sell: ['Estimates → invoices → text-to-pay', 'Scheduling + CRM for trades'], link: 'https://nextpaypos.com/invoicing' },
       { name: 'Field Work', tag: 'Field service alternative', sell: ['Job management + payments'], link: 'https://nextpaypos.com/invoicing' },
       { name: 'LQPay', tag: 'Billing & statements', sell: ['Healthcare-friendly workflows'], link: 'https://nextpaypos.com/invoicing' },
@@ -727,7 +724,7 @@ window.HUB_DATA = {
                  note: 'Pre-auth tabs is the killer question at bars — if their current system can’t, we win.' },
     online:    { boosts: [{ m: 'square', d: 1, why: 'POS + online store one ecosystem' }],
                  stack: [{ slot: 'gateway', v: 'Next2Pay gateway (house rails)', why: 'E-commerce / card-not-present rail' }] },
-    invoices:  { stack: [{ slot: 'invoicing', v: 'Next2Pay Invoicing', why: 'Invoice-type deals always lead with Next2Pay' }] },
+    invoices:  { stack: [{ slot: 'invoicing', v: 'Next2Pay Invoicing', why: 'They invoice their customers — Next2Pay is the play. (If they run a full POS, invoicing is usually a feature there; Next2Pay is for true invoice-first businesses or one-off simple invoicing needs.)' }] },
     recurring: { stack: [{ slot: 'invoicing', v: 'Next2Pay recurring billing', why: 'House recurring — card-on-file, retries, account updater rescues failing cards' }],
                  note: 'Quantify recovered failed payments — that story beats any rate pitch.' },
     field:     { stack: [{ slot: 'terminal', v: 'PAX A920 Pro or Dejavoo P8 (mobile)', why: 'Crews collecting in the field' }, { slot: 'invoicing', v: 'Next2Pay Invoicing (text-to-pay)', why: 'Estimates → invoice → pay-by-text' }] },
