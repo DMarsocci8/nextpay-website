@@ -52,10 +52,18 @@ edit**), `hub/js/hub-store.js` (CRM data layer).
   their own records from any device, admins see everyone's. Identity is
   the Access email header, so there are no passwords or API keys.
 
-**Fresh Sales CRM:** nothing here blocks keeping Freshsales in parallel;
-the hub CRM covers the agent workflow (pipeline + merchant book +
-admin visibility). If two-way Freshsales sync is wanted later, it would be
-an extension of the same Worker (Freshsales REST API) — not built yet.
+**Freshsales integration (built in, off by default):** the Worker has a
+CRM adapter layer — every deal/merchant save also fires `syncToCRM()`,
+which pushes to an external CRM through the adapter named in the
+`CRM_PROVIDER` env var. A Freshsales adapter ships with it: set
+`CRM_PROVIDER=freshsales`, `FRESHSALES_DOMAIN` and `FRESHSALES_API_KEY`
+(plus optional `FRESHSALES_STAGE_MAP` for pipeline-stage mapping) on the
+Worker and every save one-way pushes a contact + deal into Freshsales,
+storing the Freshsales ids back on the hub record so updates never
+duplicate. With no credentials set the sync is a no-op. The hub stays the
+system of record; other CRMs (GoHighLevel etc.) are a new adapter object
+with the same shape. Full setup steps in the `workers/hub-crm-api.js`
+header.
 
 ## Deploying the hub
 
