@@ -1,0 +1,364 @@
+<!DOCTYPE html><html lang="en"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>Deal Navigator — NextPay Sales Hub</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/hub.css">
+</head><body>
+<div class="hub-shell"><div id="hub-side"></div><main class="hub-main">
+
+<div class="pg-head">
+  <span class="eyebrow">Work a deal</span>
+  <h1>Deal Navigator</h1>
+  <p>The whole sales process, guided: pick the business type, ask the right questions, land on the right products, price it, and submit. Save to your pipeline at any point.</p>
+</div>
+
+<div class="wiz-bar" id="wizbar"></div>
+<div id="wiz"></div>
+
+<div class="flex mt24">
+  <button class="btn btn-outline" id="back">← Back</button>
+  <button class="btn btn-primary" id="next">Next →</button>
+  <span style="flex:1"></span>
+  <button class="btn btn-navy" id="save">💾 Save to pipeline</button>
+</div>
+<div class="small muted mt8" id="savemsg"></div>
+
+</main></div>
+<script src="js/hub.js"></script><script src="js/hub-data.js"></script><script src="js/hub-store.js"></script>
+<script>
+(function () {
+  const D = window.HUB_DATA;
+  const STEPS = ['Business type', 'Discovery', 'Best fit', 'Pricing', 'Statement', 'Proposal & submit'];
+  let step = 0;
+  let deal = { stage: 'prospect', products: {} };
+
+  const $ = (id) => document.getElementById(id);
+  const esc = (s) => String(s == null ? '' : s).replace(/[<>&"]/g, c => ({'<':'&lt;','>':'&gt;','&':'&amp;','"':'&quot;'}[c]));
+
+  function bar() {
+    $('wizbar').innerHTML = STEPS.map((s, i) =>
+      '<span class="' + (i === step ? 'on' : i < step ? 'done' : '') + '">' + (i + 1) + ' · ' + s + '</span>').join('');
+    $('back').style.visibility = step === 0 ? 'hidden' : 'visible';
+    $('next').style.display = step === STEPS.length - 1 ? 'none' : '';
+  }
+
+  function ind() { return D.industries[deal.industry]; }
+
+  /* ---- step renderers ---- */
+  function s0() {
+    const groups = {};
+    for (const [k, v] of Object.entries(D.industries)) (groups[v.group] = groups[v.group] || []).push([k, v]);
+    let h = '<div class="card"><h3>What kind of business is this?</h3><p class="muted small mb8">This drives the questions, the product fit and the pricing angle for the whole deal.</p>';
+    for (const [g, list] of Object.entries(groups)) {
+      h += '<div class="hs-sec" style="padding-left:0;color:var(--mut)">' + g + '</div><div class="pick-grid">';
+      h += list.map(([k, v]) => '<button class="pick' + (deal.industry === k ? ' on' : '') + '" data-ind="' + k + '">' + esc(v.label) + '</button>').join('');
+      h += '</div>';
+    }
+    h += '<hr class="sep"><div class="frow"><div><label class="fl">Business name</label><input class="fi" id="f-biz" value="' + esc(deal.biz) + '" placeholder="DBA / business name"></div>' +
+      '<div><label class="fl">Contact name</label><input class="fi" id="f-contact" value="' + esc(deal.contactName) + '" placeholder="Owner / decision maker"></div></div>' +
+      '<div class="frow"><div><label class="fl">Phone</label><input class="fi" id="f-phone" value="' + esc(deal.phone) + '"></div>' +
+      '<div><label class="fl">Email</label><input class="fi" id="f-email" value="' + esc(deal.email) + '"></div></div>' +
+      '<label class="fl" style="display:flex;align-items:center;gap:8px;text-transform:none;font-size:13.5px"><input type="checkbox" id="f-startup"' + (deal.isStartup ? ' checked' : '') + ' style="width:16px;height:16px"> New business / startup (no processing history)</label></div>';
+    $('wiz').innerHTML = h;
+    document.querySelectorAll('[data-ind]').forEach(b => b.addEventListener('click', () => {
+      grab(); deal.industry = b.dataset.ind; s0();
+    }));
+  }
+  function grab() { // pull step-0 fields if present
+    if ($('f-biz')) {
+      deal.biz = $('f-biz').value; deal.contactName = $('f-contact').value;
+      deal.phone = $('f-phone').value; deal.email = $('f-email').value;
+      deal.isStartup = $('f-startup').checked;
+    }
+    ['f-volume', 'f-ticket', 'f-processor', 'f-notes'].forEach(id => {
+      if ($(id)) deal[{ 'f-volume': 'volume', 'f-ticket': 'avgTicket', 'f-processor': 'currentProcessor', 'f-notes': 'discoveryNotes' }[id]] = $(id).value;
+    });
+  }
+
+  function s1() {
+    const iv = ind();
+    let h = '<div class="card"><h3>Discovery — what to ask ' + (iv ? esc(iv.label) : 'this business') + '</h3>' +
+      '<p class="muted small">Work through these in conversation, not as an interrogation. Capture answers below — they follow the deal into your pipeline.</p>';
+    for (const g of D.baseDiscovery) {
+      h += '<h4 class="mt16">' + esc(g.h) + '</h4><ul class="ck">' + g.q.map(q => '<li>' + esc(q) + '</li>').join('') + '</ul>';
+    }
+    if (iv) h += '<h4 class="mt16" style="color:var(--teal)">Specific to ' + esc(iv.label) + '</h4><ul class="ck">' + iv.ask.map(q => '<li>' + esc(q) + '</li>').join('') + '</ul>';
+    if (deal.isStartup) {
+      h += '<div class="note warn"><b>Startup path:</b> ' + esc(D.startup.intro) + '</div><ul class="ck">' + D.startup.q.map(q => '<li>' + esc(q) + '</li>').join('') + '</ul>';
+    }
+    h += '<div class="note mt16">🎙 <b>Say it like this:</b> ' + esc(D.talkTracks.discovery) + '<br><br>🎙 <b>The statement ask:</b> ' + esc(D.talkTracks.statement) + '</div>';
+    h += '<hr class="sep"><h4>What did you learn? Tap everything that applies</h4>' +
+      '<p class="muted small">These are the facts that pick the product. The next step scores the fit from what you tap here.</p>' +
+      '<div class="pick-grid mt8" id="sig-grid"></div>' +
+      '<button class="btn btn-outline btn-sm mt8" id="sig-more" type="button">Show all signals</button>';
+    h += '<hr class="sep"><div class="frow3">' +
+      '<div><label class="fl">Est. monthly card volume ($)</label><input class="fi" id="f-volume" inputmode="numeric" value="' + esc(deal.volume) + '" placeholder="e.g. 45000"></div>' +
+      '<div><label class="fl">Average ticket ($)</label><input class="fi" id="f-ticket" inputmode="numeric" value="' + esc(deal.avgTicket) + '" placeholder="e.g. 32"></div>' +
+      '<div><label class="fl">Current processor</label><input class="fi" id="f-processor" value="' + esc(deal.currentProcessor) + '" placeholder="e.g. Toast, Square, unknown"></div></div>' +
+      '<label class="fl">Discovery notes</label><textarea class="fi" id="f-notes" rows="4" placeholder="Pain points, timeline, decision makers, anything that shapes the fit…">' + esc(deal.discoveryNotes) + '</textarea></div>';
+    $('wiz').innerHTML = h;
+
+    /* signal chips: industry-relevant first, rest behind "show all" */
+    deal.signals = deal.signals || [];
+    const rel = D.industrySignals[deal.industry] || [];
+    const all = Object.keys(D.signals);
+    const ordered = [...rel, ...all.filter(k => !rel.includes(k))];
+    let showAll = rel.length === 0;
+    function sigDraw() {
+      const list = showAll ? ordered : ordered.slice(0, rel.length);
+      $('sig-grid').innerHTML = list.map(k =>
+        '<button type="button" class="pick' + (deal.signals.includes(k) ? ' on' : '') + '" data-sig="' + k + '">' + esc(D.signals[k]) + '</button>').join('');
+      $('sig-more').style.display = showAll ? 'none' : '';
+    }
+    sigDraw();
+    $('sig-grid').addEventListener('click', (e) => {
+      const b = e.target.closest('[data-sig]'); if (!b) return;
+      const i = deal.signals.indexOf(b.dataset.sig);
+      if (i >= 0) deal.signals.splice(i, 1); else deal.signals.push(b.dataset.sig);
+      b.classList.toggle('on');
+    });
+    $('sig-more').addEventListener('click', () => { showAll = true; sigDraw(); });
+  }
+
+  function s2() {
+    const iv = ind();
+    if (!iv) { $('wiz').innerHTML = '<div class="card">Pick a business type in step 1 first.</div>'; return; }
+    deal.signals = deal.signals || [];
+
+    /* score the industry's candidates against the tapped signals */
+    const cands = [{ name: iv.primary.name, why: iv.primary.why, score: 3, reasons: [] }]
+      .concat(iv.alts.map((a, i) => ({ name: a.name, why: a.why, score: 2 - i * 0.1, reasons: [] })));
+    const notes = [], stackSug = { terminal: [], gateway: [], invoicing: [], addon: [] };
+    for (const k of deal.signals) {
+      const fx = D.signalEffects[k]; if (!fx) continue;
+      (fx.boosts || []).forEach(b => {
+        const re = new RegExp(b.m, 'i');
+        cands.forEach(c => { if (re.test(c.name)) { c.score += b.d; c.reasons.push((b.d > 0 ? '✓ ' : '✗ ') + b.why); } });
+      });
+      (fx.stack || []).forEach(s => stackSug[s.slot].push(s));
+      if (fx.note) notes.push(fx.note);
+    }
+    cands.sort((a, b) => b.score - a.score);
+    const top = cands[0];
+    const sigNames = deal.signals.map(k => D.signals[k]);
+
+    let h = '<div class="rec-box"><span class="tag">' + (deal.signals.length ? 'Best fit from their answers' : 'Recommended starting point — tap signals in Discovery to sharpen this') + '</span>' +
+      '<h3 class="mt8">' + esc(top.name) + '</h3><p class="muted">' + esc(top.why) + '</p>' +
+      (top.reasons.length ? '<ul class="ck plain mt8">' + top.reasons.map(r => '<li class="small">' + esc(r) + '</li>').join('') + '</ul>' : '') +
+      '<button class="btn btn-primary btn-sm mt8" type="button" id="use-stack">Use this stack ↓</button></div>';
+    const alts2 = cands.slice(1);
+    if (alts2.length) {
+      h += '<div class="grid2 mt16">' + alts2.map(a =>
+        '<div class="alt-box"><b>' + esc(a.name) + '</b>' + (a.score <= 0 ? ' <span class="chip red" style="margin-left:6px">poor fit here</span>' : '') +
+        '<p class="muted small mt8">' + esc(a.why) + '</p>' +
+        (a.reasons.length ? '<p class="small muted mt8">' + a.reasons.map(esc).join(' · ') + '</p>' : '') + '</div>').join('') + '</div>';
+    }
+    const sugRows = [];
+    const SLOT = { terminal: 'Terminal', gateway: 'Gateway', invoicing: 'Invoicing', addon: 'Add-on' };
+    for (const [slot, list] of Object.entries(stackSug)) list.forEach(s => sugRows.push(Object.assign({ slot }, s)));
+    if (sugRows.length) {
+      h += '<div class="card mt16"><h3>Round out the stack — from their answers</h3><ul class="ck plain">' +
+        sugRows.map(s => '<li><b>' + SLOT[s.slot] + ':</b>&nbsp;' + esc(s.v) + ' <span class="muted small">— ' + esc(s.why) + '</span></li>').join('') + '</ul></div>';
+    }
+    if (notes.length) h += '<div class="note mt16"><b>Play it right:</b><br>' + notes.map(esc).join('<br>') + '</div>';
+    h += '<div class="note warn mt16">🎙 <b>Pitching the pick:</b> ' + esc(D.talkTracks.recommend).replace('[their answers]', sigNames.length ? '<i>' + esc(sigNames.slice(0, 3).join(', ').toLowerCase()) + '</i>' : '[their answers]').replace('[primary]', '<b>' + esc(top.name) + '</b>') + '</div>';
+    h += '<div class="card mt16"><h3>Fit rules — the full cheat sheet</h3><ul class="ck plain">' + iv.rules.map(r => '<li>' + esc(r) + '</li>').join('') + '</ul>' +
+      '<p class="small muted mt8">Deeper dives: <a href="products.html">Product library</a> · <a href="https://nextpaypos.com/build" target="_blank" rel="noopener">public Build Your Solution catalog ↗</a></p></div>';
+    h += '<div class="card mt16"><h3>Lock the stack for this deal</h3><div class="frow">' +
+      '<div><label class="fl">POS / core product</label><input class="fi" id="f-pos" value="' + esc(deal.products.pos) + '" placeholder="e.g. ' + esc(iv.primary.name) + '"></div>' +
+      '<div><label class="fl">Terminal(s)</label><input class="fi" id="f-term" value="' + esc(deal.products.terminal) + '" placeholder="e.g. PAX A920 Pro ×2"></div></div><div class="frow">' +
+      '<div><label class="fl">Gateway (if CNP)</label><input class="fi" id="f-gw" value="' + esc(deal.products.gateway) + '" placeholder="e.g. NMI"></div>' +
+      '<div><label class="fl">Invoicing (if needed)</label><input class="fi" id="f-inv" value="' + esc(deal.products.invoicing) + '" placeholder="e.g. FieldPulse"></div></div>' +
+      '<label class="fl">Placement (where the deal is written)</label><select class="fi" id="f-place">' +
+      '<option value="">— choose —</option>' + Object.entries(D.placements).map(([k, p]) => '<option value="' + k + '"' + (deal.placement === k ? ' selected' : '') + '>' + esc(p.label) + '</option>').join('') + '</select></div>';
+    $('wiz').innerHTML = h;
+
+    /* one click fills the stack from the scored recommendation */
+    const PLACE_GUESS = [
+      [/next2pay|chively|nextpay pos/i, 'next2pay'],
+      [/skytab|shift4/i, 'skytab'], [/clover/i, 'clover'], [/square/i, 'square'],
+      [/quantic/i, 'quantic'], [/korona/i, 'korona'], [/nrs/i, 'nrs'], [/pays/i, 'pays'],
+      [/sumup/i, 'sumup'], [/terminal|pax|dejavoo|valor/i, 'terminal-gateway'],
+      [/gateway|invoic|fieldpulse|field work|lqpay|nmi|fluidpay|quickbooks/i, 'invoicing-gateway']
+    ];
+    $('use-stack').addEventListener('click', () => {
+      $('f-pos').value = top.name;
+      if (stackSug.terminal.length) $('f-term').value = stackSug.terminal[0].v;
+      if (stackSug.gateway.length) $('f-gw').value = stackSug.gateway[0].v;
+      if (stackSug.invoicing.length) $('f-inv').value = stackSug.invoicing[0].v;
+      const g = PLACE_GUESS.find(([re]) => re.test(top.name));
+      if (g) $('f-place').value = g[1];
+      $('f-pos').scrollIntoView({ behavior: 'smooth', block: 'center' });
+    });
+  }
+  function grab2() {
+    if ($('f-pos')) {
+      deal.products.pos = $('f-pos').value; deal.products.terminal = $('f-term').value;
+      deal.products.gateway = $('f-gw').value; deal.products.invoicing = $('f-inv').value;
+      deal.placement = $('f-place').value;
+    }
+  }
+
+  function s3() {
+    const iv = ind();
+    const vol = parseFloat(deal.volume) || 0;
+    let h = '<div class="card"><h3>Pricing angle for this deal</h3>' +
+      (iv ? '<div class="note">' + esc(iv.pricing) + '</div>' : '') +
+      '<div class="tbl-wrap"><table class="tbl"><thead><tr><th>Model</th><th>Pitch</th><th>Best when</th></tr></thead><tbody>' +
+      '<tr><td><b>Dual pricing (0%)</b></td><td>"Card price and cash price — you keep 100% of the cash price, card fees disappear."</td><td>Fee-sensitive owners; food, liquor, c-store, trades. Needs signage + correct terminal file.</td></tr>' +
+      '<tr><td><b>Interchange-plus</b></td><td>"You pay cost plus a transparent, small markup — we show you both numbers."</td><td>Higher tickets, professional/healthcare optics, statement-beats.</td></tr>' +
+      '<tr><td><b>Flat rate</b></td><td>"One simple rate, no surprises."</td><td>Micro-merchants and startups that value simplicity over savings.</td></tr>' +
+      '</tbody></table></div>' +
+      '<div class="note warn mt8">🎙 <b>Positioning the price:</b> ' + esc(D.talkTracks.pricing) + '</div>' +
+      '<p class="small muted mt8">Buy rates, Schedule A and the residual calculator live on <a href="pricing.html">Pricing &amp; Buy Rates</a>. Quick gut-check below.</p></div>';
+    const eco = D.economics[deal.placement];
+    if (eco) {
+      h += '<div class="card mt16"><div class="spread"><h3>Your economics on this deal — ' + esc((D.placements[deal.placement] || {}).label || '') + '</h3><span class="chip red">Internal</span></div>' +
+        '<p class="small mt8"><b>Sourced from:</b> ' + esc(eco.source) + '</p>' +
+        (eco.sched && D.schedules[eco.sched] && D.schedules[eco.sched].splitNote ? '<p class="small mt8"><b>Schedule A:</b> ' + esc(D.schedules[eco.sched].label) + ' — ' + esc(D.schedules[eco.sched].splitNote) + ' <a href="pricing.html#schedule-' + eco.sched + '">Full fee table →</a></p>' : '') +
+        '<p class="small mt8"><b>Where to quote the processing:</b> ' + esc(eco.quote) + '</p>' +
+        '<p class="small mt8 mb8"><b>What you make:</b></p><ul class="ck plain">' + eco.make.map(m => '<li class="small">' + esc(m) + '</li>').join('') + '</ul>' +
+        (eco.need ? '<div class="note warn mt8"><b>Schedule A gap:</b> ' + esc(eco.need) + ' Full source-by-source table on <a href="pricing.html#economics">Pricing &amp; Buy Rates</a>.</div>' : '') + '</div>';
+    } else {
+      h += '<div class="note mt16">Pick a <b>placement</b> back on the Best fit step and your deal economics (source, what you make, where to quote) appear here automatically.</div>';
+    }
+    h += '<div class="card mt16"><h3>Quick residual estimate</h3><div class="frow3">' +
+      '<div><label class="fl">Monthly volume ($)</label><input class="fi" id="c-vol" inputmode="numeric" value="' + (vol || '') + '"></div>' +
+      '<div><label class="fl">Margin over cost (basis points)</label><input class="fi" id="c-bps" inputmode="numeric" placeholder="e.g. 50"></div>' +
+      '<div><label class="fl">Your share of margin (%)</label><input class="fi" id="c-split" inputmode="numeric" value="45" placeholder="preloaded per program — see Pricing"></div></div>' +
+      '<div class="stat mt16" style="max-width:340px"><div class="n" id="c-out">—</div><div class="l">estimated monthly residual to you (before monthly-fee income)</div></div>' +
+      '<label class="fl">Pricing model chosen</label><select class="fi" id="f-model" style="max-width:340px">' +
+      ['', 'Dual pricing (0%)', 'Interchange-plus', 'Flat rate', 'TBD after statement'].map(m => '<option' + (deal.pricingModel === m ? ' selected' : '') + '>' + m + '</option>').join('') + '</select></div>';
+    $('wiz').innerHTML = h;
+    const calc = () => {
+      const v = parseFloat($('c-vol').value) || 0, b = parseFloat($('c-bps').value) || 0, sp = parseFloat($('c-split').value) || 0;
+      $('c-out').textContent = (v && b && sp) ? '$' + Math.round(v * (b / 10000) * (sp / 100)).toLocaleString() + '/mo' : '—';
+    };
+    ['c-vol', 'c-bps', 'c-split'].forEach(id => $(id).addEventListener('input', calc));
+    calc();
+  }
+  function grab3() { if ($('f-model')) deal.pricingModel = $('f-model').value; }
+
+  function s4() {
+    let h;
+    if (deal.isStartup) {
+      h = '<div class="card"><h3>No statement — build it from projections</h3>' +
+        '<ul class="ck">' + D.startup.q.map(q => '<li>' + esc(q) + '</li>').join('') + '</ul>' +
+        '<div class="note warn mt16"><b>Tips:</b><br>' + D.startup.tips.map(esc).join('<br>') + '</div>' +
+        '<p class="small muted">Run the numbers on <a href="statement-review.html#projections">Statement Review → Projections</a>, then come back.</p></div>';
+    } else {
+      h = '<div class="card"><h3>Get the statement — then meet or beat it</h3>' +
+        '<div class="note warn">🎙 <b>The ask:</b> ' + esc(D.talkTracks.statement) + '</div>' +
+        '<ul class="ck plain">' +
+        '<li>Ask for the <b>last full month\'s statement</b> (all pages — fee pages matter most).</li>' +
+        '<li>Merchant can upload it directly at <a href="https://nextpaypos.com/statement-upload" target="_blank" rel="noopener">nextpaypos.com/statement-upload</a> — it lands with Dom automatically. Or you email it with the deal.</li>' +
+        '<li>Compute their <b>effective rate</b>: total fees ÷ total card volume. Use the <a href="statement-review.html">Statement Review calculator</a>.</li>' +
+        '<li>Look for junk: PCI non-compliance fees, statement fees, batch fees, annual fees, inflated keyed rates.</li>' +
+        '<li>Build the beat and show the annual savings number, not the rate.</li></ul>' +
+        '<label class="fl">Their effective rate (%)</label><div class="frow"><input class="fi" id="f-effrate" value="' + esc(deal.effRate) + '" placeholder="e.g. 3.1" style="max-width:200px"></div></div>';
+    }
+    $('wiz').innerHTML = h;
+  }
+  function grab4() { if ($('f-effrate')) deal.effRate = $('f-effrate').value; }
+
+  function s5() {
+    const p = D.placements[deal.placement];
+    let h = '<div class="card"><h3>Proposal</h3><ul class="ck plain">' +
+      '<li>Itemize hardware + software monthlies from the catalog numbers (see <a href="products.html">Products</a> and <a href="pricing.html">Pricing</a>).</li>' +
+      '<li>State the pricing model plainly (dual pricing / interchange-plus / flat) and the savings vs today.</li>' +
+      '<li>One page beats ten. Quote → savings → what happens next.</li>' +
+      '<li>SkyTab deals: use the blank SkyTab proposal PDF as the shell (<a href="https://nextpaypos.com/SkyTab_Proposal%20-%20Blank.pdf" target="_blank" rel="noopener">download ↗</a>).</li></ul></div>';
+    if (p) {
+      h += '<div class="card mt16"><h3>Submit — ' + esc(p.label) + '</h3><div class="steps mt8">' +
+        p.steps.map(s => '<div class="step"><div><p style="color:var(--ink)">' + esc(s).replace('{DBA}', esc(deal.biz || 'DBA')) + '</p></div></div>').join('') + '</div>' +
+        '<div class="note mt8">Docs checklist (every deal): <ul class="ck mt8">' + D.commonDocs.map(d => '<li>' + esc(d) + '</li>').join('') + '</ul></div>' +
+        '<p class="small">Send to <b>' + D.contacts.submit + '</b> · CC <b>' + D.contacts.cc + '</b></p></div>';
+    } else {
+      h += '<div class="note warn mt16">No placement chosen yet — go back to <b>Best fit</b> and pick where this deal gets written, then the exact submission steps appear here. Full checklists also live on <a href="submit-deal.html">Submit a Deal</a>.</div>';
+    }
+    h += '<div class="note warn mt16">🎙 <b>The closing ask:</b> ' + esc(D.talkTracks.close) + '</div>';
+    h += '<div class="card mt16"><div class="spread"><h3>Deal package — paste into your submission email</h3>' +
+      '<button class="btn btn-outline btn-sm" type="button" id="copy-sum">📋 Copy</button></div>' +
+      '<textarea class="fi mt8" id="sum" rows="16" readonly style="font-family:ui-monospace,monospace;font-size:12.5px"></textarea>' +
+      '<span class="small muted" id="copy-msg"></span></div>';
+    h += '<div class="card mt16"><h3>Deal stuck? Stall-breakers</h3>' +
+      '<p class="muted small mb8">Where deals actually die — and the play that revives them.</p>' +
+      '<div class="tbl-wrap"><table class="tbl"><tbody>' +
+      D.stalls.map(x => '<tr><td style="width:220px"><b>' + esc(x.s) + '</b></td><td class="small">' + esc(x.play) + '</td></tr>').join('') +
+      '</tbody></table></div></div>';
+    h += '<div class="card mt16"><h3>Wrap up</h3><div class="frow">' +
+      '<div><label class="fl">Deal stage</label><select class="fi" id="f-stage">' + Store.STAGES.map(s => '<option value="' + s.key + '"' + (deal.stage === s.key ? ' selected' : '') + '>' + s.label + '</option>').join('') + '</select></div>' +
+      '<div><label class="fl">Next step</label><input class="fi" id="f-next" value="' + esc(deal.nextStep) + '" placeholder="e.g. Call back Tue with proposal"></div></div>' +
+      '<label class="fl">Next step date</label><input class="fi" type="date" id="f-nextdate" value="' + esc(deal.nextStepDate) + '" style="max-width:220px"></div>';
+    $('wiz').innerHTML = h;
+
+    /* live deal-package summary */
+    function sumDraw() {
+      const iv2 = ind();
+      const line = (l) => l == null ? null : l;
+      $('sum').value = [
+        'NEW DEAL — ' + (deal.biz || '(business name)'),
+        'Agent: ' + (localStorage.getItem('hub_user_email') || '(your email)'),
+        'Contact: ' + ([deal.contactName, deal.phone, deal.email].filter(Boolean).join(' · ') || 'TBD'),
+        'Industry: ' + (iv2 ? iv2.label : 'TBD') + (deal.isStartup ? '  (STARTUP — projections, no statement)' : ''),
+        'Est. volume: ' + (deal.volume ? '$' + Number(deal.volume).toLocaleString() + '/mo' : 'TBD') +
+          '  ·  Avg ticket: ' + (deal.avgTicket ? '$' + deal.avgTicket : 'TBD'),
+        'Current processor: ' + (deal.currentProcessor || 'TBD') + (deal.effRate ? '  ·  their effective rate: ' + deal.effRate + '%' : ''),
+        '',
+        'STACK',
+        '  POS / core:  ' + (deal.products.pos || 'TBD'),
+        '  Terminal:    ' + (deal.products.terminal || '—'),
+        '  Gateway:     ' + (deal.products.gateway || '—'),
+        '  Invoicing:   ' + (deal.products.invoicing || '—'),
+        '  Placement:   ' + ((D.placements[deal.placement] || {}).label || 'TBD'),
+        '  Pricing:     ' + (deal.pricingModel || 'TBD'),
+        (deal.signals && deal.signals.length) ? 'Needs: ' + deal.signals.map(k => D.signals[k]).join('; ') : null,
+        '',
+        'Notes: ' + (deal.discoveryNotes || '—'),
+        'Next step: ' + (deal.nextStep || '—') + (deal.nextStepDate ? ' (' + deal.nextStepDate + ')' : '')
+      ].filter(line => line !== null).join('\n');
+    }
+    sumDraw();
+    ['f-stage', 'f-next', 'f-nextdate'].forEach(id => $(id).addEventListener('input', () => { grab5(); sumDraw(); }));
+    $('copy-sum').addEventListener('click', async () => {
+      try { await navigator.clipboard.writeText($('sum').value); }
+      catch (e) { $('sum').select(); document.execCommand('copy'); }
+      $('copy-msg').textContent = '✅ Copied — paste it into the email to ' + D.contacts.submit;
+    });
+  }
+  function grab5() {
+    if ($('f-stage')) { deal.stage = $('f-stage').value; deal.nextStep = $('f-next').value; deal.nextStepDate = $('f-nextdate').value; }
+  }
+
+  const RENDER = [s0, s1, s2, s3, s4, s5];
+  const GRABS = [grab, grab, grab2, grab3, grab4, grab5];
+
+  function go(n) {
+    GRABS[step]();
+    step = Math.max(0, Math.min(STEPS.length - 1, n));
+    bar(); RENDER[step]();
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+  $('back').addEventListener('click', () => go(step - 1));
+  $('next').addEventListener('click', () => go(step + 1));
+  $('save').addEventListener('click', async () => {
+    GRABS[step]();
+    if (!deal.biz) { $('savemsg').textContent = 'Give the deal a business name (step 1) before saving.'; return; }
+    await Store.saveDeal(deal);
+    $('savemsg').innerHTML = '✅ Saved to your pipeline — <a href="crm.html">open My Pipeline</a>. Keep going; saving again updates the same deal.';
+  });
+
+  document.addEventListener('hub:ready', async () => {
+    const q = new URLSearchParams(location.search);
+    if (q.get('industry') && D.industries[q.get('industry')]) deal.industry = q.get('industry');
+    if (q.get('deal')) {
+      const found = (await Store.listDeals()).find(d => d.id === q.get('deal'));
+      if (found) { deal = found; deal.products = deal.products || {}; }
+    }
+    bar(); RENDER[step]();
+  });
+})();
+</script>
+</body></html>

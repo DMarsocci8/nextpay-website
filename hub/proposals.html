@@ -1,0 +1,314 @@
+<!DOCTYPE html><html lang="en"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>Proposal Studio — NextPay Sales Hub</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/hub.css">
+<style>
+.tabs{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:18px}
+.tabs button{border:1.5px solid var(--line);background:#fff;border-radius:999px;padding:10px 20px;font:inherit;font-weight:700;font-size:14px;cursor:pointer}
+.tabs button.on{background:var(--teal);border-color:var(--teal);color:#fff}
+/* two-column studio: form left, live document right */
+.pgrid{display:grid;grid-template-columns:minmax(0,1fr) minmax(380px,470px);gap:18px;align-items:start}
+.pv-wrap{position:sticky;top:20px}
+.pv-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:8px}
+.pv{background:#fff;border:1px solid var(--line);border-radius:var(--rad);box-shadow:var(--shadow);padding:22px;max-height:calc(100vh - 130px);overflow-y:auto}
+@media(max-width:1240px){.pgrid{grid-template-columns:1fr}.pv-wrap{position:static}.pv{max-height:none}}
+.cat-items{display:grid;grid-template-columns:1fr;gap:8px}
+.bi{display:flex;align-items:center;gap:12px;border:1px solid var(--line);border-radius:var(--rad-sm);padding:9px 12px;background:#fff}
+.bi .nm{flex:1;min-width:0}
+.bi .nm b{font-size:13.5px}
+.bi .nm span{display:block;font-size:11.5px;color:var(--mut)}
+.bi .pr{font-size:12.5px;color:var(--mut);white-space:nowrap}
+.qty{display:flex;align-items:center;gap:6px}
+.qty button{width:26px;height:26px;border-radius:8px;border:1.5px solid var(--line);background:#fff;font-weight:800;cursor:pointer}
+.qty b{min-width:20px;text-align:center}
+/* the proposal document (shared by live preview + print) */
+.pd{font-size:13px;color:#16283A}
+.pd .head{background:#0C1B2A;color:#fff;padding:20px 24px;border-radius:12px;display:flex;justify-content:space-between;align-items:center;gap:12px}
+.pd .head .t{font-size:19px;font-weight:800;line-height:1.15}
+.pd .head .sub{color:#1FC2A6;font-weight:700;font-size:10.5px;letter-spacing:.14em;text-transform:uppercase}
+.pd .head img{height:32px;background:#fff;border-radius:8px;padding:5px 9px;flex:none}
+.pd table{width:100%;border-collapse:collapse;margin-top:10px}
+.pd th{text-align:left;font-size:10.5px;letter-spacing:.08em;text-transform:uppercase;color:#5B6B7B;border-bottom:2px solid #E3E9EF;padding:6px 8px}
+.pd td{padding:7px 8px;border-bottom:1px solid #E3E9EF;vertical-align:top}
+.pd .tot td{font-weight:800;border-top:2px solid #0C1B2A;border-bottom:0}
+.pd .savebar{background:#14A18C;color:#fff;border-radius:10px;padding:12px 16px;margin-top:14px;font-weight:800}
+.pd .sig{display:flex;gap:40px;margin-top:34px}
+.pd .sig div{flex:1;border-top:1.5px solid #16283A;padding-top:6px;font-size:11px;color:#5B6B7B}
+.pd .foot{margin-top:16px;font-size:10.5px;color:#5B6B7B}
+#print-doc{display:none}
+@media print{
+  body{background:#fff}
+  .hub-side,.hub-topbar,.hub-main>*:not(#print-doc){display:none!important}
+  .hub-main{margin:0;padding:0}
+  #print-doc{display:block;max-width:7.6in;margin:0 auto}
+}
+</style>
+</head><body>
+<div class="hub-shell"><div id="hub-side"></div><main class="hub-main">
+
+<div class="pg-head">
+  <span class="eyebrow">Price it right</span>
+  <h1>Proposal Studio</h1>
+  <p>Every proposal in one place — and the document builds itself on the right as you type. Print or save to PDF, send it same-day while the conversation is warm.</p>
+</div>
+
+<div class="tabs">
+  <button class="on" data-tab="builder">🧱 Proposal Builder</button>
+  <button data-tab="onepager">📄 One-Page Proposal</button>
+  <button data-tab="nextlink">🚀 NextLink (Outreach)</button>
+</div>
+
+<div class="pgrid">
+<div><!-- ============ LEFT: forms ============ -->
+
+<div class="card" id="client-card">
+  <div class="spread"><h3>Who is this for?</h3>
+    <span class="flex"><label class="fl" style="margin:0">Pull from pipeline</label><select class="fi" id="deal-pick" style="width:auto"><option value="">—</option></select></span>
+  </div>
+  <div class="frow3">
+    <div><label class="fl">Business / DBA</label><input class="fi" id="c-biz"></div>
+    <div><label class="fl">Contact name</label><input class="fi" id="c-name"></div>
+    <div><label class="fl">Email / phone</label><input class="fi" id="c-reach"></div>
+  </div>
+</div>
+
+<section id="tab-builder">
+  <div class="card mt16">
+    <h3>1 · Platform &amp; how they pay for hardware</h3>
+    <div class="flex mt8" id="brand-row"><span class="muted small">Loading catalog…</span></div>
+    <div class="flex mt8" id="mode-row"></div>
+    <p class="small muted mt8" id="proc-note"></p>
+  </div>
+  <div class="card mt16" id="items-card"><h3>2 · Build the system</h3><div id="items"></div></div>
+  <div class="card mt16">
+    <h3>3 · Processing &amp; notes</h3>
+    <label class="fl">Processing line for the proposal</label>
+    <select class="fi" id="b-processing">
+      <option>Dual pricing — 0% card processing fees (cash & card pricing posted)</option>
+      <option>Interchange-plus — transparent cost-plus pricing, quoted after statement review</option>
+      <option>We meet or beat your current effective rate — pending statement review</option>
+      <option>Flat rate — one simple rate, quoted with the final agreement</option>
+    </select>
+    <label class="fl">Savings headline (optional — from Statement Review)</label>
+    <input class="fi" id="b-savings" placeholder="e.g. Saves $6,240/year vs your current processor">
+    <label class="fl">Notes on the proposal</label>
+    <textarea class="fi" id="b-notes" rows="2" placeholder="Install timing, trade-in, promo, anything you promised…"></textarea>
+    <div class="flex mt8"><button class="btn btn-outline btn-sm" id="b-clear">Clear items</button></div>
+  </div>
+</section>
+
+<section id="tab-onepager" style="display:none">
+  <div class="card mt16">
+    <h3>One-page proposal — any stack, fill it in</h3>
+    <p class="muted small">For deals that don't come out of the catalog builder (mixed stacks, custom quotes). Line items are free-form; the page on the right updates as you type.</p>
+    <div id="op-lines"></div>
+    <button class="btn btn-outline btn-sm mt8" id="op-add">+ Add line</button>
+    <div class="frow mt8">
+      <div><label class="fl">Savings headline</label><input class="fi" id="op-savings" placeholder="e.g. Saves $6,240/year vs current processor"></div>
+      <div><label class="fl">Processing line</label><input class="fi" id="op-proc" value="Dual pricing — 0% card processing fees"></div>
+    </div>
+    <label class="fl">What happens next</label>
+    <input class="fi" id="op-next" value="Sign → submit → approved in 1–3 business days → installed & trained, usually within 2 weeks.">
+  </div>
+</section>
+
+<section id="tab-nextlink" style="display:none">
+  <div class="card mt16">
+    <div class="spread"><h3>NextLink — client automation &amp; outreach</h3><span class="chip red">Pricing internal until quoted</span></div>
+    <p class="muted small">NextLink is our client automation / outreach platform — sold per seat. Pick the plan and seats; the proposal on the right carries the client-facing quote.</p>
+    <div class="frow3 mt8">
+      <div><label class="fl">Plan</label><select class="fi" id="nl-plan">
+        <option value="599">Trial — $599/seat/mo (3-month term)</option>
+        <option value="749">Annual — $749/seat/mo</option>
+        <option value="999">Month-to-month — $999/seat/mo</option>
+        <option value="custom">Enterprise (10+ seats) — custom, talk to Dom</option>
+      </select></div>
+      <div><label class="fl">Seats</label><input class="fi" id="nl-seats" inputmode="numeric" value="1"></div>
+      <div><label class="fl">Start date</label><input class="fi" type="date" id="nl-start"></div>
+    </div>
+    <label class="fl">What's included (edit to fit the pitch)</label>
+    <textarea class="fi" id="nl-inc" rows="4">Automated outreach campaigns to your client list · Follow-up sequences that never forget · Dashboard with replies and booked appointments · Onboarding + campaign setup with our team · Support included</textarea>
+  </div>
+</section>
+
+</div><!-- ============ RIGHT: live document ============ -->
+<div class="pv-wrap">
+  <div class="pv-head"><span class="chip">Live preview — updates as you type</span>
+    <button class="btn btn-primary btn-sm" id="print-btn">🖨 Print / PDF</button></div>
+  <div class="pv"><div class="pd" id="live"></div></div>
+</div>
+</div>
+
+<div id="print-doc"><div class="pd" id="print-inner"></div></div>
+
+</main></div>
+<script src="js/hub.js"></script><script src="js/hub-data.js"></script><script src="js/hub-store.js"></script>
+<script src="https://nextpaypos.com/js/pos-catalog.js" onerror="window.__catFail=1"></script>
+<script>
+(function () {
+  const $ = (id) => document.getElementById(id);
+  const esc = (s) => String(s == null ? '' : s).replace(/[<>&"]/g, c => ({'<':'&lt;','>':'&gt;','&':'&amp;','"':'&quot;'}[c]));
+  const fmt = (n) => '$' + (Math.round(n * 100) / 100).toLocaleString();
+  const LOGO = 'https://nextpaypos.com/assets/logos/nextpay.png';
+  let tab = 'builder';
+
+  /* ---------- shared doc pieces ---------- */
+  function head(title) {
+    const today = new Date().toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
+    return '<div class="head"><div><div class="sub">NextPay · ' + esc(title) + '</div>' +
+      '<div class="t">' + esc($('c-biz').value || 'Your Business') + '</div></div>' +
+      '<img src="' + LOGO + '" alt="NextPay"></div>' +
+      '<p style="margin-top:12px;color:#5B6B7B">Prepared for <b>' + esc($('c-name').value || '—') + '</b>' +
+      ($('c-reach').value ? ' (' + esc($('c-reach').value) + ')' : '') + ' · ' + today +
+      ' · by <b>' + esc(localStorage.getItem('hub_user_email') || 'NextPay') + '</b></p>';
+  }
+  function foot() {
+    return '<div class="sig"><div>Merchant signature / date</div><div>NextPay / date</div></div>' +
+      '<p class="foot">Pricing valid 30 days. Processing rates subject to underwriting approval. NextPay · nextpaypos.com · hello@nextpaypos.com</p>';
+  }
+
+  /* ---------- BUILDER ---------- */
+  let brand = null, mode = null, qty = {};
+  function cat() { return window.NP_POS_CATALOG || null; }
+  function drawBrands() {
+    const C = cat();
+    if (!C) { $('brand-row').innerHTML = '<span class="muted small">' + (window.__catFail ? 'Catalog failed to load (offline preview) — on the live hub this pulls the full product catalog automatically. Use the One-Page tab meanwhile.' : 'Loading catalog…') + '</span>'; return; }
+    $('brand-row').innerHTML = (window.NP_POS_ORDER || Object.keys(C)).map(k =>
+      '<button class="pick' + (brand === k ? ' on' : '') + '" data-b="' + k + '" style="flex:0 1 auto">' + esc(C[k].label) + '</button>').join('');
+    $('brand-row').querySelectorAll('[data-b]').forEach(b => b.addEventListener('click', () => {
+      brand = b.dataset.b; mode = cat()[brand].modes[0]; qty = {}; drawBrands(); drawModes(); drawItems(); render();
+    }));
+  }
+  function drawModes() {
+    const C = cat(); if (!C || !brand) { $('mode-row').innerHTML = ''; return; }
+    const MI = window.NP_POS_MODEINFO || {};
+    $('mode-row').innerHTML = C[brand].modes.map(m =>
+      '<button class="pick' + (mode === m ? ' on' : '') + '" data-m="' + m + '" style="flex:0 1 auto">' + esc((MI[m] || {}).label || m) + '</button>').join('');
+    $('proc-note').textContent = C[brand].proc || '';
+    $('mode-row').querySelectorAll('[data-m]').forEach(b => b.addEventListener('click', () => { mode = b.dataset.m; drawModes(); drawItems(); render(); }));
+  }
+  function price(it) {
+    if (it.quote) return { txt: 'priced in final quote', v: 0, mo: 0 };
+    if (mode === 'buy' && it.buy != null) return { txt: fmt(it.buy) + ' one-time', v: it.buy, mo: 0 };
+    if (it.mo != null) return { txt: fmt(it.mo) + '/mo' + (it.term ? ' · ' + it.term : ''), v: 0, mo: it.mo };
+    if (it.buy != null) return { txt: fmt(it.buy) + ' one-time', v: it.buy, mo: 0 };
+    return { txt: '', v: 0, mo: 0 };
+  }
+  function drawItems() {
+    const C = cat(); if (!C || !brand) { $('items').innerHTML = '<p class="muted small">Pick a platform above — every product line we sell is in here.</p>'; return; }
+    const B = C[brand];
+    $('items').innerHTML = B.cats.map(c => {
+      const items = B.items.filter(i => i.cat === c.key);
+      return '<h4 class="mt16 mb8">' + esc(c.label) + '</h4><div class="cat-items">' + items.map(i => {
+        const p = price(i), q = qty[i.id] || 0;
+        return '<div class="bi"' + (q ? ' style="border-color:var(--teal);background:var(--teal-soft)"' : '') + '><div class="nm"><b>' + esc(i.name) + '</b><span>' + esc(i.sub || '') + '</span></div>' +
+          '<span class="pr">' + p.txt + '</span>' +
+          '<span class="qty"><button data-q="' + i.id + '|-1">−</button><b>' + q + '</b><button data-q="' + i.id + '|1">+</button></span></div>';
+      }).join('') + '</div>';
+    }).join('');
+    $('items').querySelectorAll('[data-q]').forEach(b => b.addEventListener('click', () => {
+      const [id, d] = b.dataset.q.split('|');
+      qty[id] = Math.max(0, (qty[id] || 0) + Number(d));
+      drawItems(); render();
+    }));
+  }
+  function lines() {
+    const C = cat(); if (!C || !brand) return [];
+    return C[brand].items.filter(i => (qty[i.id] || 0) > 0).map(i => ({ i, q: qty[i.id], p: price(i) }));
+  }
+  function builderDoc() {
+    const C = cat();
+    const ls = lines();
+    let once = 0, mo = 0;
+    const rows = ls.map(l => {
+      once += l.p.v * l.q; mo += l.p.mo * l.q;
+      return '<tr><td style="white-space:nowrap">' + l.q + '×</td><td><b>' + esc(l.i.name) + '</b><br><span style="color:#5B6B7B;font-size:11px">' + esc(l.i.sub || '') + '</span></td><td style="white-space:nowrap">' + (l.i.quote ? 'final quote' : l.p.txt) + '</td></tr>';
+    }).join('');
+    return head((C && brand ? C[brand].label + ' proposal' : 'Proposal')) +
+      ($('b-savings').value ? '<div class="savebar">' + esc($('b-savings').value) + '</div>' : '') +
+      (ls.length
+        ? '<table><thead><tr><th></th><th>Item</th><th>Price</th></tr></thead><tbody>' + rows +
+          '<tr class="tot"><td></td><td>Totals</td><td style="white-space:nowrap">' + fmt(once) + ' one-time · ' + fmt(mo) + '/mo</td></tr></tbody></table>'
+        : '<p style="margin-top:16px;color:#5B6B7B;font-style:italic">Add items on the left — they appear here as you build.</p>') +
+      '<p style="margin-top:14px"><b>Card processing:</b> ' + esc($('b-processing').value) + '</p>' +
+      ($('b-notes').value ? '<p style="margin-top:8px"><b>Notes:</b> ' + esc($('b-notes').value) + '</p>' : '') +
+      (C && brand && C[brand].proc ? '<p style="margin-top:8px;color:#5B6B7B;font-size:11.5px">' + esc(C[brand].proc) + '</p>' : '') + foot();
+  }
+  $('b-clear').addEventListener('click', () => { qty = {}; drawItems(); render(); });
+
+  /* ---------- ONE-PAGER ---------- */
+  const opLines = [{ d: '', p: '' }, { d: '', p: '' }, { d: '', p: '' }];
+  function opDraw() {
+    $('op-lines').innerHTML = opLines.map((l, i) =>
+      '<div class="frow" style="grid-template-columns:2fr 1fr"><div><label class="fl">Line ' + (i + 1) + '</label><input class="fi" data-op="' + i + '|d" value="' + esc(l.d) + '" placeholder="e.g. SkyTab POS base bundle"></div>' +
+      '<div><label class="fl">Price</label><input class="fi" data-op="' + i + '|p" value="' + esc(l.p) + '" placeholder="e.g. $29.99/mo"></div></div>').join('');
+    $('op-lines').querySelectorAll('[data-op]').forEach(inp => inp.addEventListener('input', () => {
+      const [i, f] = inp.dataset.op.split('|'); opLines[+i][f] = inp.value; render();
+    }));
+  }
+  $('op-add').addEventListener('click', () => { opLines.push({ d: '', p: '' }); opDraw(); render(); });
+  function onepagerDoc() {
+    const rows = opLines.filter(l => l.d).map(l => '<tr><td>' + esc(l.d) + '</td><td style="white-space:nowrap">' + esc(l.p) + '</td></tr>').join('');
+    return head('Proposal') +
+      ($('op-savings').value ? '<div class="savebar">' + esc($('op-savings').value) + '</div>' : '') +
+      (rows ? '<table><thead><tr><th>What you get</th><th>Price</th></tr></thead><tbody>' + rows + '</tbody></table>'
+            : '<p style="margin-top:16px;color:#5B6B7B;font-style:italic">Type line items on the left — they appear here as you go.</p>') +
+      '<p style="margin-top:14px"><b>Card processing:</b> ' + esc($('op-proc').value) + '</p>' +
+      '<p style="margin-top:8px"><b>What happens next:</b> ' + esc($('op-next').value) + '</p>' + foot();
+  }
+
+  /* ---------- NEXTLINK ---------- */
+  function nextlinkDoc() {
+    const plan = $('nl-plan').value, seats = Math.max(1, parseInt($('nl-seats').value) || 1);
+    const planTxt = $('nl-plan').options[$('nl-plan').selectedIndex].text.replace(/ — .*$/, '');
+    const priceTxt = plan === 'custom' ? 'Custom — quoted for your team'
+      : fmt(Number(plan)) + ' per seat / month · ' + seats + ' seat' + (seats > 1 ? 's' : '') + ' = <b>' + fmt(Number(plan) * seats) + '/mo</b>';
+    return head('NextLink — Client Automation & Outreach') +
+      '<p style="margin-top:14px;font-size:14px">NextLink runs your client outreach on autopilot — campaigns, follow-up sequences and booked appointments, with our team handling setup.</p>' +
+      '<table><tbody><tr><td style="width:110px"><b>Plan</b></td><td>' + esc(planTxt) + '</td></tr>' +
+      '<tr><td><b>Investment</b></td><td>' + priceTxt + '</td></tr>' +
+      ($('nl-start').value ? '<tr><td><b>Target start</b></td><td>' + esc($('nl-start').value) + '</td></tr>' : '') +
+      '<tr><td><b>Included</b></td><td>' + esc($('nl-inc').value).replace(/·/g, '<br>•') + '</td></tr></tbody></table>' + foot();
+  }
+
+  /* ---------- live render + print ---------- */
+  function currentDoc() {
+    return tab === 'builder' ? builderDoc() : tab === 'onepager' ? onepagerDoc() : nextlinkDoc();
+  }
+  function render() { $('live').innerHTML = currentDoc(); }
+  $('print-btn').addEventListener('click', () => { $('print-inner').innerHTML = currentDoc(); window.print(); });
+
+  document.querySelectorAll('.tabs button').forEach(b => b.addEventListener('click', () => {
+    tab = b.dataset.tab;
+    document.querySelectorAll('.tabs button').forEach(x => x.classList.toggle('on', x === b));
+    ['builder', 'onepager', 'nextlink'].forEach(t => $('tab-' + t).style.display = (t === tab ? '' : 'none'));
+    render();
+  }));
+  document.querySelector('.hub-main').addEventListener('input', render);
+
+  /* pull client from pipeline */
+  document.addEventListener('hub:ready', async () => {
+    const deals = await Store.listDeals();
+    $('deal-pick').innerHTML = '<option value="">—</option>' + deals.map(d => '<option value="' + d.id + '">' + esc(d.biz || 'Unnamed') + '</option>').join('');
+    $('deal-pick').addEventListener('change', () => {
+      const d = deals.find(x => x.id === $('deal-pick').value); if (!d) return;
+      $('c-biz').value = d.biz || ''; $('c-name').value = d.contactName || '';
+      $('c-reach').value = [d.email, d.phone].filter(Boolean).join(' · ');
+      render();
+    });
+    render();
+  });
+
+  opDraw();
+  const bootCat = setInterval(() => {
+    if (cat()) { clearInterval(bootCat); drawBrands(); drawModes(); drawItems(); render(); }
+    else if (window.__catFail) { clearInterval(bootCat); drawBrands(); }
+  }, 200);
+  setTimeout(() => clearInterval(bootCat), 8000);
+  render();
+})();
+</script>
+</body></html>

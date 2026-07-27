@@ -1,0 +1,146 @@
+<!DOCTYPE html><html lang="en"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>My Pipeline — NextPay Sales Hub</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/hub.css">
+</head><body>
+<div class="hub-shell"><div id="hub-side"></div><main class="hub-main">
+
+<div class="pg-head">
+  <span class="eyebrow">Work a deal</span>
+  <div class="spread"><h1>My Pipeline</h1>
+    <span class="flex">
+      <a class="btn btn-primary btn-sm" href="deal-navigator.html">+ New deal (guided)</a>
+      <button class="btn btn-outline btn-sm" id="quickadd">+ Quick add</button>
+      <button class="btn btn-outline btn-sm" onclick="Store.exportAll()">Export book</button>
+      <label class="btn btn-outline btn-sm" style="cursor:pointer">Import<input type="file" id="imp" accept=".json" style="display:none"></label>
+    </span>
+  </div>
+  <p>Every deal you're working, by stage. Click a card to update it. Every active deal should have a next step with a date.</p>
+</div>
+
+<div class="pipe" id="pipe"></div>
+<div class="note mt16" id="mode-note" style="display:none"></div>
+
+<!-- Deal editor modal -->
+<div class="modal-bg" id="mbg"><div class="modal">
+  <button class="x" id="mx">✕</button>
+  <h3 id="m-title">Deal</h3>
+  <div class="frow">
+    <div><label class="fl">Business name</label><input class="fi" id="m-biz"></div>
+    <div><label class="fl">Industry</label><select class="fi" id="m-ind"><option value="">—</option></select></div>
+  </div>
+  <div class="frow3">
+    <div><label class="fl">Contact</label><input class="fi" id="m-contact"></div>
+    <div><label class="fl">Phone</label><input class="fi" id="m-phone"></div>
+    <div><label class="fl">Email</label><input class="fi" id="m-email"></div>
+  </div>
+  <div class="frow3">
+    <div><label class="fl">Stage</label><select class="fi" id="m-stage"></select></div>
+    <div><label class="fl">Monthly volume ($)</label><input class="fi" id="m-vol"></div>
+    <div><label class="fl">Avg ticket ($)</label><input class="fi" id="m-ticket"></div>
+  </div>
+  <div class="frow">
+    <div><label class="fl">Placement</label><select class="fi" id="m-place"><option value="">—</option></select></div>
+    <div><label class="fl">Pricing model</label><select class="fi" id="m-model"><option></option><option>Dual pricing (0%)</option><option>Interchange-plus</option><option>Flat rate</option><option>TBD after statement</option></select></div>
+  </div>
+  <div class="frow">
+    <div><label class="fl">Next step</label><input class="fi" id="m-next"></div>
+    <div><label class="fl">Next step date</label><input class="fi" type="date" id="m-nextdate"></div>
+  </div>
+  <label class="fl">Notes</label><textarea class="fi" id="m-notes" rows="4"></textarea>
+  <div class="flex mt16">
+    <button class="btn btn-primary" id="m-save">Save</button>
+    <a class="btn btn-outline" id="m-nav">Open in Navigator</a>
+    <button class="btn btn-outline" id="m-won">→ Mark installed &amp; add to My Merchants</button>
+    <span style="flex:1"></span>
+    <button class="btn btn-outline" id="m-del" style="color:var(--red)">Delete</button>
+  </div>
+</div></div>
+
+</main></div>
+<script src="js/hub.js"></script><script src="js/hub-data.js"></script><script src="js/hub-store.js"></script>
+<script>
+(function () {
+  const $ = (id) => document.getElementById(id);
+  const esc = (s) => String(s == null ? '' : s).replace(/[<>&"]/g, c => ({'<':'&lt;','>':'&gt;','&':'&amp;','"':'&quot;'}[c]));
+  let deals = [], cur = null;
+
+  function fillSelects() {
+    $('m-stage').innerHTML = Store.STAGES.map(s => '<option value="' + s.key + '">' + s.label + '</option>').join('');
+    $('m-ind').innerHTML += Object.entries(HUB_DATA.industries).map(([k, v]) => '<option value="' + k + '">' + esc(v.label) + '</option>').join('');
+    $('m-place').innerHTML += Object.entries(HUB_DATA.placements).map(([k, v]) => '<option value="' + k + '">' + esc(v.label) + '</option>').join('');
+  }
+
+  async function draw() {
+    deals = await Store.listDeals();
+    const byStage = {};
+    Store.STAGES.forEach(s => byStage[s.key] = []);
+    deals.forEach(d => (byStage[d.stage] || byStage.prospect).push(d));
+    $('pipe').innerHTML = Store.STAGES.map(s =>
+      '<div class="pipe-col"><h5>' + s.label + '<span>' + byStage[s.key].length + '</span></h5>' +
+      byStage[s.key].map(d =>
+        '<div class="deal-card" data-id="' + d.id + '"><div class="nm">' + esc(d.biz || 'Unnamed') + '</div>' +
+        '<div class="meta">' + esc((HUB_DATA.industries[d.industry] || {}).label || '') +
+        (d.volume ? ' · $' + Number(d.volume).toLocaleString() + '/mo' : '') + '</div>' +
+        (d.nextStep ? '<div class="meta">→ ' + esc(d.nextStep) + (d.nextStepDate ? ' (' + d.nextStepDate + ')' : '') + '</div>' : '') +
+        '</div>').join('') + '</div>').join('');
+    document.querySelectorAll('.deal-card').forEach(c => c.addEventListener('click', () => open(c.dataset.id)));
+  }
+
+  function open(id) {
+    cur = deals.find(d => d.id === id) || { stage: 'prospect', products: {} };
+    $('m-title').textContent = cur.id ? (cur.biz || 'Deal') : 'New deal';
+    $('m-biz').value = cur.biz || ''; $('m-ind').value = cur.industry || '';
+    $('m-contact').value = cur.contactName || ''; $('m-phone').value = cur.phone || ''; $('m-email').value = cur.email || '';
+    $('m-stage').value = cur.stage || 'prospect'; $('m-vol').value = cur.volume || ''; $('m-ticket').value = cur.avgTicket || '';
+    $('m-place').value = cur.placement || ''; $('m-model').value = cur.pricingModel || '';
+    $('m-next').value = cur.nextStep || ''; $('m-nextdate').value = cur.nextStepDate || '';
+    $('m-notes').value = cur.discoveryNotes || '';
+    $('m-nav').href = 'deal-navigator.html?deal=' + encodeURIComponent(cur.id || '');
+    $('mbg').classList.add('open');
+  }
+  function grab() {
+    cur.biz = $('m-biz').value; cur.industry = $('m-ind').value;
+    cur.contactName = $('m-contact').value; cur.phone = $('m-phone').value; cur.email = $('m-email').value;
+    cur.stage = $('m-stage').value; cur.volume = $('m-vol').value; cur.avgTicket = $('m-ticket').value;
+    cur.placement = $('m-place').value; cur.pricingModel = $('m-model').value;
+    cur.nextStep = $('m-next').value; cur.nextStepDate = $('m-nextdate').value;
+    cur.discoveryNotes = $('m-notes').value;
+  }
+  const close = () => $('mbg').classList.remove('open');
+  $('mx').addEventListener('click', close);
+  $('mbg').addEventListener('click', (e) => { if (e.target === $('mbg')) close(); });
+  $('m-save').addEventListener('click', async () => { grab(); await Store.saveDeal(cur); close(); draw(); });
+  $('m-del').addEventListener('click', async () => {
+    if (cur.id && confirm('Delete this deal? This cannot be undone.')) { await Store.deleteDeal(cur.id); close(); draw(); }
+  });
+  $('m-won').addEventListener('click', async () => {
+    grab(); cur.stage = 'installed'; await Store.saveDeal(cur);
+    await Store.saveMerchant({
+      dba: cur.biz, contactName: cur.contactName, phone: cur.phone, email: cur.email,
+      placement: cur.placement, product: (cur.products && cur.products.pos) || '', program: cur.pricingModel || '',
+      status: 'Live', fromDeal: cur.id
+    });
+    close(); draw();
+    alert('Marked installed and added to My Merchants — finish the merchant record there (MID, rate, contract).');
+  });
+  $('quickadd').addEventListener('click', () => open(null));
+  $('imp').addEventListener('change', (e) => {
+    if (e.target.files[0]) Store.importAll(e.target.files[0], (err) => { if (err) alert('Import failed: ' + err.message); else draw(); });
+  });
+
+  document.addEventListener('hub:ready', async () => {
+    fillSelects();
+    await draw();
+    await Store.probe();
+    if (!Store.apiMode()) {
+      const n = $('mode-note'); n.style.display = 'block';
+      n.innerHTML = '<b>Local mode:</b> deals live in this browser until the hub CRM API is deployed. Export your book regularly as a backup.';
+    }
+  });
+})();
+</script>
+</body></html>

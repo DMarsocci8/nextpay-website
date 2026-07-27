@@ -1,0 +1,109 @@
+<!DOCTYPE html><html lang="en"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>All Agent Deals — NextPay Sales Hub</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/hub.css">
+</head><body>
+<div class="hub-shell"><div id="hub-side"></div><main class="hub-main">
+
+<div class="pg-head">
+  <span class="eyebrow">Admin · Dom &amp; Alexander</span>
+  <h1>All Agent Deals</h1>
+  <p>Every agent's pipeline and merchant book in one view. Filter by agent, watch what's stuck, and see what's about to install.</p>
+</div>
+
+<div id="gate" class="note warn" style="display:none"><b>Admin only.</b> This page shows data for dom@nextpaypos.com and alexander@nextpaypos.com. If that's you, make sure you're signed into the hub with that email.</div>
+
+<div id="content" style="display:none">
+  <div class="grid4" id="stats"></div>
+
+  <div class="card mt16">
+    <div class="spread"><h3>Deals</h3>
+      <span class="flex"><label class="fl" style="margin:0">Agent</label><select class="fi" id="f-agent" style="width:auto"><option value="">All agents</option></select>
+      <label class="btn btn-outline btn-sm" style="cursor:pointer">Import agent export<input type="file" id="imp" accept=".json" style="display:none"></label></span>
+    </div>
+    <div class="tbl-wrap mt8"><table class="tbl">
+      <thead><tr><th>Business</th><th>Agent</th><th>Industry</th><th>Stage</th><th>Volume</th><th>Placement</th><th>Next step</th><th>Updated</th></tr></thead>
+      <tbody id="deal-rows"></tbody>
+    </table></div>
+  </div>
+
+  <div class="card mt16">
+    <h3>Merchants (live book)</h3>
+    <div class="tbl-wrap mt8"><table class="tbl">
+      <thead><tr><th>DBA</th><th>Agent</th><th>Product</th><th>Placed with</th><th>Rate/program</th><th>MID</th><th>Status</th></tr></thead>
+      <tbody id="m-rows"></tbody>
+    </table></div>
+  </div>
+
+  <div class="note mt16" id="mode-note" style="display:none"></div>
+</div>
+
+</main></div>
+<script src="js/hub.js"></script><script src="js/hub-data.js"></script><script src="js/hub-store.js"></script>
+<script>
+(function () {
+  const $ = (id) => document.getElementById(id);
+  const esc = (s) => String(s == null ? '' : s).replace(/[<>&"]/g, c => ({'<':'&lt;','>':'&gt;','&':'&amp;','"':'&quot;'}[c]));
+  let deals = [], merchants = [];
+
+  function draw(filter) {
+    const ds = filter ? deals.filter(d => d.agent === filter) : deals;
+    const ms = filter ? merchants.filter(m => m.agent === filter) : merchants;
+    $('stats').innerHTML = [
+      { n: ds.filter(d => !['installed', 'lost'].includes(d.stage)).length, l: 'active deals' },
+      { n: ds.filter(d => ['submitted', 'underwriting'].includes(d.stage)).length, l: 'submitted / underwriting' },
+      { n: ms.filter(m => m.status === 'Live').length, l: 'merchants live' },
+      { n: new Set(deals.map(d => d.agent)).size, l: 'agents with deals' }
+    ].map(s => '<div class="stat"><div class="n">' + s.n + '</div><div class="l">' + s.l + '</div></div>').join('');
+
+    $('deal-rows').innerHTML = ds.length ? ds
+      .sort((a, b) => (b.updatedAt || '') < (a.updatedAt || '') ? -1 : 1)
+      .map(d => '<tr><td><b>' + esc(d.biz || '—') + '</b></td><td class="small">' + esc(d.agent || '') + '</td>' +
+        '<td class="small">' + esc((HUB_DATA.industries[d.industry] || {}).label || '') + '</td>' +
+        '<td><span class="chip">' + esc(Store.stageLabel(d.stage)) + '</span></td>' +
+        '<td class="small">' + (d.volume ? '$' + Number(d.volume).toLocaleString() : '') + '</td>' +
+        '<td class="small">' + esc((HUB_DATA.placements[d.placement] || {}).label || d.placement || '') + '</td>' +
+        '<td class="small">' + esc(d.nextStep || '') + (d.nextStepDate ? ' <span class="chip amber">' + d.nextStepDate + '</span>' : '') + '</td>' +
+        '<td class="small muted">' + (d.updatedAt || '').slice(0, 10) + '</td></tr>').join('')
+      : '<tr><td colspan="8" class="muted">No deals to show.</td></tr>';
+
+    $('m-rows').innerHTML = ms.length ? ms.map(m =>
+      '<tr><td><b>' + esc(m.dba || '—') + '</b></td><td class="small">' + esc(m.agent || '') + '</td>' +
+      '<td class="small">' + esc(m.product || '') + '</td><td class="small">' + esc(m.placement || '') + '</td>' +
+      '<td class="small">' + esc(m.program || '') + '</td><td class="small">' + esc(m.mid || '') + '</td>' +
+      '<td><span class="chip ' + (m.status === 'Live' ? 'green' : 'amber') + '">' + esc(m.status || '') + '</span></td></tr>').join('')
+      : '<tr><td colspan="7" class="muted">No merchants to show.</td></tr>';
+  }
+
+  async function load() {
+    deals = await Store.listDeals();
+    merchants = await Store.listMerchants();
+    const agents = [...new Set([...deals.map(d => d.agent), ...merchants.map(m => m.agent)].filter(Boolean))].sort();
+    $('f-agent').innerHTML = '<option value="">All agents</option>' + agents.map(a => '<option>' + esc(a) + '</option>').join('');
+    draw('');
+  }
+
+  document.addEventListener('hub:ready', async (ev) => {
+    if (!ev.detail.admin) { $('gate').style.display = 'block'; return; }
+    $('content').style.display = 'block';
+    await load();
+    $('f-agent').addEventListener('change', () => draw($('f-agent').value));
+    $('imp').addEventListener('change', (e) => {
+      if (e.target.files[0]) Store.importAll(e.target.files[0], (err, j) => {
+        if (err) return alert('Import failed: ' + err.message);
+        load();
+        alert('Imported ' + ((j.deals || []).length) + ' deals and ' + ((j.merchants || []).length) + ' merchants' + (j.agent ? ' from ' + j.agent : '') + '.');
+      });
+    });
+    await Store.probe();
+    if (!Store.apiMode()) {
+      const n = $('mode-note'); n.style.display = 'block';
+      n.innerHTML = '<b>Local mode:</b> without the CRM API deployed, this page only sees data in <i>this</i> browser. Until then, have agents use <b>Export book</b> on their pipeline and import the files here. Deploy <code>workers/hub-crm-api.js</code> (see docs/sales-hub-restructure.md) to get automatic all-agent visibility.';
+    }
+  });
+})();
+</script>
+</body></html>

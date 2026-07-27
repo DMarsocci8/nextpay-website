@@ -1,0 +1,38 @@
+<!DOCTYPE html><html lang="en"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>Industry Playbooks — NextPay Sales Hub</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/hub.css">
+</head><body>
+<div class="hub-shell"><div id="hub-side"></div><main class="hub-main">
+
+<div class="pg-head">
+  <span class="eyebrow">Learn</span>
+  <h1>Industry Playbooks</h1>
+  <p>Walking into a grocery store, a pizzeria, a dental office? Open the playbook first: what to ask, what wins, what to watch for. "Work this industry" drops you straight into the <a href="deal-navigator.html">Deal Navigator</a> with everything pre-loaded.</p>
+</div>
+
+<div id="list"></div>
+
+</main></div>
+<script src="js/hub.js"></script><script src="js/hub-data.js"></script><script src="js/hub-store.js"></script>
+<script>
+(function () {
+  const esc = (s) => String(s == null ? '' : s).replace(/[<>&"]/g, c => ({'<':'&lt;','>':'&gt;','&':'&amp;','"':'&quot;'}[c]));
+  const groups = {};
+  for (const [k, v] of Object.entries(HUB_DATA.industries)) (groups[v.group] = groups[v.group] || []).push([k, v]);
+  document.getElementById('list').innerHTML = Object.entries(groups).map(([g, list]) =>
+    '<h3 class="mt24 mb8">' + esc(g) + '</h3><div class="grid2">' +
+    list.map(([k, v]) =>
+      '<div class="card" style="box-shadow:none"><div class="spread"><b>' + esc(v.label) + '</b>' +
+      '<a class="btn btn-primary btn-sm" href="deal-navigator.html?industry=' + k + '">Work this industry →</a></div>' +
+      '<p class="small muted mt8"><b>Lead with:</b> ' + esc(v.primary.name) + ' — ' + esc(v.primary.why) + '</p>' +
+      (v.alts.length ? '<p class="small muted mt8"><b>Also fits:</b> ' + v.alts.map(a => esc(a.name)).join(' · ') + '</p>' : '') +
+      '<p class="small mt8"><b>Pricing angle:</b> <span class="muted">' + esc(v.pricing) + '</span></p></div>'
+    ).join('') + '</div>'
+  ).join('');
+})();
+</script>
+</body></html>
