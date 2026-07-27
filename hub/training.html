@@ -59,7 +59,7 @@
 
 <div class="card mt16" id="quiz">
   <h3>🎓 Agent quiz — pass it before your first week in the field</h3>
-  <p class="muted small mb8">Fifteen questions, instant grade. 13/15 or better means you're ready; anything less, re-read the section it points you to.</p>
+  <p class="muted small mb8">Seventeen questions, instant grade — and watch out: some have more than one right pick, and the obvious answer isn’t always the best lead. 14/17 or better means you’re ready; miss one and the grader tells you why the best answer wins.</p>
   <div id="quiz-body"></div>
   <div class="flex mt16"><button class="btn btn-primary" id="quiz-grade">Grade me</button><span id="quiz-out" class="small" style="font-weight:700"></span></div>
 </div>
@@ -101,36 +101,49 @@
 <script src="js/hub.js"></script><script src="js/hub-data.js"></script><script src="js/hub-store.js"></script>
 <script>
 (function () {
+  // Single-answer: c = index. Multi-answer: multi:true, c = [indexes] — set must match exactly.
+  // Every question grades with a "why" so the quiz teaches judgment, not memorization.
   const Q = [
-    { q: 'A merchant pays $1,540 in total fees on $44,000 of card volume. Their effective rate is…', a: ['3.5%', '2.9%', '1.9%', '4.2%'], c: 0, w: 'Statement Review — total fees ÷ volume.' },
-    { q: 'Which number do you lead with when presenting a statement beat?', a: ['The basis-point spread', 'Annual savings in dollars', 'Our buy rate', 'Interchange tables'], c: 1, w: 'Statement Review — savings, not rates.' },
-    { q: 'SkyTab terms you must say out loud before submitting:', a: ['None, it\u2019s month-to-month', '30-day trial then 36-month agreement', '12-month lease', '90-day trial'], c: 1, w: 'Products / Submit a Deal.' },
-    { q: 'A c-store needs tobacco scan-data rebates. Which platforms fit?', a: ['Square or SumUp', 'NRS or Korona', 'SkyTab', 'Any gateway'], c: 1, w: 'Industry Playbooks — convenience.' },
-    { q: 'Invoice-type deal (plumber, law office, cleaning route). You lead with…', a: ['FieldPulse', 'QuickBooks', 'Next2Pay Invoicing (linked2pay)', 'Stripe'], c: 2, w: 'Products — invoice deals lead with Next2Pay.' },
-    { q: 'What single metric best predicts your pipeline health?', a: ['Doors knocked', 'Statements collected', 'Business cards handed out', 'DMs sent'], c: 1, w: 'Sales Playbook — mindset.' },
-    { q: 'Dual pricing requires…', a: ['Nothing special', 'Posted signage + a correctly built terminal/POS file', 'A 3-year contract', 'State approval'], c: 1, w: 'Pricing & Buy Rates.' },
-    { q: 'High-risk prospect asks for a rate on the spot. You…', a: ['Quote something safe', 'Never quote first — package the file for underwriting with the NextPay team through the appropriate channel (Deal Desk)', 'Quote interchange-plus', 'Decline the deal'], c: 1, w: 'Industry Playbooks — high risk.' },
-    { q: 'Docs every standard deal needs:', a: ['App only', 'App + voided check + ID + statements/projections', 'Just the statement', 'ID and a handshake'], c: 1, w: 'Submit a Deal.' },
-    { q: 'Tiny boutique, low volume, owner hates monthly fees. The value play is\u2026', a: ['SkyTab', 'Square \u2014 free plan, no monthly software and no PCI or regulatory fees (SumUp POS Lite also fits)', 'Korona Plus', 'Enterprise Quantic'], c: 1, w: 'Products \u2014 Square / SumUp.' },
-    { q: 'A plumber needs new equipment but cash is tight. The play?', a: ['Skip it \u2014 not our problem', 'NextFund \u2014 our financing lane, a second commission alongside the processing deal', 'Tell him to call his bank', 'Discount the hardware'], c: 1, w: 'Products \u2014 Business Services / NextFund.' },
-    { q: 'A salon wants occasional invoicing for bridal parties. You\u2026', a: ['Switch them to Next2Pay Invoicing', 'Recommend a full POS (Square/Clover) \u2014 invoicing is a feature there; Next2Pay is for invoice-FIRST businesses like trades', 'Sell both systems', 'Tell them invoicing is impossible'], c: 1, w: 'Products \u2014 the Next2Pay scoping rule.' },
-    { q: 'A deal has no next step and no date in the pipeline. It is…', a: ['Fine', 'A wish, not a deal — fix it today', 'Closed', 'Someone else\u2019s problem'], c: 1, w: 'Training — the core motion.' },
-    { q: 'You have a question about a live deal — pricing, docs, underwriting. Where does it go?', a: ['Text Dom', 'Email Alexander', 'Google Chat — Deal Desk, replying in that deal’s thread', 'NextPay General Q&A'], c: 2, w: 'Training — how we communicate.' },
-    { q: 'Why does everything stay in Google Chat instead of texts and emails?', a: ['It’s cheaper', 'Visibility — the whole team can see it and help, and threads keep every conversation easy to find', 'Dom doesn’t like email', 'Compliance requires it'], c: 1, w: 'Training — how we communicate.' }
+    { q: 'A merchant pays $1,540 in total fees on $44,000 of card volume. Their effective rate is…', a: ['2.9%', '3.2%', '3.5%', '3.9%'], c: 2, why: 'Total fees ÷ volume: 1,540 ÷ 44,000 = 3.5%. Always compute it yourself — statements bury the real number.', w: 'Statement Review' },
+    { q: 'You beat their statement by 40 basis points. What do you lead with in the pitch?', a: ['The 40 bps spread', 'Your buy-rate math', 'Annual savings in dollars', 'The interchange tables'], c: 2, why: 'Owners feel dollars, not basis points — "that’s about $2,100 a year back in your pocket." Keep the bps for your own math.', w: 'Statement Review' },
+    { q: 'Fast-casual restaurant, two stations, wants online ordering and pay-at-table. Best FIRST lead?', a: ['Square Register', 'SkyTab by Shift4', 'Clover Station Duo', 'Quantic'], c: 1, why: 'SkyTab is our restaurant standard — $29.99 base bundle, pay-at-table handhelds, KDS, lifetime warranty. Square or Clover are defensible if the owner already leans that way — know why you’d pivot, but lead SkyTab.', w: 'Industry Playbooks — restaurants' },
+    { q: 'Tiny boutique, low volume, owner hates monthly fees. Which fit? (pick ALL that apply)', multi: true, a: ['SkyTab', 'Square free plan — no monthly software, no PCI or regulatory fees', 'SumUp POS Lite — $499 once, $0 monthly software', 'Korona Plus'], c: [1, 2], why: 'Two right answers — Square’s free plan and SumUp POS Lite both kill the monthly. Pick between them on ecosystem (Square) vs one-time-cost simplicity (SumUp). SkyTab and Korona add exactly the monthlies she hates.', w: 'Products — Square / SumUp' },
+    { q: 'A plumber who invoices every job asks what you’d set him up with. You lead…', a: ['Next2Pay Invoicing (linked2pay)', 'Square Invoices', 'QuickBooks payments', 'FieldPulse'], c: 0, why: 'Invoice-FIRST businesses (trades, cleaning routes, pros) lead with Next2Pay — house rails, best margins, built for estimate → invoice → text-to-pay. Square Invoices is the tempting distractor: it works, but it’s not the lead.', w: 'Products — the Next2Pay rule' },
+    { q: 'A salon wants occasional invoicing for bridal parties. You…', a: ['Move them to Next2Pay Invoicing', 'Sell them both systems', 'Lead a full POS (Square/Clover) — invoicing is a feature there; Next2Pay is for invoice-FIRST businesses', 'Tell them invoicing isn’t possible'], c: 2, why: 'A salon runs on appointments + POS — Square (or Clover) handles the occasional invoice inside the POS. Next2Pay is for businesses whose whole revenue runs on invoices.', w: 'Products — the Next2Pay rule' },
+    { q: 'A c-store owner asks about tobacco scan-data rebates. Which platforms fit?', a: ['Square or SumUp', 'SkyTab', 'NRS or Korona', 'Any gateway'], c: 2, why: 'Scan-data is register-data territory — NRS and Korona are built for it. Put them on the wrong platform and the rebate checks never come.', w: 'Industry Playbooks — convenience' },
+    { q: 'Pizzeria loves their current POS but hates their rates. The play?', a: ['Replace the POS with SkyTab anyway', 'Statement meet-or-beat on our rails — keep their POS where it integrates', 'Walk away — no POS sale, no deal', 'Quote dual pricing sight-unseen'], c: 1, why: 'Never force a rip-and-replace on a happy POS. Beat the statement, move the processing, keep the relationship — the hardware conversation comes later, on trust you’ve earned.', w: 'Statement Review' },
+    { q: 'Dual pricing requires…', a: ['State approval', 'Posted signage + a correctly built terminal/POS file', 'A 3-year contract', 'Nothing special'], c: 1, why: 'Legal nationwide when done right: posted cash/card prices and a file built to show both on the receipt. The build matters more than the pitch.', w: 'Pricing & Buy Rates' },
+    { q: 'High-risk prospect asks for a rate on the spot. You…', a: ['Quote something safe to keep them warm', 'Quote interchange-plus', 'Decline the deal', 'Never quote first — package the file with the NextPay team in Deal Desk'], c: 3, why: 'High-risk pricing is per-file. A number you invent on the sidewalk becomes a promise you can’t keep. Package it and post it in Deal Desk.', w: 'Industry Playbooks — high risk' },
+    { q: 'Docs every standard deal needs:', a: ['App only', 'Just the statement', 'App + voided check + ID + statements/projections', 'ID and a handshake'], c: 2, why: 'A complete file is a fast approval. Incomplete files are the #1 cause of slow deals.', w: 'Submit a Deal' },
+    { q: 'Merchant ran Clover at their last shop and wants it again. You…', a: ['Steer them to SkyTab anyway', 'Write it — we have our own Clover program; ask in Deal Desk whether it qualifies for Clover Advantage before quoting', 'Tell them Clover is a competitor', 'Only if they buy the hardware outright'], c: 1, why: 'If they like Clover, sell Clover — it’s our paper. Check Clover Advantage in Deal Desk first; it changes the economics of the deal.', w: 'Products / Submit a Deal — Clover' },
+    { q: 'A merchant needs equipment or cash to expand. Anything financing or lending, the name is…', a: ['NextLink', 'Whatever their bank offers', 'NextFund — our financing lane, a second commission alongside the processing deal', 'Not our problem'], c: 2, why: 'Finance/lending = NextFund, every time. NextLink is the client automation & outreach tool — don’t mix them up in front of a merchant.', w: 'Products — Business Services' },
+    { q: 'SkyTab terms you say out loud before submitting:', a: ['Month-to-month, cancel anytime', '90-day trial', '12-month lease', '30-day trial then 36-month agreement'], c: 3, why: 'Say it up front — it builds trust now and prevents the "you locked me in" blow-up later.', w: 'Products — SkyTab' },
+    { q: 'A deal in your pipeline has no next step and no date. It is…', a: ['Fine — some deals take time', 'A wish, not a deal — fix it today', 'Closed', 'Someone else’s problem'], c: 1, why: 'Every active deal has a next step with a date. That discipline IS the pipeline.', w: 'Training — the core motion' },
+    { q: 'You have a question about a live deal — pricing, docs, underwriting. Where does it go?', a: ['Text Dom', 'Google Chat — Deal Desk, replying in that deal’s thread', 'Email Alexander', 'NextPay General Q&A'], c: 1, why: 'Deals live in Deal Desk, threaded. Nothing deal-related anywhere else — that’s how the whole team sees it and can help.', w: 'Training — how we communicate' },
+    { q: 'Why does everything stay in Google Chat instead of texts and emails?', a: ['It’s free', 'Dom checks it more often', 'Visibility — the whole team can see it and jump in, and threads keep every conversation easy to find', 'IT policy'], c: 2, why: 'One place, full visibility, threaded and searchable. Texts and emails hide information from the people who could help you close.', w: 'Training — how we communicate' }
   ];
+  const PASS = 14;
   const body = document.getElementById('quiz-body');
   body.innerHTML = Q.map((x, i) =>
-    '<div class="mt16"><b>' + (i + 1) + '. ' + x.q + '</b>' +
-    x.a.map((a, j) => '<label style="display:flex;gap:8px;margin-top:6px;font-size:13.5px;cursor:pointer"><input type="radio" name="q' + i + '" value="' + j + '"> ' + a + '</label>').join('') + '</div>').join('');
+    '<div class="mt16" id="qq' + i + '"><b>' + (i + 1) + '. ' + x.q + '</b>' +
+    x.a.map((a, j) => '<label style="display:flex;gap:8px;margin-top:6px;font-size:13.5px;cursor:pointer"><input type="' + (x.multi ? 'checkbox' : 'radio') + '" name="q' + i + '" value="' + j + '"> ' + a + '</label>').join('') +
+    '<div class="small" id="qf' + i + '" style="display:none;margin-top:8px;padding:8px 12px;border-radius:10px"></div></div>').join('');
   document.getElementById('quiz-grade').addEventListener('click', () => {
     let score = 0; const misses = [];
     Q.forEach((x, i) => {
-      const v = document.querySelector('input[name=q' + i + ']:checked');
-      if (v && +v.value === x.c) score++; else misses.push((i + 1) + ' (' + x.w + ')');
+      const picked = [...document.querySelectorAll('input[name=q' + i + ']:checked')].map(el => +el.value).sort();
+      const want = (x.multi ? x.c.slice() : [x.c]).sort();
+      const ok = picked.length === want.length && picked.every((v, k) => v === want[k]);
+      if (ok) score++; else misses.push((i + 1) + ' (' + x.w + ')');
+      const f = document.getElementById('qf' + i);
+      f.style.display = 'block';
+      f.style.background = ok ? 'rgba(20,161,140,.1)' : 'rgba(217,119,6,.1)';
+      f.style.color = ok ? '#0e7a6a' : '#92600a';
+      f.innerHTML = (ok ? '✅ ' : '❌ Best answer: <b>' + (x.multi ? x.c.map(j => x.a[j]).join('</b> + <b>') : x.a[x.c]) + '</b>. ') + x.why + ' <i>(' + x.w + ')</i>';
     });
-    document.getElementById('quiz-out').innerHTML = score >= 13
-      ? '✅ ' + score + '/15 — ready for the field.'
-      : '📖 ' + score + '/15 — review question' + (misses.length > 1 ? 's' : '') + ' ' + misses.join(', ');
+    document.getElementById('quiz-out').innerHTML = score >= PASS
+      ? '✅ ' + score + '/' + Q.length + ' — ready for the field.'
+      : '📖 ' + score + '/' + Q.length + ' — review question' + (misses.length > 1 ? 's' : '') + ' ' + misses.join(', ');
   });
 })();
 </script>
