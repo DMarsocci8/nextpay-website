@@ -514,7 +514,7 @@ window.HUB_DATA = {
   /* ---------- Product library ---------- */
   products: {
     pos: [
-      { name: 'Chively POS', tag: 'All-in-one POS — its own platform, written through Solutions in Payments (Luqra)', sell: ['Full restaurant + retail feature set', 'Handheld, kiosk and customer-screen options', 'Written on SIP paper — SIP Schedule A economics'], link: 'https://nextpaypos.com/chively' },
+      { name: 'Chively POS', tag: 'All-in-one POS — its own platform, written through Solutions in Payments (Luqra)', sell: ['Full restaurant + retail feature set', 'Handheld, kiosk and customer-screen options', 'Written on SIP paper — SIP Schedule A economics', 'Pricing coming soon'], link: 'https://nextpaypos.com/chively' },
       { name: 'SkyTab by Shift4', tag: 'Full-service restaurant standard', sell: ['$29.99/mo base bundle, $0 upfront, lifetime warranty', 'Pay-at-table, KDS, kiosk, caller ID', '30-day trial → 36-month agreement'], link: 'https://nextpaypos.com/shift4-dine' },
       { name: 'Clover', tag: 'The mainstream all-in-one', sell: ['Placement ($0 down) or buy outright', 'Software $0–$89.95/mo by vertical', 'Huge app market'], link: 'https://nextpaypos.com/clover' },
       { name: 'Square', tag: 'Design-friendly SMB ecosystem', sell: ['POS + online + invoices in one', 'Free plan to start — lowest monthly cost in the lineup: no PCI, regulatory or statement junk fees', 'We meet-or-beat their published rates on our rails'], link: 'https://nextpaypos.com/square' },
@@ -612,7 +612,7 @@ window.HUB_DATA = {
     ]},
     'chively': { label: 'Chively POS (via Solutions in Payments — Luqra)', steps: [
       'Chively is its own POS, written through Solutions in Payments (Luqra) — SIP Schedule A economics apply. It is NOT house paper and NOT Next2Pay.',
-      'Confirm the build — stations, handhelds, kiosk, customer screens — and quote it in the Proposal Studio.',
+      'Confirm the build — stations, handhelds, kiosk, customer screens. Hardware/software pricing coming soon; until then, price the build in the deal’s Deal Desk thread.',
       'Common docs (app, voided check, ID, statements/projections) plus menu/inventory files.',
       'Email the packaged deal to dom@nextpaypos.com (CC payments@ + alexander@) — subject "Chively deal — {DBA}".',
       'Install scheduling and file questions → the deal’s Deal Desk thread.'
@@ -977,7 +977,7 @@ window.HUB_DATA = {
     'chively': {
       source: 'Solutions in Payments paper (Luqra) — Chively POS',
       sched: 'sip',
-      quote: 'Chively hardware/software quoted per the Chively price list; processing fully ours to price on SIP — dual pricing or IC+ above the SIP cost floor (IC pass-through + 0.02% + $0.02/txn).',
+      quote: 'Chively hardware/software pricing coming soon — until then, work the quote in the deal’s Deal Desk thread. Processing is fully ours to price on SIP — dual pricing or IC+ above the SIP cost floor (IC pass-through + 0.02% + $0.02/txn).',
       make: ['Your share ≈ 45% of everything above the SIP cost floor — bps, per-item and monthly-fee margin', 'Hardware/software margin on the Chively build'],
       need: null
     },
