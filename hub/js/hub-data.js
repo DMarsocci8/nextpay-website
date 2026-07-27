@@ -146,7 +146,7 @@ window.HUB_DATA = {
       ],
       rules: [
         'High single tickets → disclose max ticket on the app; set realistic limits so payouts are not held.',
-        'Phone orders/deposits → Next2Pay virtual terminal (house rails).',
+        'Phone orders/deposits → Next2Pay virtual terminal (linked2pay rails).',
         'Repairs pipeline → invoicing add-on or QuickBooks integration.'
       ],
       pricing: 'High average ticket → interchange-plus shines; per-item fees are irrelevant, basis points are everything. Statements from jewelry stores usually show inflated keyed rates — easy beat.',
@@ -195,7 +195,7 @@ window.HUB_DATA = {
       rules: [
         'White-tablecloth, coursing, big wine list → SkyTab, full stop.',
         'Wants to own hardware outright → Quantic Swan bundles.',
-        '30-day SkyTab trial then 30-month agreement — say it up front, it builds trust.'
+        '30-day SkyTab trial then 36-month agreement — say it up front, it builds trust.'
       ],
       pricing: 'SkyTab is a placement: $0 upfront, per-device monthly. Dual pricing works in casual FSR; fine dining often prefers a clean interchange-plus quote instead — read the room.',
       placements: ['skytab', 'quantic', 'clover']
@@ -515,7 +515,7 @@ window.HUB_DATA = {
   products: {
     pos: [
       { name: 'NextPay POS (Chively)', tag: 'Our house all-in-one POS', sell: ['Full restaurant + retail feature set', 'Handheld, kiosk and customer-screen options', 'Best margins — our own stack'], link: 'https://nextpaypos.com/chively' },
-      { name: 'SkyTab by Shift4', tag: 'Full-service restaurant standard', sell: ['$29.99/mo base bundle, $0 upfront, lifetime warranty', 'Pay-at-table, KDS, kiosk, caller ID', '30-day trial → 30-month agreement'], link: 'https://nextpaypos.com/shift4-dine' },
+      { name: 'SkyTab by Shift4', tag: 'Full-service restaurant standard', sell: ['$29.99/mo base bundle, $0 upfront, lifetime warranty', 'Pay-at-table, KDS, kiosk, caller ID', '30-day trial → 36-month agreement'], link: 'https://nextpaypos.com/shift4-dine' },
       { name: 'Clover', tag: 'The mainstream all-in-one', sell: ['Placement ($0 down) or buy outright', 'Software $0–$89.95/mo by vertical', 'Huge app market'], link: 'https://nextpaypos.com/clover' },
       { name: 'Square', tag: 'Design-friendly SMB ecosystem', sell: ['POS + online + invoices in one', 'Free plan to start', 'We meet-or-beat their published rates on our rails'], link: 'https://nextpaypos.com/square' },
       { name: 'Quantic', tag: 'Own-your-hardware cloud POS', sell: ['Swan bundles from $919', 'Pro $60/mo first station, $50 additional', 'Deep module list (OLO, loyalty, reservations)'], link: 'https://nextpaypos.com/quantic' },
@@ -567,7 +567,7 @@ window.HUB_DATA = {
   placements: {
     'skytab': { label: 'SkyTab by Shift4', steps: [
       'Confirm the build in the Proposal Builder (base bundle $29.99/mo + per-device monthlies) and price processing.',
-      'Collect common docs plus the signed SkyTab agreement (30-day trial, then 30-month term — make sure the owner heard this from you first).',
+      'Collect common docs plus the signed SkyTab agreement (30-day trial, then 36-month term — make sure the owner heard this from you first).',
       'Menu build: collect the full menu (photos or files) — send with the submission.',
       'Email the packaged deal to dom@nextpaypos.com (CC payments@ + alexander@) with subject "SkyTab deal — {DBA}".',
       'Install is scheduled by the SkyTab team; track status in the Shift4 partner portal and log it on the deal in My Pipeline.'
@@ -723,7 +723,7 @@ window.HUB_DATA = {
     tabs:      { boosts: [{ m: 'skytab|shift4', d: 2, why: 'Fast tabs with card pre-auth' }],
                  note: 'Pre-auth tabs is the killer question at bars — if their current system can’t, we win.' },
     online:    { boosts: [{ m: 'square', d: 1, why: 'POS + online store one ecosystem' }],
-                 stack: [{ slot: 'gateway', v: 'Next2Pay gateway (house rails)', why: 'E-commerce / card-not-present rail' }] },
+                 stack: [{ slot: 'gateway', v: 'Next2Pay gateway (linked2pay rails)', why: 'E-commerce / card-not-present rail' }] },
     invoices:  { stack: [{ slot: 'invoicing', v: 'Next2Pay Invoicing', why: 'They invoice their customers — Next2Pay is the play. (If they run a full POS, invoicing is usually a feature there; Next2Pay is for true invoice-first businesses or one-off simple invoicing needs.)' }] },
     recurring: { stack: [{ slot: 'invoicing', v: 'Next2Pay recurring billing', why: 'House recurring — card-on-file, retries, account updater rescues failing cards' }],
                  note: 'Quantify recovered failed payments — that story beats any rate pitch.' },
