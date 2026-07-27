@@ -26,7 +26,7 @@
       {v:'highrisk',t:'High Risk',d:'CBD, vape/smoke, peptides, travel, specialty.'}]},
     {id:'addons',q:'Anything else on your list?',sub:'Select all that apply — optional.',type:'multi',opts:[
       {v:'offset',t:'Offset card fees to the customer',d:'Dual pricing, surcharging, or cash discount. Available on every platform.'},
-      {v:'financing',t:'Business financing / funding',d:'Working capital, equipment loans, merchant cash advance.'},
+      {v:'financing',t:'Business financing / funding',d:'NextFund — working capital, equipment loans, merchant cash advance.'},
       {v:'payroll',t:'Payroll & Workers Comp',d:'Full-service payroll and workers comp coverage.'},
       {v:'marketing',t:'Network building & marketing',d:'NextLink — digital outreach, reputation, campaigns.'}]},
     {id:'hardware',q:'How do you want your hardware?',sub:'Drives no-upfront vs. purchase options.',type:'single',
@@ -68,7 +68,7 @@
     if(need==='other') return [
       C('Payroll & Workers Comp','Service','Full-service payroll, tax filing & workers comp coverage.','See details','/payroll'),
       C('Bookkeeping','Service','Reconciliation, reports & tax-ready books.','See details','/bookkeeping'),
-      C('Business Financing','Service','Working capital, equipment loans & cash advances.','See details','/financing'),
+      C('NextFund — Business Financing','Service','Working capital, equipment loans & cash advances through NextFund.','See details','/financing'),
       C('NextLink — Outreach & Marketing','Service','Reviews, reputation & automated client outreach.','See details','/outreach'),
       C('Merchant Rewards','Service','Earn points on every dollar you process.','See details','/merchant-rewards'),
       C('HR & Compliance','Service','HR tools & compliance for growing teams.','See details','/hr-compliance'),
@@ -80,7 +80,7 @@
         ?[C('Shift4 POS','Top pick','Restaurant-built, lease only, lifetime warranty, no upfront.','from $29.99/mo',POS),C('Clover POS','Option','Placement program, 500+ app marketplace.','no upfront',POS)]
         :[C('Square POS','Top pick','Free tier, inventory & eCommerce — broadest fit.','from $0/mo',POS),C('SumUp POS','Option','Simple cafe/QSR & food-truck register — POS Lite & Solo bundle, loyalty built in.','$499 complete',POS),C('Clover POS','Option','Buy or lease, lifetime warranty, 500+ apps.','placement',POS)];
       if(I==='retail') return [C('Square POS','Top pick','Free tier, inventory and eCommerce built in.','from $0/mo',POS),C('SumUp POS','Option','Small-shop simplicity — POS Lite & Solo bundle with loyalty built in.','$499 complete',POS),C('SwipeSimple','Option','Mobile-first, Text-to-Pay, flexible.','from $25/mo',POS)];
-      if(I==='conv') return [C('Square POS','Top pick','Fast checkout, scalable, free tier.','from $0/mo',POS),C('KORONA POS','Option','Regulated products, ticketing, multi-location.','from $59/mo',POS),C('Clover POS','Option','Placement program, 500+ apps.','no upfront',POS)];
+      if(I==='conv') return [C('Square POS','Top pick','Fast checkout, scalable, free tier.','from $0/mo',POS),C('SumUp POS','Option','Fast QSR counter — POS Lite & Solo bundle, loyalty built in.','$499 complete',POS),C('KORONA POS','Option','Regulated products, ticketing, multi-location.','from $59/mo',POS),C('Clover POS','Option','Placement program, 500+ apps.','no upfront',POS)];
       if(I==='services') return [C('SwipeSimple','Top pick','Mobile app, appointments, Text-to-Pay.','from $25/mo',POS),C('SumUp POS','Option','Palm-size Terminal + simple register, loyalty built in.','$499 complete',POS),C('Clover POS','Option','Appointments, placement program.','no upfront',POS)];
       if(I==='highrisk') return [C('KORONA POS','Top pick','Age verification, compliance, multi-location.','from $59/mo',POS)];
       return [C('Square POS','Top pick','Free tier, broad industry fit.','from $0/mo',POS),C('SumUp POS','Option','Simple & affordable — POS Lite & Solo bundle, loyalty built in.','$499 complete',POS),C('Clover POS','Option','500+ apps, placement program.','no upfront',POS)];
@@ -89,7 +89,7 @@
       if(I==='fnb') return [C('Dejavoo Terminals','Top pick','Countertop + wireless, tip prompting, dual pricing.','processing only',TERM+'#dejavoo'),C('Clover Flex & Go','Option','Natural add-on if Clover is your POS.','processing only',TERM+'#clover')];
       if(I==='healthcare') return [C('Dejavoo Terminals','Top pick','Countertop, PIN debit — pairs with LQpay.','processing only',TERM+'#dejavoo'),C('Square Terminal','Option','Simple all-in-one front-desk option.','2.6% + 10¢',TERM+'#square')];
       if(I==='highrisk') return [C('Valor PayTech','Top pick','High-risk processors, dual pricing, multi-MID.','processing only',TERM+'#valor')];
-      return [C('PAX Terminals','Top pick','4G LTE, Wi-Fi, long battery, built-in printer.','processing only',TERM+'#pax'),C('Valor PayTech','Option','Dual pricing built-in, SMS marketing.','processing only',TERM+'#valor')];
+      return [C('PAX Terminals','Top pick','4G LTE, Wi-Fi, long battery, built-in printer.','processing only',TERM+'#pax'),C('SumUp Terminal','Option','Palm-size all-in-one with built-in printer — payments anywhere.','$249 one-time','/sumup'),C('Valor PayTech','Option','Dual pricing built-in, SMS marketing.','processing only',TERM+'#valor')];
     }
     function online(){
       // Anything invoicing-related leads with NextPay's own invoicing product.
@@ -101,7 +101,7 @@
     function onlineBase(){
       if(I==='fnb') return [C('Square Online & Invoicing','Top pick','Free tier, eCommerce, online ordering.','2.9% + 30¢',GW),C('iPOSpays by Dejavoo','Option','Dual pricing invoicing, ACH, 0% option.','from $25/mo',GW)];
       if(I==='retail') return [C('Authorize.net','Top pick','Invoicing, ACH, QuickBooks sync.','from $25/mo',GW),C('Square Online','Option','eCommerce store + invoicing, free tier.','free',GW)];
-      if(I==='services') return [C('SwipeSimple','Top pick','Text-to-Pay, invoicing, mobile app.','from $25/mo',INV),C('iPOSpays by Dejavoo','Option','Dual pricing invoicing, virtual terminal.','from $25/mo',GW),C('FluidPay','Option','AI fraud, recurring billing, mobile.','from $25/mo',GW)];
+      if(I==='services') return [C('SwipeSimple','Top pick','Text-to-Pay, invoicing, mobile app.','from $25/mo',INV),C('SumUp POS','Option','Light hardware alternative — palm-size Terminal or POS Lite register.','$499 complete',POS),C('iPOSpays by Dejavoo','Option','Dual pricing invoicing, virtual terminal.','from $25/mo',GW),C('FluidPay','Option','AI fraud, recurring billing, mobile.','from $25/mo',GW)];
       if(I==='home') return [C('Field Work','Top pick','Job-based invoicing, scheduling & recurring billing.','custom',INV),C('iPOSpays by Dejavoo','Option','Dual pricing invoicing, Text-to-Pay.','from $25/mo',GW)];
       if(I==='healthcare') return [C('LQpay','Top pick','EMR/EHR integration, Text-to-Pay billing.','custom',INV),C('SwipeSimple','Option','In-person + remote, Text-to-Pay.','from $25/mo',INV)];
       if(I==='highrisk') return [C('Valor Gateway','Top pick','High-risk capable, dual pricing, ACH.','from $25/mo',GW),C('FluidPay','Option','Invoicing, AI fraud detection.','from $25/mo',GW)];
@@ -131,7 +131,8 @@
       'Valor Gateway':'/gateways#valor','FluidPay':'/gateways#fluidpay',
       'iPOSpays by Dejavoo':'/gateways#ipospays',
       'Square Online & Invoicing':'/square','Square Online':'/square',
-      'Field Work':'/invoicing','LQpay':'/luqra','Next2Pay Invoicing':'/invoicing'
+      'Field Work':'/invoicing','LQpay':'/luqra','Next2Pay Invoicing':'/next2pay',
+      'SumUp Terminal':'/sumup','NextFund — Business Financing':'/financing'
     };
     cards.forEach(function(c){ if(DEST[c.name]) c.href=DEST[c.name]; });
     return cards;
