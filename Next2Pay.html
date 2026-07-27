@@ -23,7 +23,7 @@
 .n2-hero .wrap{position:relative;z-index:2}
 .n2-crumb{display:flex;gap:8px;align-items:center;font-size:14px;color:#9fb1c2;padding:20px 0 0}
 .n2-crumb a:hover{color:#fff}.n2-crumb .sep{opacity:.5}
-.n2-hgrid{display:grid;grid-template-columns:1.05fr 1.1fr;gap:46px;align-items:center;padding:36px 0 64px}
+.n2-hgrid{display:grid;grid-template-columns:.95fr 1.25fr;gap:46px;align-items:center;padding:36px 0 64px}
 .n2-badge{display:inline-flex;align-items:center;gap:8px;font-size:12.5px;font-weight:800;letter-spacing:.04em;color:var(--teal-bright);background:rgba(31,194,166,.12);border:1px solid rgba(31,194,166,.28);border-radius:999px;padding:7px 14px}
 .n2-logo{height:52px;width:auto;display:block;margin:20px 0 6px}
 .n2-hero h1{font-size:clamp(30px,4.4vw,52px);line-height:1.06;letter-spacing:-.02em;color:#fff;margin-top:10px}
@@ -62,8 +62,8 @@
 .n2-feat h4{font-size:16px;color:var(--navy)}
 .n2-feat p{font-size:14px;color:var(--slate);line-height:1.55;margin-top:6px}
 
-.n2-show{display:grid;grid-template-columns:1fr 1.15fr;gap:46px;align-items:center;max-width:var(--maxw);margin:0 auto}
-.n2-show.rev{grid-template-columns:1.15fr 1fr}
+.n2-show{display:grid;grid-template-columns:1fr 1.4fr;gap:46px;align-items:center;max-width:var(--maxw);margin:0 auto}
+.n2-show.rev{grid-template-columns:1.4fr 1fr}
 .n2-show.rev .n2-copy{order:2}
 @media(max-width:900px){.n2-show,.n2-show.rev{grid-template-columns:1fr;gap:26px}.n2-show.rev .n2-copy{order:0}}
 .n2-copy .eyebrow{color:var(--teal-dark);font-weight:800;font-size:12.5px;letter-spacing:.08em;text-transform:uppercase}
@@ -120,7 +120,7 @@ function npLogoFail(img){var b=img.getAttribute('data-brand');if(img.classList.c
           <a class="btn btn-primary" href="/contact">Book a demo <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
           <a class="btn btn-ghost" href="/quick-application">Apply now</a>
         </div>
-        <div class="n2-tags"><span>Invoices &amp; pay links</span><span>Recurring billing</span><span>Card + ACH</span><span>Virtual terminal</span><span>QuickBooks sync</span></div>
+        <div class="n2-tags"><span>Invoices &amp; pay links</span><span>Subscriptions</span><span>Recurring billing</span><span>Card + ACH</span><span>Virtual terminal</span><span>QuickBooks sync</span></div>
       </div>
       <div class="n2-heroshot">
         <div class="frame"><div class="bar"><i></i><i></i><i></i></div><img src="assets/software/next2pay-dashboard.png" alt="Next2Pay dashboard — billing overview, revenue and recent payments" loading="eager"></div>
@@ -152,7 +152,7 @@ function npLogoFail(img){var b=img.getAttribute('data-brand');if(img.classList.c
       <div class="n2-feat"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 3h7l5 5v13H7z"/><path d="M14 3v5h5M9 13h6M9 17h4"/></svg></div><h4>Smart invoicing</h4><p>Itemized invoices with automatic reminders and live payment tracking — sent by email or text.</p></div>
       <div class="n2-feat"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10 13a5 5 0 007 0l2-2a5 5 0 00-7-7l-1 1"/><path d="M14 11a5 5 0 00-7 0l-2 2a5 5 0 007 7l1-1"/></svg></div><h4>Instant pay links</h4><p>Send a pay-by-link and get paid in a tap — no app, no login, no friction for your customer.</p></div>
       <div class="n2-feat"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="6" y="2" width="12" height="20" rx="2"/><path d="M11 18h2"/></svg></div><h4>Text-to-pay</h4><p>SMS requests get seen and paid faster than email — reach customers right on their phone.</p></div>
-      <div class="n2-feat"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12a9 9 0 1015-6.7L21 8"/><path d="M21 3v5h-5"/></svg></div><h4>Recurring billing</h4><p>Charge memberships, retainers and subscriptions automatically on the schedule you set.</p></div>
+      <div class="n2-feat"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12a9 9 0 1015-6.7L21 8"/><path d="M21 3v5h-5"/></svg></div><h4>Subscriptions &amp; recurring billing</h4><p>Sell memberships and service plans — customers subscribe once and Next2Pay bills them automatically.</p></div>
       <div class="n2-feat"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="5" width="20" height="14" rx="2"/><path d="M2 10h20"/></svg></div><h4>Virtual terminal</h4><p>Key in a card or bank payment from any device — turn a phone or laptop into a terminal.</p></div>
       <div class="n2-feat"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 7c0-1.7 3.6-3 8-3s8 1.3 8 3-3.6 3-8 3-8-1.3-8-3z"/><path d="M4 7v10c0 1.7 3.6 3 8 3s8-1.3 8-3V7M4 12c0 1.7 3.6 3 8 3s8-1.3 8-3"/></svg></div><h4>QuickBooks sync</h4><p>Two-way sync keeps invoices and payments reconciled in QuickBooks automatically.</p></div>
     </div>
@@ -197,10 +197,29 @@ function npLogoFail(img){var b=img.getAttribute('data-brand');if(img.classList.c
   </div>
 </section>
 
-<!-- SHOWCASE: virtual terminal -->
+<!-- SHOWCASE: subscriptions -->
 <section class="n2-sec">
   <div class="wrap">
     <div class="n2-show">
+      <div class="n2-copy">
+        <span class="eyebrow">Sell plans, not chases</span>
+        <h3>Subscriptions your customers sign up for once</h3>
+        <p>Build a membership, service plan or retainer as a subscription plan — customers subscribe once, and Next2Pay bills the card or bank automatically, tracks MRR, and keeps churn visible.</p>
+        <ul class="n2-list">
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 13l4 4L19 7"/></svg>Monthly, quarterly or annual plans</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 13l4 4L19 7"/></svg>Subscriber counts &amp; recurring revenue per plan</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 13l4 4L19 7"/></svg>Fee-free bank (ACH) option on every plan</li>
+        </ul>
+      </div>
+      <div class="shot win"><div class="bar"><i></i><i></i><i></i></div><img src="assets/software/next2pay-subscriptions.png" alt="Next2Pay subscriptions — plans with subscribers and recurring revenue" loading="lazy"></div>
+    </div>
+  </div>
+</section>
+
+<!-- SHOWCASE: virtual terminal -->
+<section class="n2-sec">
+  <div class="wrap">
+    <div class="n2-show rev">
       <div class="n2-copy">
         <span class="eyebrow">No hardware needed</span>
         <h3>Take a payment from any device with the virtual terminal</h3>
