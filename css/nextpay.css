@@ -351,13 +351,19 @@ body.np-cmp-pad{padding-bottom:150px}
 .nav.open .nav-burger .x{display:block}
 .nav-mobile{display:none}
 
-@media(max-width:1000px){
-  .np-cb-actions{margin-left:0}
-  .rec{grid-template-columns:1fr}
-  .rec .rec-media{min-height:260px}
-  .g-4{grid-template-columns:repeat(2,1fr)}
-  .g-3{grid-template-columns:1fr}
-  .foot-grid{grid-template-columns:1fr 1fr}
+
+/* nav fit: tighten below 1500px so nowrap links + logo never overflow */
+@media(max-width:1500px){
+  .nav-inner{gap:14px}
+  .nav-links{gap:13px;margin-left:2px}
+  .nav-links a,.nav-item{font-size:14px}
+  .nav-right{gap:11px}
+  .nav-right .contact{font-size:14px}
+  .nav-cta{padding:11px 15px;font-size:14px}
+  .nav-cta.alt{padding:9.5px 12px}
+}
+/* burger menu cutover (was 1000px; nowrap nav needs more room) */
+@media(max-width:1150px){
   .nav-links,.nav-right{display:none}
   .nav-burger{display:inline-flex}
   .nav-mobile{display:block;position:fixed;left:0;right:0;top:78px;bottom:0;background:var(--navy);overflow-y:auto;-webkit-overflow-scrolling:touch;padding:6px 0 44px;border-top:1px solid rgba(255,255,255,.1);transform:translateX(100%);transition:transform .25s ease;z-index:59}
@@ -382,6 +388,14 @@ body.np-cmp-pad{padding-bottom:150px}
   .nm-body a.nm-feat span{color:#bfe9e0}
   .nm-link{display:flex;align-items:center;justify-content:space-between;color:#fff;font-weight:700;font-size:17px;padding:16px 22px;border-bottom:1px solid rgba(255,255,255,.08)}
   .nm-cta{display:inline-flex !important;margin:22px 22px 0;justify-content:center}
+}
+@media(max-width:1000px){
+  .np-cb-actions{margin-left:0}
+  .rec{grid-template-columns:1fr}
+  .rec .rec-media{min-height:260px}
+  .g-4{grid-template-columns:repeat(2,1fr)}
+  .g-3{grid-template-columns:1fr}
+  .foot-grid{grid-template-columns:1fr 1fr}
 }
 @media(max-width:680px){
   .g-2,.g-4{grid-template-columns:1fr}
