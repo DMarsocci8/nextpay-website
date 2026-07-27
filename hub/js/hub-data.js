@@ -514,7 +514,7 @@ window.HUB_DATA = {
   /* ---------- Product library ---------- */
   products: {
     pos: [
-      { name: 'NextPay POS (Chively)', tag: 'Our house all-in-one POS', sell: ['Full restaurant + retail feature set', 'Handheld, kiosk and customer-screen options', 'Best margins — our own stack'], link: 'https://nextpaypos.com/chively' },
+      { name: 'Chively POS', tag: 'All-in-one POS — its own platform, written through Solutions in Payments (Luqra)', sell: ['Full restaurant + retail feature set', 'Handheld, kiosk and customer-screen options', 'Written on SIP paper — SIP Schedule A economics'], link: 'https://nextpaypos.com/chively' },
       { name: 'SkyTab by Shift4', tag: 'Full-service restaurant standard', sell: ['$29.99/mo base bundle, $0 upfront, lifetime warranty', 'Pay-at-table, KDS, kiosk, caller ID', '30-day trial → 36-month agreement'], link: 'https://nextpaypos.com/shift4-dine' },
       { name: 'Clover', tag: 'The mainstream all-in-one', sell: ['Placement ($0 down) or buy outright', 'Software $0–$89.95/mo by vertical', 'Huge app market'], link: 'https://nextpaypos.com/clover' },
       { name: 'Square', tag: 'Design-friendly SMB ecosystem', sell: ['POS + online + invoices in one', 'Free plan to start — lowest monthly cost in the lineup: no PCI, regulatory or statement junk fees', 'We meet-or-beat their published rates on our rails'], link: 'https://nextpaypos.com/square' },
@@ -610,8 +610,15 @@ window.HUB_DATA = {
       'Hardware from the SumUp price list (POS Lite $499, Terminal $249, Solo $54…).',
       'Common docs; email to dom@nextpaypos.com — subject "SumUp deal — {DBA}".'
     ]},
-    'next2pay': { label: 'Next2Pay / Chively (house POS & invoicing)', steps: [
-      'House deal — best margins in the book. Confirm the build: Chively POS stations/handhelds, Next2Pay Invoicing, or both.',
+    'chively': { label: 'Chively POS (via Solutions in Payments — Luqra)', steps: [
+      'Chively is its own POS, written through Solutions in Payments (Luqra) — SIP Schedule A economics apply. It is NOT house paper and NOT Next2Pay.',
+      'Confirm the build — stations, handhelds, kiosk, customer screens — and quote it in the Proposal Studio.',
+      'Common docs (app, voided check, ID, statements/projections) plus menu/inventory files.',
+      'Email the packaged deal to dom@nextpaypos.com (CC payments@ + alexander@) — subject "Chively deal — {DBA}".',
+      'Install scheduling and file questions → the deal’s Deal Desk thread.'
+    ]},
+    'next2pay': { label: 'Next2Pay (house invoicing, gateway & recurring)', steps: [
+      'House deal — best margins in the book. Confirm the build: Next2Pay Invoicing, gateway/virtual terminal, recurring billing, or a combination.',
       'Build the quote in the Proposal Studio. Selling NextLink (client automation outreach) too? Its per-seat proposal has its own section there.',
       'Underwriting docs (all required): last 3 months processing statements · last 3 months business bank statements · Articles of Incorporation · owner ID(s) · bank account details · Plaid connection · Veriff completion. Plus menu/inventory or invoice workflow details.',
       'Email the packaged deal to dom@nextpaypos.com (CC payments@ + alexander@) — subject "Next2Pay deal — {DBA}".',
@@ -778,7 +785,7 @@ window.HUB_DATA = {
       label: 'Solutions in Payments (SIP)',
       cols: ['Low-Risk', 'High-Risk'],
       splitNote: 'The costs below come off the top of every deal. You earn 50% of the net residual that remains \u2014 which works out to \u2248 45% of the gross margin you create on low-risk files (30% on the high-risk book). That is your number; nothing further comes out of it.',
-      covers: 'House processing paper for: Quantic · NRS · Korona · standalone terminals (PAX / Dejavoo / Valor) · gateways (NMI / FluidPay / Authorize.net / iPOSPays) · high-risk files. Does NOT cover: Square, SkyTab/Shift4, Clover/Fiserv, Next2Pay, NextLink, SumUp, PAYS, FieldPulse, LQPay (each has its own schedule).',
+      covers: 'House processing paper for: Chively POS (via Luqra) · Quantic · NRS · Korona · standalone terminals (PAX / Dejavoo / Valor) · gateways (NMI / FluidPay / Authorize.net / iPOSPays) · high-risk files. Does NOT cover: Square, SkyTab/Shift4, Clover/Fiserv, Next2Pay, NextLink, SumUp, PAYS, FieldPulse, LQPay (each has its own schedule).',
       floor: 'Your true cost on low-risk SIP paper = interchange (pass-through) + 0.02% BIN sponsor + $0.02 per transaction (+ $0.02 per batch). Everything you quote above that is margin — and your share is ≈45% of it (30% on the high-risk book).',
       example: 'Example: $45,000/mo, ~1,500 transactions, quoted at IC + 0.50% + $0.10 → gross margin ≈ $336/mo. Your share ≈ $151/mo, for the life of the merchant. Ten of these = $1,500/mo that keeps paying.',
       groups: [
@@ -967,8 +974,15 @@ window.HUB_DATA = {
      processing gets quoted. Entries with `need` are waiting on a Schedule A
      from Dom — they render as "missing" until filled in. INTERNAL ONLY. */
   economics: {
+    'chively': {
+      source: 'Solutions in Payments paper (Luqra) — Chively POS',
+      sched: 'sip',
+      quote: 'Chively hardware/software quoted per the Chively price list; processing fully ours to price on SIP — dual pricing or IC+ above the SIP cost floor (IC pass-through + 0.02% + $0.02/txn).',
+      make: ['Your share ≈ 45% of everything above the SIP cost floor — bps, per-item and monthly-fee margin', 'Hardware/software margin on the Chively build'],
+      need: null
+    },
     'next2pay': {
-      source: 'In-house — linked2pay rails (NextPay / Chively / Next2Pay / NextLink)',
+      source: 'In-house — linked2pay rails (Next2Pay / NextLink)',
       sched: 'next2pay',
       quote: 'Card processing at the linked2pay buy rates (IC + 2 bps + $0.0215/txn) — quote dual pricing or IC+ above it. ACH at $0.10/item buy. Linked2Invoice at $35/mo buy — retail-price it per deal. NextLink (outreach) seats per the internal list: Trial $599 / Annual $749 / M2M $999 per seat/mo.',
       make: ['Your share = 50% of the margin over the Next2Pay buy rates — card, ACH and Linked2Invoice SaaS', 'Best-control paper in the book: every line on the schedule is shareable'],
