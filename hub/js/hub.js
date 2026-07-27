@@ -89,7 +89,7 @@
       html += '<a href="' + it.href + '"' + (it.href === cur ? ' class="on"' : '') + '>' + icon(it.ic) + it.label + '</a>';
     }
     html += '</nav>';
-    html += '<div class="hs-foot">Questions? <a href="mailto:hello@nextpaypos.com">hello@nextpaypos.com</a><br><a href="https://nextpaypos.com" target="_blank" rel="noopener">nextpaypos.com ↗</a></div>';
+    html += '<div class="hs-foot">Questions? Google Chat —<br>Deal Desk · General Q&amp;A<br><a href="https://nextpaypos.com" target="_blank" rel="noopener">nextpaypos.com ↗</a></div>';
     const side = document.getElementById('hub-side');
     side.className = 'hub-side';
     side.innerHTML = html;
