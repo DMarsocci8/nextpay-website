@@ -598,7 +598,7 @@ window.HUB_DATA = {
     ]},
     'pays': { label: 'PAYS', steps: [
       'Pick the plan (Starter $59 / Growth $79 / Enterprise $99) + station bundle ($999) or quoted hardware.',
-      'Dual-pricing signage expectations — set them now.',
+      'Dual-pricing signage expectations — set them now. Loaner/rental hardware carries a Return Obligation: if the merchant terminates early, the hardware ships back or the penalty applies.',
       'Common docs + menu; email to dom@nextpaypos.com — subject "PAYS deal — {DBA}".'
     ]},
     'sumup': { label: 'SumUp', steps: [
@@ -932,6 +932,25 @@ window.HUB_DATA = {
           ['Chargeback mediation', '$22.00'],
           ['Inactive merchant / account on file / statement', 'Waived']] }
       ]
+    },
+    pays: {
+      label: 'PAYS (POS licensing + our processing)',
+      cols: ['Cost'],
+      covers: 'PAYS POS deals: we license the software per merchant and pair it with our own processing on SIP paper. Loaner/rental hardware carries a Return Obligation — early terminations must ship the hardware back.',
+      splitNote: 'Software margin = the retail plan price minus the license cost below — your share is 50% of it. The processing on a PAYS deal rides our SIP paper, where your share ≈ 45% of the margin you quote.',
+      floor: 'License cost: $59/mo per merchant start (first terminal), $29/mo for a second terminal at the same merchant — billable to the merchant or to us. Retail plans stay at the published numbers: Starter $59 / Growth $79 / Enterprise $99.',
+      example: 'Example: Growth plan at $79/mo retail − $59 license = $20/mo software margin → your share $10/mo. Enterprise at $99 → your share $20/mo. Add ≈45% of the processing margin (SIP paper, dual pricing the norm) and markup on the $999 station bundle.',
+      groups: [
+        { h: 'Licensing (our cost)', rows: [
+          ['License — per merchant start (first terminal)', '$59.00 / mo'],
+          ['Second terminal (same merchant)', '$29.00 / mo']] },
+        { h: 'Retail price points (published — safe to quote)', rows: [
+          ['Starter plan', '$59 / mo'],
+          ['Growth plan (delivery apps, KDS, fine dine-in)', '$79 / mo'],
+          ['Enterprise plan (gift cards, loyalty, multi-location)', '$99 / mo'],
+          ['Station + reader bundle', '$999 one-time'],
+          ['Reference', 'payspos.com/pos-system-cost · payspos.com/shop']] }
+      ]
     }
   },
 
@@ -988,10 +1007,11 @@ window.HUB_DATA = {
       need: null
     },
     'pays': {
-      source: 'PAYS agent program',
-      quote: 'Plans at sheet prices (Starter $59 / Growth $79 / Enterprise $99; station $999). All-inclusive dual pricing — program fee structure per PAYS.',
-      make: ['Residual on the dual-pricing program per PAYS agent terms', 'Software margin if any'],
-      need: 'PAYS agent Schedule A — residual split on the dual-pricing program.'
+      source: 'PAYS ISO licensing + our processing (SIP paper)',
+      sched: 'pays',
+      quote: 'Sell the plans at the published retail (Starter $59 / Growth $79 / Enterprise $99; station $999). The license costs us $59/mo per start ($29 second terminal). Processing is ours to price on SIP paper \u2014 dual pricing is the PAYS norm.',
+      make: ['Software margin: retail plan \u2212 $59 license (Growth +$20, Enterprise +$40/mo) \u2014 your share is 50% of it', 'Your share \u2248 45% of the processing margin on our SIP paper', 'Hardware markup on the station bundle'],
+      need: null
     },
     'sumup': {
       source: 'SumUp reseller program',
