@@ -781,6 +781,56 @@
       "source": "/SumUp.html",
       "destination": "/sumup",
       "permanent": true
+    },
+    {
+      "source": "/blog-cash-discount-vs-surcharge.html",
+      "destination": "/blog/cash-discount-vs-surcharge",
+      "permanent": true
+    },
+    {
+      "source": "/blog-cash-discount-vs-surcharge",
+      "destination": "/blog/cash-discount-vs-surcharge",
+      "permanent": true
+    },
+    {
+      "source": "/blog-get-paid-faster-invoicing.html",
+      "destination": "/blog/get-paid-faster-invoicing",
+      "permanent": true
+    },
+    {
+      "source": "/blog-get-paid-faster-invoicing",
+      "destination": "/blog/get-paid-faster-invoicing",
+      "permanent": true
+    },
+    {
+      "source": "/blog-best-pos-food-trucks.html",
+      "destination": "/blog/best-pos-food-trucks",
+      "permanent": true
+    },
+    {
+      "source": "/blog-best-pos-food-trucks",
+      "destination": "/blog/best-pos-food-trucks",
+      "permanent": true
+    },
+    {
+      "source": "/blog-square-vs-sumup.html",
+      "destination": "/blog/square-vs-sumup",
+      "permanent": true
+    },
+    {
+      "source": "/blog-square-vs-sumup",
+      "destination": "/blog/square-vs-sumup",
+      "permanent": true
+    },
+    {
+      "source": "/blog-working-capital-options.html",
+      "destination": "/blog/working-capital-options",
+      "permanent": true
+    },
+    {
+      "source": "/blog-working-capital-options",
+      "destination": "/blog/working-capital-options",
+      "permanent": true
     }
   ],
   "rewrites": [
@@ -1123,6 +1173,26 @@
     {
       "source": "/sumup",
       "destination": "/SumUp"
+    },
+    {
+      "source": "/blog/cash-discount-vs-surcharge",
+      "destination": "/blog-cash-discount-vs-surcharge"
+    },
+    {
+      "source": "/blog/get-paid-faster-invoicing",
+      "destination": "/blog-get-paid-faster-invoicing"
+    },
+    {
+      "source": "/blog/best-pos-food-trucks",
+      "destination": "/blog-best-pos-food-trucks"
+    },
+    {
+      "source": "/blog/square-vs-sumup",
+      "destination": "/blog-square-vs-sumup"
+    },
+    {
+      "source": "/blog/working-capital-options",
+      "destination": "/blog-working-capital-options"
     }
   ]
 }
