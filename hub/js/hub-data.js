@@ -115,7 +115,7 @@ window.HUB_DATA = {
         'How many hours a week goes into receiving new stock and tagging it?',
         'What did last season\'s dead inventory cost you — and would earlier reporting have caught it?'
       ],
-      primary: { name: 'Square', why: 'Best-in-class for boutiques — floor + online store + social selling in one ecosystem, beautiful hardware, easy staff training.' },
+      primary: { name: 'Square', why: 'Best-in-class for boutiques — floor + online store + social selling in one ecosystem, beautiful hardware, easy staff training. Lowest monthly cost play: free plan with no PCI or regulatory fees.' },
       alts: [
         { name: 'Clover', why: 'Retail Growth for richer item-level tracking; placement mode gets hardware at $0 down.' },
         { name: 'SumUp', why: 'POS Lite bundle $499 one-time, $0 monthly — the value play for tiny shops.' }
@@ -517,7 +517,7 @@ window.HUB_DATA = {
       { name: 'NextPay POS (Chively)', tag: 'Our house all-in-one POS', sell: ['Full restaurant + retail feature set', 'Handheld, kiosk and customer-screen options', 'Best margins — our own stack'], link: 'https://nextpaypos.com/chively' },
       { name: 'SkyTab by Shift4', tag: 'Full-service restaurant standard', sell: ['$29.99/mo base bundle, $0 upfront, lifetime warranty', 'Pay-at-table, KDS, kiosk, caller ID', '30-day trial → 36-month agreement'], link: 'https://nextpaypos.com/shift4-dine' },
       { name: 'Clover', tag: 'The mainstream all-in-one', sell: ['Placement ($0 down) or buy outright', 'Software $0–$89.95/mo by vertical', 'Huge app market'], link: 'https://nextpaypos.com/clover' },
-      { name: 'Square', tag: 'Design-friendly SMB ecosystem', sell: ['POS + online + invoices in one', 'Free plan to start', 'We meet-or-beat their published rates on our rails'], link: 'https://nextpaypos.com/square' },
+      { name: 'Square', tag: 'Design-friendly SMB ecosystem', sell: ['POS + online + invoices in one', 'Free plan to start — lowest monthly cost in the lineup: no PCI, regulatory or statement junk fees', 'We meet-or-beat their published rates on our rails'], link: 'https://nextpaypos.com/square' },
       { name: 'Quantic', tag: 'Own-your-hardware cloud POS', sell: ['Swan bundles from $919', 'Pro $60/mo first station, $50 additional', 'Deep module list (OLO, loyalty, reservations)'], link: 'https://nextpaypos.com/quantic' },
       { name: 'Korona', tag: 'Serious retail & liquor inventory', sell: ['Core $59 / Retail $79 / Plus $99 per register', 'Ticketing, franchise, ID-scanner add-ons', 'Multi-location strength'], link: 'https://nextpaypos.com/korona' },
       { name: 'NRS', tag: 'C-store / bodega specialist', sell: ['Age verification + scan data', 'Customer-facing screen', 'Price-friendly for single lanes'], link: 'https://nextpaypos.com/nrs' },
