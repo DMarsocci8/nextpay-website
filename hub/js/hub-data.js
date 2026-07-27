@@ -598,7 +598,7 @@ window.HUB_DATA = {
     ]},
     'pays': { label: 'PAYS', steps: [
       'Pick the plan (Starter $59 / Growth $79 / Enterprise $99) + station bundle ($999) or quoted hardware.',
-      'Dual-pricing signage expectations — set them now.',
+      'Dual-pricing signage expectations — set them now. Loaner/rental hardware carries a Return Obligation: if the merchant terminates early, the hardware ships back or the penalty applies.',
       'Common docs + menu; email to dom@nextpaypos.com — subject "PAYS deal — {DBA}".'
     ]},
     'sumup': { label: 'SumUp', steps: [
@@ -758,8 +758,8 @@ window.HUB_DATA = {
      Worked SIP example uses that reading — flag to Dom if the math should
      read differently. */
   agentSplit: {
-    label: '50% of our cut',
-    text: 'Simple: you earn 50% of NextPay\u2019s cut on every deal, on every program. Every number in this hub is already stated as YOUR share wherever a number appears. Your signed agent agreement is the final word.',
+    label: '50% of the net residual',
+    text: 'The standard on every program: buy rates and program costs are the deal\u2019s expenses \u2014 they come off the top first. What\u2019s left is the net residual and payout, and you earn 50% of it. Every number in this hub is already stated as YOUR share. Your signed agent agreement is the final word.',
     calcPct: 45,
     calcNote: 'Your share of gross deal margin, preloaded per program \u2014 SIP low-risk 45 \u00b7 SIP high-risk 30 \u00b7 Next2Pay 50 \u00b7 Clover 45 \u00b7 SumUp 40.'
   },
@@ -769,7 +769,7 @@ window.HUB_DATA = {
     sip: {
       label: 'Solutions in Payments (SIP)',
       cols: ['Low-Risk', 'High-Risk'],
-      splitNote: 'Your agent share works out to \u2248 45% of the gross margin you create on low-risk files, 30% on the high-risk book \u2014 that is already your number, nothing further comes out of it.',
+      splitNote: 'The costs below come off the top of every deal. You earn 50% of the net residual that remains \u2014 which works out to \u2248 45% of the gross margin you create on low-risk files (30% on the high-risk book). That is your number; nothing further comes out of it.',
       covers: 'House processing paper for: Quantic · NRS · Korona · standalone terminals (PAX / Dejavoo / Valor) · gateways (NMI / FluidPay / Authorize.net / iPOSPays) · high-risk files. Does NOT cover: Square, SkyTab/Shift4, Clover/Fiserv, Next2Pay, NextLink, SumUp, PAYS, FieldPulse, LQPay (each has its own schedule).',
       floor: 'Your true cost on low-risk SIP paper = interchange (pass-through) + 0.02% BIN sponsor + $0.02 per transaction (+ $0.02 per batch). Everything you quote above that is margin — and your share is ≈45% of it (30% on the high-risk book).',
       example: 'Example: $45,000/mo, ~1,500 transactions, quoted at IC + 0.50% + $0.10 → gross margin ≈ $336/mo. Your share ≈ $151/mo, for the life of the merchant. Ten of these = $1,500/mo that keeps paying.',
@@ -804,7 +804,7 @@ window.HUB_DATA = {
       label: 'Next2Pay / linked2pay (house invoicing & gateway)',
       cols: ['Buy rate', 'Rev share'],
       covers: 'House rails for: Next2Pay Invoicing (Linked2Invoice) · the house gateway · ACH / RDC processing · card processing written on linked2pay. This is the schedule behind every invoice-type deal.',
-      splitNote: 'Your share is 50% of everything quoted above these buy rates — card, ACH and Linked2Invoice alike.',
+      splitNote: 'The buy rates below are the deal\u2019s costs — covered off the top. You earn 50% of the net residual that remains: everything quoted above cost, on card, ACH and Linked2Invoice alike.',
       floor: 'Your true cost on Next2Pay card processing = interchange + 2 bps + $0.0215/transaction + $0.03 authorization. ACH costs $0.10/item (+$10/mo enabled). Linked2Invoice costs $35/mo. Quote above these — your share is 50% of the difference.',
       example: 'Example: a service business doing $30,000/mo CNP, ~600 transactions, quoted at IC + 0.75% + $0.15: margin ≈ 30,000 × 0.73% + 600 × ~$0.10 ≈ $278/mo. Add Linked2Invoice quoted at $79 vs $35 buy = $44. Your 50% ≈ $161/mo — and ACH invoices fatten it further at $0.10 buy per item.',
       groups: [
@@ -863,7 +863,7 @@ window.HUB_DATA = {
       label: 'Clover (NextPay white-labeled program)',
       cols: ['Partner cost'],
       covers: 'Our white-labeled Clover paper — every Clover deal (Fiserv application). Hardware at wholesale per the Clover pricing sheet (hub docs); Clover platform fee $5/MID + $0.03 non-swiped auth pass through.',
-      splitNote: 'Your agent share ≈ 45% of the margin you create on standard Clover accounts; roughly half that on high-risk accounts and ACH. Heads up: closes assisted by the program\u2019s POS team trim your residual slightly (20 bps).',
+      splitNote: 'The costs below come off the top. You earn 50% of the net residual — ≈ 45% of the margin you create on standard Clover accounts; roughly half that on high-risk and ACH. Heads up: closes assisted by the program\u2019s POS team trim the residual slightly (20 bps).',
       floor: 'Your true cost on Clover paper = interchange (pass-through) + 0.03% BIN + $0.035/authorization (+ $0.02 batch, $0.01 AVS). Several lines carry built-in spread: PCI billed $149/yr vs $99 cost, PCI non-action $39.95/mo vs $21.95, statement $1/mo cost. Same-day funding $9.95 cannot be marked up.',
       example: 'Example: $45,000/mo Clover retail, ~1,500 transactions, quoted at IC + 0.50% + $0.10: gross margin ≈ $309/mo. Your share ≈ $139/mo, plus PCI/statement spread and hardware markup.',
       groups: [
@@ -901,7 +901,7 @@ window.HUB_DATA = {
       label: 'SumUp reseller program',
       cols: ['Rate / cost'],
       covers: 'SumUp reseller paper — Cloud POS SaaS, kiosk, eCommerce and hardware resale, with processing commission on merchants you place. Hardware cannot be discounted below the Schedule A cost.',
-      splitNote: 'Your agent share ≈ 40% of the processing margin you quote above cost (it steps up on large books — ask Dom), and ≈ 10% of new-merchant SaaS subscriptions. Hardware markup is yours per the split rule.',
+      splitNote: 'Costs come off the top; you earn 50% of the net payout — ≈ 40% of the processing margin you quote above cost (steps up on large books — ask Dom) and ≈ 10% of new-merchant SaaS subscriptions. Hardware markup follows the same split.',
       floor: 'Processing buy rate = interchange + 0.05%, per-transaction fee waived. You set the merchant\u2019s pricing — your share ≈ 40% of whatever you quote above cost. SaaS subscriptions on new merchants pay you ≈ 10% of the sub; existing/non-transactional merchants pay no SaaS share.',
       example: 'Example: $20,000/mo boutique quoted at IC + 0.50% + $0.08 (400 txns): margin ≈ $122/mo → your share ≈ $49/mo. Add Cloud POS w/ Connect Lite at $99/mo retail → your share ≈ $10/mo. Plus hardware markup over the costs below.',
       groups: [
@@ -931,6 +931,25 @@ window.HUB_DATA = {
           ['Chargeback / retrieval / reversal', '$12.00 each'],
           ['Chargeback mediation', '$22.00'],
           ['Inactive merchant / account on file / statement', 'Waived']] }
+      ]
+    },
+    pays: {
+      label: 'PAYS (POS licensing + our processing)',
+      cols: ['Cost'],
+      covers: 'PAYS POS deals: we license the software per merchant and pair it with our own processing on SIP paper. Loaner/rental hardware carries a Return Obligation — early terminations must ship the hardware back.',
+      splitNote: 'Starter/Growth/Enterprise are the published payspos.com plans — what the MERCHANT pays monthly. The license below is the deal\u2019s cost, covered off the top. You earn 50% of the net software residual (plan price \u2212 license) and 50% of the net processing residual on our SIP paper (\u2248 45% of margin).',
+      floor: 'The deal\u2019s cost: $59/mo license per merchant start (first terminal), $29/mo for a second terminal at the same merchant. The merchant pays the published plan price (Starter $59 / Growth $79 / Enterprise $99) — the difference is the net software residual.',
+      example: 'Example: merchant on Growth pays $79/mo; the $59 license comes off the top → $20/mo net software residual → your 50% = $10/mo. Enterprise at $99 → your $20/mo. Add your share of the processing residual (SIP paper, dual pricing the norm) and markup on the $999 station bundle.',
+      groups: [
+        { h: 'Licensing (our cost)', rows: [
+          ['License — per merchant start (first terminal)', '$59.00 / mo'],
+          ['Second terminal (same merchant)', '$29.00 / mo']] },
+        { h: 'Retail price points (published — safe to quote)', rows: [
+          ['Starter plan', '$59 / mo'],
+          ['Growth plan (delivery apps, KDS, fine dine-in)', '$79 / mo'],
+          ['Enterprise plan (gift cards, loyalty, multi-location)', '$99 / mo'],
+          ['Station + reader bundle', '$999 one-time'],
+          ['Reference', 'payspos.com/pos-system-cost · payspos.com/shop']] }
       ]
     }
   },
@@ -988,10 +1007,11 @@ window.HUB_DATA = {
       need: null
     },
     'pays': {
-      source: 'PAYS agent program',
-      quote: 'Plans at sheet prices (Starter $59 / Growth $79 / Enterprise $99; station $999). All-inclusive dual pricing — program fee structure per PAYS.',
-      make: ['Residual on the dual-pricing program per PAYS agent terms', 'Software margin if any'],
-      need: 'PAYS agent Schedule A — residual split on the dual-pricing program.'
+      source: 'PAYS ISO licensing + our processing (SIP paper)',
+      sched: 'pays',
+      quote: 'Sell the plans at the published retail (Starter $59 / Growth $79 / Enterprise $99; station $999). The license costs us $59/mo per start ($29 second terminal). Processing is ours to price on SIP paper \u2014 dual pricing is the PAYS norm.',
+      make: ['Software margin: retail plan \u2212 $59 license (Growth +$20, Enterprise +$40/mo) \u2014 your share is 50% of it', 'Your share \u2248 45% of the processing margin on our SIP paper', 'Hardware markup on the station bundle'],
+      need: null
     },
     'sumup': {
       source: 'SumUp reseller program',
