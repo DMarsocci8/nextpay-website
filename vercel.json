@@ -440,7 +440,12 @@
     },
     {
       "source": "/Invoicing.html",
-      "destination": "/invoicing",
+      "destination": "/next2pay",
+      "permanent": true
+    },
+    {
+      "source": "/invoicing",
+      "destination": "/next2pay",
       "permanent": true
     },
     {
@@ -1026,10 +1031,6 @@
     {
       "source": "/integrations",
       "destination": "/Integrations"
-    },
-    {
-      "source": "/invoicing",
-      "destination": "/Invoicing"
     },
     {
       "source": "/next2pay",
