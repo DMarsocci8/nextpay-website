@@ -36,9 +36,9 @@
 
     // Update slider + points/output for a value WITHOUT touching the text the user is typing.
     function render(v){
-      const slid = Math.max(2000, Math.min(1000000, v||2000));
+      const slid = Math.max(2000, Math.min(2000000, v||2000));
       range.value = slid;
-      fill.style.width = ((slid-2000)/(1000000-2000)*100)+'%';
+      fill.style.width = ((slid-2000)/(2000000-2000)*100)+'%';
       const mo = (v||0)*RATE, yr = mo*12;
       ptsMo.textContent = fmt(mo);
       ptsYr.textContent = fmt(yr);
