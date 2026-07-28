@@ -29,7 +29,7 @@
 <h2>What PCI actually is</h2>
 <p>PCI-DSS is the card industry's security standard: a set of rules about how card data is handled, stored and transmitted. It applies to every merchant, scaled by volume. Small businesses mostly self-certify once a year via a questionnaire (the SAQ) — you're attesting that your setup handles cards safely.</p>
 <h2>The one rule that matters most</h2>
-<p><b>Don't store card numbers. Anywhere. Ever.</b> Not in a spreadsheet, not in the notes field of your CRM, not on a sticky note for "regulars." If you need cards on file, use tokenization — the gateway vaults the card and hands you a token that's useless to a thief. Every gateway we carry (<a href="/next2pay">Next2Pay</a>, FluidPay, NMI, Authorize.net and the rest) includes a proper vault.</p>
+<p><b>Don't store card numbers. Anywhere. Ever.</b> Not in a spreadsheet, not in the notes field of your CRM, not on a sticky note for "regulars." If you need cards on file, use tokenization — the gateway vaults the card and hands you a token that's useless to a thief. Every gateway we carry (<a href="/invoicing">Next2Pay</a>, FluidPay, NMI, Authorize.net and the rest) includes a proper vault.</p>
 <h2>Compliance by default</h2>
 <ul><li><b>Modern terminals</b> (PAX, Dejavoo, Clover, Valor) encrypt card data at the moment of tap or dip — the number never touches your systems in usable form</li><li><b>Hosted pay pages and pay links</b> keep online card entry on the gateway's certified page, not your website</li><li><b>Virtual terminals</b> beat writing numbers down for phone orders — key it straight in, vault it, shred nothing because you wrote nothing</li></ul>
 <h2>What non-compliance costs</h2>

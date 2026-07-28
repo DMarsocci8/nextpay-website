@@ -65,7 +65,7 @@
 /industries /Industries.html 200
 /ingenico /Ingenico%20Terminals.html 200
 /integrations /Integrations.html 200
-/next2pay /Next2Pay.html 200
+/invoicing /Next2Pay.html 200
 /ipospays /iPOSPays%20Gateway.html 200
 /jewelry /Jewelry%20Stores.html 200
 /korona /Korona.html 200
@@ -222,8 +222,9 @@
 /Ingenico%20Terminals.html /ingenico 301
 /Ingenico%20Terminals /ingenico 301
 /Integrations.html /integrations 301
-/Invoicing.html /next2pay 301
-/invoicing /next2pay 301
+/Invoicing.html /invoicing 301
+/next2pay /invoicing 301
+/Next2Pay.html /invoicing 301
 /iPOSPays%20Gateway.html /ipospays 301
 /iPOSPays%20Gateway /ipospays 301
 /Jewelry%20Stores.html /jewelry 301
