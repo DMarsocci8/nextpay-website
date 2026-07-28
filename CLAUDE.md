@@ -22,7 +22,7 @@
 
 ## Canonical nav (matches user's live site — keep identical on every page)
 - **Logo:** assets/logos/nextpay.png (real NextPay logo, in white rounded box)
-- **Solutions** mega (3 cols): ACCEPT PAYMENTS [POS Systems, Credit Card Terminals, Online Payments, Invoicing & Recurring Billing, Integrations] · RUN YOUR BUSINESS [Payroll & Workers Comp, HR & Compliance, Fee Programs, Chargeback Protection] · GROW YOUR BUSINESS [Client Automation Outreach, Business Financing, Business Brokerage, Merchant Rewards]
+- **Solutions** mega (3 cols): ACCEPT PAYMENTS [POS Systems, Credit Card Terminals, Online Payments & Invoicing (→ /next2pay, the Next2Pay platform page — /invoicing 301s here), Gateways & Integrations (→ /integrations)] · RUN YOUR BUSINESS [Payroll & Workers Comp, HR & Compliance, Fee Programs, Chargeback Protection] · GROW YOUR BUSINESS [Client Automation Outreach, Business Financing, Business Brokerage, Merchant Rewards]
 - **Industries** mega (4 cols w/ photo headers): RETAIL [Boutique & Clothing, Convenience & Grocery, Liquor Stores, Jewelry Stores, Specialty Retail] · SERVICES [Auto Repair & Automotive, Salons & Spas, Home Services, Fitness & Gyms, Professional Services, Cleaning Services] · FOOD & BEVERAGE [Fine Dining, Pizzerias, Food Trucks, Bars & Nightclubs, QSR Cafes & Coffee Shops, Bakeries Delis & Markets] · HEALTHCARE & MEDICAL [Vision Care, Dental, Chiropractic & PT, Dermatology, Mental Health, Wellness Centers]. Footer: "View All Industries →" + "High Risk & Specialty"
 - Then: Pricing, Why NextPay, Resources · right side: Contact, Take the Quiz (teal pill)
 
