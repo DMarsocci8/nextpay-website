@@ -32,7 +32,7 @@
             <div class="mcol">
               <a class="sol-banner" href="/grow"><img src="assets/solutions/business-financing.jpg" alt=""><span>Grow Your Business</span></a>
               <a class="mega-link" href="/outreach"><b>Client Automation Outreach</b><span>LinkedIn, email &amp; voicemail drops</span></a>
-              <a class="mega-link" href="/financing"><b>Business Financing</b><span>Working capital &amp; cash advances</span></a>
+              <a class="mega-link" href="/financing"><b>NextFund — Business Financing</b><span>Working capital &amp; cash advances</span></a>
               <a class="mega-link" href="/brokerage"><b>Business Brokerage</b><span>Buy, sell, or get a valuation</span></a>
               <a class="mega-link" href="/merchant-rewards"><b>Merchant Rewards</b><span>Earn points on every dollar processed</span></a>
             </div>
@@ -133,7 +133,7 @@
           <a class="nm-rich" href="/chargeback-protection"><b>Fraud &amp; Chargeback Protection</b><span>Fraud screening &amp; dispute management</span></a>
           <span class="nm-grp">Grow Your Business</span>
           <a class="nm-rich nm-feat" href="/outreach"><b>NextLink — Client Automation Outreach</b><span>LinkedIn, email &amp; voicemail drops</span></a>
-          <a class="nm-rich" href="/financing"><b>Business Financing</b><span>Working capital &amp; cash advances</span></a>
+          <a class="nm-rich" href="/financing"><b>NextFund — Business Financing</b><span>Working capital &amp; cash advances</span></a>
           <a class="nm-rich" href="/brokerage"><b>Business Brokerage</b><span>Buy, sell, or get a valuation</span></a>
           <a class="nm-rich" href="/merchant-rewards"><b>Merchant Rewards</b><span>Earn points on every dollar processed</span></a>
         </div>
@@ -177,7 +177,7 @@
         <div><h4>Run Your Business</h4>
           <a href="/payroll">Payroll &amp; Workers Comp</a><a href="/hr-compliance">HR &amp; Compliance</a><a href="/bookkeeping">Bookkeeping</a><a href="/fee-programs">Zero Fee Programs</a><a href="/chargeback-protection">Fraud &amp; Chargeback Protection</a></div>
         <div><h4>Grow Your Business</h4>
-          <a href="/outreach">Client Automation</a><a href="/financing">Business Financing</a><a href="/brokerage">Business Brokerage</a><a href="/merchant-rewards">Merchant Rewards</a></div>
+          <a href="/outreach">Client Automation</a><a href="/financing">NextFund — Business Financing</a><a href="/brokerage">Business Brokerage</a><a href="/merchant-rewards">Merchant Rewards</a></div>
         <div><h4>Industries</h4>
           <a href="/industries">Retail</a><a href="/industries">Services</a><a href="/industries">Food &amp; Beverage</a><a href="/industries">Healthcare &amp; Medical</a><a href="/high-risk">High Risk &amp; Specialty</a></div>
         <div><h4>Partners</h4>
