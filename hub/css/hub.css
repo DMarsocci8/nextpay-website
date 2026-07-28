@@ -4,7 +4,7 @@
 :root{
   --navy:#0C1B2A; --navy-2:#122536; --navy-3:#1A3049;
   --teal:#14A18C; --teal-bright:#1FC2A6; --teal-soft:rgba(20,161,140,.12);
-  --ink:#16283A; --mut:#5B6B7B; --line:#E3E9EF; --soft:#F4F7FA; --card:#FFFFFF;
+  --ink:#16283A; --mut:#5B6B7B; --line:#D8E1E8; --line-strong:#C7D4DE; --soft:#F4F7FA; --card:#FFFFFF;
   --amber:#E8A33D; --red:#D65A5A; --green:#2E9E6B;
   --rad:16px; --rad-sm:10px;
   --side-w:248px;
@@ -59,8 +59,11 @@ b,strong{font-weight:700}
 .pg-head .eyebrow{font-size:11.5px;font-weight:800;letter-spacing:.16em;text-transform:uppercase;color:var(--teal)}
 .pg-head h1{font-size:clamp(24px,3vw,34px);line-height:1.15;letter-spacing:-.02em;margin-top:4px}
 .pg-head p{color:var(--mut);max-width:760px;margin-top:8px}
-.card{background:var(--card);border:1px solid var(--line);border-radius:var(--rad);padding:22px;box-shadow:var(--shadow)}
+.card{background:var(--card);border:1.5px solid var(--line-strong);border-radius:var(--rad);padding:22px;box-shadow:var(--shadow)}
+a.card{display:block;color:inherit;text-decoration:none;transition:border-color .15s,box-shadow .15s,transform .15s}
+a.card:hover{border-color:var(--teal);box-shadow:0 10px 32px rgba(12,27,42,.12);transform:translateY(-2px)}
 .card h3{font-size:17px;margin-bottom:6px}
+.card>h3:first-child,.card>h2:first-child{padding-bottom:10px;border-bottom:1.5px solid var(--line);margin-bottom:14px}
 .card + .card{margin-top:16px}
 .grid2{display:grid;grid-template-columns:1fr 1fr;gap:16px}
 .grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
@@ -101,7 +104,7 @@ label.fl{display:block;font-size:12px;font-weight:700;color:var(--mut);margin:12
 
 /* Steps / checklists */
 .steps{counter-reset:st;display:flex;flex-direction:column;gap:12px}
-.step{display:flex;gap:14px;background:var(--card);border:1px solid var(--line);border-radius:var(--rad);padding:16px 18px}
+.step{display:flex;gap:14px;background:var(--card);border:1.5px solid var(--line-strong);border-radius:var(--rad);padding:16px 18px}
 .step::before{counter-increment:st;content:counter(st);flex:none;width:30px;height:30px;border-radius:50%;background:var(--navy);color:#fff;font-weight:800;font-size:14px;display:flex;align-items:center;justify-content:center}
 .step h4{font-size:15px;margin-bottom:3px}
 .step p{color:var(--mut);font-size:13.5px}
@@ -112,7 +115,7 @@ ul.ck.plain li::before{border-color:var(--line);background:#fff}
 
 /* Pipeline board */
 .pipe{display:grid;grid-auto-flow:column;grid-auto-columns:minmax(215px,1fr);gap:12px;overflow-x:auto;padding-bottom:8px}
-.pipe-col{background:var(--soft);border:1px solid var(--line);border-radius:var(--rad);padding:10px;min-height:120px}
+.pipe-col{background:var(--soft);border:1.5px solid var(--line-strong);border-radius:var(--rad);padding:10px;min-height:120px}
 .pipe-col h5{font-size:11.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--mut);padding:2px 6px 8px;display:flex;justify-content:space-between}
 .deal-card{background:#fff;border:1px solid var(--line);border-radius:var(--rad-sm);padding:10px 12px;margin-bottom:8px;cursor:pointer;transition:box-shadow .15s}
 .deal-card:hover{box-shadow:var(--shadow)}
@@ -131,7 +134,7 @@ ul.ck.plain li::before{border-color:var(--line);background:#fff}
 .pick.on{border-color:var(--teal);background:var(--teal-soft)}
 .rec-box{border:1.5px solid var(--teal);border-radius:var(--rad);padding:18px;background:#fff}
 .rec-box .tag{font-size:10.5px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:var(--teal)}
-.alt-box{border:1px solid var(--line);border-radius:var(--rad);padding:14px 16px;background:#fff}
+.alt-box{border:1.5px solid var(--line-strong);border-radius:var(--rad);padding:14px 16px;background:#fff}
 
 /* Modal */
 .modal-bg{position:fixed;inset:0;background:rgba(12,27,42,.5);z-index:90;display:none;align-items:flex-start;justify-content:center;padding:40px 16px;overflow-y:auto}
@@ -140,7 +143,7 @@ ul.ck.plain li::before{border-color:var(--line);background:#fff}
 .modal .x{position:absolute;top:14px;right:16px;background:var(--soft);border:0;border-radius:8px;width:32px;height:32px;font-size:16px;cursor:pointer}
 
 /* Stat tiles */
-.stat{background:var(--card);border:1px solid var(--line);border-radius:var(--rad);padding:16px 18px}
+.stat{background:var(--card);border:1.5px solid var(--line-strong);border-radius:var(--rad);padding:16px 18px}
 .stat .n{font-size:26px;font-weight:800;letter-spacing:-.02em}
 .stat .l{font-size:12px;color:var(--mut);font-weight:600;margin-top:2px}
 
