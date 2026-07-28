@@ -94,7 +94,7 @@
       return [C('PAX Terminals','Top pick','4G LTE, Wi-Fi, long battery, built-in printer.','processing only',TERM+'#pax'),C('SumUp Terminal','Option','Palm-size all-in-one with built-in printer — payments anywhere.','$249 one-time','/sumup'),C('Valor PayTech','Option','Dual pricing built-in, SMS marketing.','processing only',TERM+'#valor')];
     }
     function online(){
-      // Anything invoicing-related leads with NextPay's own invoicing product.
+      // Anything invoicing-related leads with Next2Pay.
       const list=onlineBase();
       list.forEach(c=>{ if(c.top){ c.top=false; c.role='Option'; } });
       list.unshift(N2P());

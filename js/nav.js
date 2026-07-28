@@ -17,7 +17,7 @@
               <a class="sol-banner" href="/accept-payments"><img src="assets/lifestyle/card-tap.jpg" alt=""><span>Accept Payments</span></a>
               <a class="mega-link" href="/pos-systems"><b>Point of Sale Systems</b><span>Clover, Shift4Dine, Square &amp; more</span></a>
               <a class="mega-link" href="/terminals"><b>Credit Card Terminals</b><span>PAX, Dejavoo, SwipeSimple &amp; more</span></a>
-              <a class="mega-link" href="/invoicing"><b>Online Payments &amp; Invoicing</b><span>Next2Pay — our invoicing &amp; payments platform</span></a>
+              <a class="mega-link" href="/invoicing"><b>Online Payments &amp; Invoicing</b><span>Next2Pay — invoicing, payments &amp; recurring billing</span></a>
               <a class="mega-link" href="/integrations"><b>Gateways &amp; Integrations</b><span>FluidPay, NMI, QuickBooks, FieldPulse &amp; more</span></a>
             </div>
             <div class="mcol">
@@ -121,7 +121,7 @@
           <span class="nm-grp">Accept Payments</span>
           <a class="nm-rich" href="/pos-systems"><b>Point of Sale Systems</b><span>Clover, Shift4Dine, Square &amp; more</span></a>
           <a class="nm-rich" href="/terminals"><b>Credit Card Terminals</b><span>PAX, Dejavoo, SwipeSimple &amp; more</span></a>
-          <a class="nm-rich" href="/invoicing"><b>Online Payments &amp; Invoicing</b><span>Next2Pay — our invoicing &amp; payments platform</span></a>
+          <a class="nm-rich" href="/invoicing"><b>Online Payments &amp; Invoicing</b><span>Next2Pay — invoicing, payments &amp; recurring billing</span></a>
           <a class="nm-rich" href="/integrations"><b>Gateways &amp; Integrations</b><span>FluidPay, NMI, QuickBooks, FieldPulse &amp; more</span></a>
           <span class="nm-grp">Run Your Business</span>
           <a class="nm-rich" href="/payroll"><b>Payroll &amp; Workers Comp</b><span>Pay your team, stay covered</span></a>
