@@ -26,6 +26,7 @@
       {v:'highrisk',t:'High Risk',d:'CBD, vape/smoke, peptides, travel, specialty.'}]},
     {id:'addons',q:'Anything else on your list?',sub:'Select all that apply — optional.',type:'multi',opts:[
       {v:'offset',t:'Offset card fees to the customer',d:'Dual pricing, surcharging, or cash discount. Available on every platform.'},
+      {v:'recurring',t:'Invoicing, subscriptions & recurring billing',d:'Next2Pay — payment requests by text or email, memberships & auto-billing.'},
       {v:'financing',t:'Business financing / funding',d:'NextFund — working capital, equipment loans, merchant cash advance.'},
       {v:'payroll',t:'Payroll & Workers Comp',d:'Full-service payroll and workers comp coverage.'},
       {v:'marketing',t:'Network building & marketing',d:'NextLink — digital outreach, reputation, campaigns.'}]},
@@ -64,8 +65,9 @@
   const POS='/pos-systems', TERM='/terminals', GW='/gateways', INV='/invoicing';
   function C(name,role,why,price,href){return {name,role,why,price,href,top:role.indexOf('Top')===0};}
   function recCards(a){
-    const I=a.industry,need=a.need,hw=a.hardware,offset=(a.addons||[]).includes('offset');
-    if(need==='other') return [
+    const I=a.industry,need=a.need,hw=a.hardware,offset=(a.addons||[]).includes('offset'),recurring=(a.addons||[]).includes('recurring');
+    const N2P=()=>C('Next2Pay Invoicing','Top pick','Payment requests by text or email, subscriptions & recurring billing, card-on-file & QuickBooks sync.','$25/mo','/invoicing');
+    if(need==='other') return (recurring?[N2P()]:[]).concat([
       C('Payroll & Workers Comp','Service','Full-service payroll, tax filing & workers comp coverage.','See details','/payroll'),
       C('Bookkeeping','Service','Reconciliation, reports & tax-ready books.','See details','/bookkeeping'),
       C('NextFund — Business Financing','Service','Working capital, equipment loans & cash advances through NextFund.','See details','/financing'),
@@ -73,11 +75,11 @@
       C('Merchant Rewards','Service','Earn points on every dollar you process.','See details','/merchant-rewards'),
       C('HR & Compliance','Service','HR tools & compliance for growing teams.','See details','/hr-compliance'),
       C('Business Brokerage','Service','Buy, sell, or get a business valuation.','See details','/brokerage')
-    ];
+    ]);
     function pos(){
       const lease=hw==='lease';
       if(I==='fnb') return lease
-        ?[C('Shift4 POS','Top pick','Restaurant-built, lease only, lifetime warranty, no upfront.','from $29.99/mo',POS),C('Clover POS','Option','Placement program, 500+ app marketplace.','no upfront',POS)]
+        ?[C('SkyTab by Shift4','Top pick','Restaurant-built, no upfront hardware, 0% with dual pricing.','from $29.99/mo',POS),C('Clover POS','Option','Placement program, 500+ app marketplace.','no upfront',POS)]
         :[C('Square POS','Top pick','Free tier, inventory & eCommerce — broadest fit.','from $0/mo',POS),C('SumUp POS','Option','Simple cafe/QSR & food-truck register — POS Lite & Solo bundle, loyalty built in.','$499 complete',POS),C('Clover POS','Option','Buy or lease, lifetime warranty, 500+ apps.','placement',POS)];
       if(I==='retail') return [C('Square POS','Top pick','Free tier, inventory and eCommerce built in.','from $0/mo',POS),C('SumUp POS','Option','Small-shop simplicity — POS Lite & Solo bundle with loyalty built in.','$499 complete',POS),C('SwipeSimple','Option','Mobile-first, Text-to-Pay, flexible.','from $25/mo',POS)];
       if(I==='conv') return [C('Square POS','Top pick','Fast checkout, scalable, free tier.','from $0/mo',POS),C('SumUp POS','Option','Fast QSR counter — POS Lite & Solo bundle, loyalty built in.','$499 complete',POS),C('KORONA POS','Option','Regulated products, ticketing, multi-location.','from $59/mo',POS),C('Clover POS','Option','Placement program, 500+ apps.','no upfront',POS)];
@@ -95,7 +97,7 @@
       // Anything invoicing-related leads with NextPay's own invoicing product.
       const list=onlineBase();
       list.forEach(c=>{ if(c.top){ c.top=false; c.role='Option'; } });
-      list.unshift(C('Next2Pay Invoicing','Top pick','Payment requests by text or email, recurring billing, card-on-file & QuickBooks sync.','custom',INV));
+      list.unshift(N2P());
       return list;
     }
     function onlineBase(){
@@ -117,12 +119,15 @@
     else cards=pos();
     if(offset && (need==='pos'||need==='combo') && (I==='fnb'||I==='retail'||I==='services'))
       cards.push(C('PAYS POS','Add-on','Dual-pricing specialist — 0% processing.','custom',POS));
+    // Invoicing / subscriptions / recurring always surfaces Next2Pay, whatever the path.
+    if(recurring && !cards.some(function(c){return c.name==='Next2Pay Invoicing';}))
+      cards.unshift(N2P());
     // Send every "View" to where that product actually lives — a brand section
     // (the .bsec sections have scroll-margin so the sticky header stays in view)
     // or its own page — so a result never just dumps you at the top of a page.
     var DEST={
       'Square POS':'/pos-systems#square','Clover POS':'/pos-systems#clover',
-      'Shift4 POS':'/pos-systems#shift4','KORONA POS':'/pos-systems#korona',
+      'SkyTab by Shift4':'/pos-systems#shift4','KORONA POS':'/pos-systems#korona',
       'PAYS POS':'/pos-systems#pays','SumUp POS':'/sumup','SwipeSimple':'/swipesimple',
       'Dejavoo Terminals':'/terminals#dejavoo','Clover Flex & Go':'/terminals#clover',
       'Square Terminal':'/terminals#square','Valor PayTech':'/terminals#valor',
