@@ -36,7 +36,13 @@
   document.getElementById('lib').innerHTML = SECS.map(([k, label]) =>
     '<h3 class="mt24 mb8">' + label + '</h3><div class="grid3">' +
     HUB_DATA.products[k].map(p =>
-      '<div class="card" style="box-shadow:none"><b>' + esc(p.name) + '</b><div class="small muted">' + esc(p.tag) + '</div>' +
+      '<div class="card" style="box-shadow:none">' +
+      (p.logo
+        ? '<div style="height:44px;display:flex;align-items:center;margin-bottom:10px"><span style="display:inline-flex;align-items:center;justify-content:center;padding:7px 12px;border-radius:10px;max-width:150px;' +
+          (p.logoDark ? 'background:#0C1B2A' : 'background:#fff;border:1px solid var(--line)') +
+          '"><img src="assets/logos/' + p.logo + '" alt="' + esc(p.name) + ' logo" style="max-height:26px;max-width:126px" onerror="this.parentNode.style.display=\'none\'"></span></div>'
+        : '') +
+      '<b>' + esc(p.name) + '</b><div class="small muted">' + esc(p.tag) + '</div>' +
       '<ul class="ck plain mt8">' + p.sell.map(s => '<li class="small">' + esc(s) + '</li>').join('') + '</ul>' +
       '<a class="small" href="' + p.link + '" target="_blank" rel="noopener">Public page ↗</a></div>'
     ).join('') + '</div>'
