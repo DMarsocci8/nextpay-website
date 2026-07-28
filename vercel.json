@@ -847,6 +847,126 @@
       "source": "/blog-working-capital-options",
       "destination": "/blog/working-capital-options",
       "permanent": true
+    },
+    {
+      "source": "/blog-best-restaurant-pos.html",
+      "destination": "/blog/best-restaurant-pos",
+      "permanent": true
+    },
+    {
+      "source": "/blog-best-restaurant-pos",
+      "destination": "/blog/best-restaurant-pos",
+      "permanent": true
+    },
+    {
+      "source": "/blog-best-retail-pos.html",
+      "destination": "/blog/best-retail-pos",
+      "permanent": true
+    },
+    {
+      "source": "/blog-best-retail-pos",
+      "destination": "/blog/best-retail-pos",
+      "permanent": true
+    },
+    {
+      "source": "/blog-liquor-store-pos-guide.html",
+      "destination": "/blog/liquor-store-pos-guide",
+      "permanent": true
+    },
+    {
+      "source": "/blog-liquor-store-pos-guide",
+      "destination": "/blog/liquor-store-pos-guide",
+      "permanent": true
+    },
+    {
+      "source": "/blog-salon-spa-payments.html",
+      "destination": "/blog/salon-spa-payments",
+      "permanent": true
+    },
+    {
+      "source": "/blog-salon-spa-payments",
+      "destination": "/blog/salon-spa-payments",
+      "permanent": true
+    },
+    {
+      "source": "/blog-choosing-a-payment-gateway.html",
+      "destination": "/blog/choosing-a-payment-gateway",
+      "permanent": true
+    },
+    {
+      "source": "/blog-choosing-a-payment-gateway",
+      "destination": "/blog/choosing-a-payment-gateway",
+      "permanent": true
+    },
+    {
+      "source": "/blog-text-to-pay-guide.html",
+      "destination": "/blog/text-to-pay-guide",
+      "permanent": true
+    },
+    {
+      "source": "/blog-text-to-pay-guide",
+      "destination": "/blog/text-to-pay-guide",
+      "permanent": true
+    },
+    {
+      "source": "/blog-recurring-billing-playbook.html",
+      "destination": "/blog/recurring-billing-playbook",
+      "permanent": true
+    },
+    {
+      "source": "/blog-recurring-billing-playbook",
+      "destination": "/blog/recurring-billing-playbook",
+      "permanent": true
+    },
+    {
+      "source": "/blog-ach-vs-card-payments.html",
+      "destination": "/blog/ach-vs-card-payments",
+      "permanent": true
+    },
+    {
+      "source": "/blog-ach-vs-card-payments",
+      "destination": "/blog/ach-vs-card-payments",
+      "permanent": true
+    },
+    {
+      "source": "/blog-choosing-a-credit-card-terminal.html",
+      "destination": "/blog/choosing-a-credit-card-terminal",
+      "permanent": true
+    },
+    {
+      "source": "/blog-choosing-a-credit-card-terminal",
+      "destination": "/blog/choosing-a-credit-card-terminal",
+      "permanent": true
+    },
+    {
+      "source": "/blog-pci-compliance-basics.html",
+      "destination": "/blog/pci-compliance-basics",
+      "permanent": true
+    },
+    {
+      "source": "/blog-pci-compliance-basics",
+      "destination": "/blog/pci-compliance-basics",
+      "permanent": true
+    },
+    {
+      "source": "/blog-interchange-explained.html",
+      "destination": "/blog/interchange-explained",
+      "permanent": true
+    },
+    {
+      "source": "/blog-interchange-explained",
+      "destination": "/blog/interchange-explained",
+      "permanent": true
+    },
+    {
+      "source": "/blog-high-risk-merchant-account-guide.html",
+      "destination": "/blog/high-risk-merchant-account-guide",
+      "permanent": true
+    },
+    {
+      "source": "/blog-high-risk-merchant-account-guide",
+      "destination": "/blog/high-risk-merchant-account-guide",
+      "permanent": true
     }
   ],
   "rewrites": [
@@ -1219,6 +1339,54 @@
     {
       "source": "/nextlink",
       "destination": "/nextlink-home"
+    },
+    {
+      "source": "/blog/best-restaurant-pos",
+      "destination": "/blog-best-restaurant-pos"
+    },
+    {
+      "source": "/blog/best-retail-pos",
+      "destination": "/blog-best-retail-pos"
+    },
+    {
+      "source": "/blog/liquor-store-pos-guide",
+      "destination": "/blog-liquor-store-pos-guide"
+    },
+    {
+      "source": "/blog/salon-spa-payments",
+      "destination": "/blog-salon-spa-payments"
+    },
+    {
+      "source": "/blog/choosing-a-payment-gateway",
+      "destination": "/blog-choosing-a-payment-gateway"
+    },
+    {
+      "source": "/blog/text-to-pay-guide",
+      "destination": "/blog-text-to-pay-guide"
+    },
+    {
+      "source": "/blog/recurring-billing-playbook",
+      "destination": "/blog-recurring-billing-playbook"
+    },
+    {
+      "source": "/blog/ach-vs-card-payments",
+      "destination": "/blog-ach-vs-card-payments"
+    },
+    {
+      "source": "/blog/choosing-a-credit-card-terminal",
+      "destination": "/blog-choosing-a-credit-card-terminal"
+    },
+    {
+      "source": "/blog/pci-compliance-basics",
+      "destination": "/blog-pci-compliance-basics"
+    },
+    {
+      "source": "/blog/interchange-explained",
+      "destination": "/blog-interchange-explained"
+    },
+    {
+      "source": "/blog/high-risk-merchant-account-guide",
+      "destination": "/blog-high-risk-merchant-account-guide"
     }
   ]
 }
