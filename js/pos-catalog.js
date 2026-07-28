@@ -61,7 +61,7 @@ window.NP_POS_CATALOG = {
   },
 
   shift4: { label: 'SkyTab by Shift4', logo: 'assets/logos/skytab.svg', modes: ['placement'],
-    proc: 'No upfront cost — dual pricing available for 0% card fees. Processing is quoted separately. 30-day trial, then a 30-month agreement; hardware carries a lifetime warranty.',
+    proc: 'No upfront cost — dual pricing available for 0% card fees. Processing is quoted separately. 30-day trial, then a 36-month agreement; hardware carries a lifetime warranty.',
     cats: [
       { key: 'base', label: 'Base system', type: 'qty' },
       { key: 'stations', label: 'Stations, kitchen & displays', type: 'qty' },
