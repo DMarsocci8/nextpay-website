@@ -26,6 +26,9 @@
 .qty b{min-width:20px;text-align:center}
 /* the proposal document (shared by live preview + print) */
 .pd{font-size:13px;color:#16283A}
+/* force brand backgrounds (navy head, teal savebar) to survive printing —
+   without this the printed/PDF doc loses its colors and looks nothing like the preview */
+.pd,.pd *{-webkit-print-color-adjust:exact!important;print-color-adjust:exact!important;color-adjust:exact!important}
 .pd .head{background:#0C1B2A;color:#fff;padding:20px 24px;border-radius:12px;display:flex;justify-content:space-between;align-items:center;gap:12px}
 .pd .head .t{font-size:19px;font-weight:800;line-height:1.15}
 .pd .head .sub{color:#1FC2A6;font-weight:700;font-size:10.5px;letter-spacing:.14em;text-transform:uppercase}
@@ -39,11 +42,15 @@
 .pd .sig div{flex:1;border-top:1.5px solid #16283A;padding-top:6px;font-size:11px;color:#5B6B7B}
 .pd .foot{margin-top:16px;font-size:10.5px;color:#5B6B7B}
 #print-doc{display:none}
+@page{size:letter;margin:.5in}
 @media print{
   body{background:#fff}
   .hub-side,.hub-topbar,.hub-main>*:not(#print-doc){display:none!important}
   .hub-main{margin:0;padding:0}
-  #print-doc{display:block;max-width:7.6in;margin:0 auto}
+  #print-doc{display:block;max-width:7.5in;margin:0 auto}
+  .pd .head{background:#0C1B2A!important;color:#fff!important;border-radius:12px}
+  .pd .head .sub{color:#1FC2A6!important}
+  .pd .savebar{background:#14A18C!important;color:#fff!important}
 }
 </style>
 </head><body>
