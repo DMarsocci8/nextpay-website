@@ -38,6 +38,12 @@
 .brandstrip .bchip{display:flex;align-items:center;justify-content:center;background:#fff;border-radius:12px;padding:0 18px;height:50px;min-width:78px;transition:.18s ease;box-shadow:0 1px 2px rgba(0,0,0,.18)}
 .brandstrip .bchip img{height:24px;width:auto;max-width:104px;display:block}
 .brandstrip .bchip:hover{transform:translateY(-3px);box-shadow:0 12px 26px rgba(0,0,0,.28);outline:2px solid var(--teal-bright);outline-offset:0}
+.brandstrip .bchip-featured{position:relative;height:60px;padding:0 24px;outline:2px solid var(--teal-bright);outline-offset:0;box-shadow:0 12px 30px rgba(31,194,166,.30)}
+.brandstrip .bchip-featured img{height:32px;max-width:160px}
+.bchip-flag{position:absolute;top:-11px;left:16px;background:var(--teal-bright);color:#06251f;font-size:10.5px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;padding:2.5px 10px;border-radius:99px;white-space:nowrap}
+.brandstrip .bchip-more{background:rgba(255,255,255,.12);box-shadow:none;border:1px dashed rgba(255,255,255,.4)}
+.brandstrip .bchip-more .bchip-txt{color:#fff;font-weight:700}
+.brandstrip .bchip-more:hover{background:rgba(255,255,255,.2)}
 
 .brandnav{position:sticky;top:78px;z-index:40;background:rgba(255,255,255,.95);backdrop-filter:blur(8px);border-bottom:1px solid var(--line);scroll-margin-top:84px}
 .brandnav .wrap{display:flex;gap:8px;align-items:center;padding:12px 28px;overflow:auto}
@@ -319,20 +325,15 @@ window.addEventListener('load',function(){document.querySelectorAll('img.brandlo
       <div>
         <span class="tag tag-teal">Accept Payments · Online Payments, Invoicing & Recurring Billing</span>
         <h1>Get paid faster with<br><em>smart invoicing.</em></h1>
-        <p class="lead">Take payments online, send invoices and automate recurring billing — all from one gateway. Most of our gateways double as full invoicing and subscription tools, so your online, invoiced and recurring payments settle to a single NextPay account. Compare them and pick the right fit.</p>
+        <p class="lead">Take payments online, send invoices and automate recurring billing — led by <b>Next2Pay</b>, our flagship invoicing platform. Prefer a different gateway? We carry the majors too, and every option settles to a single NextPay account.</p>
         <div class="thero-cta">
           <a class="btn btn-primary" href="/quiz" target="_blank" rel="noopener">Take the Quiz <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
           <a class="btn btn-outline" href="/quick-application">Apply Now</a>
           <a class="btn btn-ghost" href="#all">Browse all tools</a>
         </div>
         <div class="brandstrip">
-          <a href="/valor-gateway" class="bchip" title="Valor"><img src="assets/logos/valor.png" alt="Valor"></a>
-          <a href="/fluidpay" class="bchip" title="FluidPay"><img src="assets/logos/fluidpay.png" alt="FluidPay"></a>
-          <a href="/ipospays" class="bchip" title="iPOSPays"><img src="assets/logos/ipospays.png" alt="iPOSPays"></a>
-          <a href="/authorize-net" class="bchip" title="Authorize.net"><img src="assets/logos/authnet-tight.png" alt="Authorize.net" style="height:20px"></a>
-          <a href="/nmi" class="bchip" title="NMI"><img src="assets/logos/nmi.png" alt="NMI"></a>
-          <a href="/terminals#swipesimple" class="bchip" title="SwipeSimple"><img src="assets/logos/swipesimple.png" alt="SwipeSimple"></a>
-          <a href="/luqra" class="bchip" title="Luqra"><img src="assets/logos/luqra.png" alt="Luqra"></a>
+          <a href="#nextpay-invoice" class="bchip bchip-featured" title="Next2Pay — our flagship invoicing platform"><span class="bchip-flag">Our platform</span><img src="assets/logos/next2pay-globe.png" alt="Next2Pay"></a>
+          <a href="#online-payments" class="bchip bchip-more" title="See every gateway we carry"><span class="bchip-txt">+ 7 more gateways ↓</span></a>
         </div>
       </div>
       <div class="thero-media">
@@ -346,8 +347,8 @@ window.addEventListener('load',function(){document.querySelectorAll('img.brandlo
   <div class="wrap">
     <span class="bn-label">On this page</span>
     <a href="#nextpay-invoice" class="on">Next2Pay Invoicing</a>
-    <a href="#online-payments">Gateways</a>
     <a href="#recurring">Recurring Billing</a>
+    <a href="#online-payments">More Gateways</a>
     <a href="#compare-help">Compare</a>
   </div>
 </div>
@@ -359,7 +360,7 @@ window.addEventListener('load',function(){document.querySelectorAll('img.brandlo
       <div>
         <span class="npinv-badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" style="width:14px;height:14px"><path d="M5 13l4 4L19 7"/></svg>Our flagship invoicing platform</span>
         <div class="npinv-wordmark">
-          <img src="assets/logos/next2pay-white.svg" alt="Next2Pay" style="height:52px" onerror="this.outerHTML='&lt;span class=\'lockup\'&gt;Next&lt;b&gt;2&lt;/b&gt;Pay&lt;/span&gt;'">
+          <img src="assets/logos/next2pay-globe-white.png" alt="Next2Pay" style="height:62px" onerror="this.outerHTML='&lt;span class=\'lockup\'&gt;Next&lt;b&gt;2&lt;/b&gt;Pay&lt;/span&gt;'">
         </div>
         <h2>Get paid faster with <em>Next2Pay Invoicing.</em></h2>
         <p class="npinv-lead">Smart invoicing, automated reminders, recurring billing and dual pricing — all in one app. Send a professional invoice by email or text, let customers pay in a tap, and watch every payment settle straight to your NextPay account.</p>
@@ -528,20 +529,61 @@ window.addEventListener('load',function(){document.querySelectorAll('img.brandlo
   </div>
 </section>
 
+<!-- RECURRING BILLING -->
+<section class="bsec" id="recurring">
+  <div class="wrap">
+    <div class="recur-wrap">
+      <div class="recur-img"><image-slot id="x-recurring" src="assets/invoicing/recurring-billing.jpg" fit="contain" radius="18" placeholder="Automated recurring billing"></image-slot></div>
+      <div class="recur-copy">
+        <span class="eyebrow">Recurring Billing</span>
+        <h2>Set it. Forget it. We&rsquo;ve got it.</h2>
+        <p>Charge subscriptions, memberships, retainers and payment plans on autopilot. You pick the frequency, amount and payment method &mdash; we handle every cycle and keep stored cards current so payments don&rsquo;t fail.</p>
+        <ul class="recur-list">
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M20 6 9 17l-5-5"/></svg><span><b>You set it up</b> &mdash; choose frequency, amount and payment method.</span></li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M20 6 9 17l-5-5"/></svg><span><b>We handle the rest</b> &mdash; payments process automatically on schedule.</span></li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M20 6 9 17l-5-5"/></svg><span><b>Secure &amp; reliable</b> &mdash; funds settle straight to your NextPay account.</span></li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M20 6 9 17l-5-5"/></svg><span><b>Cut declines</b> &mdash; automatic card updater keeps subscriptions running.</span></li>
+        </ul>
+        <a class="btn btn-primary" href="/quiz" target="_blank" rel="noopener" style="margin-top:24px">Set up recurring billing <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- COMPARE HELP + CTA -->
+<section class="dualsec">
+  <div class="wrap">
+    <div class="dual-wrap">
+      <div class="dual-copy">
+        <span class="eyebrow">Smart pricing on every invoice</span>
+        <h2>Offer dual pricing on your invoices</h2>
+        <p>Give customers a choice when they pay — and protect your margin either way. Pay by bank transfer (ACH) and the processing fee is bypassed. Choose to pay by card, and the fee is passed to the customer. You collect the full invoice amount, every time.</p>
+        <a class="btn btn-primary" href="/fee-programs" target="_blank" rel="noopener">How dual pricing works <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+        <div class="dual-note">
+          <b>How the card price works</b>
+          <p>Dual pricing is its own program — not interchange or flat-rate. When a customer chooses to pay by card, the card price is higher to cover the fee, typically <b>3–4%</b> depending on your card mix and volume. If you see a lot of AMEX or other higher-fee cards and you're not on the full 4%, a small amount of processing cost can still apply. Your specialist will set the rate that fits your mix.</p>
+        </div>
+      </div>
+      <div class="dual-invoice"><image-slot id="x-dual-invoice" src="assets/invoicing/invoice-dual-pricing.jpg" fit="contain" radius="16" placeholder="Dual pricing invoice"></image-slot></div>
+    </div>
+  </div>
+</section>
+
+<!-- MORE GATEWAYS — moved to bottom; Next2Pay is the flagship above -->
 <section class="bsec" id="online-payments">
   <div class="wrap">
     <div class="bhead">
       <div class="bh-left">
-        <span class="eyebrow">Online Payments · Invoicing · Recurring Billing</span>
-        <div class="bname" style="font-size:clamp(24px,2.8vw,34px)">The gateways that run your invoicing</div>
-        <p>Our payment gateways don't just take card payments online — they send invoices, generate pay-by-link, store cards in a vault and bill subscriptions on autopilot. Pick the one that fits, and your online, invoiced and recurring payments all settle to one NextPay account.</p>
+        <span class="eyebrow">More Gateways · Online Payments · Recurring Billing</span>
+        <div class="bname" style="font-size:clamp(24px,2.8vw,34px)">Prefer a different gateway? We carry them all.</div>
+        <p><b>Next2Pay is our flagship pick</b> — but if your business is already built around another gateway, we support the majors too. Every one of these sends invoices, generates pay-by-link, vaults cards and bills subscriptions on autopilot, and they all settle to one NextPay account.</p>
         <div class="bestfor"><span class="tag tag-teal">Invoicing</span><span class="tag tag-teal">Recurring billing</span><span class="tag">Pay links</span><span class="tag">Virtual terminal</span></div>
       </div>
       <a class="link-teal" href="/gateways" target="_blank" rel="noopener">See all gateways &amp; pricing <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
     </div>
     <div class="tgrid">
       <article class="pcard" id="inv-fluidpay">
-        <div class="pimg"><span class="tag tag-teal pbadge">★ Recommended</span><image-slot id="x-inv-fluidpay" src="assets/logos/fluidpay.png" fit="contain" radius="0" placeholder="FluidPay"></image-slot></div>
+        <div class="pimg"><span class="tag tag-teal pbadge">★ Top alternative</span><image-slot id="x-inv-fluidpay" src="assets/logos/fluidpay.png" fit="contain" radius="0" placeholder="FluidPay"></image-slot></div>
         <div class="pbody">
           <img class="brandlogo cardbrand-img" src="assets/logos/fluidpay.png" alt="FluidPay"><h3>FluidPay</h3>
           <p class="pdesc">Recurring billing, hosted pay pages and a mobile virtual terminal — send a pay-by-link or bill subscriptions on autopilot.</p>
@@ -622,46 +664,6 @@ window.addEventListener('load',function(){document.querySelectorAll('img.brandlo
   </div>
 </section>
 
-<!-- RECURRING BILLING -->
-<section class="bsec" id="recurring">
-  <div class="wrap">
-    <div class="recur-wrap">
-      <div class="recur-img"><image-slot id="x-recurring" src="assets/invoicing/recurring-billing.jpg" fit="contain" radius="18" placeholder="Automated recurring billing"></image-slot></div>
-      <div class="recur-copy">
-        <span class="eyebrow">Recurring Billing</span>
-        <h2>Set it. Forget it. We&rsquo;ve got it.</h2>
-        <p>Charge subscriptions, memberships, retainers and payment plans on autopilot. You pick the frequency, amount and payment method &mdash; we handle every cycle and keep stored cards current so payments don&rsquo;t fail.</p>
-        <ul class="recur-list">
-          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M20 6 9 17l-5-5"/></svg><span><b>You set it up</b> &mdash; choose frequency, amount and payment method.</span></li>
-          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M20 6 9 17l-5-5"/></svg><span><b>We handle the rest</b> &mdash; payments process automatically on schedule.</span></li>
-          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M20 6 9 17l-5-5"/></svg><span><b>Secure &amp; reliable</b> &mdash; funds settle straight to your NextPay account.</span></li>
-          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M20 6 9 17l-5-5"/></svg><span><b>Cut declines</b> &mdash; automatic card updater keeps subscriptions running.</span></li>
-        </ul>
-        <a class="btn btn-primary" href="/quiz" target="_blank" rel="noopener" style="margin-top:24px">Set up recurring billing <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- COMPARE HELP + CTA -->
-<section class="dualsec">
-  <div class="wrap">
-    <div class="dual-wrap">
-      <div class="dual-copy">
-        <span class="eyebrow">Smart pricing on every invoice</span>
-        <h2>Offer dual pricing on your invoices</h2>
-        <p>Give customers a choice when they pay — and protect your margin either way. Pay by bank transfer (ACH) and the processing fee is bypassed. Choose to pay by card, and the fee is passed to the customer. You collect the full invoice amount, every time.</p>
-        <a class="btn btn-primary" href="/fee-programs" target="_blank" rel="noopener">How dual pricing works <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
-        <div class="dual-note">
-          <b>How the card price works</b>
-          <p>Dual pricing is its own program — not interchange or flat-rate. When a customer chooses to pay by card, the card price is higher to cover the fee, typically <b>3–4%</b> depending on your card mix and volume. If you see a lot of AMEX or other higher-fee cards and you're not on the full 4%, a small amount of processing cost can still apply. Your specialist will set the rate that fits your mix.</p>
-        </div>
-      </div>
-      <div class="dual-invoice"><image-slot id="x-dual-invoice" src="assets/invoicing/invoice-dual-pricing.jpg" fit="contain" radius="16" placeholder="Dual pricing invoice"></image-slot></div>
-    </div>
-  </div>
-</section>
-
 <!-- COMPARE HELP + CTA -->
 <section class="section" id="compare-help">
   <div class="wrap">
@@ -690,7 +692,7 @@ window.addEventListener('load',function(){document.querySelectorAll('img.brandlo
 
 <!-- PRODUCT REGISTRY -->
 <script>
-window.NP_PRODUCTS = {"x-inv-fluidpay":{"name":"FluidPay","brand":"FluidPay","slot":"x-inv-fluidpay","href":"#inv-fluidpay","specs":{"Brand":"FluidPay","Best for":"Recurring & online","Type":"Gateway","Features":"Invoicing, Recurring, Pay links, Vault","Pricing":"$25/mo","Highlight":"★ Recommended"}},"x-inv-ipospays":{"name":"iPOSPays","brand":"iPOSPays","slot":"x-inv-ipospays","href":"#inv-ipospays","specs":{"Brand":"iPOSPays","Best for":"Dual pricing","Type":"Gateway","Features":"Invoicing, Pay links, Recurring, Dual pricing","Pricing":"$25/mo","Highlight":"Terminal-linked"}},"x-inv-valor":{"name":"Valor","brand":"Valor","slot":"x-inv-valor","href":"#inv-valor","specs":{"Brand":"Valor","Best for":"Online + in person","Type":"Gateway","Features":"PayNow links, Recurring, Virtual terminal, Dual pricing","Pricing":"$25/mo","Highlight":"The Vault"}},"x-inv-authnet":{"name":"Authorize.net","brand":"Authorize.net","slot":"x-inv-authnet","href":"#inv-authnet","specs":{"Brand":"Authorize.net","Best for":"Universal","Type":"Gateway","Features":"Invoicing, Recurring (ARB), Virtual terminal, QuickBooks","Pricing":"$25/mo","Highlight":"QuickBooks sync"}},"x-inv-nmi":{"name":"NMI","brand":"NMI","slot":"x-inv-nmi","href":"#inv-nmi","specs":{"Brand":"NMI","Best for":"Modular","Type":"Gateway","Features":"Invoicing, Recurring, Vault, Virtual terminal","Pricing":"$25/mo","Highlight":"Card updater"}},"x-inv-luqra":{"name":"Luqra","brand":"Luqra","slot":"x-inv-luqra","href":"#inv-luqra","specs":{"Brand":"Luqra","Best for":"E-commerce","Type":"Gateway","Features":"Online checkout, Recurring, Fast funding","Pricing":"As low as 2.3% + 20¢","Highlight":"Fast funding"}},"x-inv-swipesimple":{"name":"SwipeSimple","brand":"SwipeSimple","slot":"x-inv-swipesimple","href":"#inv-swipesimple","specs":{"Brand":"SwipeSimple","Best for":"Invoicing & mobile","Type":"Payments app","Features":"Invoicing, ACH dual pricing, Text-to-Pay, QuickBooks","Pricing":"From $25/mo","Highlight":"Eliminates processing fees"}}};
+window.NP_PRODUCTS = {"x-inv-fluidpay":{"name":"FluidPay","brand":"FluidPay","slot":"x-inv-fluidpay","href":"#inv-fluidpay","specs":{"Brand":"FluidPay","Best for":"Recurring & online","Type":"Gateway","Features":"Invoicing, Recurring, Pay links, Vault","Pricing":"$25/mo","Highlight":"★ Top alternative"}},"x-inv-ipospays":{"name":"iPOSPays","brand":"iPOSPays","slot":"x-inv-ipospays","href":"#inv-ipospays","specs":{"Brand":"iPOSPays","Best for":"Dual pricing","Type":"Gateway","Features":"Invoicing, Pay links, Recurring, Dual pricing","Pricing":"$25/mo","Highlight":"Terminal-linked"}},"x-inv-valor":{"name":"Valor","brand":"Valor","slot":"x-inv-valor","href":"#inv-valor","specs":{"Brand":"Valor","Best for":"Online + in person","Type":"Gateway","Features":"PayNow links, Recurring, Virtual terminal, Dual pricing","Pricing":"$25/mo","Highlight":"The Vault"}},"x-inv-authnet":{"name":"Authorize.net","brand":"Authorize.net","slot":"x-inv-authnet","href":"#inv-authnet","specs":{"Brand":"Authorize.net","Best for":"Universal","Type":"Gateway","Features":"Invoicing, Recurring (ARB), Virtual terminal, QuickBooks","Pricing":"$25/mo","Highlight":"QuickBooks sync"}},"x-inv-nmi":{"name":"NMI","brand":"NMI","slot":"x-inv-nmi","href":"#inv-nmi","specs":{"Brand":"NMI","Best for":"Modular","Type":"Gateway","Features":"Invoicing, Recurring, Vault, Virtual terminal","Pricing":"$25/mo","Highlight":"Card updater"}},"x-inv-luqra":{"name":"Luqra","brand":"Luqra","slot":"x-inv-luqra","href":"#inv-luqra","specs":{"Brand":"Luqra","Best for":"E-commerce","Type":"Gateway","Features":"Online checkout, Recurring, Fast funding","Pricing":"As low as 2.3% + 20¢","Highlight":"Fast funding"}},"x-inv-swipesimple":{"name":"SwipeSimple","brand":"SwipeSimple","slot":"x-inv-swipesimple","href":"#inv-swipesimple","specs":{"Brand":"SwipeSimple","Best for":"Invoicing & mobile","Type":"Payments app","Features":"Invoicing, ACH dual pricing, Text-to-Pay, QuickBooks","Pricing":"From $25/mo","Highlight":"Eliminates processing fees"}}};
 </script>
 <script src="js/nav.js"></script>
 <script src="js/image-slot.js"></script>
