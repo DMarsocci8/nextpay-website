@@ -1,0 +1,598 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Flyers &amp; One-Pagers — Personalize &amp; Print — NextPay Sales Hub</title>
+<link rel="icon" href="https://nextpaypos.com/assets/favicon.ico" sizes="any">
+<link rel="apple-touch-icon" href="https://nextpaypos.com/assets/apple-touch-icon.png">
+<link rel="stylesheet" href="https://nextpaypos.com/css/nextpay.css">
+<style>
+.hub-bar{position:sticky;top:0;z-index:60;background:var(--navy);color:#fff;border-bottom:1px solid rgba(255,255,255,.10)}
+.hub-bar-inner{display:flex;align-items:center;gap:18px;height:66px;max-width:var(--maxw);margin:0 auto;padding:0 28px}
+.hub-bar img.logo{height:34px;width:auto;display:block}
+.hub-bar .pipe{width:1px;height:26px;background:rgba(255,255,255,.18)}
+.hub-bar .hub-tag{font-weight:800;font-size:15px;color:#fff;display:flex;align-items:center;gap:9px}
+.hub-bar .hub-tag .badge{font-size:10.5px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;background:var(--teal);color:#fff;padding:4px 9px;border-radius:999px}
+.hub-bar .right{margin-left:auto;display:flex;align-items:center;gap:20px}
+.hub-bar .right a{color:#cdd8e2;font-weight:600;font-size:14.5px}.hub-bar .right a:hover{color:#fff}
+
+.pg-head{background:linear-gradient(180deg,var(--navy),var(--navy-2));color:#fff}
+.pg-head .wrap{padding:28px 0 30px}
+.crumbs{display:flex;gap:8px;align-items:center;font-size:13.5px;color:#9fb1c2;padding-bottom:14px}
+.crumbs a{color:#cdd8e2;font-weight:600}.crumbs a:hover{color:#fff}.crumbs .sep{opacity:.5}
+.pg-head h1{font-size:clamp(26px,3.6vw,38px);color:#fff;letter-spacing:-.02em}
+.pg-head p.lead{color:#c4d0db;margin-top:10px;max-width:660px;font-size:16.5px;line-height:1.55}
+
+.layout{display:grid;grid-template-columns:360px 1fr;gap:46px;padding:36px 0 20px;align-items:start}
+@media(max-width:980px){.layout{grid-template-columns:1fr;gap:28px}}
+
+.form-card{background:#fff;border:1px solid var(--line);border-radius:var(--radius-lg);box-shadow:var(--shadow-sm);padding:26px;position:sticky;top:84px}
+@media(max-width:980px){.form-card{position:static}}
+.form-card h2{font-size:18px;margin-bottom:4px}
+.form-card .hint{font-size:13.5px;color:var(--slate);margin-bottom:18px}
+.field{margin-bottom:15px}
+.field label{display:block;font-size:13px;font-weight:700;color:var(--ink);margin-bottom:6px}
+.field input,.field select{width:100%;border:1px solid var(--line);border-radius:10px;padding:11px 13px;font-family:inherit;font-size:15px;color:var(--ink);background:#fff}
+.field input:focus,.field select:focus{outline:2px solid var(--teal)}
+/* make the flyer picker obviously a dropdown */
+.pick-field{margin-bottom:18px;background:rgba(20,161,140,.05);border:1px solid rgba(20,161,140,.22);border-radius:14px;padding:14px 14px 16px}
+.pick-field .pick-cap{display:flex;align-items:center;gap:7px;font-size:13.5px;font-weight:800;color:var(--teal-dark);margin-bottom:8px}
+.pick-field .pick-cap svg{width:17px;height:17px}
+.pick-field .pick-hint{font-size:12px;color:var(--slate);margin-top:7px}
+.plem-cta{display:flex;align-items:center;gap:12px;margin:-4px 0 18px;padding:13px 14px;border-radius:14px;text-decoration:none;
+  background:linear-gradient(120deg,var(--navy),var(--navy-2));color:#fff;border:1px solid rgba(20,161,140,.5);box-shadow:var(--shadow-sm);transition:transform .15s,box-shadow .15s}
+.plem-cta:hover{transform:translateY(-2px);box-shadow:var(--shadow)}
+.plem-cta .plem-cta-ic{flex:none;width:38px;height:38px;border-radius:10px;background:rgba(31,194,166,.18);display:grid;place-items:center}
+.plem-cta .plem-cta-ic svg{width:20px;height:20px;color:var(--teal-bright,#1FC2A6)}
+.plem-cta .plem-cta-tx{display:flex;flex-direction:column;gap:3px;min-width:0}
+.plem-cta .plem-cta-tx b{font-size:13.5px;font-weight:800;letter-spacing:-.01em;display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+.plem-cta .plem-cta-tx span{font-size:11.5px;color:#c4d0db;line-height:1.4}
+.plem-cta .plem-tag{font-size:9px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;background:var(--teal);color:#fff;padding:3px 7px;border-radius:999px}
+.plem-cta .plem-cta-go{flex:none;width:18px;height:18px;color:var(--teal-bright,#1FC2A6)}
+#f-flyer{width:100%;border-radius:10px;padding:12px 44px 12px 13px;font-family:inherit;font-size:15px;appearance:none;-webkit-appearance:none;-moz-appearance:none;cursor:pointer;border:2px solid var(--teal);background-color:#fff;font-weight:700;color:var(--navy);
+  background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%2314A18C' stroke-width='2.6' stroke-linecap='round' stroke-linejoin='round'><path d='M6 9l6 6 6-6'/></svg>");
+  background-repeat:no-repeat;background-position:right 14px center;background-size:18px}
+#f-flyer:hover{border-color:var(--teal-dark);background-color:rgba(20,161,140,.06)}
+.field .suffixed{display:flex;align-items:stretch}
+.field .suffixed input{border-top-right-radius:0;border-bottom-right-radius:0;border-right:0}
+.field .suffixed .suffix{display:flex;align-items:center;padding:0 12px;background:var(--bg-soft-2);border:1px solid var(--line);border-left:0;border-top-right-radius:10px;border-bottom-right-radius:10px;font-size:13.5px;font-weight:700;color:var(--slate)}
+.saved-note{font-size:12.5px;color:var(--teal-dark);font-weight:600;margin-top:2px;min-height:16px}
+.actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:8px}
+
+.preview .ptitle{font-size:15px;letter-spacing:.04em;text-transform:uppercase;color:var(--slate);margin-bottom:14px}
+.stage-wrap{display:flex;justify-content:center}
+.stage{transform-origin:top center}
+/* stage scale + wrap height are set in JS (sizeStage) so the preview adapts to
+   each flyer's size — 8.5×11 flyers and 5×7 postcards */
+
+/* ---- the flyer (true 8.5 x 11; .pc = 5×7 postcard, landscape) ---- */
+.flyer{position:relative;width:8.5in;height:11in;background:#fff;overflow:hidden;box-shadow:0 10px 40px rgba(12,27,42,.22);font-family:inherit;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+.flyer.pc{width:7in;height:5in}
+.flyer .flyer-art{position:absolute;inset:0;width:100%;height:100%}
+.flyer img.flyer-art{object-fit:cover;display:block}
+
+/* injected contact block */
+.contact-block{position:absolute;box-sizing:border-box}
+.cb-name{font-weight:800;font-size:15pt;letter-spacing:-.01em;line-height:1.08}
+.cb-rows{display:flex;flex-wrap:wrap;gap:.06in .3in;margin-top:.06in;font-size:10pt;font-weight:600}
+.cb-rows.center{justify-content:center}
+.cb-rows .cbi{display:flex;align-items:center;gap:.08in;white-space:nowrap}
+.cb-rows .cbi svg{width:.17in;height:.17in;flex:none;opacity:.95}
+.cb-muted{opacity:.6}
+
+/* ---------- SAMPLE FLYER (HTML) ---------- */
+.fl-sample{position:absolute;inset:0;display:flex;flex-direction:column;color:var(--navy);background:
+  radial-gradient(120% 80% at 100% 0%, rgba(31,194,166,.10), transparent 60%),#fff}
+.fl-sample .s-top{display:flex;align-items:center;justify-content:space-between;padding:.6in .7in 0}
+.fl-sample .s-top img{height:.62in;width:auto}
+.fl-sample .s-top .s-kick{font-size:9.5pt;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:var(--teal-dark)}
+.fl-sample .s-hero{margin:.26in .7in 0;height:1.95in;border-radius:.18in;overflow:hidden}
+.fl-sample .s-hero img{width:100%;height:100%;object-fit:cover;object-position:center 25%;display:block}
+.fl-sample .s-body{flex:1;min-height:0;padding:.3in .7in 0}
+.fl-sample h1{font-size:38pt;line-height:1.02;letter-spacing:-.02em;color:var(--navy);font-weight:800}
+.fl-sample h1 .em{color:var(--teal-dark)}
+.fl-sample .s-sub{font-size:13.5pt;color:var(--slate);line-height:1.45;margin-top:.18in;max-width:6.2in}
+.fl-sample .s-feats{display:grid;grid-template-columns:1fr 1fr;gap:.22in .3in;margin-top:.4in}
+.fl-sample .s-feat{display:flex;gap:.16in;align-items:flex-start}
+.fl-sample .s-feat .fi{width:.5in;height:.5in;border-radius:.13in;background:rgba(20,161,140,.12);display:grid;place-items:center;flex:none}
+.fl-sample .s-feat .fi svg{width:.26in;height:.26in;color:var(--teal-dark)}
+.fl-sample .s-feat h3{font-size:13pt;font-weight:800;color:var(--navy);letter-spacing:-.01em}
+.fl-sample .s-feat p{font-size:10.5pt;color:var(--slate);line-height:1.4;margin-top:.02in}
+.fl-sample .s-trust{display:flex;flex-wrap:wrap;gap:.16in .42in;margin-top:.34in}
+.fl-sample .s-trust span{display:flex;align-items:center;gap:.1in;font-size:11pt;font-weight:700;color:var(--navy)}
+.fl-sample .s-trust span:before{content:'✓';color:var(--teal-dark);font-weight:800}
+.fl-sample .s-offer{margin:.28in .7in 1.05in;background:linear-gradient(100deg,var(--navy),var(--navy-2));color:#fff;border-radius:.18in;padding:.3in .4in;display:flex;align-items:center;gap:.3in}
+.fl-sample .s-offer .big{font-size:30pt;font-weight:800;color:var(--teal-bright,#1FC2A6);line-height:1;letter-spacing:-.02em;flex:none}
+.fl-sample .s-offer h3{font-size:15pt;font-weight:800;letter-spacing:-.01em}
+.fl-sample .s-offer p{font-size:10.5pt;color:#c4d0db;margin-top:.04in;line-height:1.4}
+
+/* ---------- SAMPLE POSTCARD (5×7, HTML) ---------- */
+.pc-sample{position:absolute;inset:0;display:flex;background:#fff;color:var(--navy)}
+.pc-sample .pc-photo{width:2.7in;flex:none;overflow:hidden}
+.pc-sample .pc-photo img{width:100%;height:100%;object-fit:cover;display:block}
+.pc-sample .pc-main{flex:1;min-width:0;padding:.32in .4in .82in .42in;display:flex;flex-direction:column;background:
+  radial-gradient(120% 90% at 100% 0%, rgba(31,194,166,.12), transparent 60%),#fff}
+.pc-sample .pc-logo{height:.46in;width:auto;align-self:flex-start;margin-bottom:.16in}
+.pc-sample h2{font-size:23pt;line-height:1.04;letter-spacing:-.02em;font-weight:800;color:var(--navy)}
+.pc-sample h2 span{color:var(--teal-dark)}
+.pc-sample .pc-points{list-style:none;margin:.2in 0 0;padding:0}
+.pc-sample .pc-points li{position:relative;padding-left:.3in;font-size:11pt;font-weight:600;color:var(--ink);line-height:1.3;margin-bottom:.12in}
+.pc-sample .pc-points li:before{content:'✓';position:absolute;left:0;top:0;color:var(--teal-dark);font-weight:800}
+.pc-sample .pc-offer{margin-top:auto;background:rgba(20,161,140,.12);border:1px solid rgba(20,161,140,.32);border-radius:.12in;padding:.13in .16in;font-size:10.5pt;color:var(--navy);line-height:1.35}
+.pc-sample .pc-offer b{color:var(--teal-dark)}
+/* postcard contact bar sizing */
+.flyer.pc .cb-name{font-size:13pt}
+.flyer.pc .cb-rows{font-size:9pt;gap:.04in .2in;margin-top:.04in}
+.flyer.pc .cb-rows .cbi svg{width:.14in;height:.14in}
+
+/* ================= INDUSTRY FLYERS v2 (clean HTML, print units) ================= */
+.f2{position:absolute;inset:0;display:flex;flex-direction:column;justify-content:space-between;
+  padding:.45in .55in 1.5in;color:#173A43;background:#fff}
+.f2-head{display:flex;justify-content:flex-end;margin-bottom:.12in}
+.f2-head img{height:.46in;width:auto;display:block}
+.f2-top{display:flex;gap:.3in;align-items:stretch}
+.f2-photo{width:42%;border-radius:.16in;overflow:hidden;background:#dfe6e9;min-height:2.5in}
+.f2-photo img{width:100%;height:100%;object-fit:cover;display:block}
+.f2-panel{width:58%;background:linear-gradient(165deg,#16A085,#11806c);border-radius:.5in .5in .16in .16in;padding:.3in .3in .36in;color:#fff;display:flex;flex-direction:column}
+.f2-h2{font-weight:800;font-size:19pt;line-height:1.08;letter-spacing:-.01em}
+.f2-sub{font-size:10.5pt;margin-top:.08in;color:rgba(255,255,255,.92);font-weight:500}
+.f2-tag{align-self:flex-start;display:inline-flex;align-items:center;gap:.06in;background:rgba(255,255,255,.16);border:1px solid rgba(255,255,255,.28);border-radius:999px;padding:.04in .12in;font-weight:700;font-size:9.5pt;margin-bottom:.08in}
+.f2-tag svg{width:.15in;height:.15in;fill:#E8A33D;stroke:#E8A33D}
+.f2-chan{display:flex;gap:.08in;margin-top:.13in}
+.f2-ch{flex:1;text-align:center;background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.2);border-radius:.1in;padding:.07in .03in}
+.f2-ch svg{width:.22in;height:.22in;stroke:#fff;fill:none;stroke-width:2;margin-bottom:.03in}
+.f2-ch span{display:block;font-weight:600;font-size:8.5pt}
+.f2-boxes{display:flex;gap:.18in;margin-top:auto;padding-top:.16in}
+.f2-box{flex:1;text-align:center}
+.f2-box .ic{height:.34in;display:flex;align-items:center;justify-content:center;margin-bottom:.03in}
+.f2-box .ic svg{width:.42in;height:.3in;stroke:#fff;fill:none;stroke-width:2.2}
+.f2-box .l{font-weight:600;font-size:10.5pt}
+.f2-box .v{font-weight:800;font-size:18pt;margin-top:.02in;letter-spacing:-.01em}
+.f2-mid{display:flex;gap:.28in;align-items:center;margin-top:.26in}
+.f2-copy{width:44%}
+.f2-h1{font-weight:800;font-size:20pt;line-height:1.08;letter-spacing:-.02em;color:#173A43}
+.f2-body{font-size:10.5pt;line-height:1.45;color:#5b6b73;margin-top:.1in}
+.f2-bullets{list-style:none;margin-top:.1in}
+.f2-bullets li{position:relative;padding-left:.25in;font-size:11pt;font-weight:600;margin-bottom:.06in;color:#173A43}
+.f2-bullets li:before{content:'';position:absolute;left:0;top:.055in;width:.1in;height:.1in;border-radius:50%;background:#16A085}
+.f2-right{width:56%}
+.f2-rh{display:flex;align-items:center;gap:.1in;font-weight:800;font-size:14pt;color:#173A43}
+.f2-rh svg{width:.26in;height:.26in;color:#16A085;stroke:#16A085;fill:none;stroke-width:2}
+.f2-right table{width:100%;border-collapse:collapse;margin-top:.08in}
+.f2-right th{font-weight:700;font-size:10pt;text-align:left;padding:.035in 0;border-bottom:1.5px solid #e3e9ed;color:#173A43}
+.f2-right th:last-child{text-align:right}
+.f2-right td{font-size:10.5pt;padding:.055in 0;border-bottom:1px solid #eef2f4;color:#173A43}
+.f2-right td:last-child{text-align:right;font-weight:600}
+.f2-disc{font-size:7pt;color:#8a979d;margin-top:.08in;line-height:1.4}
+.f2-rgrid{display:grid;grid-template-columns:1fr 1fr;gap:.08in;margin-top:.1in}
+.f2-ritem{display:flex;align-items:center;gap:.09in;background:#f3f7f8;border:1px solid #e3e9ed;border-radius:.12in;padding:.08in .1in}
+.f2-ritem .ri{flex:none;width:.3in;height:.3in;border-radius:.08in;background:rgba(22,160,133,.12);display:grid;place-items:center}
+.f2-ritem .ri svg{width:.17in;height:.17in;stroke:#16A085;fill:none;stroke-width:2}
+.f2-ritem b{font-weight:700;font-size:10pt;line-height:1.15;color:#173A43}
+.f2-ritem span{display:block;font-size:7.5pt;color:#5b6b73;margin-top:.01in}
+.f2-band{margin-top:.2in;background:#f3f7f8;border:1px solid #e3e9ed;border-radius:.16in;padding:.13in .2in;display:flex;gap:.2in}
+.f2-bf{flex:1;display:flex;gap:.09in;align-items:flex-start}
+.f2-bf .ck{flex:none;width:.28in;height:.28in;border-radius:50%;background:rgba(22,160,133,.14);display:grid;place-items:center}
+.f2-bf .ck svg{width:.16in;height:.16in;stroke:#16A085;fill:none;stroke-width:2.5}
+.f2-bf b{display:block;font-weight:700;font-size:10pt;line-height:1.2;color:#173A43}
+.f2-bf span{display:block;font-size:7.5pt;color:#5b6b73;margin-top:.02in}
+
+.tip{display:flex;gap:12px;align-items:flex-start;background:var(--bg-soft);border:1px solid var(--line);border-radius:12px;padding:14px 16px;margin-top:26px;max-width:600px}
+.tip svg{width:18px;height:18px;color:var(--teal-dark);flex:none;margin-top:2px}
+.tip p{font-size:13.5px;color:var(--slate);line-height:1.5}
+.addnote{display:flex;gap:14px;align-items:flex-start;background:#fff;border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow-sm);padding:18px 20px;margin-top:16px;max-width:600px}
+.addnote .ni{flex:none;width:42px;height:42px;border-radius:11px;background:rgba(20,161,140,.12);display:grid;place-items:center;color:var(--teal-dark)}
+.addnote .ni svg{width:21px;height:21px}.addnote b{font-size:15px}.addnote p{font-size:13.5px;color:var(--slate);line-height:1.55;margin-top:3px}
+
+.hub-foot{background:var(--navy);color:#9fb1c2;padding:30px 0;margin-top:46px;font-size:13.5px}
+.hub-foot .wrap{display:flex;justify-content:space-between;gap:18px;flex-wrap:wrap}
+.hub-foot a{color:#cdd8e2;font-weight:600}.hub-foot a:hover{color:#fff}
+
+@media print{
+  *{-webkit-print-color-adjust:exact !important;print-color-adjust:exact !important}
+  .hub-bar,.pg-head,.form-card,.preview .ptitle,.tip,.addnote,.hub-foot,.actions{display:none !important}
+  html,body{background:#fff;margin:0;padding:0;width:auto;height:auto}
+  .wrap{max-width:none;margin:0;padding:0}
+  main.wrap{padding:0}
+  .layout{display:block;padding:0;margin:0}
+  .preview{margin:0}
+  .stage-wrap{height:auto !important;display:block;justify-content:flex-start}
+  .stage{transform:none !important;transform-origin:top left !important}
+  .flyer{box-shadow:none;margin:0}
+  /* @page size is set per-flyer in JS (#printPage) */
+}
+</style>
+</head>
+<body>
+
+<div class="hub-bar">
+  <div class="hub-bar-inner">
+    <a href="index.html" style="display:flex;align-items:center" aria-label="Sales Hub home"><img class="logo" src="https://nextpaypos.com/assets/logos/nextpay-nav.png" alt="NextPay"></a>
+    <span class="pipe"></span>
+    <span class="hub-tag">Sales Hub <span class="badge">Internal</span></span>
+    <div class="right"><a href="business-card.html">Business card →</a><a href="marketing.html">← Marketing &amp; Brand</a></div>
+  </div>
+</div>
+
+<header class="pg-head">
+  <div class="wrap">
+    <div class="crumbs"><a href="index.html">Sales Hub</a><span class="sep">/</span><a href="marketing.html">Marketing Assets</a><span class="sep">/</span><span>Flyers &amp; Postcards</span></div>
+    <h1>Flyers &amp; One-Pagers — Personalize &amp; Print</h1>
+    <p class="lead">Pick a flyer or postcard, add your name and contact info once, and print it yourself — full-size 8.5″ × 11″ flyers and 5″ × 7″ postcards, ready for any printer. Your details are saved on this device and shared with your business card, so you only type them once.</p>
+  </div>
+</header>
+
+<main class="wrap">
+  <div class="layout">
+
+    <!-- FORM -->
+    <div class="form-card">
+      <h2>Personalize</h2>
+      <p class="hint">Choose a flyer and fill in your details — the preview updates as you type.</p>
+
+      <div class="pick-field">
+        <label class="pick-cap" for="f-flyer">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M8 6h13M8 12h13M8 18h13M3 6h.01M3 12h.01M3 18h.01"/></svg>
+          Step 1 — choose a flyer
+        </label>
+        <select id="f-flyer"></select>
+        <div class="pick-hint">▾ Tap to pick which flyer to personalize — the preview updates instantly.</div>
+      </div>
+
+      <a class="plem-cta" href="pay-less-earn-more.html?fmt=fullpage">
+        <span class="plem-cta-ic">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="5" width="20" height="14" rx="2"/><path d="M2 10h20M6 14h5"/></svg>
+        </span>
+        <span class="plem-cta-tx">
+          <b>“Pay Less. Earn More.” — full landscape flyer <span class="plem-tag">Featured</span></b>
+          <span>The all-in-one value flyer with the POS lineup, $0 badge &amp; QR. Opens in its own personalizer (landscape 11×8.5) — same saved name &amp; contact.</span>
+        </span>
+        <svg class="plem-cta-go" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+      </a>
+      <div class="field"><label for="f-name">Full name</label><input id="f-name" type="text" placeholder="" autocomplete="name"></div>
+      <div class="field"><label for="f-cell">Phone</label><input id="f-cell" type="tel" placeholder="" autocomplete="tel"></div>
+      <div class="field"><label for="f-email">Email</label><input id="f-email" type="email" placeholder="" autocomplete="email"></div>
+      <div class="saved-note" id="savedNote"></div>
+
+      <div class="actions">
+        <button class="btn btn-primary btn-sm" onclick="window.print()">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M6 9V2h12v7M6 18H4a2 2 0 01-2-2v-5a2 2 0 012-2h16a2 2 0 012 2v5a2 2 0 01-2 2h-2M6 14h12v8H6z"/></svg>
+          Print / Save PDF
+        </button>
+        <button class="btn btn-outline btn-sm" id="clearBtn" type="button">Clear</button>
+      </div>
+    </div>
+
+    <!-- PREVIEW -->
+    <div class="preview">
+      <div class="ptitle">Live preview — 8.5″ × 11″</div>
+      <div class="stage-wrap"><div class="stage" id="stage"></div></div>
+
+      <div class="tip">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4M12 8h.01"/></svg>
+        <p><b>Printing tip:</b> click <b>Print / Save PDF</b>, then set margins to <b>None</b> and scale to <b>100%</b> (uncheck “Fit to page”). Choose <b>“Save as PDF”</b> to email it, or send straight to your printer on letter paper.</p>
+      </div>
+      <div class="addnote">
+        <div class="ni"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14"/></svg></div>
+        <div><b>Adding more flyers</b><p>Have a flyer to add? A Canva export as a <b>2× PNG</b> (8.5×11, with the name/contact area left blank) — or a designed <b>HTML</b> flyer — gets added to the picker above with your contact block dropped in the right spot.</p></div>
+      </div>
+    </div>
+
+  </div>
+</main>
+
+<footer class="hub-foot">
+  <div class="wrap">
+    <span>NextPay Sales Hub · Flyers &amp; One-Pagers · Internal use only.</span>
+    <span><a href="index.html">← Back to hub</a></span>
+  </div>
+</footer>
+
+<script>
+/* ===========================================================
+   FLYER LIBRARY
+   Two built-in sample demos + the data-driven industry flyers.
+   Each industry trade produces TWO flyers from shared templates:
+     • Dual Pricing (zero-fee)   • IC+/Rewards
+   The agent's saved contact block (np_rep_profile) is overlaid by
+   the tool into the teal bar at the bottom (BAR placement).
+   =========================================================== */
+
+/* ---- shared inline icons (inherit stroke/fill from CSS) ---- */
+var IC_cart  = '<svg viewBox="0 0 24 24"><path d="M3 9l1-5h16l1 5M3 9h18v3a3 3 0 01-6 0 3 3 0 01-6 0 3 3 0 01-6 0zM5 12v8h14v-8"/></svg>';
+var IC_globe = '<svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a14 14 0 010 18M12 3a14 14 0 000 18"/></svg>';
+var IC_doc   = '<svg viewBox="0 0 24 24"><path d="M7 3h10l2 2v16l-3-2-3 2-3-2-3 2V5z"/><path d="M9 8h6M9 12h6"/></svg>';
+var IC_link  = '<svg viewBox="0 0 24 24"><path d="M9 15l6-6M10 6l1-1a4 4 0 015 5l-1 1M14 18l-1 1a4 4 0 01-5-5l1-1"/></svg>';
+var IC_card  = '<svg viewBox="0 0 24 24"><rect x="2" y="5" width="20" height="14" rx="2"/><path d="M2 10h20"/></svg>';
+var IC_bank  = '<svg viewBox="0 0 24 24"><path d="M3 9l9-6 9 6M5 9v9M19 9v9M3 18h18M9 9v9M15 9v9"/></svg>';
+var IC_chart = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 3v18h18"/><path d="M7 14l3-4 4 3 5-7"/></svg>';
+var IC_check = '<svg viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg>';
+var IC_star  = '<svg viewBox="0 0 24 24"><path d="M12 3l2.9 6 6.6.9-4.8 4.6 1.2 6.5L12 18.8 5.9 21l1.2-6.5L2.3 9.9 8.9 9z"/></svg>';
+var IC_plane = '<svg viewBox="0 0 24 24"><path d="M2 12l20-7-7 20-3-8-8-3z"/></svg>';
+var IC_giftc = '<svg viewBox="0 0 24 24"><rect x="2" y="5" width="20" height="14" rx="2"/><path d="M2 10h20M6 15h4"/></svg>';
+var IC_cash  = '<svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M9.5 14c.4.9 1.4 1.5 2.5 1.5 1.4 0 2.5-.8 2.5-1.9 0-2.4-4.7-1.3-4.7-3.6 0-1 1-1.7 2.2-1.7 1.1 0 2 .5 2.4 1.4"/></svg>';
+var IC_fuel  = '<svg viewBox="0 0 24 24"><path d="M4 21V5a2 2 0 012-2h6a2 2 0 012 2v16M3 21h12M5 11h8M16 8l3 3v6a2 2 0 01-4 0v-2"/></svg>';
+var IC_gift  = '<svg viewBox="0 0 24 24"><rect x="3" y="8" width="18" height="12" rx="2"/><path d="M3 13h18M12 8V20M12 8S10 3.5 7.5 5 9.5 8 12 8zM12 8s2-4.5 4.5-3-1.5 3-4.5 3z"/></svg>';
+var IC_trophy= '<svg viewBox="0 0 24 24"><path d="M8 21h8M12 17v4M5 4h14v4a7 7 0 01-14 0V4zM5 7H3a2 2 0 002 4M19 7h2a2 2 0 01-2 4"/></svg>';
+
+/* contact bar placement (tool overlays the agent contact block here) */
+var BAR = { style:'left:0;right:0;bottom:0;background:linear-gradient(120deg,#16A085,#11806c);color:#fff;padding:.18in .55in', align:'left' };
+
+function PH(t){ return 'https://nextpaypos.com/assets/flyers/photos/'+t.photo; }
+
+/* the savings table is the same illustrative model on every dual-pricing flyer */
+var SAVE_ROWS = '<tr><td>$500,000</td><td>$10,625</td></tr><tr><td>$1,000,000</td><td>$21,250</td></tr><tr><td>$2,500,000</td><td>$53,125</td></tr>';
+
+function dualHTML(t){
+  return '<div class="f2">'
+    + '<div class="f2-head"><img src="https://nextpaypos.com/assets/logos/nextpay.png" alt="NextPay"></div>'
+    + '<div class="f2-top">'
+    +   '<div class="f2-photo"><img src="'+PH(t)+'" alt="'+t.title+'"></div>'
+    +   '<div class="f2-panel">'
+    +     '<div class="f2-h2">Eliminate 100% of your Credit Card Processing Fees</div>'
+    +     '<div class="f2-sub">by offering dual pricing to your customers</div>'
+    +     '<div class="f2-chan">'
+    +       '<div class="f2-ch">'+IC_cart+'<span>In person</span></div>'
+    +       '<div class="f2-ch">'+IC_globe+'<span>Online</span></div>'
+    +       '<div class="f2-ch">'+IC_doc+'<span>Invoices</span></div>'
+    +       '<div class="f2-ch">'+IC_link+'<span>Pay links</span></div>'
+    +     '</div>'
+    +     '<div class="f2-boxes">'
+    +       '<div class="f2-box"><div class="ic">'+IC_card+'</div><div class="l">Credit Card Price</div><div class="v">$104.00</div></div>'
+    +       '<div class="f2-box"><div class="ic">'+IC_bank+'</div><div class="l">ACH Price</div><div class="v">$100.00</div></div>'
+    +     '</div>'
+    +   '</div>'
+    + '</div>'
+    + '<div class="f2-mid">'
+    +   '<div class="f2-copy">'
+    +     '<div class="f2-h1">Faster Payments and Bigger Profits for '+t.title+'.</div>'
+    +     '<p class="f2-body">We help '+t.noun+' get paid faster, cut overhead, and keep more of every sale — instead of watching processing fees eat into your margins.</p>'
+    +     '<ul class="f2-bullets"><li>Automate your receivables</li><li>Accelerate your cashflow</li><li>Increase your profits</li></ul>'
+    +   '</div>'
+    +   '<div class="f2-right">'
+    +     '<div class="f2-rh">'+IC_chart+' How Much Can You Save?</div>'
+    +     '<table><tr><th>Revenue</th><th>Estimated Savings</th></tr>'+SAVE_ROWS+'</table>'
+    +     '<p class="f2-disc">Actual savings may vary based on processing volume, card mix, business type, and other factors. Estimates are not a guarantee of future results.</p>'
+    +   '</div>'
+    + '</div>'
+    + '<div class="f2-band">'
+    +   '<div class="f2-bf"><span class="ck">'+IC_check+'</span><div><b>Free setup &amp; training</b><span>We handle the whole switch</span></div></div>'
+    +   '<div class="f2-bf"><span class="ck">'+IC_check+'</span><div><b>Next-day funding</b><span>Fast access to your money</span></div></div>'
+    +   '<div class="f2-bf"><span class="ck">'+IC_check+'</span><div><b>No long-term contracts</b><span>Flexible, no pressure</span></div></div>'
+    +   '<div class="f2-bf"><span class="ck">'+IC_check+'</span><div><b>Match or beat your rate</b><span>Lower cost, guaranteed</span></div></div>'
+    + '</div>'
+    + '</div>';
+}
+
+function rewardsHTML(t){
+  return '<div class="f2">'
+    + '<div class="f2-head"><img src="https://nextpaypos.com/assets/logos/nextpay.png" alt="NextPay"></div>'
+    + '<div class="f2-top">'
+    +   '<div class="f2-photo"><img src="'+PH(t)+'" alt="'+t.title+'"></div>'
+    +   '<div class="f2-panel">'
+    +     '<span class="f2-tag">'+IC_star+'NextPay Rewards</span>'
+    +     '<div class="f2-h2">Earn Rewards on Every Sale You Run</div>'
+    +     '<div class="f2-sub">Every card you accept earns points you can actually use — on transparent interchange-plus pricing.</div>'
+    +     '<div class="f2-chan">'
+    +       '<div class="f2-ch">'+IC_plane+'<span>Travel</span></div>'
+    +       '<div class="f2-ch">'+IC_giftc+'<span>Gift Cards</span></div>'
+    +       '<div class="f2-ch">'+IC_cash+'<span>Cash Back</span></div>'
+    +       '<div class="f2-ch">'+IC_fuel+'<span>Fuel &amp; Gas</span></div>'
+    +     '</div>'
+    +     '<div class="f2-boxes">'
+    +       '<div class="f2-box"><div class="ic">'+IC_star+'</div><div class="l">Points Earned</div><div class="v">Every Sale</div></div>'
+    +       '<div class="f2-box"><div class="ic">'+IC_gift+'</div><div class="l">Redeem</div><div class="v">Your Way</div></div>'
+    +     '</div>'
+    +   '</div>'
+    + '</div>'
+    + '<div class="f2-mid">'
+    +   '<div class="f2-copy">'
+    +     '<div class="f2-h1">A Rewards Program Built for '+t.title+'.</div>'
+    +     '<p class="f2-body">Keep taking payments the way you already do — in person, online, and by invoice — and turn every transaction into points. Transparent interchange-plus pricing, with rewards on top.</p>'
+    +     '<ul class="f2-bullets"><li>Earn points automatically</li><li>Redeem for what you want</li><li>Transparent interchange-plus pricing</li></ul>'
+    +   '</div>'
+    +   '<div class="f2-right">'
+    +     '<div class="f2-rh">'+IC_trophy+' What You Can Redeem For</div>'
+    +     '<div class="f2-rgrid">'
+    +       '<div class="f2-ritem"><span class="ri">'+IC_plane+'</span><div><b>Travel &amp; Hotels</b><span>Flights, stays &amp; more</span></div></div>'
+    +       '<div class="f2-ritem"><span class="ri">'+IC_giftc+'</span><div><b>Gift Cards</b><span>100+ top brands</span></div></div>'
+    +       '<div class="f2-ritem"><span class="ri">'+IC_cash+'</span><div><b>Cash Back</b><span>Statement credit</span></div></div>'
+    +       '<div class="f2-ritem"><span class="ri">'+IC_fuel+'</span><div><b>Fuel &amp; Gas</b><span>At the pump</span></div></div>'
+    +     '</div>'
+    +     '<p class="f2-disc">Rewards are earned on eligible processing volume and redeemable through the NextPay Rewards program. Point values and redemption options may vary and are subject to program terms.</p>'
+    +   '</div>'
+    + '</div>'
+    + '<div class="f2-band">'
+    +   '<div class="f2-bf"><span class="ck">'+IC_check+'</span><div><b>Points on every sale</b><span>Earn as you process</span></div></div>'
+    +   '<div class="f2-bf"><span class="ck">'+IC_check+'</span><div><b>Transparent IC+ pricing</b><span>No hidden markup</span></div></div>'
+    +   '<div class="f2-bf"><span class="ck">'+IC_check+'</span><div><b>Next-day funding</b><span>Fast access to your money</span></div></div>'
+    +   '<div class="f2-bf"><span class="ck">'+IC_check+'</span><div><b>No long-term contracts</b><span>Flexible, no pressure</span></div></div>'
+    + '</div>'
+    + '</div>';
+}
+
+/* one row per trade — produces a Dual Pricing flyer and an IC+/Rewards flyer */
+var TRADES=[
+  { id:'movers',      title:'Movers',            noun:'movers',             cat:'Services',              photo:'mover-carrying-boxes.jpeg' },
+  { id:'plumbers',    title:'Plumbers',          noun:'plumbers',           cat:'Services',              photo:'plumber-under-sink.jpeg' },
+  { id:'electricians',title:'Electricians',      noun:'electricians',       cat:'Services',              photo:'electrician-testing-wires.jpeg' },
+  { id:'hvac',        title:'HVAC Pros',         noun:'HVAC contractors',   cat:'Services',              photo:'hvac-technician-rooftop.jpeg' },
+  { id:'painters',    title:'Painters',          noun:'painters',           cat:'Services',              photo:'house-painter-rolling-paint.jpeg' },
+  { id:'landscapers', title:'Landscapers',       noun:'landscapers',        cat:'Services',              photo:'landscaper-zero-turn-mower.jpeg' },
+  { id:'cleaning',    title:'Cleaning Services',  noun:'cleaning companies', cat:'Services',             photo:'professional-cleaner-teal-u.jpeg' },
+  { id:'mechanics',   title:'Auto Repair Shops',  noun:'repair shops',      cat:'Services',              photo:'auto-mechanic-garage.jpeg' },
+  { id:'auto',        title:'Auto Dealerships',   noun:'dealerships',       cat:'Services',              photo:'car-salesperson-handing-key.jpeg' },
+  { id:'accountants', title:'Accountants',       noun:'accounting firms',   cat:'Professional Services', photo:'accountant-modern-desk.jpeg' },
+  { id:'b2b',         title:'B2B & Consultants',  noun:'B2B businesses',    cat:'Professional Services', photo:'business-consultant-present.jpeg' },
+  { id:'eye-care',    title:'Eye Care Practices', noun:'eye care practices',cat:'Healthcare & Medical',  photo:'eye-care-specialist-frames.jpeg' },
+  { id:'dental',      title:'Dental Practices',   noun:'dental practices',  cat:'Healthcare & Medical',  photo:'dentist-examining-patient.jpeg' },
+  { id:'smoke-shops', title:'Smoke & Vape Shops', noun:'smoke shops',       cat:'High Risk & Specialty', photo:'modern-smoke-shop-interior.jpeg' }
+];
+
+var FLYERS = [
+  {
+    id:'sample-savings',
+    label:'Sample — Savings & Growth (built-in demo)',
+    cat:'General',
+    type:'html',
+    contact:{ style:'left:0;right:0;bottom:0;background:var(--navy);color:#fff;padding:.26in .7in;text-align:center', align:'center' },
+    html:
+      '<div class="fl-sample">'
+      + '<div class="s-top"><img src="https://nextpaypos.com/assets/logos/nextpay.png" alt="NextPay"><span class="s-kick">NextPay Business Solutions</span></div>'
+      + '<div class="s-hero"><img src="https://nextpaypos.com/assets/lifestyle/pos-counter.jpg" alt=""></div>'
+      + '<div class="s-body">'
+      +   '<h1>Stop overpaying to <span class="em">accept payments.</span></h1>'
+      +   '<p class="s-sub">A modern POS, transparent processing, and a real partner for every stage of your business — with a switch that pays for itself.</p>'
+      +   '<div class="s-feats">'
+      +     '<div class="s-feat"><div class="fi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 1v22M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"/></svg></div><div><h3>Lower your fees</h3><p>Transparent pricing that matches or beats your current rate.</p></div></div>'
+      +     '<div class="s-feat"><div class="fi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="12" rx="1"/><path d="M3 20h18M8 16v4M16 16v4"/></svg></div><div><h3>Modern POS</h3><p>Shift4, Square, Clover &amp; more — matched to your business.</p></div></div>'
+      +     '<div class="s-feat"><div class="fi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><path d="M22 4L12 14.01l-3-3"/></svg></div><div><h3>Never goes down</h3><p>Offline mode keeps you selling even when the internet drops.</p></div></div>'
+      +     '<div class="s-feat"><div class="fi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 12v9H4v-9M2 7h20v5H2zM12 22V7M12 7H7.5a2.5 2.5 0 010-5C11 2 12 7 12 7z"/></svg></div><div><h3>Earn rewards</h3><p>NextPay Rewards turns everyday processing into real perks.</p></div></div>'
+      +   '</div>'
+      +   '<div class="s-trust"><span>Free onboarding</span><span>Free install</span><span>Free training</span><span>No long-term contract</span></div>'
+      + '</div>'
+      + '<div class="s-offer"><div class="big">$500</div><div><h3>Switch Guarantee</h3><p>Ask how we make switching risk-free — free onboarding, install &amp; training included.</p></div></div>'
+      + '</div>'
+  }
+  , {
+    id:'sample-postcard',
+    label:'Sample Postcard — Stop Overpaying (5×7 demo)',
+    cat:'General',
+    type:'html',
+    size:'5x7',
+    contact:{ style:'left:0;right:0;bottom:0;background:var(--navy);color:#fff;padding:.16in .4in;text-align:center', align:'center' },
+    html:
+      '<div class="pc-sample">'
+      + '<div class="pc-photo"><img src="https://nextpaypos.com/assets/lifestyle/card-tap.jpg" alt=""></div>'
+      + '<div class="pc-main">'
+      +   '<img class="pc-logo" src="https://nextpaypos.com/assets/logos/nextpay.png" alt="NextPay">'
+      +   '<h2>Stop overpaying to <span>accept payments.</span></h2>'
+      +   '<ul class="pc-points">'
+      +     '<li>Lower fees — match or beat your current rate</li>'
+      +     '<li>Modern POS — Shift4, Square, Clover &amp; more</li>'
+      +     '<li>Earn rewards on every transaction</li>'
+      +   '</ul>'
+      +   '<div class="pc-offer"><b>$500 Switch Guarantee</b> — free install &amp; training, no long-term contract.</div>'
+      + '</div>'
+      + '</div>'
+  }
+];
+
+/* build the two industry flyers per trade from the shared templates */
+TRADES.forEach(function(t){
+  FLYERS.push({ id:t.id+'-dual',    label:t.title+' — Dual Pricing (Zero Fees)', cat:t.cat, type:'html', contact:BAR, html:dualHTML(t) });
+  FLYERS.push({ id:t.id+'-rewards', label:t.title+' — IC+/Rewards',              cat:t.cat, type:'html', contact:BAR, html:rewardsHTML(t) });
+});
+
+/* shared rep profile — same key as the business card maker */
+var KEY='np_rep_profile';
+function load(){ try{ return JSON.parse(localStorage.getItem(KEY))||{}; }catch(e){ return {}; } }
+function save(p){ try{ localStorage.setItem(KEY, JSON.stringify(p)); }catch(e){} }
+
+var WEBSITE='www.nextpaypos.com';
+var fields={ name:'f-name', cell:'f-cell', email:'f-email' };
+var prof=load();
+Object.keys(fields).forEach(function(k){ var el=document.getElementById(fields[k]); if(prof[k]) el.value=prof[k]; });
+
+var stage=document.getElementById('stage');
+var picker=document.getElementById('f-flyer');
+var idx=0;
+
+/* build picker — grouped by industry/vertical (optgroups, ordered) */
+var CAT_ORDER=['General','Retail','Food & Beverage','Services','Professional Services','Healthcare & Medical','High Risk & Specialty'];
+(function buildPicker(){
+  var groups={};
+  FLYERS.forEach(function(f,i){ var c=f.cat||'General'; (groups[c]=groups[c]||[]).push(i); });
+  Object.keys(groups).sort(function(a,b){
+    var ia=CAT_ORDER.indexOf(a), ib=CAT_ORDER.indexOf(b);
+    return (ia<0?99:ia)-(ib<0?99:ib);
+  }).forEach(function(c){
+    var og=document.createElement('optgroup'); og.label=c;
+    groups[c].forEach(function(i){ var o=document.createElement('option'); o.value=i; o.textContent=FLYERS[i].label; og.appendChild(o); });
+    picker.appendChild(og);
+  });
+})();
+/* deep-link: open straight to a flyer via ?flyer=<id> (used by the Document Library) */
+(function deepLink(){
+  var m=(location.search+location.hash).match(/[?&#]flyer=([\w-]+)/);
+  if(!m) return;
+  for(var i=0;i<FLYERS.length;i++){ if(FLYERS[i].id===m[1]){ idx=i; picker.value=i; break; } }
+})();
+picker.addEventListener('change', function(){ idx=+picker.value; render(); });
+
+function ico(type){
+  if(type==='phone') return '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.9v3a2 2 0 01-2.2 2 19.8 19.8 0 01-8.6-3 19.5 19.5 0 01-6-6 19.8 19.8 0 01-3-8.6A2 2 0 014.1 2h3a2 2 0 012 1.7c.1.9.4 1.8.7 2.7a2 2 0 01-.5 2.1L8.1 9.9a16 16 0 006 6l1.4-1.2a2 2 0 012.1-.4c.9.3 1.8.6 2.7.7a2 2 0 011.7 2z"/></svg>';
+  if(type==='mail') return '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M2 7l10 6 10-6"/></svg>';
+  return '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15 15 0 010 20 15 15 0 010-20"/></svg>';
+}
+function buildContact(f){
+  var p=load();
+  var name=p.name||'Your Name';
+  var phone=p.cell||'Your phone';
+  var email=p.email||'you@nextpaypos.com';
+  var muted=(!p.cell&&!p.email)?' cb-muted':'';
+  var alignCls=(f.contact&&f.contact.align==='center')?' center':'';
+  return '<div class="cb-name">'+esc(name)+'</div>'
+    + '<div class="cb-rows'+alignCls+'">'
+    +   '<span class="cbi'+(p.cell?'':muted)+'">'+ico('phone')+esc(phone)+'</span>'
+    +   '<span class="cbi'+(p.email?'':muted)+'">'+ico('mail')+esc(email)+'</span>'
+    +   '<span class="cbi">'+ico('web')+WEBSITE+'</span>'
+    + '</div>';
+}
+function esc(s){ return String(s).replace(/[&<>"]/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c];}); }
+
+var DPI=96;
+function dims(f){ var pc=f.size==='5x7'; return { w: pc?7:8.5, h: pc?5:11 }; }
+function sizeStage(){
+  var d=dims(FLYERS[idx]);
+  var wrap=stage.parentElement;                 // .stage-wrap
+  var avail=wrap.clientWidth||700;
+  var vw=window.innerWidth;
+  var maxScale = vw>980 ? 0.64 : (vw>560 ? 0.54 : 0.42);
+  var scale=Math.min(maxScale, avail/(d.w*DPI));
+  stage.style.transform='scale('+scale+')';
+  wrap.style.height=Math.ceil(d.h*DPI*scale)+'px';
+}
+function setPrintSize(){
+  var d=dims(FLYERS[idx]);
+  var pp=document.getElementById('printPage');
+  if(!pp){ pp=document.createElement('style'); pp.id='printPage'; document.head.appendChild(pp); }
+  pp.textContent='@media print{@page{size:'+d.w+'in '+d.h+'in;margin:0}}';
+}
+function render(){
+  var f=FLYERS[idx];
+  var sizeCls=f.size==='5x7'?' pc':'';
+  var art = f.type==='img'
+    ? '<img class="flyer-art" src="'+f.img+'" alt="">'
+    : '<div class="flyer-art">'+f.html+'</div>';
+  var imgCls = f.type==='img' ? ' has-img' : '';
+  var cstyle = (f.contact&&f.contact.style)||'left:0;right:0;bottom:0;padding:.3in .6in;color:#0C1B2A';
+  stage.innerHTML='<div class="flyer'+sizeCls+imgCls+'">'+art+'<div class="contact-block" style="'+cstyle+'">'+buildContact(f)+'</div></div>';
+  sizeStage();
+  setPrintSize();
+}
+window.addEventListener('resize', sizeStage);
+
+function update(){
+  var p=load();
+  Object.keys(fields).forEach(function(k){ p[k]=document.getElementById(fields[k]).value.trim(); });
+  save(p);
+  render();
+  document.getElementById('savedNote').textContent=(p.name||p.email)?'✓ Saved on this device — shared with your business card':'';
+}
+Object.keys(fields).forEach(function(k){ document.getElementById(fields[k]).addEventListener('input', update); });
+
+document.getElementById('clearBtn').addEventListener('click', function(){
+  if(!confirm('Clear your saved details on this device?')) return;
+  Object.keys(fields).forEach(function(k){ document.getElementById(fields[k]).value=''; });
+  var p=load(); Object.keys(fields).forEach(function(k){ delete p[k]; }); save(p);
+  update();
+});
+
+render();
+update();
+</script>
+</body>
+</html>
