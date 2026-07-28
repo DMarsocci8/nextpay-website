@@ -514,44 +514,45 @@ window.HUB_DATA = {
   /* ---------- Product library ---------- */
   products: {
     pos: [
-      { name: 'Chively POS', tag: 'All-in-one POS — its own platform, written through Solutions in Payments (Luqra)', sell: ['Full restaurant + retail feature set', 'Handheld, kiosk and customer-screen options', 'Written on SIP paper — SIP Schedule A economics', 'Pricing coming soon'], link: 'https://nextpaypos.com/chively' },
-      { name: 'SkyTab by Shift4', tag: 'Full-service restaurant standard', sell: ['$29.99/mo base bundle, $0 upfront, lifetime warranty', 'Pay-at-table, KDS, kiosk, caller ID', '30-day trial → 36-month agreement'], link: 'https://nextpaypos.com/shift4-dine' },
-      { name: 'Clover', tag: 'The mainstream all-in-one', sell: ['Placement ($0 down) or buy outright', 'Software $0–$89.95/mo by vertical', 'Huge app market'], link: 'https://nextpaypos.com/clover' },
-      { name: 'Square', tag: 'Design-friendly SMB ecosystem', sell: ['POS + online + invoices in one', 'Free plan to start — lowest monthly cost in the lineup: no PCI, regulatory or statement junk fees', 'We meet-or-beat their published rates on our rails'], link: 'https://nextpaypos.com/square' },
-      { name: 'Quantic', tag: 'Own-your-hardware cloud POS', sell: ['Swan bundles from $919', 'Pro $60/mo first station, $50 additional', 'Deep module list (OLO, loyalty, reservations)'], link: 'https://nextpaypos.com/quantic' },
-      { name: 'Korona', tag: 'Serious retail & liquor inventory', sell: ['Core $59 / Retail $79 / Plus $99 per register', 'Ticketing, franchise, ID-scanner add-ons', 'Multi-location strength'], link: 'https://nextpaypos.com/korona' },
-      { name: 'NRS', tag: 'C-store / bodega specialist', sell: ['Age verification + scan data', 'Customer-facing screen', 'Price-friendly for single lanes'], link: 'https://nextpaypos.com/nrs' },
-      { name: 'PAYS', tag: 'All-inclusive 0% dual pricing POS', sell: ['Starter $59 / Growth $79 / Enterprise $99', 'Delivery-app integrations on Growth', 'Station bundle $999'], link: 'https://nextpaypos.com/pays-pos' },
-      { name: 'SumUp', tag: 'Value hardware, $0 monthly', sell: ['POS Lite bundle $499, Terminal $249, Solo $54', 'Free POS software tier', 'Great for micro-merchants'], link: 'https://nextpaypos.com/sumup' },
-      { name: 'DejaPay Pro', tag: 'POS on Dejavoo rails', sell: ['Budget-friendly counter setup', 'Pairs with Dejavoo terminals', 'Simple menus, fast setup'], link: 'https://nextpaypos.com/dejapay' }
+      { name: 'Chively POS', logo: 'chively-white.png', logoDark: true, tag: 'All-in-one POS — its own platform, written through Solutions in Payments (Luqra)', sell: ['Full restaurant + retail feature set', 'Handheld, kiosk and customer-screen options', 'Written on SIP paper — SIP Schedule A economics', 'Pricing coming soon'], link: 'https://nextpaypos.com/chively' },
+      { name: 'SkyTab by Shift4', logo: 'skytab.svg', tag: 'Full-service restaurant standard', sell: ['$29.99/mo base bundle, $0 upfront, lifetime warranty', 'Pay-at-table, KDS, kiosk, caller ID', '30-day trial → 36-month agreement'], link: 'https://nextpaypos.com/shift4-dine' },
+      { name: 'Clover', logo: 'clover.png', tag: 'The mainstream all-in-one', sell: ['Placement ($0 down) or buy outright', 'Software $0–$89.95/mo by vertical', 'Huge app market'], link: 'https://nextpaypos.com/clover' },
+      { name: 'Square', logo: 'square.svg', tag: 'Design-friendly SMB ecosystem', sell: ['POS + online + invoices in one', 'Free plan to start — lowest monthly cost in the lineup: no PCI, regulatory or statement junk fees', 'We meet-or-beat their published rates on our rails'], link: 'https://nextpaypos.com/square' },
+      { name: 'Quantic', logo: 'quantic.svg', tag: 'Own-your-hardware cloud POS', sell: ['Swan bundles from $919', 'Pro $60/mo first station, $50 additional', 'Deep module list (OLO, loyalty, reservations)'], link: 'https://nextpaypos.com/quantic' },
+      { name: 'Korona', logo: 'korona.png', tag: 'Serious retail & liquor inventory', sell: ['Core $59 / Retail $79 / Plus $99 per register', 'Ticketing, franchise, ID-scanner add-ons', 'Multi-location strength'], link: 'https://nextpaypos.com/korona' },
+      { name: 'NRS', logo: 'nrs.png', tag: 'C-store / bodega specialist', sell: ['Age verification + scan data', 'Customer-facing screen', 'Price-friendly for single lanes'], link: 'https://nextpaypos.com/nrs' },
+      { name: 'PAYS', logo: 'pays.svg', tag: 'All-inclusive 0% dual pricing POS', sell: ['Starter $59 / Growth $79 / Enterprise $99', 'Delivery-app integrations on Growth', 'Station bundle $999'], link: 'https://nextpaypos.com/pays-pos' },
+      { name: 'SumUp', logo: 'sumup.svg', tag: 'Value hardware, $0 monthly', sell: ['POS Lite bundle $499, Terminal $249, Solo $54', 'Free POS software tier', 'Great for micro-merchants'], link: 'https://nextpaypos.com/sumup' },
+      { name: 'DejaPay Pro', logo: 'dejapay.webp', tag: 'POS on Dejavoo rails', sell: ['Budget-friendly counter setup', 'Pairs with Dejavoo terminals', 'Simple menus, fast setup'], link: 'https://nextpaypos.com/dejapay' }
     ],
     terminals: [
-      { name: 'PAX (A920 Pro, A80, A35…)', tag: 'Smart Android terminals', sell: ['A920 Pro portable flagship', 'Dual pricing ready', 'Countertop to mobile line-up'], link: 'https://nextpaypos.com/pax' },
-      { name: 'Dejavoo (P line, QD line)', tag: 'Workhorse terminals', sell: ['P1 desktop / P8 mobile', 'iPOSPays gateway native', 'Great price points'], link: 'https://nextpaypos.com/dejavoo' },
-      { name: 'Clover Flex & Go', tag: 'Handheld + pocket reader', sell: ['Flex: printer + scanner in hand', 'Go: phone-paired reader'], link: 'https://nextpaypos.com/clover' },
-      { name: 'Square Terminal & Handheld', tag: 'Square hardware line', sell: ['Terminal $299 all-in-one', 'Handheld $399 for tableside'], link: 'https://nextpaypos.com/square' },
-      { name: 'Valor VL series', tag: 'Value smart terminals', sell: ['Dual pricing native', 'Valor gateway portal included'], link: 'https://nextpaypos.com/valor-terminals' },
-      { name: 'SwipeSimple', tag: 'Mobile reader + virtual terminal', sell: ['Phone-based payments', 'Invoices + item catalog'], link: 'https://nextpaypos.com/swipesimple' }
+      { name: 'PAX (A920 Pro, A80, A35…)', logo: 'pax.svg', tag: 'Smart Android terminals', sell: ['A920 Pro portable flagship', 'Dual pricing ready', 'Countertop to mobile line-up'], link: 'https://nextpaypos.com/pax' },
+      { name: 'Dejavoo (P line, QD line)', logo: 'dejavoo.png', tag: 'Workhorse terminals', sell: ['P1 desktop / P8 mobile', 'iPOSPays gateway native', 'Great price points'], link: 'https://nextpaypos.com/dejavoo' },
+      { name: 'Clover Flex & Go', logo: 'clover.png', tag: 'Handheld + pocket reader', sell: ['Flex: printer + scanner in hand', 'Go: phone-paired reader'], link: 'https://nextpaypos.com/clover' },
+      { name: 'Square Terminal & Handheld', logo: 'square.svg', tag: 'Square hardware line', sell: ['Terminal $299 all-in-one', 'Handheld $399 for tableside'], link: 'https://nextpaypos.com/square' },
+      { name: 'Valor VL series', logo: 'valor.png', tag: 'Value smart terminals', sell: ['Dual pricing native', 'Valor gateway portal included'], link: 'https://nextpaypos.com/valor-terminals' },
+      { name: 'SwipeSimple', logo: 'swipesimple.png', tag: 'Mobile reader + virtual terminal', sell: ['Phone-based payments', 'Invoices + item catalog'], link: 'https://nextpaypos.com/swipesimple' }
     ],
     gateways: [
-      { name: 'NMI', tag: 'Enterprise-grade gateway', sell: ['Virtual terminal, recurring, account updater', 'Integrates with almost everything'], link: 'https://nextpaypos.com/nmi' },
-      { name: 'FluidPay', tag: 'Modern gateway, great for recurring', sell: ['Clean portal', 'Strong for subscriptions & invoicing'], link: 'https://nextpaypos.com/fluidpay' },
-      { name: 'Authorize.net', tag: 'The legacy standard', sell: ['Merchants know the name', 'Broad cart/software support'], link: 'https://nextpaypos.com/authorize-net' },
-      { name: 'Luqra', tag: 'Specialty gateway', sell: ['Flexible for niche billing models'], link: 'https://nextpaypos.com/luqra' },
-      { name: 'Valor gateway', tag: 'Pairs with Valor terminals', sell: ['One portal for card-present + CNP'], link: 'https://nextpaypos.com/valor-gateway' },
-      { name: 'iPOSPays', tag: 'Dejavoo-native gateway', sell: ['Drives Dejavoo/DejaPay hardware'], link: 'https://nextpaypos.com/ipospays' }
+      { name: 'Next2Pay Gateway', logo: 'next2pay.svg', tag: 'House gateway \u2014 linked2pay rails', sell: ['E-commerce, virtual terminal and recurring billing on our rails', 'The Navigator\u2019s only gateway recommendation \u2014 best margins in the book', 'Pairs with Next2Pay Invoicing for invoice-first businesses'], link: 'https://nextpaypos.com/next2pay' },
+      { name: 'NMI', logo: 'nmi.png', tag: 'Enterprise-grade gateway', sell: ['Virtual terminal, recurring, account updater', 'Integrates with almost everything'], link: 'https://nextpaypos.com/nmi' },
+      { name: 'FluidPay', logo: 'fluidpay.png', tag: 'Modern gateway, great for recurring', sell: ['Clean portal', 'Strong for subscriptions & invoicing'], link: 'https://nextpaypos.com/fluidpay' },
+      { name: 'Authorize.net', logo: 'authnet.png', tag: 'The legacy standard', sell: ['Merchants know the name', 'Broad cart/software support'], link: 'https://nextpaypos.com/authorize-net' },
+      { name: 'Luqra', logo: 'luqra.png', tag: 'Specialty gateway', sell: ['Flexible for niche billing models'], link: 'https://nextpaypos.com/luqra' },
+      { name: 'Valor gateway', logo: 'valor.png', tag: 'Pairs with Valor terminals', sell: ['One portal for card-present + CNP'], link: 'https://nextpaypos.com/valor-gateway' },
+      { name: 'iPOSPays', logo: 'ipospays.png', tag: 'Dejavoo-native gateway', sell: ['Drives Dejavoo/DejaPay hardware'], link: 'https://nextpaypos.com/ipospays' }
     ],
     invoicing: [
-      { name: 'Next2Pay Invoicing', tag: 'House invoicing — for trades & businesses that INVOICE their customers', sell: ['Roofers, electricians, plumbers, pros, cleaning routes — estimates, invoices, text-to-pay, recurring', 'NOT a POS replacement: salons/bakeries/restaurants get a full POS (invoicing is usually a POS feature there)', 'Best margins in the invoicing lineup — proposal ready in the Proposal Studio'], link: 'https://nextpaypos.com/next2pay' },
-      { name: 'FieldPulse', tag: 'Field service suite', sell: ['Estimates → invoices → text-to-pay', 'Scheduling + CRM for trades'], link: 'https://nextpaypos.com/invoicing' },
-      { name: 'Field Work', tag: 'Field service alternative', sell: ['Job management + payments'], link: 'https://nextpaypos.com/invoicing' },
-      { name: 'LQPay', tag: 'Billing & statements', sell: ['Healthcare-friendly workflows'], link: 'https://nextpaypos.com/invoicing' },
-      { name: 'QuickBooks integrations', tag: 'Payments inside QB', sell: ['Invoices paid straight into the books'], link: 'https://nextpaypos.com/integrations' }
+      { name: 'Next2Pay Invoicing', logo: 'next2pay.svg', tag: 'House invoicing — for trades & businesses that INVOICE their customers', sell: ['Roofers, electricians, plumbers, pros, cleaning routes — estimates, invoices, text-to-pay, recurring', 'NOT a POS replacement: salons/bakeries/restaurants get a full POS (invoicing is usually a POS feature there)', 'Best margins in the invoicing lineup — proposal ready in the Proposal Studio'], link: 'https://nextpaypos.com/next2pay' },
+      { name: 'FieldPulse', logo: 'fieldpulse.png', tag: 'Field service suite', sell: ['Estimates → invoices → text-to-pay', 'Scheduling + CRM for trades'], link: 'https://nextpaypos.com/invoicing' },
+      { name: 'Field Work', logo: 'fieldwork.png', tag: 'Field service alternative', sell: ['Job management + payments'], link: 'https://nextpaypos.com/invoicing' },
+      { name: 'LQPay', logo: 'lqpay.png', tag: 'Billing & statements', sell: ['Healthcare-friendly workflows'], link: 'https://nextpaypos.com/invoicing' },
+      { name: 'QuickBooks integrations', logo: 'quickbooks.png', tag: 'Payments inside QB', sell: ['Invoices paid straight into the books'], link: 'https://nextpaypos.com/integrations' }
     ],
     services: [
-      { name: 'NextFund — Business Financing', tag: 'The recommendation for ANYTHING finance or lending', sell: ['Working capital, equipment loans, merchant cash advances', 'Fast approvals off processing history', 'A second commission riding alongside your processing deal'], link: 'https://nextpaypos.com/financing' },
-      { name: 'NextLink — Client Automation & Outreach', tag: 'House outreach platform, sold per seat', sell: ['Automated campaigns + follow-up sequences that never forget', 'Proposal ready to build in the Proposal Studio', 'Internal seat pricing on the Pricing page'], link: 'https://nextpaypos.com/outreach' },
-      { name: 'Merchant Rewards', tag: 'Sweetener on every processing deal', sell: ['Merchants earn on the volume they already process', 'Stacks with dual pricing', 'Pitch it during the statement review'], link: 'https://nextpaypos.com/merchant-rewards' }
+      { name: 'NextFund — Business Financing', logo: 'nextfund.svg', tag: 'The recommendation for ANYTHING finance or lending', sell: ['Working capital, equipment loans, merchant cash advances', 'Fast approvals off processing history', 'A second commission riding alongside your processing deal'], link: 'https://nextpaypos.com/financing' },
+      { name: 'NextLink — Client Automation & Outreach', logo: 'nextlink-2tone.svg', tag: 'House outreach platform, sold per seat', sell: ['Automated campaigns + follow-up sequences that never forget', 'Proposal ready to build in the Proposal Studio', 'Internal seat pricing on the Pricing page'], link: 'https://nextpaypos.com/outreach' },
+      { name: 'Merchant Rewards', logo: 'nextpay.png', tag: 'Sweetener on every processing deal', sell: ['Merchants earn on the volume they already process', 'Stacks with dual pricing', 'Pitch it during the statement review'], link: 'https://nextpaypos.com/merchant-rewards' }
     ]
   },
 
