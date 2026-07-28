@@ -61,7 +61,7 @@
   ];
 
   // ---- recommendation engine ----
-  const POS='/pos-systems', TERM='/terminals', GW='/gateways', INV='/next2pay';
+  const POS='/pos-systems', TERM='/terminals', GW='/gateways', INV='/invoicing';
   function C(name,role,why,price,href){return {name,role,why,price,href,top:role.indexOf('Top')===0};}
   function recCards(a){
     const I=a.industry,need=a.need,hw=a.hardware,offset=(a.addons||[]).includes('offset');
@@ -131,7 +131,7 @@
       'Valor Gateway':'/gateways#valor','FluidPay':'/gateways#fluidpay',
       'iPOSpays by Dejavoo':'/gateways#ipospays',
       'Square Online & Invoicing':'/square','Square Online':'/square',
-      'Field Work':'/integrations#software-partners','LQpay':'/luqra','Next2Pay Invoicing':'/next2pay',
+      'Field Work':'/integrations#software-partners','LQpay':'/luqra','Next2Pay Invoicing':'/invoicing',
       'SumUp Terminal':'/sumup','NextFund — Business Financing':'/financing'
     };
     cards.forEach(function(c){ if(DEST[c.name]) c.href=DEST[c.name]; });

@@ -439,21 +439,6 @@
       "permanent": true
     },
     {
-      "source": "/Invoicing.html",
-      "destination": "/next2pay",
-      "permanent": true
-    },
-    {
-      "source": "/invoicing",
-      "destination": "/next2pay",
-      "permanent": true
-    },
-    {
-      "source": "/Next2Pay.html",
-      "destination": "/next2pay",
-      "permanent": true
-    },
-    {
       "source": "/iPOSPays Gateway.html",
       "destination": "/ipospays",
       "permanent": true
@@ -967,6 +952,21 @@
       "source": "/blog-high-risk-merchant-account-guide",
       "destination": "/blog/high-risk-merchant-account-guide",
       "permanent": true
+    },
+    {
+      "source": "/Invoicing.html",
+      "destination": "/invoicing",
+      "permanent": true
+    },
+    {
+      "source": "/Next2Pay.html",
+      "destination": "/invoicing",
+      "permanent": true
+    },
+    {
+      "source": "/next2pay",
+      "destination": "/invoicing",
+      "permanent": true
     }
   ],
   "rewrites": [
@@ -1153,7 +1153,7 @@
       "destination": "/Integrations"
     },
     {
-      "source": "/next2pay",
+      "source": "/invoicing",
       "destination": "/Next2Pay"
     },
     {
