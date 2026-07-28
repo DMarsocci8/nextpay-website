@@ -189,10 +189,10 @@
       <div class="rec">
         <div class="rec-media">
           <span class="rec-ribbon">★ Recommended POS</span>
-          <image-slot id="img-pos-shift4" src="assets/pos/shift4-handheld.png" fit="contain" radius="0" placeholder="SkyTab by Shift4"></image-slot>
+          <image-slot id="img-pos-shift4" src="assets/pos/shift4-skytab-pos.png" fit="contain" radius="0" placeholder="SkyTab by Shift4"></image-slot>
         </div>
         <div class="rec-body">
-          <span class="pbrand" style="color:var(--teal-dark);font-weight:800;text-transform:uppercase;font-size:12.5px">Shift4 · Restaurant POS</span>
+          <img src="assets/logos/skytab.svg" alt="SkyTab by Shift4" style="height:38px;width:auto;display:block;margin-bottom:8px">
           <h3>SkyTab by Shift4</h3>
           <p class="muted" style="font-size:15.5px">A restaurant-grade POS that fits a truck — run the handheld at the window or a full SkyTab station in the build-out — with pay-at-table, commission-free online ordering and QR pay.</p>
           <ul class="why">
@@ -200,6 +200,7 @@
             <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg> <span><b>Commission-free online ordering</b> and QR pay built in.</span></li>
             <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg> <span><b>Match-or-beat pricing</b> and a dedicated account manager from day one.</span></li>
           </ul>
+          <p style="margin:12px 0 0"><a class="link-teal" href="#stack-terminal">Just need the handheld at the window? See handheld options <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" style="transform:rotate(90deg)"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></p>
           <div class="rec-cta">
             <a class="btn btn-primary" href="/pos-systems#shift4" target="_blank" rel="noopener">See pricing</a>
             <a class="btn btn-outline" href="/shift4-dine" target="_blank" rel="noopener">Learn more</a>
@@ -217,29 +218,29 @@
       </div>
       <div class="alt-row">
         <article class="pcard">
-          <div class="pimg"><span class="tag pbadge">Simple & familiar</span><image-slot id="img-pos-square" src="assets/pos/square-mobile-kit.png" fit="contain" radius="0" placeholder="Drop Square Mobile POS photo"></image-slot></div>
+          <div class="pimg"><span class="tag pbadge">Simple & familiar</span><image-slot id="img-pos-square" src="assets/pos/square-register.png" fit="contain" radius="0" placeholder="Drop Square POS photo"></image-slot></div>
           <div class="pbody">
-            <span class="pbrand">Square</span>
-            <h3>Square Mobile POS</h3>
-            <p class="pdesc">Easy to learn, great for a first truck — start with a reader and scale up to Square Register for a full station.</p>
+            <img src="assets/logos/square.svg" alt="Square" style="height:30px;width:auto;display:block">
+            <h3>Square POS</h3>
+            <p class="pdesc">Familiar and easy to learn — run a Square Register station in the build-out, or start with the handheld and reader at the window.</p>
             <div class="pspecs"><span class="tag">Tap to pay</span><span class="tag">Quick setup</span><span class="tag">App-based</span></div>
             <div class="pprice">From <b>$$</b> <span>/mo + processing</span></div>
             <div class="pcta">
-              <div class="pcta-row"><a class="btn btn-primary btn-sm" href="/pos-systems#square">See pricing</a><a class="btn btn-outline btn-sm" href="/pos-systems#square">Learn more</a></div>
+              <div class="pcta-row"><a class="btn btn-primary btn-sm" href="/pos-systems#square">See pricing</a><a class="btn btn-outline btn-sm" href="#stack-terminal">Handheld option</a></div>
               <button class="btn btn-compare btn-sm btn-block" data-compare="ft-pos-square"><span class="cmp-label">Add to compare</span></button>
             </div>
           </div>
         </article>
         <article class="pcard">
-          <div class="pimg"><span class="tag pbadge">Full POS + handheld</span><image-slot id="img-pos-clover" src="assets/pos/clover-flex.webp" fit="contain" radius="0" placeholder="Drop Clover photo"></image-slot></div>
+          <div class="pimg"><span class="tag pbadge">Full POS + handheld</span><image-slot id="img-pos-clover" src="assets/pos/clover-duo.png" fit="contain" radius="0" placeholder="Drop Clover photo"></image-slot></div>
           <div class="pbody">
-            <span class="pbrand">Clover</span>
+            <img src="assets/logos/clover.png" alt="Clover" style="height:30px;width:auto;display:block">
             <h3>Clover POS</h3>
             <p class="pdesc">Station, Mini or Flex — a full POS ecosystem that fits a truck build-out, with no-upfront placement pricing.</p>
             <div class="pspecs"><span class="tag">Full station or handheld</span><span class="tag">500+ apps</span><span class="tag">Placement</span></div>
             <div class="pprice">From <b>$$</b> <span>/mo · no upfront placement</span></div>
             <div class="pcta">
-              <div class="pcta-row"><a class="btn btn-primary btn-sm" href="/pos-systems#clover">See pricing</a><a class="btn btn-outline btn-sm" href="/pos-systems#clover">Learn more</a></div>
+              <div class="pcta-row"><a class="btn btn-primary btn-sm" href="/pos-systems#clover">See pricing</a><a class="btn btn-outline btn-sm" href="#stack-terminal">Handheld option</a></div>
               <button class="btn btn-compare btn-sm btn-block" data-compare="ft-pos-clover"><span class="cmp-label">Add to compare</span></button>
             </div>
           </div>
@@ -427,7 +428,7 @@ window.NP_PRODUCTS = {
     specs:{Brand:'NextPay (Chively)','Best for':'Food trucks & QSR','Form factor':'Handheld + countertop',Connectivity:'4G + Wi-Fi',Payments:'Tap, chip, swipe, QR',Software:'Menus, mods, tips, offline',Setup:'2–4 days',Processing:'Match-or-beat',Highlight:'Built-in offline mode'}},
   'ft-pos-shift4':{name:'SkyTab by Shift4',brand:'Shift4',slot:'img-pos-shift4',href:'/pos-systems#shift4',
     specs:{Brand:'Shift4','Best for':'Full food service','Form factor':'Handheld + station',Connectivity:'Wi-Fi + 4G',Payments:'Tap, chip, swipe',Software:'Online ordering, QR pay',Setup:'2–4 weeks — install, menu & training',Processing:'Bundled',Highlight:'Online ordering included'}},
-  'ft-pos-square':{name:'Square Mobile POS',brand:'Square',slot:'img-pos-square',href:'/pos-systems#square',
+  'ft-pos-square':{name:'Square POS',brand:'Square',slot:'img-pos-square',href:'/pos-systems#square',
     specs:{Brand:'Square','Best for':'First-time / simple','Form factor':'Phone/tablet + reader',Connectivity:'Wi-Fi',Payments:'Tap, chip',Software:'Square app',Setup:'1–3 days, self-setup',Processing:'Flat-rate',Highlight:'Easiest to learn'}},
   'ft-pos-clover':{name:'Clover POS',brand:'Clover',slot:'img-pos-clover',href:'/pos-systems#clover',
     specs:{Brand:'Clover','Best for':'Full POS in the truck','Form factor':'Station, Mini or Flex handheld',Connectivity:'Wi-Fi + LTE options',Payments:'Tap, chip, swipe',Software:'500+ app marketplace',Setup:'1–2 weeks',Processing:'Custom · match or beat',Highlight:'Full POS or handheld, placement pricing'}},
