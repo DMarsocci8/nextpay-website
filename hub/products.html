@@ -40,7 +40,7 @@
       (p.logo
         ? '<div style="height:44px;display:flex;align-items:center;margin-bottom:10px"><span style="display:inline-flex;align-items:center;justify-content:center;padding:7px 12px;border-radius:10px;max-width:150px;' +
           (p.logoDark ? 'background:#0C1B2A' : 'background:#fff;border:1px solid var(--line)') +
-          '"><img src="assets/logos/' + p.logo + '" alt="' + esc(p.name) + ' logo" style="max-height:26px;max-width:126px" onerror="this.parentNode.style.display=\'none\'"></span></div>'
+          '"><img src="assets/logos/' + p.logo + '" alt="' + esc(p.name) + ' logo" style="height:26px;width:auto;max-width:126px;object-fit:contain" onerror="this.parentNode.style.display=\'none\'"></span></div>'
         : '') +
       '<b>' + esc(p.name) + '</b><div class="small muted">' + esc(p.tag) + '</div>' +
       '<ul class="ck plain mt8">' + p.sell.map(s => '<li class="small">' + esc(s) + '</li>').join('') + '</ul>' +

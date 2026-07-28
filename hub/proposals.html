@@ -159,7 +159,7 @@
   const $ = (id) => document.getElementById(id);
   const esc = (s) => String(s == null ? '' : s).replace(/[<>&"]/g, c => ({'<':'&lt;','>':'&gt;','&':'&amp;','"':'&quot;'}[c]));
   const fmt = (n) => '$' + (Math.round(n * 100) / 100).toLocaleString();
-  const LOGO = 'https://nextpaypos.com/assets/logos/nextpay.png';
+  const LOGO = 'assets/logos/nextpay.png';
   let tab = 'builder';
 
   /* ---------- shared doc pieces ---------- */

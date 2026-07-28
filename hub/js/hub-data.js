@@ -514,16 +514,16 @@ window.HUB_DATA = {
   /* ---------- Product library ---------- */
   products: {
     pos: [
-      { name: 'Chively POS', logo: 'chively-white.png', logoDark: true, tag: 'All-in-one POS — its own platform, written through Solutions in Payments (Luqra)', sell: ['Full restaurant + retail feature set', 'Handheld, kiosk and customer-screen options', 'Written on SIP paper — SIP Schedule A economics', 'Pricing coming soon'], link: 'https://nextpaypos.com/chively' },
       { name: 'SkyTab by Shift4', logo: 'skytab.svg', tag: 'Full-service restaurant standard', sell: ['$29.99/mo base bundle, $0 upfront, lifetime warranty', 'Pay-at-table, KDS, kiosk, caller ID', '30-day trial → 36-month agreement'], link: 'https://nextpaypos.com/shift4-dine' },
       { name: 'Clover', logo: 'clover.png', tag: 'The mainstream all-in-one', sell: ['Placement ($0 down) or buy outright', 'Software $0–$89.95/mo by vertical', 'Huge app market'], link: 'https://nextpaypos.com/clover' },
       { name: 'Square', logo: 'square.svg', tag: 'Design-friendly SMB ecosystem', sell: ['POS + online + invoices in one', 'Free plan to start — lowest monthly cost in the lineup: no PCI, regulatory or statement junk fees', 'We meet-or-beat their published rates on our rails'], link: 'https://nextpaypos.com/square' },
-      { name: 'Quantic', logo: 'quantic.svg', tag: 'Own-your-hardware cloud POS', sell: ['Swan bundles from $919', 'Pro $60/mo first station, $50 additional', 'Deep module list (OLO, loyalty, reservations)'], link: 'https://nextpaypos.com/quantic' },
+      { name: 'Quantic', logo: 'quantic-tight.png', tag: 'Own-your-hardware cloud POS', sell: ['Swan bundles from $919', 'Pro $60/mo first station, $50 additional', 'Deep module list (OLO, loyalty, reservations)'], link: 'https://nextpaypos.com/quantic' },
       { name: 'Korona', logo: 'korona.png', tag: 'Serious retail & liquor inventory', sell: ['Core $59 / Retail $79 / Plus $99 per register', 'Ticketing, franchise, ID-scanner add-ons', 'Multi-location strength'], link: 'https://nextpaypos.com/korona' },
       { name: 'NRS', logo: 'nrs.png', tag: 'C-store / bodega specialist', sell: ['Age verification + scan data', 'Customer-facing screen', 'Price-friendly for single lanes'], link: 'https://nextpaypos.com/nrs' },
       { name: 'PAYS', logo: 'pays.svg', tag: 'All-inclusive 0% dual pricing POS', sell: ['Starter $59 / Growth $79 / Enterprise $99', 'Delivery-app integrations on Growth', 'Station bundle $999'], link: 'https://nextpaypos.com/pays-pos' },
       { name: 'SumUp', logo: 'sumup.svg', tag: 'Value hardware, $0 monthly', sell: ['POS Lite bundle $499, Terminal $249, Solo $54', 'Free POS software tier', 'Great for micro-merchants'], link: 'https://nextpaypos.com/sumup' },
-      { name: 'DejaPay Pro', logo: 'dejapay.webp', tag: 'POS on Dejavoo rails', sell: ['Budget-friendly counter setup', 'Pairs with Dejavoo terminals', 'Simple menus, fast setup'], link: 'https://nextpaypos.com/dejapay' }
+      { name: 'DejaPay Pro', logo: 'dejapay.webp', tag: 'POS on Dejavoo rails', sell: ['Budget-friendly counter setup', 'Pairs with Dejavoo terminals', 'Simple menus, fast setup'], link: 'https://nextpaypos.com/dejapay' },
+      { name: 'Chively POS', logo: 'chively-white.png', logoDark: true, tag: 'All-in-one POS — its own platform, written through Solutions in Payments (Luqra)', sell: ['Full restaurant + retail feature set', 'Handheld, kiosk and customer-screen options', 'Written on SIP paper — SIP Schedule A economics', 'Pricing coming soon'], link: 'https://nextpaypos.com/chively' },
     ],
     terminals: [
       { name: 'PAX (A920 Pro, A80, A35…)', logo: 'pax.svg', tag: 'Smart Android terminals', sell: ['A920 Pro portable flagship', 'Dual pricing ready', 'Countertop to mobile line-up'], link: 'https://nextpaypos.com/pax' },

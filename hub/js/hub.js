@@ -49,7 +49,7 @@
   ];
 
   const ADMINS = ['dom@nextpaypos.com', 'alexander@nextpaypos.com'];
-  const LOGO = 'https://nextpaypos.com/assets/logos/nextpay.png';
+  const LOGO = 'assets/logos/nextpay.png';
 
   // --- identity: Cloudflare Access on hub.nextpaypos.com, manual fallback in preview ---
   let _who = null;
