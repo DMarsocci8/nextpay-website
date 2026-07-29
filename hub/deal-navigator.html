@@ -233,7 +233,7 @@
     }
     h += '<div class="card mt16"><h3>Quick residual estimate</h3><div class="frow3">' +
       '<div><label class="fl">Monthly volume ($)</label><input class="fi" id="c-vol" inputmode="numeric" value="' + (vol || '') + '"></div>' +
-      '<div><label class="fl">Margin over cost (basis points)</label><input class="fi" id="c-bps" inputmode="numeric" placeholder="e.g. 50"></div>' +
+      '<div><label class="fl">Margin over cost (%)</label><input class="fi" id="c-bps" inputmode="numeric" placeholder="e.g. 0.50" step="0.01"></div>' +
       '<div><label class="fl">Your share of margin (%)</label><input class="fi" id="c-split" inputmode="numeric" value="45" placeholder="preloaded per program — see Pricing"></div></div>' +
       '<div class="stat mt16" style="max-width:340px"><div class="n" id="c-out">—</div><div class="l">estimated monthly residual to you (before monthly-fee income)</div></div>' +
       '<label class="fl">Pricing model chosen</label><select class="fi" id="f-model" style="max-width:340px">' +
@@ -241,7 +241,7 @@
     $('wiz').innerHTML = h;
     const calc = () => {
       const v = parseFloat($('c-vol').value) || 0, b = parseFloat($('c-bps').value) || 0, sp = parseFloat($('c-split').value) || 0;
-      $('c-out').textContent = (v && b && sp) ? '$' + Math.round(v * (b / 10000) * (sp / 100)).toLocaleString() + '/mo' : '—';
+      $('c-out').textContent = (v && b && sp) ? '$' + Math.round((v * b * sp) / 10000).toLocaleString() + '/mo' : '—';
     };
     ['c-vol', 'c-bps', 'c-split'].forEach(id => $(id).addEventListener('input', calc));
     calc();
