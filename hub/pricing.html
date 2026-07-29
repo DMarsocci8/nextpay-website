@@ -103,15 +103,7 @@
 <div class="card mt16">
   <h3>Verified software &amp; hardware price points</h3>
   <p class="muted small">Confirmed numbers safe to quote. Full itemized builds at <a href="https://nextpaypos.com/build" target="_blank" rel="noopener">Build Your Solution ↗</a>.</p>
-  <div class="tbl-wrap"><table class="tbl"><thead><tr><th>Product</th><th>Confirmed pricing</th></tr></thead><tbody>
-    <tr><td><b>SkyTab</b></td><td>Base $29.99/mo · Glass/Air/KDS/CFD/Kiosk $29.99/mo each · Mobile $20 · Bump Bar $9.99 · PIN pad $9.99 · Label $19.99 · Scale $39.99 · Lighthouse $20 · Gift Cards $25 · Workforce $35 · one-time: drawer $129, till $25, split cable $25. 30-day trial → 36-month agreement.</td></tr>
-    <tr><td><b>PAYS</b></td><td>Starter $59 / Growth $79 / Enterprise $99 per month · station bundle $999.</td></tr>
-    <tr><td><b>Quantic</b></td><td>Pro $60 first station / $50 additional · Enterprise $90 / $80 · modules per Unified Pricing V5.</td></tr>
-    <tr><td><b>Korona</b></td><td>Core $59 / Retail $79 / Plus $99 per register · modules (Food $10, Invoicing $10, Ticketing $50/gate…).</td></tr>
-    <tr><td><b>Clover</b></td><td>Software $0–$89.95/mo by plan (+$5/mo platform fee per location) · hardware placement or purchase per catalog.</td></tr>
-    <tr><td><b>Square</b></td><td>Free plan / Plus $49/mo · Terminal $299 · Handheld $399 · Station $899 · published rates 2.6%+10¢ CP.</td></tr>
-    <tr><td><b>SumUp</b></td><td>POS Lite &amp; Solo $499 · POS $799 + $99/mo · Terminal $249 · Solo $54 · Connect Plus $199 / Pro $289.</td></tr>
-  </tbody></table></div>
+  <div class="tbl-wrap"><table class="tbl"><thead><tr><th>Product</th><th>Confirmed pricing</th></tr></thead><tbody id="pricing-rows"></tbody></table></div>
 </div>
 
 <div class="card mt16">
@@ -230,6 +222,20 @@
     '<td class="small">' + esc(e.source) + (e.need ? '<br><span class="muted"><b>Missing:</b> ' + esc(e.need) + '</span>' : '') + '</td>' +
     '<td class="small"><ul class="ck plain">' + e.make.map(m => '<li>' + esc(m) + '</li>').join('') + '</ul></td>' +
     '<td class="small">' + esc(e.quote) + '</td></tr>').join('');
+
+  /* verified pricing table with logos */
+  const pricingProducts = [
+    { name: 'SkyTab', logo: 'skytab.svg', pricing: 'Base $29.99/mo · Glass/Air/KDS/CFD/Kiosk $29.99/mo each · Mobile $20 · Bump Bar $9.99 · PIN pad $9.99 · Label $19.99 · Scale $39.99 · Lighthouse $20 · Gift Cards $25 · Workforce $35 · one-time: drawer $129, till $25, split cable $25. 30-day trial → 36-month agreement.' },
+    { name: 'PAYS', logo: 'pays.svg', pricing: 'Starter $59 / Growth $79 / Enterprise $99 per month · station bundle $999.' },
+    { name: 'Quantic', logo: 'quantic.svg', pricing: 'Pro $60 first station / $50 additional · Enterprise $90 / $80 · modules per Unified Pricing V5.' },
+    { name: 'Korona', logo: 'korona.png', pricing: 'Core $59 / Retail $79 / Plus $99 per register · modules (Food $10, Invoicing $10, Ticketing $50/gate…).' },
+    { name: 'Clover', logo: 'clover.png', pricing: 'Software $0–$89.95/mo by plan (+$5/mo platform fee per location) · hardware placement or purchase per catalog.' },
+    { name: 'Square', logo: 'square.svg', pricing: 'Free plan / Plus $49/mo · Terminal $299 · Handheld $399 · Station $899 · published rates 2.6%+10¢ CP.' },
+    { name: 'SumUp', logo: 'sumup.svg', pricing: 'POS Lite & Solo $499 · POS $799 + $99/mo · Terminal $249 · Solo $54 · Connect Plus $199 / Pro $289.' }
+  ];
+  $('pricing-rows').innerHTML = pricingProducts.map(p =>
+    '<tr><td>' + (p.logo ? '<img src="assets/logos/' + esc(p.logo) + '" alt="" style="height:20px;margin-right:8px;vertical-align:middle">' : '') + '<b>' + esc(p.name) + '</b></td>' +
+    '<td>' + esc(p.pricing) + '</td></tr>').join('');
 
   /* more POS pricing table with logos */
   const morePosProducts = [
