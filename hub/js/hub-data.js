@@ -566,14 +566,14 @@ window.HUB_DATA = {
     'Photos or site survey for POS installs (counter space, network, power)'
   ],
   placements: {
-    'skytab': { label: 'SkyTab by Shift4', steps: [
+    'skytab': { label: 'SkyTab by Shift4', logo: 'skytab.svg', steps: [
       'Confirm the build in the Proposal Builder (base bundle $29.99/mo + per-device monthlies) and price processing.',
       'Collect common docs plus the signed SkyTab agreement (30-day trial, then 36-month term — make sure the owner heard this from you first).',
       'Menu build: collect the full menu (photos or files) — send with the submission.',
       'Email the packaged deal to dom@nextpaypos.com (CC payments@ + alexander@) with subject "SkyTab deal — {DBA}".',
       'Install is scheduled by the SkyTab team; track status in the Shift4 partner portal and log it on the deal in My Pipeline.'
     ]},
-    'clover': { label: 'Clover', steps: [
+    'clover': { label: 'Clover', logo: 'clover.png', steps: [
       'Lock the hardware + software plan. Wholesale pricing sheet: hub docs \u2192 Clover hardware & software pricing (Duo bundle $2,058.80 \u00b7 Solo $1,734.80 \u00b7 Mini $917.10 \u00b7 Flex Gen 4 $738.11 \u00b7 Kiosk $3,537.12 + deployment fees). Note the $5/mo Clover platform fee per MID on the quote.',
       'Need help mid-sale? Clover program POS desk: (877) 928-0305 opt 2 \u00b7 pos@redfynn.com \u2014 POS sale assistance, system functionality, configuration questions.',
       'Application: use the Clover merchant application PDF (hub docs). Application questions or status: (877) 928-0305 ext 205 \u00b7 applications@redfynn.com. Collect the common docs below as usual.',
@@ -581,44 +581,44 @@ window.HUB_DATA = {
       'Install & training: schedule installs at book.redfynn.com/install or (813) 803-5503; onboarding training at calendly.com/pos-nhs/onboarding-training or (877) 928-0305 ext 280.',
       'After go-live: merchant support (877) 928-0305 opt 3 \u00b7 support@redfynn.com; merchants already on Clover devices call (844) 864-5449. Log the merchant in My Merchants.'
     ]},
-    'square': { label: 'Square (hardware resell + rate review)', steps: [
+    'square': { label: 'Square (hardware resell + rate review)', logo: 'square.svg', steps: [
       'Quote hardware from the reseller guide; software plan Free or Plus $49/mo.',
       'If they already process on Square: run the statement meet-or-beat to move processing to our rails where it fits.',
       'Submit order + docs to dom@nextpaypos.com — subject "Square deal — {DBA}".'
     ]},
-    'quantic': { label: 'Quantic', steps: [
+    'quantic': { label: 'Quantic', logo: 'quantic.svg', steps: [
       'Build from the Unified Pricing sheet (Swan bundles, per-device software, modules).',
       'Include the Setup & Training package line (scoped per build).',
       'Common docs + menu/inventory file; email to dom@nextpaypos.com — subject "Quantic deal — {DBA}".',
       'Quantic runs a remote menu build + install call; coordinate the date with the merchant.'
     ]},
-    'korona': { label: 'Korona', steps: [
+    'korona': { label: 'Korona', logo: 'korona.png', steps: [
       'Per-register plan (Core $59 / Retail $79 / Plus $99) + modules + hardware bundles.',
       'Inventory import: ask for their item list/spreadsheet up front — it gates go-live.',
       'Common docs; email to dom@nextpaypos.com — subject "Korona deal — {DBA}".'
     ]},
-    'nrs': { label: 'NRS', steps: [
+    'nrs': { label: 'NRS', logo: 'nrs.png', steps: [
       'Confirm lane count, EBT/SNAP needs and scan-data enrollment.',
       'Common docs + EBT/FNS number if applicable.',
       'Email to dom@nextpaypos.com — subject "NRS deal — {DBA}".'
     ]},
-    'pays': { label: 'PAYS', steps: [
+    'pays': { label: 'PAYS', logo: 'pays.svg', steps: [
       'Pick the plan (Starter $59 / Growth $79 / Enterprise $99) + station bundle ($999) or quoted hardware.',
       'Dual-pricing signage expectations — set them now. Loaner/rental hardware carries a Return Obligation: if the merchant terminates early, the hardware ships back or the penalty applies.',
       'Common docs + menu; email to dom@nextpaypos.com — subject "PAYS deal — {DBA}".'
     ]},
-    'sumup': { label: 'SumUp', steps: [
+    'sumup': { label: 'SumUp', logo: 'sumup.svg', steps: [
       'Hardware from the SumUp price list (POS Lite $499, Terminal $249, Solo $54…).',
       'Common docs; email to dom@nextpaypos.com — subject "SumUp deal — {DBA}".'
     ]},
-    'chively': { label: 'Chively POS (via Solutions in Payments — Luqra)', steps: [
+    'chively': { label: 'Chively POS (via Solutions in Payments — Luqra)', logo: 'chively-white.png', steps: [
       'Chively is its own POS, written through Solutions in Payments (Luqra) — SIP Schedule A economics apply. It is NOT house paper and NOT Next2Pay.',
       'Confirm the build — stations, handhelds, kiosk, customer screens. Hardware/software pricing coming soon; until then, price the build in the deal’s Deal Desk thread.',
       'Common docs (app, voided check, ID, statements/projections) plus menu/inventory files.',
       'Email the packaged deal to dom@nextpaypos.com (CC payments@ + alexander@) — subject "Chively deal — {DBA}".',
       'Install scheduling and file questions → the deal’s Deal Desk thread.'
     ]},
-    'next2pay': { label: 'Next2Pay (house invoicing, gateway & recurring)', steps: [
+    'next2pay': { label: 'Next2Pay (house invoicing, gateway & recurring)', logo: 'next2pay-globe.png', steps: [
       'House deal — best margins in the book. Confirm the build: Next2Pay Invoicing, gateway/virtual terminal, recurring billing, or a combination.',
       'Build the quote in the Proposal Studio. Selling NextLink (client automation outreach) too? Its per-seat proposal has its own section there.',
       'Underwriting docs (all required): last 3 months processing statements · last 3 months business bank statements · Articles of Incorporation · owner ID(s) · bank account details · Plaid connection · Veriff completion. Plus menu/inventory or invoice workflow details.',
@@ -635,7 +635,7 @@ window.HUB_DATA = {
       'Spec the Next2Pay build: invoicing seats, recurring plans, card-on-file, ACH option for big invoices.',
       'Common docs; email to dom@nextpaypos.com — subject "Invoicing deal — {DBA}".'
     ]},
-    'high-risk': { label: 'High Risk & Specialty', steps: [
+    'high-risk': { label: 'High Risk & Specialty', logo: 'nextpay.png', steps: [
       'Do NOT quote rates. Collect the full file: 3–6 months processing + bank statements, refund/chargeback history, licenses, website/terms.',
       'Write a one-paragraph business summary (what they sell, billing model, why volume is what it is).',
       'Email the complete file to dom@nextpaypos.com — subject "HIGH RISK — {DBA}". Dom routes to the right book.'

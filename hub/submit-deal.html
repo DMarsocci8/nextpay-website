@@ -46,7 +46,11 @@
   document.getElementById('c-cc').textContent = D.contacts.cc;
 
   const picks = document.getElementById('picks'), detail = document.getElementById('detail');
-  picks.innerHTML = Object.entries(D.placements).map(([k, p]) => '<button class="pick" data-k="' + k + '">' + esc(p.label) + '</button>').join('');
+  picks.innerHTML = Object.entries(D.placements).map(([k, p]) =>
+    '<button class="pick" data-k="' + k + '">' +
+    (p.logo ? '<img src="assets/logos/' + esc(p.logo) + '" alt="" style="height:24px;margin-right:8px;display:inline-block">' : '') +
+    esc(p.label) + '</button>'
+  ).join('');
   function show(k) {
     const p = D.placements[k];
     document.querySelectorAll('.pick').forEach(b => b.classList.toggle('on', b.dataset.k === k));
