@@ -21,7 +21,7 @@
     <div>
       <label class="fl">Google Calendar</label>
       <input class="fi" id="in-g" placeholder="Automatic — uses your hub login email">
-      <p class="small muted mt8"><b>Automatic:</b> leave this blank and your calendar connects using your hub login (you're already signed into Google in this browser, so it just shows). Only fill this in to show a different calendar — paste the Google account's email, or a full embed URL.</p>
+      <p class="small muted mt8"><b>Automatic:</b> leave this blank and your calendar connects using your hub login (you're already signed into Google in this browser, so it just shows). Want more than one calendar in the same view? Paste the emails separated by commas — they overlay together. A full embed URL works too.</p>
     </div>
     <div>
       <label class="fl">Calendly link</label>
@@ -60,22 +60,32 @@
   let loginEmail = (localStorage.getItem('hub_user_email') || '').trim();
 
   const TZ = (Intl.DateTimeFormat().resolvedOptions().timeZone) || 'America/New_York';
-  function embedFor(email) {
-    return 'https://calendar.google.com/calendar/embed?src=' + encodeURIComponent(email) +
+  /* Execs see several calendars overlaid by default (personal + work). */
+  const DEFAULT_CALS = {
+    'dom@nextpaypos.com': ['dom@nextpaypos.com', 'dmarsocci@gmail.com']
+  };
+  function embedFor(emails) {
+    return 'https://calendar.google.com/calendar/embed?' +
+      emails.map(e => 'src=' + encodeURIComponent(e)).join('&') +
       '&ctz=' + encodeURIComponent(TZ) + '&mode=WEEK&wkst=1&showPrint=0&showCalendars=0';
   }
+  function autoCals() {
+    if (!loginEmail) return null;
+    return DEFAULT_CALS[loginEmail] || [loginEmail];
+  }
+  const EMAIL_LIST = /^[^\s@]+@[^\s@]+\.[^\s@]+([\s,;]+[^\s@]+@[^\s@]+\.[^\s@]+)*$/;
   /* Accept whatever agents paste and turn it into a working embed URL:
-     - blank            → their hub login email (automatic)
-     - an email address → embed for that calendar
+     - blank                     → their hub login (execs get all their calendars)
+     - one or more emails        → embed showing all of them overlaid
      - the calendar APP url (calendar.google.com/calendar/u/N/r) → can't be
-       framed (Google 403s it), so fall back to their login email
-     - a real embed URL → kept as-is */
+       framed (Google 403s it), so fall back to automatic
+     - a real embed URL          → kept as-is */
   function normalizeG(v) {
     v = (v || '').trim();
-    if (!v) return loginEmail ? embedFor(loginEmail) : '';
-    if (/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v)) return embedFor(v);
+    if (!v) { const a = autoCals(); return a ? embedFor(a) : ''; }
+    if (EMAIL_LIST.test(v)) return embedFor(v.split(/[\s,;]+/).filter(Boolean));
     if (/^https:\/\/calendar\.google\.com\/calendar\/embed/.test(v)) return v;
-    if (/^https:\/\/calendar\.google\.com\//.test(v)) return loginEmail ? embedFor(loginEmail) : '';
+    if (/^https:\/\/calendar\.google\.com\//.test(v)) { const a = autoCals(); return a ? embedFor(a) : ''; }
     return '';
   }
 
@@ -89,7 +99,7 @@
     if (g) {
       $('g-frame').src = g;
       $('g-open').href = 'https://calendar.google.com';
-      $('msg').textContent = raw ? '' : (loginEmail ? 'Connected automatically as ' + loginEmail : '');
+      $('msg').textContent = raw ? '' : (loginEmail ? 'Connected automatically — showing ' + (autoCals() || [loginEmail]).join(' + ') : '');
     } else if (!loginEmail) {
       $('msg').textContent = 'Sign into the hub (or set your email on the Dashboard) and your calendar connects automatically.';
     }

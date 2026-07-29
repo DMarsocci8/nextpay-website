@@ -40,6 +40,10 @@
     <div><label class="fl">Cell phone</label><input class="fi" id="d-cell" autocomplete="tel" placeholder="(555) 555-5555"></div>
     <div><label class="fl">Email</label><input class="fi" id="d-email" autocomplete="email" placeholder="you@nextpaypos.com"></div>
   </div>
+  <div class="mt8" id="d-title-row" style="display:none">
+    <label class="fl">Title (your login unlocks the executive title)</label>
+    <div class="flex" id="d-title-chips"></div>
+  </div>
   <span class="small" id="d-note" style="color:var(--teal);font-weight:700"></span>
 </div>
 
@@ -120,7 +124,10 @@
 
   /* shared rep profile — same key the business card maker and flyers use */
   const KEY = 'np_rep_profile';
-  const TITLE = 'Payment & Rewards Specialist';
+  const TEAM_TITLE = 'Payment & Rewards Specialist';
+  /* execs (by hub login) unlock their executive title for the signature */
+  const EXECS = { 'dom@nextpaypos.com': 'Co-Founder & CEO', 'alexander@nextpaypos.com': 'CFO' };
+  let TITLE = TEAM_TITLE;
   const load = () => { try { return JSON.parse(localStorage.getItem(KEY)) || {}; } catch (e) { return {}; } };
   const save = (p) => { try { localStorage.setItem(KEY, JSON.stringify(p)); } catch (e) {} };
   const fields = { name: 'd-name', cell: 'd-cell', email: 'd-email' };
@@ -136,8 +143,29 @@
     sigDraw();
   }
   Object.keys(fields).forEach(k => $(fields[k]).addEventListener('input', update));
+
+  function execTitles(login) {
+    const exec = EXECS[login];
+    if (!exec) return;
+    const titles = [exec, TEAM_TITLE];
+    const picked = load().titlePick; /* only set by an explicit chip click */
+    TITLE = titles.includes(picked) ? picked : exec;
+    $('d-title-row').style.display = '';
+    const chips = $('d-title-chips');
+    chips.innerHTML = titles.map((t, i) =>
+      '<button type="button" class="pick' + (t === TITLE ? ' on' : '') + '" data-t="' + i + '" style="flex:0 1 auto">' + t.replace(/&/g, '&amp;') + '</button>').join('');
+    chips.querySelectorAll('[data-t]').forEach(b => b.addEventListener('click', () => {
+      TITLE = titles[+b.dataset.t];
+      const p = load(); p.titlePick = TITLE; save(p);
+      chips.querySelectorAll('.pick').forEach(x => x.classList.toggle('on', x === b));
+      update();
+    }));
+  }
+
   document.addEventListener('hub:ready', (ev) => {
-    if (ev.detail.email && !$('d-email').value) { $('d-email').value = ev.detail.email; update(); }
+    if (ev.detail.email && !$('d-email').value) { $('d-email').value = ev.detail.email; }
+    if (ev.detail.email) execTitles(ev.detail.email.toLowerCase());
+    update();
   });
 
   /* email signature */
