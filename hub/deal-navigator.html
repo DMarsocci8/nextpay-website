@@ -80,6 +80,7 @@
   function s1() {
     const iv = ind();
     let h = '<div class="card"><h3>Discovery — what to ask ' + (iv ? esc(iv.label) : 'this business') + '</h3>' +
+      '<div class="note"><b>💡 Tip:</b> Don\'t ask all of these questions at once. Pick a few that feel natural for the conversation, and let it flow. You\'re listening for pain points and opportunities, not running an interrogation. The signals you tap below are what matter — use these as a guide, not a script.</div>' +
       '<p class="muted small">Work through these in conversation, not as an interrogation. Capture answers below — they follow the deal into your pipeline.</p>';
     for (const g of D.baseDiscovery) {
       h += '<h4 class="mt16">' + esc(g.h) + '</h4><ul class="ck">' + g.q.map(q => '<li>' + esc(q) + '</li>').join('') + '</ul>';
