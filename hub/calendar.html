@@ -19,9 +19,9 @@
   <h3>Connect your calendars</h3>
   <div class="frow">
     <div>
-      <label class="fl">Google Calendar embed URL</label>
-      <input class="fi" id="in-g" placeholder="https://calendar.google.com/calendar/embed?src=you%40nextpaypos.com&ctz=America%2FNew_York">
-      <p class="small muted mt8">Get it: Google Calendar → ⚙ Settings → your calendar → <b>Integrate calendar</b> → copy the <b>public URL / embed</b> src. (Calendar sharing must allow it, or use "Get shareable link" while signed in — the iframe shows whatever your browser session can see.)</p>
+      <label class="fl">Google Calendar</label>
+      <input class="fi" id="in-g" placeholder="Automatic — uses your hub login email">
+      <p class="small muted mt8"><b>Automatic:</b> leave this blank and your calendar connects using your hub login (you're already signed into Google in this browser, so it just shows). Only fill this in to show a different calendar — paste the Google account's email, or a full embed URL.</p>
     </div>
     <div>
       <label class="fl">Calendly link</label>
@@ -57,20 +57,56 @@
 <script>
 (function () {
   const $ = (id) => document.getElementById(id);
+  let loginEmail = (localStorage.getItem('hub_user_email') || '').trim();
+
+  const TZ = (Intl.DateTimeFormat().resolvedOptions().timeZone) || 'America/New_York';
+  function embedFor(email) {
+    return 'https://calendar.google.com/calendar/embed?src=' + encodeURIComponent(email) +
+      '&ctz=' + encodeURIComponent(TZ) + '&mode=WEEK&wkst=1&showPrint=0&showCalendars=0';
+  }
+  /* Accept whatever agents paste and turn it into a working embed URL:
+     - blank            → their hub login email (automatic)
+     - an email address → embed for that calendar
+     - the calendar APP url (calendar.google.com/calendar/u/N/r) → can't be
+       framed (Google 403s it), so fall back to their login email
+     - a real embed URL → kept as-is */
+  function normalizeG(v) {
+    v = (v || '').trim();
+    if (!v) return loginEmail ? embedFor(loginEmail) : '';
+    if (/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v)) return embedFor(v);
+    if (/^https:\/\/calendar\.google\.com\/calendar\/embed/.test(v)) return v;
+    if (/^https:\/\/calendar\.google\.com\//.test(v)) return loginEmail ? embedFor(loginEmail) : '';
+    return '';
+  }
+
   function draw() {
-    const g = localStorage.getItem('hub_gcal') || '', c = localStorage.getItem('hub_calendly') || '';
-    $('in-g').value = g; $('in-c').value = c;
+    const raw = localStorage.getItem('hub_gcal') || '';
+    const c = localStorage.getItem('hub_calendly') || '';
+    const g = normalizeG(raw);
+    $('in-g').value = raw && !/^https:\/\/calendar\.google\.com\/calendar\/u\//.test(raw) ? raw : '';
+    $('in-c').value = c;
     $('g-wrap').style.display = g ? '' : 'none';
-    if (g) { $('g-frame').src = g; $('g-open').href = 'https://calendar.google.com'; }
+    if (g) {
+      $('g-frame').src = g;
+      $('g-open').href = 'https://calendar.google.com';
+      $('msg').textContent = raw ? '' : (loginEmail ? 'Connected automatically as ' + loginEmail : '');
+    } else if (!loginEmail) {
+      $('msg').textContent = 'Sign into the hub (or set your email on the Dashboard) and your calendar connects automatically.';
+    }
     $('c-wrap').style.display = c ? '' : 'none';
     if (c) { $('c-frame').src = c.replace(/\/$/, '') + '?embed_domain=' + location.hostname + '&embed_type=Inline'; $('c-open').href = c; }
   }
+
   $('save').addEventListener('click', () => {
-    const g = $('in-g').value.trim(), c = $('in-c').value.trim();
-    if (g && !/^https:\/\/calendar\.google\.com\//.test(g)) { $('msg').textContent = 'Google embed URL should start with https://calendar.google.com/'; return; }
+    const gRaw = $('in-g').value.trim(), c = $('in-c').value.trim();
+    if (gRaw && !normalizeG(gRaw)) { $('msg').textContent = 'Paste a Google account email or a calendar.google.com embed URL — or leave blank for automatic.'; return; }
     if (c && !/^https:\/\/calendly\.com\//.test(c)) { $('msg').textContent = 'Calendly link should start with https://calendly.com/'; return; }
-    localStorage.setItem('hub_gcal', g); localStorage.setItem('hub_calendly', c);
+    localStorage.setItem('hub_gcal', gRaw); localStorage.setItem('hub_calendly', c);
     $('msg').textContent = '✅ Saved'; draw();
+  });
+
+  document.addEventListener('hub:ready', (ev) => {
+    if (ev.detail.email) { loginEmail = ev.detail.email; draw(); }
   });
   draw();
 })();
