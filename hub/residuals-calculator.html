@@ -205,8 +205,18 @@
       </div>
 
       <div class="input-group">
-        <label for="quotedRate">Rate you quoted to merchant (%)</label>
+        <label for="pricingModel">Pricing model</label>
+        <select id="pricingModel" onchange="updatePricingModelUI(); updateCalculator();">
+          <option value="interchange-plus">Interchange Plus (IC + markup)</option>
+          <option value="dual-pricing">Dual Pricing (cash discount)</option>
+          <option value="flat-rate">Flat Rate</option>
+        </select>
+      </div>
+
+      <div class="input-group">
+        <label for="quotedRate" id="quotedRateLabel">Markup over interchange (%)</label>
         <input type="number" id="quotedRate" placeholder="0.50" value="0.50" step="0.01" onchange="updateCalculator()" />
+        <small id="quotedRateHint" style="font-size:12px;color:#6b7280;margin-top:4px;display:block;"></small>
       </div>
 
       <div class="input-group">
@@ -381,8 +391,34 @@ function calculateCosts(productId, monthlyVolume, avgTicket, quotedRate, perTran
   return { cost: costs, details, explanation: details.join(' • ') };
 }
 
+function updatePricingModelUI() {
+  const model = document.getElementById('pricingModel').value;
+  const label = document.getElementById('quotedRateLabel');
+  const hint = document.getElementById('quotedRateHint');
+  const input = document.getElementById('quotedRate');
+
+  switch(model) {
+    case 'interchange-plus':
+      label.textContent = 'Markup over interchange (%)';
+      hint.textContent = 'e.g., 0.50 = IC + 0.50% (your margin is just the markup)';
+      input.placeholder = '0.50';
+      break;
+    case 'dual-pricing':
+      label.textContent = 'Cash discount (%)';
+      hint.textContent = 'e.g., 1.50 means card at IC, cash at (IC - 1.50%)';
+      input.placeholder = '1.50';
+      break;
+    case 'flat-rate':
+      label.textContent = 'Flat rate quoted to merchant (%)';
+      hint.textContent = 'e.g., 2.90 = all transactions charged 2.90% (margin = rate - costs)';
+      input.placeholder = '2.90';
+      break;
+  }
+}
+
 function updateCalculator() {
   const productId = document.getElementById('product').value;
+  const pricingModel = document.getElementById('pricingModel').value;
   const monthlyVolume = parseFloat(document.getElementById('monthlyVolume').value) || 0;
   const quotedRate = parseFloat(document.getElementById('quotedRate').value) || 0;
   const avgTicket = parseFloat(document.getElementById('avgTicket').value) || 1;
@@ -393,9 +429,26 @@ function updateCalculator() {
   const calc = window.HUB_DATA.productCalculators[productId];
   const { cost: totalCosts, explanation } = calculateCosts(productId, monthlyVolume, avgTicket, quotedRate, perTransFee);
 
-  // Gross margin = volume × rate (in bps, so rate/10000 for percentage)
-  const rateAsBps = quotedRate * 10000 / 100; // Convert 0.50% to 50 bps
-  const grossMargin = (monthlyVolume * quotedRate) / 100;
+  // Gross margin calculation depends on pricing model
+  let grossMargin = 0;
+  let modelNote = '';
+
+  if (pricingModel === 'interchange-plus') {
+    // IC+: margin is just the markup × volume
+    grossMargin = (monthlyVolume * quotedRate) / 100;
+    modelNote = 'Markup on top of interchange pass-through';
+  } else if (pricingModel === 'dual-pricing') {
+    // Dual: merchant pays 0% on card (cash discount is where we make money)
+    // Margin comes from the discount they don't pass to customer
+    // Simplified: we keep the interchange spread minus costs
+    grossMargin = (monthlyVolume * quotedRate) / 100;
+    modelNote = 'Margin from cash discount – they pay 0% card fee';
+  } else {
+    // Flat rate: margin = quoted rate × volume - costs
+    grossMargin = (monthlyVolume * quotedRate) / 100;
+    modelNote = 'Full rate × volume (costs come out of margin)';
+  }
+
   const netResidual = grossMargin - totalCosts;
   const yourShare = netResidual * 0.5; // Agent gets 50%
   const bonus = calc.bonus || 250;
@@ -422,6 +475,7 @@ function updateCalculator() {
   explain.innerHTML = `
     <h4>${calc.name}</h4>
     <p><strong>Cost breakdown:</strong> ${explanation}</p>
+    <p><strong>Pricing model:</strong> ${modelNote}</p>
     <p><strong>Note:</strong> ${calc.note}</p>
   `;
 }
@@ -429,6 +483,7 @@ function updateCalculator() {
 // Initialize on load
 document.addEventListener('DOMContentLoaded', () => {
   initializeComparison();
+  updatePricingModelUI(); // Set up the initial labels based on model
   // Trigger first calculation if product is selected
   if (document.getElementById('product').value) {
     updateCalculator();
