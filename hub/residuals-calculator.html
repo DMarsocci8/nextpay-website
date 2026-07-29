@@ -1,0 +1,422 @@
+<!DOCTYPE html><html lang="en"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>Residuals Calculator — NextPay Sales Hub</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/hub.css">
+<style>
+.calc-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+  margin-top: 24px;
+}
+@media (max-width: 1024px) {
+  .calc-container {
+    grid-template-columns: 1fr;
+  }
+}
+
+.calc-inputs {
+  background: #f9fafb;
+  border: 1px solid #e5e7eb;
+  border-radius: 12px;
+  padding: 20px;
+}
+
+.calc-results {
+  background: #14A18C;
+  color: white;
+  border-radius: 12px;
+  padding: 20px;
+}
+
+.input-group {
+  margin-bottom: 16px;
+}
+
+.input-group label {
+  display: block;
+  font-size: 14px;
+  font-weight: 500;
+  color: #374151;
+  margin-bottom: 6px;
+}
+
+.input-group input, .input-group select {
+  display: block;
+  width: 100%;
+  padding: 8px 12px;
+  border: 1px solid #d1d5db;
+  border-radius: 6px;
+  font-size: 14px;
+  font-family: inherit;
+}
+
+.input-group input:focus, .input-group select:focus {
+  outline: none;
+  border-color: #14A18C;
+  box-shadow: 0 0 0 3px rgba(20, 161, 140, 0.1);
+}
+
+.result-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  padding: 12px 0;
+  border-bottom: 1px solid rgba(255,255,255,0.2);
+  font-size: 14px;
+}
+
+.result-row:last-child {
+  border-bottom: none;
+}
+
+.result-value {
+  font-weight: 600;
+  font-size: 16px;
+}
+
+.result-label {
+  font-size: 13px;
+  opacity: 0.95;
+}
+
+.bonus-highlight {
+  background: #1FC2A6;
+  padding: 12px;
+  border-radius: 6px;
+  margin-top: 16px;
+  font-weight: 600;
+  text-align: center;
+}
+
+.comparison {
+  margin-top: 32px;
+}
+
+.comparison-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 12px;
+  margin-top: 16px;
+}
+
+.comparison-card {
+  background: white;
+  border: 2px solid #e5e7eb;
+  border-radius: 8px;
+  padding: 16px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.comparison-card:hover {
+  border-color: #14A18C;
+  box-shadow: 0 4px 12px rgba(20, 161, 140, 0.15);
+}
+
+.comparison-card.selected {
+  border-color: #14A18C;
+  background: #f0faf7;
+}
+
+.comparison-card-name {
+  font-weight: 600;
+  font-size: 14px;
+  color: #111827;
+  margin-bottom: 8px;
+}
+
+.comparison-card-residual {
+  font-size: 18px;
+  font-weight: 700;
+  color: #14A18C;
+  margin-bottom: 4px;
+}
+
+.comparison-card-label {
+  font-size: 12px;
+  color: #6b7280;
+}
+
+.note {
+  background: #fef3c7;
+  border: 1px solid #fcd34d;
+  border-radius: 8px;
+  padding: 12px;
+  margin-top: 16px;
+  font-size: 13px;
+  color: #92400e;
+}
+
+.explain {
+  background: white;
+  border-left: 4px solid #14A18C;
+  padding: 16px;
+  margin-top: 24px;
+  border-radius: 4px;
+}
+
+.explain h4 {
+  margin: 0 0 8px 0;
+  font-size: 14px;
+  color: #14A18C;
+}
+
+.explain p {
+  margin: 0;
+  font-size: 13px;
+  line-height: 1.5;
+}
+</style>
+</head><body>
+<div class="hub-shell"><div id="hub-side"></div><main class="hub-main">
+
+<div class="pg-head">
+  <span class="eyebrow">My business</span>
+  <h1>Residuals Calculator</h1>
+  <p>See your monthly residual opportunity on any product. Input your deal numbers, pick the product, and compare the margin potential across platforms.</p>
+</div>
+
+<div class="card">
+  <h3>How much will you make?</h3>
+  <div class="calc-container">
+    <div class="calc-inputs">
+      <h4 style="margin-top: 0; color: #1f2937; font-size: 15px;">Your deal numbers</h4>
+
+      <div class="input-group">
+        <label for="product">Product / Platform</label>
+        <select id="product" onchange="updateCalculator()">
+          <option value="">Choose a product</option>
+          <option value="skytab">SkyTab by Shift4</option>
+          <option value="clover">Clover</option>
+          <option value="sip">Solutions in Payments (SIP)</option>
+          <option value="quantic">Quantic</option>
+          <option value="next2pay">Next2Pay Invoicing</option>
+        </select>
+      </div>
+
+      <div class="input-group">
+        <label for="monthlyVolume">Monthly card volume ($)</label>
+        <input type="number" id="monthlyVolume" placeholder="45000" value="45000" onchange="updateCalculator()" />
+      </div>
+
+      <div class="input-group">
+        <label for="quotedRate">Rate you quoted to merchant (%)</label>
+        <input type="number" id="quotedRate" placeholder="0.50" value="0.50" step="0.01" onchange="updateCalculator()" />
+      </div>
+
+      <div class="input-group">
+        <label for="avgTicket">Average ticket ($)</label>
+        <input type="number" id="avgTicket" placeholder="30" value="30" onchange="updateCalculator()" />
+      </div>
+
+      <div class="input-group">
+        <label for="perTransFee">Per-transaction fee (cents)</label>
+        <input type="number" id="perTransFee" placeholder="10" value="10" step="0.01" onchange="updateCalculator()" />
+      </div>
+    </div>
+
+    <div class="calc-results">
+      <h4 style="margin-top: 0; color: white; font-size: 15px;">Your monthly opportunity</h4>
+
+      <div class="result-row">
+        <span class="result-label">Gross margin (volume × rate)</span>
+        <span class="result-value" id="result-grossMargin">$225</span>
+      </div>
+
+      <div class="result-row">
+        <span class="result-label">Less: Product costs</span>
+        <span class="result-value" id="result-costs">−$75</span>
+      </div>
+
+      <div class="result-row" style="border-bottom: 2px solid rgba(255,255,255,0.3); padding: 12px 0 16px;">
+        <span class="result-label">Net residual</span>
+        <span class="result-value" id="result-netResidual">$150</span>
+      </div>
+
+      <div class="result-row" style="border-bottom: none; padding-top: 16px;">
+        <span class="result-label"><strong>Your 50% share</strong></span>
+        <span class="result-value" id="result-yourShare">$75</span>
+      </div>
+
+      <div class="bonus-highlight" id="bonus-section">
+        <span id="bonus-text">+ $500 activation bonus</span>
+      </div>
+
+      <div class="note">
+        <strong>Monthly recurring:</strong> You earn this every month the merchant processes with us — as long as they're active, so do you.
+      </div>
+    </div>
+  </div>
+
+  <div class="explain">
+    <h4>How this works</h4>
+    <p>The margin in a deal = the rate you quote above our cost floor. Interchange is passed through; we charge BIN fees, transaction fees, and monthly support fees. You earn 50% of whatever's left. On $45k/month quoted at +0.50%, the gross margin starts at $225 — less our fees leaves your $75/month, forever.</p>
+  </div>
+</div>
+
+<div class="card mt16">
+  <h3>Compare across products</h3>
+  <p>Click a product to see how the same deal looks on different platforms.</p>
+  <div class="comparison-grid" id="comparison-grid">
+    <!-- Populated by JavaScript -->
+  </div>
+  <div class="explain" id="compare-explain" style="margin-top: 16px;">
+    <!-- Populated by JavaScript -->
+  </div>
+</div>
+
+</main></div>
+
+<script src="js/hub.js"></script><script src="js/hub-data.js"></script><script src="js/hub-store.js"></script>
+<script>
+// Initialize comparison grid
+function initializeComparison() {
+  const products = [
+    { id: 'skytab', name: 'SkyTab', bonus: 500 },
+    { id: 'clover', name: 'Clover', bonus: 250 },
+    { id: 'sip', name: 'SIP', bonus: 250 },
+    { id: 'quantic', name: 'Quantic', bonus: 250 },
+    { id: 'next2pay', name: 'Next2Pay', bonus: 250 }
+  ];
+
+  const grid = document.getElementById('comparison-grid');
+  grid.innerHTML = products.map(p => `
+    <div class="comparison-card" id="card-${p.id}" onclick="selectProduct('${p.id}')">
+      <div class="comparison-card-name">${p.name}</div>
+      <div class="comparison-card-residual" id="residual-${p.id}">$0</div>
+      <div class="comparison-card-label">your monthly share</div>
+    </div>
+  `).join('');
+}
+
+function selectProduct(productId) {
+  document.getElementById('product').value = productId;
+  updateCalculator();
+
+  // Highlight selected
+  document.querySelectorAll('.comparison-card').forEach(el => {
+    el.classList.remove('selected');
+  });
+  document.getElementById('card-' + productId).classList.add('selected');
+}
+
+function calculateCosts(productId, monthlyVolume, avgTicket, quotedRate, perTransFee) {
+  const calc = window.HUB_DATA.productCalculators[productId];
+  if (!calc) return { cost: 0, explanation: '' };
+
+  const structure = calc.feeStructure;
+  const transactionCount = Math.round(monthlyVolume / (avgTicket || 1));
+
+  let costs = 0;
+  let details = [];
+
+  if (productId === 'skytab') {
+    // SkyTab: BIN 2.5bps + $0.05/txn + $0.25 Amex (25bps) + monthly support
+    costs += monthlyVolume * 0.025 / 10000; // BIN 2.5bps
+    details.push(`BIN fee: $${(monthlyVolume * 0.025 / 10000).toFixed(2)}`);
+
+    costs += transactionCount * 0.05; // $0.05 per transaction
+    details.push(`Transaction fees: $${(transactionCount * 0.05).toFixed(2)}`);
+
+    costs += 4.75; // Monthly support
+    details.push(`Monthly support: $4.75`);
+  }
+  else if (productId === 'clover') {
+    // Clover: BIN 0.03% + $0.035/auth + batch $0.02 + monthly $6.95
+    costs += monthlyVolume * 0.0003; // BIN 0.03%
+    details.push(`BIN fee: $${(monthlyVolume * 0.0003).toFixed(2)}`);
+
+    costs += transactionCount * 0.035; // Authorization
+    details.push(`Authorization fees: $${(transactionCount * 0.035).toFixed(2)}`);
+
+    costs += transactionCount * 0.02; // Batch
+    details.push(`Batch fees: $${(transactionCount * 0.02).toFixed(2)}`);
+
+    costs += 6.95; // Merchant on file + IRS
+    details.push(`Monthly fees: $6.95`);
+  }
+  else if (productId === 'sip' || productId === 'quantic') {
+    // SIP: BIN 0.02% + $0.02/txn + batch $0.02 + monthly fees
+    costs += monthlyVolume * 0.0002; // BIN 0.02%
+    details.push(`BIN fee: $${(monthlyVolume * 0.0002).toFixed(2)}`);
+
+    costs += transactionCount * 0.02; // Transaction
+    details.push(`Transaction fees: $${(transactionCount * 0.02).toFixed(2)}`);
+
+    costs += transactionCount * 0.02; // Batch
+    details.push(`Batch fees: $${(transactionCount * 0.02).toFixed(2)}`);
+  }
+  else if (productId === 'next2pay') {
+    // Next2Pay: IC + 2bps + $0.0215/txn + $0.03 auth
+    costs += monthlyVolume * 0.0002; // 2bps
+    details.push(`Buy rate markup: $${(monthlyVolume * 0.0002).toFixed(2)}`);
+
+    costs += transactionCount * 0.0215; // Transaction
+    details.push(`Transaction fees: $${(transactionCount * 0.0215).toFixed(2)}`);
+
+    costs += transactionCount * 0.03; // Auth
+    details.push(`Authorization: $${(transactionCount * 0.03).toFixed(2)}`);
+  }
+
+  return { cost: costs, details, explanation: details.join(' • ') };
+}
+
+function updateCalculator() {
+  const productId = document.getElementById('product').value;
+  const monthlyVolume = parseFloat(document.getElementById('monthlyVolume').value) || 0;
+  const quotedRate = parseFloat(document.getElementById('quotedRate').value) || 0;
+  const avgTicket = parseFloat(document.getElementById('avgTicket').value) || 1;
+  const perTransFee = parseFloat(document.getElementById('perTransFee').value) || 0;
+
+  if (!productId || monthlyVolume <= 0) return;
+
+  const calc = window.HUB_DATA.productCalculators[productId];
+  const { cost: totalCosts, explanation } = calculateCosts(productId, monthlyVolume, avgTicket, quotedRate, perTransFee);
+
+  // Gross margin = volume × rate (in bps, so rate/10000 for percentage)
+  const rateAsBps = quotedRate * 10000 / 100; // Convert 0.50% to 50 bps
+  const grossMargin = (monthlyVolume * quotedRate) / 100;
+  const netResidual = grossMargin - totalCosts;
+  const yourShare = netResidual * 0.5; // Agent gets 50%
+  const bonus = calc.bonus || 250;
+
+  // Update main display
+  document.getElementById('result-grossMargin').textContent = '$' + grossMargin.toFixed(2);
+  document.getElementById('result-costs').textContent = '−$' + totalCosts.toFixed(2);
+  document.getElementById('result-netResidual').textContent = '$' + netResidual.toFixed(2);
+  document.getElementById('result-yourShare').textContent = '$' + yourShare.toFixed(2);
+  document.getElementById('bonus-text').textContent = `+ $${bonus} activation bonus`;
+
+  // Update comparison cards
+  document.querySelectorAll('[id^="residual-"]').forEach(el => {
+    const pid = el.id.replace('residual-', '');
+    const { cost } = calculateCosts(pid, monthlyVolume, avgTicket, quotedRate, perTransFee);
+    const gross = (monthlyVolume * quotedRate) / 100;
+    const net = gross - cost;
+    const share = net * 0.5;
+    el.textContent = share > 0 ? '$' + share.toFixed(0) : '—';
+  });
+
+  // Update explanation
+  const explain = document.getElementById('compare-explain');
+  explain.innerHTML = `
+    <h4>${calc.name}</h4>
+    <p><strong>Cost breakdown:</strong> ${explanation}</p>
+    <p><strong>Note:</strong> ${calc.note}</p>
+  `;
+}
+
+// Initialize on load
+document.addEventListener('DOMContentLoaded', () => {
+  initializeComparison();
+  // Trigger first calculation if product is selected
+  if (document.getElementById('product').value) {
+    updateCalculator();
+  }
+});
+</script>
+</body></html>

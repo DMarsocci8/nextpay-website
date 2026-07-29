@@ -34,7 +34,7 @@
   <p class="muted small">Buy rate = what the processing costs <i>us</i>. Everything you quote above it is margin, split per your agent agreement. Your exact Schedule A is in your signed agent agreement — keep your working numbers here (saved in your browser only).</p>
   <div class="tbl-wrap"><table class="tbl"><thead><tr><th>Program</th><th>My buy rate / cost</th><th>Notes</th></tr></thead><tbody id="br-rows"></tbody></table></div>
   <div class="flex mt8"><button class="btn btn-outline btn-sm" id="br-add">+ Add row</button><span class="small muted">Autosaves as you type · stored locally</span></div>
-  <div class="note mt16">The full partner schedules and buy-rate sheets are held by Dom &amp; Alexander — your share is <b>50% of NextPay's cut</b> on every program. Pricing questions on a live deal go to <b>Deal Desk</b> in Google Chat.</div>
+  <div class="note mt16">Your share is <b>50% of NextPay's cut</b> on every program. Pricing questions on a live deal go to <b>Deal Desk</b> in Google Chat.</div>
   <div id="admin-refs"></div>
 </div>
 
@@ -59,7 +59,7 @@
 
 <div class="card mt16" id="economics">
   <div class="spread"><h3>Deal economics by source — what you make, where you quote</h3><span class="chip red">Internal only</span></div>
-  <p class="muted small">Where a deal is written decides your money. Rows marked <span class="chip amber">Schedule A needed</span> are waiting on paperwork from Dom — the structure is ready, the numbers drop in.</p>
+  <p class="muted small">Where a deal is written decides your money. Rows marked <span class="chip amber">Schedule A needed</span> are waiting on partnership documentation — the structure is ready, the numbers drop in.</p>
   <div class="tbl-wrap"><table class="tbl"><thead><tr><th>Placement</th><th>Sourced from</th><th>What you make</th><th>Where to quote processing</th></tr></thead><tbody id="eco-rows"></tbody></table></div>
 </div>
 
@@ -95,7 +95,7 @@
     <tr><td>Trial (3-month term)</td><td>$599 / mo / seat</td></tr>
     <tr><td>Annual</td><td>$749 / mo / seat</td></tr>
     <tr><td>Month-to-month</td><td>$999 / mo / seat</td></tr>
-    <tr><td>Enterprise (10+ seats)</td><td>Custom — talk to Dom</td></tr>
+    <tr><td>Enterprise (10+ seats)</td><td>Custom pricing — ask in Deal Desk</td></tr>
   </tbody></table></div>
 </div>
 
@@ -106,7 +106,7 @@
   document.addEventListener('hub:ready', function (ev) {
     if (!ev.detail.admin) return; /* admin-only links injected, never in agents' DOM */
     var D = 'admin-docs/';
-    document.getElementById('admin-refs').innerHTML = '<div class="note mt8"><b>🔒 Admin reference docs (Dom &amp; Alexander only):</b> ' +
+    document.getElementById('admin-refs').innerHTML = '<div class="note mt8"><b>🔒 Admin reference docs:</b> ' +
       '<a href="' + D + 'skytab-partner-schedule-a.pdf" target="_blank" rel="noopener">SkyTab partner Schedule A</a> · ' +
       '<a href="' + D + 'quantic-partner-pricing.pdf" target="_blank" rel="noopener">Quantic Unified Pricing V5</a> · ' +
       '<a href="' + D + 'quantic-partner-hardware.pdf" target="_blank" rel="noopener">Quantic hardware</a> · ' +
