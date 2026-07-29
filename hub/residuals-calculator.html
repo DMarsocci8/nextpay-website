@@ -196,6 +196,7 @@
           <option value="quantic">Quantic</option>
           <option value="next2pay">Next2Pay Invoicing</option>
         </select>
+        <div id="product-logo" style="margin-top:8px;height:32px;display:flex;align-items:center"></div>
       </div>
 
       <div class="input-group">
@@ -276,16 +277,17 @@
 // Initialize comparison grid
 function initializeComparison() {
   const products = [
-    { id: 'skytab', name: 'SkyTab', bonus: 500 },
-    { id: 'clover', name: 'Clover', bonus: 250 },
+    { id: 'skytab', name: 'SkyTab', logo: 'skytab.svg', bonus: 500 },
+    { id: 'clover', name: 'Clover', logo: 'clover.png', bonus: 250 },
     { id: 'sip', name: 'SIP', bonus: 250 },
-    { id: 'quantic', name: 'Quantic', bonus: 250 },
-    { id: 'next2pay', name: 'Next2Pay', bonus: 250 }
+    { id: 'quantic', name: 'Quantic', logo: 'quantic.svg', bonus: 250 },
+    { id: 'next2pay', name: 'Next2Pay', logo: 'next2pay-globe.png', bonus: 250 }
   ];
 
   const grid = document.getElementById('comparison-grid');
   grid.innerHTML = products.map(p => `
     <div class="comparison-card" id="card-${p.id}" onclick="selectProduct('${p.id}')">
+      ${p.logo ? `<img src="assets/logos/${p.logo}" alt="" style="height:24px;margin-bottom:8px;display:block">` : ''}
       <div class="comparison-card-name">${p.name}</div>
       <div class="comparison-card-residual" id="residual-${p.id}">$0</div>
       <div class="comparison-card-label">your monthly share</div>
@@ -296,6 +298,20 @@ function initializeComparison() {
 function selectProduct(productId) {
   document.getElementById('product').value = productId;
   updateCalculator();
+
+  // Show logo in product input
+  const logos = {
+    'skytab': 'skytab.svg',
+    'clover': 'clover.png',
+    'quantic': 'quantic.svg',
+    'next2pay': 'next2pay-globe.png'
+  };
+  const logoDiv = document.getElementById('product-logo');
+  if (logos[productId]) {
+    logoDiv.innerHTML = `<img src="assets/logos/${logos[productId]}" alt="" style="height:28px">`;
+  } else {
+    logoDiv.innerHTML = '';
+  }
 
   // Highlight selected
   document.querySelectorAll('.comparison-card').forEach(el => {

@@ -116,12 +116,7 @@
 
 <div class="card mt16">
   <h3>More POS pricing</h3>
-  <div class="tbl-wrap"><table class="tbl"><thead><tr><th>System</th><th>Software</th><th>Hardware</th><th>Program</th></tr></thead><tbody>
-    <tr><td><b>PAYS POS</b></td><td>from $59/mo (kiosk/KDS from $79/mo)</td><td>$999 station + reader</td><td>Dual pricing 0%</td></tr>
-    <tr><td><b>NRS</b></td><td>$59/mo flat</td><td>Quoted per setup</td><td>Cash discount · $0 per transaction</td></tr>
-    <tr><td><b>DejaPayPro</b></td><td>$59/mo</td><td>Dejavoo hardware, quoted per setup</td><td>Dual pricing 0%</td></tr>
-    <tr><td><b>Chively</b></td><td>Quoted per setup — pricing from the Chively partner rep</td><td></td><td>Dual pricing 0%</td></tr>
-  </tbody></table></div>
+  <div class="tbl-wrap"><table class="tbl"><thead><tr><th>System</th><th>Software</th><th>Hardware</th><th>Program</th></tr></thead><tbody id="more-pos-rows"></tbody></table></div>
   <div class="note mt8"><b>Ordering fine print (from the KORONA dealer sheet):</b> this hardware pricing is <b>dealer use only</b> — quote it through the Proposal Builder, don't hand the sheet to merchants. All sales are final (no returns or exchanges). Allow <b>10–15 business days</b> for delivery. Units ship preconfigured for <b>sales functionality only</b> — POS terminals can't create products, don't access KORONA back-office, and don't include WiFi. Merchant needs back-office access or has a specific use case? Contact the KORONA rep before ordering.</div>
 </div>
 
@@ -235,6 +230,19 @@
     '<td class="small">' + esc(e.source) + (e.need ? '<br><span class="muted"><b>Missing:</b> ' + esc(e.need) + '</span>' : '') + '</td>' +
     '<td class="small"><ul class="ck plain">' + e.make.map(m => '<li>' + esc(m) + '</li>').join('') + '</ul></td>' +
     '<td class="small">' + esc(e.quote) + '</td></tr>').join('');
+
+  /* more POS pricing table with logos */
+  const morePosProducts = [
+    { name: 'PAYS POS', logo: 'pays.svg', software: 'from $59/mo (kiosk/KDS from $79/mo)', hardware: '$999 station + reader', program: 'Dual pricing 0%' },
+    { name: 'NRS', logo: 'nrs.png', software: '$59/mo flat', hardware: 'Quoted per setup', program: 'Cash discount · $0 per transaction' },
+    { name: 'DejaPayPro', logo: 'dejapay.webp', software: '$59/mo', hardware: 'Dejavoo hardware, quoted per setup', program: 'Dual pricing 0%' },
+    { name: 'Chively', logo: 'chively-white.png', software: 'Quoted per setup — pricing from the Chively partner rep', hardware: '', program: 'Dual pricing 0%' }
+  ];
+  $('more-pos-rows').innerHTML = morePosProducts.map(p =>
+    '<tr><td>' + (p.logo ? '<img src="assets/logos/' + esc(p.logo) + '" alt="" style="height:20px;margin-right:8px;vertical-align:middle">' : '') + '<b>' + esc(p.name) + '</b></td>' +
+    '<td>' + esc(p.software) + '</td>' +
+    '<td>' + esc(p.hardware) + '</td>' +
+    '<td>' + esc(p.program) + '</td></tr>').join('');
 })();
 </script>
 </body></html>
