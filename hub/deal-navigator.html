@@ -148,13 +148,14 @@
     let h = '<div class="rec-box"><span class="tag">' + (deal.signals.length ? 'Best fit from their answers' : 'Recommended starting point — tap signals in Discovery to sharpen this') + '</span>' +
       '<h3 class="mt8">' + esc(top.name) + '</h3><p class="muted">' + esc(top.why) + '</p>' +
       (top.reasons.length ? '<ul class="ck plain mt8">' + top.reasons.map(r => '<li class="small">' + esc(r) + '</li>').join('') + '</ul>' : '') +
-      '<button class="btn btn-primary btn-sm mt8" type="button" id="use-stack">Use this stack ↓</button></div>';
+      '<button class="btn btn-primary btn-sm mt8" type="button" data-stack="0">Use this stack</button></div>';
     const alts2 = cands.slice(1);
     if (alts2.length) {
-      h += '<div class="grid2 mt16">' + alts2.map(a =>
+      h += '<div class="grid2 mt16">' + alts2.map((a, idx) =>
         '<div class="alt-box"><b>' + esc(a.name) + '</b>' + (a.score <= 0 ? ' <span class="chip red" style="margin-left:6px">poor fit here</span>' : '') +
         '<p class="muted small mt8">' + esc(a.why) + '</p>' +
-        (a.reasons.length ? '<p class="small muted mt8">' + a.reasons.map(esc).join(' · ') + '</p>' : '') + '</div>').join('') + '</div>';
+        (a.reasons.length ? '<p class="small muted mt8">' + a.reasons.map(esc).join(' · ') + '</p>' : '') +
+        '<button class="btn btn-outline btn-sm mt8" type="button" data-stack="' + (idx + 1) + '">Use this stack</button></div>').join('') + '</div>';
     }
     const sugRows = [];
     const SLOT = { terminal: 'Terminal', gateway: 'Gateway', invoicing: 'Invoicing', addon: 'Add-on' };
@@ -176,7 +177,7 @@
       '<option value="">— choose —</option>' + Object.entries(D.placements).map(([k, p]) => '<option value="' + k + '"' + (deal.placement === k ? ' selected' : '') + '>' + esc(p.label) + '</option>').join('') + '</select></div>';
     $('wiz').innerHTML = h;
 
-    /* one click fills the stack from the scored recommendation */
+    /* one click fills the stack from any scored option */
     const PLACE_GUESS = [
       [/chively|nextpay pos/i, 'chively'],
       [/next2pay/i, 'next2pay'],
@@ -185,14 +186,18 @@
       [/sumup/i, 'sumup'], [/terminal|pax|dejavoo|valor/i, 'terminal-gateway'],
       [/gateway|invoic|fieldpulse|field work|lqpay|nmi|fluidpay|quickbooks/i, 'invoicing-gateway']
     ];
-    $('use-stack').addEventListener('click', () => {
-      $('f-pos').value = top.name;
-      if (stackSug.terminal.length) $('f-term').value = stackSug.terminal[0].v;
-      if (stackSug.gateway.length) $('f-gw').value = stackSug.gateway[0].v;
-      if (stackSug.invoicing.length) $('f-inv').value = stackSug.invoicing[0].v;
-      const g = PLACE_GUESS.find(([re]) => re.test(top.name));
-      if (g) $('f-place').value = g[1];
-      $('f-pos').scrollIntoView({ behavior: 'smooth', block: 'center' });
+    document.querySelectorAll('[data-stack]').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const idx = parseInt(btn.dataset.stack);
+        const selected = cands[idx];
+        $('f-pos').value = selected.name;
+        if (stackSug.terminal.length) $('f-term').value = stackSug.terminal[0].v;
+        if (stackSug.gateway.length) $('f-gw').value = stackSug.gateway[0].v;
+        if (stackSug.invoicing.length) $('f-inv').value = stackSug.invoicing[0].v;
+        const g = PLACE_GUESS.find(([re]) => re.test(selected.name));
+        if (g) $('f-place').value = g[1];
+        $('f-pos').scrollIntoView({ behavior: 'smooth', block: 'center' });
+      });
     });
   }
   function grab2() {
