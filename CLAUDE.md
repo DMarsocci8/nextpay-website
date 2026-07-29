@@ -14,7 +14,7 @@
 
 ## Pricing sources (verified — do not re-flag without checking these)
 - **PAYS:** payspos.com/pos-system-cost/ — Starter $59 / Growth $79 / Enterprise $99 per month. Screenshot receipt in repo: `PAYSPos Software pricing.jpg`. Confirmed by owner 2026-07.
-- **Quantic:** `docs/quantic-monthly.pdf` + `docs/quantic-hardware.pdf` (Unified Pricing V5, referral) — Pro $60 first/$50 addl, Enterprise $90/$80.
+- **Quantic:** `hub/admin-docs/quantic-partner-pricing.pdf` + `hub/admin-docs/quantic-partner-hardware.pdf` (Unified Pricing V5, referral; moved off the public site 2026-07-29 — partner docs are admin-only in hub/admin-docs/) — Pro $60 first/$50 addl, Enterprise $90/$80.
 - **Korona:** Core $59 / Retail $79 / Plus $99 per register (hub Proposal Builder sheet).
 - **Shift4 / SkyTab:** official SkyTab pricing sheet (owner-provided 2026-07) — base bundle $29.99, Air $29.99, Mobile $20, KDS $29.99, Bump Bar $9.99, PIN pad $9.99, Label Printer $19.99, Scale $39.99, Lighthouse $20, Gift Cards $25, Workforce $35; one-time: cash drawer $129, till $25, split cable $25. 30-day trial then 36-month agreement (owner corrected 2026-07-27; was previously noted as 30-month).
 - **SumUp:** sumup pages on this site (POS Lite & Solo $499, POS $799 + $99/mo plan, Terminal $249, Solo $54, Connect Plus $199 / Pro $289).
