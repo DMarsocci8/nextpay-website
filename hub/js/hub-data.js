@@ -953,9 +953,9 @@ window.HUB_DATA = {
       label: 'PAYS (POS licensing + our processing)',
       cols: ['Cost'],
       covers: 'PAYS POS deals: we license the software per merchant and pair it with our own processing on SIP paper. Loaner/rental hardware carries a Return Obligation — early terminations must ship the hardware back.',
-      splitNote: 'Starter/Growth/Enterprise are the published payspos.com plans — what the MERCHANT pays monthly. The license below is the deal\u2019s cost, covered off the top. You earn 50% of the net software residual (plan price \u2212 license) and 50% of the net processing residual on our SIP paper (\u2248 45% of margin).',
-      floor: 'The deal\u2019s cost: $59/mo license per merchant start (first terminal), $29/mo for a second terminal at the same merchant. The merchant pays the published plan price (Starter $59 / Growth $79 / Enterprise $99) — the difference is the net software residual.',
-      example: 'Example: merchant on Growth pays $79/mo; the $59 license comes off the top → $20/mo net software residual → your 50% = $10/mo. Enterprise at $99 → your $20/mo. Add your share of the processing residual (SIP paper, dual pricing the norm) and markup on the $999 station bundle.',
+      splitNote: 'Starter/Growth/Enterprise are the published payspos.com plans — what the MERCHANT pays monthly. The license below is the deal\u2019s cost, covered off the top. You earn 50% of the net processing residual on our SIP paper (\u2248 45% of margin).',
+      floor: 'The deal\u2019s cost: $59/mo license per merchant start (first terminal), $29/mo for a second terminal at the same merchant. The merchant pays the published plan price (Starter $59 / Growth $79 / Enterprise $99) —',
+      example: 'Example: merchant on Growth plan ($79/mo) — the $59 license comes off the top. Processing residual on SIP paper (SIP paper, dual pricing the norm) and markup on the $999 station bundle.',
       groups: [
         { h: 'Licensing (our cost)', rows: [
           ['License — per merchant start (first terminal)', '$59.00 / mo'],
