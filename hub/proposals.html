@@ -48,9 +48,14 @@
   .hub-side,.hub-topbar,.hub-main>*:not(#print-doc){display:none!important}
   .hub-main{margin:0;padding:0}
   #print-doc{display:block;max-width:7.5in;margin:0 auto}
-  .pd .head{background:#0C1B2A!important;color:#fff!important;border-radius:12px}
+  .pd{font-size:12px}
+  .pd .head{background:#0C1B2A!important;color:#fff!important;border-radius:12px;page-break-after:avoid}
   .pd .head .sub{color:#1FC2A6!important}
-  .pd .savebar{background:#14A18C!important;color:#fff!important}
+  .pd .head img{height:28px;padding:4px 7px}
+  .pd table{page-break-inside:avoid;margin:12px 0!important}
+  .pd .savebar{background:#14A18C!important;color:#fff!important;page-break-inside:avoid}
+  .no-print{display:none!important}
+  a{text-decoration:none;color:inherit}
 }
 </style>
 </head><body>
@@ -160,15 +165,25 @@
   const esc = (s) => String(s == null ? '' : s).replace(/[<>&"]/g, c => ({'<':'&lt;','>':'&gt;','&':'&amp;','"':'&quot;'}[c]));
   const fmt = (n) => '$' + (Math.round(n * 100) / 100).toLocaleString();
   const LOGO = 'assets/logos/nextpay.png';
+  const BRAND_LOGOS = {
+    'chively': 'assets/logos/chively-white.png',
+    'korona': 'assets/logos/korona.png',
+    'dejavoo': 'assets/logos/dejavoo-white.webp',
+    'skytab': 'assets/logos/skytab.png',
+    'clover': 'assets/logos/clover.png',
+    'square': 'assets/logos/square.png'
+  };
   let tab = 'builder';
 
   /* ---------- shared doc pieces ---------- */
-  function head(title) {
+  function head(title, brandLogo) {
     const today = new Date().toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
+    let logos = '<img src="' + LOGO + '" alt="NextPay">';
+    if (brandLogo) logos += '<img src="' + brandLogo + '" alt="" style="height:32px;background:#f5f5f5;border-radius:8px;padding:4px 8px">';
     return '<div class="head"><div><div class="sub">NextPay · ' + esc(title) + '</div>' +
       '<div class="t">' + esc($('c-biz').value || 'Your Business') + '</div></div>' +
-      '<img src="' + LOGO + '" alt="NextPay"></div>' +
-      '<p style="margin-top:12px;color:#5B6B7B">Prepared for <b>' + esc($('c-name').value || '—') + '</b>' +
+      '<div style="display:flex;gap:12px">' + logos + '</div></div>' +
+      '<p class="no-print" style="margin-top:12px;color:#5B6B7B">Prepared for <b>' + esc($('c-name').value || '—') + '</b>' +
       ($('c-reach').value ? ' (' + esc($('c-reach').value) + ')' : '') + ' · ' + today +
       ' · by <b>' + esc(localStorage.getItem('hub_user_email') || 'NextPay') + '</b></p>';
   }
@@ -234,7 +249,8 @@
       once += l.p.v * l.q; mo += l.p.mo * l.q;
       return '<tr><td style="white-space:nowrap">' + l.q + '×</td><td><b>' + esc(l.i.name) + '</b><br><span style="color:#5B6B7B;font-size:11px">' + esc(l.i.sub || '') + '</span></td><td style="white-space:nowrap">' + (l.i.quote ? 'final quote' : l.p.txt) + '</td></tr>';
     }).join('');
-    return head((C && brand ? C[brand].label + ' proposal' : 'Proposal')) +
+    const brandLogo = (C && brand && BRAND_LOGOS[brand.toLowerCase()]) ? BRAND_LOGOS[brand.toLowerCase()] : null;
+    return head((C && brand ? C[brand].label + ' proposal' : 'Proposal'), brandLogo) +
       ($('b-savings').value ? '<div class="savebar">' + esc($('b-savings').value) + '</div>' : '') +
       (ls.length
         ? '<table><thead><tr><th></th><th>Item</th><th>Price</th></tr></thead><tbody>' + rows +
@@ -259,7 +275,7 @@
   $('op-add').addEventListener('click', () => { opLines.push({ d: '', p: '' }); opDraw(); render(); });
   function onepagerDoc() {
     const rows = opLines.filter(l => l.d).map(l => '<tr><td>' + esc(l.d) + '</td><td style="white-space:nowrap">' + esc(l.p) + '</td></tr>').join('');
-    return head('Proposal') +
+    return head('Proposal', null) +
       ($('op-savings').value ? '<div class="savebar">' + esc($('op-savings').value) + '</div>' : '') +
       (rows ? '<table><thead><tr><th>What you get</th><th>Price</th></tr></thead><tbody>' + rows + '</tbody></table>'
             : '<p style="margin-top:16px;color:#5B6B7B;font-style:italic">Type line items on the left — they appear here as you go.</p>') +
@@ -273,7 +289,7 @@
     const planTxt = $('nl-plan').options[$('nl-plan').selectedIndex].text.replace(/ — .*$/, '');
     const priceTxt = plan === 'custom' ? 'Custom — quoted for your team'
       : fmt(Number(plan)) + ' per seat / month · ' + seats + ' seat' + (seats > 1 ? 's' : '') + ' = <b>' + fmt(Number(plan) * seats) + '/mo</b>';
-    return head('NextLink — Client Automation & Outreach') +
+    return head('NextLink — Client Automation & Outreach', null) +
       '<p style="margin-top:14px;font-size:14px">NextLink runs your client outreach on autopilot — campaigns, follow-up sequences and booked appointments, with our team handling setup.</p>' +
       '<table><tbody><tr><td style="width:110px"><b>Plan</b></td><td>' + esc(planTxt) + '</td></tr>' +
       '<tr><td><b>Investment</b></td><td>' + priceTxt + '</td></tr>' +
