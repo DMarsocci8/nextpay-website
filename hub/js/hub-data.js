@@ -643,8 +643,8 @@ window.HUB_DATA = {
   },
 
   contacts: {
-    submit: 'dom@nextpaypos.com',
-    cc: 'payments@nextpaypos.com, alexander@nextpaypos.com',
+    submit: 'hello@nextpaypos.com',
+    cc: 'dom@nextpaypos.com, alexander@nextpaypos.com',
     help: 'hello@nextpaypos.com'
   },
 
