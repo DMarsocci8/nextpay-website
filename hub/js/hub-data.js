@@ -56,7 +56,7 @@ window.HUB_DATA = {
 
   /* ---------- Industry playbooks ---------- */
   industries: {
-    'convenience': { label: 'Convenience & Grocery', group: 'Retail',
+    'convenience': { label: 'Convenience & Grocery', group: 'Retail', bg: 'convenience.png',
       ask: [
         'Walk me through the counter at rush hour — how many customers an hour, and what actually slows the line?',
         'How do you track inventory today — do you know your top 20 sellers and your dead stock, or is it a walk-the-aisles-with-a-notepad situation?',
@@ -81,7 +81,7 @@ window.HUB_DATA = {
       placements: ['nrs', 'korona', 'clover']
     },
 
-    'liquor': { label: 'Liquor Stores', group: 'Retail',
+    'liquor': { label: 'Liquor Stores', group: 'Retail', bg: 'liquor.png',
       ask: [
         'How do you card today — and has a missed check ever cost you? Register-forced ID scanning takes that risk off your clerks.',
         'Case discounts, mix-and-match, keg deposits — does the register handle that, or is it clerk math?',
@@ -105,7 +105,7 @@ window.HUB_DATA = {
       placements: ['korona', 'clover', 'nrs']
     },
 
-    'boutique': { label: 'Boutique & Clothing', group: 'Retail',
+    'boutique': { label: 'Boutique & Clothing', group: 'Retail', bg: 'boutique.jpg',
       ask: [
         'Do you sell online or on Instagram too? Does floor inventory sync with web inventory, or do you oversell?',
         'Size/color matrix inventory or simple items? How do you know what to reorder and in what size?',
@@ -129,7 +129,7 @@ window.HUB_DATA = {
       placements: ['square', 'sumup', 'clover']
     },
 
-    'jewelry': { label: 'Jewelry Stores', group: 'Retail',
+    'jewelry': { label: 'Jewelry Stores', group: 'Retail', bg: 'jewelry.png',
       ask: [
         'What\'s your highest typical ticket, and any single sales over $5–10k? (Underwriting needs this up front so payouts never get held.)',
         'Deposits, layaway, custom orders — how do you track what\'s owed and what\'s in the safe?',
@@ -153,7 +153,7 @@ window.HUB_DATA = {
       placements: ['clover', 'quantic', 'terminal-gateway']
     },
 
-    'specialty-retail': { label: 'Specialty Retail', group: 'Retail',
+    'specialty-retail': { label: 'Specialty Retail', group: 'Retail', bg: 'specialty-retail.png',
       ask: [
         'What\'s unusual about your inventory — serialized items, rentals, consignment, bulk, bundles?',
         'Any tickets, admissions, classes or events in the mix?',
@@ -177,7 +177,7 @@ window.HUB_DATA = {
       placements: ['korona', 'clover', 'square']
     },
 
-    'fine-dining': { label: 'Fine Dining & Full Service', group: 'Food & Beverage',
+    'fine-dining': { label: 'Fine Dining & Full Service', group: 'Food & Beverage', bg: 'fine-dining.png',
       ask: [
         'Covers a night and how many turns? Where does a table stall — kitchen, server, or the check?',
         'How do servers close checks today — walk to a station, or at the table? (Pay-at-table alone can add a turn.)',
@@ -201,7 +201,7 @@ window.HUB_DATA = {
       placements: ['skytab', 'quantic', 'clover']
     },
 
-    'pizzerias': { label: 'Pizzerias', group: 'Food & Beverage',
+    'pizzerias': { label: 'Pizzerias', group: 'Food & Beverage', bg: 'pizzeria.png',
       ask: [
         'Phone vs online vs walk-in — what\'s the order mix at Friday rush?',
         'Who answers the phones at rush, and how many order errors a week come from that scramble?',
@@ -225,7 +225,7 @@ window.HUB_DATA = {
       placements: ['skytab', 'pays', 'quantic']
     },
 
-    'food-trucks': { label: 'Food Trucks', group: 'Food & Beverage',
+    'food-trucks': { label: 'Food Trucks', group: 'Food & Beverage', bg: 'food.png',
       ask: [
         'How\'s connectivity where you park? Ever lost sales to a dead signal? (Offline mode matters more than any rate.)',
         'One window or two? How many customers can you turn an hour, and what caps it?',
@@ -249,7 +249,7 @@ window.HUB_DATA = {
       placements: ['square', 'skytab', 'terminal-gateway']
     },
 
-    'bars': { label: 'Bars & Nightclubs', group: 'Food & Beverage',
+    'bars': { label: 'Bars & Nightclubs', group: 'Food & Beverage', bg: 'bar.png',
       ask: [
         'Tabs: how do you hold cards today, and how many walked tabs a month? (Pre-auth kills that number.)',
         'Speed at last call — how many drinks a minute per well, and what slows it?',
@@ -273,7 +273,7 @@ window.HUB_DATA = {
       placements: ['skytab', 'clover', 'quantic']
     },
 
-    'qsr-cafes': { label: 'QSR, Cafés & Coffee Shops', group: 'Food & Beverage',
+    'qsr-cafes': { label: 'QSR, Cafés & Coffee Shops', group: 'Food & Beverage', bg: 'coffee.png',
       ask: [
         'Orders per hour at peak — and how many seconds does each order take at the register?',
         'Would a self-order kiosk pull people out of your line? (Kiosks also lift average ticket.)',
@@ -297,7 +297,7 @@ window.HUB_DATA = {
       placements: ['skytab', 'square', 'pays']
     },
 
-    'bakeries': { label: 'Bakeries, Delis & Markets', group: 'Food & Beverage',
+    'bakeries': { label: 'Bakeries, Delis & Markets', group: 'Food & Beverage', bg: 'bakery.png',
       ask: [
         'What\'s sold by weight vs by piece? (Certified scale integration is the fork in the road.)',
         'Custom orders — cakes, catering: how do you take deposits and schedule pickups today? Paper book?',
@@ -321,7 +321,7 @@ window.HUB_DATA = {
       placements: ['clover', 'skytab', 'quantic']
     },
 
-    'auto-repair': { label: 'Auto Repair & Automotive', group: 'Services',
+    'auto-repair': { label: 'Auto Repair & Automotive', group: 'Services', bg: 'auto-repair.jpg',
       ask: [
         'Walk me through a job today: estimate → approval → work → payment. Where\'s the paper, and where does it stall?',
         'What\'s your average repair order — and your biggest this month? (Underwriting needs the max ticket.)',
@@ -345,7 +345,7 @@ window.HUB_DATA = {
       placements: ['terminal-gateway', 'clover', 'quantic']
     },
 
-    'salons': { label: 'Salons & Spas', group: 'Services',
+    'salons': { label: 'Salons & Spas', group: 'Services', bg: 'salon.png',
       ask: [
         'How do clients book — and what did no-shows cost you last week, honestly?',
         'Card-on-file at booking: would your stylists back a no-show policy if the system enforced it?',
@@ -369,7 +369,7 @@ window.HUB_DATA = {
       placements: ['square', 'clover', 'sumup']
     },
 
-    'home-services': { label: 'Home Services (HVAC, Plumbing, Electrical…)', group: 'Services',
+    'home-services': { label: 'Home Services (HVAC, Plumbing, Electrical…)', group: 'Services', bg: 'home-services.jpg',
       ask: [
         'How many techs in the field, and how does each one collect today — check, card over phone, \'we\'ll bill you\'?',
         'From job-done to money-in-bank: how many days, really?',
@@ -393,7 +393,7 @@ window.HUB_DATA = {
       placements: ['invoicing-gateway', 'terminal-gateway']
     },
 
-    'fitness': { label: 'Fitness & Gyms', group: 'Services',
+    'fitness': { label: 'Fitness & Gyms', group: 'Services', bg: 'fitness.jpg',
       ask: [
         'How many members, and how many payments FAIL each month? Get the real number — that\'s the deal right there.',
         'What happens to a failed payment today — who chases it, and how much never comes back?',
@@ -417,7 +417,7 @@ window.HUB_DATA = {
       placements: ['invoicing-gateway', 'square', 'clover']
     },
 
-    'professional-services': { label: 'Professional Services (Legal, Accounting…)', group: 'Services',
+    'professional-services': { label: 'Professional Services (Legal, Accounting…)', group: 'Services', bg: 'professional.png',
       ask: [
         'How do invoices go out today, and what\'s the average days-to-paid?',
         'Retainers: how are they collected and replenished?',
@@ -441,7 +441,7 @@ window.HUB_DATA = {
       placements: ['invoicing-gateway']
     },
 
-    'cleaning': { label: 'Cleaning Services', group: 'Services',
+    'cleaning': { label: 'Cleaning Services', group: 'Services', bg: 'cleaning.jpg',
       ask: [
         'Residential, commercial, or both? How many recurring jobs a week?',
         'How do you bill — after each job, monthly, and how do you get paid: check, Venmo, card?',
@@ -465,7 +465,7 @@ window.HUB_DATA = {
       placements: ['invoicing-gateway', 'sumup']
     },
 
-    'healthcare': { label: 'Healthcare & Medical (Vision, Dental, Chiro, Derm, Mental Health, Wellness)', group: 'Healthcare',
+    'healthcare': { label: 'Healthcare & Medical (Vision, Dental, Chiro, Derm, Mental Health, Wellness)', group: 'Healthcare', bg: 'health.png',
       ask: [
         'Copays at the desk vs balances after insurance — what\'s the mix?',
         'How do patient statements go out, and what share actually gets collected?',
@@ -489,7 +489,7 @@ window.HUB_DATA = {
       placements: ['clover', 'terminal-gateway', 'invoicing-gateway']
     },
 
-    'high-risk': { label: 'High Risk & Specialty', group: 'Specialty',
+    'high-risk': { label: 'High Risk & Specialty', group: 'Specialty', bg: 'retail.png',
       ask: [
         'Exactly what do you sell, and on what billing model — one-time, subscription, trial-to-paid?',
         'Processing history: current and former processors, any terminations or MATCH list events? (Be straight — underwriting finds everything.)',
