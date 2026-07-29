@@ -992,7 +992,7 @@ window.HUB_DATA = {
     'skytab': {
       source: 'Shift4 partner program (Lighthouse partner portal)',
       quote: 'Processing on the Shift4 file — dual pricing or IC+. Hardware/software at sheet prices ($29.99/mo per device class; see Pricing page).',
-      make: ['Processing residual per the SkyTab partner Schedule A (PDF on the Pricing page)', 'Activation bonus per NextPay comp plan'],
+      make: ['Your share = 50% of NextPay’s SkyTab residuals and payouts', 'Activation bonus per NextPay comp plan'],
       need: null
     },
     'clover': {
