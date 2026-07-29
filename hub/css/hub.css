@@ -23,7 +23,7 @@ b,strong{font-weight:700}
 @media(max-width:920px){.hub-main{margin-left:0;padding-top:74px}}
 
 /* ---------- Sidebar ---------- */
-.hub-side{position:fixed;inset:0 auto 0 0;width:var(--side-w);background:var(--navy);color:#DCE7F0;display:flex;flex-direction:column;z-index:60;overflow-y:auto;scrollbar-width:thin;scrollbar-color:var(--navy-3) transparent}
+.hub-side{position:fixed;top:0;left:0;bottom:0;width:var(--side-w);background:var(--navy);color:#DCE7F0;display:flex;flex-direction:column;z-index:60;overflow-y:auto;scrollbar-width:thin;scrollbar-color:var(--navy-3) transparent}
 .hub-side::-webkit-scrollbar{width:6px}
 .hub-side::-webkit-scrollbar-thumb{background:var(--navy-3);border-radius:3px}
 .hs-logo{display:flex;align-items:center;gap:10px;padding:18px 18px 14px}
