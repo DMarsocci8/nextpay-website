@@ -128,7 +128,7 @@ ul.ck.plain li::before{color:var(--mut)}
 .wiz-bar span.on{background:var(--teal);border-color:var(--teal);color:#fff}
 .wiz-bar span.done{background:var(--teal-soft);border-color:var(--teal);color:var(--teal)}
 .pick-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:10px}
-.pick{background:#fff;border:1.5px solid var(--line);border-radius:var(--rad-sm);padding:13px 14px;font-weight:700;font-size:13.5px;cursor:pointer;text-align:left;transition:border-color .12s,background .12s}
+.pick{background:#fff;border:1.5px solid var(--line);border-radius:var(--rad-sm);padding:13px 14px;font-weight:700;font-size:13.5px;cursor:pointer;text-align:left;transition:border-color .12s,background .12s;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .pick small{display:block;font-weight:500;color:var(--mut);font-size:11.5px;margin-top:2px}
 .pick:hover{border-color:var(--teal)}
 .pick.on{border-color:var(--teal);background:var(--teal-soft)}
