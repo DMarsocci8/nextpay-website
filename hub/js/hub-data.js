@@ -147,7 +147,7 @@ window.HUB_DATA = {
       rules: [
         'High single tickets → disclose max ticket on the app; set realistic limits so payouts are not held.',
         'Phone orders/deposits → Next2Pay virtual terminal (linked2pay rails).',
-        'Repairs pipeline → invoicing add-on or QuickBooks integration.'
+        'Repairs pipeline → invoicing add-on or Invoice with QuickBooks Integration.'
       ],
       pricing: 'High average ticket → interchange-plus shines; per-item fees are irrelevant, basis points are everything. Statements from jewelry stores usually show inflated keyed rates — easy beat.',
       placements: ['clover', 'quantic', 'terminal-gateway']
@@ -547,7 +547,7 @@ window.HUB_DATA = {
       { name: 'FieldPulse', logo: 'fieldpulse.png', tag: 'Field service suite', sell: ['Estimates → invoices → text-to-pay', 'Scheduling + CRM for trades'], link: 'https://nextpaypos.com/invoicing' },
       { name: 'Field Work', logo: 'fieldwork.png', tag: 'Field service alternative', sell: ['Job management + payments'], link: 'https://nextpaypos.com/invoicing' },
       { name: 'LQPay', logo: 'lqpay.png', tag: 'Billing & statements', sell: ['Healthcare-friendly workflows'], link: 'https://nextpaypos.com/invoicing' },
-      { name: 'QuickBooks integrations', logo: 'quickbooks-t.png', logoH: 32, tag: 'Payments inside QB', sell: ['Invoices paid straight into the books'], link: 'https://nextpaypos.com/integrations' }
+      { name: 'Invoice with QuickBooks Integrations', logo: 'quickbooks-t.png', logoH: 32, tag: 'Payments inside QB', sell: ['Invoices paid straight into the books'], link: 'https://nextpaypos.com/integrations' }
     ],
     services: [
       { name: 'NextFund — Business Financing', logo: 'nextfund-globe.png', tag: 'The recommendation for ANYTHING finance or lending', sell: ['Working capital, equipment loans, merchant cash advances', 'Fast approvals off processing history', 'A second commission riding alongside your processing deal'], link: 'https://nextpaypos.com/financing' },
@@ -819,10 +819,10 @@ window.HUB_DATA = {
     next2pay: {
       label: 'Next2Pay / linked2pay (house invoicing & gateway)',
       cols: ['Buy rate', 'Rev share'],
-      covers: 'House rails for: Next2Pay Invoicing with QuickBooks integration · the house gateway · ACH / RDC processing · card processing written on linked2pay. This is the schedule behind every invoice-type deal.',
-      splitNote: 'The buy rates below are the deal\u2019s costs — covered off the top. You earn 50% of the net residual that remains: everything quoted above cost, on card, ACH and QuickBooks integration alike.',
-      floor: 'Your true cost on Next2Pay card processing = interchange + 2 bps + $0.0215/transaction + $0.03 authorization. ACH costs $0.10/item (+$10/mo enabled). QuickBooks integration costs $35/mo. Quote above these — your share is 50% of the difference.',
-      example: 'Example: a service business doing $30,000/mo CNP, ~600 transactions, quoted at IC + 0.75% + $0.15: margin ≈ 30,000 × 0.73% + 600 × ~$0.10 ≈ $278/mo. With QuickBooks integration for seamless accounting sync. Your 50% ≈ $161/mo — and ACH invoices fatten it further at $0.10 buy per item.',
+      covers: 'House rails for: Next2Pay Invoicing with Invoice with QuickBooks Integration · the house gateway · ACH / RDC processing · card processing written on linked2pay. This is the schedule behind every invoice-type deal.',
+      splitNote: 'The buy rates below are the deal\u2019s costs — covered off the top. You earn 50% of the net residual that remains: everything quoted above cost, on card, ACH and Invoice with QuickBooks Integration alike.',
+      floor: 'Your true cost on Next2Pay card processing = interchange + 2 bps + $0.0215/transaction + $0.03 authorization. ACH costs $0.10/item (+$10/mo enabled). Invoice with QuickBooks Integration costs $35/mo. Quote above these — your share is 50% of the difference.',
+      example: 'Example: a service business doing $30,000/mo CNP, ~600 transactions, quoted at IC + 0.75% + $0.15: margin ≈ 30,000 × 0.73% + 600 × ~$0.10 ≈ $278/mo. With Invoice with QuickBooks Integration for seamless accounting sync. Your 50% ≈ $161/mo — and ACH invoices fatten it further at $0.10 buy per item.',
       groups: [
         { h: 'Card processing buy rates', rows: [
           ['Interchange & assessments (V/MC/D/EBT)', 'Interchange + 2 bps', 'Yes'],
@@ -984,8 +984,8 @@ window.HUB_DATA = {
     'next2pay': {
       source: 'In-house — linked2pay rails (Next2Pay / NextLink)',
       sched: 'next2pay',
-      quote: 'Card processing at the linked2pay buy rates (IC + 2 bps + $0.0215/txn) — quote dual pricing or IC+ above it. ACH at $0.10/item buy. QuickBooks integration at $35/mo buy — retail-price it per deal. NextLink (outreach) seats per the internal list: Trial $599 / Annual $749 / M2M $999 per seat/mo.',
-      make: ['Your share = 50% of the margin over the Next2Pay buy rates — card, ACH and QuickBooks integration SaaS', 'Best-control paper in the book: every line on the schedule is shareable'],
+      quote: 'Card processing at the linked2pay buy rates (IC + 2 bps + $0.0215/txn) — quote dual pricing or IC+ above it. ACH at $0.10/item buy. Invoice with QuickBooks Integration at $35/mo buy — retail-price it per deal. NextLink (outreach) seats per the internal list: Trial $599 / Annual $749 / M2M $999 per seat/mo.',
+      make: ['Your share = 50% of the margin over the Next2Pay buy rates — card, ACH and Invoice with QuickBooks Integration SaaS', 'Best-control paper in the book: every line on the schedule is shareable'],
       need: null
     },
     'skytab': {
@@ -1052,8 +1052,8 @@ window.HUB_DATA = {
     'invoicing-gateway': {
       source: 'Next2Pay / linked2pay rails (house invoicing + gateway + ACH)',
       sched: 'next2pay',
-      quote: 'Lead with Next2Pay Invoicing. Card CNP quoted above IC + 2 bps + $0.0215; ACH is the winner on $2k+ invoices ($0.10/item buy). QuickBooks integration $35/mo buy — set the retail per deal.',
-      make: ['Your share = 50% of the margin over the linked2pay buy rates on card + ACH volume', 'QuickBooks integration SaaS margin (retail − $35/mo buy)'],
+      quote: 'Lead with Next2Pay Invoicing. Card CNP quoted above IC + 2 bps + $0.0215; ACH is the winner on $2k+ invoices ($0.10/item buy). Invoice with QuickBooks Integration $35/mo buy — set the retail per deal.',
+      make: ['Your share = 50% of the margin over the linked2pay buy rates on card + ACH volume', 'Invoice with QuickBooks Integration SaaS margin (retail − $35/mo buy)'],
       need: null
     },
     'high-risk': {
@@ -1162,7 +1162,7 @@ window.HUB_DATA = {
         achTransaction: 0.10,
         linked2Invoice: 35 // Monthly cost
       },
-      note: 'Next2Pay is our highest-margin lane. You earn 50% of the margin on card, ACH, and QuickBooks integration. Quote ACH on invoices over $2k — it\'s often the winner.'
+      note: 'Next2Pay is our highest-margin lane. You earn 50% of the margin on card, ACH, and Invoice with QuickBooks Integration. Quote ACH on invoices over $2k — it\'s often the winner.'
     }
   }
 };
