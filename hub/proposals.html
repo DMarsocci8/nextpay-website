@@ -176,7 +176,8 @@
     'pays': 'assets/logos/pays.svg',
     'quantic': 'assets/logos/quantic.svg',
     'nrs': 'assets/logos/nrs.png',
-    'shift4': 'assets/logos/shift4.png'
+    'shift4': 'assets/logos/shift4.png',
+    'nextlink': 'assets/logos/nextlink-plated.png'
   };
   let tab = 'builder';
 
@@ -294,7 +295,7 @@
     const planTxt = $('nl-plan').options[$('nl-plan').selectedIndex].text.replace(/ — .*$/, '');
     const priceTxt = plan === 'custom' ? 'Custom — quoted for your team'
       : fmt(Number(plan)) + ' per seat / month · ' + seats + ' seat' + (seats > 1 ? 's' : '') + ' = <b>' + fmt(Number(plan) * seats) + '/mo</b>';
-    return head('NextLink — Client Automation & Outreach', null) +
+    return head('NextLink — Client Automation & Outreach', BRAND_LOGOS.nextlink) +
       '<p style="margin-top:14px;font-size:14px">NextLink runs your client outreach on autopilot — campaigns, follow-up sequences and booked appointments, with our team handling setup.</p>' +
       '<table><tbody><tr><td style="width:110px"><b>Plan</b></td><td>' + esc(planTxt) + '</td></tr>' +
       '<tr><td><b>Investment</b></td><td>' + priceTxt + '</td></tr>' +
