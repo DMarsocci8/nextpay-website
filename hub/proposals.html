@@ -203,13 +203,38 @@
   /* ---------- BUILDER ---------- */
   let brand = null, mode = null, qty = {};
   function cat() { return window.NP_POS_CATALOG || null; }
+  function getBrandLogo(brandKey) {
+    // Try exact match first, then try lowercase, then try common variations
+    if (BRAND_LOGOS[brandKey]) return BRAND_LOGOS[brandKey];
+    const lc = brandKey.toLowerCase();
+    if (BRAND_LOGOS[lc]) return BRAND_LOGOS[lc];
+    // Try removing common prefixes like "Shift4-" or similar
+    const cleaned = lc.replace(/^(shift4-|skytab-|square-)/, '');
+    if (BRAND_LOGOS[cleaned]) return BRAND_LOGOS[cleaned];
+    // Try matching partial names (e.g. "skytab" in "shift4-skytab")
+    for (const key in BRAND_LOGOS) {
+      if (lc.includes(key) || key.includes(cleaned)) return BRAND_LOGOS[key];
+    }
+    return null;
+  }
   function drawBrands() {
     const C = cat();
     if (!C) { $('brand-row').innerHTML = '<span class="muted small">' + (window.__catFail ? 'Catalog failed to load (offline preview) — on the live hub this pulls the full product catalog automatically. Use the One-Page tab meanwhile.' : 'Loading catalog…') + '</span>'; return; }
+    if (window.console && !window._brandKeysLogged) {
+      console.log('Available brand keys:', Object.keys(C));
+      window._brandKeysLogged = true;
+    }
     $('brand-row').innerHTML = (window.NP_POS_ORDER || Object.keys(C)).map(k =>
       '<button class="pick' + (brand === k ? ' on' : '') + '" data-b="' + k + '" style="flex:0 1 auto">' + esc(C[k].label) + '</button>').join('');
     $('brand-row').querySelectorAll('[data-b]').forEach(b => b.addEventListener('click', () => {
-      brand = b.dataset.b; mode = cat()[brand].modes[0]; qty = {}; drawBrands(); drawModes(); drawItems(); render();
+      brand = b.dataset.b; mode = cat()[brand].modes[0]; qty = {};
+      if (window.console) console.log('Selected brand:', brand, 'Logo:', getBrandLogo(brand));
+      // Auto-add Lighthouse/Customer Hub to SkyTab proposals (mandatory $20/mo)
+      if (brand.toLowerCase().includes('skytab') || brand === 'skytab') {
+        const lighthouseItem = cat()[brand].items.find(i => i.name.includes('Lighthouse') || i.name.includes('Customer Hub'));
+        if (lighthouseItem) qty[lighthouseItem.id] = 1;
+      }
+      drawBrands(); drawModes(); drawItems(); render();
     }));
   }
   function drawModes() {
@@ -257,7 +282,7 @@
       once += l.p.v * l.q; mo += l.p.mo * l.q;
       return '<tr><td style="white-space:nowrap">' + l.q + '×</td><td><b>' + esc(l.i.name) + '</b><br><span style="color:#5B6B7B;font-size:11px">' + esc(l.i.sub || '') + '</span></td><td style="white-space:nowrap">' + (l.i.quote ? 'final quote' : l.p.txt) + '</td></tr>';
     }).join('');
-    const brandLogo = (C && brand && BRAND_LOGOS[brand.toLowerCase()]) ? BRAND_LOGOS[brand.toLowerCase()] : null;
+    const brandLogo = (C && brand) ? getBrandLogo(brand) : null;
     return head((C && brand ? C[brand].label + ' proposal' : 'Proposal'), brandLogo) +
       ($('b-savings').value ? '<div class="savebar">' + esc($('b-savings').value) + '</div>' : '') +
       (ls.length
