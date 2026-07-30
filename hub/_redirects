@@ -1,5 +1,38 @@
-# Legacy hub URLs → new structure (Cloudflare Pages serves clean URLs natively:
-# /pricing → pricing.html, etc.)
+# Clean URLs for hub pages (Cloudflare Pages rewrites .html to pretty paths)
+/pricing /pricing.html 200
+/submit-deal /submit-deal.html 200
+/deal-navigator /deal-navigator.html 200
+/proposals /proposals.html 200
+/crm /crm.html 200
+/merchants /merchants.html 200
+/earnings /earnings.html 200
+/admin /admin.html 200
+/compensation /compensation.html 200
+/marketing /marketing.html 200
+/business-card /business-card.html 200
+/calendar /calendar.html 200
+/flyers /flyers.html 200
+/industries /industries.html 200
+/schedule-as /schedule-as.html 200
+
+# Old .html URLs redirect to clean paths
+/pricing.html /pricing 301
+/submit-deal.html /submit-deal 301
+/deal-navigator.html /deal-navigator 301
+/proposals.html /proposals 301
+/crm.html /crm 301
+/merchants.html /merchants 301
+/earnings.html /earnings 301
+/admin.html /admin 301
+/compensation.html /compensation 301
+/marketing.html /marketing 301
+/business-card.html /business-card 301
+/calendar.html /calendar 301
+/flyers.html /flyers 301
+/industries.html /industries 301
+/schedule-as.html /schedule-as 301
+
+# Legacy hub URLs → new structure
 /SalesHub / 301
 /Sales%20Hub / 301
 /Sales_Hub / 301
