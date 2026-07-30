@@ -875,10 +875,10 @@ window.HUB_DATA = {
       docs: ['Last 3 months of processing statements', 'Last 3 months of business bank statements', 'Articles of Incorporation', 'ID for the business owners', 'Bank account details', 'Connection to Plaid', 'Completion of Veriff']
     },
     clover: {
-      label: 'Clover (NextPay white-labeled program)',
+      label: 'Clover (Fiserv partnership)',
       cols: ['Partner cost'],
-      covers: 'Our white-labeled Clover paper — every Clover deal (Fiserv application). Hardware at wholesale per the Clover pricing sheet (hub docs); Clover platform fee $5/MID + $0.03 non-swiped auth pass through.',
-      splitNote: 'The costs below come off the top. You earn 50% of the net residual — ≈ 45% of the margin you create on standard Clover accounts; roughly half that on high-risk and ACH. Heads up: closes assisted by the program\u2019s POS team trim the residual slightly (20 bps).',
+      covers: 'Clover deals (Fiserv application). Hardware at wholesale per the Clover pricing sheet (hub docs); Clover platform fee $5/MID + $0.03 non-swiped auth pass through.',
+      splitNote: 'The costs below come off the top. You earn 50% of the net residual — ≈ 45% of the margin you create on standard Clover accounts; roughly half that on high-risk and ACH. Heads up: closes assisted by Clover sales\u2019s POS team trim the residual slightly (20 bps).',
       floor: 'Your true cost on Clover paper = interchange (pass-through) + 0.03% BIN + $0.035/authorization (+ $0.02 batch, $0.01 AVS). Several lines carry built-in spread: PCI billed $149/yr vs $99 cost, PCI non-action $39.95/mo vs $21.95, statement $1/mo cost. Same-day funding $9.95 cannot be marked up.',
       example: 'Example: $45,000/mo Clover retail, ~1,500 transactions, quoted at IC + 0.50% + $0.10: gross margin ≈ $309/mo. Your share ≈ $139/mo, plus PCI/statement spread and hardware markup.',
       groups: [
