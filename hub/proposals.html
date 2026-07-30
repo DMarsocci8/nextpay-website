@@ -233,8 +233,16 @@
       console.log('Available brand keys:', Object.keys(C));
       window._brandKeysLogged = true;
     }
-    $('brand-row').innerHTML = (window.NP_POS_ORDER || Object.keys(C)).map(k =>
-      '<button class="pick' + (brand === k ? ' on' : '') + '" data-b="' + k + '" style="flex:0 1 auto">' + esc(C[k].label) + '</button>').join('');
+    // Merge external catalog with hub placements for comprehensive brand coverage
+    const D = window.HUB_DATA;
+    const allPlacements = D ? Object.keys(D.placements) : [];
+    const extKeys = window.NP_POS_ORDER || Object.keys(C);
+    const mergedKeys = [...new Set([...extKeys, ...allPlacements])];
+
+    $('brand-row').innerHTML = mergedKeys.map(k => {
+      const label = C && C[k] ? C[k].label : D && D.placements[k] ? D.placements[k].label : k;
+      return '<button class="pick' + (brand === k ? ' on' : '') + '" data-b="' + k + '" style="flex:0 1 auto">' + esc(label) + '</button>';
+    }).join('');
     $('brand-row').querySelectorAll('[data-b]').forEach(b => b.addEventListener('click', () => {
       brand = b.dataset.b; mode = cat()[brand].modes[0]; qty = {};
       if (window.console) console.log('Selected brand:', brand, 'Logo:', getBrandLogo(brand));
@@ -249,9 +257,11 @@
   function drawModes() {
     const C = cat(); if (!C || !brand) { $('mode-row').innerHTML = ''; return; }
     const MI = window.NP_POS_MODEINFO || {};
-    $('mode-row').innerHTML = C[brand].modes.map(m =>
+    const B = C[brand];
+    if (!B || !B.modes) { $('mode-row').innerHTML = '<span class="muted small">This platform is not yet available in the Proposal Builder. Use the One-Page Proposal tab instead.</span>'; return; }
+    $('mode-row').innerHTML = B.modes.map(m =>
       '<button class="pick' + (mode === m ? ' on' : '') + '" data-m="' + m + '" style="flex:0 1 auto">' + esc((MI[m] || {}).label || m) + '</button>').join('');
-    $('proc-note').textContent = C[brand].proc || '';
+    $('proc-note').textContent = B.proc || '';
     $('mode-row').querySelectorAll('[data-m]').forEach(b => b.addEventListener('click', () => { mode = b.dataset.m; drawModes(); drawItems(); render(); }));
   }
   function price(it) {
@@ -264,6 +274,7 @@
   function drawItems() {
     const C = cat(); if (!C || !brand) { $('items').innerHTML = '<p class="muted small">Pick a platform above — every product line we sell is in here.</p>'; return; }
     const B = C[brand];
+    if (!B || !B.cats) { $('items').innerHTML = '<p class="muted small">This platform is not yet available in the Proposal Builder. Use the One-Page Proposal tab instead.</p>'; return; }
     $('items').innerHTML = B.cats.map(c => {
       const items = B.items.filter(i => i.cat === c.key);
       return '<h4 class="mt16 mb8">' + esc(c.label) + '</h4><div class="cat-items">' + items.map(i => {
