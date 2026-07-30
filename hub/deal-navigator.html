@@ -53,7 +53,7 @@
     let h = '<div class="card"><h3>What kind of business is this?</h3><p class="muted small mb8">This drives the questions, the product fit and the pricing angle for the whole deal.</p>';
     for (const [g, list] of Object.entries(groups)) {
       h += '<div class="hs-sec" style="padding-left:0;color:var(--mut)">' + g + '</div><div class="pick-grid">';
-      h += list.map(([k, v]) => '<button class="pick' + (deal.industry === k ? ' on' : '') + '" data-ind="' + k + '" style="background-image:url(../assets/industries/' + esc(v.bg || '') + ');background-size:cover;background-position:center">' + esc(v.label) + '</button>').join('');
+      h += list.map(([k, v]) => '<button class="pick' + (deal.industry === k ? ' on' : '') + '" data-ind="' + k + '" style="background-image:url(assets/industries/' + esc(v.bg || '') + ');background-size:cover;background-position:center">' + esc(v.label) + '</button>').join('');
       h += '</div>';
     }
     h += '<hr class="sep"><div class="frow"><div><label class="fl">Business name</label><input class="fi" id="f-biz" value="' + esc(deal.biz) + '" placeholder="DBA / business name"></div>' +
