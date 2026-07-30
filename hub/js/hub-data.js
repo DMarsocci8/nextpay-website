@@ -821,8 +821,8 @@ window.HUB_DATA = {
       cols: ['Buy rate', 'Rev share'],
       covers: 'House rails for: Next2Pay Invoicing with Invoice with QuickBooks Integration · the house gateway · ACH / RDC processing · card processing written on linked2pay. This is the schedule behind every invoice-type deal.',
       splitNote: 'The buy rates below are the deal\u2019s costs — covered off the top. You earn 50% of the net residual that remains: everything quoted above cost, on card, ACH and Invoice with QuickBooks Integration alike.',
-      floor: 'Your true cost on Next2Pay card processing = interchange + 2 bps + $0.0215/transaction + $0.03 authorization. ACH costs $0.10/item (+$10/mo enabled). Invoice with QuickBooks Integration costs $35/mo. Quote above these — your share is 50% of the difference.',
-      example: 'Example: a service business doing $30,000/mo CNP, ~600 transactions, quoted at IC + 0.75% + $0.15: margin ≈ 30,000 × 0.73% + 600 × ~$0.10 ≈ $278/mo. With Invoice with QuickBooks Integration for seamless accounting sync. Your 50% ≈ $161/mo — and ACH invoices fatten it further at $0.10 buy per item.',
+      floor: 'Your true cost on Next2Pay card processing = interchange + 2 bps + $0.0215/transaction + $0.03 authorization. ACH costs $0.10/item (+$10/mo enabled). Invoice with QuickBooks Integration costs $35/mo + $10/mo platform maintenance = $45/mo total. Quote above these — your share is 50% of the difference.',
+      example: 'Example: a service business doing $30,000/mo CNP, ~600 transactions, quoted at IC + 0.75% + $0.15: card margin ≈ $278/mo. With Invoice with QuickBooks Integration ($45/mo cost floor → quote at $50/mo for $5/mo residual on the invoicing). Your 50% ≈ $141/mo from card + $2.50 from invoicing, plus ACH at $0.10 buy per item.',
       groups: [
         { h: 'Card processing buy rates', rows: [
           ['Interchange & assessments (V/MC/D/EBT)', 'Interchange + 2 bps', 'Yes'],
