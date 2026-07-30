@@ -165,6 +165,10 @@
   const esc = (s) => String(s == null ? '' : s).replace(/[<>&"]/g, c => ({'<':'&lt;','>':'&gt;','&':'&amp;','"':'&quot;'}[c]));
   const fmt = (n) => '$' + (Math.round(n * 100) / 100).toLocaleString();
   const LOGO = 'assets/logos/nextpay.png';
+  // Brand logo mapping. To add a new brand:
+  // 1. Add the logo image to assets/logos/
+  // 2. Add the brand key and logo path here (can include multiple variations)
+  // 3. Ensure the brand is in the POS_CATALOG (loaded from https://nextpaypos.com/js/pos-catalog.js)
   const BRAND_LOGOS = {
     'chively': 'assets/logos/chively-white.png',
     'korona': 'assets/logos/korona.png',
