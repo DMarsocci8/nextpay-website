@@ -21,16 +21,15 @@
 </div>
 
 <div class="card mt16">
-  <h3>Quick-access resources</h3>
-  <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:12px">
-    <div><a href="https://nextpaypos.com/application" target="_blank" rel="noopener" style="display:block;padding:12px 14px;background:var(--bg2);border:1.5px solid var(--line);border-radius:6px;text-decoration:none;color:inherit;font-weight:500;font-size:14px;transition:all 0.2s"><b>Merchant Application</b> (PDF)</a></div>
-    <div><a href="https://dine.shift4.com/resource-center" target="_blank" rel="noopener" style="display:block;padding:12px 14px;background:var(--bg2);border:1.5px solid var(--line);border-radius:6px;text-decoration:none;color:inherit;font-weight:500;font-size:14px;transition:all 0.2s"><b>SkyTab / Shift4</b> Portal</a></div>
-    <div><a href="https://www.clover.com/" target="_blank" rel="noopener" style="display:block;padding:12px 14px;background:var(--bg2);border:1.5px solid var(--line);border-radius:6px;text-decoration:none;color:inherit;font-weight:500;font-size:14px;transition:all 0.2s"><b>Clover</b> (877-928-0305)</a></div>
-    <div><a href="https://solutionsinpayments.com/" target="_blank" rel="noopener" style="display:block;padding:12px 14px;background:var(--bg2);border:1.5px solid var(--line);border-radius:6px;text-decoration:none;color:inherit;font-weight:500;font-size:14px;transition:all 0.2s"><b>Solutions in Payments</b> Portal</a></div>
-    <div><a href="https://squareup.com/us/en/pricing/point-of-sale" target="_blank" rel="noopener" style="display:block;padding:12px 14px;background:var(--bg2);border:1.5px solid var(--line);border-radius:6px;text-decoration:none;color:inherit;font-weight:500;font-size:14px;transition:all 0.2s"><b>Square</b> POS &amp; Pricing</a></div>
-    <div><a href="https://squareup.com/us/en/payments/processing" target="_blank" rel="noopener" style="display:block;padding:12px 14px;background:var(--bg2);border:1.5px solid var(--line);border-radius:6px;text-decoration:none;color:inherit;font-weight:500;font-size:14px;transition:all 0.2s"><b>Square</b> Processing Rates</a></div>
+  <h3>Submit by placement</h3>
+  <p class="muted small mb12">Click a brand to see the submission steps and requirements.</p>
+  <div id="portal-grid" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(120px,1fr));gap:14px;margin-bottom:16px"></div>
+  <div class="note">
+    <b>Quick resources:</b> Merchant application PDF: <a href="https://nextpaypos.com/application" target="_blank" rel="noopener">nextpaypos.com/application</a> ·
+    SkyTab/Shift4 portal: <a href="https://dine.shift4.com/resource-center" target="_blank" rel="noopener">dine.shift4.com</a> ·
+    Solutions in Payments: <a href="https://solutionsinpayments.com/" target="_blank" rel="noopener">solutionsinpayments.com</a> ·
+    Clover support: (877) 928-0305 opt 2
   </div>
-  <p class="small muted mt12"><b>Clover contacts:</b> POS desk (877) 928-0305 opt 2 · Applications ext 205 · Install: book.redfynn.com/install</p>
 </div>
 
 <h3 class="mt24 mb8">Then follow the placement playbook</h3>
@@ -58,6 +57,13 @@
   document.getElementById('c-submit').textContent = D.contacts.submit;
   document.getElementById('c-cc').textContent = D.contacts.cc;
 
+  const portalGrid = document.getElementById('portal-grid');
+  portalGrid.innerHTML = Object.entries(D.placements).map(([k, p]) =>
+    '<button class="portal-tile" data-k="' + k + '" style="display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;padding:14px;background:var(--bg2);border:1.5px solid var(--line);border-radius:8px;cursor:pointer;transition:all 0.2s;text-decoration:none;color:inherit">' +
+    (p.logo ? '<img src="assets/logos/' + esc(p.logo) + '" alt="" style="height:48px;object-fit:contain">' : '') +
+    '<span style="font-weight:500;font-size:12px;text-align:center;line-height:1.3">' + esc(p.label) + '</span></button>'
+  ).join('');
+
   const picks = document.getElementById('picks'), detail = document.getElementById('detail');
   picks.innerHTML = Object.entries(D.placements).map(([k, p]) =>
     '<button class="pick" data-k="' + k + '">' +
@@ -67,11 +73,16 @@
   function show(k) {
     const p = D.placements[k];
     document.querySelectorAll('.pick').forEach(b => b.classList.toggle('on', b.dataset.k === k));
+    document.querySelectorAll('.portal-tile').forEach(b => {
+      b.style.borderColor = b.dataset.k === k ? 'var(--teal-bright)' : 'var(--line)';
+      b.style.backgroundColor = b.dataset.k === k ? 'var(--bg3)' : 'var(--bg2)';
+    });
     detail.innerHTML = '<div class="card"><h3>' + esc(p.label) + ' — submission steps</h3><div class="steps mt8">' +
       p.steps.map(s => '<div class="step"><div><p style="color:var(--ink)">' + esc(s) + '</p></div></div>').join('') + '</div></div>';
     history.replaceState(null, '', '#' + k);
   }
   picks.addEventListener('click', (e) => { const b = e.target.closest('.pick'); if (b) show(b.dataset.k); });
+  portalGrid.addEventListener('click', (e) => { const b = e.target.closest('.portal-tile'); if (b) show(b.dataset.k); });
   const initial = location.hash.slice(1);
   show(D.placements[initial] ? initial : 'skytab');
 })();
