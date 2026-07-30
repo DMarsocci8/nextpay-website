@@ -974,17 +974,10 @@ window.HUB_DATA = {
      processing gets quoted. Entries with `need` are waiting on a Schedule A
      from Dom — they render as "missing" until filled in. INTERNAL ONLY. */
   economics: {
-    'chively': {
-      source: 'Solutions in Payments paper (Luqra) — Chively POS',
-      sched: 'sip',
-      quote: 'Chively hardware/software pricing coming soon — until then, work the quote in the deal’s Deal Desk thread. Processing is fully ours to price on SIP — dual pricing or IC+ above the SIP cost floor (IC pass-through + 0.02% + $0.02/txn).',
-      make: ['Your share ≈ 45% of everything above the SIP cost floor — bps, per-item and monthly-fee margin', 'Hardware/software margin on the Chively build'],
-      need: null
-    },
-    'next2pay': {
+    ‘next2pay’: {
       source: 'In-house — linked2pay rails (Next2Pay / NextLink)',
       sched: 'next2pay',
-      quote: 'Card processing at the linked2pay buy rates (IC + 2 bps + $0.0215/txn) — quote dual pricing or IC+ above it. ACH at $0.10/item buy. Invoice with QuickBooks Integration at $35/mo buy — retail-price it per deal. NextLink (outreach) seats per the internal list: Trial $599 / Annual $749 / M2M $999 per seat/mo.',
+      quote: 'Card processing at the linked2pay buy rates (IC + 2 bps + $0.0215/txn) — quote dual pricing or IC+ above it. ACH at $0.10/item buy. Invoice with QuickBooks Integration at $35/mo buy — retail-price it per deal.',
       make: ['Your share = 50% of the margin over the Next2Pay buy rates — card, ACH and Invoice with QuickBooks Integration SaaS', 'Best-control paper in the book: every line on the schedule is shareable'],
       need: null
     },
@@ -995,7 +988,7 @@ window.HUB_DATA = {
       need: null
     },
     'clover': {
-      source: 'NextPay\u2019s white-labeled Clover program (house paper, Fiserv application)',
+      source: 'Clover (Fiserv partnership \u2014 house paper)',
       sched: 'clover',
       quote: 'Quote dual pricing or IC+ above the Clover cost floor (IC + 0.03% + $0.035/auth). $5/mo Clover platform fee per MID passes through. Hardware at wholesale per the pricing sheet \u2014 mark up per deal. Ask in Deal Desk whether the deal qualifies for the Clover Advantage program before quoting.',
       make: ['Your share \u2248 45% of the margin you create on standard Clover accounts', 'Hardware markup over wholesale (Duo bundle $2,058.80 \u00b7 Solo $1,734.80 \u00b7 Mini $917.10 \u00b7 Flex Gen 4 $738.11 + deployment)', 'Built-in spreads: PCI, statement, compliance lines', 'Watch: POS-assisted closes trim your residual 20 bps; high-risk/ACH pay roughly half the standard share'],
@@ -1042,6 +1035,13 @@ window.HUB_DATA = {
       make: ['Your share \u2248 40% of the processing margin you quote above cost (steps up on large books)', '\u2248 10% of new-merchant SaaS subscriptions is yours', 'Hardware markup over Schedule A cost (discounting below cost comes out of your pocket)'],
       need: null
     },
+    'chively': {
+      source: 'Solutions in Payments paper (Luqra) \u2014 Chively POS',
+      sched: 'sip',
+      quote: 'Chively hardware/software pricing coming soon \u2014 until then, work the quote in the deal's Deal Desk thread. Processing is fully ours to price on SIP \u2014 dual pricing or IC+ above the SIP cost floor (IC pass-through + 0.02% + $0.02/txn).',
+      make: ['Your share \u2248 45% of everything above the SIP cost floor \u2014 bps, per-item and monthly-fee margin', 'Hardware/software margin on the Chively build'],
+      need: null
+    },
     'terminal-gateway': {
       source: 'Solutions in Payments paper (PAX / Dejavoo / Valor + NMI / FluidPay / Authorize.net / iPOSPays)',
       sched: 'sip',
@@ -1085,7 +1085,7 @@ window.HUB_DATA = {
       note: 'SkyTab is a placement model ($0 upfront). Revenue is based on 18x average monthly profitability after costs. Your share = 50% of NextPay\'s margin after all fees.'
     },
     clover: {
-      name: 'Clover (NextPay white-label)',
+      name: 'Clover',
       provider: 'Fiserv / RedFynn',
       bonus: 250,
       baseCalculation: 'Margin from processing volume and rate above our cost floor (IC + 0.03% BIN + $0.035/auth). Hardware and optional services add margin too.',
