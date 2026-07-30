@@ -76,7 +76,7 @@
 
   function page() {
     const p = location.pathname.split('/').pop();
-    return p === '' ? 'index.html' : p;
+    return p === '' ? 'index.html' : p + (p && !p.includes('.') ? '.html' : '');
   }
 
   function render(email) {
