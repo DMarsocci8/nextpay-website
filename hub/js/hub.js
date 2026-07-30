@@ -42,7 +42,6 @@
     { sec: 'My business' },
     { href: 'merchants.html', label: 'My Merchants', ic: 'users' },
     { href: 'compensation.html', label: 'Compensation', ic: 'doc' },
-    { href: 'buy-rates.html', label: 'Buy Rates', ic: 'coin' },
     { href: 'earnings.html', label: 'Your Earnings', ic: 'coin' },
     { href: 'schedule-as.html', label: 'Partner Programs & Schedule A', ic: 'doc' },
     { href: 'marketing.html', label: 'Marketing & Brand', ic: 'mega' },
