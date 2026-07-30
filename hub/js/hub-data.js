@@ -819,10 +819,10 @@ window.HUB_DATA = {
     next2pay: {
       label: 'Next2Pay / linked2pay (house invoicing & gateway)',
       cols: ['Buy rate', 'Rev share'],
-      covers: 'House rails for: Next2Pay Invoicing (Linked2Invoice) · the house gateway · ACH / RDC processing · card processing written on linked2pay. This is the schedule behind every invoice-type deal.',
-      splitNote: 'The buy rates below are the deal\u2019s costs — covered off the top. You earn 50% of the net residual that remains: everything quoted above cost, on card, ACH and Linked2Invoice alike.',
-      floor: 'Your true cost on Next2Pay card processing = interchange + 2 bps + $0.0215/transaction + $0.03 authorization. ACH costs $0.10/item (+$10/mo enabled). Linked2Invoice costs $35/mo. Quote above these — your share is 50% of the difference.',
-      example: 'Example: a service business doing $30,000/mo CNP, ~600 transactions, quoted at IC + 0.75% + $0.15: margin ≈ 30,000 × 0.73% + 600 × ~$0.10 ≈ $278/mo. Add Linked2Invoice quoted at $79 vs $35 buy = $44. Your 50% ≈ $161/mo — and ACH invoices fatten it further at $0.10 buy per item.',
+      covers: 'House rails for: Next2Pay Invoicing with QuickBooks integration · the house gateway · ACH / RDC processing · card processing written on linked2pay. This is the schedule behind every invoice-type deal.',
+      splitNote: 'The buy rates below are the deal\u2019s costs — covered off the top. You earn 50% of the net residual that remains: everything quoted above cost, on card, ACH and QuickBooks integration alike.',
+      floor: 'Your true cost on Next2Pay card processing = interchange + 2 bps + $0.0215/transaction + $0.03 authorization. ACH costs $0.10/item (+$10/mo enabled). QuickBooks integration costs $35/mo. Quote above these — your share is 50% of the difference.',
+      example: 'Example: a service business doing $30,000/mo CNP, ~600 transactions, quoted at IC + 0.75% + $0.15: margin ≈ 30,000 × 0.73% + 600 × ~$0.10 ≈ $278/mo. With QuickBooks integration for seamless accounting sync. Your 50% ≈ $161/mo — and ACH invoices fatten it further at $0.10 buy per item.',
       groups: [
         { h: 'Card processing buy rates', rows: [
           ['Interchange & assessments (V/MC/D/EBT)', 'Interchange + 2 bps', 'Yes'],
@@ -868,7 +868,6 @@ window.HUB_DATA = {
           ['RDC return / unauthorized', '$4.00 / $7.50 per item', 'Yes'],
           ['Transaction (Direct X9)', '$0.15 / item', 'Yes'],
           ['Credit card processing transaction (gateway)', '$0.05 / item', 'Yes'],
-          ['Linked2Invoice', '$35.00 / mo', 'Yes'],
           ['Add store fee', '$25.00 one-time', 'No'],
           ['Mailed check', '$3.00 / item', 'No'],
           ['Early termination', '$65.00 one-time', 'No']] }
@@ -985,8 +984,8 @@ window.HUB_DATA = {
     'next2pay': {
       source: 'In-house — linked2pay rails (Next2Pay / NextLink)',
       sched: 'next2pay',
-      quote: 'Card processing at the linked2pay buy rates (IC + 2 bps + $0.0215/txn) — quote dual pricing or IC+ above it. ACH at $0.10/item buy. Linked2Invoice at $35/mo buy — retail-price it per deal. NextLink (outreach) seats per the internal list: Trial $599 / Annual $749 / M2M $999 per seat/mo.',
-      make: ['Your share = 50% of the margin over the Next2Pay buy rates — card, ACH and Linked2Invoice SaaS', 'Best-control paper in the book: every line on the schedule is shareable'],
+      quote: 'Card processing at the linked2pay buy rates (IC + 2 bps + $0.0215/txn) — quote dual pricing or IC+ above it. ACH at $0.10/item buy. QuickBooks integration at $35/mo buy — retail-price it per deal. NextLink (outreach) seats per the internal list: Trial $599 / Annual $749 / M2M $999 per seat/mo.',
+      make: ['Your share = 50% of the margin over the Next2Pay buy rates — card, ACH and QuickBooks integration SaaS', 'Best-control paper in the book: every line on the schedule is shareable'],
       need: null
     },
     'skytab': {
@@ -1053,8 +1052,8 @@ window.HUB_DATA = {
     'invoicing-gateway': {
       source: 'Next2Pay / linked2pay rails (house invoicing + gateway + ACH)',
       sched: 'next2pay',
-      quote: 'Lead with Next2Pay Invoicing. Card CNP quoted above IC + 2 bps + $0.0215; ACH is the winner on $2k+ invoices ($0.10/item buy). Linked2Invoice $35/mo buy — set the retail per deal.',
-      make: ['Your share = 50% of the margin over the linked2pay buy rates on card + ACH volume', 'Linked2Invoice SaaS margin (retail − $35/mo buy)'],
+      quote: 'Lead with Next2Pay Invoicing. Card CNP quoted above IC + 2 bps + $0.0215; ACH is the winner on $2k+ invoices ($0.10/item buy). QuickBooks integration $35/mo buy — set the retail per deal.',
+      make: ['Your share = 50% of the margin over the linked2pay buy rates on card + ACH volume', 'QuickBooks integration SaaS margin (retail − $35/mo buy)'],
       need: null
     },
     'high-risk': {
@@ -1163,7 +1162,7 @@ window.HUB_DATA = {
         achTransaction: 0.10,
         linked2Invoice: 35 // Monthly cost
       },
-      note: 'Next2Pay is our highest-margin lane. You earn 50% of the margin on card, ACH, and Linked2Invoice. Quote ACH on invoices over $2k — it\'s often the winner.'
+      note: 'Next2Pay is our highest-margin lane. You earn 50% of the margin on card, ACH, and QuickBooks integration. Quote ACH on invoices over $2k — it\'s often the winner.'
     }
   }
 };
