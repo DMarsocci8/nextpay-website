@@ -121,7 +121,7 @@ ul.ck.plain li::before{color:var(--mut)}
 .pipe{display:grid;grid-auto-flow:column;grid-auto-columns:minmax(215px,1fr);gap:12px;overflow-x:auto;padding-bottom:8px}
 .pipe-col{background:var(--soft);border:1.5px solid var(--line-strong);border-radius:var(--rad);padding:10px;min-height:120px}
 .pipe-col h5{font-size:11.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--mut);padding:2px 6px 8px;display:flex;justify-content:space-between}
-.deal-card{background:#fff;border:1px solid var(--line);border-radius:var(--rad-sm);padding:10px 12px;margin-bottom:8px;cursor:pointer;transition:box-shadow .15s}
+.deal-card{background:#fff;border:1px solid var(--line);border-radius:var(--rad-sm);padding:10px 12px;margin-bottom:8px;cursor:pointer;transition:box-shadow .15s;border-left:3px solid var(--teal)}
 .deal-card:hover{box-shadow:var(--shadow)}
 .deal-card .nm{font-weight:700;font-size:13.5px}
 .deal-card .meta{font-size:11.5px;color:var(--mut);margin-top:2px}
@@ -132,13 +132,13 @@ ul.ck.plain li::before{color:var(--mut)}
 .wiz-bar span.on{background:var(--teal);border-color:var(--teal);color:#fff}
 .wiz-bar span.done{background:var(--teal-soft);border-color:var(--teal);color:var(--teal)}
 .pick-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:10px}
-.pick{background:#fff;border:1.5px solid var(--line);border-radius:var(--rad-sm);padding:13px 14px;font-weight:700;font-size:13.5px;cursor:pointer;text-align:left;transition:border-color .12s,background .12s;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.pick{background:#fff;border:1.5px solid var(--line);border-radius:var(--rad-sm);padding:13px 14px;font-weight:700;font-size:13.5px;cursor:pointer;text-align:left;transition:border-color .12s,background .12s;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;border-left:3px solid var(--teal)}
 .pick small{display:block;font-weight:500;color:var(--mut);font-size:11.5px;margin-top:2px}
 .pick:hover{border-color:var(--teal)}
 .pick.on{border-color:var(--teal);background:var(--teal-soft)}
 .rec-box{border:1.5px solid var(--teal);border-radius:var(--rad);padding:18px;background:#fff}
 .rec-box .tag{font-size:10.5px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:var(--teal)}
-.alt-box{border:1.5px solid var(--line-strong);border-radius:var(--rad);padding:14px 16px;background:#fff}
+.alt-box{border:1.5px solid var(--line-strong);border-radius:var(--rad);padding:14px 16px;background:#fff;border-left:3px solid var(--teal)}
 
 /* Modal */
 .modal-bg{position:fixed;inset:0;background:rgba(12,27,42,.5);z-index:90;display:none;align-items:flex-start;justify-content:center;padding:40px 16px;overflow-y:auto}
@@ -147,7 +147,7 @@ ul.ck.plain li::before{color:var(--mut)}
 .modal .x{position:absolute;top:14px;right:16px;background:var(--soft);border:0;border-radius:8px;width:32px;height:32px;font-size:16px;cursor:pointer}
 
 /* Stat tiles */
-.stat{background:var(--card);border:1.5px solid var(--line-strong);border-radius:var(--rad);padding:16px 18px}
+.stat{background:var(--card);border:2px solid var(--line-strong);border-radius:var(--rad);padding:16px 18px;border-left:4px solid var(--teal)}
 .stat .n{font-size:26px;font-weight:800;letter-spacing:-.02em}
 .stat .l{font-size:12px;color:var(--mut);font-weight:600;margin-top:2px}
 
