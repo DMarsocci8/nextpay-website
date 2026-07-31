@@ -967,6 +967,96 @@
       "source": "/next2pay",
       "destination": "/invoicing",
       "permanent": true
+    },
+    {
+      "source": "/blog-zero-fee-credit-card-processing.html",
+      "destination": "/blog/zero-fee-credit-card-processing",
+      "permanent": true
+    },
+    {
+      "source": "/blog-zero-fee-credit-card-processing",
+      "destination": "/blog/zero-fee-credit-card-processing",
+      "permanent": true
+    },
+    {
+      "source": "/blog-dual-pricing-setup-guide.html",
+      "destination": "/blog/dual-pricing-setup-guide",
+      "permanent": true
+    },
+    {
+      "source": "/blog-dual-pricing-setup-guide",
+      "destination": "/blog/dual-pricing-setup-guide",
+      "permanent": true
+    },
+    {
+      "source": "/blog-cash-discount-program-guide.html",
+      "destination": "/blog/cash-discount-program-guide",
+      "permanent": true
+    },
+    {
+      "source": "/blog-cash-discount-program-guide",
+      "destination": "/blog/cash-discount-program-guide",
+      "permanent": true
+    },
+    {
+      "source": "/blog-no-upfront-cost-pos-systems.html",
+      "destination": "/blog/no-upfront-cost-pos-systems",
+      "permanent": true
+    },
+    {
+      "source": "/blog-no-upfront-cost-pos-systems",
+      "destination": "/blog/no-upfront-cost-pos-systems",
+      "permanent": true
+    },
+    {
+      "source": "/blog-dual-pricing-vs-flat-rate.html",
+      "destination": "/blog/dual-pricing-vs-flat-rate",
+      "permanent": true
+    },
+    {
+      "source": "/blog-dual-pricing-vs-flat-rate",
+      "destination": "/blog/dual-pricing-vs-flat-rate",
+      "permanent": true
+    },
+    {
+      "source": "/blog-zero-fee-processing-legal.html",
+      "destination": "/blog/zero-fee-processing-legal",
+      "permanent": true
+    },
+    {
+      "source": "/blog-zero-fee-processing-legal",
+      "destination": "/blog/zero-fee-processing-legal",
+      "permanent": true
+    },
+    {
+      "source": "/blog-dual-pricing-for-restaurants.html",
+      "destination": "/blog/dual-pricing-for-restaurants",
+      "permanent": true
+    },
+    {
+      "source": "/blog-dual-pricing-for-restaurants",
+      "destination": "/blog/dual-pricing-for-restaurants",
+      "permanent": true
+    },
+    {
+      "source": "/blog-pos-system-cost-2026.html",
+      "destination": "/blog/pos-system-cost-2026",
+      "permanent": true
+    },
+    {
+      "source": "/blog-pos-system-cost-2026",
+      "destination": "/blog/pos-system-cost-2026",
+      "permanent": true
+    },
+    {
+      "source": "/blog-dual-pricing-faq.html",
+      "destination": "/blog/dual-pricing-faq",
+      "permanent": true
+    },
+    {
+      "source": "/blog-dual-pricing-faq",
+      "destination": "/blog/dual-pricing-faq",
+      "permanent": true
     }
   ],
   "rewrites": [
@@ -1387,6 +1477,42 @@
     {
       "source": "/blog/high-risk-merchant-account-guide",
       "destination": "/blog-high-risk-merchant-account-guide"
+    },
+    {
+      "source": "/blog/zero-fee-credit-card-processing",
+      "destination": "/blog-zero-fee-credit-card-processing"
+    },
+    {
+      "source": "/blog/dual-pricing-setup-guide",
+      "destination": "/blog-dual-pricing-setup-guide"
+    },
+    {
+      "source": "/blog/cash-discount-program-guide",
+      "destination": "/blog-cash-discount-program-guide"
+    },
+    {
+      "source": "/blog/no-upfront-cost-pos-systems",
+      "destination": "/blog-no-upfront-cost-pos-systems"
+    },
+    {
+      "source": "/blog/dual-pricing-vs-flat-rate",
+      "destination": "/blog-dual-pricing-vs-flat-rate"
+    },
+    {
+      "source": "/blog/zero-fee-processing-legal",
+      "destination": "/blog-zero-fee-processing-legal"
+    },
+    {
+      "source": "/blog/dual-pricing-for-restaurants",
+      "destination": "/blog-dual-pricing-for-restaurants"
+    },
+    {
+      "source": "/blog/pos-system-cost-2026",
+      "destination": "/blog-pos-system-cost-2026"
+    },
+    {
+      "source": "/blog/dual-pricing-faq",
+      "destination": "/blog-dual-pricing-faq"
     }
   ]
 }
