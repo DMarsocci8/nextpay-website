@@ -43,6 +43,7 @@
     { href: 'merchants.html', label: 'My Merchants', ic: 'users' },
     { href: 'compensation.html', label: 'Compensation', ic: 'doc' },
     { href: 'marketing.html', label: 'Marketing & Brand', ic: 'mega' },
+    { href: 'business-profile.html', label: 'Google Business Profile', ic: 'store' },
     { href: 'calendar.html', label: 'Calendar', ic: 'cal' },
     { sec: 'Admin', admin: true },
     { href: 'admin.html', label: 'All Agent Deals', ic: 'shield', admin: true }
