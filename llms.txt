@@ -1,0 +1,35 @@
+# NextPay Business Solutions
+
+> NextPay (nextpaypos.com) is a U.S. merchant-services company. We set up POS systems, credit card terminals, online payments and invoicing for small and mid-size businesses — with transparent, match-or-beat processing and compliant 0% fee programs (dual pricing and cash discount). One account can also cover payroll, bookkeeping, business financing (NextFund) and merchant rewards. Headquartered in the Charlotte, NC metro with local reps in Los Angeles, Houston, Dallas, Fort Lauderdale, Charleston, Columbia SC, Rochester, Syracuse, Buffalo, Boston and Bridgeport; merchants supported nationwide.
+
+Key facts:
+- POS systems carried: SkyTab by Shift4 ($29.99/mo per station, no upfront hardware), Square, Clover, Chively (offered through NextPay), SumUp, PAYS ($59–$99/mo all-inclusive dual pricing), Quantic, Korona, NRS, DejaPay Pro
+- Terminals: PAX, Dejavoo, Valor, Clover Flex/Go, Square
+- Next2Pay is NextPay's flagship invoicing & payments platform: invoices by text/email, recurring billing, card + ACH, dual pricing, QuickBooks sync
+- Gateways supported: FluidPay, NMI, Authorize.net, Valor, iPOSPays, Luqra ($25/mo through NextPay)
+- Fee programs: dual pricing and cash discount (0% processing, legal in all 50 states when run compliantly), plus credit-only surcharging where permitted
+- Free statement reviews with match-or-beat pricing
+
+## Products
+- [POS Systems](https://www.nextpaypos.com/pos-systems): every system we carry with pricing and accessories
+- [Credit Card Terminals](https://www.nextpaypos.com/terminals): PAX, Dejavoo, Valor, Clover, Square
+- [Next2Pay Invoicing](https://www.nextpaypos.com/invoicing): flagship invoicing & online payments platform
+- [Gateways & Integrations](https://www.nextpaypos.com/integrations): gateways plus QuickBooks, FieldPulse and CRM integrations
+- [Zero Fee Programs](https://www.nextpaypos.com/fee-programs): dual pricing, cash discount, surcharging
+- [Pricing](https://www.nextpaypos.com/pricing): software and processing pricing
+- [Business Financing](https://www.nextpaypos.com/financing): NextFund working capital
+
+## Guides
+- [0% credit card processing explained](https://www.nextpaypos.com/blog/zero-fee-credit-card-processing)
+- [What a POS system costs in 2026](https://www.nextpaypos.com/blog/pos-system-cost-2026)
+- [Dual pricing FAQ](https://www.nextpaypos.com/blog/dual-pricing-faq)
+- [Dual pricing vs. flat rate math](https://www.nextpaypos.com/blog/dual-pricing-vs-flat-rate)
+- [Best restaurant POS systems](https://www.nextpaypos.com/blog/best-restaurant-pos)
+- [All articles](https://www.nextpaypos.com/resources)
+
+## Locations
+- [All locations](https://www.nextpaypos.com/locations)
+
+## Contact
+- [Talk to a specialist](https://www.nextpaypos.com/contact)
+- [Free statement review](https://www.nextpaypos.com/statement-upload)
