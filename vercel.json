@@ -1071,6 +1071,10 @@
       "destination": "/nextlink-home"
     },
     {
+      "source": "/",
+      "destination": "/home"
+    },
+    {
       "source": "/accept-payments",
       "destination": "/Accept%20Payments"
     },
