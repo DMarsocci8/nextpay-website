@@ -1,0 +1,8 @@
+name = "hub-crm-api"
+main = "hub-crm-api.js"
+compatibility_date = "2026-08-03"
+
+[[d1_databases]]
+binding = "DB"
+database_name = "hub-crm"
+database_id = "fb4213e4-514c-400d-8a78-fb3cde28d066"
