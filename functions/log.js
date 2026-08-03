@@ -2,9 +2,15 @@
    Records a hub page view tied to the signed-in agent's email. The hub sits
    behind Cloudflare Access, so the email is read SERVER-SIDE from the Access
    headers (same as whoami.js) — never trusted from the client, so it can't be
-   spoofed. The visit is forwarded to a Google Sheet webhook set in the
-   HUB_LOG_WEBHOOK environment variable (Cloudflare Pages → Settings → Variables).
-   If that variable isn't set, this quietly does nothing. Never blocks the page. */
+   spoofed.
+
+   Storage:
+   - Primary: a Cloudflare D1 database bound as HUB_DB (Pages project →
+     Settings → Functions → D1 bindings → variable name HUB_DB → "hub-analytics").
+     Rows go into the `visits` table.
+   - Optional fallback: if HUB_LOG_WEBHOOK is set, the visit is also POSTed there
+     (e.g. a Google Sheet logger).
+   If neither is configured, this quietly does nothing. Never blocks the page. */
 export async function onRequestPost(context){
   try{
     const h = context.request.headers;
@@ -26,19 +32,28 @@ export async function onRequestPost(context){
       if(b && b.p) page = String(b.p).slice(0,300);
     }catch(e){ /* ignore malformed body */ }
 
-    const webhook = context.env && context.env.HUB_LOG_WEBHOOK;
-    if(webhook && email){
-      // fire-and-forget to the Google Sheet logger
-      context.waitUntil(fetch(webhook, {
-        method: 'POST',
-        headers: { 'content-type': 'application/json' },
-        body: JSON.stringify({
-          email: email,
-          page: page,
-          ref: h.get('referer') || '',
-          ua: h.get('user-agent') || ''
-        })
-      }).catch(()=>{}));
+    const ref = h.get('referer') || '';
+
+    if(email){
+      // Primary: write to D1
+      if(context.env && context.env.HUB_DB){
+        context.waitUntil(
+          context.env.HUB_DB
+            .prepare('INSERT INTO visits (email, page, ref) VALUES (?, ?, ?)')
+            .bind(email, page, ref)
+            .run()
+            .catch(()=>{})
+        );
+      }
+      // Optional: also forward to a webhook (Google Sheet, etc.)
+      const webhook = context.env && context.env.HUB_LOG_WEBHOOK;
+      if(webhook){
+        context.waitUntil(fetch(webhook, {
+          method: 'POST',
+          headers: { 'content-type': 'application/json' },
+          body: JSON.stringify({ email: email, page: page, ref: ref, ua: h.get('user-agent') || '' })
+        }).catch(()=>{}));
+      }
     }
   }catch(e){ /* never surface errors to the page */ }
 
