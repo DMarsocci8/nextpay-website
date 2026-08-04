@@ -154,9 +154,12 @@ async function syncToCRM(env, kind, rec, action) {
         .bind(rec.id, JSON.stringify(rec)).run();
     }
   } catch (e) {
-    console.log(`CRM sync failed (${kind}/${rec.id}): ${e.message}`);
+           console.log(`CRM sync failed (${kind}/${rec.id}): ${e.message}`);
+           try {
+                      rec._crmError = String(e.message).slice(0, 500);
+                      await env.DB.prepare(`UPDATE ${kind} SET data = ?2 WHERE id = ?1`).bind(rec.id, JSON.stringify(rec)).run();
+           } catch (e2) {}
   }
-}
 
 export default {
   async fetch(request, env, ctx) {
