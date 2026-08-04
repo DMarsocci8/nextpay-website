@@ -160,6 +160,7 @@ async function syncToCRM(env, kind, rec, action) {
                       await env.DB.prepare(`UPDATE ${kind} SET data = ?2 WHERE id = ?1`).bind(rec.id, JSON.stringify(rec)).run();
            } catch (e2) {}
   }
+}
 
 export default {
   async fetch(request, env, ctx) {
