@@ -93,7 +93,7 @@ const ADAPTERS = {
       const r = await fetch(`${this.base(env)}/contacts`, {
         method: 'POST', headers: this.headers(env), body: JSON.stringify({ contact })
       });
-      if (!r.ok) throw new Error(`freshsales contact ${r.status}`);
+     if (!r.ok) { const t = await r.text().catch(() => ''); throw new Error(`freshsales contact ${r.status}: ${t.slice(0, 300)}`); }
       const body = await r.json();
       return body.contact && body.contact.id;
     },
@@ -116,7 +116,7 @@ const ADAPTERS = {
         method: saved && saved.dealId ? 'PUT' : 'POST',
         headers: this.headers(env), body: JSON.stringify({ deal })
       });
-      if (!r.ok) throw new Error(`freshsales deal ${r.status}`);
+    if (!r.ok) { const t = await r.text().catch(() => ''); throw new Error(`freshsales deal ${r.status}: ${t.slice(0, 300)}`); };
       const body = await r.json();
       return { ids: { contactId, dealId: (body.deal && body.deal.id) || (saved && saved.dealId) } };
     },
