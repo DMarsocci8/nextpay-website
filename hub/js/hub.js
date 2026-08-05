@@ -29,6 +29,7 @@
     { href: 'index.html', label: 'Dashboard', ic: 'home' },
     { href: 'deal-navigator.html', label: 'Deal Navigator', ic: 'compass' },
     { href: 'crm.html', label: 'My Pipeline', ic: 'board' },
+     { href: 'leads.html', label: 'Leads Pool', ic: 'send' },
     { href: 'statement-review.html', label: 'Statement Review', ic: 'calc' },
     { href: 'pricing.html', label: 'Pricing & Buy Rates', ic: 'coin' },
     { href: 'proposals.html', label: 'Proposal Studio', ic: 'pen' },
