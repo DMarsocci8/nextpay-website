@@ -21,6 +21,20 @@
 
   const uid = () => 'r' + Date.now().toString(36) + Math.random().toString(36).slice(2, 7);
 
+  // Fire-and-forget bridge: sync new/updated deals to FreshSales via a Make.com webhook.
+  // This never blocks or throws — if it fails, the deal is still saved normally.
+  function notifyFreshSalesSync(kind, rec) {
+    if (kind !== 'deals') return;
+    try {
+      const params = new URLSearchParams();
+      Object.keys(rec).forEach(function (k) {
+        const v = rec[k];
+        if (v !== undefined && v !== null) params.append(k, v);
+      });
+      fetch('https://hook.us2.make.com/6icbvc6o7vn2vxd3cq23k2bk1yw5mals?' + params.toString(), { mode: 'no-cors' });
+    } catch (e) { /* ignore — webhook sync is best-effort only */ }
+  }
+
   // ---------- local storage backend ----------
   function lread(kind) { try { return JSON.parse(localStorage.getItem('hub_' + kind) || '[]'); } catch (e) { return []; } }
   function lwrite(kind, rows) { localStorage.setItem('hub_' + kind, JSON.stringify(rows)); }
@@ -44,12 +58,13 @@
         method: 'POST', credentials: 'include',
         headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(rec)
       });
-      if (r.ok) return rec;
+      if (r.ok) { notifyFreshSalesSync(kind, rec); return rec; }
     }
     const rows = lread(kind);
     const i = rows.findIndex(x => x.id === rec.id);
     if (i >= 0) rows[i] = rec; else rows.push(rec);
     lwrite(kind, rows);
+    notifyFreshSalesSync(kind, rec);
     return rec;
   }
 
