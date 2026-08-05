@@ -1,4 +1,4 @@
-/* NextPay Sales Hub — data layer for deals & merchants.
+——————/* NextPay Sales Hub — data layer for deals & merchants.
    Works two ways, automatically:
    1) API mode — when the hub-crm-api Worker is routed at /api/* on
       hub.nextpaypos.com, everything is stored centrally (D1). Agents see
@@ -70,6 +70,33 @@
           return true;
    }
 
+   // ---------- leads pool (API-only) ----------
+   async function listLeads() {
+      if (!(await probe())) return [];
+      const r = await fetch(API + '/leads', { credentials: 'include' });
+      return r.ok ? r.json() : [];
+   }
+   async function saveLead(rec) {
+      const r = await fetch(API + '/leads', {
+         method: 'POST', credentials: 'include',
+         headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(rec)
+      });
+      if (!r.ok) throw new Error('save lead failed');
+      return r.json();
+   }
+   async function assignLead(id, agent) {
+      const r = await fetch(API + '/leads/' + encodeURIComponent(id) + '/assign', {
+         method: 'POST', credentials: 'include',
+         headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ agent: agent })
+      });
+      if (!r.ok) throw new Error('assign lead failed');
+      return true;
+   }
+   async function deleteLead(id) {
+      const r = await fetch(API + '/leads/' + encodeURIComponent(id), { method: 'DELETE', credentials: 'include' });
+      return r.ok;
+   }
+
    function exportAll() {
           const blob = new Blob([JSON.stringify({
                    exported: new Date().toISOString(),
@@ -117,6 +144,7 @@
           listDeals: () => list('deals'),
           saveDeal: (d) => save('deals', d),
           deleteDeal: (id) => remove('deals', id),
+      listLeads, saveLead, assignLead, deleteLead,
           listMerchants: () => list('merchants'),
           saveMerchant: (m) => save('merchants', m),
           deleteMerchant: (id) => remove('merchants', id),
