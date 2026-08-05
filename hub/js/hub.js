@@ -88,8 +88,7 @@
     for (const it of NAV) {
       if (it.admin && !admin) continue;
       if (it.sec) { html += '<div class="hs-sec">' + it.sec + '</div>'; continue; }
-      html += '<a href="' + it.href + '"' + (it.href === cur ? ' class="on"' : '') + '>' + icon(it.ic) + it.label + '</a>';
-    }
+html += '<a href="' + it.href + '" style="' + (it.href.replace('.html','') === cur || it.href === cur ? 'background-color:#14b8a6;color:#fff;border-radius:6px;' : '') + '">' + icon(it.ic) + it.label + '</a>';    }
     html += '</nav>';
     html += '<div class="hs-foot">Questions? Google Chat —<br>Deal Desk · General Q&amp;A<br><a href="https://nextpaypos.com" target="_blank" rel="noopener">nextpaypos.com ↗</a></div>';
     const side = document.getElementById('hub-side');
