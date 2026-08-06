@@ -136,7 +136,7 @@ items: [
 },
 
 sumup: { label: 'SumUp', logo: 'assets/logos/sumup.svg', modes: ['buy'],
-proc: "SumUp's published in-person rate applies (2.6% + 10¢ per tap, dip or swipe). NextPay reviews your statement to match or beat your effective rate.",
+proc: "SumUp's published in-person rate applies (2.6% + 10¢ per tap, dip or swipe) — set and billed directly by SumUp, and not something NextPay discounts or adjusts.",
 cats: [
 { key: 'base', label: 'Hardware', type: 'qty' },
 { key: 'software', label: 'Software plan', type: 'single' },
