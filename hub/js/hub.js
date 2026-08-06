@@ -32,7 +32,7 @@
      { href: 'leads.html', label: 'Leads Pool', ic: 'send' },
     { href: 'statement-review.html', label: 'Statement Review', ic: 'calc' },
     { href: 'pricing.html', label: 'Pricing & Buy Rates', ic: 'coin' },
-    { href: 'proposals.html', label: 'Proposal Studio', ic: 'pen' },
+    { href: 'proposals.html', label: 'Proposal Builder', ic: 'pen' },
     { href: 'submit-deal.html', label: 'Submit a Deal', ic: 'send' },
     { sec: 'Learn' },
     { href: 'training.html', label: 'Training Academy', ic: 'cap' },
