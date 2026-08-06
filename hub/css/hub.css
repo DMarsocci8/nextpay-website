@@ -1,14 +1,14 @@
 /* NextPay Sales Hub — shared shell styles (left sidebar layout).
-   Brand: navy #0C1B2A · teal #14A18C · bright teal #1FC2A6 · Plus Jakarta Sans. */
+Brand: navy #0C1B2A · teal #14A18C · bright teal #1FC2A6 · Plus Jakarta Sans. */
 
 :root{
-  --navy:#0C1B2A; --navy-2:#122536; --navy-3:#1A3049;
-  --teal:#14A18C; --teal-bright:#1FC2A6; --teal-soft:rgba(20,161,140,.12);
-  --ink:#16283A; --mut:#5B6B7B; --line:#D8E1E8; --line-strong:#C7D4DE; --soft:#F4F7FA; --card:#FFFFFF;
-  --amber:#E8A33D; --red:#D65A5A; --green:#2E9E6B;
-  --rad:16px; --rad-sm:10px;
-  --side-w:248px;
-  --shadow:0 8px 28px rgba(12,27,42,.08);
+--navy:#0C1B2A; --navy-2:#122536; --navy-3:#1A3049;
+--teal:#14A18C; --teal-bright:#1FC2A6; --teal-soft:rgba(20,161,140,.12);
+--ink:#16283A; --mut:#5B6B7B; --line:#D8E1E8; --line-strong:#C7D4DE; --soft:#F4F7FA; --card:#FFFFFF;
+--amber:#E8A33D; --red:#D65A5A; --green:#2E9E6B;
+--rad:16px; --rad-sm:10px;
+--side-w:248px;
+--shadow:0 8px 28px rgba(12,27,42,.08);
 }
 *{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth}
@@ -48,10 +48,10 @@ b,strong{font-weight:700}
 .hub-topbar .t{font-size:12px;font-weight:800;letter-spacing:.12em;color:var(--teal-bright)}
 .hub-burger{margin-left:auto;background:var(--navy-2);border:0;color:#fff;border-radius:8px;padding:8px 10px;cursor:pointer;font-size:16px;line-height:1}
 @media(max-width:920px){
-  .hub-topbar{display:flex}
-  .hub-side{transform:translateX(-100%);transition:transform .22s ease;top:58px}
-  body.side-open .hub-side{transform:none}
-  body.side-open::after{content:'';position:fixed;inset:58px 0 0 0;background:rgba(12,27,42,.45);z-index:55}
+.hub-topbar{display:flex}
+.hub-side{transform:translateX(-100%);transition:transform .22s ease;top:58px}
+body.side-open .hub-side{transform:none}
+body.side-open::after{content:'';position:fixed;inset:58px 0 0 0;background:rgba(12,27,42,.45);z-index:55}
 }
 
 /* ---------- Page primitives ---------- */
@@ -110,8 +110,8 @@ label.fl{display:block;font-size:12px;font-weight:700;color:var(--mut);margin:12
 .step p{color:var(--mut);font-size:13.5px}
 ul.ck{list-style:none;display:flex;flex-direction:column;gap:7px;margin-top:8px}
 ul.ck li{display:flex;gap:9px;font-size:13.5px}
-ul.ck li::before{content:'';flex:none;width:16px;height:16px;margin-top:2px;border-radius:5px;border:2px solid var(--teal);background:var(--teal-soft)}
-ul.ck.plain li::before{border-color:var(--line);background:#fff}
+ul.ck li::before{content:'';flex:none;width:7px;height:7px;margin-top:6px;border-radius:50%;background:var(--teal)}
+ul.ck.plain li::before{background:var(--line)}
 
 /* Pipeline board */
 .pipe{display:grid;grid-auto-flow:column;grid-auto-columns:minmax(215px,1fr);gap:12px;overflow-x:auto;padding-bottom:8px}
