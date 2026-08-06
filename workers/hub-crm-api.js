@@ -210,9 +210,21 @@ function reverseStageMap(env) {
 // Bookmarks the newest `updated_at` seen in `sync_state` so each run only
 // looks at what changed since last time (scans up to 5 pages of 50 the
 // first time it's ever run, when there's no bookmark yet).
+async function dealsViewId(env) {
+  const adapter = ADAPTERS.freshsales;
+  const r = await fetch(`${adapter.base(env)}/deals/filters`, { headers: adapter.headers(env) });
+  if (!r.ok) return null;
+  const body = await r.json().catch(() => ({}));
+  const filters = body.filters || [];
+  const all = filters.find(f => /all/i.test(f.name)) || filters.find(f => f.is_default) || filters[0];
+  return all ? all.id : null;
+}
+
 async function pollFreshsalesDeals(env) {
-     const adapter = ADAPTERS.freshsales;
-     if (!adapter.enabled(env)) return { skipped: 'freshsales not configured' };
+  const adapter = ADAPTERS.freshsales;
+  if (!adapter.enabled(env)) return { skipped: 'freshsales not configured' };
+  const viewId = await dealsViewId(env);
+  if (!viewId) return { error: 'could not resolve a Freshsales deals view id' };
 
   const rev = reverseStageMap(env);
      const stateRow = await env.DB.prepare(`SELECT value FROM sync_state WHERE key = 'freshsales_last_poll'`).first();
@@ -229,10 +241,10 @@ async function pollFreshsalesDeals(env) {
      let scanned = 0;
      let stop = false;
 
-  for (let page = 1; page <= 5 && !stop; page++) {
-         const r = await fetch(`${adapter.base(env)}/deals?sort=updated_at&sort_type=desc&per_page=50&page=${page}`, {
-                  headers: adapter.headers(env)
-         });
+  for (let page = 1; page <= 8 && !stop; page++) {
+    const r = await fetch(`${adapter.base(env)}/deals/view/${viewId}?sort=updated_at&sort_type=desc&page=${page}`, {
+      headers: adapter.headers(env)
+    });
          if (!r.ok) {
                   const t = await r.text().catch(() => '');
                   console.log(`freshsales poll fetch failed ${r.status}: ${t.slice(0, 300)}`);
@@ -270,7 +282,7 @@ async function pollFreshsalesDeals(env) {
                 ).bind(newest).run();
   }
 
-  return { ok: true, scanned, updated: updatedCount, newest };
+  return { ok: true, viewId, scanned, updated: updatedCount, newest };
 }
 
 const genId = (prefix) => prefix + Date.now().toString(36) + Math.random().toString(36).slice(2, 7);
