@@ -261,7 +261,7 @@
     const first=fd.get('first')||'there';
     fd.append('Additional solutions', adds.length?adds.join(', '):'none selected');
     fd.append('_subject','New Quick Application — '+(fd.get('legal_business')||fd.get('dba')||'NextPay'));
-    fd.append('_cc','payments@nextpaypos.com,alexander@nextpaypos.com');
+    fd.append('_cc','payments@nextpaypos.com');
     fd.append('_template','table');
     fd.append('Lead source','Quick Application page');
     const btn=form.querySelector('button[type=submit]'); if(btn){btn.disabled=true;btn.textContent='Submitting…';}
@@ -269,7 +269,7 @@
       document.getElementById('scard').innerHTML='<div class="sdone"><div class="sdico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 13l4 4L19 7"/></svg></div><h2>Thanks, '+first+' — we got it.</h2><p>A NextPay specialist will review your application and reach out within 24-48 hours to match you to the right solution and finish setup. Keep an eye on your inbox and phone.</p><div class="ssubmit" style="margin-top:24px"><a class="btn btn-outline" href="/">Back to home</a></div></div>';
       window.scrollTo({top:0,behavior:'smooth'});
     }
-    fetch('https://formsubmit.co/ajax/dom@nextpaypos.com',{method:'POST',headers:{'Accept':'application/json'},body:fd})
+    fetch('https://formsubmit.co/ajax/hello@nextpaypos.com',{method:'POST',headers:{'Accept':'application/json'},body:fd})
       .then(r=>r.json()).then(finish).catch(finish);
   });
 })();
