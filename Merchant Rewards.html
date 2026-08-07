@@ -452,14 +452,14 @@ document.getElementById('specform').addEventListener('submit',function(e){
   var form=this, fd=new FormData(form);
   var first=fd.get('first')||'there';
   fd.append('_subject','New Merchant Rewards lead — '+(fd.get('biz')||'NextPay'));
-  fd.append('_cc','payments@nextpaypos.com,alexander@nextpaypos.com');
+  fd.append('_cc','payments@nextpaypos.com');
   fd.append('_template','table');
   fd.append('Lead source','Merchant Rewards page — Talk to a Specialist');
   var btn=form.querySelector('button[type=submit]'); if(btn){btn.disabled=true;btn.textContent='Sending…';}
   function done(){
     form.innerHTML='<div style="text-align:center;padding:18px 6px"><div style="width:64px;height:64px;border-radius:50%;background:rgba(20,161,140,.12);display:grid;place-items:center;color:var(--teal-dark);margin:0 auto 16px"><svg viewBox="0 0 24 24" width="34" height="34" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 13l4 4L19 7"/></svg></div><h3>Thanks, '+first+' — you\u2019re in good hands.</h3><p class="sf-sub" style="font-size:15px;margin-top:10px;max-width:340px;margin-left:auto;margin-right:auto">A NextPay rewards specialist will reach out within 24-48 hours to set up your account and your rewards.</p></div>';
   }
-  fetch('https://formsubmit.co/ajax/dom@nextpaypos.com',{method:'POST',headers:{'Accept':'application/json'},body:fd})
+  fetch('https://formsubmit.co/ajax/hello@nextpaypos.com',{method:'POST',headers:{'Accept':'application/json'},body:fd})
     .then(function(r){return r.json();}).then(done).catch(done);
 });
 </script>
