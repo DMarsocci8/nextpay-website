@@ -105,13 +105,45 @@
     { key: 'lost', label: 'Lost' }
   ];
 
+  // Map merchant status to account status in CRM
+  function accountStatusForMerchant(merchantStatus) {
+    if (merchantStatus === 'Live' || merchantStatus === 'Paused') return 'Active';
+    if (merchantStatus === 'Closed') return 'Lost';
+    return 'Prospect'; // Installing, Underwriting, or unknown
+  }
+
+  // Link or update an account record for a merchant
+  async function linkAccountForMerchant(merchant) {
+    if (!merchant || !merchant.dba) return null;
+    const accounts = await list('accounts');
+    // Try to find existing account by merchant name
+    const match = accounts.find(a => a.name === merchant.dba);
+    if (match) {
+      // Update existing account with current merchant status
+      match.status = accountStatusForMerchant(merchant.status);
+      match.phone = merchant.phone;
+      await save('accounts', match);
+      return match;
+    } else {
+      // Create new account with initial status
+      const newAccount = {
+        name: merchant.dba,
+        phone: merchant.phone,
+        status: accountStatusForMerchant(merchant.status)
+      };
+      return await save('accounts', newAccount);
+    }
+  }
+
   window.Store = {
     listDeals: () => list('deals'),
     saveDeal: (d) => save('deals', d),
     deleteDeal: (id) => remove('deals', id),
     listMerchants: () => list('merchants'),
-    saveMerchant: (m) => save('merchants', m),
+    saveMerchant: async (m) => { await save('merchants', m); await linkAccountForMerchant(m); },
     deleteMerchant: (id) => remove('merchants', id),
+    listAccounts: () => list('accounts'),
+    saveAccount: (a) => save('accounts', a),
     exportAll, importAll, probe, STAGES,
     stageLabel: (k) => (STAGES.find(s => s.key === k) || {}).label || k,
     apiMode: () => apiOK === true
