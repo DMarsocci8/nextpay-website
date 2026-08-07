@@ -1,0 +1,24 @@
+name = "hub-crm-api"
+type = "service"
+main = "workers/hub-crm-api.js"
+compatibility_date = "2024-12-09"
+
+# D1 Database binding — required for hub CRM API
+[[d1_databases]]
+binding = "DB"
+database_name = "hub-crm"
+database_id = "hub-crm-db-id"  # This should be replaced with your actual D1 database ID from Cloudflare
+
+# Environment variables for CRM integration (optional, disabled by default)
+# To enable Freshsales:
+# 1. Set CRM_PROVIDER = "freshsales"
+# 2. Set FRESHSALES_DOMAIN = "yourcompany" (the part before .myfreshworks.com)
+# 3. Set FRESHSALES_API_KEY via secrets: wrangler secret put FRESHSALES_API_KEY
+
+[env.production]
+# Production-specific settings if needed
+vars = { CRM_PROVIDER = "" }
+
+[env.development]
+# Development settings
+vars = { CRM_PROVIDER = "" }
