@@ -3,11 +3,12 @@ type = "service"
 main = "workers/hub-crm-api.js"
 compatibility_date = "2024-12-09"
 
-# D1 Database binding — required for hub CRM API
-[[d1_databases]]
-binding = "DB"
-database_name = "hub-crm"
-database_id = "hub-crm-db-id"  # This should be replaced with your actual D1 database ID from Cloudflare
+# D1 Database binding — add after you get your D1 database ID from Cloudflare
+# IMPORTANT: Uncomment and fill in your actual database_id before pushing!
+# [[d1_databases]]
+# binding = "DB"
+# database_name = "hub-crm"
+# database_id = "YOUR-ACTUAL-D1-DATABASE-ID-HERE"
 
 # Environment variables for CRM integration (optional, disabled by default)
 # To enable Freshsales:
