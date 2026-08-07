@@ -89,7 +89,7 @@
         <div class="step3"><span class="n">2</span><b>We analyze</b><span>A specialist reviews your effective rate &amp; fees.</span></div>
         <div class="step3"><span class="n">3</span><b>We contact you</b><span>Get a clear side-by-side within 24-48 hours.</span></div>
       </div>
-      <form id="sform" action="https://formsubmit.co/dom@nextpaypos.com" method="POST" enctype="multipart/form-data">
+      <form id="sform" action="https://formsubmit.co/hello@nextpaypos.com" method="POST" enctype="multipart/form-data">
         <label class="drop" id="drop">
           <div class="dico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 16V4M7 9l5-5 5 5"/><path d="M4 16v2a2 2 0 002 2h12a2 2 0 002-2v-2"/></svg></div>
           <b>Drop your statement here</b>
@@ -100,7 +100,7 @@
         <div id="ferror" style="display:none;margin-top:14px;padding:12px 16px;border:1.5px solid #e05b4d;border-radius:11px;background:rgba(224,91,77,.07);color:#b3372b;font-size:14px;line-height:1.5"></div>
         <input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off">
         <input type="hidden" name="_subject" value="New statement / rate review — NextPay">
-        <input type="hidden" name="_cc" value="payments@nextpaypos.com,alexander@nextpaypos.com">
+        <input type="hidden" name="_cc" value="payments@nextpaypos.com">
         <input type="hidden" name="_template" value="table">
         <input type="hidden" name="_captcha" value="false">
         <input type="hidden" name="_next" value="">
@@ -159,7 +159,7 @@
     const form=e.target,f=file.files[0];
     if(f && f.size>MAXMB*1024*1024){
       e.preventDefault();
-      setError('That file is over '+MAXMB+'MB, so it can’t be attached. Please upload a smaller PDF or photo — or email it to <a class="link-teal" style="display:inline" href="mailto:dom@nextpaypos.com">dom@nextpaypos.com</a>.');
+      setError('That file is over '+MAXMB+'MB, so it can’t be attached. Please upload a smaller PDF or photo — or email it to <a class="link-teal" style="display:inline" href="mailto:hello@nextpaypos.com">hello@nextpaypos.com</a>.');
       ferror.scrollIntoView({behavior:'smooth',block:'center'});
       return;
     }
