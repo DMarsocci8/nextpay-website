@@ -19,22 +19,22 @@ export default function PropertiesPage() {
   useEffect(() => {
     const fetchData = async () => {
       // Get entity
-      const { data: entityData } = await supabase
+      const { data: entityData } = (await supabase
         .from('entities')
         .select('*')
         .eq('slug', entitySlug)
-        .single();
+        .single()) as { data: Entity | null };
 
       if (entityData) {
         setEntity(entityData);
 
         // Get properties
-        const { data: propsData } = await supabase
+        const { data: propsData } = (await supabase
           .from('properties')
           .select('*')
           .eq('entity_id', entityData.id)
           .eq('is_archived', false)
-          .order('created_at', { ascending: false });
+          .order('created_at', { ascending: false })) as { data: Property[] | null };
 
         if (propsData) {
           setProperties(propsData);
