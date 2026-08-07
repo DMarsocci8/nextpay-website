@@ -26,7 +26,7 @@ export default function DocumentsPage() {
         .from('entities')
         .select('*')
         .eq('slug', entitySlug)
-        .single();
+        .single() as { data: Entity | null };
 
       if (entityData) {
         setEntity(entityData);
@@ -69,18 +69,19 @@ export default function DocumentsPage() {
     try {
       // In production, this would upload to Google Cloud Storage
       // For now, we'll create a placeholder document record
-      const { data, error } = await supabase.from('documents').insert([
-        {
-          entity_id: entity.id,
-          property_id: selectedProperty || null,
-          file_name: selectedFile.name,
-          file_type: selectedFile.type,
-          file_size: selectedFile.size,
-          gcs_path: `gs://${selectedFile.name}`, // Placeholder
-          document_type: docType,
-          tags: [],
-        },
-      ]);
+      const documentRecord: any = {
+        entity_id: entity.id,
+        property_id: selectedProperty || null,
+        file_name: selectedFile.name,
+        file_type: selectedFile.type,
+        file_size: selectedFile.size,
+        gcs_path: `gs://${selectedFile.name}`, // Placeholder
+        document_type: docType,
+        tags: [],
+      };
+      // @ts-ignore - Supabase type inference issue
+      const result: any = await supabase.from('documents').insert([documentRecord]);
+      const { error } = result;
 
       if (error) {
         console.error(error);

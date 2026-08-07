@@ -4,7 +4,6 @@ import { useEffect, useState } from 'react';
 import Link from 'next/link';
 import { useParams, useRouter } from 'next/navigation';
 import { supabase } from '@/lib/supabase';
-import { ENTITIES } from '@/lib/utils';
 import type { Entity, EntitySlug } from '@/types';
 
 export default function EntityLayout({

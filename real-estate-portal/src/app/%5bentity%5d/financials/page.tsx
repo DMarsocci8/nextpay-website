@@ -9,7 +9,6 @@ import type { Entity, FinancialRecord } from '@/types';
 export default function FinancialsPage() {
   const params = useParams();
   const entitySlug = params.entity as string;
-  const [entity, setEntity] = useState<Entity | null>(null);
   const [records, setRecords] = useState<FinancialRecord[]>([]);
   const [loading, setLoading] = useState(true);
   const [filter, setFilter] = useState<string>('all');
@@ -22,10 +21,9 @@ export default function FinancialsPage() {
         .from('entities')
         .select('*')
         .eq('slug', entitySlug)
-        .single();
+        .single() as { data: Entity | null };
 
       if (entityData) {
-        setEntity(entityData);
 
         // Get financial records
         const { data: recordsData } = await supabase

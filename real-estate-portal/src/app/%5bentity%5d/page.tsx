@@ -27,7 +27,7 @@ export default function DashboardPage() {
         .from('entities')
         .select('*')
         .eq('slug', entitySlug)
-        .single();
+        .single() as { data: Entity | null };
 
       if (entityData) {
         setEntity(entityData);
@@ -37,7 +37,7 @@ export default function DashboardPage() {
           .from('properties')
           .select('*')
           .eq('entity_id', entityData.id)
-          .eq('is_archived', false);
+          .eq('is_archived', false) as { data: Property[] | null };
 
         if (propsData) {
           setProperties(propsData);

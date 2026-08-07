@@ -10,6 +10,7 @@
     "type-check": "tsc --noEmit"
   },
   "dependencies": {
+    "@google-cloud/storage": "^7.1.0",
     "@supabase/auth-helpers-nextjs": "^0.7.0",
     "@supabase/supabase-js": "^2.38.0",
     "clsx": "^2.0.0",
