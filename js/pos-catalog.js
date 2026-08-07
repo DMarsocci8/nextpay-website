@@ -113,7 +113,7 @@ cats: [
 ],
 items: [
 { id: 'sq-terminal', cat: 'base', name: 'Square Terminal', sub: 'All-in-one handheld terminal with built-in receipt printer — tap, chip and swipe', buy: 299, mo: 27, term: '12 mo', img: 'assets/terminals/square-terminal.png' },
-{ id: 'sq-station', cat: 'base', name: 'Square Station', sub: 'Two-screen register — large seller screen plus customer display, no tablet needed', buy: 899, mo: 44, term: '24 mo', img: 'assets/pos/square-register.png' },
+{ id: 'sq-register', cat: 'base', name: 'Square Register', sub: 'Two-screen register — large seller screen plus customer display, no tablet needed', buy: 899, mo: 44, term: '24 mo', img: 'assets/pos/square-register.png' },
 { id: 'sq-handheld', cat: 'base', name: 'Square Handheld', sub: 'Lightweight handheld for tableside ordering and tap-to-pay', buy: 399, mo: 37, term: '12 mo', img: 'assets/terminals/square-handheld.png' },
 { id: 'sq-stand', cat: 'base', name: 'Square Stand', sub: 'Turns your iPad into a countertop POS with a swivel customer display (iPad sold separately)', buy: 149, img: 'assets/pos/square-stand.png' },
 { id: 'sq-reader', cat: 'base', name: 'Square Reader', sub: 'Pocket reader — tap and chip, pairs with your phone or tablet', buy: 59, mo: 21, term: '12 mo', img: 'assets/terminals/square-reader.avif' },
