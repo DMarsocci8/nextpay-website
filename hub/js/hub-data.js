@@ -583,7 +583,7 @@ window.HUB_DATA = {
     ]},
     'square': { label: 'Square (hardware resell + rate review)', steps: [
       'Quote hardware from the reseller guide; software plan Free or Plus $49/mo.',
-      'If they already process on Square: run the statement meet-or-beat to move processing to our rails where it fits.',
+      'If they already process on Square: their rates are fixed and published by Square, so there is no rate to beat — only pitch a switch if dual pricing or a platform change genuinely lowers their cost, and move  to our rails where it fits.',
       'Submit order + docs to dom@nextpaypos.com — subject "Square deal — {DBA}".'
     ]},
     'quantic': { label: 'Quantic', steps: [
