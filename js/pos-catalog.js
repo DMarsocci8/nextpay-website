@@ -126,7 +126,7 @@ items: [
 { id: 'sq-ipad', cat: 'accessory', name: 'iPad', sub: 'Required for Square Stand and Kiosk — add one or bring your own', buy: 349 },
 { id: 'sq-kiosksw', cat: 'accessory', name: 'Square Kiosk Software', sub: 'Runs the customer-facing self-order kiosk screen', mo: 89 },
 { id: 'sq-kdssw', cat: 'accessory', name: 'Square KDS (per screen)', sub: 'Kitchen display software — runs on a tablet in the kitchen', mo: 20 },
-{ id: 'sq-drawer', cat: 'accessory', name: 'Cash Drawer', sub: 'USB or printer-driven cash drawer for Stand and Station', buy: 129, img: 'assets/terminals/chively-drawer.png' },
+{ id: 'sq-drawer', cat: 'accessory', name: 'Cash Drawer', sub: 'USB or printer-driven cash drawer for Stand and Register', buy: 129, img: 'assets/terminals/chively-drawer.png' },
 { id: 'sq-printer', cat: 'accessory', name: 'USB Receipt Printer', sub: 'Countertop thermal receipt printer', buy: 299, img: 'assets/terminals/chively-printer.png' },
 { id: 'sq-kitchenprinter', cat: 'accessory', name: 'Kitchen Impact Printer', sub: 'Durable impact printer for hot kitchens', buy: 399, img: 'assets/terminals/chively-printer.png' },
 { id: 'sq-scanner', cat: 'accessory', name: 'USB Barcode Scanner', sub: 'Plug-and-play 2D barcode scanner', buy: 119, img: 'assets/terminals/chively-scanner.png' },
