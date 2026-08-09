@@ -2,16 +2,14 @@
 
 import { useState } from 'react';
 import Link from 'next/link';
-import { useRouter } from 'next/navigation';
 
 export default function LoginPage() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
   const [loading, setLoading] = useState(false);
-  const router = useRouter();
 
-  const handleSubmit = async (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setError('');
     setLoading(true);
@@ -19,7 +17,6 @@ export default function LoginPage() {
     try {
       const response = await fetch('/api/auth/signin', {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ email, password }),
       });
 
@@ -28,7 +25,8 @@ export default function LoginPage() {
       if (!response.ok) {
         setError(data.error || 'Failed to sign in');
       } else {
-        router.push('/');
+        // Redirect using window.location instead of router
+        window.location.href = '/';
       }
     } catch (err: any) {
       setError(err?.message || 'An unexpected error occurred');
@@ -38,71 +36,70 @@ export default function LoginPage() {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-gray-900 to-gray-800">
-      <div className="flex-center min-h-screen">
-        <div className="w-full max-w-md">
-          <div className="card bg-white shadow-xl">
-            <div className="text-center mb-8">
-              <h1 className="text-2xl font-bold text-gray-900">Sign In</h1>
-              <p className="text-gray-600 text-sm mt-1">Real Estate Portal</p>
+    <div style={{ minHeight: '100vh', background: 'linear-gradient(to bottom right, #111827, #1f2937)' }}>
+      <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', minHeight: '100vh' }}>
+        <div style={{ width: '100%', maxWidth: '448px' }}>
+          <div style={{ background: 'white', borderRadius: '8px', boxShadow: '0 20px 25px -5px rgba(0, 0, 0, 0.1)', padding: '32px' }}>
+            <div style={{ textAlign: 'center', marginBottom: '32px' }}>
+              <h1 style={{ fontSize: '24px', fontWeight: 'bold', color: '#111827' }}>Sign In</h1>
+              <p style={{ color: '#4b5563', fontSize: '14px', marginTop: '4px' }}>Real Estate Portal</p>
             </div>
 
             {error && (
-              <div className="mb-6 p-3 bg-red-50 border border-red-200 rounded text-red-700 text-sm">
+              <div style={{ marginBottom: '24px', padding: '12px', background: '#fef2f2', border: '1px solid #fecaca', borderRadius: '4px', color: '#b91c1c', fontSize: '14px' }}>
                 {error}
               </div>
             )}
 
-            <form onSubmit={handleSubmit} className="space-y-4">
+            <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
               <div>
-                <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-1">
+                <label htmlFor="email" style={{ display: 'block', fontSize: '14px', fontWeight: '500', color: '#374151', marginBottom: '4px' }}>
                   Email
                 </label>
                 <input
                   id="email"
                   type="email"
-                  className="input"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                   required
                   disabled={loading}
+                  style={{ width: '100%', padding: '8px 12px', border: '1px solid #d1d5db', borderRadius: '6px', fontSize: '14px', boxSizing: 'border-box' }}
                 />
               </div>
 
               <div>
-                <label htmlFor="password" className="block text-sm font-medium text-gray-700 mb-1">
+                <label htmlFor="password" style={{ display: 'block', fontSize: '14px', fontWeight: '500', color: '#374151', marginBottom: '4px' }}>
                   Password
                 </label>
                 <input
                   id="password"
                   type="password"
-                  className="input"
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
                   required
                   disabled={loading}
+                  style={{ width: '100%', padding: '8px 12px', border: '1px solid #d1d5db', borderRadius: '6px', fontSize: '14px', boxSizing: 'border-box' }}
                 />
               </div>
 
               <button
                 type="submit"
-                className="btn btn-accent w-full"
                 disabled={loading}
+                style={{ background: '#2563eb', color: 'white', padding: '10px 16px', borderRadius: '24px', border: 'none', cursor: loading ? 'not-allowed' : 'pointer', fontWeight: '600', width: '100%' }}
               >
-                {loading ? <span className="spinner mr-2"></span> : null}
                 {loading ? 'Signing in...' : 'Sign In'}
               </button>
             </form>
 
-            <div className="mt-6 pt-6 border-t border-gray-200">
-              <p className="text-center text-gray-600 text-sm">
+            <div style={{ marginTop: '24px', paddingTop: '24px', borderTop: '1px solid #e5e7eb' }}>
+              <p style={{ textAlign: 'center', color: '#4b5563', fontSize: '14px' }}>
                 Don't have an account?{' '}
-                <Link href="/signup" className="text-blue-600 font-semibold hover:underline">
+                <Link href="/signup" style={{ color: '#2563eb', fontWeight: '600', textDecoration: 'none' }}>
                   Create one
                 </Link>
               </p>
-              <p className="text-center text-gray-600 text-sm mt-4">
-                <Link href="/" className="text-blue-600 font-semibold hover:underline">
+              <p style={{ textAlign: 'center', color: '#4b5563', fontSize: '14px', marginTop: '16px' }}>
+                <Link href="/" style={{ color: '#2563eb', fontWeight: '600', textDecoration: 'none' }}>
                   Back to home
                 </Link>
               </p>
