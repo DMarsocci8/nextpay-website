@@ -3,7 +3,6 @@
 import { useState } from 'react';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
-import { signIn } from '@/lib/supabase';
 
 export default function LoginPage() {
   const [email, setEmail] = useState('');
@@ -18,22 +17,21 @@ export default function LoginPage() {
     setLoading(true);
 
     try {
-      const { error } = await signIn(email, password);
+      const response = await fetch('/api/auth/signin', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email, password }),
+      });
 
-      if (error) {
-        setError(error.message);
+      const data = await response.json();
+
+      if (!response.ok) {
+        setError(data.error || 'Failed to sign in');
       } else {
         router.push('/');
       }
     } catch (err: any) {
-      // Handle fetch errors and other exceptions
-      if (err?.message?.includes('ISO-8859-1')) {
-        setError('Connection error. Please refresh and try again.');
-      } else if (err instanceof TypeError) {
-        setError('Network error. Please check your connection and try again.');
-      } else {
-        setError(err?.message || 'An unexpected error occurred');
-      }
+      setError(err?.message || 'An unexpected error occurred');
     } finally {
       setLoading(false);
     }
