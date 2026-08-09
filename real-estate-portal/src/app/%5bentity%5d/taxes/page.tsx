@@ -2,385 +2,373 @@
 
 import { useEffect, useState } from 'react';
 import { useParams } from 'next/navigation';
-import Link from 'next/link';
 import { supabase } from '@/lib/supabase';
-import { formatDate, formatFileSize } from '@/lib/utils';
-import type { Entity, Document } from '@/types';
+import { format } from 'date-fns';
 
-// Tax document categories
-const TAX_CATEGORIES = [
-  'Tax Returns',
-  '1099 Forms',
-  'W-2 Forms',
-  'K-1 Forms',
-  'Receipts & Invoices',
-  'P&L Statements',
-  'Depreciation Schedules',
-  'Loan Interest Statements',
-  'Property Tax Bills',
-  'Utility Bills',
-  'Mortgage Documents',
-  'Insurance Policies',
-  'Repair & Maintenance',
-  'Capital Improvements',
-  'Travel & Mileage',
-  'Business Expenses',
-];
+interface TaxDocument {
+  id: string;
+  tax_year: number;
+  document_type: string;
+  file_name: string;
+  file_type: string;
+  file_size: number;
+  description: string;
+  uploaded_by: string;
+  is_final: boolean;
+  created_at: string;
+}
+
+interface TaxPackage {
+  id: string;
+  tax_year: number;
+  status: 'draft' | 'ready_for_cpa' | 'shared' | 'delivered';
+  cpa_access_expires_at?: string;
+  package_notes: string;
+  created_at: string;
+}
+
+interface TaxChecklist {
+  category: string;
+  items: {
+    name: string;
+    required: boolean;
+    completed: boolean;
+  }[];
+}
 
 export default function TaxesPage() {
   const params = useParams();
-  const entitySlug = params.entity as string;
-  const [entity, setEntity] = useState<Entity | null>(null);
-  const [documents, setDocuments] = useState<Document[]>([]);
+  const entity = params.entity as string;
+
+  const [documents, setDocuments] = useState<TaxDocument[]>([]);
+  const [taxPackages, setTaxPackages] = useState<TaxPackage[]>([]);
   const [loading, setLoading] = useState(true);
-  const [selectedYear, setSelectedYear] = useState<number>(new Date().getFullYear());
-  const [selectedCategory, setSelectedCategory] = useState<string>('all');
-  const [uploading, setUploading] = useState(false);
-  const [selectedFile, setSelectedFile] = useState<File | null>(null);
-  const [docCategory, setDocCategory] = useState<string>('Receipts & Invoices');
-  const [fileAsTax, setFileAsTax] = useState(true);
-  const [fileByYear, setFileByYear] = useState(true);
-  const [fileByType, setFileByType] = useState(true);
+  const [selectedYear, setSelectedYear] = useState(new Date().getFullYear());
+  const [activeTab, setActiveTab] = useState('documents'); // 'documents', 'checklist', 'packages'
+  const [entityId, setEntityId] = useState<string>('');
+
+  const taxChecklist: TaxChecklist[] = [
+    {
+      category: 'Income Documents',
+      items: [
+        { name: '1099 Forms from all sources', required: true, completed: false },
+        { name: 'Rental income statements', required: true, completed: false },
+        { name: 'K-1 Forms (if applicable)', required: false, completed: false },
+      ],
+    },
+    {
+      category: 'Expense Documents',
+      items: [
+        { name: 'Mortgage interest statements', required: true, completed: false },
+        { name: 'Property tax receipts', required: true, completed: false },
+        { name: 'Insurance premium statements', required: true, completed: false },
+        { name: 'Maintenance and repair invoices', required: true, completed: false },
+        { name: 'Utility bills', required: true, completed: false },
+        { name: 'Management fees', required: false, completed: false },
+      ],
+    },
+    {
+      category: 'Loan & Mortgage',
+      items: [
+        { name: 'Mortgage statement (year-end)', required: true, completed: false },
+        { name: 'Loan payoff statements', required: false, completed: false },
+        { name: 'PMI payment records', required: false, completed: false },
+      ],
+    },
+    {
+      category: 'Business Records',
+      items: [
+        { name: 'Business license and registrations', required: false, completed: false },
+        { name: 'Entity formation documents', required: false, completed: false },
+        { name: 'Partnership/LLC agreement', required: false, completed: false },
+      ],
+    },
+  ];
 
   useEffect(() => {
-    const fetchData = async () => {
-      // Get entity
-      const { data: entityData } = await supabase
-        .from('entities')
-        .select('*')
-        .eq('slug', entitySlug)
-        .single();
+    const loadTaxData = async () => {
+      try {
+        const { data: entityRes } = await supabase
+          .from('entities')
+          .select('id')
+          .eq('slug', entity)
+          .single();
 
-      if (entityData) {
-        setEntity(entityData);
+        if (entityRes) {
+          setEntityId(entityRes.id);
 
-        // Get tax documents
-        const { data: docsData } = await supabase
-          .from('documents')
-          .select('*')
-          .eq('entity_id', entityData.id)
-          .eq('document_type', 'tax')
-          .order('created_at', { ascending: false });
+          // Get tax documents
+          const { data: docsRes } = await supabase
+            .from('tax_documents')
+            .select('*')
+            .eq('entity_id', entityRes.id)
+            .eq('tax_year', selectedYear)
+            .order('created_at', { ascending: false });
 
-        if (docsData) {
-          setDocuments(docsData);
+          setDocuments(docsRes || []);
+
+          // Get tax packages
+          const { data: pkgsRes } = await supabase
+            .from('tax_packages')
+            .select('*')
+            .eq('entity_id', entityRes.id)
+            .eq('tax_year', selectedYear)
+            .single();
+
+          if (pkgsRes) {
+            setTaxPackages([pkgsRes]);
+          }
         }
+      } catch (error) {
+        console.error('Error loading tax data:', error);
+      } finally {
+        setLoading(false);
       }
-
-      setLoading(false);
     };
 
-    fetchData();
-  }, [entitySlug]);
+    loadTaxData();
+  }, [entity, selectedYear]);
 
-  const handleUpload = async (e: React.FormEvent) => {
-    e.preventDefault();
-    if (!selectedFile || !entity) return;
+  const generateCPAToken = async () => {
+    const token = `cpa_${Date.now()}_${Math.random().toString(36).substr(2, 9)}`;
+    const expiresAt = new Date();
+    expiresAt.setDate(expiresAt.getDate() + 30); // 30 day access
 
-    setUploading(true);
-
-    try {
-      // Build tags based on checkboxes
-      const tags: string[] = [docCategory];
-      if (fileAsTax) tags.push('tax');
-      if (fileByYear) tags.push(`year_${selectedYear}`);
-      if (fileByType) tags.push(`type_${docCategory.toLowerCase().replace(/\s+/g, '_')}`);
-
-      // Create document record
-      const { data, error } = await supabase.from('documents').insert([
+    if (taxPackages.length > 0) {
+      // Update existing package
+      await supabase
+        .from('tax_packages')
+        .update({
+          cpa_access_token: token,
+          cpa_access_expires_at: expiresAt.toISOString(),
+          status: 'shared',
+        })
+        .eq('id', taxPackages[0].id);
+    } else {
+      // Create new package
+      await supabase.from('tax_packages').insert([
         {
-          entity_id: entity.id,
-          file_name: selectedFile.name,
-          file_type: selectedFile.type,
-          file_size: selectedFile.size,
-          gcs_path: `gs://real-estate-hub-documents/${entity.slug}/taxes/${selectedYear}/${selectedFile.name}`,
-          document_type: 'tax',
-          document_date: new Date().toISOString().split('T')[0],
-          tags,
-          description: `${docCategory} - ${selectedYear}`,
+          entity_id: entityId,
+          tax_year: selectedYear,
+          cpa_access_token: token,
+          cpa_access_expires_at: expiresAt.toISOString(),
+          status: 'shared',
         },
       ]);
-
-      if (error) {
-        console.error(error);
-        alert('Upload failed');
-      } else {
-        // Refresh documents
-        const { data: docsData } = await supabase
-          .from('documents')
-          .select('*')
-          .eq('entity_id', entity.id)
-          .eq('document_type', 'tax')
-          .order('created_at', { ascending: false });
-
-        if (docsData) {
-          setDocuments(docsData);
-        }
-
-        // Reset form
-        setSelectedFile(null);
-        setDocCategory('Receipts & Invoices');
-        setFileAsTax(true);
-        setFileByYear(true);
-        setFileByType(true);
-        alert('✅ Document uploaded and organized!');
-      }
-    } catch (err) {
-      console.error(err);
-      alert('Error uploading document');
-    } finally {
-      setUploading(false);
     }
-  };
 
-  const handleExportTaxBundle = async () => {
-    // Create a ZIP file with all tax documents for the year
-    alert(`📦 Exporting all ${selectedYear} tax documents...\n\nThis will create a ZIP file ready to send to your CPA.`);
-    // TODO: Implement actual ZIP export
+    alert(
+      `CPA Access Token Generated!\n\nShare this link with your CPA:\n\nreal-estate-portal.vercel.app/cpa-access?token=${token}`,
+    );
   };
-
-  const handleGenerateTaxReport = async () => {
-    // Generate a PDF tax summary report
-    alert(`📄 Generating ${selectedYear} tax summary PDF...\n\nThis will create a professional report with all documents and financial info.`);
-    // TODO: Implement actual PDF generation
-  };
-
-  const filteredDocuments = documents.filter((doc) => {
-    if (selectedCategory === 'all') {
-      return doc.tags?.includes(`year_${selectedYear}`) || doc.document_date?.startsWith(selectedYear.toString());
-    }
-    return doc.tags?.includes(selectedCategory.toLowerCase().replace(/\s+/g, '_')) &&
-           (doc.tags?.includes(`year_${selectedYear}`) || doc.document_date?.startsWith(selectedYear.toString()));
-  });
 
   if (loading) {
     return (
-      <div className="flex-center py-12">
+      <div className="flex-center min-h-screen">
         <div className="spinner"></div>
       </div>
     );
   }
 
+  const currentPackage = taxPackages[0];
+
   return (
-    <div>
-      <div className="flex-between mb-8">
-        <div>
-          <h2 className="text-3xl font-bold text-gray-900">Tax Documents</h2>
-          <p className="text-gray-600 mt-1">Organize and manage all tax-related documents by year</p>
+    <div className="min-h-screen bg-gray-50 py-8">
+      <div className="container">
+        {/* Header */}
+        <div className="flex-between mb-8">
+          <div>
+            <h1 className="text-3xl font-bold text-gray-900">Tax Documents</h1>
+            <p className="text-gray-600 mt-1">Organize and manage tax documents for your CPA</p>
+          </div>
         </div>
-        <div>
+
+        {/* Year Selection */}
+        <div className="bg-white rounded-lg shadow p-4 mb-6">
+          <label className="block text-sm font-medium text-gray-700 mb-2">Tax Year</label>
           <select
-            className="input"
             value={selectedYear}
             onChange={(e) => setSelectedYear(parseInt(e.target.value))}
-            style={{ width: '150px' }}
+            className="input max-w-xs"
           >
-            {[2024, 2025, 2026].map((y) => (
-              <option key={y} value={y}>
-                {y}
-              </option>
-            ))}
+            {[...Array(5)].map((_, i) => {
+              const year = new Date().getFullYear() - i;
+              return (
+                <option key={year} value={year}>
+                  {year}
+                </option>
+              );
+            })}
           </select>
         </div>
-      </div>
 
-      {/* Quick Actions */}
-      <div className="card mb-8">
-        <div className="flex gap-4 flex-wrap">
-          <button
-            onClick={handleExportTaxBundle}
-            className="btn btn-accent"
-          >
-            📦 Export Tax Bundle (ZIP)
-          </button>
-          <button
-            onClick={handleGenerateTaxReport}
-            className="btn btn-secondary"
-          >
-            📄 Generate CPA Report (PDF)
-          </button>
-          <Link href={`/${entitySlug}/settings`}>
-            <button className="btn btn-ghost">
-              ⚙️ Entity Info
-            </button>
-          </Link>
-        </div>
-      </div>
-
-      {/* Upload Form */}
-      <div className="card mb-8">
-        <h3 className="card-title mb-6">Upload Tax Document</h3>
-        <form onSubmit={handleUpload} className="space-y-6">
-          {/* File Input */}
-          <div>
-            <label className="block text-sm font-medium text-gray-700 mb-2">
-              Select File
-            </label>
-            <input
-              type="file"
-              className="input"
-              onChange={(e) => setSelectedFile(e.target.files?.[0] || null)}
-              disabled={uploading}
-              required
-            />
-            <p className="text-xs text-gray-600 mt-1">PDF, images, spreadsheets, documents</p>
-          </div>
-
-          {/* Category Dropdown */}
-          <div>
-            <label className="block text-sm font-medium text-gray-700 mb-2">
-              Document Category
-            </label>
-            <select
-              className="input"
-              value={docCategory}
-              onChange={(e) => setDocCategory(e.target.value)}
-              disabled={uploading}
-            >
-              {TAX_CATEGORIES.map((cat) => (
-                <option key={cat} value={cat}>
-                  {cat}
-                </option>
-              ))}
-            </select>
-          </div>
-
-          {/* Filing Options - Checkboxes */}
-          <div>
-            <label className="block text-sm font-medium text-gray-700 mb-3">
-              File Under (Auto-organize)
-            </label>
-            <div className="space-y-2">
-              <label className="flex items-center gap-3">
-                <input
-                  type="checkbox"
-                  checked={fileAsTax}
-                  onChange={(e) => setFileAsTax(e.target.checked)}
-                  disabled={uploading}
-                  className="w-4 h-4"
-                />
-                <span className="text-sm text-gray-700">📁 Tax Folder (Main)</span>
-              </label>
-
-              <label className="flex items-center gap-3">
-                <input
-                  type="checkbox"
-                  checked={fileByYear}
-                  onChange={(e) => setFileByYear(e.target.checked)}
-                  disabled={uploading}
-                  className="w-4 h-4"
-                />
-                <span className="text-sm text-gray-700">📅 By Year ({selectedYear})</span>
-              </label>
-
-              <label className="flex items-center gap-3">
-                <input
-                  type="checkbox"
-                  checked={fileByType}
-                  onChange={(e) => setFileByType(e.target.checked)}
-                  disabled={uploading}
-                  className="w-4 h-4"
-                />
-                <span className="text-sm text-gray-700">🏷️ By Type ({docCategory})</span>
-              </label>
-            </div>
-            <p className="text-xs text-gray-600 mt-3">
-              ✨ Checking all three creates optimal organization for CPA handoff
-            </p>
-          </div>
-
-          {/* Submit */}
-          <button
-            type="submit"
-            className="btn btn-accent w-full"
-            disabled={!selectedFile || uploading}
-          >
-            {uploading ? 'Uploading...' : '⬆️ Upload & Organize'}
-          </button>
-        </form>
-      </div>
-
-      {/* Filter */}
-      <div className="card mb-6">
-        <div className="flex gap-2 flex-wrap">
-          <button
-            className={`btn ${selectedCategory === 'all' ? 'btn-accent' : 'btn-secondary'} btn-sm`}
-            onClick={() => setSelectedCategory('all')}
-          >
-            All ({documents.length})
-          </button>
-          {TAX_CATEGORIES.map((cat) => {
-            const count = documents.filter((d) =>
-              d.tags?.includes(cat.toLowerCase().replace(/\s+/g, '_'))
-            ).length;
-            return (
+        {/* Tabs */}
+        <div className="bg-white rounded-lg shadow mb-8">
+          <div className="flex border-b border-gray-200">
+            {[
+              { id: 'documents', label: 'Documents', icon: '📄' },
+              { id: 'checklist', label: 'Checklist', icon: '✓' },
+              { id: 'packages', label: 'CPA Packages', icon: '📦' },
+            ].map((tab) => (
               <button
-                key={cat}
-                className={`btn ${selectedCategory === cat ? 'btn-accent' : 'btn-secondary'} btn-sm`}
-                onClick={() => setSelectedCategory(cat)}
+                key={tab.id}
+                onClick={() => setActiveTab(tab.id)}
+                className={`px-6 py-4 font-medium border-b-2 transition-colors ${
+                  activeTab === tab.id
+                    ? 'border-blue-600 text-blue-600'
+                    : 'border-transparent text-gray-600 hover:text-gray-900'
+                }`}
               >
-                {cat} ({count})
+                {tab.icon} {tab.label}
               </button>
-            );
-          })}
-        </div>
-      </div>
-
-      {/* Documents List */}
-      <div>
-        <h3 className="text-lg font-semibold text-gray-900 mb-4">
-          {selectedYear} Documents {selectedCategory !== 'all' && `• ${selectedCategory}`}
-        </h3>
-
-        {filteredDocuments.length === 0 ? (
-          <div className="card py-12 text-center">
-            <p className="text-gray-600 text-lg">📭 No documents yet</p>
-            <p className="text-gray-500 text-sm mt-1">Upload your first tax document above</p>
-          </div>
-        ) : (
-          <div className="space-y-3">
-            {filteredDocuments.map((doc) => (
-              <div
-                key={doc.id}
-                className="card p-4 flex-between hover:shadow-md transition"
-              >
-                <div className="flex-1">
-                  <p className="font-medium text-gray-900">📄 {doc.file_name}</p>
-                  <p className="text-sm text-gray-600 mt-1">
-                    {doc.description} • {formatDate(doc.document_date)} • {formatFileSize(doc.file_size)}
-                  </p>
-                  {doc.tags && doc.tags.length > 0 && (
-                    <div className="flex gap-2 mt-2 flex-wrap">
-                      {doc.tags.slice(0, 3).map((tag) => (
-                        <span key={tag} className="badge badge-gray text-xs">
-                          {tag}
-                        </span>
-                      ))}
-                      {doc.tags.length > 3 && (
-                        <span className="badge badge-gray text-xs">
-                          +{doc.tags.length - 3} more
-                        </span>
-                      )}
-                    </div>
-                  )}
-                </div>
-                <button className="btn btn-ghost btn-sm">⬇️</button>
-              </div>
             ))}
           </div>
-        )}
-      </div>
 
-      {/* CPA Export Summary */}
-      <div className="card mt-8 bg-blue-50 border border-blue-200">
-        <h3 className="font-semibold text-blue-900 mb-3">💼 Ready for CPA?</h3>
-        <p className="text-sm text-blue-800 mb-4">
-          You have {documents.length} tax documents organized. When ready:
-        </p>
-        <div className="space-y-2 text-sm text-blue-800">
-          <p>✅ Click "Export Tax Bundle" to download all {selectedYear} docs as ZIP</p>
-          <p>✅ Click "Generate CPA Report" to create a summary PDF</p>
-          <p>✅ Share directly to your CPA via Google Drive or email</p>
+          {/* Documents Tab */}
+          {activeTab === 'documents' && (
+            <div className="p-6">
+              <div className="mb-6">
+                <label className="block text-sm font-medium text-gray-700 mb-2">
+                  Upload Tax Document
+                </label>
+                <div className="border-2 border-dashed border-gray-300 rounded-lg p-8 text-center hover:border-blue-500 transition-colors cursor-pointer">
+                  <svg
+                    className="w-12 h-12 mx-auto mb-2 text-gray-400"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M12 4v16m8-8H4"
+                    />
+                  </svg>
+                  <p className="text-gray-600 mb-2">Click or drag files here</p>
+                  <p className="text-xs text-gray-500">PDF, Excel, Image (Max 10MB)</p>
+                </div>
+              </div>
+
+              {documents.length > 0 ? (
+                <div className="space-y-3">
+                  <h3 className="font-semibold text-gray-900 mb-4">Uploaded Documents ({documents.length})</h3>
+                  {documents.map((doc) => (
+                    <div
+                      key={doc.id}
+                      className="flex-between items-center bg-gray-50 rounded-lg p-4 hover:bg-gray-100 transition"
+                    >
+                      <div className="flex-1">
+                        <div className="font-semibold text-gray-900">{doc.file_name}</div>
+                        <div className="text-sm text-gray-600 mt-1">
+                          <span className="badge badge-primary">{doc.document_type}</span>
+                          <span className="text-gray-500 mx-2">
+                            {(doc.file_size / 1024).toFixed(2)} KB
+                          </span>
+                          <span className="text-gray-500">
+                            Uploaded {format(new Date(doc.created_at), 'MMM d, yyyy')}
+                          </span>
+                        </div>
+                      </div>
+                      <div className="flex gap-2">
+                        <button className="btn btn-sm btn-ghost">Download</button>
+                        <button className="btn btn-sm btn-ghost text-red-600">Delete</button>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              ) : (
+                <div className="text-center py-12 text-gray-500">
+                  <p>No documents uploaded yet</p>
+                </div>
+              )}
+            </div>
+          )}
+
+          {/* Checklist Tab */}
+          {activeTab === 'checklist' && (
+            <div className="p-6">
+              <p className="text-gray-600 mb-6">
+                Use this checklist to ensure you have all required documents for {selectedYear} taxes
+              </p>
+
+              <div className="space-y-8">
+                {taxChecklist.map((section, idx) => (
+                  <div key={idx}>
+                    <h3 className="text-lg font-bold text-gray-900 mb-4">{section.category}</h3>
+                    <div className="space-y-3 ml-4">
+                      {section.items.map((item, itemIdx) => (
+                        <label key={itemIdx} className="flex items-center gap-3 cursor-pointer">
+                          <input type="checkbox" className="rounded" defaultChecked={item.completed} />
+                          <span className={`text-sm ${item.required ? 'font-medium text-gray-900' : 'text-gray-600'}`}>
+                            {item.name}
+                            {item.required && <span className="text-red-500 ml-1">*</span>}
+                          </span>
+                        </label>
+                      ))}
+                    </div>
+                  </div>
+                ))}
+              </div>
+
+              <div className="mt-8 pt-6 border-t border-gray-200">
+                <button className="btn btn-primary">Save Checklist Progress</button>
+              </div>
+            </div>
+          )}
+
+          {/* CPA Packages Tab */}
+          {activeTab === 'packages' && (
+            <div className="p-6">
+              <p className="text-gray-600 mb-6">
+                Create and share tax packages with your CPA using secure time-limited access tokens
+              </p>
+
+              <div className="bg-blue-50 border border-blue-200 rounded-lg p-6 mb-6">
+                <h3 className="font-semibold text-blue-900 mb-2">Share with CPA (Peter Pietryka)</h3>
+                <p className="text-sm text-blue-800 mb-4">
+                  Generate a secure link that expires in 30 days. Your CPA can access only tax documents.
+                </p>
+                <button onClick={generateCPAToken} className="btn btn-primary">
+                  Generate CPA Access Link
+                </button>
+              </div>
+
+              {currentPackage && (
+                <div className="bg-white border border-gray-200 rounded-lg p-6">
+                  <div className="flex-between items-start mb-4">
+                    <div>
+                      <h3 className="font-bold text-gray-900">Tax Year {selectedYear} Package</h3>
+                      <p className="text-sm text-gray-600 mt-1">
+                        Status: <span className="font-semibold">{currentPackage.status}</span>
+                      </p>
+                    </div>
+                    <span
+                      className={`badge ${
+                        currentPackage.status === 'shared' ? 'badge-success' : 'badge-ghost'
+                      }`}
+                    >
+                      {currentPackage.status === 'shared' ? '✓ Shared' : 'Not Shared'}
+                    </span>
+                  </div>
+
+                  {currentPackage.cpa_access_expires_at && (
+                    <div className="text-sm text-gray-600 mb-4">
+                      CPA access expires:{' '}
+                      <span className="font-semibold">
+                        {format(new Date(currentPackage.cpa_access_expires_at), 'MMM d, yyyy')}
+                      </span>
+                    </div>
+                  )}
+
+                  <div className="flex gap-2">
+                    <button className="btn btn-secondary">View Package Contents</button>
+                    <button className="btn btn-secondary">Revoke CPA Access</button>
+                  </div>
+                </div>
+              )}
+            </div>
+          )}
         </div>
       </div>
     </div>
