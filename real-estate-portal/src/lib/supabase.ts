@@ -14,9 +14,6 @@ export const supabase = createClient<Database>(supabaseUrl, supabaseAnonKey, {
     autoRefreshToken: true,
     detectSessionInUrl: true,
   },
-  headers: {
-    'User-Agent': 'Real-Estate-Portal/1.0',
-  },
 });
 
 // Server-side Supabase client with service role
