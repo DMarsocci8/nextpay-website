@@ -11,7 +11,7 @@ NEXT_PUBLIC_SUPABASE_URL = "https://bgqdwaoyaayeeweqdtxlw.supabase.co"
 NEXT_PUBLIC_SUPABASE_ANON_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImJncWR3YW92YXlhZWV3cWR0eGl3Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODYwOTc4MTgsImV4cCI6MjEwMTY3MzgxOH0.BnbWbRl2PG2KhGz7Q7nQc8X9vQmKz6Y3_JH5pZ0E6n0"
 NEXT_PUBLIC_APP_URL = "https://lustrous-sunflower-95cc16.netlify.app"
 NEXT_PUBLIC_ENTITY_ACCENTS = "{\"doma_capital\":\"#1E40AF\",\"domillo_holdings\":\"#059669\",\"jagg\":\"#D97706\"}"
-NEXT_PUBLIC_GOOGLE_CLIENT_ID = "YOUR_GOOGLE_CLIENT_ID_HERE"
+NEXT_PUBLIC_GOOGLE_CLIENT_ID = "166520787414-91msnnhh84pa7kavcuctiino56p4piae.apps.googleusercontent.com"
 
 [[redirects]]
 from = "/*"
