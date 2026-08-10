@@ -53,7 +53,7 @@
     let h = '<div class="card"><h3>What kind of business is this?</h3><p class="muted small mb8">This drives the questions, the product fit and the pricing angle for the whole deal.</p>';
     for (const [g, list] of Object.entries(groups)) {
       h += '<div class="hs-sec" style="padding-left:0;color:var(--mut)">' + g + '</div><div class="pick-grid">';
-      h += list.map(([k, v]) => '<button class="pick' + (deal.industry === k ? ' on' : '') + '" data-ind="' + k + '">' + esc(v.label) + '</button>').join('');
+      h += list.map(([k, v]) => '<button class="pick' + (deal.industry === k ? ' on' : '') + '" data-ind="' + k + '" style="background-image:url(assets/industries/' + esc(v.bg || '') + ');background-size:cover;background-position:center">' + esc(v.label) + '</button>').join('');
       h += '</div>';
     }
     h += '<hr class="sep"><div class="frow"><div><label class="fl">Business name</label><input class="fi" id="f-biz" value="' + esc(deal.biz) + '" placeholder="DBA / business name"></div>' +
@@ -80,6 +80,7 @@
   function s1() {
     const iv = ind();
     let h = '<div class="card"><h3>Discovery — what to ask ' + (iv ? esc(iv.label) : 'this business') + '</h3>' +
+      '<div class="note"><b>💡 Tip:</b> Don\'t ask all of these questions at once. Pick a few that feel natural for the conversation, and let it flow. You\'re listening for pain points and opportunities, not running an interrogation. The signals you tap below are what matter — use these as a guide, not a script.</div>' +
       '<p class="muted small">Work through these in conversation, not as an interrogation. Capture answers below — they follow the deal into your pipeline.</p>';
     for (const g of D.baseDiscovery) {
       h += '<h4 class="mt16">' + esc(g.h) + '</h4><ul class="ck">' + g.q.map(q => '<li>' + esc(q) + '</li>').join('') + '</ul>';
@@ -147,13 +148,14 @@
     let h = '<div class="rec-box"><span class="tag">' + (deal.signals.length ? 'Best fit from their answers' : 'Recommended starting point — tap signals in Discovery to sharpen this') + '</span>' +
       '<h3 class="mt8">' + esc(top.name) + '</h3><p class="muted">' + esc(top.why) + '</p>' +
       (top.reasons.length ? '<ul class="ck plain mt8">' + top.reasons.map(r => '<li class="small">' + esc(r) + '</li>').join('') + '</ul>' : '') +
-      '<button class="btn btn-primary btn-sm mt8" type="button" id="use-stack">Use this stack ↓</button></div>';
+      '<button class="btn btn-primary btn-sm mt8" type="button" data-stack="0">Use this stack</button></div>';
     const alts2 = cands.slice(1);
     if (alts2.length) {
-      h += '<div class="grid2 mt16">' + alts2.map(a =>
+      h += '<div class="grid2 mt16">' + alts2.map((a, idx) =>
         '<div class="alt-box"><b>' + esc(a.name) + '</b>' + (a.score <= 0 ? ' <span class="chip red" style="margin-left:6px">poor fit here</span>' : '') +
         '<p class="muted small mt8">' + esc(a.why) + '</p>' +
-        (a.reasons.length ? '<p class="small muted mt8">' + a.reasons.map(esc).join(' · ') + '</p>' : '') + '</div>').join('') + '</div>';
+        (a.reasons.length ? '<p class="small muted mt8">' + a.reasons.map(esc).join(' · ') + '</p>' : '') +
+        '<button class="btn btn-outline btn-sm mt8" type="button" data-stack="' + (idx + 1) + '">Use this stack</button></div>').join('') + '</div>';
     }
     const sugRows = [];
     const SLOT = { terminal: 'Terminal', gateway: 'Gateway', invoicing: 'Invoicing', addon: 'Add-on' };
@@ -175,7 +177,7 @@
       '<option value="">— choose —</option>' + Object.entries(D.placements).map(([k, p]) => '<option value="' + k + '"' + (deal.placement === k ? ' selected' : '') + '>' + esc(p.label) + '</option>').join('') + '</select></div>';
     $('wiz').innerHTML = h;
 
-    /* one click fills the stack from the scored recommendation */
+    /* one click fills the stack from any scored option */
     const PLACE_GUESS = [
       [/chively|nextpay pos/i, 'chively'],
       [/next2pay/i, 'next2pay'],
@@ -184,14 +186,18 @@
       [/sumup/i, 'sumup'], [/terminal|pax|dejavoo|valor/i, 'terminal-gateway'],
       [/gateway|invoic|fieldpulse|field work|lqpay|nmi|fluidpay|quickbooks/i, 'invoicing-gateway']
     ];
-    $('use-stack').addEventListener('click', () => {
-      $('f-pos').value = top.name;
-      if (stackSug.terminal.length) $('f-term').value = stackSug.terminal[0].v;
-      if (stackSug.gateway.length) $('f-gw').value = stackSug.gateway[0].v;
-      if (stackSug.invoicing.length) $('f-inv').value = stackSug.invoicing[0].v;
-      const g = PLACE_GUESS.find(([re]) => re.test(top.name));
-      if (g) $('f-place').value = g[1];
-      $('f-pos').scrollIntoView({ behavior: 'smooth', block: 'center' });
+    document.querySelectorAll('[data-stack]').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const idx = parseInt(btn.dataset.stack);
+        const selected = cands[idx];
+        $('f-pos').value = selected.name;
+        if (stackSug.terminal.length) $('f-term').value = stackSug.terminal[0].v;
+        if (stackSug.gateway.length) $('f-gw').value = stackSug.gateway[0].v;
+        if (stackSug.invoicing.length) $('f-inv').value = stackSug.invoicing[0].v;
+        const g = PLACE_GUESS.find(([re]) => re.test(selected.name));
+        if (g) $('f-place').value = g[1];
+        $('f-pos').scrollIntoView({ behavior: 'smooth', block: 'center' });
+      });
     });
   }
   function grab2() {
@@ -227,7 +233,7 @@
     }
     h += '<div class="card mt16"><h3>Quick residual estimate</h3><div class="frow3">' +
       '<div><label class="fl">Monthly volume ($)</label><input class="fi" id="c-vol" inputmode="numeric" value="' + (vol || '') + '"></div>' +
-      '<div><label class="fl">Margin over cost (basis points)</label><input class="fi" id="c-bps" inputmode="numeric" placeholder="e.g. 50"></div>' +
+      '<div><label class="fl">Margin over cost (%)</label><input class="fi" id="c-bps" inputmode="numeric" placeholder="e.g. 0.50" step="0.01"></div>' +
       '<div><label class="fl">Your share of margin (%)</label><input class="fi" id="c-split" inputmode="numeric" value="45" placeholder="preloaded per program — see Pricing"></div></div>' +
       '<div class="stat mt16" style="max-width:340px"><div class="n" id="c-out">—</div><div class="l">estimated monthly residual to you (before monthly-fee income)</div></div>' +
       '<label class="fl">Pricing model chosen</label><select class="fi" id="f-model" style="max-width:340px">' +
@@ -235,7 +241,7 @@
     $('wiz').innerHTML = h;
     const calc = () => {
       const v = parseFloat($('c-vol').value) || 0, b = parseFloat($('c-bps').value) || 0, sp = parseFloat($('c-split').value) || 0;
-      $('c-out').textContent = (v && b && sp) ? '$' + Math.round(v * (b / 10000) * (sp / 100)).toLocaleString() + '/mo' : '—';
+      $('c-out').textContent = (v && b && sp) ? '$' + Math.round((v * b * sp) / 10000).toLocaleString() + '/mo' : '—';
     };
     ['c-vol', 'c-bps', 'c-split'].forEach(id => $(id).addEventListener('input', calc));
     calc();

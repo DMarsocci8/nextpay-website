@@ -29,10 +29,9 @@
     { href: 'index.html', label: 'Dashboard', ic: 'home' },
     { href: 'deal-navigator.html', label: 'Deal Navigator', ic: 'compass' },
     { href: 'crm.html', label: 'My Pipeline', ic: 'board' },
-     { href: 'leads.html', label: 'Leads Pool', ic: 'send' },
     { href: 'statement-review.html', label: 'Statement Review', ic: 'calc' },
-    { href: 'pricing.html', label: 'Pricing & Buy Rates', ic: 'coin' },
-    { href: 'proposals.html', label: 'Proposal Builder', ic: 'pen' },
+    { href: 'pricing.html', label: 'Pricing', ic: 'coin' },
+    { href: 'proposals.html', label: 'Proposal Studio', ic: 'pen' },
     { href: 'submit-deal.html', label: 'Submit a Deal', ic: 'send' },
     { sec: 'Learn' },
     { href: 'training.html', label: 'Training Academy', ic: 'cap' },
@@ -43,8 +42,9 @@
     { sec: 'My business' },
     { href: 'merchants.html', label: 'My Merchants', ic: 'users' },
     { href: 'compensation.html', label: 'Compensation', ic: 'doc' },
+    { href: 'earnings.html', label: 'Your Earnings', ic: 'coin' },
+    { href: 'schedule-as.html', label: 'Partner Programs & Schedule A', ic: 'doc' },
     { href: 'marketing.html', label: 'Marketing & Brand', ic: 'mega' },
-    { href: 'business-profile.html', label: 'Google Business Profile', ic: 'store' },
     { href: 'calendar.html', label: 'Calendar', ic: 'cal' },
     { sec: 'Admin', admin: true },
     { href: 'admin.html', label: 'All Agent Deals', ic: 'shield', admin: true }
@@ -76,7 +76,7 @@
 
   function page() {
     const p = location.pathname.split('/').pop();
-    return p === '' ? 'index.html' : p;
+    return p === '' ? 'index.html' : p + (p && !p.includes('.') ? '.html' : '');
   }
 
   function render(email) {
@@ -88,7 +88,8 @@
     for (const it of NAV) {
       if (it.admin && !admin) continue;
       if (it.sec) { html += '<div class="hs-sec">' + it.sec + '</div>'; continue; }
-html += '<a href="' + it.href + '" style="' + (it.href.replace('.html','') === cur || it.href === cur ? 'background-color:#14b8a6;color:#fff;border-radius:6px;' : '') + '">' + icon(it.ic) + it.label + '</a>';    }
+      html += '<a href="' + it.href + '"' + (it.href === cur ? ' class="on"' : '') + '>' + icon(it.ic) + it.label + '</a>';
+    }
     html += '</nav>';
     html += '<div class="hs-foot">Questions? Google Chat —<br>Deal Desk · General Q&amp;A<br><a href="https://nextpaypos.com" target="_blank" rel="noopener">nextpaypos.com ↗</a></div>';
     const side = document.getElementById('hub-side');

@@ -1,0 +1,56 @@
+<!DOCTYPE html><html lang="en"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>Partner Programs & Schedule A — NextPay Sales Hub</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/hub.css">
+</head><body>
+<div class="hub-shell"><div id="hub-side"></div><main class="hub-main">
+
+<div class="pg-head">
+  <span class="eyebrow">Cost floors & margins</span>
+  <h1>Partner Programs &amp; Schedule A</h1>
+  <p>Each program has its own cost floor and margin structure. Pick the right program for the deal, then quote above your cost floor to create margin.</p>
+</div>
+
+<div id="schedules-content"></div>
+
+<hr class="sep" style="margin:24px 0">
+
+<div class="card">
+  <h3>NextLink (internal pricing)</h3><span class="chip red">Never publish — internal only</span>
+  <div class="tbl-wrap" style="margin-top:16px"><table class="tbl"><tbody>
+    <tr><td>Trial (3-month term)</td><td>$599 / mo / seat</td></tr>
+    <tr><td>Annual</td><td>$749 / mo / seat</td></tr>
+    <tr><td>Month-to-month</td><td>$999 / mo / seat</td></tr>
+    <tr><td>Enterprise (10+ seats)</td><td>Custom pricing</td></tr>
+  </tbody></table></div>
+</div>
+
+</main></div>
+<script src="js/hub.js"></script><script src="js/hub-data.js"></script><script src="js/hub-store.js"></script>
+<script>
+(function () {
+  const $ = (id) => document.getElementById(id);
+  const esc = (s) => String(s == null ? '' : s).replace(/[<>&"]/g, c => ({'<':'&lt;','>':'&gt;','&':'&amp;','"':'&quot;'}[c]));
+
+  /* Schedule A tables — one card per uploaded schedule */
+  const D = window.HUB_DATA;
+  $('schedules-content').innerHTML = Object.entries(D.schedules).map(([key, sc]) =>
+    '<div class="card mt16" id="schedule-' + key + '">' +
+    '<div class="spread"><h3>Schedule A — ' + esc(sc.label) + '</h3><span class="chip red">Internal only</span></div>' +
+    '<p class="muted small">' + esc(sc.covers) + '</p>' +
+    (sc.splitNote ? '<div class="note">' + esc(sc.splitNote) + '</div>' : '') +
+    '<div class="note"><b>The cost floor:</b> ' + esc(sc.floor) + '</div>' +
+    '<div class="tbl-wrap"><table class="tbl"><thead><tr><th>Fee</th>' + sc.cols.map(c => '<th>' + esc(c) + '</th>').join('') + '</tr></thead><tbody>' +
+    sc.groups.map(g =>
+      '<tr><td colspan="' + (sc.cols.length + 1) + '" style="background:var(--soft);font-weight:800;font-size:11.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--mut)">' + esc(g.h) + '</td></tr>' +
+      g.rows.map(r => '<tr>' + r.map(c => '<td>' + esc(c) + '</td>').join('') + '</tr>').join('')
+    ).join('') + '</tbody></table></div>' +
+    '<div class="note mt8" style="border-color:var(--green);background:rgba(46,158,107,.08)"><b>Make it real:</b> ' + esc(sc.example) + '</div>' +
+    (sc.docs ? '<div class="note warn mt8"><b>Minimum underwriting documents:</b><ul class="ck mt8">' + sc.docs.map(d => '<li>' + esc(d) + '</li>').join('') + '</ul></div>' : '') +
+    '</div>').join('');
+})();
+</script>
+</body></html>

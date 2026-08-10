@@ -1,0 +1,77 @@
+<!DOCTYPE html><html lang="en"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>Your Earnings — NextPay Sales Hub</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/hub.css">
+</head><body>
+<div class="hub-shell"><div id="hub-side"></div><main class="hub-main">
+
+<div class="pg-head">
+  <span class="eyebrow">Work the numbers</span>
+  <h1>Your Earnings</h1>
+  <p>Calculate your residual earnings on every deal. Run these before every quote so you know what you'll make.</p>
+</div>
+
+<div class="card mt16">
+  <h3>Residual calculator</h3>
+  <p class="muted small" style="margin-bottom:16px">Input the deal parameters and watch your numbers update. Volumes that stay under $15k/mo can pull very different margins on flat-rate platforms (Square, SumUp) — use the calculator to compare.</p>
+  <div class="frow3">
+    <div><label class="fl">Monthly volume ($)</label><input class="fi" id="r-vol" inputmode="numeric" placeholder="45000"></div>
+    <div><label class="fl">Rate quoted to merchant (%)</label><input class="fi" id="r-rate" inputmode="numeric" placeholder="2.60"></div>
+    <div><label class="fl">Buy rate (%)</label><input class="fi" id="r-buy" inputmode="numeric" placeholder="2.10"></div>
+  </div>
+  <div class="frow3">
+    <div><label class="fl">Monthly fee income ($ — software margin, statement fee…)</label><input class="fi" id="r-fees" inputmode="numeric" value="0"></div>
+    <div><label class="fl">Your share of margin (%)</label><input class="fi" id="r-split" inputmode="numeric" value="45"><span class="small muted" style="display:block;margin-top:4px">Preloaded: SIP low-risk <b>45</b> · SIP high-risk <b>30</b> · Next2Pay <b>50</b> · Clover <b>45</b> · SumUp <b>40</b></span></div>
+    <div></div>
+  </div>
+  <div class="grid3 mt16">
+    <div class="stat"><div class="n" id="r-margin">—</div><div class="l">total monthly margin</div></div>
+    <div class="stat"><div class="n" id="r-mine" style="color:var(--teal)">—</div><div class="l">your monthly residual</div></div>
+    <div class="stat"><div class="n" id="r-year">—</div><div class="l">your residual per year</div></div>
+  </div>
+</div>
+
+<hr class="sep" style="margin:24px 0">
+
+<div class="card" id="sources">
+  <div class="spread"><h3>Deal economics — where deals are sourced</h3><span class="chip red">Internal only</span></div>
+  <p class="muted small">Where a deal is written decides your split. Use this table to confirm your residual share, then <a href="schedule-as.html">Partner Programs & Schedule A</a> for exact buy rates and cost formulas.</p>
+  <div class="tbl-wrap"><table class="tbl"><thead><tr><th>Placement</th><th>Sourced from</th><th>What you make</th><th>Where to quote processing</th></tr></thead><tbody id="eco-rows"></tbody></table></div>
+</div>
+
+<div class="note internal mt16"><b>How you get paid — the standard on every program:</b> the buy rates and costs are the deal's expenses, covered <b>off the top</b>. What's left is the net residual and payout — and <b>you earn your split of it</b>. Every number is already stated as your share. Your signed agent agreement is the final word.</div>
+
+</main></div>
+<script src="js/hub.js"></script><script src="js/hub-data.js"></script><script src="js/hub-store.js"></script>
+<script>
+(function () {
+  const $ = (id) => document.getElementById(id);
+  const fmt = (n) => '$' + Math.round(n).toLocaleString();
+
+  /* residual calc */
+  function rcalc() {
+    const v = parseFloat($('r-vol').value) || 0, q = parseFloat($('r-rate').value) || 0,
+          b = parseFloat($('r-buy').value) || 0, f = parseFloat($('r-fees').value) || 0,
+          sp = (parseFloat($('r-split').value) || 0) / 100;
+    const margin = v * ((q - b) / 100) + f;
+    $('r-margin').textContent = (v && q) ? fmt(margin) + '/mo' : '—';
+    $('r-mine').textContent = (v && q && sp) ? fmt(margin * sp) + '/mo' : '—';
+    $('r-year').textContent = (v && q && sp) ? fmt(margin * sp * 12) + '/yr' : '—';
+  }
+  ['r-vol', 'r-rate', 'r-buy', 'r-fees', 'r-split'].forEach(id => $(id).addEventListener('input', rcalc));
+
+  /* deal economics by source */
+  const D = window.HUB_DATA;
+  const esc = (s) => String(s == null ? '' : s).replace(/[<>&"]/g, c => ({'<':'&lt;','>':'&gt;','&':'&amp;','"':'&quot;'}[c]));
+  $('eco-rows').innerHTML = Object.entries(D.economics).map(([k, e]) =>
+    '<tr><td><b>' + esc((D.placements[k] || {}).label || k) + '</b>' +
+    (e.need ? '<br><span class="chip amber" style="margin-top:6px">Schedule A needed</span>' : '<br><span class="chip green" style="margin-top:6px">Ready</span>') + '</td>' +
+    '<td class="small">' + esc(e.source) + (e.need ? '<br><span class="muted"><b>Missing:</b> ' + esc(e.need) + '</span>' : '') + '</td>' +
+    '<td class="small"><ul class="ck plain">' + e.make.map(m => '<li>' + esc(m) + '</li>').join('') + '</ul></td>' +
+    '<td class="small">' + esc(e.quote) + '</td></tr>').join('');
+})();
+</script>
+</body></html>

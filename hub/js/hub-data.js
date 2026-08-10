@@ -56,7 +56,7 @@ window.HUB_DATA = {
 
   /* ---------- Industry playbooks ---------- */
   industries: {
-    'convenience': { label: 'Convenience & Grocery', group: 'Retail',
+    'convenience': { label: 'Convenience & Grocery', group: 'Retail', bg: 'convenience.png',
       ask: [
         'Walk me through the counter at rush hour — how many customers an hour, and what actually slows the line?',
         'How do you track inventory today — do you know your top 20 sellers and your dead stock, or is it a walk-the-aisles-with-a-notepad situation?',
@@ -81,7 +81,7 @@ window.HUB_DATA = {
       placements: ['nrs', 'korona', 'clover']
     },
 
-    'liquor': { label: 'Liquor Stores', group: 'Retail',
+    'liquor': { label: 'Liquor Stores', group: 'Retail', bg: 'liquor.png',
       ask: [
         'How do you card today — and has a missed check ever cost you? Register-forced ID scanning takes that risk off your clerks.',
         'Case discounts, mix-and-match, keg deposits — does the register handle that, or is it clerk math?',
@@ -105,7 +105,7 @@ window.HUB_DATA = {
       placements: ['korona', 'clover', 'nrs']
     },
 
-    'boutique': { label: 'Boutique & Clothing', group: 'Retail',
+    'boutique': { label: 'Boutique & Clothing', group: 'Retail', bg: 'boutique.jpg',
       ask: [
         'Do you sell online or on Instagram too? Does floor inventory sync with web inventory, or do you oversell?',
         'Size/color matrix inventory or simple items? How do you know what to reorder and in what size?',
@@ -129,7 +129,7 @@ window.HUB_DATA = {
       placements: ['square', 'sumup', 'clover']
     },
 
-    'jewelry': { label: 'Jewelry Stores', group: 'Retail',
+    'jewelry': { label: 'Jewelry Stores', group: 'Retail', bg: 'jewelry.png',
       ask: [
         'What\'s your highest typical ticket, and any single sales over $5–10k? (Underwriting needs this up front so payouts never get held.)',
         'Deposits, layaway, custom orders — how do you track what\'s owed and what\'s in the safe?',
@@ -147,13 +147,13 @@ window.HUB_DATA = {
       rules: [
         'High single tickets → disclose max ticket on the app; set realistic limits so payouts are not held.',
         'Phone orders/deposits → Next2Pay virtual terminal (linked2pay rails).',
-        'Repairs pipeline → invoicing add-on or QuickBooks integration.'
+        'Repairs pipeline → invoicing add-on or Invoice with QuickBooks Integration.'
       ],
       pricing: 'High average ticket → interchange-plus shines; per-item fees are irrelevant, basis points are everything. Statements from jewelry stores usually show inflated keyed rates — easy beat.',
       placements: ['clover', 'quantic', 'terminal-gateway']
     },
 
-    'specialty-retail': { label: 'Specialty Retail', group: 'Retail',
+    'specialty-retail': { label: 'Specialty Retail', group: 'Retail', bg: 'specialty-retail.png',
       ask: [
         'What\'s unusual about your inventory — serialized items, rentals, consignment, bulk, bundles?',
         'Any tickets, admissions, classes or events in the mix?',
@@ -177,7 +177,7 @@ window.HUB_DATA = {
       placements: ['korona', 'clover', 'square']
     },
 
-    'fine-dining': { label: 'Fine Dining & Full Service', group: 'Food & Beverage',
+    'fine-dining': { label: 'Fine Dining & Full Service', group: 'Food & Beverage', bg: 'fine-dining.png',
       ask: [
         'Covers a night and how many turns? Where does a table stall — kitchen, server, or the check?',
         'How do servers close checks today — walk to a station, or at the table? (Pay-at-table alone can add a turn.)',
@@ -201,7 +201,7 @@ window.HUB_DATA = {
       placements: ['skytab', 'quantic', 'clover']
     },
 
-    'pizzerias': { label: 'Pizzerias', group: 'Food & Beverage',
+    'pizzerias': { label: 'Pizzerias', group: 'Food & Beverage', bg: 'pizzeria.png',
       ask: [
         'Phone vs online vs walk-in — what\'s the order mix at Friday rush?',
         'Who answers the phones at rush, and how many order errors a week come from that scramble?',
@@ -225,7 +225,7 @@ window.HUB_DATA = {
       placements: ['skytab', 'pays', 'quantic']
     },
 
-    'food-trucks': { label: 'Food Trucks', group: 'Food & Beverage',
+    'food-trucks': { label: 'Food Trucks', group: 'Food & Beverage', bg: 'food.png',
       ask: [
         'How\'s connectivity where you park? Ever lost sales to a dead signal? (Offline mode matters more than any rate.)',
         'One window or two? How many customers can you turn an hour, and what caps it?',
@@ -249,7 +249,7 @@ window.HUB_DATA = {
       placements: ['square', 'skytab', 'terminal-gateway']
     },
 
-    'bars': { label: 'Bars & Nightclubs', group: 'Food & Beverage',
+    'bars': { label: 'Bars & Nightclubs', group: 'Food & Beverage', bg: 'bar.png',
       ask: [
         'Tabs: how do you hold cards today, and how many walked tabs a month? (Pre-auth kills that number.)',
         'Speed at last call — how many drinks a minute per well, and what slows it?',
@@ -273,7 +273,7 @@ window.HUB_DATA = {
       placements: ['skytab', 'clover', 'quantic']
     },
 
-    'qsr-cafes': { label: 'QSR, Cafés & Coffee Shops', group: 'Food & Beverage',
+    'qsr-cafes': { label: 'QSR, Cafés & Coffee Shops', group: 'Food & Beverage', bg: 'coffee.png',
       ask: [
         'Orders per hour at peak — and how many seconds does each order take at the register?',
         'Would a self-order kiosk pull people out of your line? (Kiosks also lift average ticket.)',
@@ -297,7 +297,7 @@ window.HUB_DATA = {
       placements: ['skytab', 'square', 'pays']
     },
 
-    'bakeries': { label: 'Bakeries, Delis & Markets', group: 'Food & Beverage',
+    'bakeries': { label: 'Bakeries, Delis & Markets', group: 'Food & Beverage', bg: 'bakery.png',
       ask: [
         'What\'s sold by weight vs by piece? (Certified scale integration is the fork in the road.)',
         'Custom orders — cakes, catering: how do you take deposits and schedule pickups today? Paper book?',
@@ -321,7 +321,7 @@ window.HUB_DATA = {
       placements: ['clover', 'skytab', 'quantic']
     },
 
-    'auto-repair': { label: 'Auto Repair & Automotive', group: 'Services',
+    'auto-repair': { label: 'Auto Repair & Automotive', group: 'Services', bg: 'auto-repair.jpg',
       ask: [
         'Walk me through a job today: estimate → approval → work → payment. Where\'s the paper, and where does it stall?',
         'What\'s your average repair order — and your biggest this month? (Underwriting needs the max ticket.)',
@@ -345,7 +345,7 @@ window.HUB_DATA = {
       placements: ['terminal-gateway', 'clover', 'quantic']
     },
 
-    'salons': { label: 'Salons & Spas', group: 'Services',
+    'salons': { label: 'Salons & Spas', group: 'Services', bg: 'salon.png',
       ask: [
         'How do clients book — and what did no-shows cost you last week, honestly?',
         'Card-on-file at booking: would your stylists back a no-show policy if the system enforced it?',
@@ -369,7 +369,7 @@ window.HUB_DATA = {
       placements: ['square', 'clover', 'sumup']
     },
 
-    'home-services': { label: 'Home Services (HVAC, Plumbing, Electrical…)', group: 'Services',
+    'home-services': { label: 'Home Services (HVAC, Plumbing, Electrical…)', group: 'Services', bg: 'home-services.jpg',
       ask: [
         'How many techs in the field, and how does each one collect today — check, card over phone, \'we\'ll bill you\'?',
         'From job-done to money-in-bank: how many days, really?',
@@ -393,7 +393,7 @@ window.HUB_DATA = {
       placements: ['invoicing-gateway', 'terminal-gateway']
     },
 
-    'fitness': { label: 'Fitness & Gyms', group: 'Services',
+    'fitness': { label: 'Fitness & Gyms', group: 'Services', bg: 'fitness.jpg',
       ask: [
         'How many members, and how many payments FAIL each month? Get the real number — that\'s the deal right there.',
         'What happens to a failed payment today — who chases it, and how much never comes back?',
@@ -417,7 +417,7 @@ window.HUB_DATA = {
       placements: ['invoicing-gateway', 'square', 'clover']
     },
 
-    'professional-services': { label: 'Professional Services (Legal, Accounting…)', group: 'Services',
+    'professional-services': { label: 'Professional Services (Legal, Accounting…)', group: 'Services', bg: 'professional.png',
       ask: [
         'How do invoices go out today, and what\'s the average days-to-paid?',
         'Retainers: how are they collected and replenished?',
@@ -441,7 +441,7 @@ window.HUB_DATA = {
       placements: ['invoicing-gateway']
     },
 
-    'cleaning': { label: 'Cleaning Services', group: 'Services',
+    'cleaning': { label: 'Cleaning Services', group: 'Services', bg: 'cleaning.jpg',
       ask: [
         'Residential, commercial, or both? How many recurring jobs a week?',
         'How do you bill — after each job, monthly, and how do you get paid: check, Venmo, card?',
@@ -465,7 +465,7 @@ window.HUB_DATA = {
       placements: ['invoicing-gateway', 'sumup']
     },
 
-    'healthcare': { label: 'Healthcare & Medical (Vision, Dental, Chiro, Derm, Mental Health, Wellness)', group: 'Healthcare',
+    'healthcare': { label: 'Healthcare & Medical (Vision, Dental, Chiro, Derm, Mental Health, Wellness)', group: 'Healthcare', bg: 'health.png',
       ask: [
         'Copays at the desk vs balances after insurance — what\'s the mix?',
         'How do patient statements go out, and what share actually gets collected?',
@@ -489,7 +489,7 @@ window.HUB_DATA = {
       placements: ['clover', 'terminal-gateway', 'invoicing-gateway']
     },
 
-    'high-risk': { label: 'High Risk & Specialty', group: 'Specialty',
+    'high-risk': { label: 'High Risk & Specialty', group: 'Specialty', bg: 'retail.png',
       ask: [
         'Exactly what do you sell, and on what billing model — one-time, subscription, trial-to-paid?',
         'Processing history: current and former processors, any terminations or MATCH list events? (Be straight — underwriting finds everything.)',
@@ -514,14 +514,14 @@ window.HUB_DATA = {
   /* ---------- Product library ---------- */
   products: {
     pos: [
-      { name: 'SkyTab by Shift4', logo: 'skytab.svg', tag: 'Full-service restaurant standard', sell: ['$29.99/mo base bundle, $0 upfront, lifetime warranty', 'Pay-at-table, KDS, kiosk, caller ID', '30-day trial → 36-month agreement'], link: 'https://nextpaypos.com/shift4-dine' },
-      { name: 'Clover', logo: 'clover.png', tag: 'The mainstream all-in-one', sell: ['Placement ($0 down) or buy outright', 'Software $0–$89.95/mo by vertical', 'Huge app market'], link: 'https://nextpaypos.com/clover' },
-      { name: 'Square', logo: 'square.svg', tag: 'Design-friendly SMB ecosystem', sell: ['POS + online + invoices in one', 'Free plan to start — lowest monthly cost in the lineup: no PCI, regulatory or statement junk fees', 'We meet-or-beat their published rates on our rails'], link: 'https://nextpaypos.com/square' },
+      { name: 'SkyTab by Shift4', logo: 'skytab.svg', tag: 'Full-service restaurant standard', sell: ['$29.99/mo base bundle, $0 upfront, lifetime warranty', 'Pay-at-table, KDS, kiosk, caller ID', '30-day trial → 36-month agreement'], link: 'https://nextpaypos.com/shift4-dine', resources: { guide: 'skytab-resources.html' } },
+      { name: 'Clover', logo: 'clover.png', tag: 'The mainstream all-in-one', sell: ['Placement ($0 down) or buy outright', 'Software $0–$89.95/mo by vertical', 'Huge app market'], link: 'https://nextpaypos.com/clover', resources: { guide: 'clover-resources.html', support: '(877) 928-0305 opt 2' } },
+      { name: 'Square', logo: 'square.svg', tag: 'Design-friendly SMB ecosystem', sell: ['POS + online + invoices in one', 'Free plan to start — lowest monthly cost in the lineup: no PCI, regulatory or statement junk fees', 'We meet-or-beat their published rates on our rails'], link: 'https://nextpaypos.com/square', resources: { guide: 'square-resources.html', applications: [ { label: 'Cash Discount (4%) Signup', url: 'https://app.squareup.com/signup/en-us?signup_token=C76D31CB54' }, { label: 'Rack Rate (IC+) Signup', url: 'https://app.squareup.com/signup/en-us?signup_token=1DC988FC39' } ], pricing: 'https://squareup.com/us/en/pricing', support: '855-700-6000 (Square Partner Support)' } },
       { name: 'Quantic', logo: 'quantic-tight.png', logoH: 32, tag: 'Own-your-hardware cloud POS', sell: ['Swan bundles from $919', 'Pro $60/mo first station, $50 additional', 'Deep module list (OLO, loyalty, reservations)'], link: 'https://nextpaypos.com/quantic' },
       { name: 'Korona', logo: 'korona.png', tag: 'Serious retail & liquor inventory', sell: ['Core $59 / Retail $79 / Plus $99 per register', 'Ticketing, franchise, ID-scanner add-ons', 'Multi-location strength'], link: 'https://nextpaypos.com/korona' },
       { name: 'NRS', logo: 'nrs.png', tag: 'C-store / bodega specialist', sell: ['Age verification + scan data', 'Customer-facing screen', 'Price-friendly for single lanes'], link: 'https://nextpaypos.com/nrs' },
       { name: 'PAYS', logo: 'pays.svg', tag: 'All-inclusive 0% dual pricing POS', sell: ['Starter $59 / Growth $79 / Enterprise $99', 'Delivery-app integrations on Growth', 'Station bundle $999'], link: 'https://nextpaypos.com/pays-pos' },
-      { name: 'SumUp', logo: 'sumup.svg', tag: 'Value hardware, $0 monthly', sell: ['POS Lite bundle $499, Terminal $249, Solo $54', 'Free POS software tier', 'Great for micro-merchants'], link: 'https://nextpaypos.com/sumup' },
+      { name: 'SumUp', logo: 'sumup.svg', tag: 'Value hardware, $0 monthly', sell: ['POS Lite bundle $499, Terminal $249, Solo $54', 'Free POS software tier', 'Great for micro-merchants'], link: 'https://nextpaypos.com/sumup', resources: { guide: 'sumup-resources.html' } },
       { name: 'DejaPay Pro', logo: 'dejapay.webp', tag: 'POS on Dejavoo rails', sell: ['Budget-friendly counter setup', 'Pairs with Dejavoo terminals', 'Simple menus, fast setup'], link: 'https://nextpaypos.com/dejapay' },
       { name: 'Chively POS', logo: 'chively-white.png', logoDark: true, tag: 'All-in-one POS — its own platform, written through Solutions in Payments (Luqra)', sell: ['Full restaurant + retail feature set', 'Handheld, kiosk and customer-screen options', 'Written on SIP paper — SIP Schedule A economics', 'Pricing coming soon'], link: 'https://nextpaypos.com/chively' },
     ],
@@ -534,7 +534,7 @@ window.HUB_DATA = {
       { name: 'SwipeSimple', logo: 'swipesimple.png', tag: 'Mobile reader + virtual terminal', sell: ['Phone-based payments', 'Invoices + item catalog'], link: 'https://nextpaypos.com/swipesimple' }
     ],
     gateways: [
-      { name: 'Next2Pay Gateway', logo: 'next2pay-globe.png', tag: 'House gateway \u2014 linked2pay rails', sell: ['E-commerce, virtual terminal and recurring billing on our rails', 'The Navigator\u2019s only gateway recommendation \u2014 best margins in the book', 'Pairs with Next2Pay Invoicing for invoice-first businesses'], link: 'https://nextpaypos.com/next2pay' },
+      { name: 'Next2Pay Gateway', logo: 'next2pay-globe.png', tag: 'House gateway \u2014 linked2pay rails', sell: ['E-commerce, virtual terminal and recurring billing on our rails', 'The Navigator\u2019s only gateway recommendation \u2014 best margins in the book', 'Pairs with Next2Pay Invoicing for invoice-first businesses'], link: 'https://nextpaypos.com/next2pay', resources: { guide: 'next2pay-resources.html' } },
       { name: 'NMI', logo: 'nmi.png', tag: 'Enterprise-grade gateway', sell: ['Virtual terminal, recurring, account updater', 'Integrates with almost everything'], link: 'https://nextpaypos.com/nmi' },
       { name: 'FluidPay', logo: 'fluidpay.png', tag: 'Modern gateway, great for recurring', sell: ['Clean portal', 'Strong for subscriptions & invoicing'], link: 'https://nextpaypos.com/fluidpay' },
       { name: 'Authorize.net', logo: 'authnet-tight.png', logoH: 32, tag: 'The legacy standard', sell: ['Merchants know the name', 'Broad cart/software support'], link: 'https://nextpaypos.com/authorize-net' },
@@ -543,11 +543,11 @@ window.HUB_DATA = {
       { name: 'iPOSPays', logo: 'ipospays.png', tag: 'Dejavoo-native gateway', sell: ['Drives Dejavoo/DejaPay hardware'], link: 'https://nextpaypos.com/ipospays' }
     ],
     invoicing: [
-      { name: 'Next2Pay Invoicing', logo: 'next2pay-globe.png', tag: 'House invoicing — for trades & businesses that INVOICE their customers', sell: ['Roofers, electricians, plumbers, pros, cleaning routes — estimates, invoices, text-to-pay, recurring', 'NOT a POS replacement: salons/bakeries/restaurants get a full POS (invoicing is usually a POS feature there)', 'Best margins in the invoicing lineup — proposal ready in the Proposal Studio'], link: 'https://nextpaypos.com/next2pay' },
+      { name: 'Next2Pay Invoicing', logo: 'next2pay-globe.png', tag: 'House invoicing — for trades & businesses that INVOICE their customers', sell: ['Roofers, electricians, plumbers, pros, cleaning routes — estimates, invoices, text-to-pay, recurring', 'NOT a POS replacement: salons/bakeries/restaurants get a full POS (invoicing is usually a POS feature there)', 'Best margins in the invoicing lineup — proposal ready in the Proposal Studio'], link: 'https://nextpaypos.com/next2pay', resources: { guide: 'next2pay-resources.html' } },
       { name: 'FieldPulse', logo: 'fieldpulse.png', tag: 'Field service suite', sell: ['Estimates → invoices → text-to-pay', 'Scheduling + CRM for trades'], link: 'https://nextpaypos.com/invoicing' },
       { name: 'Field Work', logo: 'fieldwork.png', tag: 'Field service alternative', sell: ['Job management + payments'], link: 'https://nextpaypos.com/invoicing' },
       { name: 'LQPay', logo: 'lqpay.png', tag: 'Billing & statements', sell: ['Healthcare-friendly workflows'], link: 'https://nextpaypos.com/invoicing' },
-      { name: 'QuickBooks integrations', logo: 'quickbooks-t.png', logoH: 32, tag: 'Payments inside QB', sell: ['Invoices paid straight into the books'], link: 'https://nextpaypos.com/integrations' }
+      { name: 'Invoice with QuickBooks Integrations', logo: 'quickbooks-t.png', logoH: 32, tag: 'Payments inside QB', sell: ['Invoices paid straight into the books'], link: 'https://nextpaypos.com/integrations' }
     ],
     services: [
       { name: 'NextFund — Business Financing', logo: 'nextfund-globe.png', tag: 'The recommendation for ANYTHING finance or lending', sell: ['Working capital, equipment loans, merchant cash advances', 'Fast approvals off processing history', 'A second commission riding alongside your processing deal'], link: 'https://nextpaypos.com/financing' },
@@ -566,64 +566,70 @@ window.HUB_DATA = {
     'Photos or site survey for POS installs (counter space, network, power)'
   ],
   placements: {
-    'skytab': { label: 'SkyTab by Shift4', steps: [
-      'Confirm the build in the Proposal Builder (base bundle $29.99/mo + per-device monthlies) and price processing.',
+    'skytab': { label: 'SkyTab by Shift4', logo: 'skytab.svg', guide: 'skytab-resources.html', stepsHtml: [
+      'Review the <a href="skytab-resources.html" style="color:#14A18C;font-weight:500">SkyTab Resource Guide</a> for pricing, modules, and deal workflow.',
+      'Confirm the build in the <a href="proposal-builder.html?brand=skytab" style="color:#14A18C;font-weight:500">Proposal Builder</a> (base bundle $29.99/mo + per-device monthlies) and price processing.',
       'Collect common docs plus the signed SkyTab agreement (30-day trial, then 36-month term — make sure the owner heard this from you first).',
       'Menu build: collect the full menu (photos or files) — send with the submission.',
       'Email the packaged deal to dom@nextpaypos.com (CC payments@ + alexander@) with subject "SkyTab deal — {DBA}".',
       'Install is scheduled by the SkyTab team; track status in the Shift4 partner portal and log it on the deal in My Pipeline.'
     ]},
-    'clover': { label: 'Clover', steps: [
-      'Lock the hardware + software plan. Wholesale pricing sheet: hub docs \u2192 Clover hardware & software pricing (Duo bundle $2,058.80 \u00b7 Solo $1,734.80 \u00b7 Mini $917.10 \u00b7 Flex Gen 4 $738.11 \u00b7 Kiosk $3,537.12 + deployment fees). Note the $5/mo Clover platform fee per MID on the quote.',
-      'Need help mid-sale? Clover program POS desk: (877) 928-0305 opt 2 \u00b7 pos@redfynn.com \u2014 POS sale assistance, system functionality, configuration questions.',
+    'clover': { label: 'Clover', logo: 'clover.png', guide: 'clover-resources.html', stepsHtml: [
+      'Review the <a href="clover-resources.html" style="color:#14A18C;font-weight:500">Clover Resource Guide</a> for positioning, pricing, and deal workflow.',
+      'Lock the hardware + software plan using the <a href="proposal-builder.html?brand=clover" style="color:#14A18C;font-weight:500">Proposal Builder</a>. Wholesale pricing sheet: hub docs \u2192 Clover hardware & software pricing (Duo bundle $2,058.80 \u00b7 Solo $1,734.80 \u00b7 Mini $917.10 \u00b7 Flex Gen 4 $738.11 \u00b7 Kiosk $3,537.12 + deployment fees). Note the $5/mo Clover platform fee per MID on the quote.',
+      'Need help mid-sale? <strong>Clover program POS desk: (877) 928-0305 opt 2</strong> \u00b7 pos@redfynn.com \u2014 POS sale assistance, system functionality, configuration questions.',
       'Application: use the Clover merchant application PDF (hub docs). Application questions or status: (877) 928-0305 ext 205 \u00b7 applications@redfynn.com. Collect the common docs below as usual.',
       'Email the packaged deal to dom@nextpaypos.com (CC payments@ + alexander@) \u2014 subject "Clover deal \u2014 {DBA}".',
       'Install & training: schedule installs at book.redfynn.com/install or (813) 803-5503; onboarding training at calendly.com/pos-nhs/onboarding-training or (877) 928-0305 ext 280.',
       'After go-live: merchant support (877) 928-0305 opt 3 \u00b7 support@redfynn.com; merchants already on Clover devices call (844) 864-5449. Log the merchant in My Merchants.'
     ]},
-    'square': { label: 'Square (hardware resell + rate review)', steps: [
-      'Quote hardware from the reseller guide; software plan Free or Plus $49/mo.',
-      'If they already process on Square: their rates are fixed and published by Square, so there is no rate to beat — only pitch a switch if dual pricing or a platform change genuinely lowers their cost, and move  to our rails where it fits.',
-      'Submit order + docs to dom@nextpaypos.com — subject "Square deal — {DBA}".'
+    'square': { label: 'Square (hardware resell + rate review)', logo: 'square.svg', guide: 'square-resources.html', stepsHtml: [
+      'Review the <a href="square-resources.html" style="color:#14A18C;font-weight:500">Square Resource Guide</a> for pricing, hardware options, and deal workflow.',
+      'Quote hardware using the <a href="proposal-builder.html?brand=square" style="color:#14A18C;font-weight:500">Proposal Builder</a> (Terminal $299, Handheld $399, Reader $59 — buy upfront or finance monthly); software plan Free or Plus $49/mo.',
+      'Have merchant choose: <strong>Cash Discount (4%)</strong> or <strong>Rack Rate (IC+)</strong>. Send them the appropriate signup link: <a href="https://app.squareup.com/signup/en-us?signup_token=C76D31CB54" target="_blank" rel="noopener" style="color:#14A18C;font-weight:500">Cash Discount Signup</a> or <a href="https://app.squareup.com/signup/en-us?signup_token=1DC988FC39" target="_blank" rel="noopener" style="color:#14A18C;font-weight:500">Rack Rate (IC+) Signup</a>.',
+      'If they already process on Square: run the statement meet-or-beat to move processing to our rails where it fits.',
+      'Collect common docs; email packaged deal to dom@nextpaypos.com — subject "Square deal — {DBA}".'
     ]},
-    'quantic': { label: 'Quantic', steps: [
+    'quantic': { label: 'Quantic', logo: 'quantic.svg', steps: [
       'Build from the Unified Pricing sheet (Swan bundles, per-device software, modules).',
       'Include the Setup & Training package line (scoped per build).',
       'Common docs + menu/inventory file; email to dom@nextpaypos.com — subject "Quantic deal — {DBA}".',
       'Quantic runs a remote menu build + install call; coordinate the date with the merchant.'
     ]},
-    'korona': { label: 'Korona', steps: [
+    'korona': { label: 'Korona', logo: 'korona.png', steps: [
       'Per-register plan (Core $59 / Retail $79 / Plus $99) + modules + hardware bundles.',
       'Inventory import: ask for their item list/spreadsheet up front — it gates go-live.',
       'Common docs; email to dom@nextpaypos.com — subject "Korona deal — {DBA}".'
     ]},
-    'nrs': { label: 'NRS', steps: [
+    'nrs': { label: 'NRS', logo: 'nrs.png', steps: [
       'Confirm lane count, EBT/SNAP needs and scan-data enrollment.',
       'Common docs + EBT/FNS number if applicable.',
       'Email to dom@nextpaypos.com — subject "NRS deal — {DBA}".'
     ]},
-    'pays': { label: 'PAYS', steps: [
-      'Pick the plan (Starter $59 / Growth $79 / Enterprise $99) + station bundle ($999) or quoted hardware.',
+    'pays': { label: 'PAYS', logo: 'pays.svg', stepsHtml: [
+      'Pick the plan (Starter $59 / Growth $79 / Enterprise $99) using the <a href="proposal-builder.html?brand=pays" style="color:#14A18C;font-weight:500">Proposal Builder</a> + station bundle ($999) or quoted hardware.',
       'Dual-pricing signage expectations — set them now. Loaner/rental hardware carries a Return Obligation: if the merchant terminates early, the hardware ships back or the penalty applies.',
       'Common docs + menu; email to dom@nextpaypos.com — subject "PAYS deal — {DBA}".'
     ]},
-    'sumup': { label: 'SumUp', steps: [
-      'Hardware from the SumUp price list (POS Lite $499, Terminal $249, Solo $54…).',
+    'sumup': { label: 'SumUp', logo: 'sumup.svg', guide: 'sumup-resources.html', stepsHtml: [
+      'Review the <a href="sumup-resources.html" style="color:#14A18C;font-weight:500">SumUp Resource Guide</a> for hardware options, pricing, and setup workflow.',
+      'Quote hardware using the <a href="proposal-builder.html?brand=sumup" style="color:#14A18C;font-weight:500">Proposal Builder</a> (POS Lite $499, Terminal $249, Solo $54…).',
       'Common docs; email to dom@nextpaypos.com — subject "SumUp deal — {DBA}".'
     ]},
-    'chively': { label: 'Chively POS (via Solutions in Payments — Luqra)', steps: [
+    'chively': { label: 'Chively POS (via Solutions in Payments — Luqra)', logo: 'chively-white.png', steps: [
       'Chively is its own POS, written through Solutions in Payments (Luqra) — SIP Schedule A economics apply. It is NOT house paper and NOT Next2Pay.',
       'Confirm the build — stations, handhelds, kiosk, customer screens. Hardware/software pricing coming soon; until then, price the build in the deal’s Deal Desk thread.',
       'Common docs (app, voided check, ID, statements/projections) plus menu/inventory files.',
       'Email the packaged deal to dom@nextpaypos.com (CC payments@ + alexander@) — subject "Chively deal — {DBA}".',
       'Install scheduling and file questions → the deal’s Deal Desk thread.'
     ]},
-    'next2pay': { label: 'Next2Pay (house invoicing, gateway & recurring)', steps: [
-      'House deal — best margins in the book. Confirm the build: Next2Pay Invoicing, gateway/virtual terminal, recurring billing, or a combination.',
-      'Build the quote in the Proposal Studio. Selling NextLink (client automation outreach) too? Its per-seat proposal has its own section there.',
-      'Underwriting docs (all required): last 3 months processing statements · last 3 months business bank statements · Articles of Incorporation · owner ID(s) · bank account details · Plaid connection · Veriff completion. Plus menu/inventory or invoice workflow details.',
-      'Email the packaged deal to dom@nextpaypos.com (CC payments@ + alexander@) — subject "Next2Pay deal — {DBA}".',
-      'Onboarding and install are run in-house — coordinate dates with the NextPay team in the deal’s Deal Desk thread.'
+    ‘next2pay’: { label: ‘Next2Pay (house invoicing, gateway & recurring)’, logo: ‘next2pay-globe.png’, guide: ‘next2pay-resources.html’, stepsHtml: [
+      ‘Review the <a href="next2pay-resources.html" style="color:#14A18C;font-weight:500">Next2Pay Resource Guide</a> for invoicing workflows, pricing, and integrations.’,
+      ‘<strong>House deal — best margins in the book.</strong> Confirm the build: Next2Pay Invoicing, gateway/virtual terminal, recurring billing, or a combination.’,
+      ‘Build the quote in the <a href="proposal-builder.html?brand=next2pay" style="color:#14A18C;font-weight:500">Proposal Studio</a>. Selling NextLink (client automation outreach) too? Its per-seat proposal has its own section there.’,
+      ‘Underwriting docs (all required): last 3 months processing statements · last 3 months business bank statements · Articles of Incorporation · owner ID(s) · bank account details · Plaid connection · Veriff completion. Plus menu/inventory or invoice workflow details.’,
+      ‘Email the packaged deal to dom@nextpaypos.com (CC payments@ + alexander@) — subject "Next2Pay deal — {DBA}".’,
+      ‘Onboarding and install are run in-house — coordinate dates with the NextPay team in the deal\’s Deal Desk thread.’
     ]},
     'terminal-gateway': { label: 'Standalone terminal (+ gateway)', steps: [
       'Pick terminal (PAX / Dejavoo / Valor) and file build: dual pricing or standard; tip adjust; auto-batch time.',
@@ -635,7 +641,7 @@ window.HUB_DATA = {
       'Spec the Next2Pay build: invoicing seats, recurring plans, card-on-file, ACH option for big invoices.',
       'Common docs; email to dom@nextpaypos.com — subject "Invoicing deal — {DBA}".'
     ]},
-    'high-risk': { label: 'High Risk & Specialty', steps: [
+    'high-risk': { label: 'High Risk & Specialty', logo: 'nextpay.png', steps: [
       'Do NOT quote rates. Collect the full file: 3–6 months processing + bank statements, refund/chargeback history, licenses, website/terms.',
       'Write a one-paragraph business summary (what they sell, billing model, why volume is what it is).',
       'Email the complete file to dom@nextpaypos.com — subject "HIGH RISK — {DBA}". Dom routes to the right book.'
@@ -643,8 +649,8 @@ window.HUB_DATA = {
   },
 
   contacts: {
-    submit: 'dom@nextpaypos.com',
-    cc: 'payments@nextpaypos.com, alexander@nextpaypos.com',
+    submit: 'hello@nextpaypos.com',
+    cc: 'dom@nextpaypos.com, alexander@nextpaypos.com',
     help: 'hello@nextpaypos.com'
   },
 
@@ -819,10 +825,10 @@ window.HUB_DATA = {
     next2pay: {
       label: 'Next2Pay / linked2pay (house invoicing & gateway)',
       cols: ['Buy rate', 'Rev share'],
-      covers: 'House rails for: Next2Pay Invoicing (Linked2Invoice) · the house gateway · ACH / RDC processing · card processing written on linked2pay. This is the schedule behind every invoice-type deal.',
-      splitNote: 'The buy rates below are the deal\u2019s costs — covered off the top. You earn 50% of the net residual that remains: everything quoted above cost, on card, ACH and Linked2Invoice alike.',
-      floor: 'Your true cost on Next2Pay card processing = interchange + 2 bps + $0.0215/transaction + $0.03 authorization. ACH costs $0.10/item (+$10/mo enabled). Linked2Invoice costs $35/mo. Quote above these — your share is 50% of the difference.',
-      example: 'Example: a service business doing $30,000/mo CNP, ~600 transactions, quoted at IC + 0.75% + $0.15: margin ≈ 30,000 × 0.73% + 600 × ~$0.10 ≈ $278/mo. Add Linked2Invoice quoted at $79 vs $35 buy = $44. Your 50% ≈ $161/mo — and ACH invoices fatten it further at $0.10 buy per item.',
+      covers: 'House rails for: Next2Pay Invoicing with Invoice with QuickBooks Integration · the house gateway · ACH / RDC processing · card processing written on linked2pay. This is the schedule behind every invoice-type deal.',
+      splitNote: 'The buy rates below are the deal\u2019s costs — covered off the top. You earn 50% of the net residual that remains: everything quoted above cost, on card, ACH and Invoice with QuickBooks Integration alike.',
+      floor: 'Your true cost on Next2Pay card processing = interchange + 2 bps + $0.0215/transaction + $0.03 authorization. ACH costs $0.10/item (+$10/mo enabled). Invoice with QuickBooks Integration costs $35/mo + $10/mo platform maintenance = $45/mo total. Quote above these — your share is 50% of the difference.',
+      example: 'Example: a service business doing $30,000/mo CNP, ~600 transactions, quoted at IC + 0.75% + $0.15: card margin ≈ $278/mo. With Invoice with QuickBooks Integration ($45/mo cost floor → quote at $50/mo for $5/mo residual on the invoicing). Your 50% ≈ $141/mo from card + $2.50 from invoicing, plus ACH at $0.10 buy per item.',
       groups: [
         { h: 'Card processing buy rates', rows: [
           ['Interchange & assessments (V/MC/D/EBT)', 'Interchange + 2 bps', 'Yes'],
@@ -868,7 +874,6 @@ window.HUB_DATA = {
           ['RDC return / unauthorized', '$4.00 / $7.50 per item', 'Yes'],
           ['Transaction (Direct X9)', '$0.15 / item', 'Yes'],
           ['Credit card processing transaction (gateway)', '$0.05 / item', 'Yes'],
-          ['Linked2Invoice', '$35.00 / mo', 'Yes'],
           ['Add store fee', '$25.00 one-time', 'No'],
           ['Mailed check', '$3.00 / item', 'No'],
           ['Early termination', '$65.00 one-time', 'No']] }
@@ -876,10 +881,10 @@ window.HUB_DATA = {
       docs: ['Last 3 months of processing statements', 'Last 3 months of business bank statements', 'Articles of Incorporation', 'ID for the business owners', 'Bank account details', 'Connection to Plaid', 'Completion of Veriff']
     },
     clover: {
-      label: 'Clover (NextPay white-labeled program)',
+      label: 'Clover (Fiserv partnership)',
       cols: ['Partner cost'],
-      covers: 'Our white-labeled Clover paper — every Clover deal (Fiserv application). Hardware at wholesale per the Clover pricing sheet (hub docs); Clover platform fee $5/MID + $0.03 non-swiped auth pass through.',
-      splitNote: 'The costs below come off the top. You earn 50% of the net residual — ≈ 45% of the margin you create on standard Clover accounts; roughly half that on high-risk and ACH. Heads up: closes assisted by the program\u2019s POS team trim the residual slightly (20 bps).',
+      covers: 'Clover deals (Fiserv application). Hardware at wholesale per the Clover pricing sheet (hub docs); Clover platform fee $5/MID + $0.03 non-swiped auth pass through.',
+      splitNote: 'The costs below come off the top. You earn 50% of the net residual — ≈ 45% of the margin you create on standard Clover accounts; roughly half that on high-risk and ACH. Heads up: closes assisted by Clover sales\u2019s POS team trim the residual slightly (20 bps).',
       floor: 'Your true cost on Clover paper = interchange (pass-through) + 0.03% BIN + $0.035/authorization (+ $0.02 batch, $0.01 AVS). Several lines carry built-in spread: PCI billed $149/yr vs $99 cost, PCI non-action $39.95/mo vs $21.95, statement $1/mo cost. Same-day funding $9.95 cannot be marked up.',
       example: 'Example: $45,000/mo Clover retail, ~1,500 transactions, quoted at IC + 0.50% + $0.10: gross margin ≈ $309/mo. Your share ≈ $139/mo, plus PCI/statement spread and hardware markup.',
       groups: [
@@ -953,9 +958,9 @@ window.HUB_DATA = {
       label: 'PAYS (POS licensing + our processing)',
       cols: ['Cost'],
       covers: 'PAYS POS deals: we license the software per merchant and pair it with our own processing on SIP paper. Loaner/rental hardware carries a Return Obligation — early terminations must ship the hardware back.',
-      splitNote: 'Starter/Growth/Enterprise are the published payspos.com plans — what the MERCHANT pays monthly. The license below is the deal\u2019s cost, covered off the top. You earn 50% of the net software residual (plan price \u2212 license) and 50% of the net processing residual on our SIP paper (\u2248 45% of margin).',
-      floor: 'The deal\u2019s cost: $59/mo license per merchant start (first terminal), $29/mo for a second terminal at the same merchant. The merchant pays the published plan price (Starter $59 / Growth $79 / Enterprise $99) — the difference is the net software residual.',
-      example: 'Example: merchant on Growth pays $79/mo; the $59 license comes off the top → $20/mo net software residual → your 50% = $10/mo. Enterprise at $99 → your $20/mo. Add your share of the processing residual (SIP paper, dual pricing the norm) and markup on the $999 station bundle.',
+      splitNote: 'Starter/Growth/Enterprise are the published payspos.com plans — what the MERCHANT pays monthly. The license below is the deal\u2019s cost, covered off the top. You earn 50% of the net processing residual on our SIP paper (\u2248 45% of margin).',
+      floor: 'The deal\u2019s cost: $59/mo license per merchant start (first terminal), $29/mo for a second terminal at the same merchant. The merchant pays the published plan price (Starter $59 / Growth $79 / Enterprise $99) —',
+      example: 'Example: merchant on Growth plan ($79/mo) — the $59 license comes off the top. Processing residual on SIP paper (SIP paper, dual pricing the norm) and markup on the $999 station bundle.',
       groups: [
         { h: 'Licensing (our cost)', rows: [
           ['License — per merchant start (first terminal)', '$59.00 / mo'],
@@ -975,18 +980,11 @@ window.HUB_DATA = {
      processing gets quoted. Entries with `need` are waiting on a Schedule A
      from Dom — they render as "missing" until filled in. INTERNAL ONLY. */
   economics: {
-    'chively': {
-      source: 'Solutions in Payments paper (Luqra) — Chively POS',
-      sched: 'sip',
-      quote: 'Chively hardware/software pricing coming soon — until then, work the quote in the deal’s Deal Desk thread. Processing is fully ours to price on SIP — dual pricing or IC+ above the SIP cost floor (IC pass-through + 0.02% + $0.02/txn).',
-      make: ['Your share ≈ 45% of everything above the SIP cost floor — bps, per-item and monthly-fee margin', 'Hardware/software margin on the Chively build'],
-      need: null
-    },
-    'next2pay': {
+    ‘next2pay’: {
       source: 'In-house — linked2pay rails (Next2Pay / NextLink)',
       sched: 'next2pay',
-      quote: 'Card processing at the linked2pay buy rates (IC + 2 bps + $0.0215/txn) — quote dual pricing or IC+ above it. ACH at $0.10/item buy. Linked2Invoice at $35/mo buy — retail-price it per deal. NextLink (outreach) seats per the internal list: Trial $599 / Annual $749 / M2M $999 per seat/mo.',
-      make: ['Your share = 50% of the margin over the Next2Pay buy rates — card, ACH and Linked2Invoice SaaS', 'Best-control paper in the book: every line on the schedule is shareable'],
+      quote: 'Card processing at the linked2pay buy rates (IC + 2 bps + $0.0215/txn) — quote dual pricing or IC+ above it. ACH at $0.10/item buy. Invoice with QuickBooks Integration at $35/mo buy — retail-price it per deal.',
+      make: ['Your share = 50% of the margin over the Next2Pay buy rates — card, ACH and Invoice with QuickBooks Integration SaaS', 'Best-control paper in the book: every line on the schedule is shareable'],
       need: null
     },
     'skytab': {
@@ -996,7 +994,7 @@ window.HUB_DATA = {
       need: null
     },
     'clover': {
-      source: 'NextPay\u2019s white-labeled Clover program (house paper, Fiserv application)',
+      source: 'Clover (Fiserv partnership \u2014 house paper)',
       sched: 'clover',
       quote: 'Quote dual pricing or IC+ above the Clover cost floor (IC + 0.03% + $0.035/auth). $5/mo Clover platform fee per MID passes through. Hardware at wholesale per the pricing sheet \u2014 mark up per deal. Ask in Deal Desk whether the deal qualifies for the Clover Advantage program before quoting.',
       make: ['Your share \u2248 45% of the margin you create on standard Clover accounts', 'Hardware markup over wholesale (Duo bundle $2,058.80 \u00b7 Solo $1,734.80 \u00b7 Mini $917.10 \u00b7 Flex Gen 4 $738.11 + deployment)', 'Built-in spreads: PCI, statement, compliance lines', 'Watch: POS-assisted closes trim your residual 20 bps; high-risk/ACH pay roughly half the standard share'],
@@ -1043,6 +1041,13 @@ window.HUB_DATA = {
       make: ['Your share \u2248 40% of the processing margin you quote above cost (steps up on large books)', '\u2248 10% of new-merchant SaaS subscriptions is yours', 'Hardware markup over Schedule A cost (discounting below cost comes out of your pocket)'],
       need: null
     },
+    'chively': {
+      source: 'Solutions in Payments paper (Luqra) \u2014 Chively POS',
+      sched: 'sip',
+      quote: 'Chively hardware/software pricing coming soon \u2014 until then, work the quote in the deal's Deal Desk thread. Processing is fully ours to price on SIP \u2014 dual pricing or IC+ above the SIP cost floor (IC pass-through + 0.02% + $0.02/txn).',
+      make: ['Your share \u2248 45% of everything above the SIP cost floor \u2014 bps, per-item and monthly-fee margin', 'Hardware/software margin on the Chively build'],
+      need: null
+    },
     'terminal-gateway': {
       source: 'Solutions in Payments paper (PAX / Dejavoo / Valor + NMI / FluidPay / Authorize.net / iPOSPays)',
       sched: 'sip',
@@ -1053,8 +1058,8 @@ window.HUB_DATA = {
     'invoicing-gateway': {
       source: 'Next2Pay / linked2pay rails (house invoicing + gateway + ACH)',
       sched: 'next2pay',
-      quote: 'Lead with Next2Pay Invoicing. Card CNP quoted above IC + 2 bps + $0.0215; ACH is the winner on $2k+ invoices ($0.10/item buy). Linked2Invoice $35/mo buy — set the retail per deal.',
-      make: ['Your share = 50% of the margin over the linked2pay buy rates on card + ACH volume', 'Linked2Invoice SaaS margin (retail − $35/mo buy)'],
+      quote: 'Lead with Next2Pay Invoicing. Card CNP quoted above IC + 2 bps + $0.0215; ACH is the winner on $2k+ invoices ($0.10/item buy). Invoice with QuickBooks Integration $35/mo buy — set the retail per deal.',
+      make: ['Your share = 50% of the margin over the linked2pay buy rates on card + ACH volume', 'Invoice with QuickBooks Integration SaaS margin (retail − $35/mo buy)'],
       need: null
     },
     'high-risk': {
@@ -1086,7 +1091,7 @@ window.HUB_DATA = {
       note: 'SkyTab is a placement model ($0 upfront). Revenue is based on 18x average monthly profitability after costs. Your share = 50% of NextPay\'s margin after all fees.'
     },
     clover: {
-      name: 'Clover (NextPay white-label)',
+      name: 'Clover',
       provider: 'Fiserv / RedFynn',
       bonus: 250,
       baseCalculation: 'Margin from processing volume and rate above our cost floor (IC + 0.03% BIN + $0.035/auth). Hardware and optional services add margin too.',
@@ -1163,7 +1168,7 @@ window.HUB_DATA = {
         achTransaction: 0.10,
         linked2Invoice: 35 // Monthly cost
       },
-      note: 'Next2Pay is our highest-margin lane. You earn 50% of the margin on card, ACH, and Linked2Invoice. Quote ACH on invoices over $2k — it\'s often the winner.'
+      note: 'Next2Pay is our highest-margin lane. You earn 50% of the margin on card, ACH, and Invoice with QuickBooks Integration. Quote ACH on invoices over $2k — it\'s often the winner.'
     }
   }
 };

@@ -1,6 +1,6 @@
 /* NextPay Sales Hub — data layer for deals & merchants.
    Works two ways, automatically:
-   1) API mode — when the hub-crm-api Worker is routed at /api/* on
+   1) API mode  — when the hub-crm-api Worker is routed at /api/* on
       hub.nextpaypos.com, everything is stored centrally (D1). Agents see
       their own records; Dom & Alexander see everyone's.
    2) Local mode — no API reachable (preview, or Worker not deployed yet):
@@ -20,14 +20,6 @@
   }
 
   const uid = () => 'r' + Date.now().toString(36) + Math.random().toString(36).slice(2, 7);
-
-  // NOTE (2026-08-05): FreshSales sync used to be bridged from here via a
-  // Make.com webhook (notifyFreshSalesSync). That bridge has been removed —
-  // the hub-crm-api Worker now pushes to FreshSales natively (syncToCRM in
-  // workers/hub-crm-api.js) with proper upsert/dedupe by CRM id. Running
-  // both at once was creating duplicate Contacts/Deals in FreshSales on
-  // every save, so this client-side bridge is intentionally gone. Do not
-  // re-add it without disabling the Worker-side adapter first.
 
   // ---------- local storage backend ----------
   function lread(kind) { try { return JSON.parse(localStorage.getItem('hub_' + kind) || '[]'); } catch (e) { return []; } }
@@ -52,7 +44,7 @@
         method: 'POST', credentials: 'include',
         headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(rec)
       });
-      if (r.ok) { return rec; }
+      if (r.ok) return rec;
     }
     const rows = lread(kind);
     const i = rows.findIndex(x => x.id === rec.id);
@@ -68,33 +60,6 @@
     }
     lwrite(kind, lread(kind).filter(x => x.id !== id));
     return true;
-  }
-
-  // ---------- leads pool (API-only) ----------
-  async function listLeads() {
-    if (!(await probe())) return [];
-    const r = await fetch(API + '/leads', { credentials: 'include' });
-    return r.ok ? r.json() : [];
-  }
-  async function saveLead(rec) {
-    const r = await fetch(API + '/leads', {
-      method: 'POST', credentials: 'include',
-      headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(rec)
-    });
-    if (!r.ok) throw new Error('save lead failed');
-    return r.json();
-  }
-  async function assignLead(id, agent) {
-    const r = await fetch(API + '/leads/' + encodeURIComponent(id) + '/assign', {
-      method: 'POST', credentials: 'include',
-      headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ agent: agent })
-    });
-    if (!r.ok) throw new Error('assign lead failed');
-    return true;
-  }
-  async function deleteLead(id) {
-    const r = await fetch(API + '/leads/' + encodeURIComponent(id), { method: 'DELETE', credentials: 'include' });
-    return r.ok;
   }
 
   function exportAll() {
@@ -140,14 +105,45 @@
     { key: 'lost', label: 'Lost' }
   ];
 
+  // Map merchant status to account status in CRM
+  function accountStatusForMerchant(merchantStatus) {
+    if (merchantStatus === 'Live' || merchantStatus === 'Paused') return 'Active';
+    if (merchantStatus === 'Closed') return 'Lost';
+    return 'Prospect'; // Installing, Underwriting, or unknown
+  }
+
+  // Link or update an account record for a merchant
+  async function linkAccountForMerchant(merchant) {
+    if (!merchant || !merchant.dba) return null;
+    const accounts = await list('accounts');
+    // Try to find existing account by merchant name
+    const match = accounts.find(a => a.name === merchant.dba);
+    if (match) {
+      // Update existing account with current merchant status
+      match.status = accountStatusForMerchant(merchant.status);
+      match.phone = merchant.phone;
+      await save('accounts', match);
+      return match;
+    } else {
+      // Create new account with initial status
+      const newAccount = {
+        name: merchant.dba,
+        phone: merchant.phone,
+        status: accountStatusForMerchant(merchant.status)
+      };
+      return await save('accounts', newAccount);
+    }
+  }
+
   window.Store = {
     listDeals: () => list('deals'),
     saveDeal: (d) => save('deals', d),
     deleteDeal: (id) => remove('deals', id),
     listMerchants: () => list('merchants'),
-    saveMerchant: (m) => save('merchants', m),
+    saveMerchant: async (m) => { await save('merchants', m); await linkAccountForMerchant(m); },
     deleteMerchant: (id) => remove('merchants', id),
-    listLeads, saveLead, assignLead, deleteLead,
+    listAccounts: () => list('accounts'),
+    saveAccount: (a) => save('accounts', a),
     exportAll, importAll, probe, STAGES,
     stageLabel: (k) => (STAGES.find(s => s.key === k) || {}).label || k,
     apiMode: () => apiOK === true

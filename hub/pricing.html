@@ -1,7 +1,7 @@
 <!DOCTYPE html><html lang="en"><head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="robots" content="noindex,nofollow">
-<title>Pricing & Buy Rates — NextPay Sales Hub</title>
+<title>Pricing — NextPay Sales Hub</title>
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="css/hub.css">
@@ -10,14 +10,15 @@
 
 <div class="pg-head">
   <span class="eyebrow">Price it right</span>
-  <h1>Pricing &amp; Buy Rates</h1>
-  <p>How to price a deal, what the software actually costs (verified numbers), your buy rates, and what lands in your pocket. <b>Everything on this page is internal — never screenshot or forward it to a merchant.</b></p>
+  <h1>Pricing</h1>
+  <p>How to price a deal and which pricing model fits each merchant. For your earnings calculator and cost floors, see <a href="earnings.html">Your Earnings</a> and <a href="schedule-as.html">Partner Programs & Schedule A</a>.</p>
 </div>
 
 <div class="card">
-  <h3>The five ways to price processing</h3>
+  <h3>Pricing models — five ways to price processing</h3>
+  <p class="muted small">Pick the pricing model that fits the merchant's business and your deal. Each has different complexity, merchant psychology, and margin potential.</p>
   <div class="tbl-wrap"><table class="tbl"><thead><tr><th>Model</th><th>Merchant pays</th><th>When to use</th><th>Watch for</th></tr></thead><tbody>
-    <tr><td><b>Dual pricing (0%)</b></td><td>Card price vs cash price; program fee built into card price</td><td>Fee-sensitive: food, liquor, c-store, trades, startups</td><td>Signage required; terminal/POS file must be built for it; a few owners hate the optics — have interchange-plus ready</td></tr>
+    <tr><td><b>Dual pricing (0%)</b></td><td>Card price vs cash price; program fee built into card price</td><td>Fee-sensitive: food, liquor, c-store, trades, startups</td><td>Two prices must be posted on menu, website, and any place the merchant lists prices (cash &amp; card). Terminal/POS file must be built for it. Signage required. A few owners hate the optics — have interchange-plus ready.</td></tr>
     <tr><td><b>Cash discount</b></td><td>Posted price is the card price; cash payers get a discount at the register</td><td>Simplest story at the counter — QSR, c-store, single-price menus</td><td>The discount must come OFF the posted price. A "non-cash adjustment" fee added on top of a lower posted price is what gets merchants flagged — signage and receipts must match</td></tr>
     <tr><td><b>Surcharge</b></td><td>A disclosed % fee added to CREDIT transactions only — debit is always at the posted price</td><td>Credit-heavy B2B, professional services, big tickets where two shelf prices feel wrong</td><td>Credit only, never debit or prepaid; capped at 3% and can't exceed your cost of acceptance; card brands must be notified and a few states still restrict it — check before filing</td></tr>
     <tr><td><b>Interchange-plus</b></td><td>True cost + transparent markup (bps + per-item)</td><td>Higher tickets, professional offices, statement beats</td><td>Know your buy rate before quoting; margin = what you quote − buy rate</td></tr>
@@ -25,166 +26,86 @@
   </tbody></table></div>
 </div>
 
-<div class="note internal mt16"><b>How you get paid — the standard on every program:</b> the buy rates and costs on this page are the deal's expenses, covered <b>off the top</b>. What's left is the net residual and payout — and <b>you earn 50% of it</b>. Every number on this page is already stated as your share. Your signed agent agreement is the final word.</div>
+<hr class="sep" style="margin:24px 0">
 
-<div id="schedules"></div>
-
-<div class="card mt16" id="buyrates">
-  <div class="spread"><h3>Your buy rates &amp; Schedule A</h3><span class="chip red">Internal only</span></div>
-  <p class="muted small">Buy rate = what the processing costs <i>us</i>. Everything you quote above it is margin, split per your agent agreement. Your exact Schedule A is in your signed agent agreement — keep your working numbers here (saved in your browser only).</p>
-  <div class="tbl-wrap"><table class="tbl"><thead><tr><th>Program</th><th>My buy rate / cost</th><th>Notes</th></tr></thead><tbody id="br-rows"></tbody></table></div>
-  <div class="flex mt8"><button class="btn btn-outline btn-sm" id="br-add">+ Add row</button><span class="small muted">Autosaves as you type · stored locally</span></div>
-  <div class="note mt16">Your share is <b>50% of NextPay's cut</b> on every program. Pricing questions on a live deal go to <b>Deal Desk</b> in Google Chat.</div>
-  <div id="admin-refs"></div>
-</div>
-
-<div class="card mt16">
-  <h3>Residual calculator</h3>
-  <div class="frow3">
-    <div><label class="fl">Monthly volume ($)</label><input class="fi" id="r-vol" inputmode="numeric" placeholder="45000"></div>
-    <div><label class="fl">Rate quoted to merchant (%)</label><input class="fi" id="r-rate" inputmode="numeric" placeholder="2.60"></div>
-    <div><label class="fl">Buy rate (%)</label><input class="fi" id="r-buy" inputmode="numeric" placeholder="2.10"></div>
-  </div>
-  <div class="frow3">
-    <div><label class="fl">Monthly fee income ($ — software margin, statement fee…)</label><input class="fi" id="r-fees" inputmode="numeric" value="0"></div>
-    <div><label class="fl">Your share of margin (%)</label><input class="fi" id="r-split" inputmode="numeric" value="45"><span class="small muted">Preloaded per program: SIP low-risk <b>45</b> · SIP high-risk <b>30</b> · Next2Pay <b>50</b> · Clover <b>45</b> · SumUp <b>40</b>.</span></div>
-    <div></div>
-  </div>
-  <div class="grid3 mt16">
-    <div class="stat"><div class="n" id="r-margin">—</div><div class="l">total monthly margin on the deal</div></div>
-    <div class="stat"><div class="n" id="r-mine" style="color:var(--teal)">—</div><div class="l">your monthly residual</div></div>
-    <div class="stat"><div class="n" id="r-year">—</div><div class="l">your residual per year — deals stack</div></div>
-  </div>
-</div>
-
-<div class="card mt16" id="economics">
-  <div class="spread"><h3>Deal economics by source — what you make, where you quote</h3><span class="chip red">Internal only</span></div>
-  <p class="muted small">Where a deal is written decides your money. Rows marked <span class="chip amber">Schedule A needed</span> are waiting on partnership documentation — the structure is ready, the numbers drop in.</p>
-  <div class="tbl-wrap"><table class="tbl"><thead><tr><th>Placement</th><th>Sourced from</th><th>What you make</th><th>Where to quote processing</th></tr></thead><tbody id="eco-rows"></tbody></table></div>
-</div>
-
-<div class="card mt16">
-  <h3>Verified software &amp; hardware price points</h3>
-  <p class="muted small">These are the confirmed numbers behind the catalog — safe to quote. Full itemized builds live in the <a href="https://nextpaypos.com/build" target="_blank" rel="noopener">Build Your Solution catalog ↗</a>.</p>
-  <div class="tbl-wrap"><table class="tbl"><thead><tr><th>Product</th><th>Confirmed pricing</th></tr></thead><tbody>
-    <tr><td><b>SkyTab</b></td><td>Base bundle $29.99/mo · Glass/Air/KDS/CFD/Kiosk $29.99/mo each · Mobile $20 · Bump Bar $9.99 · PIN pad $9.99 · Label $19.99 · Scale $39.99 · Lighthouse $20 · Gift Cards $25 · Workforce $35 · one-time: drawer $129, till $25, split cable $25. 30-day trial → 36-month agreement.</td></tr>
-    <tr><td><b>PAYS</b></td><td>Starter $59 / Growth $79 / Enterprise $99 per month · station bundle $999.</td></tr>
-    <tr><td><b>Quantic</b></td><td>Pro $60 first station / $50 additional · Enterprise $90 / $80 · modules per Unified Pricing V5.</td></tr>
-    <tr><td><b>Korona</b></td><td>Core $59 / Retail $79 / Plus $99 per register · modules (Food $10, Invoicing $10, Ticketing $50/gate…).</td></tr>
-    <tr><td><b>Clover</b></td><td>Software $0–$89.95/mo by plan (+$5/mo platform fee per location) · hardware placement or purchase per catalog.</td></tr>
-    <tr><td><b>Square</b></td><td>Free plan / Plus $49/mo · Terminal $299 · Handheld $399 · Station $899 · published rates 2.6%+10¢ CP.</td></tr>
-    <tr><td><b>SumUp</b></td><td>POS Lite &amp; Solo $499 · POS $799 + $99/mo · Terminal $249 · Solo $54 · Connect Plus $199 / Pro $289.</td></tr>
+<div class="card">
+  <h3>POS systems pricing</h3>
+  <div class="tbl-wrap"><table class="tbl"><thead><tr><th>Product</th><th>Plan / Tier</th><th>Monthly</th><th>One-time</th><th>Notes</th></tr></thead><tbody>
+    <tr><td><b>SkyTab by Shift4</b></td><td>Base bundle</td><td>$29.99/device</td><td>$0 (30-day trial → 36-month agreement)</td><td>Includes hardware, receipt printer, PCI compliance, 24/7 support. Add modules: Air $29.99, Mobile $20, KDS $29.99, Bump Bar $9.99, PIN pad $9.99, Label Printer $19.99, Scale $39.99, Lighthouse $20, Gift Cards $25, Workforce $35. One-time: cash drawer $129, till $25, split cable $25.</td></tr>
+    <tr><td><b>Square</b></td><td>Free or Plus</td><td>$0 or $49</td><td>$0</td><td>POS Lite free; Plus plan $49/mo includes advanced features. Hardware sold separately (reader $29–$299). Rates 2.6%+10¢ for standard.</td></tr>
+    <tr><td><b>Clover</b></td><td>Varies by vertical</td><td>$0–$89.95</td><td>Varies</td><td>Hardware pricing: Solo $1,734.80, Duo $2,058.80, Mini $917.10, Flex Gen 4 $738.11, Kiosk $3,537.12 (wholesale). Plus $5/mo Clover platform fee per MID.</td></tr>
+    <tr><td><b>Quantic</b></td><td>Pro / Enterprise</td><td>$50–$80/register addl (first $60/$90)</td><td>Varies</td><td>Unified Pricing model. Per-register software. Includes setup and training package. Multi-location dashboard.</td></tr>
+    <tr><td><b>Korona</b></td><td>Core / Retail / Plus</td><td>$59 / $79 / $99 per register</td><td>Varies</td><td>Per-register pricing model. Module add-ons available. Inventory import recommended pre-install.</td></tr>
+    <tr><td><b>PAYS</b></td><td>Starter / Growth / Enterprise</td><td>$59 / $79 / $99</td><td>Station bundle $999 or quoted hardware</td><td>All plans include online ordering. Dual-pricing signage expectations — set early. Rental hardware has early-termination penalty.</td></tr>
+    <tr><td><b>NRS</b></td><td>Single lane</td><td>Price-friendly</td><td>Varies</td><td>C-store / bodega specialist. Age verification + scan data built in. EBT/SNAP native support.</td></tr>
+    <tr><td><b>SumUp</b></td><td>Hardware-based</td><td>Varies by plan</td><td>POS Lite $499, POS $799, Terminal $249, Solo $54, Connect Plus $199, Pro $289</td><td>Entry-level POS and mPOS options. Month-to-month flexibility.</td></tr>
+    <tr><td><b>Chively (via Solutions in Payments / Luqra)</b></td><td>Varies</td><td>TBD (pricing coming soon)</td><td>Varies</td><td>Custom POS via partner. Use Deal Desk thread for pricing until public schedule available. Not house paper.</td></tr>
   </tbody></table></div>
 </div>
 
-<div class="card mt16" id="proposal">
+<div class="card mt16">
+  <h3>Terminals pricing</h3>
+  <div class="tbl-wrap"><table class="tbl"><thead><tr><th>Product</th><th>Model</th><th>One-time cost</th><th>Notes</th></tr></thead><tbody>
+    <tr><td><b>PAX Mobile / mPOS</b></td><td>A920 Pro, A920 MAX, A77, others</td><td>$100–$600</td><td>Enterprise-grade mobile terminals. Transparent PNGs available from pax.us. Compatible with most gateways.</td></tr>
+    <tr><td><b>Dejavoo (P Line, QD Line)</b></td><td>Z8, Z3, etc.</td><td>Varies</td><td>Pairs with iPOSPays gateway. Robust feature set. One-portal experience (payment + reporting).</td></tr>
+    <tr><td><b>DejaPay Pro</b></td><td>Hardware terminal</td><td>Varies</td><td>Simplified Dejavoo offering. Full-featured payment terminal.</td></tr>
+    <tr><td><b>Square Terminals</b></td><td>Square Terminal (handheld)</td><td>$299</td><td>Pairs with Square POS or standalone. Simple UX, broad compatibility. Rates 2.6%+10¢ standard.</td></tr>
+    <tr><td><b>Clover Flex / Go</b></td><td>Flex (printer + scanner), Go (reader)</td><td>$738.11 (Flex), varies (Go)</td><td>Handheld + pocket reader options. Included in Clover bundles or resold separately.</td></tr>
+    <tr><td><b>Shift4 Terminals</b></td><td>SkyTab bundled</td><td>Included in SkyTab bundle</td><td>Terminals included with SkyTab base bundle ($29.99/mo). Receipt printer, PIN pad bundled.</td></tr>
+    <tr><td><b>Valor VL series</b></td><td>Countertop / mPOS</td><td>Varies</td><td>Partners with Valor gateway. One unified portal. Strong feature set.</td></tr>
+  </tbody></table></div>
+</div>
+
+<div class="card mt16">
+  <h3>Gateways & processing pricing</h3>
+  <div class="tbl-wrap"><table class="tbl"><thead><tr><th>Gateway</th><th>Base cost</th><th>Processing</th><th>Best for</th></tr></thead><tbody>
+    <tr><td><b>Interchange-plus (IC+2bps)</b></td><td>$0/mo (gateway included in POS)</td><td>Interchange + 2bps + $0.0215/txn</td><td>Higher-ticket merchants, professional offices. Transparent cost model.</td></tr>
+    <tr><td><b>Next2Pay (house gateway)</b></td><td>Gateway included with Next2Pay Invoicing</td><td>Custom per deal</td><td>Invoicing + payments. Recurring billing, text-to-pay, card-on-file. Best margins.</td></tr>
+    <tr><td><b>FluidPay</b></td><td>No monthly fee</td><td>Quote per deal</td><td>Flexible billing models, specialty processing. Partner pricing.</td></tr>
+    <tr><td><b>NMI</b></td><td>No monthly fee</td><td>Quote per deal</td><td>Virtual terminal option. Broad merchant support.</td></tr>
+    <tr><td><b>Luqra (Solutions in Payments)</b></td><td>No monthly fee</td><td>Quote per deal</td><td>Chively POS gateway. Partner deal.</td></tr>
+    <tr><td><b>Valor</b></td><td>No monthly fee (bundled with terminal)</td><td>Quote per deal</td><td>Pairs with Valor terminals. One portal for card-present + CNP.</td></tr>
+    <tr><td><b>Authorize.net</b></td><td>$25/mo or included in bundle</td><td>2.9%+30¢ typical</td><td>Legacy standard. Broad integration support. Higher rates.</td></tr>
+    <tr><td><b>iPOSPays (Dejavoo-native)</b></td><td>No monthly fee (Dejavoo partner)</td><td>Quote per deal</td><td>Pairs with Dejavoo hardware. Streamlined Dejavoo experience.</td></tr>
+  </tbody></table></div>
+</div>
+
+<div class="card mt16">
+  <h3>Invoicing solutions pricing</h3>
+  <div class="tbl-wrap"><table class="tbl"><thead><tr><th>Product</th><th>Monthly / Per-seat</th><th>Best for</th><th>Notes</th></tr></thead><tbody>
+    <tr><td><b>Next2Pay Invoicing (house)</b></td><td>$25/mo buy, retail-price per deal</td><td>Trades, service businesses, professionals (roofers, electricians, plumbers)</td><td>Estimates, invoices, text-to-pay, recurring billing. Best margins. QB integration sold separately.</td></tr>
+    <tr><td><b>Next2Pay + QB Integration</b></td><td>$50/mo buy, retail-price per deal</td><td>Same as above with full QB sync</td><td>Invoicing + QB integration bundled. Seamless sync into books.</td></tr>
+    <tr><td><b>FieldPulse</b></td><td>Quote per deal</td><td>Field service with CRM + scheduling</td><td>Estimates → invoices → text-to-pay. Full job management suite.</td></tr>
+    <tr><td><b>Field Work</b></td><td>Quote per deal</td><td>Field service alternative</td><td>Job management + payments. Simpler than FieldPulse.</td></tr>
+    <tr><td><b>LQPay</b></td><td>Quote per deal</td><td>Healthcare-friendly billing workflows</td><td>Billing + statements. Healthcare compliance built in.</td></tr>
+  </tbody></table></div>
+</div>
+
+<div class="card mt16">
+  <h3>Services & add-ons pricing</h3>
+  <div class="tbl-wrap"><table class="tbl"><thead><tr><th>Service</th><th>Pricing</th><th>Notes</th></tr></thead><tbody>
+    <tr><td><b>NextLink (Client Automation &amp; Outreach)</b></td><td>Trial $599/seat/mo (3-mo term) · Annual $749/seat/mo · M2M $999/seat/mo · Enterprise 10+ custom</td><td>Automated campaigns, follow-up sequences, dashboard with replies. Per-seat licensing. Internal pricing only in hub.</td></tr>
+    <tr><td><b>NextFund (Business Financing)</b></td><td>Varies (working capital, equipment, MCA)</td><td>Second commission alongside processing deal. Fast approvals off processing history.</td></tr>
+    <tr><td><b>Merchant Rewards</b></td><td>Included with processing</td><td>Merchants earn on volume they process. Stacks with dual pricing. Pitch during statement review.</td></tr>
+    <tr><td><b>Chargeback Protection</b></td><td>Quote per deal</td><td>Risk mitigation add-on. Pricing varies by merchant type and volume.</td></tr>
+  </tbody></table></div>
+</div>
+
+<hr class="sep" style="margin:24px 0">
+
+<div class="card" id="proposals">
   <h3>Building the proposal</h3>
+  <p class="muted small">One page tells the whole story: the stack, the pricing model, the savings vs today, and what happens next.</p>
   <ul class="ck">
-    <li><b>Use the <a href="proposals.html">Proposal Studio</a></b> — the document assembles live as you type: catalog builder, one-pager, and the NextLink per-seat quote, all print-to-PDF on letterhead.</li>
-    <li>One page: the stack (itemized), the pricing model, the savings vs today, and what happens next.</li>
+    <li><b>Use the <a href="proposals.html">Proposal Studio</a></b> — the document assembles live: catalog builder, one-pager, NextLink quote, all print-to-PDF on letterhead.</li>
     <li>Catalog numbers come from the same source as the public <a href="https://nextpaypos.com/build" target="_blank" rel="noopener">Build Your Solution</a> page.</li>
     <li>SkyTab: start from the <a href="https://nextpaypos.com/SkyTab_Proposal%20-%20Blank.pdf" target="_blank" rel="noopener">blank SkyTab proposal PDF</a>.</li>
+    <li>Next2Pay Invoicing: use the Proposal Studio above, or request a Next2Pay proposal template from the Deal Desk.</li>
     <li>Show <b>annual</b> savings from the <a href="statement-review.html">Statement Review</a> calculator — it's the number they remember.</li>
-    <li>Never put buy rates, splits, or anything from this page in a proposal.</li>
+    <li>Never put buy rates, splits, or internal pricing info in a proposal.</li>
   </ul>
-</div>
-
-<div class="card mt16">
-  <div class="spread"><h3>NextLink (internal pricing)</h3><span class="chip red">Never publish — internal only</span></div>
-  <div class="tbl-wrap"><table class="tbl"><tbody>
-    <tr><td>Trial (3-month term)</td><td>$599 / mo / seat</td></tr>
-    <tr><td>Annual</td><td>$749 / mo / seat</td></tr>
-    <tr><td>Month-to-month</td><td>$999 / mo / seat</td></tr>
-    <tr><td>Enterprise (10+ seats)</td><td>Custom pricing — ask in Deal Desk</td></tr>
-  </tbody></table></div>
 </div>
 
 </main></div>
 <script src="js/hub.js"></script><script src="js/hub-data.js"></script><script src="js/hub-store.js"></script>
-<script>
-(function () {
-  document.addEventListener('hub:ready', function (ev) {
-    if (!ev.detail.admin) return; /* admin-only links injected, never in agents' DOM */
-    var D = 'admin-docs/';
-    document.getElementById('admin-refs').innerHTML = '<div class="note mt8"><b>🔒 Admin reference docs:</b> ' +
-      '<a href="' + D + 'skytab-partner-schedule-a.pdf" target="_blank" rel="noopener">SkyTab partner Schedule A</a> · ' +
-      '<a href="' + D + 'quantic-partner-pricing.pdf" target="_blank" rel="noopener">Quantic Unified Pricing V5</a> · ' +
-      '<a href="' + D + 'quantic-partner-hardware.pdf" target="_blank" rel="noopener">Quantic hardware</a> · ' +
-      '<a href="' + D + 'square-reseller-hardware.xlsx" target="_blank" rel="noopener">Square reseller hardware</a> · ' +
-      '<a href="' + D + 'square-reseller-services.xlsx" target="_blank" rel="noopener">Square reseller services</a> · ' +
-      '<a href="' + D + 'clover-schedule-a.pdf" target="_blank" rel="noopener">Clover Schedule A</a> · ' +
-      '<a href="' + D + 'clover-hardware-software-pricing.pdf" target="_blank" rel="noopener">Clover hardware/software pricing</a></div>';
-  });
-  const $ = (id) => document.getElementById(id);
-  const fmt = (n) => '$' + Math.round(n).toLocaleString();
-
-  /* residual calc */
-  function rcalc() {
-    const v = parseFloat($('r-vol').value) || 0, q = parseFloat($('r-rate').value) || 0,
-          b = parseFloat($('r-buy').value) || 0, f = parseFloat($('r-fees').value) || 0,
-          sp = (parseFloat($('r-split').value) || 0) / 100;
-    const margin = v * ((q - b) / 100) + f;
-    $('r-margin').textContent = (v && q) ? fmt(margin) + '/mo' : '—';
-    $('r-mine').textContent = (v && q && sp) ? fmt(margin * sp) + '/mo' : '—';
-    $('r-year').textContent = (v && q && sp) ? fmt(margin * sp * 12) + '/yr' : '—';
-  }
-  ['r-vol', 'r-rate', 'r-buy', 'r-fees', 'r-split'].forEach(id => $(id).addEventListener('input', rcalc));
-
-  /* editable buy-rate table (localStorage) */
-  const DEFAULTS = [
-    { p: 'Card processing — interchange-plus', r: '', n: 'From your Schedule A: bps + per item over cost' },
-    { p: 'Dual pricing program', r: '', n: 'Program fee %, terminal file build' },
-    { p: 'SkyTab placement', r: '', n: 'Your share = 50% of NextPay’s SkyTab residuals & payouts' },
-    { p: 'Clover placement', r: '', n: '' },
-    { p: 'Gateway (NMI / FluidPay) monthly + per item', r: '', n: '' }
-  ];
-  let rows;
-  try { rows = JSON.parse(localStorage.getItem('hub_buyrates') || 'null') || DEFAULTS; } catch (e) { rows = DEFAULTS; }
-  const esc = (s) => String(s == null ? '' : s).replace(/[<>&"]/g, c => ({'<':'&lt;','>':'&gt;','&':'&amp;','"':'&quot;'}[c]));
-  function draw() {
-    $('br-rows').innerHTML = rows.map((r, i) =>
-      '<tr><td><input class="fi" data-i="' + i + '" data-f="p" value="' + esc(r.p) + '"></td>' +
-      '<td><input class="fi" data-i="' + i + '" data-f="r" value="' + esc(r.r) + '" placeholder="e.g. IC + 15bps + 5¢"></td>' +
-      '<td class="flex"><input class="fi" data-i="' + i + '" data-f="n" value="' + esc(r.n) + '">' +
-      '<button class="btn btn-outline btn-sm" data-del="' + i + '">✕</button></td></tr>').join('');
-  }
-  $('br-rows').addEventListener('input', (e) => {
-    const t = e.target; if (t.dataset.i == null) return;
-    rows[+t.dataset.i][t.dataset.f] = t.value;
-    localStorage.setItem('hub_buyrates', JSON.stringify(rows));
-  });
-  $('br-rows').addEventListener('click', (e) => {
-    const b = e.target.closest('[data-del]'); if (!b) return;
-    rows.splice(+b.dataset.del, 1);
-    localStorage.setItem('hub_buyrates', JSON.stringify(rows)); draw();
-  });
-  $('br-add').addEventListener('click', () => { rows.push({ p: '', r: '', n: '' }); draw(); });
-  draw();
-
-  /* Schedule A tables — one card per uploaded schedule */
-  const D = window.HUB_DATA;
-  $('schedules').innerHTML = Object.entries(D.schedules).map(([key, sc]) =>
-    '<div class="card mt16" id="schedule-' + key + '">' +
-    '<div class="spread"><h3>Schedule A — ' + esc(sc.label) + '</h3><span class="chip red">Internal only</span></div>' +
-    '<p class="muted small">' + esc(sc.covers) + '</p>' +
-    (sc.splitNote ? '<div class="note">' + esc(sc.splitNote) + '</div>' : '') +
-    '<div class="note"><b>The cost floor:</b> ' + esc(sc.floor) + '</div>' +
-    '<div class="tbl-wrap"><table class="tbl"><thead><tr><th>Fee</th>' + sc.cols.map(c => '<th>' + esc(c) + '</th>').join('') + '</tr></thead><tbody>' +
-    sc.groups.map(g =>
-      '<tr><td colspan="' + (sc.cols.length + 1) + '" style="background:var(--soft);font-weight:800;font-size:11.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--mut)">' + esc(g.h) + '</td></tr>' +
-      g.rows.map(r => '<tr>' + r.map(c => '<td>' + esc(c) + '</td>').join('') + '</tr>').join('')
-    ).join('') + '</tbody></table></div>' +
-    '<div class="note mt8" style="border-color:var(--green);background:rgba(46,158,107,.08)"><b>Make it real:</b> ' + esc(sc.example) + '</div>' +
-    (sc.docs ? '<div class="note warn mt8"><b>Minimum underwriting documents:</b><ul class="ck mt8">' + sc.docs.map(d => '<li>' + esc(d) + '</li>').join('') + '</ul></div>' : '') +
-    '</div>').join('');
-
-  /* deal economics by source */
-  $('eco-rows').innerHTML = Object.entries(D.economics).map(([k, e]) =>
-    '<tr><td><b>' + esc((D.placements[k] || {}).label || k) + '</b>' +
-    (e.need ? '<br><span class="chip amber" style="margin-top:6px">Schedule A needed</span>' : '<br><span class="chip green" style="margin-top:6px">Ready</span>') + '</td>' +
-    '<td class="small">' + esc(e.source) + (e.need ? '<br><span class="muted"><b>Missing:</b> ' + esc(e.need) + '</span>' : '') + '</td>' +
-    '<td class="small"><ul class="ck plain">' + e.make.map(m => '<li>' + esc(m) + '</li>').join('') + '</ul></td>' +
-    '<td class="small">' + esc(e.quote) + '</td></tr>').join('');
-})();
-</script>
 </body></html>
