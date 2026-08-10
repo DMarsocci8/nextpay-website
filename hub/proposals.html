@@ -99,10 +99,12 @@
     <h3>3 · Processing &amp; notes</h3>
     <label class="fl">Processing line for the proposal</label>
     <select class="fi" id="b-processing">
-      <option>Dual pricing — 0% card processing fees (cash & card pricing posted)</option>
-      <option>Interchange-plus — transparent cost-plus pricing, quoted after statement review</option>
-      <option>We meet or beat your current effective rate — pending statement review</option>
-      <option>Flat rate — one simple rate, quoted with the final agreement</option>
+      <option id="opt-dual">Dual pricing — 0% card processing fees (cash & card pricing posted)</option>
+      <option id="opt-ic">Interchange-plus — transparent cost-plus pricing, quoted after statement review</option>
+      <option id="opt-beat">We meet or beat your current effective rate — pending statement review</option>
+      <option id="opt-flat">Flat rate — one simple rate, quoted with the final agreement</option>
+      <option id="opt-cash" style="display:none">Cash Discount (4%) — simple flat rate, no negotiation</option>
+      <option id="opt-rack" style="display:none">Rack Rate (IC+) — interchange-plus pricing, transparent cost</option>
     </select>
     <label class="fl">Savings headline (optional — from Statement Review)</label>
     <input class="fi" id="b-savings" placeholder="e.g. Saves $6,240/year vs your current processor">
@@ -246,6 +248,21 @@
     $('brand-row').querySelectorAll('[data-b]').forEach(b => b.addEventListener('click', () => {
       brand = b.dataset.b; mode = cat()[brand].modes[0]; qty = {};
       if (window.console) console.log('Selected brand:', brand, 'Logo:', getBrandLogo(brand));
+      // Update processing options based on brand
+      const isSquare = brand === 'square';
+      document.querySelectorAll('#b-processing option').forEach(opt => {
+        if (['opt-dual', 'opt-ic', 'opt-beat', 'opt-flat'].includes(opt.id)) {
+          opt.style.display = isSquare ? 'none' : '';
+        } else if (['opt-cash', 'opt-rack'].includes(opt.id)) {
+          opt.style.display = isSquare ? '' : 'none';
+        }
+      });
+      // Reset processing option for Square
+      if (isSquare) {
+        $('b-processing').value = 'Cash Discount (4%) — simple flat rate, no negotiation';
+      } else if ($('b-processing').value.includes('Discount') || $('b-processing').value.includes('Rack Rate')) {
+        $('b-processing').value = 'Dual pricing — 0% card processing fees (cash & card pricing posted)';
+      }
       // Auto-add Lighthouse/Customer Hub to SkyTab proposals (mandatory $20/mo)
       if (brand.toLowerCase().includes('skytab') || brand === 'skytab') {
         const lighthouseItem = cat()[brand].items.find(i => i.name.includes('Lighthouse') || i.name.includes('Customer Hub'));
