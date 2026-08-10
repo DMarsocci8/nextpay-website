@@ -220,7 +220,7 @@
         <article class="pcard">
           <div class="pimg"><span class="tag pbadge">Simple & familiar</span><image-slot id="img-pos-square" src="assets/pos/square-register.png" fit="contain" radius="0" placeholder="Drop Square POS photo"></image-slot></div>
           <div class="pbody">
-            <img src="assets/logos/square.svg" alt="Square" style="height:30px;width:auto;display:block">
+            <span style="display:flex;align-items:center;gap:8px"><img src="assets/logos/square.svg" alt="Square" style="height:26px;width:26px;display:block"><b style="font-weight:800;font-size:21px;color:#3E4348;letter-spacing:-.01em;line-height:1">Square</b></span>
             <h3>Square POS</h3>
             <p class="pdesc">Familiar and easy to learn — run a Square Register station in the build-out, or start with the handheld and reader at the window.</p>
             <div class="pspecs"><span class="tag">Tap to pay</span><span class="tag">Quick setup</span><span class="tag">App-based</span></div>
@@ -234,7 +234,7 @@
         <article class="pcard">
           <div class="pimg"><span class="tag pbadge">Full POS + handheld</span><image-slot id="img-pos-clover" src="assets/pos/clover-duo.png" fit="contain" radius="0" placeholder="Drop Clover photo"></image-slot></div>
           <div class="pbody">
-            <img src="assets/logos/clover.png" alt="Clover" style="height:30px;width:auto;display:block">
+            <img src="assets/logos/clover.png" alt="Clover" style="height:24px;width:auto;max-width:110px;object-fit:contain;display:block">
             <h3>Clover POS</h3>
             <p class="pdesc">Station, Mini or Flex — a full POS ecosystem that fits a truck build-out, with no-upfront placement pricing.</p>
             <div class="pspecs"><span class="tag">Full station or handheld</span><span class="tag">500+ apps</span><span class="tag">Placement</span></div>
@@ -279,13 +279,13 @@
         <thead>
           <tr>
             <th></th>
-            <th class="best"><span class="gpill">Recommended</span><br>SkyTab by Shift4</th>
-            <th>Square Mobile</th>
+            <th class="best"><span class="gpill">Recommended</span><br><img src="assets/logos/skytab-white.svg" alt="SkyTab by Shift4" style="height:26px;width:auto;display:block;margin:6px 0 4px">SkyTab by Shift4</th>
+            <th><img src="assets/logos/square.svg" alt="Square" style="height:24px;width:auto;display:block;margin:0 0 4px;filter:brightness(0) invert(1)">Square</th>
           </tr>
         </thead>
         <tbody>
           <tr><th>Best for</th><td class="best">Food trucks &amp; full service</td><td>First-time / simple</td></tr>
-          <tr><th>Form factor</th><td class="best">Handheld + station</td><td>Phone/tablet + reader</td></tr>
+          <tr><th>Form factor</th><td class="best">Handheld + station</td><td>Station, handheld or phone + reader</td></tr>
           <tr><th>Online ordering</th><td class="best">Commission-free, included</td><td>Add-on</td></tr>
           <tr><th>Built-in tips</th><td class="best">Yes</td><td>Yes</td></tr>
           <tr><th>QR pay-at-table</th><td class="best">Yes</td><td>Add-on</td></tr>
@@ -359,7 +359,7 @@
         <article class="pcard">
           <div class="pimg"><span class="tag tag-teal pbadge">Pairs with Square POS</span><image-slot id="img-term-squarehand" fit="contain" radius="0" src="assets/terminals/square-handheld.png" placeholder="Drop Square Handheld photo"></image-slot></div>
           <div class="pbody">
-            <img src="assets/logos/square.svg" alt="Square" style="height:26px;width:auto;display:block">
+            <span style="display:flex;align-items:center;gap:8px"><img src="assets/logos/square.svg" alt="Square" style="height:26px;width:26px;display:block"><b style="font-weight:800;font-size:21px;color:#3E4348;letter-spacing:-.01em;line-height:1">Square</b></span>
             <h3>Square Handheld</h3>
             <p class="pdesc">Lightweight handheld for your Square menu — tableside or window orders with tap-to-pay built in.</p>
             <div class="pspecs"><span class="tag">Handheld</span><span class="tag">Tap to pay</span><span class="tag">Square apps</span></div>
@@ -373,7 +373,7 @@
         <article class="pcard">
           <div class="pimg"><span class="tag tag-teal pbadge">Pairs with Clover POS</span><image-slot id="img-term-cloverflex" src="assets/terminals/clover-flex.webp" fit="contain" radius="0" placeholder="Drop Clover Flex photo"></image-slot></div>
           <div class="pbody">
-            <img src="assets/logos/clover.png" alt="Clover" style="height:26px;width:auto;display:block">
+            <img src="assets/logos/clover.png" alt="Clover" style="height:24px;width:auto;max-width:110px;object-fit:contain;display:block">
             <h3>Clover Flex</h3>
             <p class="pdesc">The handheld that runs your Clover menu — printer and barcode scanner built in.</p>
             <div class="pspecs"><span class="tag">Printer</span><span class="tag">Scanner</span><span class="tag">Clover apps</span></div>
@@ -466,7 +466,7 @@ window.NP_PRODUCTS = {
   'ft-pos-shift4':{name:'SkyTab by Shift4',brand:'Shift4',slot:'img-pos-shift4',href:'/pos-systems#shift4',
     specs:{Brand:'Shift4','Best for':'Full food service','Form factor':'Handheld + station',Connectivity:'Wi-Fi + 4G',Payments:'Tap, chip, swipe',Software:'Online ordering, QR pay',Setup:'2–4 weeks — install, menu & training',Processing:'Bundled',Highlight:'Online ordering included'}},
   'ft-pos-square':{name:'Square POS',brand:'Square',slot:'img-pos-square',href:'/pos-systems#square',
-    specs:{Brand:'Square','Best for':'First-time / simple','Form factor':'Phone/tablet + reader',Connectivity:'Wi-Fi',Payments:'Tap, chip',Software:'Square app',Setup:'1–3 days, self-setup',Processing:'Flat-rate',Highlight:'Easiest to learn'}},
+    specs:{Brand:'Square','Best for':'First-time / simple','Form factor':'Station, handheld or phone + reader',Connectivity:'Wi-Fi',Payments:'Tap, chip',Software:'Square app',Setup:'1–3 days, self-setup',Processing:'Flat-rate',Highlight:'Easiest to learn'}},
   'ft-pos-clover':{name:'Clover POS',brand:'Clover',slot:'img-pos-clover',href:'/pos-systems#clover',
     specs:{Brand:'Clover','Best for':'Full POS in the truck','Form factor':'Station, Mini or Flex handheld',Connectivity:'Wi-Fi + LTE options',Payments:'Tap, chip, swipe',Software:'500+ app marketplace',Setup:'1–2 weeks',Processing:'Custom · match or beat',Highlight:'Full POS or handheld, placement pricing'}},
   'ft-pos-dejapay':{name:'DejaPay Pro',brand:'DejaPay',slot:'img-pos-dejapay',href:'/pos-systems#dejapay',

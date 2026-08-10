@@ -1,0 +1,157 @@
+<!DOCTYPE html><html lang="en"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>Leads Pool — NextPay Sales Hub</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/hub.css">
+</head><body>
+<div class="hub-shell"><div id="hub-side"></div><main class="hub-main">
+
+<div class="pg-head">
+<span class="eyebrow">Work a deal</span>
+<div class="spread"><h1>Leads Pool</h1>
+<span class="flex">
+<button class="btn btn-primary btn-sm" id="quickadd">+ Add lead</button>
+</span>
+</div>
+<p>Leads captured from the website and Gmail land here unassigned. Assign each one to an agent — the more deals an agent closes, the more leads they should get.</p>
+</div>
+
+<div class="note mt16" id="mode-note" style="display:none"></div>
+
+<h3 class="mt16">Agent leaderboard</h3>
+<div id="board"></div>
+
+<h3 class="mt16">Unassigned <span id="uc"></span></h3>
+<div id="unassigned"></div>
+
+<h3 class="mt16">Assigned &amp; in progress</h3>
+<div id="assigned"></div>
+
+<!-- Lead editor / quick-add modal -->
+<div class="modal-bg" id="mbg"><div class="modal">
+<button class="x" id="mx">✕</button>
+<h3 id="m-title">Lead</h3>
+<div class="frow">
+<div><label class="fl">Business name</label><input class="fi" id="m-biz"></div>
+<div><label class="fl">Industry</label><input class="fi" id="m-ind"></div>
+</div>
+<div class="frow3">
+<div><label class="fl">Contact</label><input class="fi" id="m-contact"></div>
+<div><label class="fl">Phone</label><input class="fi" id="m-phone"></div>
+<div><label class="fl">Email</label><input class="fi" id="m-email"></div>
+</div>
+<label class="fl">Notes</label><textarea class="fi" id="m-notes" rows="4"></textarea>
+<div class="flex mt16">
+<button class="btn btn-primary" id="m-save">Save lead</button>
+<span style="flex:1"></span>
+</div>
+</div></div>
+
+</main></div>
+<script src="js/hub.js"></script><script src="js/hub-store.js"></script>
+<script>
+(function () {
+const $ = (id) => document.getElementById(id);
+const esc = (s) => String(s == null ? '' : s).replace(/[<>&"]/g, c => ({'<':'&lt;','>':'&gt;','&':'&amp;','"':'&quot;'}[c]));
+let leads = [], email = '', admin = false, cur = null;
+
+function agentStats() {
+const stats = {};
+leads.forEach(l => {
+if (!l.assignedTo) return;
+const a = l.assignedTo;
+stats[a] = stats[a] || { assigned: 0, converted: 0 };
+stats[a].assigned++;
+if (l.status === 'converted') stats[a].converted++;
+});
+return stats;
+}
+
+function drawBoard() {
+const stats = agentStats();
+const rows = Object.entries(stats).sort((a, b) => b[1].converted - a[1].converted || b[1].assigned - a[1].assigned);
+if (!rows.length) { $('board').innerHTML = '<p class="meta">No leads assigned yet.</p>'; return; }
+$('board').innerHTML = '<table class="tbl"><thead><tr><th>Agent</th><th>Leads received</th><th>Converted</th><th>In progress</th></tr></thead><tbody>' +
+rows.map(([a, s]) => '<tr><td>' + esc(a) + '</td><td>' + s.assigned + '</td><td>' + s.converted + '</td><td>' + (s.assigned - s.converted) + '</td></tr>').join('') +
+'</tbody></table>';
+}
+
+function leadCard(l, showAssign) {
+const meta = [l.industry, l.phone, l.email].filter(Boolean).join(' · ');
+return '<div class="deal-card" data-id="' + l.id + '">' +
+'<div class="nm">' + esc(l.biz || l.contactName || 'Unnamed lead') + '</div>' +
+(l.contactName ? '<div class="meta">' + esc(l.contactName) + '</div>' : '') +
+(meta ? '<div class="meta">' + esc(meta) + '</div>' : '') +
+(l.notes ? '<div class="meta">' + esc(l.notes) + '</div>' : '') +
+'<div class="meta">Source: ' + esc(l.source || 'manual') + (l.assignedTo ? ' · Assigned to ' + esc(l.assignedTo) : '') + (l.status === 'converted' ? ' · <b>Converted</b>' : '') + '</div>' +
+(showAssign ? '<div class="flex mt16"><input class="fi assign-in" placeholder="agent email" style="flex:1"><button class="btn btn-primary btn-sm assign-btn">Assign</button></div>' :
+(l.status !== 'converted' ? '<div class="flex mt16"><button class="btn btn-outline btn-sm convert-btn">Mark converted</button></div>' : '')) +
+'</div>';
+}
+
+function draw() {
+const unassigned = leads.filter(l => l.status === 'unassigned');
+const rest = leads.filter(l => l.status !== 'unassigned');
+$('uc').textContent = unassigned.length ? '(' + unassigned.length + ')' : '';
+$('unassigned').innerHTML = unassigned.length ? unassigned.map(l => leadCard(l, true)).join('') : '<p class="meta">Nothing waiting on assignment.</p>';
+$('assigned').innerHTML = rest.length ? rest.map(l => leadCard(l, false)).join('') : '<p class="meta">No assigned leads yet.</p>';
+drawBoard();
+
+document.querySelectorAll('.assign-btn').forEach(btn => btn.addEventListener('click', async () => {
+const card = btn.closest('.deal-card');
+const id = card.dataset.id;
+const input = card.querySelector('.assign-in');
+const agent = input.value.trim();
+if (!agent || !agent.includes('@')) { alert("Enter the agent's email to assign this lead."); return; }
+await Store.assignLead(id, agent);
+await load();
+}));
+document.querySelectorAll('.convert-btn').forEach(btn => btn.addEventListener('click', async () => {
+const card = btn.closest('.deal-card');
+const id = card.dataset.id;
+const l = leads.find(x => x.id === id);
+if (!l) return;
+await Store.saveLead(Object.assign({}, l, { status: 'converted' }));
+await load();
+}));
+}
+
+async function load() {
+leads = await Store.listLeads();
+draw();
+}
+
+function openModal() {
+cur = { source: 'manual' };
+$('m-biz').value = ''; $('m-ind').value = ''; $('m-contact').value = '';
+$('m-phone').value = ''; $('m-email').value = ''; $('m-notes').value = '';
+$('mbg').classList.add('open');
+}
+const close = () => $('mbg').classList.remove('open');
+$('mx').addEventListener('click', close);
+$('mbg').addEventListener('click', (e) => { if (e.target === $('mbg')) close(); });
+$('quickadd').addEventListener('click', openModal);
+$('m-save').addEventListener('click', async () => {
+cur.biz = $('m-biz').value; cur.industry = $('m-ind').value;
+cur.contactName = $('m-contact').value; cur.phone = $('m-phone').value; cur.email = $('m-email').value;
+cur.notes = $('m-notes').value;
+if (!cur.biz && !cur.contactName) { alert('Add at least a business name or contact name.'); return; }
+await Store.saveLead(cur);
+close();
+await load();
+});
+
+document.addEventListener('hub:ready', async (e) => {
+email = e.detail.email; admin = e.detail.admin;
+await Store.probe();
+if (!Store.apiMode()) {
+const n = $('mode-note'); n.style.display = 'block';
+n.innerHTML = '<b>Leads pool needs the hub CRM API.</b> This page has nothing to show in local-only mode.';
+}
+await load();
+});
+})();
+</script>
+</body></html>
