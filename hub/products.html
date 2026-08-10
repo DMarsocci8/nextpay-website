@@ -16,6 +16,38 @@
 
 <div id="lib"></div>
 
+<style>
+  .resource-links {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-top: 12px;
+    border-top: 1px solid var(--line);
+    padding-top: 12px;
+  }
+  .resource-link {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 13px;
+    padding: 6px 0;
+  }
+  .resource-link a {
+    color: #14A18C;
+    text-decoration: none;
+    font-weight: 500;
+  }
+  .resource-link a:hover {
+    text-decoration: underline;
+  }
+  .resource-label {
+    color: var(--ink-muted);
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+</style>
+
 <div class="card mt24">
   <h3>Which category does this deal even need?</h3>
   <div class="tbl-wrap"><table class="tbl"><thead><tr><th>They say…</th><th>Category</th><th>Start with</th></tr></thead><tbody>
@@ -35,17 +67,27 @@
   const SECS = [['pos', 'POS Systems'], ['terminals', 'Credit Card Terminals'], ['gateways', 'Online Gateways'], ['invoicing', 'Invoicing & Field Service'], ['services', 'Business Services — NextFund, NextLink & Rewards']];
   document.getElementById('lib').innerHTML = SECS.map(([k, label]) =>
     '<h3 class="mt24 mb8">' + label + '</h3><div class="grid3">' +
-    HUB_DATA.products[k].map(p =>
-      '<div class="card" style="box-shadow:none">' +
-      (p.logo
-        ? '<div style="height:44px;display:flex;align-items:center;margin-bottom:10px"><span style="display:inline-flex;align-items:center;justify-content:center;padding:7px 12px;border-radius:10px;max-width:150px;' +
-          (p.logoDark ? 'background:#0C1B2A' : 'background:#fff;border:1px solid var(--line)') +
-          '"><img src="assets/logos/' + p.logo + '" alt="' + esc(p.name) + ' logo" style="height:' + (p.logoH || 26) + 'px;width:auto;max-width:140px;object-fit:contain" onerror="this.parentNode.style.display=\'none\'"></span></div>'
-        : '') +
-      '<b>' + esc(p.name) + '</b><div class="small muted">' + esc(p.tag) + '</div>' +
-      '<ul class="ck plain mt8">' + p.sell.map(s => '<li class="small">' + esc(s) + '</li>').join('') + '</ul>' +
-      '<a class="small" href="' + p.link + '" target="_blank" rel="noopener">Public page ↗</a></div>'
-    ).join('') + '</div>'
+    HUB_DATA.products[k].map(p => {
+      const res = p.resources;
+      const resourceLinks = (res ?
+        '<div class="resource-links">' +
+        (res.guide ? '<div class="resource-link"><span class="resource-label">📖 Guide</span><a href="' + esc(res.guide) + '">Resource Guide</a></div>' : '') +
+        (res.applications ? res.applications.map(app => '<div class="resource-link"><span class="resource-label">💳 App</span><a href="' + esc(app.url) + '" target="_blank" rel="noopener">' + esc(app.label) + '</a></div>').join('') : '') +
+        (res.pricing ? '<div class="resource-link"><span class="resource-label">💰 Pricing</span><a href="' + esc(res.pricing) + '" target="_blank" rel="noopener">View Pricing</a></div>' : '') +
+        (res.support ? '<div class="resource-link"><span class="resource-label">📞 Support</span><span style="color:var(--ink)">' + esc(res.support) + '</span></div>' : '') +
+        '</div>'
+      : '');
+      return '<div class="card" style="box-shadow:none">' +
+        (p.logo
+          ? '<div style="height:44px;display:flex;align-items:center;margin-bottom:10px"><span style="display:inline-flex;align-items:center;justify-content:center;padding:7px 12px;border-radius:10px;max-width:150px;' +
+            (p.logoDark ? 'background:#0C1B2A' : 'background:#fff;border:1px solid var(--line)') +
+            '"><img src="assets/logos/' + p.logo + '" alt="' + esc(p.name) + ' logo" style="height:' + (p.logoH || 26) + 'px;width:auto;max-width:140px;object-fit:contain" onerror="this.parentNode.style.display=\'none\'"></span></div>'
+          : '') +
+        '<b>' + esc(p.name) + '</b><div class="small muted">' + esc(p.tag) + '</div>' +
+        '<ul class="ck plain mt8">' + p.sell.map(s => '<li class="small">' + esc(s) + '</li>').join('') + '</ul>' +
+        '<a class="small" href="' + p.link + '" target="_blank" rel="noopener">Public page ↗</a>' +
+        resourceLinks + '</div>';
+    }).join('') + '</div>'
   ).join('');
 })();
 </script>
