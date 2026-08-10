@@ -1,67 +1,6 @@
 'use client';
 
-import { useEffect } from 'react';
-
-declare global {
-  interface Window {
-    google: any;
-  }
-}
-
 export default function LoginPage() {
-  useEffect(() => {
-    const loadGoogleScript = async () => {
-      // Load Google Sign-In script
-      const script = document.createElement('script');
-      script.src = 'https://accounts.google.com/gsi/client';
-      script.async = true;
-      script.defer = true;
-
-      script.onload = () => {
-        if (window.google) {
-          window.google.accounts.id.initialize({
-            client_id: '166520787414-91msnnhh84pa7kavcuctiino56p4piae.apps.googleusercontent.com',
-            callback: handleGoogleSignIn,
-          });
-
-          const buttonContainer = document.getElementById('google_signin_button');
-          if (buttonContainer) {
-            window.google.accounts.id.renderButton(buttonContainer, {
-              theme: 'outline',
-              size: 'large',
-              width: '350',
-            });
-          }
-        }
-      };
-
-      document.body.appendChild(script);
-    };
-
-    loadGoogleScript();
-  }, []);
-
-  const handleGoogleSignIn = async (response: any) => {
-    try {
-      const result = await fetch('/api/auth/google', {
-        method: 'POST',
-        body: JSON.stringify({ token: response.credential }),
-      });
-
-      const data = await result.json();
-
-      if (result.ok) {
-        localStorage.setItem('session', JSON.stringify(data.session));
-        window.location.href = '/';
-      } else {
-        alert('Sign in failed: ' + (data.error || 'Unknown error'));
-      }
-    } catch (error) {
-      console.error('Sign in error:', error);
-      alert('An error occurred during sign in');
-    }
-  };
-
   return (
     <div style={{
       minHeight: '100vh',
@@ -87,13 +26,73 @@ export default function LoginPage() {
           Sign in with your Google account
         </p>
 
-        <div id="google_signin_button" style={{ display: 'flex', justifyContent: 'center', marginBottom: '24px' }}></div>
+        {/* VERSION: v4.0 - Fresh deployment test */}
+        <div id="google_signin_button" style={{
+          display: 'flex',
+          justifyContent: 'center',
+          marginBottom: '24px',
+          minHeight: '60px',
+          background: '#f0f0f0',
+          borderRadius: '8px',
+          alignItems: 'center',
+        }}>
+          <span style={{ color: '#999' }}>Loading Google Sign-In...</span>
+        </div>
 
         <p style={{ color: '#9ca3af', fontSize: '12px', marginTop: '24px' }}>
           <a href="/" style={{ color: '#3b82f6', textDecoration: 'none', fontWeight: '500' }}>
             Back to home
           </a>
         </p>
+
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              window.addEventListener('load', function() {
+                const script = document.createElement('script');
+                script.src = 'https://accounts.google.com/gsi/client';
+                script.async = true;
+                script.defer = true;
+
+                script.onload = function() {
+                  if (window.google) {
+                    window.google.accounts.id.initialize({
+                      client_id: '166520787414-91msnnhh84pa7kavcuctiino56p4piae.apps.googleusercontent.com',
+                      callback: function(response) {
+                        fetch('/api/auth/google', {
+                          method: 'POST',
+                          body: JSON.stringify({ token: response.credential }),
+                        })
+                        .then(r => r.json())
+                        .then(data => {
+                          if (data.session) {
+                            localStorage.setItem('session', JSON.stringify(data.session));
+                            window.location.href = '/';
+                          } else {
+                            alert('Sign in failed: ' + (data.error || 'Unknown error'));
+                          }
+                        })
+                        .catch(e => alert('Error: ' + e.message));
+                      }
+                    });
+
+                    const btn = document.getElementById('google_signin_button');
+                    if (btn) {
+                      btn.innerHTML = '';
+                      window.google.accounts.id.renderButton(btn, {
+                        theme: 'outline',
+                        size: 'large',
+                        width: '350',
+                      });
+                    }
+                  }
+                };
+
+                document.body.appendChild(script);
+              });
+            `,
+          }}
+        />
       </div>
     </div>
   );
