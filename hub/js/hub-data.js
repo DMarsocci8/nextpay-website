@@ -566,14 +566,16 @@ window.HUB_DATA = {
     'Photos or site survey for POS installs (counter space, network, power)'
   ],
   placements: {
-    'skytab': { label: 'SkyTab by Shift4', logo: 'skytab.svg', steps: [
+    'skytab': { label: 'SkyTab by Shift4', logo: 'skytab.svg', guide: 'skytab-resources.html', steps: [
+      'Review the SkyTab Resource Guide (link below) for pricing, modules, and deal workflow.',
       'Confirm the build in the Proposal Builder (base bundle $29.99/mo + per-device monthlies) and price processing.',
       'Collect common docs plus the signed SkyTab agreement (30-day trial, then 36-month term — make sure the owner heard this from you first).',
       'Menu build: collect the full menu (photos or files) — send with the submission.',
       'Email the packaged deal to dom@nextpaypos.com (CC payments@ + alexander@) with subject "SkyTab deal — {DBA}".',
       'Install is scheduled by the SkyTab team; track status in the Shift4 partner portal and log it on the deal in My Pipeline.'
     ]},
-    'clover': { label: 'Clover', logo: 'clover.png', steps: [
+    'clover': { label: 'Clover', logo: 'clover.png', guide: 'clover-resources.html', steps: [
+      'Review the Clover Resource Guide (link below) for positioning, pricing, and deal workflow.',
       'Lock the hardware + software plan. Wholesale pricing sheet: hub docs \u2192 Clover hardware & software pricing (Duo bundle $2,058.80 \u00b7 Solo $1,734.80 \u00b7 Mini $917.10 \u00b7 Flex Gen 4 $738.11 \u00b7 Kiosk $3,537.12 + deployment fees). Note the $5/mo Clover platform fee per MID on the quote.',
       'Need help mid-sale? Clover program POS desk: (877) 928-0305 opt 2 \u00b7 pos@redfynn.com \u2014 POS sale assistance, system functionality, configuration questions.',
       'Application: use the Clover merchant application PDF (hub docs). Application questions or status: (877) 928-0305 ext 205 \u00b7 applications@redfynn.com. Collect the common docs below as usual.',
@@ -581,10 +583,12 @@ window.HUB_DATA = {
       'Install & training: schedule installs at book.redfynn.com/install or (813) 803-5503; onboarding training at calendly.com/pos-nhs/onboarding-training or (877) 928-0305 ext 280.',
       'After go-live: merchant support (877) 928-0305 opt 3 \u00b7 support@redfynn.com; merchants already on Clover devices call (844) 864-5449. Log the merchant in My Merchants.'
     ]},
-    'square': { label: 'Square (hardware resell + rate review)', logo: 'square.svg', steps: [
-      'Quote hardware from the reseller guide; software plan Free or Plus $49/mo.',
+    'square': { label: 'Square (hardware resell + rate review)', logo: 'square.svg', guide: 'square-resources.html', steps: [
+      'Review the Square Resource Guide (link below) for pricing, hardware options, and deal workflow.',
+      'Quote hardware (Terminal $299, Handheld $399, Reader $59 — buy upfront or finance monthly); software plan Free or Plus $49/mo.',
+      'Have merchant choose: Cash Discount (4%) or Rack Rate (IC+); send them the appropriate signup link.',
       'If they already process on Square: run the statement meet-or-beat to move processing to our rails where it fits.',
-      'Submit order + docs to dom@nextpaypos.com — subject "Square deal — {DBA}".'
+      'Collect common docs; email packaged deal to dom@nextpaypos.com — subject "Square deal — {DBA}".'
     ]},
     'quantic': { label: 'Quantic', logo: 'quantic.svg', steps: [
       'Build from the Unified Pricing sheet (Swan bundles, per-device software, modules).',
@@ -607,7 +611,8 @@ window.HUB_DATA = {
       'Dual-pricing signage expectations — set them now. Loaner/rental hardware carries a Return Obligation: if the merchant terminates early, the hardware ships back or the penalty applies.',
       'Common docs + menu; email to dom@nextpaypos.com — subject "PAYS deal — {DBA}".'
     ]},
-    'sumup': { label: 'SumUp', logo: 'sumup.svg', steps: [
+    'sumup': { label: 'SumUp', logo: 'sumup.svg', guide: 'sumup-resources.html', steps: [
+      'Review the SumUp Resource Guide (link below) for hardware options, pricing, and setup workflow.',
       'Hardware from the SumUp price list (POS Lite $499, Terminal $249, Solo $54…).',
       'Common docs; email to dom@nextpaypos.com — subject "SumUp deal — {DBA}".'
     ]},
@@ -618,12 +623,13 @@ window.HUB_DATA = {
       'Email the packaged deal to dom@nextpaypos.com (CC payments@ + alexander@) — subject "Chively deal — {DBA}".',
       'Install scheduling and file questions → the deal’s Deal Desk thread.'
     ]},
-    'next2pay': { label: 'Next2Pay (house invoicing, gateway & recurring)', logo: 'next2pay-globe.png', steps: [
-      'House deal — best margins in the book. Confirm the build: Next2Pay Invoicing, gateway/virtual terminal, recurring billing, or a combination.',
-      'Build the quote in the Proposal Studio. Selling NextLink (client automation outreach) too? Its per-seat proposal has its own section there.',
-      'Underwriting docs (all required): last 3 months processing statements · last 3 months business bank statements · Articles of Incorporation · owner ID(s) · bank account details · Plaid connection · Veriff completion. Plus menu/inventory or invoice workflow details.',
-      'Email the packaged deal to dom@nextpaypos.com (CC payments@ + alexander@) — subject "Next2Pay deal — {DBA}".',
-      'Onboarding and install are run in-house — coordinate dates with the NextPay team in the deal’s Deal Desk thread.'
+    ‘next2pay’: { label: ‘Next2Pay (house invoicing, gateway & recurring)’, logo: ‘next2pay-globe.png’, guide: ‘next2pay-resources.html’, steps: [
+      ‘Review the Next2Pay Resource Guide (link below) for invoicing workflows, pricing, and integrations.’,
+      ‘House deal — best margins in the book. Confirm the build: Next2Pay Invoicing, gateway/virtual terminal, recurring billing, or a combination.’,
+      ‘Build the quote in the Proposal Studio. Selling NextLink (client automation outreach) too? Its per-seat proposal has its own section there.’,
+      ‘Underwriting docs (all required): last 3 months processing statements · last 3 months business bank statements · Articles of Incorporation · owner ID(s) · bank account details · Plaid connection · Veriff completion. Plus menu/inventory or invoice workflow details.’,
+      ‘Email the packaged deal to dom@nextpaypos.com (CC payments@ + alexander@) — subject "Next2Pay deal — {DBA}".’,
+      ‘Onboarding and install are run in-house — coordinate dates with the NextPay team in the deal’s Deal Desk thread.’
     ]},
     'terminal-gateway': { label: 'Standalone terminal (+ gateway)', steps: [
       'Pick terminal (PAX / Dejavoo / Valor) and file build: dual pricing or standard; tip adjust; auto-batch time.',
