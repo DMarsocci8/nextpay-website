@@ -110,8 +110,19 @@
     if (p.guide) {
       guideLink = '<div class="note" style="margin-bottom:16px"><a href="' + esc(p.guide) + '" style="display:inline-block;padding:8px 16px;background:#14A18C;color:white;border-radius:6px;text-decoration:none;font-weight:600;">📖 View ' + esc(p.label) + ' Resource Guide</a></div>';
     }
-    detail.innerHTML = guideLink + '<div class="card"><h3>' + esc(p.label) + ' — submission steps</h3><div class="steps mt8">' +
-      p.steps.map(s => '<div class="step"><div><p style="color:var(--ink)">' + esc(s) + '</p></div></div>').join('') + '</div></div>';
+    let logoHtml = '';
+    if (p.logo) {
+      logoHtml = '<div style="height:44px;display:flex;align-items:center;margin-bottom:12px"><span style="display:inline-flex;align-items:center;justify-content:center;padding:7px 12px;border-radius:10px;max-width:150px;' +
+        (p.logoDark ? 'background:#0C1B2A' : 'background:#fff;border:1px solid var(--line)') +
+        '"><img src="assets/logos/' + esc(p.logo) + '" alt="' + esc(p.label) + ' logo" style="height:' + (p.logoH || 24) + 'px;width:auto;max-width:140px;object-fit:contain" onerror="this.parentNode.style.display=\'none\'"></span></div>';
+    }
+    const stepsArray = p.stepsHtml || p.steps;
+    const stepsHtml = stepsArray.map(s => {
+      const stepContent = p.stepsHtml ? s : esc(s);
+      return '<div class="step"><div><p style="color:var(--ink)">' + stepContent + '</p></div></div>';
+    }).join('');
+    detail.innerHTML = guideLink + '<div class="card">' + logoHtml + '<h3>' + esc(p.label) + ' — submission steps</h3><div class="steps mt8">' +
+      stepsHtml + '</div></div>';
     history.replaceState(null, '', '#' + k);
   }
   picks.addEventListener('click', (e) => { const b = e.target.closest('.pick'); if (b) show(b.dataset.k); });
