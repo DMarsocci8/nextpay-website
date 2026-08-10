@@ -1,38 +1,47 @@
 'use client';
 
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
+
+declare global {
+  interface Window {
+    google: any;
+  }
+}
 
 export default function LoginPage() {
-  // v2.0 - Google Sign-In
-  const [loading, setLoading] = useState(false);
-  const [error, setError] = useState('');
-
   useEffect(() => {
-    // Load Google Sign-In script
-    const script = document.createElement('script');
-    script.src = 'https://accounts.google.com/gsi/client';
-    script.async = true;
-    script.defer = true;
-    document.body.appendChild(script);
+    const loadGoogleScript = async () => {
+      // Load Google Sign-In script
+      const script = document.createElement('script');
+      script.src = 'https://accounts.google.com/gsi/client';
+      script.async = true;
+      script.defer = true;
 
-    script.onload = () => {
-      if (window.google) {
-        window.google.accounts.id.initialize({
-          client_id: process.env.NEXT_PUBLIC_GOOGLE_CLIENT_ID,
-          callback: handleGoogleSignIn,
-        });
-        window.google.accounts.id.renderButton(
-          document.getElementById('googleSignInButton'),
-          { theme: 'outline', size: 'large', width: '300' }
-        );
-      }
+      script.onload = () => {
+        if (window.google) {
+          window.google.accounts.id.initialize({
+            client_id: '166520787414-91msnnhh84pa7kavcuctiino56p4piae.apps.googleusercontent.com',
+            callback: handleGoogleSignIn,
+          });
+
+          const buttonContainer = document.getElementById('google_signin_button');
+          if (buttonContainer) {
+            window.google.accounts.id.renderButton(buttonContainer, {
+              theme: 'outline',
+              size: 'large',
+              width: '350',
+            });
+          }
+        }
+      };
+
+      document.body.appendChild(script);
     };
+
+    loadGoogleScript();
   }, []);
 
   const handleGoogleSignIn = async (response: any) => {
-    setLoading(true);
-    setError('');
-
     try {
       const result = await fetch('/api/auth/google', {
         method: 'POST',
@@ -41,43 +50,50 @@ export default function LoginPage() {
 
       const data = await result.json();
 
-      if (!result.ok) {
-        setError(data.error || 'Failed to sign in with Google');
-      } else {
-        // Store session and redirect
+      if (result.ok) {
         localStorage.setItem('session', JSON.stringify(data.session));
         window.location.href = '/';
+      } else {
+        alert('Sign in failed: ' + (data.error || 'Unknown error'));
       }
-    } catch (err: any) {
-      setError(err?.message || 'An error occurred');
-    } finally {
-      setLoading(false);
+    } catch (error) {
+      console.error('Sign in error:', error);
+      alert('An error occurred during sign in');
     }
   };
 
   return (
-    <div style={{ minHeight: '100vh', background: 'linear-gradient(to bottom right, #111827, #1f2937)' }}>
-      <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', minHeight: '100vh' }}>
-        <div style={{ width: '100%', maxWidth: '448px', padding: '20px' }}>
-          <div style={{ background: 'white', borderRadius: '8px', boxShadow: '0 20px 25px -5px rgba(0, 0, 0, 0.1)', padding: '32px', textAlign: 'center' }}>
-            <h1 style={{ fontSize: '24px', fontWeight: 'bold', color: '#111827', marginBottom: '8px' }}>Real Estate Portal</h1>
-            <p style={{ color: '#4b5563', fontSize: '14px', marginBottom: '32px' }}>Sign in with your Google account</p>
+    <div style={{
+      minHeight: '100vh',
+      background: 'linear-gradient(135deg, #111827 0%, #1f2937 100%)',
+      display: 'flex',
+      justifyContent: 'center',
+      alignItems: 'center',
+      fontFamily: '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif',
+    }}>
+      <div style={{
+        background: 'white',
+        borderRadius: '12px',
+        boxShadow: '0 20px 25px rgba(0,0,0,0.15)',
+        padding: '40px',
+        textAlign: 'center',
+        maxWidth: '450px',
+        width: '100%',
+      }}>
+        <h1 style={{ fontSize: '28px', fontWeight: 'bold', color: '#111827', marginBottom: '8px' }}>
+          Real Estate Portal
+        </h1>
+        <p style={{ color: '#6b7280', fontSize: '16px', marginBottom: '40px' }}>
+          Sign in with your Google account
+        </p>
 
-            {error && (
-              <div style={{ marginBottom: '24px', padding: '12px', background: '#fef2f2', border: '1px solid #fecaca', borderRadius: '4px', color: '#b91c1c', fontSize: '14px' }}>
-                {error}
-              </div>
-            )}
+        <div id="google_signin_button" style={{ display: 'flex', justifyContent: 'center', marginBottom: '24px' }}></div>
 
-            <div id="googleSignInButton" style={{ display: 'flex', justifyContent: 'center', marginBottom: '16px' }}></div>
-
-            <p style={{ textAlign: 'center', color: '#4b5563', fontSize: '12px', marginTop: '16px' }}>
-              <a href="/" style={{ color: '#2563eb', fontWeight: '600', textDecoration: 'none' }}>
-                Back to home
-              </a>
-            </p>
-          </div>
-        </div>
+        <p style={{ color: '#9ca3af', fontSize: '12px', marginTop: '24px' }}>
+          <a href="/" style={{ color: '#3b82f6', textDecoration: 'none', fontWeight: '500' }}>
+            Back to home
+          </a>
+        </p>
       </div>
     </div>
   );
