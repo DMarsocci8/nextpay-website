@@ -3,6 +3,7 @@
 import { useEffect, useState } from 'react';
 
 export default function LoginPage() {
+  // v2.0 - Google Sign-In
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
 
