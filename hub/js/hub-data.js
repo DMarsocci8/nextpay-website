@@ -616,7 +616,7 @@ window.HUB_DATA = {
       'Quote hardware using the <a href="proposal-builder.html?brand=sumup" style="color:#14A18C;font-weight:500">Proposal Builder</a> (POS Lite $499, Terminal $249, Solo $54...).',
       'Common docs; email to dom@nextpaypos.com - subject "SumUp deal - {DBA}".'
     ]},
-    'chively': { label: 'Chively POS (via Solutions in Payments - Luqra)', logo: 'chively-white.png', steps: [
+    'chively': { label: 'Chively POS (via Solutions in Payments - Luqra)', logo: 'chively-white.png', logoDark: true, steps: [
       'Chively is its own POS, written through Solutions in Payments (Luqra) - SIP Schedule A economics apply. It is NOT house paper and NOT Next2Pay.',
       'Confirm the build - stations, handhelds, kiosk, customer screens. Hardware/software pricing coming soon; until then, price the build in the deal\'s Deal Desk thread.',
       'Common docs (app, voided check, ID, statements/projections) plus menu/inventory files.',
