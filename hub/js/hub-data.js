@@ -41,7 +41,7 @@ window.HUB_DATA = {
   startup: {
     intro: 'No statement to beat? Build the numbers from projections instead - underwriting and pricing both work off estimates for new businesses.',
     q: [
-      'Projected customers per day and average ticket? (volume ≈ customers/day × avg ticket × days open × ~80% card mix)',
+      'Projected customers per day and average ticket? (volume \u2248 customers/day \u00d7 avg ticket \u00d7 days open \u00d7 ~80% card mix)',
       'Opening date / when do they need to accept payments?',
       'Funding: buying hardware outright, or better to place at $0 down with a monthly?',
       'Any processing history at all (Square/Stripe/PayPal exports count)?',
@@ -273,7 +273,7 @@ window.HUB_DATA = {
       placements: ['skytab', 'clover', 'quantic']
     },
 
-    'qsr-cafes': { label: 'QSR, Cafés & Coffee Shops', group: 'Food & Beverage', bg: 'coffee.png',
+    'qsr-cafes': { label: 'QSR, Caf\u00e9s & Coffee Shops', group: 'Food & Beverage', bg: 'coffee.png',
       ask: [
         'Orders per hour at peak - and how many seconds does each order take at the register?',
         'Would a self-order kiosk pull people out of your line? (Kiosks also lift average ticket.)',
@@ -285,7 +285,7 @@ window.HUB_DATA = {
       ],
       primary: { name: 'SkyTab by Shift4', why: 'QSR-tuned - self-order kiosk ($29.99/mo), KDS, customer-facing display, gift cards ($25/mo), all placement-model.' },
       alts: [
-        { name: 'Square', why: 'The café classic - Stand/Register, free plan to start, strong loyalty.' },
+        { name: 'Square', why: 'The caf\u00e9 classic - Stand/Register, free plan to start, strong loyalty.' },
         { name: 'PAYS', why: '0% dual-pricing all-inclusive - Starter $59/mo with online ordering included.' }
       ],
       rules: [
@@ -769,7 +769,7 @@ window.HUB_DATA = {
     { s: '"I need to talk to my partner / spouse."',
       play: 'Real objection or shield - find out: "Totally fair. What do you think they\'ll want to know?" Then book the 15 minutes with both of them ON that call, and send the one-pager ahead so the partner isn\'t hearing it second-hand.' },
     { s: '"After the holidays / busy season."',
-      play: 'Cost of waiting, in their numbers: "Waiting three months costs you about $[monthly overpay × 3]. We install off-hours and you keep taking payments the whole time - busy season is exactly when the better system pays for itself."' },
+      play: 'Cost of waiting, in their numbers: "Waiting three months costs you about $[monthly overpay \u00d7 3]. We install off-hours and you keep taking payments the whole time - busy season is exactly when the better system pays for itself."' },
     { s: '"My current rep says they\'ll match your rate."',
       play: '"If they could do that rate, why weren\'t you already on it?" Get any match offer in writing, then compare the stack - a rate match on the same tired terminal still loses to pay-at-table, online ordering, and a rep who answers the phone. And a match without a contract release is the same trap at a lower price.' }
   ],
@@ -793,8 +793,8 @@ window.HUB_DATA = {
       cols: ['Low-Risk', 'High-Risk'],
       splitNote: 'The costs below come off the top of every deal. You earn 50% of the net residual that remains \u2014 which works out to \u2248 45% of the gross margin you create on low-risk files (30% on the high-risk book). That is your number; nothing further comes out of it.',
       covers: 'House processing paper for: Chively POS (via Luqra) - Quantic - NRS - Korona - standalone terminals (PAX / Dejavoo / Valor) - gateways (NMI / FluidPay / Authorize.net / iPOSPays) - high-risk files. Does NOT cover: Square, SkyTab/Shift4, Clover/Fiserv, Next2Pay, NextLink, SumUp, PAYS, FieldPulse, LQPay (each has its own schedule).',
-      floor: 'Your true cost on low-risk SIP paper = interchange (pass-through) + 0.02% BIN sponsor + $0.02 per transaction (+ $0.02 per batch). Everything you quote above that is margin - and your share is ≈45% of it (30% on the high-risk book).',
-      example: 'Example: $45,000/mo, ~1,500 transactions, quoted at IC + 0.50% + $0.10 -> gross margin ≈ $336/mo. Your share ≈ $151/mo, for the life of the merchant. Ten of these = $1,500/mo that keeps paying.',
+      floor: 'Your true cost on low-risk SIP paper = interchange (pass-through) + 0.02% BIN sponsor + $0.02 per transaction (+ $0.02 per batch). Everything you quote above that is margin - and your share is \u224845% of it (30% on the high-risk book).',
+      example: 'Example: $45,000/mo, ~1,500 transactions, quoted at IC + 0.50% + $0.10 -> gross margin \u2248 $336/mo. Your share \u2248 $151/mo, for the life of the merchant. Ten of these = $1,500/mo that keeps paying.',
       groups: [
         { h: 'Portfolio fees', rows: [
           ['Visa/MC/Disc/Amex - BIN sponsor', '0.02%', '0.25%'],
@@ -828,7 +828,7 @@ window.HUB_DATA = {
       covers: 'House rails for: Next2Pay Invoicing with Invoice with QuickBooks Integration - the house gateway - ACH / RDC processing - card processing written on linked2pay. This is the schedule behind every invoice-type deal.',
       splitNote: 'The buy rates below are the deal\u2019s costs - covered off the top. You earn 50% of the net residual that remains: everything quoted above cost, on card, ACH and Invoice with QuickBooks Integration alike.',
       floor: 'Your true cost on Next2Pay card processing = interchange + 2 bps + $0.0215/transaction + $0.03 authorization. ACH costs $0.10/item (+$10/mo enabled). Invoice with QuickBooks Integration costs $35/mo + $10/mo platform maintenance = $45/mo total. Quote above these - your share is 50% of the difference.',
-      example: 'Example: a service business doing $30,000/mo CNP, ~600 transactions, quoted at IC + 0.75% + $0.15: card margin ≈ $278/mo. With Invoice with QuickBooks Integration ($45/mo cost floor -> quote at $50/mo for $5/mo residual on the invoicing). Your 50% ≈ $141/mo from card + $2.50 from invoicing, plus ACH at $0.10 buy per item.',
+      example: 'Example: a service business doing $30,000/mo CNP, ~600 transactions, quoted at IC + 0.75% + $0.15: card margin \u2248 $278/mo. With Invoice with QuickBooks Integration ($45/mo cost floor -> quote at $50/mo for $5/mo residual on the invoicing). Your 50% \u2248 $141/mo from card + $2.50 from invoicing, plus ACH at $0.10 buy per item.',
       groups: [
         { h: 'Card processing buy rates', rows: [
           ['Interchange & assessments (V/MC/D/EBT)', 'Interchange + 2 bps', 'Yes'],
@@ -884,9 +884,9 @@ window.HUB_DATA = {
       label: 'Clover (Fiserv partnership)',
       cols: ['Partner cost'],
       covers: 'Clover deals (Fiserv application). Hardware at wholesale per the Clover pricing sheet (hub docs); Clover platform fee $5/MID + $0.03 non-swiped auth pass through.',
-      splitNote: 'The costs below come off the top. You earn 50% of the net residual - ≈ 45% of the margin you create on standard Clover accounts; roughly half that on high-risk and ACH. Heads up: closes assisted by Clover sales\u2019s POS team trim the residual slightly (20 bps).',
+      splitNote: 'The costs below come off the top. You earn 50% of the net residual - \u2248 45% of the margin you create on standard Clover accounts; roughly half that on high-risk and ACH. Heads up: closes assisted by Clover sales\u2019s POS team trim the residual slightly (20 bps).',
       floor: 'Your true cost on Clover paper = interchange (pass-through) + 0.03% BIN + $0.035/authorization (+ $0.02 batch, $0.01 AVS). Several lines carry built-in spread: PCI billed $149/yr vs $99 cost, PCI non-action $39.95/mo vs $21.95, statement $1/mo cost. Same-day funding $9.95 cannot be marked up.',
-      example: 'Example: $45,000/mo Clover retail, ~1,500 transactions, quoted at IC + 0.50% + $0.10: gross margin ≈ $309/mo. Your share ≈ $139/mo, plus PCI/statement spread and hardware markup.',
+      example: 'Example: $45,000/mo Clover retail, ~1,500 transactions, quoted at IC + 0.50% + $0.10: gross margin \u2248 $309/mo. Your share \u2248 $139/mo, plus PCI/statement spread and hardware markup.',
       groups: [
         { h: 'Processing costs (pass-through + per item)', rows: [
           ['Interchange, dues & assessments (V/MC/D)', 'Pass-through'],
@@ -922,9 +922,9 @@ window.HUB_DATA = {
       label: 'SumUp reseller program',
       cols: ['Rate / cost'],
       covers: 'SumUp reseller paper - Cloud POS SaaS, kiosk, eCommerce and hardware resale, with processing commission on merchants you place. Hardware cannot be discounted below the Schedule A cost.',
-      splitNote: 'Costs come off the top; you earn 50% of the net payout - ≈ 40% of the processing margin you quote above cost (steps up on large books - ask the NextPay team) and ≈ 10% of new-merchant SaaS subscriptions. Hardware markup follows the same split.',
-      floor: 'Processing buy rate = interchange + 0.05%, per-transaction fee waived. You set the merchant\u2019s pricing - your share ≈ 40% of whatever you quote above cost. SaaS subscriptions on new merchants pay you ≈ 10% of the sub; existing/non-transactional merchants pay no SaaS share.',
-      example: 'Example: $20,000/mo boutique quoted at IC + 0.50% + $0.08 (400 txns): margin ≈ $122/mo -> your share ≈ $49/mo. Add Cloud POS w/ Connect Lite at $99/mo retail -> your share ≈ $10/mo. Plus hardware markup over the costs below.',
+      splitNote: 'Costs come off the top; you earn 50% of the net payout - \u2248 40% of the processing margin you quote above cost (steps up on large books - ask the NextPay team) and \u2248 10% of new-merchant SaaS subscriptions. Hardware markup follows the same split.',
+      floor: 'Processing buy rate = interchange + 0.05%, per-transaction fee waived. You set the merchant\u2019s pricing - your share \u2248 40% of whatever you quote above cost. SaaS subscriptions on new merchants pay you \u2248 10% of the sub; existing/non-transactional merchants pay no SaaS share.',
+      example: 'Example: $20,000/mo boutique quoted at IC + 0.50% + $0.08 (400 txns): margin \u2248 $122/mo -> your share \u2248 $49/mo. Add Cloud POS w/ Connect Lite at $99/mo retail -> your share \u2248 $10/mo. Plus hardware markup over the costs below.',
       groups: [
         { h: 'Processing (interchange-plus)', rows: [
           ['Interchange, card association, dues & assessments', 'Pass-through'],
@@ -1010,21 +1010,21 @@ window.HUB_DATA = {
       source: 'Quantic (Unified Pricing V5) - processing on Solutions in Payments paper',
       sched: 'sip',
       quote: 'Hardware/software at the Unified Pricing sheet numbers; processing quoted by us on SIP - dual pricing or IC+ above the SIP cost floor.',
-      make: ['Your share ≈ 45% of the margin over SIP cost (IC + 0.02% + $0.02/txn)', 'Hardware/software quoted at the Unified Pricing sheet numbers'],
+      make: ['Your share \u2248 45% of the margin over SIP cost (IC + 0.02% + $0.02/txn)', 'Hardware/software quoted at the Unified Pricing sheet numbers'],
       need: null
     },
     'korona': {
       source: 'Korona dealer program - processing on Solutions in Payments paper',
       sched: 'sip',
       quote: 'Software per register at sheet prices ($59/$79/$99); hardware one-time; processing on SIP - meet-or-beat or dual pricing above the SIP cost floor.',
-      make: ['Your share ≈ 45% of the margin over SIP cost (IC + 0.02% + $0.02/txn)', 'Software per register and hardware quoted at sheet prices'],
+      make: ['Your share \u2248 45% of the margin over SIP cost (IC + 0.02% + $0.02/txn)', 'Software per register and hardware quoted at sheet prices'],
       need: null
     },
     'nrs': {
       source: 'NRS dealer program - processing on Solutions in Payments paper',
       sched: 'sip',
       quote: 'NRS hardware/software per their current dealer sheet; processing on SIP - dual pricing is the norm in c-stores.',
-      make: ['Your share ≈ 45% of the margin over SIP cost (IC + 0.02% + $0.02/txn)', 'NRS hardware/software quoted per their current dealer sheet'],
+      make: ['Your share \u2248 45% of the margin over SIP cost (IC + 0.02% + $0.02/txn)', 'NRS hardware/software quoted per their current dealer sheet'],
       need: null
     },
     'pays': {
@@ -1052,21 +1052,21 @@ window.HUB_DATA = {
       source: 'Solutions in Payments paper (PAX / Dejavoo / Valor + NMI / FluidPay / Authorize.net / iPOSPays)',
       sched: 'sip',
       quote: 'Fully ours to price on SIP: dual pricing or IC+ above the cost floor (IC pass-through + 0.02% + $0.02/txn); terminal at cost + margin or placement; gateway monthly + per-item.',
-      make: ['Your share ≈ 45% of everything above the SIP cost floor - bps, per-item AND monthly-fee margin', 'Terminal hardware margin', 'Gateway monthly margin'],
+      make: ['Your share \u2248 45% of everything above the SIP cost floor - bps, per-item AND monthly-fee margin', 'Terminal hardware margin', 'Gateway monthly margin'],
       need: null
     },
     'invoicing-gateway': {
       source: 'Next2Pay / linked2pay rails (house invoicing + gateway + ACH)',
       sched: 'next2pay',
       quote: 'Lead with Next2Pay Invoicing. Card CNP quoted above IC + 2 bps + $0.0215; ACH is the winner on $2k+ invoices ($0.10/item buy). Invoice with QuickBooks Integration $35/mo buy - set the retail per deal.',
-      make: ['Your share = 50% of the margin over the linked2pay buy rates on card + ACH volume', 'Invoice with QuickBooks Integration SaaS margin (retail − $35/mo buy)'],
+      make: ['Your share = 50% of the margin over the linked2pay buy rates on card + ACH volume', 'Invoice with QuickBooks Integration SaaS margin (retail - $35/mo buy)'],
       need: null
     },
     'high-risk': {
       source: 'Solutions in Payments high-risk book, underwritten per file - work it with the NextPay team in Deal Desk',
       sched: 'sip',
       quote: 'Never quote first - pricing comes back from underwriting per file, priced above the SIP high-risk floor (IC + 0.25% BIN + $0.10/txn + risk monitoring 0.15%).',
-      make: ['Your share ≈ 30% of the margin over the SIP high-risk schedule - pricing set at approval, per file'],
+      make: ['Your share \u2248 30% of the margin over the SIP high-risk schedule - pricing set at approval, per file'],
       need: null
     }
   },
