@@ -177,6 +177,30 @@ window.HUB_DATA = {
       placements: ['korona', 'clover', 'square']
     },
 
+    'smoke-shops': { label: 'Smoke Shops', group: 'Retail', bg: 'specialty-retail.png',
+      ask: [
+        'Age verification - how do you confirm compliance today, and who checks?',
+        'High-value inventory - serialized cigars, premium brands: how do you track shrink?',
+        'Loyalty program - do regulars come in for the same products, or is it browse-and-discover?',
+        'Wholesale accounts or in-store brands: how are they priced and tracked?',
+        'Any shipping or mail orders mixed with in-store sales?',
+        'Staff turnover: how often are team members making compliance mistakes?'
+      ],
+      primary: { name: 'Clover', why: 'ID scanner + inventory per register + age-gate verification built into the app ecosystem.' },
+      alts: [
+        { name: 'NRS', why: 'Age verification native to the system; c-store & retail specialist.' },
+        { name: 'Korona', why: 'Enterprise inventory and module suite; works for higher-volume operations.' },
+        { name: 'Greta', why: 'Age verification + specialty retail features; compliance-first approach.' }
+      ],
+      rules: [
+        'Age verification is non-negotiable - confirm the POS has built-in checking or a tight integration.',
+        'ID scanning compliance - document the merchant's current process and show how the new system reduces risk.',
+        'Inventory accuracy - higher margins demand better tracking; push the inventory modules.'
+      ],
+      pricing: 'Higher margin products mean room for dual pricing. Compliance costs money - show the ROI on preventing penalties.',
+      placements: ['clover', 'nrs', 'korona']
+    },
+
     'fine-dining': { label: 'Fine Dining & Full Service', group: 'Food & Beverage', bg: 'fine-dining.png',
       ask: [
         'Covers a night and how many turns? Where does a table stall - kitchen, server, or the check?',
@@ -309,6 +333,7 @@ window.HUB_DATA = {
       ],
       primary: { name: 'Clover', why: 'Counter + scale + label support, invoices for wholesale, familiar for staff.' },
       alts: [
+        { name: 'Square', why: 'Simple counter-friendly option - Register or Stand hardware; good for smaller bakeries without scale/label needs.' },
         { name: 'SkyTab', why: 'Digital scale ($39.99/mo) + label printer ($19.99/mo) on placement - $0 upfront for a full deli line.' },
         { name: 'Quantic', why: 'PDN certified scale ($549) + label printer, own-hardware route.' }
       ],
@@ -318,7 +343,7 @@ window.HUB_DATA = {
         'Cake deposits -> card-on-file / deposit workflow question.'
       ],
       pricing: 'Mixed ticket sizes; dual pricing works at the counter, invoices often stay standard-priced. Quote both lanes.',
-      placements: ['clover', 'skytab', 'quantic']
+      placements: ['clover', 'square', 'skytab', 'quantic']
     },
 
     'auto-repair': { label: 'Auto Repair & Automotive', group: 'Services', bg: 'auto-repair.jpg',
