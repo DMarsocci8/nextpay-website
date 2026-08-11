@@ -1,26 +1,3 @@
-# Clean URLs for hub pages (Cloudflare Pages rewrites .html to pretty paths)
-/admin /admin.html 200
-/business-card /business-card.html 200
-/calendar /calendar.html 200
-/compensation /compensation.html 200
-/crm /crm.html 200
-/deal-navigator /deal-navigator.html 200
-/earnings /earnings.html 200
-/flyers /flyers.html 200
-/industries /industries.html 200
-/marketing /marketing.html 200
-/merchants /merchants.html 200
-/playbook /playbook.html 200
-/pricing /pricing.html 200
-/products /products.html 200
-/proposals /proposals.html 200
-/residuals-calculator /residuals-calculator.html 200
-/resources /resources.html 200
-/schedule-as /schedule-as.html 200
-/statement-review /statement-review.html 200
-/submit-deal /submit-deal.html 200
-/training /training.html 200
-
 # Old .html URLs redirect to clean paths
 /admin.html /admin 301
 /business-card.html /business-card 301
