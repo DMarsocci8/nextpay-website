@@ -241,9 +241,12 @@
     const extKeys = window.NP_POS_ORDER || Object.keys(C);
     const mergedKeys = [...new Set([...extKeys, ...allPlacements])];
 
-    $('brand-row').innerHTML = mergedKeys.map(k => {
+    $('brand-row').innerHTML = [...new Set(mergedKeys)].map(k => {
       const label = C && C[k] ? C[k].label : D && D.placements[k] ? D.placements[k].label : k;
-      return '<button class="pick' + (brand === k ? ' on' : '') + '" data-b="' + k + '" style="flex:0 1 auto">' + esc(label) + '</button>';
+      const logo = BRAND_LOGOS[k] || (D && D.placements[k] && D.placements[k].logo ? 'assets/logos/' + D.placements[k].logo : '');
+      const logoBg = D && D.placements[k] && D.placements[k].logoDark ? 'background:#0C1B2A;' : '';
+      const logoHtml = logo ? '<div style="width:32px;height:32px;display:flex;align-items:center;justify-content:center;border-radius:4px;' + logoBg + '"><img src="' + logo + '" alt="" style="max-width:100%;max-height:100%;width:auto;height:auto;object-fit:contain"></div>' : '';
+      return '<button class="pick' + (brand === k ? ' on' : '') + '" data-b="' + k + '" style="flex:0 1 auto;display:flex;align-items:center;gap:8px;flex-wrap:wrap">' + logoHtml + '<span>' + esc(label) + '</span></button>';
     }).join('');
     $('brand-row').querySelectorAll('[data-b]').forEach(b => b.addEventListener('click', () => {
       brand = b.dataset.b; mode = cat()[brand].modes[0]; qty = {};
