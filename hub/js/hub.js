@@ -18,7 +18,8 @@
     pen: '<path d="M12 20h9"/><path d="M16.5 3.5a2.1 2.1 0 013 3L7 19l-4 1 1-4z"/>',
     mega: '<path d="M3 11l14-5v12L3 13z"/><path d="M11.6 16.8a3 3 0 11-5.8-1.6"/><path d="M17 8a4 4 0 010 6"/>',
     book: '<path d="M4 19.5A2.5 2.5 0 016.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 014 19.5v-15A2.5 2.5 0 016.5 2z"/>',
-    folder: '<path d="M22 19a2 2 0 01-2 2H4a2 2 0 01-2-2V5a2 2 0 012-2h5l2 3h9a2 2 0 012 2z"/>'
+    folder: '<path d="M22 19a2 2 0 01-2 2H4a2 2 0 01-2-2V5a2 2 0 012-2h5l2 3h9a2 2 0 012 2z"/>',
+    chat: '<path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/>'
   };
   function icon(k) {
     return '<svg viewBox="0 0 24 24">' + (ICONS[k] || '') + '</svg>';
@@ -45,6 +46,7 @@
     { href: 'earnings.html', label: 'Your Earnings', ic: 'coin' },
     { href: 'schedule-as.html', label: 'Partner Programs & Schedule A', ic: 'doc' },
     { href: 'marketing.html', label: 'Marketing & Brand', ic: 'mega' },
+    { href: 'https://chat.google.com/u/1/app/home', label: 'Google Chat', ic: 'chat', target: '_blank' },
     { href: 'calendar.html', label: 'Calendar', ic: 'cal' },
     { sec: 'Admin', admin: true },
     { href: 'admin.html', label: 'All Agent Deals', ic: 'shield', admin: true }
@@ -88,7 +90,7 @@
     for (const it of NAV) {
       if (it.admin && !admin) continue;
       if (it.sec) { html += '<div class="hs-sec">' + it.sec + '</div>'; continue; }
-      html += '<a href="' + it.href + '"' + (it.href === cur ? ' class="on"' : '') + '>' + icon(it.ic) + it.label + '</a>';
+      html += '<a href="' + it.href + '"' + (it.href === cur ? ' class="on"' : '') + (it.target ? ' target="' + it.target + '" rel="noopener"' : '') + '>' + icon(it.ic) + it.label + '</a>';
     }
     html += '</nav>';
     html += '<div class="hs-foot">Questions? Google Chat —<br>Deal Desk · General Q&amp;A<br><a href="https://nextpaypos.com" target="_blank" rel="noopener">nextpaypos.com ↗</a></div>';
