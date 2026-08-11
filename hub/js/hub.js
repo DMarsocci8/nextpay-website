@@ -37,6 +37,7 @@
     { sec: 'Learn' },
     { href: 'training.html', label: 'Training Academy', ic: 'cap' },
     { href: 'playbook.html', label: 'Sales Playbook', ic: 'book' },
+    { href: 'quick-sales-tools.html', label: 'Quick Sales Tools', ic: 'send' },
     { href: 'products.html', label: 'Products', ic: 'box' },
     { href: 'industries.html', label: 'Industry Playbooks', ic: 'store' },
     { href: 'resources.html', label: 'Resource Library', ic: 'folder' },
