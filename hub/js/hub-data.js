@@ -146,7 +146,7 @@ window.HUB_DATA = {
       ],
       rules: [
         'High single tickets -> disclose max ticket on the app; set realistic limits so payouts are not held.',
-        'Phone orders/deposits -> Next2Pay virtual terminal (linked2pay rails).',
+        'Phone orders/deposits -> Next2Pay virtual terminal.',
         'Repairs pipeline -> invoicing add-on or Invoice with QuickBooks Integration.'
       ],
       pricing: 'High average ticket -> interchange-plus shines; per-item fees are irrelevant, basis points are everything. Statements from jewelry stores usually show inflated keyed rates - easy beat.',
@@ -559,7 +559,7 @@ window.HUB_DATA = {
       { name: 'SwipeSimple', logo: 'swipesimple.png', tag: 'Mobile reader + virtual terminal', sell: ['Phone-based payments', 'Invoices + item catalog'], link: 'https://nextpaypos.com/swipesimple' }
     ],
     gateways: [
-      { name: 'Next2Pay Gateway', logo: 'next2pay-globe.png', tag: 'House gateway \u2014 linked2pay rails', sell: ['E-commerce, virtual terminal and recurring billing on our rails', 'The Navigator\u2019s only gateway recommendation \u2014 best margins in the book', 'Pairs with Next2Pay Invoicing for invoice-first businesses'], link: 'https://nextpaypos.com/next2pay', resources: { guide: 'next2pay-resources.html' } },
+      { name: 'Next2Pay Gateway', logo: 'next2pay-globe.png', tag: 'House gateway & invoicing', sell: ['E-commerce, virtual terminal and recurring billing on our rails', 'The Navigator\u2019s only gateway recommendation \u2014 best margins in the book', 'Pairs with Next2Pay Invoicing for invoice-first businesses'], link: 'https://nextpaypos.com/next2pay', resources: { guide: 'next2pay-resources.html' } },
       { name: 'NMI', logo: 'nmi.png', tag: 'Enterprise-grade gateway', sell: ['Virtual terminal, recurring, account updater', 'Integrates with almost everything'], link: 'https://nextpaypos.com/nmi' },
       { name: 'FluidPay', logo: 'fluidpay.png', tag: 'Modern gateway, great for recurring', sell: ['Clean portal', 'Strong for subscriptions & invoicing'], link: 'https://nextpaypos.com/fluidpay' },
       { name: 'Authorize.net', logo: 'authnet-tight.png', logoH: 32, tag: 'The legacy standard', sell: ['Merchants know the name', 'Broad cart/software support'], link: 'https://nextpaypos.com/authorize-net' },
@@ -602,11 +602,11 @@ window.HUB_DATA = {
     'clover': { label: 'Clover', logo: 'clover.png', guide: 'clover-resources.html', stepsHtml: [
       'Review the <a href="clover-resources.html" style="color:#14A18C;font-weight:500">Clover Resource Guide</a> for positioning, pricing, and deal workflow.',
       'Lock the hardware + software plan using the <a href="proposal-builder.html?brand=clover" style="color:#14A18C;font-weight:500">Proposal Builder</a>. Wholesale pricing sheet: hub docs \u2192 Clover hardware & software pricing (Duo bundle $2,058.80 \u00b7 Solo $1,734.80 \u00b7 Mini $917.10 \u00b7 Flex Gen 4 $738.11 \u00b7 Kiosk $3,537.12 + deployment fees). Note the $5/mo Clover platform fee per MID on the quote.',
-      'Need help mid-sale? <strong>Clover program POS desk: (877) 928-0305 opt 2</strong> \u00b7 pos@redfynn.com \u2014 POS sale assistance, system functionality, configuration questions.',
-      'Application: use the Clover merchant application PDF (hub docs). Application questions or status: (877) 928-0305 ext 205 \u00b7 applications@redfynn.com. Collect the common docs below as usual.',
+      'Need help mid-sale? <strong>Clover program POS desk: (877) 928-0305 opt 2</strong> \u2014 POS sale assistance, system functionality, configuration questions.',
+      'Application: use the Clover merchant application PDF (hub docs). Application questions or status: (877) 928-0305 ext 205. Collect the common docs below as usual.',
       'Email the packaged deal to dom@nextpaypos.com (CC payments@ + alexander@) \u2014 subject "Clover deal \u2014 {DBA}".',
-      'Install & training: schedule installs at book.redfynn.com/install or (813) 803-5503; onboarding training at calendly.com/pos-nhs/onboarding-training or (877) 928-0305 ext 280.',
-      'After go-live: merchant support (877) 928-0305 opt 3 \u00b7 support@redfynn.com; merchants already on Clover devices call (844) 864-5449. Log the merchant in My Merchants.'
+      'Install & training: Contact the Clover installation team at (813) 803-5503 to schedule; onboarding training at calendly.com/pos-nhs/onboarding-training or (877) 928-0305 ext 280.',
+      'After go-live: merchant support (877) 928-0305 opt 3 or (844) 864-5449. Log the merchant in My Merchants.'
     ]},
     'square': { label: 'Square (hardware resell + rate review)', logo: 'square.svg', guide: 'square-resources.html', stepsHtml: [
       'Review the <a href="square-resources.html" style="color:#14A18C;font-weight:500">Square Resource Guide</a> for pricing, hardware options, and deal workflow.',
@@ -762,7 +762,7 @@ window.HUB_DATA = {
     tabs:      { boosts: [{ m: 'skytab|shift4', d: 2, why: 'Fast tabs with card pre-auth' }],
                  note: 'Pre-auth tabs is the killer question at bars - if their current system can\'t, we win.' },
     online:    { boosts: [{ m: 'square', d: 1, why: 'POS + online store one ecosystem' }],
-                 stack: [{ slot: 'gateway', v: 'Next2Pay gateway (linked2pay rails)', why: 'E-commerce / card-not-present rail' }] },
+                 stack: [{ slot: 'gateway', v: 'Next2Pay gateway', why: 'E-commerce / card-not-present rail' }] },
     invoices:  { stack: [{ slot: 'invoicing', v: 'Next2Pay Invoicing', why: 'They invoice their customers - Next2Pay is the play. (If they run a full POS, invoicing is usually a feature there; Next2Pay is for true invoice-first businesses or one-off simple invoicing needs.)' }] },
     recurring: { stack: [{ slot: 'invoicing', v: 'Next2Pay recurring billing', why: 'House recurring - card-on-file, retries, account updater rescues failing cards' }],
                  note: 'Quantify recovered failed payments - that story beats any rate pitch.' },
@@ -848,9 +848,9 @@ window.HUB_DATA = {
       ]
     },
     next2pay: {
-      label: 'Next2Pay / linked2pay (house invoicing & gateway)',
+      label: 'Next2Pay (house invoicing & gateway)',
       cols: ['Buy rate', 'Rev share'],
-      covers: 'House rails for: Next2Pay Invoicing with Invoice with QuickBooks Integration - the house gateway - ACH / RDC processing - card processing written on linked2pay. This is the schedule behind every invoice-type deal.',
+      covers: 'House rails for: Next2Pay Invoicing with Invoice with QuickBooks Integration - the house gateway - ACH / RDC processing - card processing. This is the schedule behind every invoice-type deal.',
       splitNote: 'The buy rates below are the deal\u2019s costs - covered off the top. You earn 50% of the net residual that remains: everything quoted above cost, on card, ACH and Invoice with QuickBooks Integration alike.',
       floor: 'Your true cost on Next2Pay card processing = interchange + 2 bps + $0.0215/transaction + $0.03 authorization. ACH costs $0.10/item (+$10/mo enabled). Invoice with QuickBooks Integration costs $35/mo + $10/mo platform maintenance = $45/mo total. Quote above these - your share is 50% of the difference.',
       example: 'Example: a service business doing $30,000/mo CNP, ~600 transactions, quoted at IC + 0.75% + $0.15: card margin \u2248 $278/mo. With Invoice with QuickBooks Integration ($45/mo cost floor -> quote at $50/mo for $5/mo residual on the invoicing). Your 50% \u2248 $141/mo from card + $2.50 from invoicing, plus ACH at $0.10 buy per item.',
