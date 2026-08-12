@@ -89,7 +89,7 @@
 
 <section id="tab-builder">
   <div class="card mt16">
-    <h3>1 · Platform &amp; how they pay for hardware</h3>
+    <h3>1 · Platform</h3>
     <div class="flex mt8" id="brand-row"><span class="muted small">Loading catalog…</span></div>
     <div class="flex mt8" id="mode-row"></div>
     <p class="small muted mt8" id="proc-note"></p>
@@ -201,10 +201,7 @@
     if (brandLogo) logos += '<img src="' + brandLogo + '" alt="" style="height:40px;background:#f5f5f5;border-radius:8px;padding:6px 10px">';
     return '<div class="head"><div><div class="sub">NextPay · ' + esc(title) + '</div>' +
       '<div class="t">' + esc($('c-biz').value || 'Your Business') + '</div></div>' +
-      '<div style="display:flex;gap:12px">' + logos + '</div></div>' +
-      '<p class="no-print" style="margin-top:12px;color:#5B6B7B">Prepared for <b>' + esc($('c-name').value || '—') + '</b>' +
-      ($('c-reach').value ? ' (' + esc($('c-reach').value) + ')' : '') + ' · ' + today +
-      ' · by <b>' + esc(localStorage.getItem('hub_user_email') || 'NextPay') + '</b></p>';
+      '<div style="display:flex;gap:12px">' + logos + '</div></div>';
   }
   function foot() {
     return '<div class="sig"><div>Merchant signature / date</div><div>NextPay / date</div></div>' +
@@ -241,9 +238,12 @@
     const extKeys = window.NP_POS_ORDER || Object.keys(C);
     const mergedKeys = [...new Set([...extKeys, ...allPlacements])];
 
-    $('brand-row').innerHTML = mergedKeys.map(k => {
+    $('brand-row').innerHTML = [...new Set(mergedKeys)].map(k => {
       const label = C && C[k] ? C[k].label : D && D.placements[k] ? D.placements[k].label : k;
-      return '<button class="pick' + (brand === k ? ' on' : '') + '" data-b="' + k + '" style="flex:0 1 auto">' + esc(label) + '</button>';
+      const logo = BRAND_LOGOS[k] || (D && D.placements[k] && D.placements[k].logo ? 'assets/logos/' + D.placements[k].logo : '');
+      const logoBg = D && D.placements[k] && D.placements[k].logoDark ? 'background:#0C1B2A;' : '';
+      const logoHtml = logo ? '<div style="width:32px;height:32px;display:flex;align-items:center;justify-content:center;border-radius:4px;' + logoBg + '"><img src="' + logo + '" alt="" style="max-width:100%;max-height:100%;width:auto;height:auto;object-fit:contain"></div>' : '';
+      return '<button class="pick' + (brand === k ? ' on' : '') + '" data-b="' + k + '" style="flex:0 1 auto;display:flex;align-items:center;gap:8px;flex-wrap:wrap">' + logoHtml + '<span>' + esc(label) + '</span></button>';
     }).join('');
     $('brand-row').querySelectorAll('[data-b]').forEach(b => b.addEventListener('click', () => {
       brand = b.dataset.b; mode = cat()[brand].modes[0]; qty = {};

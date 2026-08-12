@@ -77,16 +77,16 @@
         (res.support ? '<div class="resource-link"><span class="resource-label">📞 Support</span><span style="color:var(--ink)">' + esc(res.support) + '</span></div>' : '') +
         '</div>'
       : '');
-      return '<div class="card" style="box-shadow:none">' +
+      return '<div class="card" style="box-shadow:none;display:flex;flex-direction:column">' +
         (p.logo
-          ? '<div style="height:44px;display:flex;align-items:center;margin-bottom:10px"><span style="display:inline-flex;align-items:center;justify-content:center;padding:7px 12px;border-radius:10px;max-width:150px;' +
+          ? '<div style="height:36px;display:flex;align-items:center;margin-bottom:8px"><span style="display:inline-flex;align-items:center;justify-content:center;padding:4px 8px;border-radius:6px;' +
             (p.logoDark ? 'background:#0C1B2A' : 'background:#fff;border:1px solid var(--line)') +
-            '"><img src="assets/logos/' + p.logo + '" alt="' + esc(p.name) + ' logo" style="height:' + (p.logoH || 26) + 'px;width:auto;max-width:140px;object-fit:contain" onerror="this.parentNode.style.display=\'none\'"></span></div>'
+            '"><img src="assets/logos/' + p.logo + '" alt="' + esc(p.name) + ' logo" style="height:' + (p.logoH || 20) + 'px;width:auto;max-width:120px;object-fit:contain" onerror="this.parentNode.style.display=\'none\'"></span></div>'
           : '') +
-        '<b>' + esc(p.name) + '</b><div class="small muted">' + esc(p.tag) + '</div>' +
-        '<ul class="ck plain mt8">' + p.sell.map(s => '<li class="small">' + esc(s) + '</li>').join('') + '</ul>' +
-        '<a class="small" href="' + p.link + '" target="_blank" rel="noopener">Public page ↗</a>' +
-        resourceLinks + '</div>';
+        '<b style="font-size:14px">' + esc(p.name) + '</b><div class="small muted" style="font-size:12px;margin-bottom:6px">' + esc(p.tag) + '</div>' +
+        '<ul class="ck plain mt4" style="margin-bottom:auto;gap:4px">' + p.sell.map(s => '<li class="small" style="font-size:12px">' + esc(s) + '</li>').join('') + '</ul>' +
+        '<a class="small" href="' + p.link + '" target="_blank" rel="noopener" style="margin-top:8px;display:inline-block">Public page ↗</a>' +
+        (resourceLinks ? '<div style="' + (resourceLinks ? 'margin-top:8px' : '') + '">' + resourceLinks + '</div>' : '') + '</div>';
     }).join('') + '</div>'
   ).join('');
 })();

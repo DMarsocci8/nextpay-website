@@ -20,12 +20,7 @@
   <div class="frow3">
     <div><label class="fl">Monthly volume ($)</label><input class="fi" id="r-vol" inputmode="numeric" placeholder="45000"></div>
     <div><label class="fl">Rate quoted to merchant (%)</label><input class="fi" id="r-rate" inputmode="numeric" placeholder="2.60"></div>
-    <div><label class="fl">Buy rate (%)</label><input class="fi" id="r-buy" inputmode="numeric" placeholder="2.10"></div>
-  </div>
-  <div class="frow3">
-    <div><label class="fl">Monthly fee income ($ — software margin, statement fee…)</label><input class="fi" id="r-fees" inputmode="numeric" value="0"></div>
-    <div><label class="fl">Your share of margin (%)</label><input class="fi" id="r-split" inputmode="numeric" value="45"><span class="small muted" style="display:block;margin-top:4px">Preloaded: SIP low-risk <b>45</b> · SIP high-risk <b>30</b> · Next2Pay <b>50</b> · Clover <b>45</b> · SumUp <b>40</b></span></div>
-    <div></div>
+    <div><label class="fl">Monthly fee income ($)</label><input class="fi" id="r-fees" inputmode="numeric" value="0" placeholder="0"></div>
   </div>
   <div class="grid3 mt16">
     <div class="stat"><div class="n" id="r-margin">—</div><div class="l">total monthly margin</div></div>
@@ -51,17 +46,18 @@
   const $ = (id) => document.getElementById(id);
   const fmt = (n) => '$' + Math.round(n).toLocaleString();
 
-  /* residual calc */
+  /* residual calc — agent always earns 50% of margin */
   function rcalc() {
     const v = parseFloat($('r-vol').value) || 0, q = parseFloat($('r-rate').value) || 0,
-          b = parseFloat($('r-buy').value) || 0, f = parseFloat($('r-fees').value) || 0,
-          sp = (parseFloat($('r-split').value) || 0) / 100;
-    const margin = v * ((q - b) / 100) + f;
-    $('r-margin').textContent = (v && q) ? fmt(margin) + '/mo' : '—';
-    $('r-mine').textContent = (v && q && sp) ? fmt(margin * sp) + '/mo' : '—';
-    $('r-year').textContent = (v && q && sp) ? fmt(margin * sp * 12) + '/yr' : '—';
+          f = parseFloat($('r-fees').value) || 0;
+    const agentShare = 0.50; /* fixed 50% of all margins */
+    const totalMargin = v * (q / 100) + f;
+    const agentMargin = totalMargin * agentShare;
+    $('r-margin').textContent = (v && q) ? fmt(totalMargin) + '/mo' : '—';
+    $('r-mine').textContent = (v && q) ? fmt(agentMargin) + '/mo' : '—';
+    $('r-year').textContent = (v && q) ? fmt(agentMargin * 12) + '/yr' : '—';
   }
-  ['r-vol', 'r-rate', 'r-buy', 'r-fees', 'r-split'].forEach(id => $(id).addEventListener('input', rcalc));
+  ['r-vol', 'r-rate', 'r-fees'].forEach(id => $(id).addEventListener('input', rcalc));
 
   /* deal economics by source */
   const D = window.HUB_DATA;

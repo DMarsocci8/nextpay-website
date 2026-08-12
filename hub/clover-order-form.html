@@ -1,0 +1,222 @@
+<!DOCTYPE html><html lang="en"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>Clover Order Form — NextPay Sales Hub</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/hub.css">
+<style>
+  .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 16px; }
+  @media(max-width:640px) { .form-grid { grid-template-columns: 1fr; } }
+  .qty-input { width: 80px; }
+  .price-cell { text-align: right; font-weight: 600; color: var(--navy); }
+  .total-row { background: var(--teal-soft); border-top: 2px solid var(--teal); padding: 12px; border-radius: 6px; display: flex; justify-content: space-between; font-weight: 700; }
+  .hardware-section { border-top: 2px solid var(--line); padding-top: 16px; margin-top: 16px; }
+  table.order-tbl { width: 100%; border-collapse: collapse; font-size: 14px; }
+  .order-tbl th { background: var(--navy); color: #fff; padding: 10px; text-align: left; font-weight: 700; }
+  .order-tbl td { padding: 10px; border-bottom: 1px solid var(--line); }
+  .order-tbl input[type="number"] { width: 100%; border: 1px solid var(--line); padding: 6px; border-radius: 4px; font-family: monospace; }
+  .order-tbl input[type="number"]:focus { outline: none; border-color: var(--teal); }
+</style>
+</head><body>
+<div class="hub-shell"><div id="hub-side"></div><main class="hub-main">
+
+<div class="pg-head">
+  <span class="eyebrow">Close it</span>
+  <h1>Clover Order Form</h1>
+  <p>Build the quote — select software plan, devices, and add-ons. Pricing updates as you type.</p>
+</div>
+
+<div class="card">
+  <h3>1 · Software Plan</h3>
+  <div class="form-grid">
+    <div>
+      <label class="fl">Select Clover Plan</label>
+      <select class="fi" id="plan-select">
+        <option value="">— Choose a plan —</option>
+        <option value="healthcare">Clover for Healthcare — $0 first + $11.95 each additional</option>
+        <option value="starter">Starter — $0 first + $11.95 each additional</option>
+        <option value="essentials">Essentials — $29.95 + $11.95 each additional</option>
+        <option value="retail">Retail Growth — $84.95 first + $19.95 each additional</option>
+        <option value="services">Services Growth — $84.95 first + $19.95 each additional</option>
+        <option value="restaurant">Restaurant Growth — $89.95 first + $19.95 each additional</option>
+      </select>
+    </div>
+    <div>
+      <label class="fl">Number of Devices</label>
+      <input class="fi" id="device-count" type="number" min="1" value="1" placeholder="1">
+    </div>
+  </div>
+  <div class="total-row">
+    <span>Software Monthly Total:</span>
+    <span id="software-total">$0.00</span>
+  </div>
+</div>
+
+<div class="card hardware-section">
+  <h3>2 · Hardware (Placement — $0 Down)</h3>
+  <p class="muted small mb12">Select devices and quantities. Monthly rental; hardware returns at end of term.</p>
+  <table class="order-tbl">
+    <thead>
+      <tr>
+        <th>Device</th>
+        <th style="width:80px;text-align:center">Qty</th>
+        <th style="width:120px;text-align:right">Monthly</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Clover Station (countertop)</td>
+        <td><input class="qty-input" type="number" data-device="station" min="0" value="0"></td>
+        <td class="price-cell" data-price="station">$0.00</td>
+      </tr>
+      <tr>
+        <td>Clover Mini (compact)</td>
+        <td><input class="qty-input" type="number" data-device="mini" min="0" value="0"></td>
+        <td class="price-cell" data-price="mini">$0.00</td>
+      </tr>
+      <tr>
+        <td>Clover Flex (mobile handheld)</td>
+        <td><input class="qty-input" type="number" data-device="flex" min="0" value="0"></td>
+        <td class="price-cell" data-price="flex">$0.00</td>
+      </tr>
+      <tr>
+        <td>Clover Go (pocket reader)</td>
+        <td><input class="qty-input" type="number" data-device="go" min="0" value="0"></td>
+        <td class="price-cell" data-price="go">$0.00</td>
+      </tr>
+      <tr>
+        <td>Clover Kiosk</td>
+        <td><input class="qty-input" type="number" data-device="kiosk" min="0" value="0"></td>
+        <td class="price-cell" data-price="kiosk">$0.00</td>
+      </tr>
+    </tbody>
+  </table>
+  <div class="total-row mt16">
+    <span>Hardware Monthly Total:</span>
+    <span id="hardware-total">$0.00</span>
+  </div>
+</div>
+
+<div class="card">
+  <h3>3 · Add-Ons & Services</h3>
+  <table class="order-tbl">
+    <thead>
+      <tr>
+        <th>Add-On</th>
+        <th style="width:80px;text-align:center">Qty</th>
+        <th style="width:120px;text-align:right">Price</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Cash Drawer</td>
+        <td><input class="qty-input" type="number" data-addon="drawer" min="0" value="0"></td>
+        <td class="price-cell" data-addon-price="drawer">$0.00</td>
+      </tr>
+      <tr>
+        <td>Printer (Receipt)</td>
+        <td><input class="qty-input" type="number" data-addon="printer" min="0" value="0"></td>
+        <td class="price-cell" data-addon-price="printer">$0.00</td>
+      </tr>
+      <tr>
+        <td>Ethernet Terminal Stand</td>
+        <td><input class="qty-input" type="number" data-addon="stand" min="0" value="0"></td>
+        <td class="price-cell" data-addon-price="stand">$0.00</td>
+      </tr>
+      <tr>
+        <td>Clover Care (extended support — add $9.95/mo per device)</td>
+        <td><input class="qty-input" type="number" data-addon="care" min="0" value="0"></td>
+        <td class="price-cell" data-addon-price="care">$0.00</td>
+      </tr>
+    </tbody>
+  </table>
+  <div class="total-row mt16">
+    <span>Add-Ons Total:</span>
+    <span id="addons-total">$0.00</span>
+  </div>
+</div>
+
+<div class="card">
+  <div class="total-row" style="font-size:16px;padding:16px">
+    <span>TOTAL MONTHLY COST:</span>
+    <span id="grand-total" style="color:var(--teal);font-size:18px">$0.00</span>
+  </div>
+  <p class="small muted mt12">Processing rates quoted separately. Hardware is on a placement model: $0 down, monthly rental, 36-month term. All pricing subject to Clover/Fiserv approval. Questions? Email dom@nextpaypos.com or call the POS desk at (877) 928-0305 opt 2.</p>
+</div>
+
+</main></div>
+<script>
+(function() {
+  const prices = {
+    hardware: {
+      station: 89,    // Example pricing per month
+      mini: 59,
+      flex: 49,
+      go: 19,
+      kiosk: 129
+    },
+    addons: {
+      drawer: 45,     // One-time? Or monthly? Adjust as needed
+      printer: 79,
+      stand: 25,
+      care: 9.95      // Per device
+    }
+  };
+
+  const planDetails = {
+    healthcare: { first: 0, additional: 11.95 },
+    starter: { first: 0, additional: 11.95 },
+    essentials: { first: 29.95, additional: 11.95 },
+    retail: { first: 84.95, additional: 19.95 },
+    services: { first: 84.95, additional: 19.95 },
+    restaurant: { first: 89.95, additional: 19.95 }
+  };
+
+  function fmt(n) { return '$' + (Math.round(n * 100) / 100).toLocaleString('en-US', {minimumFractionDigits: 2, maximumFractionDigits: 2}); }
+
+  function calculate() {
+    const plan = document.getElementById('plan-select').value;
+    const deviceCount = parseInt(document.getElementById('device-count').value) || 1;
+
+    let softwareTotal = 0;
+    if (plan && planDetails[plan]) {
+      const p = planDetails[plan];
+      softwareTotal = p.first + (Math.max(0, deviceCount - 1) * p.additional);
+    }
+    document.getElementById('software-total').textContent = fmt(softwareTotal);
+
+    let hardwareTotal = 0;
+    document.querySelectorAll('[data-device]').forEach(input => {
+      const qty = parseInt(input.value) || 0;
+      const device = input.dataset.device;
+      const subtotal = qty * (prices.hardware[device] || 0);
+      document.querySelector(`[data-price="${device}"]`).textContent = fmt(subtotal);
+      hardwareTotal += subtotal;
+    });
+    document.getElementById('hardware-total').textContent = fmt(hardwareTotal);
+
+    let addonsTotal = 0;
+    document.querySelectorAll('[data-addon]').forEach(input => {
+      const qty = parseInt(input.value) || 0;
+      const addon = input.dataset.addon;
+      const subtotal = qty * (prices.addons[addon] || 0);
+      document.querySelector(`[data-addon-price="${addon}"]`).textContent = fmt(subtotal);
+      addonsTotal += subtotal;
+    });
+    document.getElementById('addons-total').textContent = fmt(addonsTotal);
+
+    const grandTotal = softwareTotal + hardwareTotal + addonsTotal;
+    document.getElementById('grand-total').textContent = fmt(grandTotal);
+  }
+
+  document.getElementById('plan-select').addEventListener('change', calculate);
+  document.getElementById('device-count').addEventListener('change', calculate);
+  document.querySelectorAll('[data-device], [data-addon]').forEach(input => {
+    input.addEventListener('change', calculate);
+  });
+
+  calculate();
+})();
+</script>
+</body></html>
