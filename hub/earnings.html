@@ -16,17 +16,24 @@
 
 <div class="card mt16">
   <h3>Residual calculator</h3>
-  <p class="muted small" style="margin-bottom:16px">Input the deal parameters and watch your numbers update. Volumes that stay under $15k/mo can pull very different margins on flat-rate platforms (Square, SumUp) — use the calculator to compare.</p>
+  <p class="muted small" style="margin-bottom:16px">Compare card processing vs. dual pricing. Input monthly volume and the rate/discount you quoted — we calculate your 50% residual share.</p>
   <div class="frow3">
     <div><label class="fl">Monthly volume ($)</label><input class="fi" id="r-vol" inputmode="numeric" placeholder="45000"></div>
-    <div><label class="fl">Rate quoted to merchant (%)</label><input class="fi" id="r-rate" inputmode="numeric" placeholder="2.60"></div>
-    <div><label class="fl">Monthly fee income ($)</label><input class="fi" id="r-fees" inputmode="numeric" value="0" placeholder="0"></div>
+    <div style="position:relative"><label class="fl" style="display:flex;gap:8px;align-items:center">Pricing model <select class="fi" id="r-model" style="flex:1;padding:8px;border:2px solid var(--line);border-radius:8px;font-size:13px"><option value="card">Card processing (IC + bps)</option><option value="dual">Dual pricing (cash discount %)</option></select></label></div>
+    <div><label class="fl"><span id="r-label-dynamic">Quoted rate above interchange (bps)</span></label><input class="fi" id="r-rate" inputmode="numeric" placeholder="40"></div>
+  </div>
+  <div style="margin-top:12px;padding:12px;background:#F4F7FA;border-radius:8px">
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;font-size:13px">
+      <div><span style="color:var(--mut)">Merchant pays</span><div style="font-size:18px;font-weight:700;color:#16283A" id="r-quoted">—</div></div>
+      <div><span style="color:var(--mut)">Your cost (buy rate)</span><div style="font-size:14px;font-weight:600;color:#16283A" id="r-cost">—</div></div>
+    </div>
   </div>
   <div class="grid3 mt16">
-    <div class="stat"><div class="n" id="r-margin">—</div><div class="l">total monthly margin</div></div>
-    <div class="stat"><div class="n" id="r-mine" style="color:var(--teal)">—</div><div class="l">your monthly residual</div></div>
-    <div class="stat"><div class="n" id="r-year">—</div><div class="l">your residual per year</div></div>
+    <div class="stat"><div class="n" id="r-margin">—</div><div class="l">gross monthly margin</div></div>
+    <div class="stat"><div class="n" id="r-mine" style="color:var(--teal)">—</div><div class="l">your 50% residual</div></div>
+    <div class="stat"><div class="n" id="r-year">—</div><div class="l">your annual residual</div></div>
   </div>
+  <p class="muted small" style="margin-top:16px"><b>Note:</b> Buy rates shown are NextPay house standard. Your exact buy rate depends on the program and deal file — see <a href="schedule-as.html">Schedule A</a> for specifics.</p>
 </div>
 
 <hr class="sep" style="margin:24px 0">
@@ -45,19 +52,75 @@
 (function () {
   const $ = (id) => document.getElementById(id);
   const fmt = (n) => '$' + Math.round(n).toLocaleString();
+  const fmtPct = (n) => (Math.round(n * 100) / 100).toFixed(2) + '%';
 
-  /* residual calc — agent always earns 50% of margin */
+  /* Standard buy rates (NextPay house costs) */
+  const buyRates = {
+    card: { label: 'IC + 20 bps', bps: 20 }, /* Interchange pass-through + 20bp processor cost */
+    dual: { label: '1.8%', pct: 1.8 }        /* Dual pricing cost ~1.8% */
+  };
+
   function rcalc() {
-    const v = parseFloat($('r-vol').value) || 0, q = parseFloat($('r-rate').value) || 0,
-          f = parseFloat($('r-fees').value) || 0;
-    const agentShare = 0.50; /* fixed 50% of all margins */
-    const totalMargin = v * (q / 100) + f;
-    const agentMargin = totalMargin * agentShare;
-    $('r-margin').textContent = (v && q) ? fmt(totalMargin) + '/mo' : '—';
-    $('r-mine').textContent = (v && q) ? fmt(agentMargin) + '/mo' : '—';
-    $('r-year').textContent = (v && q) ? fmt(agentMargin * 12) + '/yr' : '—';
+    const v = parseFloat($('r-vol').value) || 0;
+    const r = parseFloat($('r-rate').value) || 0;
+    const model = $('r-model').value;
+
+    if (!v || !r) {
+      $('r-quoted').textContent = '—';
+      $('r-cost').textContent = '—';
+      $('r-margin').textContent = '—';
+      $('r-mine').textContent = '—';
+      $('r-year').textContent = '—';
+      return;
+    }
+
+    let merchantRate, buyRate, margin, marginDollars;
+
+    if (model === 'card') {
+      /* Card processing: IC + basis points */
+      merchantRate = fmtPct(2.15 + r / 100); /* 2.15% avg interchange + user's bps */
+      buyRate = fmtPct(2.15 + buyRates.card.bps / 100);
+      const merchantPct = (2.15 + r / 100) / 100;
+      const buyPct = (2.15 + buyRates.card.bps / 100) / 100;
+      margin = merchantPct - buyPct;
+      marginDollars = v * margin;
+      $('r-quoted').textContent = merchantRate;
+      $('r-cost').textContent = buyRate;
+    } else {
+      /* Dual pricing: cash discount percentage */
+      merchantRate = fmtPct(r);
+      buyRate = fmtPct(buyRates.dual.pct);
+      const merchantPct = r / 100;
+      const buyPct = buyRates.dual.pct / 100;
+      margin = merchantPct - buyPct;
+      marginDollars = v * margin;
+      $('r-quoted').textContent = merchantRate;
+      $('r-cost').textContent = buyRate;
+    }
+
+    const agentShare = 0.50; /* fixed 50% agent share */
+    const agentMargin = marginDollars * agentShare;
+
+    $('r-margin').textContent = fmt(marginDollars) + '/mo';
+    $('r-mine').textContent = fmt(agentMargin) + '/mo';
+    $('r-year').textContent = fmt(agentMargin * 12) + '/yr';
   }
-  ['r-vol', 'r-rate', 'r-fees'].forEach(id => $(id).addEventListener('input', rcalc));
+
+  /* Update label when model changes */
+  $('r-model').addEventListener('change', () => {
+    const label = $('r-label-dynamic');
+    const model = $('r-model').value;
+    if (model === 'card') {
+      label.textContent = 'Quoted rate above interchange (bps)';
+      $('r-rate').placeholder = '40';
+    } else {
+      label.textContent = 'Cash discount (%)';
+      $('r-rate').placeholder = '3.5';
+    }
+    rcalc();
+  });
+
+  ['r-vol', 'r-rate'].forEach(id => $(id).addEventListener('input', rcalc));
 
   /* deal economics by source */
   const D = window.HUB_DATA;
