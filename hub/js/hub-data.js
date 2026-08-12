@@ -194,7 +194,7 @@ window.HUB_DATA = {
       ],
       rules: [
         'Age verification is non-negotiable - confirm the POS has built-in checking or a tight integration.',
-        'ID scanning compliance - document the merchant's current process and show how the new system reduces risk.',
+        "ID scanning compliance - document the merchant's current process and show how the new system reduces risk.",
         'Inventory accuracy - higher margins demand better tracking; push the inventory modules.'
       ],
       pricing: 'Higher margin products mean room for dual pricing. Compliance costs money - show the ROI on preventing penalties.',
