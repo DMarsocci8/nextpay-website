@@ -1006,92 +1006,92 @@ window.HUB_DATA = {
      from Dom - they render as "missing" until filled in. INTERNAL ONLY. */
   economics: {
     'next2pay': {
-      source: 'In-house - linked2pay rails (Next2Pay / NextLink)',
+      source: 'In-house (Next2Pay)',
       sched: 'next2pay',
-      quote: 'Card processing at the linked2pay buy rates (IC + 2 bps + $0.0215/txn) - quote dual pricing or IC+ above it. ACH at $0.10/item buy. Invoice with QuickBooks Integration at $35/mo buy - retail-price it per deal.',
-      make: ['Your share = 50% of the margin over the Next2Pay buy rates - card, ACH and Invoice with QuickBooks Integration SaaS', 'Best-control paper in the book: every line on the schedule is shareable'],
+      quote: 'Card processing, ACH and Invoice with QuickBooks Integration - lead with invoicing for invoice-first businesses.',
+      make: ['50% of margin on all Next2Pay products'],
       need: null
     },
     'skytab': {
-      source: 'Shift4 partner program (Lighthouse partner portal)',
-      quote: 'Processing on the Shift4 file - dual pricing or IC+. Hardware/software at sheet prices ($29.99/mo per device class; see Pricing page).',
-      make: ['Your share = 50% of NextPay\'s SkyTab residuals and payouts', 'Activation bonus per NextPay comp plan'],
+      source: 'Shift4',
+      quote: 'Processing on Shift4 file - dual pricing or IC+. Hardware/software at sheet prices.',
+      make: ['50% of NextPay\'s SkyTab residuals and payouts'],
       need: null
     },
     'clover': {
-      source: 'Clover (Fiserv partnership \u2014 house paper)',
+      source: 'Clover',
       sched: 'clover',
-      quote: 'Quote dual pricing or IC+ above the Clover cost floor (IC + 0.03% + $0.035/auth). $5/mo Clover platform fee per MID passes through. Hardware at wholesale per the pricing sheet \u2014 mark up per deal. Ask in Deal Desk whether the deal qualifies for the Clover Advantage program before quoting.',
-      make: ['Your share \u2248 45% of the margin you create on standard Clover accounts', 'Hardware markup over wholesale (Duo bundle $2,058.80 \u00b7 Solo $1,734.80 \u00b7 Mini $917.10 \u00b7 Flex Gen 4 $738.11 + deployment)', 'Built-in spreads: PCI, statement, compliance lines', 'Watch: POS-assisted closes trim your residual 20 bps; high-risk/ACH pay roughly half the standard share'],
+      quote: 'Quote dual pricing or IC+ above the Clover cost floor. Hardware at wholesale per pricing sheet.',
+      make: ['50% of margin'],
       need: null
     },
     'square': {
-      source: 'Square reseller program',
-      quote: 'Square\'s published rates apply while they process on Square - the play is hardware margin now, then move processing to our rails via statement beat where it fits.',
-      make: ['Hardware margin per the Square reseller guides (xlsx on the Pricing page)', 'Processing residual only if/when moved to our paper'],
+      source: 'Square',
+      quote: 'Square rates apply for Square processing. Hardware margin on reseller deals.',
+      make: ['50% of margin'],
       need: null
     },
     'quantic': {
-      source: 'Quantic (Unified Pricing V5) - processing on Solutions in Payments paper',
+      source: 'Quantic',
       sched: 'sip',
-      quote: 'Hardware/software at the Unified Pricing sheet numbers; processing quoted by us on SIP - dual pricing or IC+ above the SIP cost floor.',
-      make: ['Your share \u2248 45% of the margin over SIP cost (IC + 0.02% + $0.02/txn)', 'Hardware/software quoted at the Unified Pricing sheet numbers'],
+      quote: 'Hardware/software at Unified Pricing V5 sheet numbers; processing on our rails.',
+      make: ['50% of margin'],
       need: null
     },
     'korona': {
-      source: 'Korona dealer program - processing on Solutions in Payments paper',
+      source: 'Korona',
       sched: 'sip',
-      quote: 'Software per register at sheet prices ($59/$79/$99); hardware one-time; processing on SIP - meet-or-beat or dual pricing above the SIP cost floor.',
-      make: ['Your share \u2248 45% of the margin over SIP cost (IC + 0.02% + $0.02/txn)', 'Software per register and hardware quoted at sheet prices'],
+      quote: 'Software per register at sheet prices; processing on our rails - dual pricing or IC+.',
+      make: ['50% of margin'],
       need: null
     },
     'nrs': {
-      source: 'NRS dealer program - processing on Solutions in Payments paper',
+      source: 'NRS',
       sched: 'sip',
-      quote: 'NRS hardware/software per their current dealer sheet; processing on SIP - dual pricing is the norm in c-stores.',
-      make: ['Your share \u2248 45% of the margin over SIP cost (IC + 0.02% + $0.02/txn)', 'NRS hardware/software quoted per their current dealer sheet'],
+      quote: 'Hardware/software per NRS dealer sheet; processing on our rails.',
+      make: ['50% of margin'],
       need: null
     },
     'pays': {
-      source: 'PAYS ISO licensing + our processing (SIP paper)',
+      source: 'PAYS',
       sched: 'pays',
-      quote: 'Sell the plans at the published retail (Starter $59 / Growth $79 / Enterprise $99; station $999). The license costs us $59/mo per start ($29 second terminal). Processing is ours to price on SIP paper \u2014 dual pricing is the PAYS norm.',
-      make: ['Software margin: retail plan \u2212 $59 license (Growth +$20, Enterprise +$40/mo) \u2014 your share is 50% of it', 'Your share \u2248 45% of the processing margin on our SIP paper', 'Hardware markup on the station bundle'],
+      quote: 'Software at published retail ($59/$79/$99); processing on our rails - dual pricing is standard.',
+      make: ['50% of margin'],
       need: null
     },
     'sumup': {
-      source: 'SumUp reseller program',
+      source: 'SumUp',
       sched: 'sumup',
-      quote: 'You set the merchant\u2019s processing price above IC + 0.05% (per-item waived). SaaS at partner pricing (Cloud POS $99\u2013$289/mo tiers); hardware marked up over Schedule A costs \u2014 never below them. Small merchants can also start on SumUp\u2019s published simple rates.',
-      make: ['Your share \u2248 40% of the processing margin you quote above cost (steps up on large books)', '\u2248 10% of new-merchant SaaS subscriptions is yours', 'Hardware markup over Schedule A cost (discounting below cost comes out of your pocket)'],
+      quote: 'Processing on our rails above cost. SaaS at partner pricing; hardware marked up.',
+      make: ['50% of margin'],
       need: null
     },
     'chively': {
-      source: 'Solutions in Payments paper (Luqra) \u2014 Chively POS',
+      source: 'Chively',
       sched: 'sip',
-      quote: 'Chively hardware/software pricing coming soon \u2014 until then, work the quote in the deal\'s Deal Desk thread. Processing is fully ours to price on SIP \u2014 dual pricing or IC+ above the SIP cost floor (IC pass-through + 0.02% + $0.02/txn).',
-      make: ['Your share \u2248 45% of everything above the SIP cost floor \u2014 bps, per-item and monthly-fee margin', 'Hardware/software margin on the Chively build'],
+      quote: 'Chively POS hardware/software pricing per agreement. Processing on our rails - dual pricing or IC+.',
+      make: ['50% of margin'],
       need: null
     },
     'terminal-gateway': {
-      source: 'Solutions in Payments paper (PAX / Dejavoo / Valor + NMI / FluidPay / Authorize.net / iPOSPays)',
+      source: 'Terminal & Gateway',
       sched: 'sip',
-      quote: 'Fully ours to price on SIP: dual pricing or IC+ above the cost floor (IC pass-through + 0.02% + $0.02/txn); terminal at cost + margin or placement; gateway monthly + per-item.',
-      make: ['Your share \u2248 45% of everything above the SIP cost floor - bps, per-item AND monthly-fee margin', 'Terminal hardware margin', 'Gateway monthly margin'],
+      quote: 'PAX / Dejavoo / Valor terminals + NMI / FluidPay / Authorize.net gateways. Fully ours to price.',
+      make: ['50% of margin'],
       need: null
     },
     'invoicing-gateway': {
-      source: 'Next2Pay / linked2pay rails (house invoicing + gateway + ACH)',
+      source: 'Next2Pay',
       sched: 'next2pay',
-      quote: 'Lead with Next2Pay Invoicing. Card CNP quoted above IC + 2 bps + $0.0215; ACH is the winner on $2k+ invoices ($0.10/item buy). Invoice with QuickBooks Integration $35/mo buy - set the retail per deal.',
-      make: ['Your share = 50% of the margin over the linked2pay buy rates on card + ACH volume', 'Invoice with QuickBooks Integration SaaS margin (retail - $35/mo buy)'],
+      quote: 'Next2Pay Invoicing with card CNP and ACH. Lead with invoicing for invoice-first businesses.',
+      make: ['50% of margin'],
       need: null
     },
     'high-risk': {
-      source: 'Solutions in Payments high-risk book, underwritten per file - work it with the NextPay team in Deal Desk',
+      source: 'Solutions in Payments (high-risk)',
       sched: 'sip',
-      quote: 'Never quote first - pricing comes back from underwriting per file, priced above the SIP high-risk floor (IC + 0.25% BIN + $0.10/txn + risk monitoring 0.15%).',
-      make: ['Your share \u2248 30% of the margin over the SIP high-risk schedule - pricing set at approval, per file'],
+      quote: 'High-risk book underwritten per file. Pricing set at approval.',
+      make: ['50% of margin'],
       need: null
     }
   },
@@ -1117,7 +1117,7 @@ window.HUB_DATA = {
     },
     clover: {
       name: 'Clover',
-      provider: 'Fiserv / RedFynn',
+      provider: 'Clover',
       bonus: 250,
       baseCalculation: 'Margin from processing volume and rate above our cost floor (IC + 0.03% BIN + $0.035/auth). Hardware and optional services add margin too.',
       feeStructure: {
@@ -1174,7 +1174,7 @@ window.HUB_DATA = {
     },
     next2pay: {
       name: 'Next2Pay Invoicing & Gateway',
-      provider: 'NextPay (linked2pay rails)',
+      provider: 'Next2Pay',
       bonus: 250,
       baseCalculation: 'Margin from invoices, card processing, ACH, and recurring billing - all at 50% of our margin. Best for invoice-first businesses, not POS.',
       feeStructure: {
