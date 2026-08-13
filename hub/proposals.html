@@ -250,10 +250,11 @@
     // Filter and deduplicate platform tiles intelligently:
     // 1. Remove high-risk/specialty entries
     // 2. Remove duplicate labels (keep first occurrence)
-    // 3. Remove duplicate SkyTab entries
+    // 3. Remove duplicate Next2Pay entries (consolidate into one)
     let filteredKeys = [];
     const seenLabels = new Set();
-    const skytabSeen = false;
+    let skytabSeen = false;  // FIX: Make this a mutable variable, not const
+    let next2paySeen = false; // Track Next2Pay to consolidate duplicates
 
     mergedKeys.forEach(k => {
       // Skip high-risk and specialty entries
@@ -263,14 +264,26 @@
       const label = C && C[k] ? C[k].label : D && D.placements[k] ? D.placements[k].label : k;
       const normalized = label.toLowerCase().trim();
 
-      // Skip duplicate labels - but allow multiple SkyTab variants (keep only first)
+      // Skip duplicate SkyTab variants (keep only first)
       if (normalized.includes('skytab') || normalized.includes('shift4')) {
         if (skytabSeen) return;
+        skytabSeen = true;
+      }
+
+      // Skip duplicate Next2Pay entries (keep only first)
+      if (normalized.includes('next2pay') || k === 'next2pay') {
+        if (next2paySeen) return;
+        next2paySeen = true;
+        // Normalize the key to 'next2pay' if it isn't already
+        if (k !== 'next2pay') {
+          filteredKeys.push('next2pay');
+          seenLabels.add('next2pay');
+          return;
+        }
       }
 
       if (seenLabels.has(normalized)) return;
       seenLabels.add(normalized);
-      if (normalized.includes('skytab')) window._skytabSeen = true;
 
       filteredKeys.push(k);
     });
@@ -298,7 +311,8 @@
 
       const logo = BRAND_LOGOS[k] || (D && D.placements[k] && D.placements[k].logo ? 'assets/logos/' + D.placements[k].logo : '');
       const logoBg = D && D.placements[k] && D.placements[k].logoDark ? 'background:#0C1B2A;' : '';
-      const logoHtml = logo ? '<div style="width:32px;height:32px;display:flex;align-items:center;justify-content:center;border-radius:4px;' + logoBg + '"><img src="' + logo + '" alt="" style="max-width:100%;max-height:100%;width:auto;height:auto;object-fit:contain"></div>' : '';
+      // FIX: Normalize logo sizing - constrain all to 18px max height to match NextPay logo
+      const logoHtml = logo ? '<div style="width:32px;height:32px;display:flex;align-items:center;justify-content:center;border-radius:4px;' + logoBg + '"><img src="' + logo + '" alt="" style="max-width:28px;max-height:18px;width:auto;height:auto;object-fit:contain"></div>' : '';
       return '<button class="pick' + (brand === k ? ' on' : '') + '" data-b="' + k + '" style="flex:0 1 auto;display:flex;align-items:center;gap:8px;flex-wrap:wrap">' + logoHtml + '<span>' + esc(displayLabel) + '</span></button>';
     }).join('');
     $('brand-row').querySelectorAll('[data-b]').forEach(b => b.addEventListener('click', () => {
@@ -313,34 +327,35 @@
           const lighthouseItem = cat()[brand].items.find(i => i.name.includes('Lighthouse') || i.name.includes('Customer Hub'));
           if (lighthouseItem) qty[lighthouseItem.id] = 1;
         }
+
+        drawBrands(); drawModes(); drawItems(); render();
       } else {
-        // For non-catalog brands (NRS, Chively, Next2Pay, Standalone terminal), switch to One-Page proposal
-        mode = null;
+        // For non-catalog brands (NRS, Chively, Next2Pay, Standalone terminal), auto-switch to One-Page proposal
+        const tabButton = document.querySelector('.tabs button[data-tab="onepager"]');
+        if (tabButton) {
+          // Switch to One-Page Proposal tab
+          tab = 'onepager';
+          document.querySelectorAll('.tabs button').forEach(x => x.classList.toggle('on', x === tabButton));
+          ['builder', 'onepager', 'nextlink'].forEach(t => $('tab-' + t).style.display = (t === tab ? '' : 'none'));
 
-        // Special handling for standalone terminal - add text input field
-        if (brand === 'standalone' || brand === 'standalone-terminal') {
-          const modeRow = $('mode-row');
-          modeRow.innerHTML = '<div style="flex:1;display:flex;gap:8px;align-items:center"><label class="fl" style="margin:0">Terminal/gateway name:</label><input class="fi" id="standalone-input" placeholder="e.g. PAX A920 Pro, Dejavoo QD, Clover Flex" style="flex:1;max-width:300px"></div>';
+          // Add the selected brand to the one-page proposal
+          if (brand === 'standalone' || brand === 'standalone-terminal') {
+            // Add a line to the one-pager for the custom terminal
+            const terminalName = prompt('Enter terminal/gateway name:', 'e.g. PAX A920 Pro');
+            if (terminalName) {
+              opLines.unshift({ d: terminalName, p: 'Call for pricing' });
+              opDraw();
+            }
+          } else {
+            // Add a line for other non-catalog brands
+            const C = cat();
+            const brandLabel = C && C[brand] ? C[brand].label : D && D.placements[brand] ? D.placements[brand].label : brand;
+            opLines.unshift({ d: brandLabel, p: 'Call for pricing' });
+            opDraw();
+          }
+          render();
         }
       }
-
-      if (window.console) console.log('Selected brand:', brand, 'Logo:', getBrandLogo(brand), 'Mode:', mode);
-      // Update processing options based on brand
-      const isSquare = brand === 'square';
-      document.querySelectorAll('#b-processing option').forEach(opt => {
-        if (['opt-dual', 'opt-ic', 'opt-beat', 'opt-flat'].includes(opt.id)) {
-          opt.style.display = isSquare ? 'none' : '';
-        } else if (['opt-cash', 'opt-rack'].includes(opt.id)) {
-          opt.style.display = isSquare ? '' : 'none';
-        }
-      });
-      // Reset processing option for Square
-      if (isSquare) {
-        $('b-processing').value = 'Cash Discount (4%) — simple flat rate, no negotiation';
-      } else if ($('b-processing').value.includes('Discount') || $('b-processing').value.includes('Rack Rate')) {
-        $('b-processing').value = 'Dual pricing — 0% card processing fees (cash & card pricing posted)';
-      }
-      drawBrands(); drawModes(); drawItems(); render();
     }));
   }
   function drawModes() {
