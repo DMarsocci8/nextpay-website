@@ -400,7 +400,7 @@
     }));
   }
   function lines() {
-    const C = cat(); if (!C || !brand) return [];
+    const C = cat(); if (!C || !brand || !C[brand]) return [];
     return C[brand].items.filter(i => (qty[i.id] || 0) > 0).map(i => ({ i, q: qty[i.id], p: price(i) }));
   }
   function builderDoc() {
@@ -412,7 +412,7 @@
       return '<tr><td style="white-space:nowrap">' + l.q + '×</td><td><b>' + esc(l.i.name) + '</b><br><span style="color:#5B6B7B;font-size:11px">' + esc(l.i.sub || '') + '</span></td><td style="white-space:nowrap">' + (l.i.quote ? 'final quote' : l.p.txt) + '</td></tr>';
     }).join('');
     const brandLogo = (C && brand) ? getBrandLogo(brand) : null;
-    return head((C && brand ? C[brand].label + ' proposal' : 'Proposal'), brandLogo) +
+    return head(((C && brand && C[brand]) ? C[brand].label + ' proposal' : 'Proposal'), brandLogo) +
       ($('b-savings').value ? '<div class="savebar">' + esc($('b-savings').value) + '</div>' : '') +
       (ls.length
         ? '<table><thead><tr><th></th><th>Item</th><th>Price</th></tr></thead><tbody>' + rows +
@@ -420,7 +420,7 @@
         : '<p style="margin-top:16px;color:#5B6B7B;font-style:italic">Add items on the left — they appear here as you build.</p>') +
       '<p style="margin-top:14px"><b>Card processing:</b> ' + esc($('b-processing').value) + '</p>' +
       ($('b-notes').value ? '<p style="margin-top:8px"><b>Notes:</b> ' + esc($('b-notes').value) + '</p>' : '') +
-      (C && brand && C[brand].proc ? '<p style="margin-top:8px;color:#5B6B7B;font-size:11.5px">' + esc(C[brand].proc) + '</p>' : '') + foot();
+      ((C && brand && C[brand] && C[brand].proc) ? '<p style="margin-top:8px;color:#5B6B7B;font-size:11.5px">' + esc(C[brand].proc) + '</p>' : '') + foot();
   }
   $('b-clear').addEventListener('click', () => { qty = {}; drawItems(); render(); });
 
