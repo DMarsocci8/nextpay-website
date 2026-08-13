@@ -415,7 +415,7 @@ window.HUB_DATA = {
         'Big tickets -> the recommendation for anything finance or lending is NextFund.'
       ],
       pricing: 'Keyed-over-phone is where they bleed today - moving to text-to-pay links and tap-in-field drops their effective rate immediately. Surcharge/dual pricing widely accepted in trades.',
-      placements: ['invoicing-gateway', 'terminal-gateway']
+      placements: ['next2pay', 'terminal-gateway']
     },
 
     'fitness': { label: 'Fitness & Gyms', group: 'Services', bg: 'fitness.jpg',
@@ -439,7 +439,7 @@ window.HUB_DATA = {
         'High-volume recurring -> watch chargebacks; mention chargeback protection.'
       ],
       pricing: 'Card-not-present recurring rates dominate - interchange-plus with account updater beats their flat-rate setup. Show recovered-payment math, not just rate.',
-      placements: ['invoicing-gateway', 'square', 'clover']
+      placements: ['next2pay', 'square', 'clover']
     },
 
     'professional-services': { label: 'Professional Services (Legal, Accounting...)', group: 'Services', bg: 'professional.png',
@@ -463,7 +463,7 @@ window.HUB_DATA = {
         'Offer ACH/echeck through Next2Pay - often the real winner at $2k+ invoices.'
       ],
       pricing: 'High-ticket CNP - every basis point counts, and ACH steals the show. Lead with total cost per $10k invoiced.',
-      placements: ['invoicing-gateway']
+      placements: ['next2pay']
     },
 
     'cleaning': { label: 'Cleaning Services', group: 'Services', bg: 'cleaning.jpg',
@@ -487,7 +487,7 @@ window.HUB_DATA = {
         'Keep hardware minimal - this is a software-and-rails sale.'
       ],
       pricing: 'Mostly CNP recurring - interchange-plus + ACH mix. Small operators are often on PayPal/Venmo; formalizing saves fees and looks professional to their clients.',
-      placements: ['invoicing-gateway', 'sumup']
+      placements: ['next2pay', 'sumup']
     },
 
     'healthcare': { label: 'Healthcare & Medical (Vision, Dental, Chiro, Derm, Mental Health, Wellness)', group: 'Healthcare', bg: 'health.png',
@@ -511,7 +511,7 @@ window.HUB_DATA = {
         'Integrations with practice management (Dentrix etc.) -> ask before promising; Next2Pay rails underneath is the usual answer.'
       ],
       pricing: 'Steady CNP + card-present mix; statements typically show mid-market processors with junk fees (PCI, statement fees) - line-item beats are easy to show.',
-      placements: ['clover', 'terminal-gateway', 'invoicing-gateway']
+      placements: ['clover', 'terminal-gateway', 'next2pay']
     },
 
     'high-risk': { label: 'High Risk & Specialty', group: 'Specialty', bg: 'retail.png',
@@ -660,11 +660,6 @@ window.HUB_DATA = {
       'Pick terminal (PAX / Dejavoo / Valor) and file build: dual pricing or standard; tip adjust; auto-batch time.',
       'If CNP needed, add the gateway (NMI / FluidPay / Authorize.net / iPOSPays for Dejavoo).',
       'Common docs; email to dom@nextpaypos.com - subject "Terminal deal - {DBA}".'
-    ]},
-    'invoicing-gateway': { label: 'Next2Pay Invoicing / gateway (software-first)', steps: [
-      'Confirm the workflow: estimates? recurring? text-to-pay? virtual terminal? Next2Pay covers all of it - partner tools (FieldPulse / LQPay / QB sync) only where Dom approves an exception.',
-      'Spec the Next2Pay build: invoicing seats, recurring plans, card-on-file, ACH option for big invoices.',
-      'Common docs; email to dom@nextpaypos.com - subject "Invoicing deal - {DBA}".'
     ]},
     'high-risk': { label: 'High Risk & Specialty', logo: 'nextpay.png', steps: [
       'Do NOT quote rates. Collect the full file: 3-6 months processing + bank statements, refund/chargeback history, licenses, website/terms.',
@@ -1077,13 +1072,6 @@ window.HUB_DATA = {
       source: 'Terminal & Gateway',
       sched: 'sip',
       quote: 'PAX / Dejavoo / Valor terminals + NMI / FluidPay / Authorize.net gateways. Fully ours to price.',
-      make: ['50% of margin'],
-      need: null
-    },
-    'invoicing-gateway': {
-      source: 'Next2Pay',
-      sched: 'next2pay',
-      quote: 'Next2Pay Invoicing with card CNP and ACH. Lead with invoicing for invoice-first businesses.',
       make: ['50% of margin'],
       need: null
     },
