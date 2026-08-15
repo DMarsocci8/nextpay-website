@@ -1,0 +1,189 @@
+<!DOCTYPE html><html lang="en"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>Solutions in Payments Portal — Submit a Deal — NextPay Sales Hub</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/hub.css">
+<style>
+.solution-nav{display:flex;gap:8px;flex-wrap:wrap;margin:0 0 24px;padding:16px;background:var(--bg2);border-radius:8px;border:1px solid var(--line)}
+.solution-nav a{display:inline-flex;align-items:center;gap:8px;padding:8px 14px;background:#fff;border:1px solid var(--line);border-radius:6px;font-size:12px;font-weight:600;text-decoration:none;color:var(--ink);transition:.2s}
+.solution-nav a:hover{border-color:var(--teal);color:var(--teal)}
+.solution-nav a img{height:20px;width:auto}
+.placement-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(100px,1fr));gap:12px;margin:20px 0}
+.placement-tile{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;padding:16px;background:var(--bg2);border:1.5px solid var(--line);border-radius:10px;text-decoration:none;color:inherit;cursor:pointer;transition:.2s;font-size:12px;font-weight:600;text-align:center}
+.placement-tile:hover{border-color:var(--teal);background:var(--bg3)}
+.placement-tile img{height:40px;width:auto;object-fit:contain}
+.placement-label{font-size:11px;line-height:1.3}
+.app-types{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:16px;margin:20px 0}
+.app-type{border:1.5px solid var(--line);border-radius:10px;padding:18px;background:#fff;transition:.2s}
+.app-type:hover{border-color:var(--teal);box-shadow:0 2px 8px rgba(20,161,140,.1)}
+.app-type .badge{display:inline-block;background:rgba(20,161,140,.15);color:var(--teal-dark);font-size:11px;font-weight:800;letter-spacing:.05em;text-transform:uppercase;padding:4px 10px;border-radius:4px;margin-bottom:8px}
+.app-type h4{margin:8px 0 4px;font-size:16px;font-weight:700}
+.app-type .rec{font-size:13px;color:var(--teal-dark);font-weight:600;margin-bottom:10px}
+.app-type p{font-size:13px;color:var(--slate);line-height:1.5;margin:0}
+.critical{background:rgba(242,163,60,.12);border:1px solid rgba(242,163,60,.3);border-radius:10px;padding:16px;margin:20px 0;font-size:14px;color:var(--ink);line-height:1.6}
+.critical strong{color:#b9741a}
+.step-list{list-style:none;counter-reset:steps;margin:20px 0;padding:0}
+.step-list li{display:grid;grid-template-columns:40px 1fr;gap:16px;margin-bottom:16px;padding:16px;background:var(--bg2);border-radius:8px;border-left:4px solid var(--teal)}
+.step-list li::before{counter-increment:steps;content:counter(steps);display:flex;align-items:center;justify-content:center;width:40px;height:40px;background:var(--teal);color:#fff;font-weight:800;font-size:16px;border-radius:50%;grid-column:1;grid-row:1}
+.step-list li>div{grid-column:2;grid-row:1}
+.step-list h4{margin:0 0 6px;font-size:15px;font-weight:700}
+.step-list p{margin:0;font-size:13px;color:var(--slate);line-height:1.5}
+.video-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:16px;margin:20px 0}
+.video-card{background:#fff;border:1px solid var(--line);border-radius:10px;overflow:hidden;text-decoration:none;color:inherit;transition:.2s}
+.video-card:hover{box-shadow:0 4px 12px rgba(0,0,0,.1)}
+.video-thumb{width:100%;aspect-ratio:16/9;background:var(--bg3);display:flex;align-items:center;justify-content:center;font-size:36px}
+.video-card-body{padding:14px}
+.video-card-body h4{margin:0 0 6px;font-size:13px;font-weight:700;line-height:1.35}
+.video-card-body p{margin:0;font-size:12px;color:var(--slate)}
+.checklist{list-style:none;margin:20px 0;padding:0}
+.checklist li{display:flex;gap:10px;align-items:flex-start;margin-bottom:12px;padding:12px;background:var(--bg2);border-radius:6px;font-size:14px}
+.checklist li::before{content:'✓';color:var(--teal);font-weight:800;font-size:18px;flex:none;width:24px;text-align:center}
+.invoicing-section{background:linear-gradient(135deg,rgba(20,161,140,.1),rgba(20,161,140,.05));border:1.5px solid rgba(20,161,140,.3);border-radius:12px;padding:24px}
+.invoicing-section h2{margin-top:0}
+.recommended-cta{display:inline-flex;align-items:center;gap:10px;padding:14px 20px;background:var(--teal);color:#fff;text-decoration:none;font-weight:700;border-radius:8px;font-size:14px}
+.recommended-cta:hover{background:var(--teal-dark)}
+.recommended-badge{background:rgba(255,255,255,.25);padding:4px 8px;border-radius:4px;font-size:11px;text-transform:uppercase}
+.other-invoicing{margin-top:24px;padding-top:20px;border-top:1px solid rgba(20,161,140,.2)}
+</style>
+</head><body>
+<div class="hub-shell"><div id="hub-side"></div><main class="hub-main">
+
+<div class="pg-head">
+  <span class="eyebrow">Submit a Deal</span>
+  <h1>Solutions in Payments Portal</h1>
+  <p>All your payment solutions in one place. Choose the placement from the dropdown when you submit. This portal handles POS systems, standalone terminals, gateways, and more.</p>
+</div>
+
+<div class="solution-nav">
+  <span style="font-size:12px;font-weight:600;color:var(--slate);padding:8px 0">Jump to solution:</span>
+  <a href="/square.html"><img src="assets/logos/square.svg" alt=""> Square</a>
+  <a href="/clover.html"><img src="assets/logos/clover.png" alt=""> Clover</a>
+  <a href="/skytab.html"><img src="assets/logos/skytab.svg" alt=""> SkyTab</a>
+  <a href="/sumup.html"><img src="assets/logos/sumup.png" alt=""> SumUp</a>
+  <a href="/next2pay.html"><img src="assets/logos/next2pay.png" alt=""> Next2Pay</a>
+</div>
+
+<div class="card">
+  <h2>Browse All Solutions in Payments Placements</h2>
+  <p style="color:var(--slate);margin-bottom:16px"><b>Click any logo below or select from the Equipment/Gateway dropdown when you submit.</b> All follow the same submission process — just pick your placement.</p>
+
+  <h4 style="margin-top:24px;margin-bottom:12px;font-size:13px;text-transform:uppercase;color:var(--slate);font-weight:700">POS Systems</h4>
+  <div class="placement-grid">
+    <div class="placement-tile"><img src="assets/logos/quantic.svg" alt=""><span class="placement-label">Quantic</span></div>
+    <div class="placement-tile"><img src="assets/logos/korona.png" alt=""><span class="placement-label">Korona</span></div>
+    <div class="placement-tile"><img src="assets/logos/nrs.png" alt=""><span class="placement-label">NRS</span></div>
+    <div class="placement-tile"><img src="assets/logos/chively-white.png" alt="" style="background:#0C1B2A;padding:8px;border-radius:4px"><span class="placement-label">Chively</span></div>
+  </div>
+
+  <h4 style="margin-top:24px;margin-bottom:12px;font-size:13px;text-transform:uppercase;color:var(--slate);font-weight:700">Standalone Terminals</h4>
+  <div class="placement-grid">
+    <div class="placement-tile"><img src="assets/logos/dejavoo.png" alt=""><span class="placement-label">Dejavoo</span></div>
+    <div class="placement-tile"><img src="assets/logos/valor.png" alt=""><span class="placement-label">Valor</span></div>
+    <div class="placement-tile"><img src="assets/logos/ingenico.png" alt=""><span class="placement-label">Ingenico</span></div>
+    <div class="placement-tile"><img src="assets/logos/pax.svg" alt=""><span class="placement-label">PAX</span></div>
+  </div>
+
+  <h4 style="margin-top:24px;margin-bottom:12px;font-size:13px;text-transform:uppercase;color:var(--slate);font-weight:700">Gateways</h4>
+  <div class="placement-grid">
+    <div class="placement-tile"><img src="assets/logos/fluidpay.png" alt=""><span class="placement-label">FluidPay</span></div>
+    <div class="placement-tile"><img src="assets/logos/nmi.png" alt=""><span class="placement-label">NMI</span></div>
+    <div class="placement-tile"><img src="assets/logos/ipospays.png" alt=""><span class="placement-label">iPOSPays</span></div>
+    <div class="placement-tile"><img src="assets/logos/authnet.png" alt=""><span class="placement-label">Authorize.net</span></div>
+    <div class="placement-tile"><img src="assets/logos/luqra.png" alt=""><span class="placement-label">Luqra</span></div>
+    <div class="placement-tile"><img src="assets/logos/valor.png" alt=""><span class="placement-label">Valor Gateway</span></div>
+  </div>
+</div>
+
+<div class="card mt16">
+  <h3>Portal Access</h3>
+  <p>Log into the Solutions in Payments Portal to submit new applications and manage existing deals.</p>
+  <a href="https://solutionsinpaymentsportal.com/login" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:8px;padding:12px 18px;background:var(--teal);color:#fff;text-decoration:none;font-weight:700;border-radius:6px;margin-top:12px">🔗 Open Solutions in Payments Portal</a>
+  <div class="note mt16"><b>Support line:</b> 213-531-5415 or 1-866-849-2445</div>
+</div>
+
+<div class="card mt16">
+  <h2>How to Submit an Application</h2>
+  <p style="color:var(--slate);margin-bottom:20px">Follow these steps inside the Solutions in Payments Portal to submit a new merchant application.</p>
+  <ol class="step-list">
+    <li><div><h4>Log in to the portal</h4><p>Use your Solutions in Payments credentials. If you don't have access, request it from the support line.</p></div></li>
+    <li><div><h4>Click "Submit New Application"</h4><p>This launches the merchant application form.</p></div></li>
+    <li><div><h4>Fill in merchant details</h4><p>Business name, address, owner information, EIN, and contact details.</p></div></li>
+    <li><div><h4>Select Equipment/Gateway type</h4><p>Choose from the dropdown: Quantic, Korona, NRS, Chively, Dejavoo, Valor, Ingenico, PAX, FluidPay, NMI, iPOSPays, Authorize.net, Luqra, or others. This determines which placement the merchant is on.</p></div></li>
+    <li><div><h4>Choose application type & fees</h4><p>See the sections below for detailed guidance on which application type to choose.</p></div></li>
+    <li><div><h4>Review PCI fees & residuals</h4><p>Decide whether to waive or bill PCI fees to residuals, and select your breach insurance option.</p></div></li>
+    <li><div><h4>Upload documents</h4><p>Attach merchant voided check, ID, processing statements (if Interchange), and any other required docs.</p></div></li>
+    <li><div><h4>Verify you're listed as Agent</h4><p>Make sure your name appears as the submitting Agent on the deal before hitting send.</p></div></li>
+    <li><div><h4>Submit & save confirmation</h4><p>Hit submit and save the confirmation number for your records.</p></div></li>
+  </ol>
+</div>
+
+<div class="card mt16">
+  <h2>Step 3: Choose Application Type & Fees</h2>
+  <p style="color:var(--slate);margin-bottom:20px">This is where you decide the merchant's pricing model. Each type has different fee structures and profit margins for NextPay.</p>
+  <div class="app-types">
+    <div class="app-type"><span class="badge">Recommended</span><h4>Cash Discount</h4><div class="rec">3–4% recommended</div><p>Merchant offers a discount to customers who pay with cash. Credit card processing fees cover the cost. Higher percentage = higher NextPay margin.</p></div>
+    <div class="app-type"><span class="badge">Recommended</span><h4>Dual Pricing Credit + PIN Debit Passthrough Fees</h4><div class="rec">3–4% recommended</div><p>Two pricing tiers: one for credit cards, one for PIN debit transactions. PIN debit fees pass through from the processor. Higher credit card percentage = higher margin.</p></div>
+    <div class="app-type"><span class="badge">Recommended</span><h4>Dual Pricing with PIN Debit Flat Rate</h4><div class="rec">3–4% recommended</div><p>Same as above, but PIN debit has a flat rate (not passthrough). The flat rate percentage matches the dual pricing credit percentage. Higher = more NextPay revenue.</p></div>
+    <div class="app-type"><span class="badge">Good Option</span><h4>Surcharge</h4><div class="rec">3% recommended</div><p>Merchant adds a surcharge to credit card transactions instead of taking a cash discount. Cleaner for merchants who don't want to advertise a discount.</p></div>
+    <div class="app-type"><span class="badge">Complex</span><h4>Interchange Plus</h4><div class="rec">Requires statements</div><p>Merchant pays Interchange + mark-up (usually 0.1–0.5%). Lowest transparent pricing but requires their most recent 3-month processing statements to beat/match their current rates.</p></div>
+  </div>
+  <div class="critical"><strong>⚠️ Interchange CRITICAL:</strong> Do <strong>NOT</strong> take the merchant's word that they have a good rate or that they pay "X percentage." 99% of the time they are wrong about their actual costs. <strong>You MUST get their current most recent 3-month processing statements.</strong> Only the statement shows their true effective rate based on their unique credit card mix and transaction types. Always calculate effective rate from statements, never trust their claims.</div>
+</div>
+
+<div class="card mt16">
+  <h2>Step 5: PCI Fees & Breach Insurance</h2>
+  <p style="color:var(--slate);margin-bottom:20px">In the Miscellaneous Fees section, you'll find the PCI fee option.</p>
+  <div class="checklist">
+    <li><strong>PCI Fee Option:</strong> Choose to either WAIVE the fee or BILL it to the merchant's residuals</li>
+    <li><strong>If billing to residuals:</strong> Select either <strong>Monthly</strong> or <strong>Yearly</strong> "includes breach insurance"</li>
+    <li><strong>Breach insurance:</strong> Protects the merchant in case of a data breach. It's automatically included with the PCI fee if chosen.</li>
+    <li><strong>Best practice:</strong> For most merchants, waiving PCI fees makes for a cleaner deal. If billing, yearly is more cost-effective for the merchant.</li>
+  </div>
+</div>
+
+<div class="card mt16">
+  <h2>Before You Hit Send</h2>
+  <ul class="checklist">
+    <li><strong>Documents uploaded:</strong> Voided check, ID, processing statements (if Interchange)</li>
+    <li><strong>You are listed as Agent:</strong> Verify your name appears as the submitting Agent on the deal</li>
+    <li><strong>All required fields complete:</strong> Business info, owner details, EIN, contact info</li>
+    <li><strong>Application type & fees set:</strong> Double-check the pricing model and percentages</li>
+    <li><strong>Save confirmation number:</strong> After submit, save the confirmation for your records</li>
+  </ul>
+</div>
+
+<div class="card mt24">
+  <h2>📺 Video Guides</h2>
+  <p style="color:var(--slate);margin-bottom:20px">Step-by-step walkthroughs for common tasks in the Solutions in Payments Portal.</p>
+  <div class="video-grid">
+    <a class="video-card" href="https://www.youtube.com/watch?v=UPCw7-5YGTY" target="_blank" rel="noopener"><div class="video-thumb">▶</div><div class="video-card-body"><h4>Start an Online Application & Transfer for Digital Signature</h4><p>Watch on YouTube · 6:51</p></div></a>
+    <a class="video-card" href="https://www.youtube.com/watch?v=1bLfvEVp7P8" target="_blank" rel="noopener"><div class="video-thumb">▶</div><div class="video-card-body"><h4>Download & Submit a Paper Merchant Processing Agreement</h4><p>Watch on YouTube · 3:06</p></div></a>
+    <a class="video-card" href="https://www.youtube.com/watch?v=Bz67RR8TW1M" target="_blank" rel="noopener"><div class="video-thumb">▶</div><div class="video-card-body"><h4>Respond to Underwriting Pending Requests</h4><p>Watch on YouTube · 4:10</p></div></a>
+  </div>
+</div>
+
+<div class="invoicing-section mt24">
+  <h2>Invoicing & Virtual Terminal Solutions</h2>
+  <p style="color:var(--slate);margin-bottom:20px">Need invoicing, virtual terminal, subscriptions, or recurring payments? <strong>Next2Pay is our #1 recommendation.</strong></p>
+  <a href="/next2pay.html" class="recommended-cta">
+    <span class="recommended-badge">#1 Recommended</span>
+    <span>View Next2Pay Resource Page →</span>
+  </a>
+  <div class="other-invoicing">
+    <h4 style="margin-top:0;color:var(--ink)">Other Invoicing Options</h4>
+    <p style="font-size:13px;color:var(--slate);margin-bottom:12px">For FieldPulse, FieldWork, or LQPay inquiries, contact the NextPay team:</p>
+    <a href="mailto:hello@nextpaypos.com" style="display:inline-flex;align-items:center;gap:8px;padding:10px 16px;background:var(--bg2);border:1px solid var(--line);color:var(--ink);text-decoration:none;font-weight:600;border-radius:6px">📧 hello@nextpaypos.com</a>
+  </div>
+</div>
+
+<div class="card mt24">
+  <h3>Questions or Issues?</h3>
+  <p>Contact Solutions in Payments support or post to <strong>Deal Desk</strong> on Google Chat for underwriting questions.</p>
+  <div class="note"><b>Support:</b> 213-531-5415 or 1-866-849-2445</div>
+</div>
+
+</main></div>
+<script src="js/hub.js"></script></body>
+</html>
