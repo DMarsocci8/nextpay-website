@@ -105,6 +105,14 @@
     'next2pay': 'assets/logos/next2pay-globe.png'
   };
 
+  // Brand-specific pricing suggestions (empty string = blank, agents can fill in)
+  const BRAND_PRICING = {
+    'next2pay': ['$50/month', 'Included', 'Included'],
+    'nrs': ['', '', ''],
+    'chively': ['', '', ''],
+    'default': ['', '', '']
+  };
+
   // Update page title
   const title = brandTitles[brand] || 'One-Page Proposal';
   $('page-title').textContent = title + ' Proposal';
@@ -113,10 +121,11 @@
   // Line items data
   let lines = [];
 
-  // Initialize with brand-specific examples
+  // Initialize with brand-specific examples and pricing
   const examples = BRAND_EXAMPLES[brand] || BRAND_EXAMPLES['default'];
-  examples.forEach(ex => {
-    lines.push({ desc: ex, price: 'Call for pricing' });
+  const pricing = BRAND_PRICING[brand] || BRAND_PRICING['default'];
+  examples.forEach((ex, i) => {
+    lines.push({ desc: ex, price: pricing[i] || '' });
   });
 
   function drawLines() {
