@@ -110,6 +110,7 @@
       <option id="opt-cash" style="display:none">Cash Discount (4%) — simple flat rate, no negotiation</option>
       <option id="opt-rack" style="display:none">Rack Rate (IC+) — interchange-plus pricing, transparent cost</option>
     </select>
+    <div class="small muted" style="margin-top:4px;margin-bottom:12px">💡 Pick the right processing fee structure that fits this merchant's business model</div>
     <label class="fl">Savings headline (optional — from Statement Review)</label>
     <input class="fi" id="b-savings" placeholder="e.g. Saves $6,240/year vs your current processor">
     <label class="fl">Notes on the proposal</label>
@@ -352,10 +353,18 @@
             document.querySelectorAll('.tabs button').forEach(x => x.classList.toggle('on', x === tabButton));
             ['builder', 'onepager', 'nextlink'].forEach(t => $('tab-' + t).style.display = (t === tab ? '' : 'none'));
 
-            // Pre-populate the one-page proposal with brand-specific examples
+            // Pre-populate the one-page proposal with brand-specific examples and smart defaults
             const examples = getExamples(brand);
             opLines.length = 0;  // Clear existing lines
-            examples.forEach(ex => opLines.push({ d: ex, p: 'Call for pricing' }));
+            // Smart pricing defaults based on brand
+            const brandPricing = {
+              'next2pay': ['$50/month', 'Included', 'Included'],
+              'nrs': ['$call', 'add pricing', 'add pricing'],
+              'chively': ['add pricing', 'add pricing', 'add pricing'],
+              'default': ['add pricing', 'add pricing', 'add pricing']
+            };
+            const prices = brandPricing[brand] || brandPricing['default'];
+            examples.forEach((ex, i) => opLines.push({ d: ex, p: prices[i] || 'add pricing' }));
             opDraw();
             render();
           }
@@ -467,7 +476,7 @@
   function opDraw() {
     $('op-lines').innerHTML = opLines.map((l, i) =>
       '<div class="frow" style="grid-template-columns:2fr 1fr"><div><label class="fl">Line ' + (i + 1) + '</label><input class="fi" data-op="' + i + '|d" value="' + esc(l.d) + '" placeholder="e.g. ' + esc(getExamples(brand)[i] || 'Product or service') + '"></div>' +
-      '<div><label class="fl">Price</label><input class="fi" data-op="' + i + '|p" value="' + esc(l.p) + '" placeholder="e.g. $29.99/mo"></div></div>').join('');
+      '<div><label class="fl">Price</label><input class="fi" data-op="' + i + '|p" value="' + esc(l.p) + '" placeholder="e.g. $29.99/mo, included, or call for pricing"></div></div>').join('');
     $('op-lines').querySelectorAll('[data-op]').forEach(inp => inp.addEventListener('input', () => {
       const [i, f] = inp.dataset.op.split('|'); opLines[+i][f] = inp.value; render();
     }));
