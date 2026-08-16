@@ -1,0 +1,61 @@
+<!DOCTYPE html><html lang="en"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>Next2Pay Submission Steps — NextPay Sales Hub</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/hub.css">
+</head><body>
+<div class="hub-shell"><div id="hub-side"></div><main class="hub-main">
+
+<div class="pg-head">
+  <span class="eyebrow">Close it</span>
+  <h1>Next2Pay Submission</h1>
+  <p>Step-by-step workflow for Next2Pay (house invoicing & gateway) deal packages.</p>
+</div>
+
+<div class="card">
+  <div style="height:60px;display:flex;align-items:center;margin-bottom:20px">
+    <img src="assets/logos/next2pay-globe.png" alt="Next2Pay" style="height:48px;width:auto;object-fit:contain">
+  </div>
+
+  <div class="note" style="margin-bottom:20px">
+    <b>🏠 House Deal — Best Margins in the Book</b> Next2Pay is NextPay's proprietary invoicing, gateway, and recurring billing solution. Higher margins than resell placements.
+  </div>
+
+  <h3>Submission Workflow</h3>
+  <div class="steps mt12" id="steps"></div>
+
+  <h3 class="mt24 mb8">Quick Resources</h3>
+  <div class="grid2">
+    <a href="next2pay-resources.html" class="card" style="text-decoration:none;color:inherit">
+      <b>📖 Next2Pay Resource Guide</b>
+      <p class="muted small">Pricing, integrations, workflows</p>
+    </a>
+    <div class="card">
+      <b>📊 Proposal Builder</b>
+      <p class="muted small"><a href="proposal-builder.html?brand=next2pay" style="color:#14A18C;font-weight:500">Build Next2Pay Quote →</a></p>
+    </div>
+  </div>
+
+  <div class="note mt24">
+    <b>Next Step:</b> After completing submission, <a href="submit-deal.html">return to Submit a Deal</a> to package and send the deal.
+  </div>
+</div>
+
+</main></div>
+<script src="js/hub.js"></script><script src="js/hub-data.js"></script><script src="js/hub-store.js"></script>
+<script>
+(function () {
+  const D = window.HUB_DATA;
+  const p = D.placements.next2pay;
+
+  if (p && p.stepsHtml) {
+    const stepsHtml = p.stepsHtml.map(s => {
+      return '<div class="step"><div><p style="color:var(--ink)">' + s + '</p></div></div>';
+    }).join('');
+    document.getElementById('steps').innerHTML = stepsHtml;
+  }
+})();
+</script>
+</body></html>

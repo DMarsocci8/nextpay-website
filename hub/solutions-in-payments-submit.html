@@ -1,0 +1,95 @@
+<!DOCTYPE html><html lang="en"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>Solutions in Payments — All Placement Options</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/hub.css">
+</head><body>
+<div class="hub-shell"><div id="hub-side"></div><main class="hub-main">
+
+<div class="pg-head">
+  <span class="eyebrow">Close it</span>
+  <h1>All Payment Solutions</h1>
+  <p>Beyond our top 4 placements, we also offer additional POS systems and specialized solutions for every merchant type and use case.</p>
+</div>
+
+<div class="card">
+  <h3>All Available Placements</h3>
+  <p class="muted small mb12">Click any solution below to see submission steps and requirements.</p>
+
+  <div class="grid4 mt16" id="solutions-grid"></div>
+
+  <h3 class="mt24 mb12">Solution Details</h3>
+  <div id="solution-details" class="mt16"></div>
+
+  <div class="note mt24">
+    <b>Next Step:</b> After selecting your placement, <a href="submit-deal.html">return to Submit a Deal</a> to finalize and send the deal.
+  </div>
+</div>
+
+</main></div>
+<script src="js/hub.js"></script><script src="js/hub-data.js"></script><script src="js/hub-store.js"></script>
+<script>
+(function () {
+  const D = window.HUB_DATA;
+  const esc = (s) => String(s == null ? '' : s).replace(/[<>&"]/g, c => ({'<':'&lt;','>':'&gt;','&':'&amp;','"':'&quot;'}[c]));
+
+  // Placements to show in this gateway (exclude the top 4)
+  const excludeKeys = ['skytab', 'clover', 'square', 'next2pay'];
+  const allPlacements = Object.entries(D.placements).filter(([k]) => !excludeKeys.includes(k));
+
+  const grid = document.getElementById('solutions-grid');
+  const details = document.getElementById('solution-details');
+
+  grid.innerHTML = allPlacements.map(([k, p]) => {
+    const logoBg = p.logoDark ? 'background:#0C1B2A;' : '';
+    return '<button class="solution-tile" data-k="' + k + '" style="display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;padding:16px;background:var(--card);border:1.5px solid var(--line);border-radius:8px;cursor:pointer;transition:all 0.2s;text-decoration:none;color:inherit">' +
+    (p.logo ? '<div style="width:50px;height:50px;display:flex;align-items:center;justify-content:center;border-radius:6px;' + logoBg + '">' +
+      '<img src="assets/logos/' + esc(p.logo) + '" alt="" style="max-width:100%;max-height:100%;width:auto;height:auto;object-fit:contain">' +
+    '</div>' : '<div style="width:50px;height:50px;background:var(--navy);border-radius:6px;display:flex;align-items:center;justify-content:center;color:#fff;font-weight:800">?</div>') +
+    '<span style="font-weight:600;font-size:13px;text-align:center;line-height:1.3">' + esc(p.label) + '</span></button>';
+  }).join('');
+
+  function showSolution(k) {
+    const p = D.placements[k];
+    if (!p) return;
+
+    // Highlight selected tile
+    document.querySelectorAll('.solution-tile').forEach(b => {
+      b.style.borderColor = b.dataset.k === k ? 'var(--teal-bright)' : 'var(--line)';
+      b.style.backgroundColor = b.dataset.k === k ? 'var(--teal-soft)' : 'var(--card)';
+    });
+
+    let guideLink = '';
+    if (p.guide) {
+      guideLink = '<div class="note" style="margin-bottom:16px"><a href="' + esc(p.guide) + '" style="display:inline-block;padding:8px 16px;background:#14A18C;color:white;border-radius:6px;text-decoration:none;font-weight:600;">📖 View ' + esc(p.label) + ' Resource Guide</a></div>';
+    }
+
+    let logoHtml = '';
+    if (p.logo) {
+      const logoBg = p.logoDark ? 'background:#0C1B2A' : 'background:#fff;border:1px solid var(--line)';
+      logoHtml = '<div style="height:60px;display:flex;align-items:center;margin-bottom:16px"><span style="display:inline-flex;align-items:center;justify-content:center;padding:8px 14px;border-radius:8px;' + logoBg + '"><img src="assets/logos/' + esc(p.logo) + '" alt="' + esc(p.label) + '" style="height:' + (p.logoH || 32) + 'px;width:auto;max-width:150px;object-fit:contain"></span></div>';
+    }
+
+    const stepsArray = p.stepsHtml || p.steps;
+    const stepsHtml = stepsArray.map(s => {
+      const stepContent = p.stepsHtml ? s : esc(s);
+      return '<div class="step"><div><p style="color:var(--ink)">' + stepContent + '</p></div></div>';
+    }).join('');
+
+    details.innerHTML = guideLink + '<div class="card">' + logoHtml + '<h3>' + esc(p.label) + ' — Submission Steps</h3><div class="steps mt8">' + stepsHtml + '</div></div>';
+  }
+
+  grid.addEventListener('click', (e) => {
+    const b = e.target.closest('.solution-tile');
+    if (b) showSolution(b.dataset.k);
+  });
+
+  // Show first solution by default
+  if (allPlacements.length > 0) {
+    showSolution(allPlacements[0][0]);
+  }
+})();
+</script>
+</body></html>

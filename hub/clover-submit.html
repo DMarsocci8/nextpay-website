@@ -1,0 +1,57 @@
+<!DOCTYPE html><html lang="en"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>Clover Submission Steps — NextPay Sales Hub</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/hub.css">
+</head><body>
+<div class="hub-shell"><div id="hub-side"></div><main class="hub-main">
+
+<div class="pg-head">
+  <span class="eyebrow">Close it</span>
+  <h1>Clover Submission</h1>
+  <p>Step-by-step workflow for Clover deal packages.</p>
+</div>
+
+<div class="card">
+  <div style="height:60px;display:flex;align-items:center;margin-bottom:20px">
+    <img src="assets/logos/clover.png" alt="Clover" style="height:48px;width:auto;object-fit:contain">
+  </div>
+
+  <h3>Submission Workflow</h3>
+  <div class="steps mt12" id="steps"></div>
+
+  <h3 class="mt24 mb8">Quick Resources</h3>
+  <div class="grid2">
+    <a href="clover-resources.html" class="card" style="text-decoration:none;color:inherit">
+      <b>📖 Clover Resource Guide</b>
+      <p class="muted small">Pricing, hardware bundles, support contacts</p>
+    </a>
+    <div class="card">
+      <b>📞 Clover Support</b>
+      <p class="muted small"><strong>Program Desk:</strong> (877) 928-0305 opt 2<br><strong>Installation:</strong> (813) 803-5503</p>
+    </div>
+  </div>
+
+  <div class="note mt24">
+    <b>Next Step:</b> After completing submission, <a href="submit-deal.html">return to Submit a Deal</a> to package and send the deal.
+  </div>
+</div>
+
+</main></div>
+<script src="js/hub.js"></script><script src="js/hub-data.js"></script><script src="js/hub-store.js"></script>
+<script>
+(function () {
+  const D = window.HUB_DATA;
+  const p = D.placements.clover;
+
+  if (p && p.stepsHtml) {
+    const stepsHtml = p.stepsHtml.map(s => {
+      return '<div class="step"><div><p style="color:var(--ink)">' + s + '</p></div></div>';
+    }).join('');
+    document.getElementById('steps').innerHTML = stepsHtml;
+  }
+})();
+</script>
+</body></html>
