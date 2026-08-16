@@ -21,6 +21,14 @@
 /submit-deal.html /submit-deal 301
 /training.html /training 301
 
+# Portal bridge pages
+/square.html /square-resources 301
+/clover.html /clover-resources 301
+/skytab.html /skytab-resources 301
+/sumup.html /sumup-resources 301
+/next2pay.html /next2pay-resources 301
+/solutions-in-payments.html /solutions-in-payments 301
+
 # Legacy hub URLs → new structure
 /SalesHub / 301
 /Sales%20Hub / 301
