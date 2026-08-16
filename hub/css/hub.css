@@ -66,11 +66,11 @@ a.card:hover{border-color:var(--teal);box-shadow:0 10px 32px rgba(12,27,42,.12);
 .card > b{display:block;font-size:15px;color:var(--navy);margin-bottom:4px;font-weight:800}
 .card>h3:first-child,.card>h2:first-child{padding-bottom:10px;border-bottom:1.5px solid var(--line);margin-bottom:14px}
 .card + .card{margin-top:16px}
-.grid2{display:grid;grid-template-columns:1fr 1fr;gap:16px;grid-auto-rows:1fr;width:100%}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:16px;grid-auto-rows:1fr;width:100%;align-items:start}
 .grid2 > *{min-width:0;display:flex;flex-direction:column;align-items:stretch}
-.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;grid-auto-rows:1fr;width:100%}
+.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;grid-auto-rows:1fr;width:100%;align-items:start}
 .grid3 > *{min-width:0;display:flex;flex-direction:column;align-items:stretch}
-.grid4{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;grid-auto-rows:1fr;width:100%}
+.grid4{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;grid-auto-rows:1fr;width:100%;align-items:start}
 .grid4 > *{min-width:0;display:flex;flex-direction:column;align-items:stretch}
 @media(max-width:1100px){.grid4{grid-template-columns:repeat(2,1fr)}.grid3{grid-template-columns:repeat(2,1fr)}}
 @media(max-width:640px){.grid2,.grid3,.grid4{grid-template-columns:1fr}}
