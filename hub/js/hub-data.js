@@ -548,7 +548,7 @@ window.HUB_DATA = {
       { name: 'PAYS', logo: 'pays.svg', tag: 'All-inclusive 0% dual pricing POS', sell: ['Starter $59 / Growth $79 / Enterprise $99', 'Delivery-app integrations on Growth', 'Station bundle $999'], link: 'https://nextpaypos.com/pays-pos' },
       { name: 'SumUp', logo: 'sumup.svg', tag: 'Value hardware, $0 monthly', sell: ['POS Lite bundle $499, Terminal $249, Solo $54', 'Free POS software tier', 'Great for micro-merchants'], link: 'https://nextpaypos.com/sumup', resources: { guide: 'sumup-resources.html' } },
       { name: 'DejaPay Pro', logo: 'dejapay.webp', tag: 'POS on Dejavoo rails', sell: ['Budget-friendly counter setup', 'Pairs with Dejavoo terminals', 'Simple menus, fast setup'], link: 'https://nextpaypos.com/dejapay' },
-      { name: 'Chively POS', logo: 'chively-white.png', logoDark: true, tag: 'All-in-one POS - its own platform, written through Solutions in Payments (Luqra)', sell: ['Full restaurant + retail feature set', 'Handheld, kiosk and customer-screen options', 'Written on SIP paper - SIP Schedule A economics', 'Pricing coming soon'], link: 'https://nextpaypos.com/chively' },
+      { name: 'Chively POS', logo: 'chively-white.png', logoDark: true, tag: 'All-in-one POS - full restaurant + retail platform', sell: ['Full restaurant + retail feature set', 'Handheld, kiosk and customer-screen options', 'Custom POS with partner pricing', 'Pricing coming soon'], link: 'https://nextpaypos.com/chively' },
     ],
     terminals: [
       { name: 'PAX (A920 Pro, A80, A35...)', logo: 'pax.svg', tag: 'Smart Android terminals', sell: ['A920 Pro portable flagship', 'Dual pricing ready', 'Countertop to mobile line-up'], link: 'https://nextpaypos.com/pax' },
@@ -641,8 +641,8 @@ window.HUB_DATA = {
       'Quote hardware using the <a href="proposal-builder.html?brand=sumup" style="color:#14A18C;font-weight:500">Proposal Builder</a> (POS Lite $499, Terminal $249, Solo $54...).',
       'Common docs; email to dom@nextpaypos.com - subject "SumUp deal - {DBA}".'
     ]},
-    'chively': { label: 'Chively POS (via Solutions in Payments - Luqra)', logo: 'chively-white.png', logoDark: true, steps: [
-      'Chively is its own POS, written through Solutions in Payments (Luqra) - SIP Schedule A economics apply. It is NOT house paper and NOT Next2Pay.',
+    'chively': { label: 'Chively POS', logo: 'chively-white.png', logoDark: true, steps: [
+      'Chively is a custom POS platform with partner pricing. It is NOT house paper and NOT Next2Pay.',
       'Confirm the build - stations, handhelds, kiosk, customer screens. Hardware/software pricing coming soon; until then, price the build in the deal\'s Deal Desk thread.',
       'Common docs (app, voided check, ID, statements/projections) plus menu/inventory files.',
       'Email the packaged deal to dom@nextpaypos.com (CC payments@ + alexander@) - subject "Chively deal - {DBA}".',
@@ -656,10 +656,17 @@ window.HUB_DATA = {
       'Email the packaged deal to dom@nextpaypos.com (CC payments@ + alexander@) - subject "Next2Pay deal - {DBA}".',
       'Onboarding and install are run in-house - coordinate dates with the NextPay team in the deal\'s Deal Desk thread.'
     ]},
-    'terminal-gateway': { label: 'Standalone terminal (+ gateway)', steps: [
-      'Pick terminal (PAX / Dejavoo / Valor) and file build: dual pricing or standard; tip adjust; auto-batch time.',
-      'If CNP needed, add the gateway (NMI / FluidPay / Authorize.net / iPOSPays for Dejavoo).',
+    'standalone-terminal': { label: 'Standalone Terminal', steps: [
+      'Pick terminal: PAX A920 Pro (smart terminal) · Dejavoo (rugged, outdoor) · Valor (all-in-one for bars/restaurants).',
+      'File build: dual pricing, standard rate, or flat rate. Confirm tip adjust and auto-batch time.',
+      'If online/phone orders needed (CNP), add a gateway separately (see Other Gateways).',
       'Common docs; email to dom@nextpaypos.com - subject "Terminal deal - {DBA}".'
+    ]},
+    'gateway': { label: 'Other Gateways', steps: [
+      'Pick gateway: NMI (broad merchant support, virtual terminal) · FluidPay (flexible billing) · Authorize.net (legacy standard) · iPOSPays (pairs with Dejavoo).',
+      'Quote setup: monthly fee + per-transaction rate. Build the quote in Proposal Studio for accurate total.',
+      'Use when merchant needs card-not-present (CNP) / online / phone orders - often bundled with terminal.',
+      'Common docs; email to dom@nextpaypos.com - subject "Gateway deal - {DBA}".'
     ]},
     'high-risk': { label: 'High Risk & Specialty', logo: 'nextpay.png', steps: [
       'Do NOT quote rates. Collect the full file: 3-6 months processing + bank statements, refund/chargeback history, licenses, website/terms.',
@@ -812,7 +819,7 @@ window.HUB_DATA = {
       label: 'Solutions in Payments (SIP)',
       cols: ['Low-Risk', 'High-Risk'],
       splitNote: 'The costs below come off the top of every deal. You earn 50% of the net residual that remains \u2014 which works out to \u2248 45% of the gross margin you create on low-risk files (30% on the high-risk book). That is your number; nothing further comes out of it.',
-      covers: 'House processing paper for: Chively POS (via Luqra) - Quantic - NRS - Korona - standalone terminals (PAX / Dejavoo / Valor) - gateways (NMI / FluidPay / Authorize.net / iPOSPays) - high-risk files. Does NOT cover: Square, SkyTab/Shift4, Clover/Fiserv, Next2Pay, NextLink, SumUp, PAYS, FieldPulse, LQPay (each has its own schedule).',
+      covers: 'House processing paper for: Chively POS - Quantic - NRS - Korona - standalone terminals (PAX / Dejavoo / Valor) - gateways (NMI / FluidPay / Authorize.net / iPOSPays) - high-risk files. Does NOT cover: Square, SkyTab/Shift4, Clover/Fiserv, Next2Pay, NextLink, SumUp, PAYS, FieldPulse, LQPay (each has its own schedule).',
       floor: 'Your true cost on low-risk SIP paper = interchange (pass-through) + 0.02% BIN sponsor + $0.02 per transaction (+ $0.02 per batch). Everything you quote above that is margin - and your share is \u224845% of it (30% on the high-risk book).',
       example: 'Example: $45,000/mo, ~1,500 transactions, quoted at IC + 0.50% + $0.10 -> gross margin \u2248 $336/mo. Your share \u2248 $151/mo, for the life of the merchant. Ten of these = $1,500/mo that keeps paying.',
       groups: [

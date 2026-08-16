@@ -296,24 +296,30 @@
 
       // Remove "Solutions in Payments" and "Luqra" from Chively label
       if (k === 'chively' || label.toLowerCase().includes('chively')) {
-        displayLabel = label.replace(/\s*\(via\s+Solutions\s+in\s+Payments[^)]*\)/i, '').replace(/\s*-\s*Luqra/i, '').trim();
+        displayLabel = 'Chively';
       }
 
-      // Next2Pay consolidation - use specific label
+      // Next2Pay consolidation - use specific label (shorter for logo-focused layout)
       if (k === 'next2pay') {
-        displayLabel = 'Next2Pay (invoicing, virtual terminal)';
+        displayLabel = 'Next2Pay';
       }
 
       // Standalone terminal special case
       if (k === 'standalone' || k === 'standalone-terminal') {
-        displayLabel = 'Standalone terminal or gateway';
+        displayLabel = 'Standalone Terminal';
+      }
+
+      // Gateway special case
+      if (k === 'gateway' || k === 'other-gateway') {
+        displayLabel = 'Other Gateways';
       }
 
       const logo = BRAND_LOGOS[k] || (D && D.placements[k] && D.placements[k].logo ? 'assets/logos/' + D.placements[k].logo : '');
       const logoBg = D && D.placements[k] && D.placements[k].logoDark ? 'background:#0C1B2A;' : '';
-      // Increased logo sizing for better visibility - max-height 28px for clearer tile display
-      const logoHtml = logo ? '<div style="width:48px;height:48px;display:flex;align-items:center;justify-content:center;border-radius:4px;' + logoBg + '"><img src="' + logo + '" alt="" style="max-width:42px;max-height:28px;width:auto;height:auto;object-fit:contain"></div>' : '';
-      return '<button class="pick' + (brand === k ? ' on' : '') + '" data-b="' + k + '" style="flex:0 1 auto;display:flex;align-items:center;gap:8px;flex-wrap:wrap">' + logoHtml + '<span>' + esc(displayLabel) + '</span></button>';
+      // LARGE logo sizing (64x64 container, 50px max height) - removed text labels to maximize logo visibility
+      const logoHtml = logo ? '<div style="width:64px;height:64px;display:flex;align-items:center;justify-content:center;border-radius:6px;' + logoBg + '"><img src="' + logo + '" alt="' + esc(displayLabel) + '" style="max-width:58px;max-height:50px;width:auto;height:auto;object-fit:contain"></div>' : '<div style="width:64px;height:64px;display:flex;align-items:center;justify-content:center;border-radius:6px;background:#f0f0f0"><span style="font-size:24px">?</span></div>';
+      // Logo-only display for clean, spacious look (titles appear on hover as tooltip)
+      return '<button class="pick' + (brand === k ? ' on' : '') + '" data-b="' + k + '" title="' + esc(displayLabel) + '" style="flex:0 1 auto;display:flex;flex-direction:column;align-items:center;gap:6px;padding:8px;border-radius:8px;border:2px solid #e0e0e0;background:#fff;cursor:pointer" onmouseover="this.style.borderColor=\'#14A18C\';this.style.boxShadow=\'0 2px 8px rgba(20,161,140,0.15)\';" onmouseout="this.style.borderColor=\'#e0e0e0\';this.style.boxShadow=\'none\';">' + logoHtml + '<span style="font-size:11px;font-weight:600;color:#666;text-align:center;max-width:70px;line-height:1.2">' + esc(displayLabel) + '</span></button>';
     }).join('');
     $('brand-row').querySelectorAll('[data-b]').forEach(b => b.addEventListener('click', () => {
       brand = b.dataset.b; qty = {};
@@ -338,21 +344,11 @@
           document.querySelectorAll('.tabs button').forEach(x => x.classList.toggle('on', x === tabButton));
           ['builder', 'onepager', 'nextlink'].forEach(t => $('tab-' + t).style.display = (t === tab ? '' : 'none'));
 
-          // Add the selected brand to the one-page proposal
-          if (brand === 'standalone' || brand === 'standalone-terminal') {
-            // Add a line to the one-pager for the custom terminal
-            const terminalName = prompt('Enter terminal/gateway name:', 'e.g. PAX A920 Pro');
-            if (terminalName) {
-              opLines.unshift({ d: terminalName, p: 'Call for pricing' });
-              opDraw();
-            }
-          } else {
-            // Add a line for other non-catalog brands
-            const C = cat();
-            const brandLabel = C && C[brand] ? C[brand].label : D && D.placements[brand] ? D.placements[brand].label : brand;
-            opLines.unshift({ d: brandLabel, p: 'Call for pricing' });
-            opDraw();
-          }
+          // Pre-populate the one-page proposal with brand-specific examples
+          const examples = getExamples(brand);
+          opLines.length = 0;  // Clear existing lines
+          examples.forEach(ex => opLines.push({ d: ex, p: 'Call for pricing' }));
+          opDraw();
           render();
         }
       }
@@ -441,9 +437,27 @@
 
   /* ---------- ONE-PAGER ---------- */
   const opLines = [{ d: '', p: '' }, { d: '', p: '' }, { d: '', p: '' }];
+
+  // Brand-specific product examples for One-Page Proposal
+  const BRAND_EXAMPLES = {
+    'nrs': ['NRS single lane system', 'Age verification module', 'EBT/SNAP processing'],
+    'chively': ['Chively POS system', 'Hardware & setup', 'Inventory & staff management'],
+    'next2pay': ['Next2Pay invoicing & gateway', 'Recurring billing / card-on-file', 'QuickBooks integration add-on'],
+    'standalone': ['PAX A920 Pro terminal', 'Receipt printer & PIN pad', 'Processing (IC+ or flat rate)'],
+    'standalone-terminal': ['PAX A920 Pro terminal', 'Receipt printer & PIN pad', 'Processing (IC+ or flat rate)'],
+    'gateway': ['NMI virtual terminal', 'Monthly gateway fee', 'Card-present & CNP processing'],
+    'other-gateway': ['NMI virtual terminal', 'Monthly gateway fee', 'Card-present & CNP processing'],
+    'terminal': ['Terminal hardware', 'Gateway fees', 'Processing'],
+    'default': ['POS system or hardware', 'Software/monthly fees', 'Processing & integrations']
+  };
+
+  function getExamples(brandKey) {
+    return BRAND_EXAMPLES[brandKey] || BRAND_EXAMPLES['default'];
+  }
+
   function opDraw() {
     $('op-lines').innerHTML = opLines.map((l, i) =>
-      '<div class="frow" style="grid-template-columns:2fr 1fr"><div><label class="fl">Line ' + (i + 1) + '</label><input class="fi" data-op="' + i + '|d" value="' + esc(l.d) + '" placeholder="e.g. SkyTab POS base bundle"></div>' +
+      '<div class="frow" style="grid-template-columns:2fr 1fr"><div><label class="fl">Line ' + (i + 1) + '</label><input class="fi" data-op="' + i + '|d" value="' + esc(l.d) + '" placeholder="e.g. ' + esc(getExamples(brand)[i] || 'Product or service') + '"></div>' +
       '<div><label class="fl">Price</label><input class="fi" data-op="' + i + '|p" value="' + esc(l.p) + '" placeholder="e.g. $29.99/mo"></div></div>').join('');
     $('op-lines').querySelectorAll('[data-op]').forEach(inp => inp.addEventListener('input', () => {
       const [i, f] = inp.dataset.op.split('|'); opLines[+i][f] = inp.value; render();
@@ -452,7 +466,8 @@
   $('op-add').addEventListener('click', () => { opLines.push({ d: '', p: '' }); opDraw(); render(); });
   function onepagerDoc() {
     const rows = opLines.filter(l => l.d).map(l => '<tr><td>' + esc(l.d) + '</td><td style="white-space:nowrap">' + esc(l.p) + '</td></tr>').join('');
-    return head('Proposal', null) +
+    const brandLogo = brand ? getBrandLogo(brand) : null;
+    return head('Proposal', brandLogo) +
       ($('op-savings').value ? '<div class="savebar">' + esc($('op-savings').value) + '</div>' : '') +
       (rows ? '<table><thead><tr><th>What you get</th><th>Price</th></tr></thead><tbody>' + rows + '</tbody></table>'
             : '<p style="margin-top:16px;color:#5B6B7B;font-style:italic">Type line items on the left — they appear here as you go.</p>') +
