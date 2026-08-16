@@ -160,6 +160,11 @@
         (a.reasons.length ? '<p class="small muted mt8">' + a.reasons.map(esc).join(' · ') + '</p>' : '') +
         '<button class="btn btn-outline btn-sm mt8" type="button" data-stack="' + (idx + 1) + '">Use this stack</button></div>').join('') + '</div>';
     }
+
+    // Show context info about selected stack
+    h += '<div class="card mt16"><h3>Your selection</h3>' +
+      '<div id="stack-info" class="note"><p class="muted small">Tap a stack above to see specifics, or <button id="custom-stack-btn" class="btn btn-sm btn-outline" type="button" style="padding:4px 8px;font-size:12px">choose another stack</button></p></div></div>';
+
     const sugRows = [];
     const SLOT = { terminal: 'Terminal', gateway: 'Gateway', invoicing: 'Invoicing', addon: 'Add-on' };
     for (const [slot, list] of Object.entries(stackSug)) list.forEach(s => sugRows.push(Object.assign({ slot }, s)));
@@ -189,6 +194,21 @@
       [/sumup/i, 'sumup'], [/terminal|pax|dejavoo|valor/i, 'terminal-gateway'],
       [/gateway|invoic|fieldpulse|field work|lqpay|nmi|fluidpay|quickbooks/i, 'invoicing-gateway']
     ];
+    // Function to update stack info display
+    function updateStackInfo(stackName) {
+      const stackInfo = $('stack-info');
+      const selectedCand = [...[top], ...alts2].find(c => c.name === stackName);
+      if (selectedCand) {
+        let info = '<b style="color:var(--teal)">✓ Selected: ' + esc(stackName) + '</b>';
+        if (selectedCand.why) info += '<p class="muted small mt8">' + esc(selectedCand.why) + '</p>';
+        if (selectedCand.reasons && selectedCand.reasons.length) {
+          info += '<ul class="ck plain mt8 small">' + selectedCand.reasons.map(r => '<li>' + esc(r) + '</li>').join('') + '</ul>';
+        }
+        info += '<p class="small mt12"><button id="custom-stack-btn" class="btn btn-sm btn-outline" type="button" style="padding:4px 8px;font-size:12px">← Choose a different stack</button></p>';
+        stackInfo.innerHTML = info;
+      }
+    }
+
     document.querySelectorAll('[data-stack]').forEach(btn => {
       btn.addEventListener('click', () => {
         const idx = parseInt(btn.dataset.stack);
@@ -205,9 +225,33 @@
           box.classList.toggle('selected-stack', box.dataset.stackName === selected.name);
         });
 
+        // Update stack info display
+        updateStackInfo(selected.name);
+
         $('f-pos').scrollIntoView({ behavior: 'smooth', block: 'center' });
       });
     });
+
+    // "Choose another stack" button handler
+    setTimeout(() => {
+      const customBtn = $('custom-stack-btn');
+      if (customBtn) {
+        customBtn.addEventListener('click', () => {
+          // Clear selection
+          $('f-pos').value = '';
+          document.querySelectorAll('[data-stack-name]').forEach(box => box.classList.remove('selected-stack'));
+          const stackInfo = $('stack-info');
+          stackInfo.innerHTML = '<p class="muted small">Enter your own stack below, or tap a recommendation above.</p><p class="small mt8"><button id="custom-stack-btn" class="btn btn-sm btn-outline" type="button" style="padding:4px 8px;font-size:12px">← Back to recommendations</button></p>';
+          $('f-pos').focus();
+          $('f-pos').scrollIntoView({ behavior: 'smooth', block: 'center' });
+          // Re-attach button handler
+          setTimeout(() => {
+            const newBtn = $('custom-stack-btn');
+            if (newBtn) newBtn.addEventListener('click', arguments.callee);
+          }, 100);
+        });
+      }
+    }, 100);
   }
   function grab2() {
     if ($('f-pos')) {
