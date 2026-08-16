@@ -24,6 +24,7 @@
 .qty{display:flex;align-items:center;gap:6px}
 .qty button{width:26px;height:26px;border-radius:8px;border:1.5px solid var(--line);background:#fff;font-weight:800;cursor:pointer}
 .qty b{min-width:20px;text-align:center}
+.pick.on{border-color:#14A18C!important;box-shadow:0 2px 8px rgba(20,161,140,0.25)!important}
 /* the proposal document (shared by live preview + print) */
 .pd{font-size:13px;color:#16283A}
 /* force brand backgrounds (navy head, teal savebar) to survive printing —
@@ -336,20 +337,25 @@
 
         drawBrands(); drawModes(); drawItems(); render();
       } else {
-        // For non-catalog brands (NRS, Chively, Next2Pay, Standalone terminal), auto-switch to One-Page proposal
-        const tabButton = document.querySelector('.tabs button[data-tab="onepager"]');
-        if (tabButton) {
-          // Switch to One-Page Proposal tab
-          tab = 'onepager';
-          document.querySelectorAll('.tabs button').forEach(x => x.classList.toggle('on', x === tabButton));
-          ['builder', 'onepager', 'nextlink'].forEach(t => $('tab-' + t).style.display = (t === tab ? '' : 'none'));
+        // For non-catalog brands (NRS, Chively, Next2Pay, Standalone terminal), redirect to dedicated one-page proposal page
+        if (brand === 'nrs' || brand === 'chively' || brand === 'next2pay') {
+          window.location.href = 'one-page-proposal.html?brand=' + encodeURIComponent(brand);
+        } else {
+          // Standalone/Gateway - use internal one-page proposal tab
+          const tabButton = document.querySelector('.tabs button[data-tab="onepager"]');
+          if (tabButton) {
+            // Switch to One-Page Proposal tab
+            tab = 'onepager';
+            document.querySelectorAll('.tabs button').forEach(x => x.classList.toggle('on', x === tabButton));
+            ['builder', 'onepager', 'nextlink'].forEach(t => $('tab-' + t).style.display = (t === tab ? '' : 'none'));
 
-          // Pre-populate the one-page proposal with brand-specific examples
-          const examples = getExamples(brand);
-          opLines.length = 0;  // Clear existing lines
-          examples.forEach(ex => opLines.push({ d: ex, p: 'Call for pricing' }));
-          opDraw();
-          render();
+            // Pre-populate the one-page proposal with brand-specific examples
+            const examples = getExamples(brand);
+            opLines.length = 0;  // Clear existing lines
+            examples.forEach(ex => opLines.push({ d: ex, p: 'Call for pricing' }));
+            opDraw();
+            render();
+          }
         }
       }
     }));

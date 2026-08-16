@@ -1,0 +1,200 @@
+<!DOCTYPE html><html lang="en"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>One-Page Proposal — NextPay Sales Hub</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/hub.css">
+<style>
+.pgrid{display:grid;grid-template-columns:minmax(0,1fr) minmax(380px,470px);gap:18px;align-items:start}
+.pv-wrap{position:sticky;top:20px}
+.pv{background:#fff;border:1px solid var(--line);border-radius:var(--rad);box-shadow:var(--shadow);padding:22px;max-height:calc(100vh - 130px);overflow-y:auto}
+@media(max-width:1240px){.pgrid{grid-template-columns:1fr}.pv-wrap{position:static}.pv{max-height:none}}
+.pd,.pd *{-webkit-print-color-adjust:exact!important;print-color-adjust:exact!important;color-adjust:exact!important}
+.pd .head{background:#0C1B2A;color:#fff;padding:20px 24px;border-radius:12px;display:flex;justify-content:space-between;align-items:center;gap:12px}
+.pd .head .t{font-size:19px;font-weight:800;line-height:1.15}
+.pd .head .sub{color:#1FC2A6;font-weight:700;font-size:10.5px;letter-spacing:.14em;text-transform:uppercase}
+.pd .head img{height:32px;background:#fff;border-radius:8px;padding:5px 9px;flex:none}
+.pd table{width:100%;border-collapse:collapse;margin-top:10px}
+.pd th{text-align:left;font-size:10.5px;letter-spacing:.08em;text-transform:uppercase;color:#5B6B7B;border-bottom:2px solid #E3E9EF;padding:6px 8px}
+.pd td{padding:7px 8px;border-bottom:1px solid #E3E9EF;vertical-align:top}
+.pd .tot td{font-weight:800;border-top:2px solid #0C1B2A;border-bottom:0}
+.pd .savebar{background:#14A18C;color:#fff;border-radius:10px;padding:12px 16px;margin-top:14px;font-weight:800}
+.pd .sig{display:flex;gap:40px;margin-top:34px}
+.pd .sig div{flex:1;border-top:1.5px solid #16283A;padding-top:6px;font-size:11px;color:#5B6B7B}
+.pd .foot{margin-top:16px;font-size:10.5px;color:#5B6B7B}
+#print-doc{display:none}
+@page{size:letter;margin:.5in}
+@media print{body{background:#fff}.hub-side,.hub-main>*:not(#print-doc){display:none!important}.hub-main{margin:0;padding:0}#print-doc{display:block;max-width:7.5in;margin:0 auto}}
+</style>
+</head><body>
+<div class="hub-shell"><div id="hub-side"></div><main class="hub-main">
+
+<div class="pg-head">
+  <span class="eyebrow">Price it right</span>
+  <div class="spread" style="margin-bottom:8px">
+    <h1 id="page-title">One-Page Proposal</h1>
+    <a href="proposals.html" style="color:#14A18C;text-decoration:none;font-weight:600">← Back to Proposal Studio</a>
+  </div>
+  <p id="page-desc">Quick proposal with brand-specific line items.</p>
+</div>
+
+<div class="pgrid">
+  <div>
+    <div class="pv">
+      <div class="pv-head">
+        <b>Line items</b>
+        <button id="add-line" style="background:#14A18C;color:#fff;border:none;border-radius:6px;padding:6px 12px;font:inherit;font-size:12px;font-weight:600;cursor:pointer">+ Add line</button>
+      </div>
+      <div id="lines" style="display:grid;grid-template-columns:1fr;gap:12px;margin-top:12px"></div>
+
+      <div style="margin-top:16px;border-top:1px solid var(--line);padding-top:16px">
+        <label class="fl" style="margin-bottom:8px">Annual savings (optional)</label>
+        <input class="fi" id="savings" placeholder="e.g. Save $12,000/year with our rates" style="margin-bottom:8px">
+
+        <label class="fl" style="margin-bottom:8px">Card processing details</label>
+        <input class="fi" id="proc" placeholder="e.g. Interchange-plus, dual pricing available" style="margin-bottom:8px">
+
+        <label class="fl" style="margin-bottom:8px">Next steps</label>
+        <textarea class="fi" id="next" placeholder="e.g. Apply for merchant account, receive hardware, go live" style="min-height:60px;font-family:inherit;padding:8px;resize:vertical;margin-bottom:8px"></textarea>
+      </div>
+
+      <button id="print-btn" style="width:100%;background:#14A18C;color:#fff;border:none;border-radius:6px;padding:10px;font:inherit;font-size:14px;font-weight:600;cursor:pointer;margin-top:12px">Print / PDF</button>
+    </div>
+  </div>
+
+  <div class="pv-wrap">
+    <div class="pv-head">
+      <b>Live preview</b>
+    </div>
+    <div id="live" class="pd" style="border:1px solid var(--line);border-radius:var(--rad);padding:20px;background:#fff;font-size:13px"></div>
+  </div>
+</div>
+
+</main></div>
+
+<div id="print-doc" style="font-family:'Plus Jakarta Sans',sans-serif;font-size:13px;color:#16283A"></div>
+
+<script src="js/hub.js"></script><script src="js/hub-data.js"></script><script src="js/hub-store.js"></script>
+<script>
+(function () {
+  const $ = id => document.getElementById(id);
+  const esc = s => String(s || '').replace(/[<>&"]/g, c => ({'<':'&lt;','>':'&gt;','&':'&amp;','"':'&quot;'}[c]));
+
+  // Get brand from URL parameter or default
+  const params = new URLSearchParams(window.location.search);
+  let brand = (params.get('brand') || 'default').toLowerCase();
+
+  // Map brand to display title
+  const brandTitles = {
+    'nrs': 'NRS',
+    'chively': 'Chively',
+    'next2pay': 'Next2Pay'
+  };
+
+  const BRAND_EXAMPLES = {
+    'nrs': ['NRS single lane system', 'Age verification module', 'EBT/SNAP processing'],
+    'chively': ['Chively POS system', 'Hardware & setup', 'Inventory & staff management'],
+    'next2pay': ['Next2Pay invoicing & gateway', 'Recurring billing / card-on-file', 'QuickBooks integration add-on'],
+    'default': ['POS system or hardware', 'Software/monthly fees', 'Processing & integrations']
+  };
+
+  const BRAND_LOGOS = {
+    'nrs': 'assets/logos/nrs.png',
+    'chively': 'assets/logos/chively.png',
+    'next2pay': 'assets/logos/next2pay-globe.png'
+  };
+
+  // Update page title
+  const title = brandTitles[brand] || 'One-Page Proposal';
+  $('page-title').textContent = title + ' Proposal';
+  $('page-desc').textContent = 'Quick ' + title + ' proposal builder — print or save as PDF.';
+
+  // Line items data
+  let lines = [];
+
+  // Initialize with brand-specific examples
+  const examples = BRAND_EXAMPLES[brand] || BRAND_EXAMPLES['default'];
+  examples.forEach(ex => {
+    lines.push({ desc: ex, price: 'Call for pricing' });
+  });
+
+  function drawLines() {
+    $('lines').innerHTML = lines.map((line, i) => `
+      <div style="display:grid;grid-template-columns:2fr 1fr;gap:8px">
+        <div>
+          <input class="fi" value="${esc(line.desc)}" data-line="${i}|desc" placeholder="Line item" style="margin-bottom:4px">
+        </div>
+        <div style="display:flex;gap:4px;align-items:flex-start">
+          <input class="fi" value="${esc(line.price)}" data-line="${i}|price" placeholder="Price" style="flex:1">
+          <button data-remove="${i}" style="flex:0;width:32px;height:32px;border:1px solid var(--line);border-radius:6px;background:#fff;cursor:pointer;font-weight:600;color:#999">×</button>
+        </div>
+      </div>
+    `).join('');
+
+    $('lines').querySelectorAll('[data-line]').forEach(inp => {
+      inp.addEventListener('input', e => {
+        const [i, field] = e.target.dataset.line.split('|');
+        lines[+i][field] = e.target.value;
+        render();
+      });
+    });
+
+    $('lines').querySelectorAll('[data-remove]').forEach(btn => {
+      btn.addEventListener('click', e => {
+        const i = +e.target.dataset.remove;
+        lines.splice(i, 1);
+        drawLines();
+        render();
+      });
+    });
+  }
+
+  function getBrandLogo() {
+    return BRAND_LOGOS[brand] || null;
+  }
+
+  function head(title, logo) {
+    const logoHtml = logo ? `<img src="${logo}" alt="${esc(title)}">` : '';
+    return `<div class="head"><div><div class="sub">PROPOSAL</div><div class="t">${esc(title)}</div></div>${logoHtml}</div>`;
+  }
+
+  function foot() {
+    return `<div class="foot"><p>Prepared by NextPay · ${new Date().toLocaleDateString()} · nextpaypos.com · hello@nextpaypos.com</p></div>`;
+  }
+
+  function currentDoc() {
+    const rows = lines.filter(l => l.desc).map(l => `<tr><td>${esc(l.desc)}</td><td style="white-space:nowrap">${esc(l.price)}</td></tr>`).join('');
+    return head(title + ' Proposal', getBrandLogo()) +
+      ($('savings').value ? `<div class="savebar">${esc($('savings').value)}</div>` : '') +
+      (rows ? `<table><thead><tr><th>What you get</th><th>Price</th></tr></thead><tbody>${rows}</tbody></table>`
+            : `<p style="margin-top:16px;color:#5B6B7B;font-style:italic">Add line items on the left — they appear here as you go.</p>`) +
+      `<p style="margin-top:14px"><b>Card processing:</b> ${esc($('proc').value)}</p>` +
+      `<p style="margin-top:8px"><b>What happens next:</b> ${esc($('next').value)}</p>` + foot();
+  }
+
+  function render() {
+    $('live').innerHTML = currentDoc();
+  }
+
+  $('add-line').addEventListener('click', () => {
+    lines.push({ desc: '', price: '' });
+    drawLines();
+    render();
+  });
+
+  [$('savings'), $('proc'), $('next')].forEach(el => {
+    el.addEventListener('input', render);
+  });
+
+  $('print-btn').addEventListener('click', () => {
+    $('print-doc').innerHTML = currentDoc();
+    window.print();
+  });
+
+  // Initial render
+  drawLines();
+  render();
+})();
+</script>
+</body></html>
