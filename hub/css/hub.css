@@ -19,7 +19,7 @@ b,strong{font-weight:700}
 
 /* ---------- Shell ---------- */
 .hub-shell{display:flex;min-height:100vh}
-.hub-main{flex:1;min-width:0;padding:28px clamp(18px,3.5vw,44px) 64px;margin-left:var(--side-w)}
+.hub-main{flex:1;min-width:0;padding:28px clamp(18px,3.5vw,44px) 32px;margin-left:var(--side-w)}
 @media(max-width:920px){.hub-main{margin-left:0;padding-top:74px}}
 
 /* ---------- Sidebar ---------- */
@@ -155,7 +155,7 @@ ul.ck.plain li::before{color:var(--mut)}
 .muted{color:var(--mut)}
 .small{font-size:12.5px}
 .right{text-align:right}
-.mt0{margin-top:0}.mt8{margin-top:8px}.mt16{margin-top:16px}.mt24{margin-top:24px}.mb8{margin-bottom:8px}
+.mt0{margin-top:0}.mt8{margin-top:8px}.mt16{margin-top:12px}.mt24{margin-top:14px}.mb8{margin-bottom:8px}
 .flex{display:flex;gap:10px;align-items:center;flex-wrap:wrap}
 .spread{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap}
 hr.sep{border:0;border-top:1px solid var(--line);margin:18px 0}
