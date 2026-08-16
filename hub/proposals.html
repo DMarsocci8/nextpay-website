@@ -198,7 +198,7 @@
     'luqra': 'assets/logos/luqra.png',
     'ipospays': 'assets/logos/ipospays.png',
     'nextlink': 'assets/logos/nextlink.png',
-    'next2pay': 'assets/logos/next2pay.png',
+    'next2pay': 'assets/logos/next2pay-globe.png',
     'nextfund': 'assets/logos/nextfund-globe.png'
   };
   let tab = 'builder';
@@ -311,8 +311,8 @@
 
       const logo = BRAND_LOGOS[k] || (D && D.placements[k] && D.placements[k].logo ? 'assets/logos/' + D.placements[k].logo : '');
       const logoBg = D && D.placements[k] && D.placements[k].logoDark ? 'background:#0C1B2A;' : '';
-      // FIX: Normalize logo sizing - constrain all to 18px max height to match NextPay logo
-      const logoHtml = logo ? '<div style="width:32px;height:32px;display:flex;align-items:center;justify-content:center;border-radius:4px;' + logoBg + '"><img src="' + logo + '" alt="" style="max-width:28px;max-height:18px;width:auto;height:auto;object-fit:contain"></div>' : '';
+      // Increased logo sizing for better visibility - max-height 28px for clearer tile display
+      const logoHtml = logo ? '<div style="width:48px;height:48px;display:flex;align-items:center;justify-content:center;border-radius:4px;' + logoBg + '"><img src="' + logo + '" alt="" style="max-width:42px;max-height:28px;width:auto;height:auto;object-fit:contain"></div>' : '';
       return '<button class="pick' + (brand === k ? ' on' : '') + '" data-b="' + k + '" style="flex:0 1 auto;display:flex;align-items:center;gap:8px;flex-wrap:wrap">' + logoHtml + '<span>' + esc(displayLabel) + '</span></button>';
     }).join('');
     $('brand-row').querySelectorAll('[data-b]').forEach(b => b.addEventListener('click', () => {
