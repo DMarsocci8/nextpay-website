@@ -24,35 +24,30 @@
   <h3>Pick a solution to submit</h3>
   <p class="muted small mb12">Click a logo below to see submission steps, requirements, and portal access for that solution.</p>
   <div class="grid3">
-    <a class="card" href="/square.html" style="text-decoration:none;color:inherit">
-      <img src="assets/logos/square.svg" alt="Square" style="height:32px;margin-bottom:8px">
+    <a class="card" href="square-submit.html" style="text-decoration:none;color:inherit">
+      <img src="assets/logos/square.svg" alt="Square" style="height:40px;margin-bottom:12px;object-fit:contain">
       <b>Square</b>
       <p class="muted small">Direct merchant sign-up</p>
     </a>
-    <a class="card" href="/clover.html" style="text-decoration:none;color:inherit">
-      <img src="assets/logos/clover.png" alt="Clover" style="height:32px;margin-bottom:8px">
+    <a class="card" href="clover-submit.html" style="text-decoration:none;color:inherit">
+      <img src="assets/logos/clover.png" alt="Clover" style="height:40px;margin-bottom:12px;object-fit:contain">
       <b>Clover</b>
       <p class="muted small">Form + email submission</p>
     </a>
-    <a class="card" href="/skytab.html" style="text-decoration:none;color:inherit">
-      <img src="assets/logos/skytab.svg" alt="SkyTab" style="height:32px;margin-bottom:8px">
+    <a class="card" href="skytab-submit.html" style="text-decoration:none;color:inherit">
+      <img src="assets/logos/skytab.svg" alt="SkyTab" style="height:40px;margin-bottom:12px;object-fit:contain">
       <b>SkyTab / Shift4</b>
       <p class="muted small">Partner Portal</p>
     </a>
-    <a class="card" href="/sumup.html" style="text-decoration:none;color:inherit">
-      <img src="assets/logos/sumup.png" alt="SumUp" style="height:32px;margin-bottom:8px">
-      <b>SumUp</b>
-      <p class="muted small">Partner portal</p>
-    </a>
-    <a class="card" href="/next2pay.html" style="text-decoration:none;color:inherit">
-      <img src="assets/logos/next2pay.png" alt="Next2Pay" style="height:32px;margin-bottom:8px">
+    <a class="card" href="next2pay-submit.html" style="text-decoration:none;color:inherit">
+      <img src="assets/logos/next2pay.png" alt="Next2Pay" style="height:40px;margin-bottom:12px;object-fit:contain">
       <b>Next2Pay</b>
       <p class="muted small">Invoicing & portal</p>
     </a>
-    <a class="card" href="/solutions-in-payments.html" style="text-decoration:none;color:inherit">
-      <div style="width:32px;height:32px;background:var(--navy);border-radius:6px;margin-bottom:8px;display:flex;align-items:center;justify-content:center;color:#fff;font-weight:800;font-size:14px">$</div>
+    <a class="card" href="solutions-in-payments-submit.html" style="text-decoration:none;color:inherit">
+      <img src="assets/logos/solutions-in-payments-logo.png" alt="Solutions in Payments" style="height:40px;margin-bottom:12px;object-fit:contain">
       <b>Solutions in Payments</b>
-      <p class="muted small">15+ payment solutions</p>
+      <p class="muted small">SumUp, NRS, Korona + more</p>
     </a>
   </div>
 </div>
@@ -76,11 +71,7 @@
   </div>
 </div>
 
-<h3 class="mt24 mb8">Then follow the placement playbook</h3>
-<div class="pick-grid" id="picks"></div>
-<div id="detail" class="mt16"></div>
-
-<div class="card mt24">
+<div class="card mt16">
   <h3>After you hit send</h3>
   <div class="tbl-wrap"><table class="tbl"><thead><tr><th>What happens</th><th>Typical timing</th><th>Your job</th></tr></thead><tbody>
     <tr><td>Underwriting reviews the file</td><td>Underwriting sets the pace — never quote a timeline to the merchant</td><td>Respond same-day to any doc requests — complete files move fastest.</td></tr>
@@ -89,16 +80,6 @@
     <tr><td>First batch settles</td><td>Day 1–2 of processing</td><td>Call the merchant, confirm funds landed, ask for a referral. Log them in <a href="merchants.html">My Merchants</a>.</td></tr>
   </tbody></table></div>
   <p class="small muted mt8">Stuck or unusual situation? Post the deal details in <b>Deal Desk</b> on Google Chat (in the deal's thread) — do not guess on underwriting questions. Email is for submitting the actual docs only.</p>
-</div>
-
-<div class="card mt24">
-  <h3>Submit by placement</h3>
-  <p class="muted small mb12">Click a brand to see the submission steps and requirements.</p>
-  <div id="portal-grid" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(120px,1fr));gap:14px;margin-bottom:16px"></div>
-  <div class="note">
-    <b>Quick resources:</b> Merchant application PDF: <a href="https://nextpaypos.com/application" target="_blank" rel="noopener">nextpaypos.com/application</a> ·
-    Clover support: (877) 928-0305 opt 2
-  </div>
 </div>
 
 </main></div>
@@ -110,54 +91,6 @@
   document.getElementById('commondocs').innerHTML = D.commonDocs.map(d => '<li>' + esc(d) + '</li>').join('');
   document.getElementById('c-submit').textContent = D.contacts.submit;
   document.getElementById('c-cc').textContent = D.contacts.cc;
-
-  const portalGrid = document.getElementById('portal-grid');
-  portalGrid.innerHTML = Object.entries(D.placements).map(([k, p]) => {
-    const logoBg = p.logoDark ? 'background:#0C1B2A;' : '';
-    return '<button class="portal-tile" data-k="' + k + '" style="display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;padding:14px;background:var(--bg2);border:1.5px solid var(--line);border-radius:8px;cursor:pointer;transition:all 0.2s;text-decoration:none;color:inherit">' +
-    (p.logo ? '<div style="width:44px;height:44px;display:flex;align-items:center;justify-content:center;border-radius:6px;' + logoBg + '">' +
-      '<img src="assets/logos/' + esc(p.logo) + '" alt="" style="max-width:100%;max-height:100%;width:auto;height:auto;object-fit:contain">' +
-    '</div>' : '') +
-    '<span style="font-weight:500;font-size:12px;text-align:center;line-height:1.3">' + esc(p.label) + '</span></button>';
-  }).join('');
-
-  const picks = document.getElementById('picks'), detail = document.getElementById('detail');
-  picks.innerHTML = Object.entries(D.placements).map(([k, p]) => {
-    const logoBg = p.logoDark ? 'background:#0C1B2A;padding:4px 6px;border-radius:4px;display:inline-flex;align-items:center;' : '';
-    return '<button class="pick" data-k="' + k + '">' +
-    (p.logo ? '<span style="' + logoBg + '"><img src="assets/logos/' + esc(p.logo) + '" alt="" style="height:24px;margin-right:8px;display:inline-block"></span>' : '') +
-    esc(p.label) + '</button>';
-  }).join('');
-  function show(k) {
-    const p = D.placements[k];
-    document.querySelectorAll('.pick').forEach(b => b.classList.toggle('on', b.dataset.k === k));
-    document.querySelectorAll('.portal-tile').forEach(b => {
-      b.style.borderColor = b.dataset.k === k ? 'var(--teal-bright)' : 'var(--line)';
-      b.style.backgroundColor = b.dataset.k === k ? 'var(--bg3)' : 'var(--bg2)';
-    });
-    let guideLink = '';
-    if (p.guide) {
-      guideLink = '<div class="note" style="margin-bottom:16px"><a href="' + esc(p.guide) + '" style="display:inline-block;padding:8px 16px;background:#14A18C;color:white;border-radius:6px;text-decoration:none;font-weight:600;">📖 View ' + esc(p.label) + ' Resource Guide</a></div>';
-    }
-    let logoHtml = '';
-    if (p.logo) {
-      logoHtml = '<div style="height:44px;display:flex;align-items:center;margin-bottom:12px"><span style="display:inline-flex;align-items:center;justify-content:center;padding:7px 12px;border-radius:10px;max-width:150px;' +
-        (p.logoDark ? 'background:#0C1B2A' : 'background:#fff;border:1px solid var(--line)') +
-        '"><img src="assets/logos/' + esc(p.logo) + '" alt="' + esc(p.label) + ' logo" style="height:' + (p.logoH || 24) + 'px;width:auto;max-width:140px;object-fit:contain" onerror="this.parentNode.style.display=\'none\'"></span></div>';
-    }
-    const stepsArray = p.stepsHtml || p.steps;
-    const stepsHtml = stepsArray.map(s => {
-      const stepContent = p.stepsHtml ? s : esc(s);
-      return '<div class="step"><div><p style="color:var(--ink)">' + stepContent + '</p></div></div>';
-    }).join('');
-    detail.innerHTML = guideLink + '<div class="card">' + logoHtml + '<h3>' + esc(p.label) + ' — submission steps</h3><div class="steps mt8">' +
-      stepsHtml + '</div></div>';
-    history.replaceState(null, '', '#' + k);
-  }
-  picks.addEventListener('click', (e) => { const b = e.target.closest('.pick'); if (b) show(b.dataset.k); });
-  portalGrid.addEventListener('click', (e) => { const b = e.target.closest('.portal-tile'); if (b) show(b.dataset.k); });
-  const initial = location.hash.slice(1);
-  show(D.placements[initial] ? initial : 'skytab');
 })();
 </script>
 </body></html>
