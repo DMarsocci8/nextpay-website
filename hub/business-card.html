@@ -120,10 +120,13 @@
       <p class="hint">Fill these in — the card updates as you type.</p>
 
       <div class="field"><label for="f-name">Full name</label><input id="f-name" type="text" placeholder="" autocomplete="name"></div>
-      <div class="field" id="lockNote" style="font-size:12.5px;color:var(--slate);background:var(--bg-soft);border:1px solid var(--line);border-radius:10px;padding:10px 12px">Your title is <b style="color:var(--ink)">Payment &amp; Rewards Specialist</b> — set for the whole team on the card.</div>
-      <div class="field" id="titleField" style="display:none">
+      <div class="field" id="titleField">
         <label>Title</label>
-        <div id="titleChooser" style="display:flex;gap:8px;flex-wrap:wrap"></div>
+        <div id="titleChooser" style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:12px"></div>
+        <div id="customTitleWrapper" style="display:none">
+          <input id="f-title" type="text" placeholder="Enter your custom title" autocomplete="off" style="margin-bottom:6px">
+          <p style="font-size:12px;color:var(--slate)">* Custom titles require approval</p>
+        </div>
       </div>
       <div class="field"><label for="f-cell">Cell phone</label><input id="f-cell" type="tel" placeholder="" autocomplete="tel"></div>
       <div class="field"><label for="f-email">Email</label><input id="f-email" type="email" placeholder="" autocomplete="email"></div>
@@ -203,16 +206,22 @@ var KEY = 'np_rep_profile';
 function load(){ try{ return JSON.parse(localStorage.getItem(KEY)) || {}; }catch(e){ return {}; } }
 function save(p){ try{ localStorage.setItem(KEY, JSON.stringify(p)); }catch(e){} }
 
-var TITLE = 'Payment & Rewards Specialist'; /* locked for all agents */
+var TITLE = 'Payment & Rewards Specialist'; /* default title */
 var EXECS = { 'dom@nextpaypos.com': 'Co-Founder & CEO', 'alexander@nextpaypos.com': 'CFO' };
 var fields = {name:'f-name', cell:'f-cell', email:'f-email'};
 var prof = load();
 Object.keys(fields).forEach(function(k){ var el=document.getElementById(fields[k]); if(prof[k]) el.value=prof[k]; });
+if(prof.title) TITLE = prof.title;
+if(document.getElementById('f-title')) document.getElementById('f-title').value = prof.title || '';
 
 function update(){
   var p = load();
   Object.keys(fields).forEach(function(k){ p[k] = document.getElementById(fields[k]).value.trim(); });
-  p.title = TITLE; /* keep the shared profile's title in sync for all agents */
+  var customTitle = document.getElementById('f-title');
+  if(customTitle && customTitle.style.display !== 'none' && customTitle.value.trim()) {
+    TITLE = customTitle.value.trim();
+  }
+  p.title = TITLE; /* save title to shared profile */
   save(p);
   document.getElementById('c-name').textContent  = p.name  || 'Your Name';
   document.getElementById('c-title').textContent = TITLE;
@@ -241,44 +250,71 @@ document.getElementById('clearBtn').addEventListener('click', function(){
   update();
 });
 
-/* ===== exec personalization (shared NPExec) =====================================
-   Execs (by their Cloudflare Access login) get their details pre-filled and a
-   title toggle between their exec title and Payment & Rewards Specialist (their
-   own selected first). All other agents stay locked to the Specialist title. */
-function applyExecCard(email){
-  var execTitle = EXECS[email.toLowerCase()];
-  if (!execTitle) return;
+/* ===== Title personalization (all agents) =====================================
+   All users can select from preset titles or create their own.
+   Preset titles: Co-Founder & CEO, CFO, Payments & Rewards Specialist, or custom (with approval note) */
+function setupTitleChooser(execEmail){
+  var titles = ['Payments & Rewards Specialist'];
 
-  var titles = [execTitle, 'Payment & Rewards Specialist'];
-  var titlePick = load().titlePick; /* check if they previously picked a title */
-  TITLE = titles.includes(titlePick) ? titlePick : execTitle;
+  /* Add exec titles if user is an executive */
+  if (execEmail && EXECS[execEmail.toLowerCase()]) {
+    var execTitle = EXECS[execEmail.toLowerCase()];
+    titles.unshift(execTitle);
+  }
+  titles.push('Create your own title');
 
   var tc = document.getElementById('titleChooser');
+  var customWrapper = document.getElementById('customTitleWrapper');
+  var customInput = document.getElementById('f-title');
+
   tc.innerHTML = titles.map(function(t,i){
-    var isActive = (t === TITLE) ? ' on' : '';
+    var isActive = (t === TITLE || (t === 'Create your own title' && TITLE !== titles[0] && TITLE !== 'Payments & Rewards Specialist')) ? ' on' : '';
     return '<button type="button" class="tchip'+isActive+'" data-t="'+i+'">'+t.replace(/&/g,'&amp;')+'</button>';
   }).join('');
+
   [].slice.call(tc.querySelectorAll('.tchip')).forEach(function(b){
     b.addEventListener('click', function(){
       tc.querySelectorAll('.tchip').forEach(function(x){ x.classList.remove('on'); });
       b.classList.add('on');
-      TITLE = titles[+b.getAttribute('data-t')];
-      var p = load(); p.titlePick = TITLE; save(p);
-      update();
+      var selectedTitle = titles[+b.getAttribute('data-t')];
+      if (selectedTitle === 'Create your own title') {
+        customWrapper.style.display = '';
+        customInput.focus();
+      } else {
+        customWrapper.style.display = 'none';
+        TITLE = selectedTitle;
+        var p = load(); p.title = TITLE; save(p);
+        update();
+      }
     });
   });
-  document.getElementById('lockNote').style.display = 'none';
-  document.getElementById('titleField').style.display = '';
+
+  /* Handle custom title input */
+  customInput.addEventListener('input', function() {
+    if (customInput.value.trim()) {
+      TITLE = customInput.value.trim();
+      var p = load(); p.title = TITLE; save(p);
+      update();
+    }
+  });
+
+  /* Show custom title field if user had previously set a custom title */
+  if (TITLE && TITLE !== 'Payments & Rewards Specialist' && !titles.includes(TITLE)) {
+    customWrapper.style.display = '';
+    var createBtn = tc.querySelector('[data-t="' + (titles.length - 1) + '"]');
+    if (createBtn) createBtn.classList.add('on');
+  }
+
   update();
 }
 
-/* Hook into Cloudflare Access identity to detect executives and enable title toggle */
+/* Hook into Cloudflare Access identity to detect executives */
 if (typeof window !== 'undefined') {
   document.addEventListener('DOMContentLoaded', function() {
     fetch('/cdn-cgi/access/get-identity', { credentials: 'include' })
       .then(function(r) { return r.ok ? r.json() : null; })
-      .then(function(j) { if (j && j.email) applyExecCard(j.email); })
-      .catch(function(e) { /* not behind Access or fetch failed — fall back to no titles */ });
+      .then(function(j) { setupTitleChooser(j && j.email ? j.email : null); })
+      .catch(function(e) { setupTitleChooser(null); /* not behind Access — allow title choice for everyone */ });
   });
 }
 
