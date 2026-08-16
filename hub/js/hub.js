@@ -39,7 +39,6 @@
     { href: 'playbook.html', label: 'Sales Playbook', ic: 'book' },
     { href: 'quick-sales-tools.html', label: 'Quick Sales Tools', ic: 'send' },
     { href: 'products.html', label: 'Products', ic: 'box' },
-    { href: 'industries.html', label: 'Industry Playbooks', ic: 'store' },
     { href: 'resources.html', label: 'Resource Library', ic: 'folder' },
     { sec: 'My business' },
     { href: 'merchants.html', label: 'My Merchants', ic: 'users' },
