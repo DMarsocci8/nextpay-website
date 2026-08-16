@@ -148,14 +148,14 @@
     const top = cands[0];
     const sigNames = deal.signals.map(k => D.signals[k]);
 
-    let h = '<div class="rec-box"><span class="tag">' + (deal.signals.length ? 'Best fit from their answers' : 'Recommended starting point — tap signals in Discovery to sharpen this') + '</span>' +
+    let h = '<div class="rec-box' + (deal.products.pos === top.name ? ' selected-stack' : '') + '" data-stack-name="' + esc(top.name) + '"><span class="tag">' + (deal.signals.length ? 'Best fit from their answers' : 'Recommended starting point — tap signals in Discovery to sharpen this') + '</span>' +
       '<h3 class="mt8">' + esc(top.name) + '</h3><p class="muted">' + esc(top.why) + '</p>' +
       (top.reasons.length ? '<ul class="ck plain mt8">' + top.reasons.map(r => '<li class="small">' + esc(r) + '</li>').join('') + '</ul>' : '') +
       '<button class="btn btn-primary btn-sm mt8" type="button" data-stack="0">Use this stack</button></div>';
     const alts2 = cands.slice(1);
     if (alts2.length) {
       h += '<div class="grid2 mt16">' + alts2.map((a, idx) =>
-        '<div class="alt-box"><b>' + esc(a.name) + '</b>' + (a.score <= 0 ? ' <span class="chip red" style="margin-left:6px">poor fit here</span>' : '') +
+        '<div class="alt-box' + (deal.products.pos === a.name ? ' selected-stack' : '') + '" data-stack-name="' + esc(a.name) + '"><b>' + esc(a.name) + '</b>' + (a.score <= 0 ? ' <span class="chip red" style="margin-left:6px">poor fit here</span>' : '') +
         '<p class="muted small mt8">' + esc(a.why) + '</p>' +
         (a.reasons.length ? '<p class="small muted mt8">' + a.reasons.map(esc).join(' · ') + '</p>' : '') +
         '<button class="btn btn-outline btn-sm mt8" type="button" data-stack="' + (idx + 1) + '">Use this stack</button></div>').join('') + '</div>';
@@ -199,6 +199,12 @@
         if (stackSug.invoicing.length) $('f-inv').value = stackSug.invoicing[0].v;
         const g = PLACE_GUESS.find(([re]) => re.test(selected.name));
         if (g) $('f-place').value = g[1];
+
+        // Highlight the selected stack
+        document.querySelectorAll('[data-stack-name]').forEach(box => {
+          box.classList.toggle('selected-stack', box.dataset.stackName === selected.name);
+        });
+
         $('f-pos').scrollIntoView({ behavior: 'smooth', block: 'center' });
       });
     });
