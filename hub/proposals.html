@@ -339,7 +339,7 @@
       } else {
         // For non-catalog brands (NRS, Chively, Next2Pay, Standalone terminal), redirect to dedicated one-page proposal page
         if (brand === 'nrs' || brand === 'chively' || brand === 'next2pay') {
-          window.location.href = 'one-page-proposal.html?brand=' + encodeURIComponent(brand);
+          window.location.href = 'one-page-proposal?brand=' + encodeURIComponent(brand);
         } else {
           // Standalone/Gateway - use internal one-page proposal tab
           const tabButton = document.querySelector('.tabs button[data-tab="onepager"]');
