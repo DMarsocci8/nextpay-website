@@ -66,6 +66,7 @@ a.card:hover{border-color:var(--teal);box-shadow:0 10px 32px rgba(12,27,42,.12);
 .card > b{display:block;font-size:15px;color:var(--navy);margin-bottom:4px;font-weight:800}
 .card>h3:first-child,.card>h2:first-child{padding-bottom:10px;border-bottom:1.5px solid var(--line);margin-bottom:14px}
 .card + .card{margin-top:16px}
+.grid2 .card + .card, .grid3 .card + .card, .grid4 .card + .card{margin-top:0}
 .grid2{display:grid;grid-template-columns:1fr 1fr;gap:16px;grid-auto-rows:max-content;width:100%;align-items:start}
 .grid2 > *{min-width:0}
 .grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;grid-auto-rows:max-content;width:100%;align-items:start}
