@@ -35,8 +35,8 @@
   const D = window.HUB_DATA;
   const esc = (s) => String(s == null ? '' : s).replace(/[<>&"]/g, c => ({'<':'&lt;','>':'&gt;','&':'&amp;','"':'&quot;'}[c]));
 
-  // Placements to show in this gateway (exclude the top 4)
-  const excludeKeys = ['skytab', 'clover', 'square', 'next2pay'];
+  // Placements to show in this gateway (exclude the main 5: skytab, clover, square, next2pay, sumup)
+  const excludeKeys = ['skytab', 'clover', 'square', 'next2pay', 'sumup'];
   const allPlacements = Object.entries(D.placements).filter(([k]) => !excludeKeys.includes(k));
 
   const grid = document.getElementById('solutions-grid');

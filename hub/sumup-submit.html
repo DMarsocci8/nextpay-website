@@ -1,0 +1,55 @@
+<!DOCTYPE html><html lang="en"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>Submit a SumUp Deal — NextPay Sales Hub</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/hub.css">
+</head><body>
+<div class="hub-shell"><div id="hub-side"></div><main class="hub-main">
+
+<div class="pg-head">
+  <span class="eyebrow">Submit</span>
+  <h1>SumUp Deal Submission</h1>
+  <p>Budget-friendly hardware and software — the play for price-sensitive merchants who want a complete POS in one box.</p>
+</div>
+
+<div class="card">
+  <h3>Submission workflow</h3>
+  <div id="stepshtml" class="steps"></div>
+</div>
+
+<div class="card mt16">
+  <h3>🔗 Quick resources</h3>
+  <div class="grid2">
+    <a href="sumup-resources.html" class="card" style="text-decoration:none;color:inherit">
+      <b>📖 Resource Guide</b>
+      <p class="muted small">Pricing, hardware, and deal workflow</p>
+    </a>
+    <a href="https://business.sumup.com/partner-portal/" target="_blank" rel="noopener" class="card" style="text-decoration:none;color:inherit">
+      <b>🔐 SumUp Partner Portal</b>
+      <p class="muted small">Applications & support</p>
+    </a>
+  </div>
+</div>
+
+<div class="card mt16">
+  <p><a href="submit-deal.html" style="color:#14A18C;text-decoration:none;font-weight:500">← Back to Submit a Deal</a></p>
+</div>
+
+</main></div>
+<script src="js/hub.js"></script><script src="js/hub-data.js"></script><script src="js/hub-store.js"></script>
+<script>
+(function () {
+  const D = window.HUB_DATA;
+  const stepsDiv = document.getElementById('stepshtml');
+
+  if (D && D.placements && D.placements.sumup && D.placements.sumup.stepsHtml) {
+    const steps = D.placements.sumup.stepsHtml;
+    stepsDiv.innerHTML = steps.map((s, i) =>
+      '<div class="step"><div><h4>Step ' + (i + 1) + '</h4><p>' + s + '</p></div></div>'
+    ).join('');
+  }
+})();
+</script>
+</body></html>
