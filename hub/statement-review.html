@@ -36,18 +36,33 @@
 </div>
 
 <div class="card mt16" id="calc">
-  <h3>3 · Effective rate calculator</h3>
+  <h3>3 · Effective rate calculator — Compare their costs to ours</h3>
+
+  <div class="note mb16"><b>Enter their statement info:</b></div>
   <div class="frow3">
     <div><label class="fl">Total monthly card volume ($)</label><input class="fi" id="e-vol" inputmode="numeric" placeholder="e.g. 48000"></div>
+    <div><label class="fl">Number of transactions</label><input class="fi" id="e-trans" inputmode="numeric" placeholder="e.g. 180"></div>
     <div><label class="fl">Total monthly fees ($)</label><input class="fi" id="e-fees" inputmode="numeric" placeholder="e.g. 1580"></div>
-    <div><label class="fl">Our proposed effective rate (%)</label><input class="fi" id="e-ours" inputmode="numeric" placeholder="e.g. 2.4 — or 0 for dual pricing"></div>
   </div>
+
+  <div class="note mt16 mb12"><b>Our discount rate pricing:</b></div>
+  <div class="frow">
+    <div><label class="fl">Discount rate (basis points)</label><input class="fi" id="e-bps" inputmode="numeric" placeholder="e.g. 40 (= 0.40%)"></div>
+    <div><label class="fl">Per-transaction fee ($)</label><input class="fi" id="e-ptxn" inputmode="numeric" step="0.01" placeholder="e.g. 0.10"></div>
+  </div>
+
   <div class="grid3 mt16">
     <div class="stat"><div class="n" id="o-eff">—</div><div class="l">their current effective rate</div></div>
-    <div class="stat"><div class="n" id="o-mo">—</div><div class="l">monthly savings with us</div></div>
-    <div class="stat"><div class="n" id="o-yr" style="color:var(--teal)">—</div><div class="l">annual savings — lead with this number</div></div>
+    <div class="stat"><div class="n" id="o-ours">—</div><div class="l">our effective rate</div></div>
+    <div class="stat"><div class="n" id="o-save" style="color:var(--teal)">—</div><div class="l">monthly savings</div></div>
   </div>
-  <div class="note mt16"><b>How to present it:</b> "You paid <span id="o-quote-fees">$—</span> to take <span id="o-quote-vol">$—</span> in cards last month — that's <span id="o-quote-eff">—</span>. We'll do the same for <span id="o-quote-ours">—</span>, which puts <span id="o-quote-yr">$—</span> a year back in your pocket. If I can show you that on paper, is there anything stopping us from moving forward?"</div>
+
+  <div class="stat mt16" style="background:var(--teal-soft);padding:14px;border-radius:var(--rad);">
+    <div class="n" id="o-yr" style="color:var(--teal)">—</div>
+    <div class="l">annual savings — <b>lead with this number</b></div>
+  </div>
+
+  <div class="note mt16"><b>How to present it:</b> "You paid <span id="o-quote-fees">$—</span> in fees on <span id="o-quote-vol">$—</span> in card volume last month — that's <span id="o-quote-eff">—</span> effective. With our <span id="o-quote-rate">—</span> discount rate, your cost drops to <span id="o-quote-ours">—</span> — that's <span id="o-quote-yr">$—</span> a year in your pocket. If I can show you that on paper, is there anything stopping us from moving forward?"</div>
 </div>
 
 <div class="card mt16">
@@ -92,22 +107,50 @@
 (function () {
   const $ = (id) => document.getElementById(id);
   const fmt = (n) => '$' + Math.round(n).toLocaleString();
+  const fmtPct = (n) => (Math.round(n * 100) / 100).toFixed(2) + '%';
+
   function effcalc() {
-    const v = parseFloat($('e-vol').value) || 0, f = parseFloat($('e-fees').value) || 0;
-    const oursIn = $('e-ours').value.trim(), ours = parseFloat(oursIn);
-    const eff = v > 0 ? (f / v * 100) : 0;
-    $('o-eff').textContent = v > 0 ? eff.toFixed(2) + '%' : '—';
-    let mo = null;
-    if (v > 0 && oursIn !== '' && !isNaN(ours)) mo = f - v * (ours / 100);
-    $('o-mo').textContent = mo !== null ? fmt(mo) + '/mo' : '—';
-    $('o-yr').textContent = mo !== null ? fmt(mo * 12) + '/yr' : '—';
-    $('o-quote-fees').textContent = f ? fmt(f) : '$—';
-    $('o-quote-vol').textContent = v ? fmt(v) : '$—';
-    $('o-quote-eff').textContent = v > 0 ? eff.toFixed(2) + '%' : '—';
-    $('o-quote-ours').textContent = (oursIn !== '' && !isNaN(ours)) ? (ours === 0 ? '0% with dual pricing' : ours + '%') : '—';
-    $('o-quote-yr').textContent = mo !== null ? fmt(mo * 12) : '$—';
+    const vol = parseFloat($('e-vol').value) || 0;
+    const trans = parseFloat($('e-trans').value) || 0;
+    const fees = parseFloat($('e-fees').value) || 0;
+    const bps = parseFloat($('e-bps').value) || 0;
+    const ptxn = parseFloat($('e-ptxn').value) || 0;
+
+    // Their current effective rate
+    const theirEff = vol > 0 ? (fees / vol * 100) : 0;
+    $('o-eff').textContent = vol > 0 ? fmtPct(theirEff) : '—';
+
+    // Our cost: (volume * bps/10000) + (transactions * per-txn fee)
+    let ourCost = 0;
+    if (vol > 0 && bps > 0) ourCost += vol * (bps / 10000);
+    if (trans > 0 && ptxn > 0) ourCost += trans * ptxn;
+
+    const ourEff = vol > 0 && (bps > 0 || ptxn > 0) ? (ourCost / vol * 100) : 0;
+    $('o-ours').textContent = vol > 0 && (bps > 0 || ptxn > 0) ? fmtPct(ourEff) : '—';
+
+    // Savings
+    const monthlySave = vol > 0 && (bps > 0 || ptxn > 0) ? (fees - ourCost) : 0;
+    const annualSave = monthlySave * 12;
+
+    $('o-save').textContent = vol > 0 && (bps > 0 || ptxn > 0) ? fmt(monthlySave) + '/mo' : '—';
+    $('o-yr').textContent = vol > 0 && (bps > 0 || ptxn > 0) ? fmt(annualSave) + '/yr' : '—';
+
+    // Quote text
+    $('o-quote-fees').textContent = fees ? fmt(fees) : '$—';
+    $('o-quote-vol').textContent = vol ? fmt(vol) : '$—';
+    $('o-quote-eff').textContent = vol > 0 ? fmtPct(theirEff) : '—';
+
+    let rateDesc = '';
+    if (bps > 0 && ptxn > 0) rateDesc = bps/100 + '% + $' + ptxn.toFixed(2) + '/txn';
+    else if (bps > 0) rateDesc = bps/100 + '%';
+    else if (ptxn > 0) rateDesc = '$' + ptxn.toFixed(2) + '/txn';
+    $('o-quote-rate').textContent = rateDesc ? rateDesc : '—';
+
+    $('o-quote-ours').textContent = vol > 0 && (bps > 0 || ptxn > 0) ? fmtPct(ourEff) : '—';
+    $('o-quote-yr').textContent = vol > 0 && (bps > 0 || ptxn > 0) ? fmt(annualSave) : '$—';
   }
-  ['e-vol', 'e-fees', 'e-ours'].forEach(id => $(id).addEventListener('input', effcalc));
+
+  ['e-vol', 'e-trans', 'e-fees', 'e-bps', 'e-ptxn'].forEach(id => $(id).addEventListener('input', effcalc));
 
   function projcalc() {
     const c = parseFloat($('p-cust').value) || 0, t = parseFloat($('p-ticket').value) || 0,
