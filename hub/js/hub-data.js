@@ -568,12 +568,21 @@ window.HUB_DATA = {
       { name: 'iPOSPays', logo: 'ipospays.png', tag: 'Dejavoo-native gateway', sell: ['Drives Dejavoo/DejaPay hardware'], link: 'https://nextpaypos.com/ipospays' }
     ],
     invoicing: [
-      { name: 'Next2Pay Invoicing', logo: 'next2pay-globe.png', tag: 'House invoicing - for trades & businesses that INVOICE their customers', sell: ['Roofers, electricians, plumbers, pros, cleaning routes - estimates, invoices, text-to-pay, recurring', 'NOT a POS replacement: salons/bakeries/restaurants get a full POS (invoicing is usually a POS feature there)', 'Best margins in the invoicing lineup - proposal ready in the Proposal Studio'], link: 'https://nextpaypos.com/next2pay', resources: { guide: 'next2pay-resources.html' } },
-      { name: 'FieldPulse', logo: 'fieldpulse.png', tag: 'Field service suite', sell: ['Estimates -> invoices -> text-to-pay', 'Scheduling + CRM for trades'], link: 'https://nextpaypos.com/invoicing' },
-      { name: 'Field Work', logo: 'fieldwork.png', tag: 'Field service alternative', sell: ['Job management + payments'], link: 'https://nextpaypos.com/invoicing' },
-      { name: 'LQPay', logo: 'lqpay.png', tag: 'Billing & statements', sell: ['Healthcare-friendly workflows'], link: 'https://nextpaypos.com/invoicing' },
-      { name: 'Invoice with QuickBooks Integrations', logo: 'quickbooks-t.png', logoH: 32, tag: 'Payments inside QB', sell: ['Invoices paid straight into the books'], link: 'https://nextpaypos.com/integrations' }
+      { name: 'Next2Pay Invoicing*', logo: 'next2pay-globe.png', tag: 'House invoicing - for trades & businesses that INVOICE their customers', isPrimary: true, sell: ['Roofers, electricians, plumbers, pros, cleaning routes - estimates, invoices, text-to-pay, recurring', 'NOT a POS replacement: salons/bakeries/restaurants get a full POS (invoicing is usually a POS feature there)', 'Best margins in the invoicing lineup - proposal ready in the Proposal Studio', '* 99% of the time we will push Next2Pay invoicing. We have an option with and without QuickBooks integration'], link: 'https://nextpaypos.com/next2pay', resources: { guide: 'next2pay-resources.html' } },
+      { name: 'FieldPulse*', logo: 'fieldpulse.png', tag: 'Field service suite', sell: ['Estimates -> invoices -> text-to-pay', 'Scheduling + CRM for trades', '* Only recommend these if someone wants them specifically'], link: 'https://nextpaypos.com/invoicing' },
+      { name: 'Field Work*', logo: 'fieldwork.png', tag: 'Field service alternative', sell: ['Job management + payments', '* Only recommend these if someone wants them specifically'], link: 'https://nextpaypos.com/invoicing' },
+      { name: 'LQPay*', logo: 'lqpay.png', tag: 'Billing & statements', sell: ['Healthcare-friendly workflows', '* Only recommend these if someone wants them specifically'], link: 'https://nextpaypos.com/invoicing' },
+      { name: 'Invoice with QuickBooks Integrations*', logo: 'quickbooks-t.png', logoH: 32, tag: 'Payments inside QB', sell: ['Invoices paid straight into the books', '* Only recommend these if someone wants them specifically'], link: 'https://nextpaypos.com/integrations' }
     ],
+    gateways_invoicing: function() {
+      // Combine gateways and invoicing products for the unified section
+      return [
+        // Gateways first
+        ...HUB_DATA.products.gateways,
+        // Then invoicing
+        ...HUB_DATA.products.invoicing
+      ];
+    },
     services: [
       { name: 'NextFund - Business Financing', logo: 'nextfund-globe.png', tag: 'The recommendation for ANYTHING finance or lending', sell: ['Working capital, equipment loans, merchant cash advances', 'Fast approvals off processing history', 'A second commission riding alongside your processing deal'], link: 'https://nextpaypos.com/financing' },
       { name: 'NextLink - Client Automation & Outreach', logo: 'nextlink.png', tag: 'House outreach platform, sold per seat', sell: ['Automated campaigns + follow-up sequences that never forget', 'Proposal ready to build in the Proposal Studio', 'Internal seat pricing on the Pricing page'], link: 'https://nextpaypos.com/outreach' },

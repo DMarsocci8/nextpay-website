@@ -10,7 +10,10 @@
 
 <div class="pg-head">
   <span class="eyebrow">Price it right</span>
-  <h1>Product Pricing & Specs</h1>
+  <div class="spread" style="margin-bottom:8px">
+    <h1>Product Pricing & Specs</h1>
+    <a href="dashboard.html" style="color:#14A18C;text-decoration:none;font-weight:600">← Back to Dashboard</a>
+  </div>
   <p>How to price a deal, what to sell, and the cost structure for every product. Five pricing models, detailed specs, and links to build actual proposals.</p>
 </div>
 
@@ -156,10 +159,11 @@
 <script>
 (function () {
   const esc = (s) => String(s == null ? '' : s).replace(/[<>&"]/g, c => ({'<':'&lt;','>':'&gt;','&':'&amp;','"':'&quot;'}[c]));
-  const SECS = [['pos', 'POS Systems'], ['terminals', 'Credit Card Terminals'], ['gateways', 'Online Gateways'], ['invoicing', 'Invoicing & Field Service'], ['services', 'Business Services — NextFund, NextLink & Rewards']];
-  document.getElementById('lib').innerHTML = SECS.map(([k, label]) =>
-    '<h3 class="mt24 mb8">' + label + '</h3><div class="grid3">' +
-    HUB_DATA.products[k].map(p => {
+  const SECS = [['pos', 'POS Systems'], ['terminals', 'Credit Card Terminals'], ['gateways_invoicing', 'Invoicing, Gateways, Virtual Terminals, Online Payments'], ['services', 'Business Services — NextFund, NextLink & Rewards']];
+  document.getElementById('lib').innerHTML = SECS.map(([k, label]) => {
+    const products = typeof HUB_DATA.products[k] === 'function' ? HUB_DATA.products[k]() : HUB_DATA.products[k];
+    return '<h3 class="mt24 mb8">' + label + '</h3><div class="grid3">' +
+    products.map(p => {
       const res = p.resources;
       const resourceLinks = (res ?
         '<div class="resource-links">' +
@@ -179,8 +183,8 @@
         '<ul class="ck plain" style="margin-bottom:auto;gap:4px;margin-top:4px">' + p.sell.map(s => '<li class="small" style="font-size:13px;line-height:1.5">' + esc(s) + '</li>').join('') + '</ul>' +
         '<a class="small" href="' + p.link + '" target="_blank" rel="noopener" style="margin-top:8px;display:inline-block;font-size:13px;color:#14A18C;font-weight:500">Public page ↗</a>' +
         (resourceLinks ? '<div style="' + (resourceLinks ? 'margin-top:6px' : '') + '">' + resourceLinks + '</div>' : '') + '</div>';
-    }).join('') + '</div>'
-  ).join('');
+    }).join('') + '</div>';
+  }).join('');
 })();
 </script>
 </body></html>
