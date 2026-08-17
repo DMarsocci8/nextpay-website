@@ -179,8 +179,8 @@
       if (auth) {
         try {
           const data = JSON.parse(auth);
-          // Check if token is still valid (within 1 hour)
-          if (new Date().getTime() - data.timestamp < 3600000) {
+          // Check if token is still valid (within 24 hours)
+          if (new Date().getTime() - data.timestamp < 86400000) {
             window.location.href = 'dashboard.html';
           } else {
             localStorage.removeItem('hub_auth');

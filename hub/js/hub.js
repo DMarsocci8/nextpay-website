@@ -67,6 +67,10 @@
         _authData = JSON.parse(googleAuth);
         _who = (_authData.email || '').toLowerCase();
         localStorage.setItem('hub_user_email', _who);
+
+        // Track login if needed
+        trackLogin(_who);
+
         return _who;
       } catch (e) {}
     }
@@ -80,6 +84,7 @@
         if (j && j.email) {
           _who = j.email.toLowerCase();
           localStorage.setItem('hub_user_email', _who);
+          trackLogin(_who);
           return _who;
         }
       }
@@ -88,6 +93,66 @@
     _who = (cached || '').toLowerCase() || null;
     return _who;
   }
+
+  // Login tracking
+  function trackLogin(email) {
+    try {
+      const logins = JSON.parse(localStorage.getItem('hub_logins') || '{}');
+      const today = new Date().toISOString().split('T')[0]; // YYYY-MM-DD
+      const key = `${email}_${today}`;
+
+      logins[key] = (logins[key] || 0) + 1;
+      logins['_timestamps'] = logins['_timestamps'] || [];
+      logins['_timestamps'].push({
+        email: email,
+        timestamp: new Date().toISOString(),
+        page: window.location.pathname
+      });
+
+      // Keep only last 30 days of timestamps
+      const thirtyDaysAgo = new Date();
+      thirtyDaysAgo.setDate(thirtyDaysAgo.getDate() - 30);
+      logins['_timestamps'] = logins['_timestamps'].filter(t => new Date(t.timestamp) > thirtyDaysAgo);
+
+      localStorage.setItem('hub_logins', JSON.stringify(logins));
+    } catch (e) {
+      console.error('Error tracking login:', e);
+    }
+  }
+
+  // Generate weekly login report
+  function generateWeeklyReport() {
+    try {
+      const logins = JSON.parse(localStorage.getItem('hub_logins') || '{}');
+      const report = {};
+
+      // Aggregate login counts by email
+      for (const [key, count] of Object.entries(logins)) {
+        if (key.startsWith('_')) continue;
+        const [email] = key.split('_');
+        report[email] = (report[email] || 0) + count;
+      }
+
+      // Sort by count descending
+      const sorted = Object.entries(report)
+        .sort((a, b) => b[1] - a[1])
+        .map(([email, count]) => ({ email, count }));
+
+      return {
+        generatedAt: new Date().toISOString(),
+        reportPeriod: 'Last 7 days',
+        totalLogins: Object.values(report).reduce((a, b) => a + b, 0),
+        agentLogins: sorted,
+        timestamps: logins['_timestamps'] || []
+      };
+    } catch (e) {
+      console.error('Error generating report:', e);
+      return null;
+    }
+  }
+
+  // Export report function for admin use
+  window.Hub.generateWeeklyReport = generateWeeklyReport;
 
   function getAuthData() { return _authData; }
   function logout() {
