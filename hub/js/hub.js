@@ -53,10 +53,25 @@
   const ADMINS = ['dom@nextpaypos.com', 'alexander@nextpaypos.com'];
   const LOGO = 'assets/logos/nextpay.png';
 
-  // --- identity: Cloudflare Access on hub.nextpaypos.com, manual fallback in preview ---
+  // --- authentication: Google Sign-In + Cloudflare Access ---
   let _who = null;
+  let _authData = null;
+
   async function whoami() {
     if (_who) return _who;
+
+    // Check Google Sign-In auth first
+    const googleAuth = localStorage.getItem('hub_auth');
+    if (googleAuth) {
+      try {
+        _authData = JSON.parse(googleAuth);
+        _who = (_authData.email || '').toLowerCase();
+        localStorage.setItem('hub_user_email', _who);
+        return _who;
+      } catch (e) {}
+    }
+
+    // Fall back to Cloudflare Access
     const cached = localStorage.getItem('hub_user_email');
     try {
       const r = await fetch('/cdn-cgi/access/get-identity', { credentials: 'include' });
@@ -68,11 +83,30 @@
           return _who;
         }
       }
-    } catch (e) { /* not behind Access (preview) — fall back */ }
+    } catch (e) { /* not behind Access (preview) */ }
+
     _who = (cached || '').toLowerCase() || null;
     return _who;
   }
+
+  function getAuthData() { return _authData; }
+  function logout() {
+    localStorage.removeItem('hub_auth');
+    localStorage.removeItem('hub_user_email');
+    window.location.href = 'login.html';
+  }
   function isAdmin(email) { return ADMINS.includes((email || '').toLowerCase()); }
+
+  // Enforce authentication
+  async function enforceAuth() {
+    const email = await whoami();
+    if (!email || !email.endsWith('@nextpaypos.com')) {
+      // Redirect to login if not authenticated or wrong domain
+      if (window.location.pathname !== '/hub/login.html' && !window.location.pathname.includes('login')) {
+        window.location.href = 'login.html';
+      }
+    }
+  }
 
   function page() {
     const p = location.pathname.split('/').pop();
@@ -83,7 +117,7 @@
     const admin = isAdmin(email);
     const cur = page();
     let html = '<div class="hs-logo"><span class="box"><img src="' + LOGO + '" alt="NextPay"></span><span class="t">Sales Hub</span></div>';
-    html += '<div class="hs-user" id="hs-user">' + (email ? 'Signed in as <b>' + email + '</b>' : '<a href="#" id="hs-setuser" style="color:#9FB2C2">Set your email →</a>') + '</div>';
+    html += '<div class="hs-user" id="hs-user">' + (email ? 'Signed in as <b>' + email + '</b><br><button id="hs-logout" style="background:none;border:none;color:#8FA5B8;cursor:pointer;font-size:11px;margin-top:6px;text-decoration:underline">Sign out</button>' : '<a href="login.html" id="hs-setuser" style="color:#9FB2C2">Sign in →</a>') + '</div>';
     html += '<nav>';
     for (const it of NAV) {
       if (it.admin && !admin) continue;
@@ -91,10 +125,16 @@
       html += '<a href="' + it.href + '"' + (it.href === cur ? ' class="on"' : '') + (it.target ? ' target="' + it.target + '" rel="noopener"' : '') + '>' + icon(it.ic) + it.label + '</a>';
     }
     html += '</nav>';
-    html += '<div class="hs-foot">Questions? Google Chat —<br>Deal Desk · General Q&amp;A<br><a href="https://nextpaypos.com" target="_blank" rel="noopener">nextpaypos.com ↗</a></div>';
+    html += '<div class="hs-foot">Questions? Google Chat —<br>Deal Desk · General Q&amp;A<br><button id="hs-feedback" style="background:none;border:none;color:#8FA5B8;cursor:pointer;font-size:11px;margin-top:12px;text-decoration:underline">💭 Suggest a change</button><br><a href="https://nextpaypos.com" target="_blank" rel="noopener">nextpaypos.com ↗</a></div>';
     const side = document.getElementById('hub-side');
     side.className = 'hub-side';
     side.innerHTML = html;
+
+    const logout = document.getElementById('hs-logout');
+    if (logout) logout.addEventListener('click', logout);
+
+    const feedback = document.getElementById('hs-feedback');
+    if (feedback) feedback.addEventListener('click', showFeedbackModal);
 
     const set = document.getElementById('hs-setuser');
     if (set) set.addEventListener('click', function (e) {
@@ -117,9 +157,89 @@
     });
   }
 
-  window.Hub = { whoami, isAdmin, ADMINS };
+  // Feedback modal
+  function showFeedbackModal() {
+    const existing = document.getElementById('feedback-modal-bg');
+    if (existing) {
+      existing.classList.add('open');
+      document.getElementById('feedback-textarea').focus();
+      return;
+    }
+
+    const modalHtml = `
+      <div class="modal-bg open" id="feedback-modal-bg">
+        <div class="modal">
+          <button class="x" type="button" onclick="document.getElementById('feedback-modal-bg').classList.remove('open')">✕</button>
+          <h3>Suggest a Change</h3>
+          <p class="muted small" style="margin-bottom:16px">Help us improve the Sales Hub. What would make this better for you?</p>
+          <textarea id="feedback-textarea" class="fi" placeholder="Your suggestion or feedback..." style="min-height:100px;font-family:inherit;padding:8px;margin-bottom:16px;resize:vertical"></textarea>
+          <p class="small muted" style="margin-bottom:16px">Your email: <b id="feedback-email">${_authData?.email || ''}</b></p>
+          <div style="display:flex;gap:8px;justify-content:flex-end">
+            <button type="button" class="btn btn-outline btn-sm" onclick="document.getElementById('feedback-modal-bg').classList.remove('open')">Cancel</button>
+            <button type="button" class="btn btn-primary btn-sm" id="feedback-submit">Send Feedback</button>
+          </div>
+          <div id="feedback-status" style="margin-top:12px;font-size:13px;color:#5B6B7B;display:none"></div>
+        </div>
+      </div>
+    `;
+
+    document.body.insertAdjacentHTML('beforeend', modalHtml);
+
+    const submitBtn = document.getElementById('feedback-submit');
+    const textarea = document.getElementById('feedback-textarea');
+    const statusDiv = document.getElementById('feedback-status');
+
+    submitBtn.addEventListener('click', async () => {
+      const feedback = textarea.value.trim();
+      if (!feedback) {
+        statusDiv.textContent = '❌ Please enter your feedback';
+        statusDiv.style.display = 'block';
+        return;
+      }
+
+      submitBtn.disabled = true;
+      statusDiv.textContent = '⏳ Sending...';
+      statusDiv.style.display = 'block';
+
+      try {
+        // Send to Formspree (replace with your form endpoint)
+        const response = await fetch('https://formspree.io/f/YOUR_FORM_ID', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            email: _authData?.email || '',
+            feedback: feedback,
+            page: window.location.pathname,
+            timestamp: new Date().toISOString()
+          })
+        });
+
+        if (response.ok) {
+          statusDiv.textContent = '✅ Feedback sent! Thank you.';
+          statusDiv.style.color = '#2E9E6B';
+          textarea.value = '';
+          setTimeout(() => {
+            document.getElementById('feedback-modal-bg').classList.remove('open');
+          }, 1500);
+        } else {
+          throw new Error('Failed to send');
+        }
+      } catch (e) {
+        statusDiv.textContent = '❌ Error sending feedback. Try again or email dom@nextpaypos.com directly.';
+        statusDiv.style.color = '#D65A5A';
+        submitBtn.disabled = false;
+      }
+    });
+  }
+
+  window.Hub = { whoami, isAdmin, ADMINS, logout, enforceAuth, getAuthData };
 
   document.addEventListener('DOMContentLoaded', async function () {
+    // Enforce authentication on protected pages
+    if (!window.location.pathname.includes('login')) {
+      await enforceAuth();
+    }
+
     topbar();
     const email = await whoami();
     render(email);
