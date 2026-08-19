@@ -2,6 +2,7 @@
   "cleanUrls": true,
   "trailingSlash": false,
   "redirects": [
+        { "source": "/blog", "destination": "/resources", "permanent": false },
     {
       "source": "/:path*",
       "has": [
