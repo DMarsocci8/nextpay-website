@@ -1,6 +1,11 @@
 /* NextPay Sales Hub — shared shell: left sidebar nav, identity, mobile drawer.
    Every hub page includes: <div id="hub-side"></div> + <main class="hub-main"> inside .hub-shell. */
 (function () {
+  // window.Hub is created up front so any code below can extend it
+  // regardless of order. An early write used to throw and kill this IIFE,
+  // which meant the sidebar and topbar never rendered on any hub page.
+  window.Hub = window.Hub || {};
+
   const ICONS = {
     home: '<path d="M3 11l9-8 9 8"/><path d="M5 9v11h14V9"/>',
     compass: '<circle cx="12" cy="12" r="9"/><path d="M15 9l-2 5-4 1 2-5z"/>',
@@ -195,8 +200,8 @@
     side.className = 'hub-side';
     side.innerHTML = html;
 
-    const logout = document.getElementById('hs-logout');
-    if (logout) logout.addEventListener('click', logout);
+    const logoutBtn = document.getElementById('hs-logout');
+    if (logoutBtn) logoutBtn.addEventListener('click', logout);
 
     const feedback = document.getElementById('hs-feedback');
     if (feedback) feedback.addEventListener('click', showFeedbackModal);
@@ -297,17 +302,24 @@
     });
   }
 
-  window.Hub = { whoami, isAdmin, ADMINS, logout, enforceAuth, getAuthData };
+  Object.assign(window.Hub, { whoami, isAdmin, ADMINS, logout, enforceAuth, getAuthData });
 
   document.addEventListener('DOMContentLoaded', async function () {
-    // Enforce authentication on protected pages
-    if (!window.location.pathname.includes('login')) {
-      await enforceAuth();
+    try {
+      if (!window.location.pathname.includes('login')) {
+        await enforceAuth();
+      }
+    } catch (err) {
+      console.error('[hub] auth check failed, rendering shell anyway:', err);
     }
 
-    topbar();
-    const email = await whoami();
-    render(email);
+    // The shell must render even if something above throws. A blank sidebar
+    // on every page is a worse failure than a degraded one.
+    let email = null;
+    try { topbar(); } catch (err) { console.error('[hub] topbar failed:', err); }
+    try { email = await whoami(); } catch (err) { console.error('[hub] whoami failed:', err); }
+    try { render(email); } catch (err) { console.error('[hub] sidebar render failed:', err); }
+
     document.dispatchEvent(new CustomEvent('hub:ready', { detail: { email, admin: isAdmin(email) } }));
   });
 })();
