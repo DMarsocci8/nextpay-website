@@ -1,4 +1,5 @@
-{
+
+    { "source": "/blog", "destination": "/resources", "permanent": false },{
   "cleanUrls": true,
   "trailingSlash": false,
   "redirects": [
